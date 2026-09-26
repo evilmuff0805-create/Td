@@ -35,20 +35,161 @@ export class Renderer {
     this.stageId = stageId;
     this.fx = new FX();
     this.weather = [];
+    this.hitState = new Map();
+    this.projPrev = new Map();
+    this.towerFire = new Map();
+    this.frames = 0;
+    this.light = this.makeLight();
+    this.cloud = this.makeCloud();
+    this.clouds = [0, 1, 2].map((i) => ({ x: (i * this.W) / 3 + Math.random() * 120, y: 60 + i * (this.H / 3) + Math.random() * 60, s: 0.9 + Math.random() * 0.6 }));
+  }
+
+  // 빛: 왼쪽 위에서 따스한 햇살, 가장자리는 어둡게 (한 번만 그려 둔다)
+  makeLight() {
+    const cv = document.createElement('canvas');
+    cv.width = this.W;
+    cv.height = this.H;
+    const c = cv.getContext('2d');
+    const warm = c.createLinearGradient(0, 0, this.W, this.H);
+    warm.addColorStop(0, 'rgba(255,236,190,0.13)');
+    warm.addColorStop(0.45, 'rgba(255,236,190,0)');
+    warm.addColorStop(1, 'rgba(20,30,70,0.1)');
+    c.fillStyle = warm;
+    c.fillRect(0, 0, this.W, this.H);
+    const vg = c.createRadialGradient(this.W / 2, this.H / 2, this.H * 0.42, this.W / 2, this.H / 2, this.W * 0.62);
+    vg.addColorStop(0, 'rgba(10,6,4,0)');
+    vg.addColorStop(1, 'rgba(10,6,4,0.34)');
+    c.fillStyle = vg;
+    c.fillRect(0, 0, this.W, this.H);
+    return cv;
+  }
+
+  // 느리게 흘러가는 구름 그림자
+  makeCloud() {
+    const cv = document.createElement('canvas');
+    cv.width = 320;
+    cv.height = 160;
+    const c = cv.getContext('2d');
+    for (const [x, y, r] of [[110, 90, 70], [180, 70, 80], [240, 95, 60], [150, 110, 60]]) {
+      const g = c.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, 'rgba(20,24,40,0.11)');
+      g.addColorStop(1, 'rgba(20,24,40,0)');
+      c.fillStyle = g;
+      c.beginPath();
+      c.arc(x, y, r, 0, Math.PI * 2);
+      c.fill();
+    }
+    return cv;
   }
 
   events(list) {
     for (const e of list) this.fx.handle(e);
   }
 
+  // 체력이 줄어든 순간을 잡아 번쩍임·찌그러짐·피해 숫자를 만든다 (호스트·게스트 모두 같은 방식)
+  trackHits(v, dt) {
+    const seen = new Set();
+    let heavyHits = 0;
+    for (const e of v.enemies) {
+      seen.add(e.id);
+      let h = this.hitState.get(e.id);
+      if (!h) {
+        this.hitState.set(e.id, { hp: e.hp, flash: 0, sq: 0, acc: 0, accT: 0, cool: 0, x: e.x, y: e.y });
+        continue;
+      }
+      const d = h.hp - e.hp;
+      h.hp = e.hp;
+      h.x = e.x;
+      h.y = e.y;
+      h.cool -= dt;
+      if (d > 0.01) {
+        h.acc += d;
+        const heavy = d >= Math.max(5, e.maxHp * 0.02);
+        if (heavy && h.cool <= 0) {
+          const rel = d / e.maxHp;
+          h.flash = 1;
+          h.sq = Math.min(1, 0.55 + rel * 3);
+          h.cool = 0.08;
+          const sc = e.tier === 4 ? 1.75 : e.tier === 3 ? 1.28 : 1.05;
+          this.fx.hitSpark(e.x * TS, e.y * TS + 8 - 15 * sc, rel);
+          heavyHits++;
+        }
+      }
+      if (h.acc > 0) {
+        h.accT += dt;
+        if (h.accT > 0.32) {
+          if (h.acc >= 1) this.fx.dmg(e.x * TS, e.y * TS - 26, Math.round(h.acc));
+          h.acc = 0;
+          h.accT = 0;
+        }
+      }
+      h.flash = Math.max(0, h.flash - dt * 9);
+      h.sq = Math.max(0, h.sq - dt * 7);
+    }
+    for (const [id, h] of this.hitState) {
+      if (seen.has(id)) continue;
+      if (h.acc >= 1) this.fx.dmg(h.x * TS, h.y * TS - 26, Math.round(h.acc));
+      this.hitState.delete(id);
+    }
+    if (heavyHits && this.fx.onSound) this.fx.onSound('hit');
+  }
+
+  // 유도 투사체가 사라진 자리 = 맞은 자리
+  trackProjectiles(v) {
+    const now = new Map();
+    for (const p of v.projectiles) {
+      if (p.kind !== 'arrow' && p.kind !== 'bolt' && p.kind !== 'orb') continue;
+      now.set(p.id, { kind: p.kind, x: p.x, y: p.y, a: p.a || 0, crit: p.crit, hue: p.hue });
+    }
+    for (const [id, p] of this.projPrev) if (!now.has(id)) this.fx.impact(p.kind, p.x * TS, p.y * TS, p.a, p.crit, p.hue);
+    this.projPrev = now;
+  }
+
+  // 유산이 쏘는 순간: 반동 + 포구 연기
+  trackTowerFire(v, dt) {
+    for (const t of v.towers) {
+      let st = this.towerFire.get(t.id);
+      if (!st) {
+        st = { on: false, recoil: 0 };
+        this.towerFire.set(t.id, st);
+      }
+      if (st.fresh === undefined) {
+        // 첫 화면에 이미 있던 유산은 그대로, 새로 지은 유산은 위에서 쿵 내려앉는다
+        st.fresh = this.frames > 1;
+        st.drop = st.fresh ? 1 : 0;
+      }
+      if (st.drop > 0) {
+        st.drop = Math.max(0, st.drop - dt * 5);
+        if (st.drop === 0) st.recoil = 1.3;
+      }
+      const on = t.flash > 0;
+      if (on && !st.on) {
+        st.recoil = 1;
+        const kind = TOWERS[t.type].kind;
+        if (kind === 'cannon') this.fx.muzzle((t.x + 0.5) * TS, (t.y + 0.5) * TS - 10, t.angle ?? -1, t.branch === 'A');
+      }
+      st.on = on;
+      st.recoil = Math.max(0, st.recoil - dt * 7);
+    }
+  }
+
   render(v, ui, dt) {
     const ctx = this.ctx;
     const map = this.map;
     const time = ui.clock;
+    this.frames++;
     this.fx.update(dt);
+    this.trackHits(v, dt);
+    this.trackProjectiles(v);
+    this.trackTowerFire(v, dt);
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    const sh = this.fx.shake;
-    if (sh > 0) ctx.translate((Math.random() - 0.5) * sh, (Math.random() - 0.5) * sh);
+    const cam = this.fx.camera(this.W, this.H);
+    if (cam.zoom !== 1) {
+      ctx.translate(cam.zx, cam.zy);
+      ctx.scale(cam.zoom, cam.zoom);
+      ctx.translate(-cam.zx, -cam.zy);
+    }
+    ctx.translate(cam.dx, cam.dy);
     ctx.drawImage(this.bg, 0, 0, this.W, this.H);
     this.drawWater(ctx, time);
 
@@ -84,8 +225,15 @@ export class Renderer {
       const t = v.towers.find((x) => x.id === ui.selTower);
       if (t) this.rangeCircle(ctx, t.type, t.level, t.branch, t.x, t.y, t.rangeMult || 1, true);
     }
-    if (ui.placing && ui.hover) {
-      this.rangeCircle(ctx, ui.placing, 1, null, ui.hover.x, ui.hover.y, 1, ui.hoverOk);
+    const at = ui.buildAt || ui.hover;
+    if (ui.placing && at) {
+      this.rangeCircle(ctx, ui.placing, 1, null, at.x, at.y, 1, ui.buildAt ? true : ui.hoverOk);
+    }
+    const p2 = ui.p2intent;
+    if (p2) {
+      const t2 = p2.towerId !== null && p2.towerId !== undefined ? v.towers.find((x) => x.id === p2.towerId) : null;
+      if (p2.type) this.rangeCircle(ctx, p2.type, 1, null, p2.x, p2.y, 1, true, PAL.p1);
+      else if (t2) this.rangeCircle(ctx, t2.type, t2.level, t2.branch, t2.x, t2.y, t2.rangeMult || 1, true, PAL.p1);
     }
 
     // 깊이 정렬
@@ -97,8 +245,16 @@ export class Renderer {
     list.sort((a, b) => a.y - b.y);
     drawBase(ctx, map, this.stage, time);
     for (const it of list) {
-      if (it.k === 0) drawTower(ctx, it.o, time, { owner: v.coop ? it.o.owner : -1 });
-      else if (it.k === 1) drawEnemy(ctx, it.o, time);
+      if (it.k === 0) {
+        const tf = this.towerFire.get(it.o.id);
+        if (tf && tf.drop > 0) {
+          ctx.save();
+          ctx.globalAlpha = 1 - tf.drop * 0.6;
+          ctx.translate(0, -46 * tf.drop * tf.drop);
+          drawTower(ctx, it.o, time, { owner: v.coop ? it.o.owner : -1, noShadow: true });
+          ctx.restore();
+        } else drawTower(ctx, it.o, time, { owner: v.coop ? it.o.owner : -1, recoil: tf ? tf.recoil : 0 });
+      } else if (it.k === 1) drawEnemy(ctx, it.o, time, 1, this.hitState.get(it.o.id));
       else if (it.k === 2) drawHero(ctx, it.o, time, { selected: ui.selHeroes && ui.selHeroes.includes(v.heroes.indexOf(it.o)) });
       else drawSummon(ctx, it.o, time);
     }
@@ -156,7 +312,7 @@ export class Renderer {
     }
 
     // 로컬 2P 커서
-    if (ui.p2cursor) {
+    if (ui.p2cursor && !p2) {
       const c = ui.p2cursor;
       ctx.strokeStyle = PAL.p1;
       ctx.lineWidth = 2;
@@ -164,12 +320,27 @@ export class Renderer {
       ctx.strokeRect(c.x * TS + 2, c.y * TS + 2, TS - 4, TS - 4);
       ctx.setLineDash([]);
     }
+    // 각자 고른 자리 (누가 어디에 짓는지 서로 보이게)
+    if (ui.buildAt) this.intentMark(ctx, ui.buildAt.x, ui.buildAt.y, ui.meColor || PAL.p0, ui.meTag, time);
+    else if (ui.selTower) {
+      const t = v.towers.find((x) => x.id === ui.selTower);
+      if (t) this.intentMark(ctx, t.x, t.y, ui.meColor || PAL.p0, ui.meTag, time);
+    }
+    if (p2) {
+      if (p2.type) {
+        ctx.globalAlpha = 0.6;
+        drawTower(ctx, { type: p2.type, level: 1, branch: null, x: p2.x, y: p2.y, angle: -1 }, time, { noPips: true });
+        ctx.globalAlpha = 1;
+        this.previewSynergy(ctx, v, p2.type, p2.x, p2.y);
+      }
+      this.intentMark(ctx, p2.x, p2.y, PAL.p1, '2P', time);
+    }
     // 배치 유령
-    if (ui.placing && ui.hover) {
+    if (ui.placing && at) {
       ctx.globalAlpha = 0.6;
-      drawTower(ctx, { type: ui.placing, level: 1, branch: null, x: ui.hover.x, y: ui.hover.y, angle: -1 }, time, { noPips: true });
+      drawTower(ctx, { type: ui.placing, level: 1, branch: null, x: at.x, y: at.y, angle: -1 }, time, { noPips: true });
       ctx.globalAlpha = 1;
-      this.previewSynergy(ctx, v, ui.placing, ui.hover.x, ui.hover.y);
+      this.previewSynergy(ctx, v, ui.placing, at.x, at.y);
     } else if (ui.hover && !ui.placing) {
       ctx.strokeStyle = ui.hoverOk ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.15)';
       ctx.lineWidth = 1.5;
@@ -207,6 +378,16 @@ export class Renderer {
       ctx.fillRect(0, 0, this.W, this.H);
     }
     this.drawWeather(ctx, dt, time);
+    // 구름 그림자 + 빛
+    for (const c of this.clouds) {
+      c.x += 9 * dt;
+      if (c.x > this.W + 60) {
+        c.x = -380;
+        c.y = 40 + Math.random() * (this.H - 120);
+      }
+      ctx.drawImage(this.cloud, c.x, c.y - 80 * c.s, 320 * c.s, 160 * c.s);
+    }
+    ctx.drawImage(this.light, 0, 0, this.W, this.H);
     if (this.fx.flash > 0) {
       ctx.fillStyle = rgba(this.fx.flashColor.startsWith('#') ? this.fx.flashColor : '#ffffff', Math.min(0.45, this.fx.flash));
       ctx.fillRect(0, 0, this.W, this.H);
@@ -247,19 +428,97 @@ export class Renderer {
     }
   }
 
-  rangeCircle(ctx, type, level, branch, x, y, mult, ok) {
+  rangeCircle(ctx, type, level, branch, x, y, mult, ok, color) {
     const st = towerBase(type, level, branch);
     if (!st.range) return;
     const r = st.range * TS * mult;
     const cx = (x + 0.5) * TS;
     const cy = (y + 0.5) * TS;
-    ctx.fillStyle = ok ? 'rgba(255,255,255,0.1)' : 'rgba(255,80,60,0.1)';
-    ctx.strokeStyle = ok ? 'rgba(255,255,255,0.7)' : 'rgba(255,80,60,0.7)';
+    ctx.fillStyle = color ? rgba(color, 0.1) : ok ? 'rgba(255,255,255,0.1)' : 'rgba(255,80,60,0.1)';
+    ctx.strokeStyle = color ? rgba(color, 0.85) : ok ? 'rgba(255,255,255,0.7)' : 'rgba(255,80,60,0.7)';
     ctx.lineWidth = 1.5;
+    if (color) ctx.setLineDash([6, 4]);
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // 플레이어가 지금 손대는 칸: 색 모서리 + 꼬리표
+  intentMark(ctx, x, y, color, tag, time) {
+    const px = x * TS;
+    const py = y * TS;
+    const pulse = 0.5 + 0.5 * Math.sin(time * 6);
+    const o = 1 + pulse * 2;
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    const L = 10;
+    for (const [cx, cy, sx, sy] of [[px - o, py - o, 1, 1], [px + TS + o, py - o, -1, 1], [px - o, py + TS + o, 1, -1], [px + TS + o, py + TS + o, -1, -1]]) {
+      ctx.beginPath();
+      ctx.moveTo(cx + sx * L, cy);
+      ctx.lineTo(cx, cy);
+      ctx.lineTo(cx, cy + sy * L);
+      ctx.stroke();
+    }
+    ctx.fillStyle = rgba(color, 0.12 + pulse * 0.08);
+    ctx.fillRect(px, py, TS, TS);
+    if (tag) {
+      ctx.font = '400 15px "Black Han Sans", sans-serif';
+      ctx.textAlign = 'center';
+      const w = ctx.measureText(tag).width + 12;
+      const tx = px + TS / 2;
+      const ty = py - 8 - pulse * 2;
+      ctx.fillStyle = color;
+      ctx.strokeStyle = '#2b1a12';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(tx - w / 2, ty - 17, w, 19, 6);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(tx - 4, ty + 2);
+      ctx.lineTo(tx + 4, ty + 2);
+      ctx.lineTo(tx, ty + 7);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.fillText(tag, tx, ty - 2);
+    }
+    ctx.restore();
+  }
+
+  // 창에 가려진 영웅을 창 위에 다시 그린다 (xray 캔버스, 월드 좌표 변환은 호출 쪽에서)
+  drawHeroOnTop(ctx, h, time, label, alpha = 1) {
+    const x = h.x * TS;
+    const y = h.y * TS + 9;
+    const col = h.owner === 1 ? PAL.p1 : PAL.p0;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    const g = ctx.createRadialGradient(x, y - 18, 4, x, y - 18, 34);
+    g.addColorStop(0, rgba(col, 0.55));
+    g.addColorStop(1, rgba(col, 0));
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y - 18, 34, 0, Math.PI * 2);
+    ctx.fill();
+    drawHero(ctx, h, time, { noBar: true });
+    ctx.globalAlpha = 1;
+    ctx.font = '400 14px "Black Han Sans", sans-serif';
+    ctx.textAlign = 'center';
+    const w = ctx.measureText(label).width + 14;
+    ctx.fillStyle = col;
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(x - w / 2, y - 66, w, 20, 10);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = '#fff';
+    ctx.fillText(label, x, y - 51);
+    ctx.restore();
   }
 
   drawSynergy(ctx, v, time) {

@@ -8,12 +8,13 @@ import { SKILLS, skillCdMult } from '../data/skills.js';
 import { TACTICS, TACTIC_ORDER, TACTIC_CHANCE, TACTIC_MIN_WAVE } from '../data/tactics.js';
 import { STAGE_BY_ID, STAGES, DIFFICULTY, COOP, parseWave } from '../data/stages.js';
 import { TOWER_META_BONUS } from '../data/quests.js';
+import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
 import { getMap, posAt, tileAt, T_BUILD } from './map.js';
 import { rand, randInt } from './rng.js';
 import {
   ev, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
   isTargetable, hurtHero, hurtSummon, releaseBlocker, releaseEnemy, findEnemy, findBlocker, recalcHero,
-  addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId,
+  addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn,
 } from './combat.js';
 import { castHeroSkill, castHeroUlt, castEquipSkill, pressCombo } from './abilities.js';
 
@@ -48,9 +49,12 @@ export function createGame(opts) {
         const lv = (p.skillLv && p.skillLv[id]) || 0;
         return { id, lv, cd: SKILLS[id].cd * 0.35, max: SKILLS[id].cd * skillCdMult(lv) };
       }),
+      // 보급품: 가진 개수와 상관없이 종류별로 전투마다 ITEM_PER_BATTLE개까지
+      items: Object.fromEntries(Object.entries(p.items || {}).filter(([id, n]) => ITEMS[id] && n > 0).map(([id, n]) => [id, Math.min(ITEM_PER_BATTLE, n | 0)])),
+      itemCd: 0,
       stats: {
         kills: 0, elites: 0, bossKills: 0, heroKills: 0, builds: 0, branches: 0, skillsUsed: 0, combos: 0,
-        earlyCalls: 0, perfectWaves: 0, tacticsBroken: 0, damage: 0, goldEarned: 0,
+        earlyCalls: 0, perfectWaves: 0, tacticsBroken: 0, damage: 0, goldEarned: 0, itemsUsed: 0,
       },
     });
   });
@@ -61,7 +65,7 @@ export function createGame(opts) {
       const path = map.paths[Math.min(hi, map.paths.length - 1)];
       const q = posAt(path, Math.max(1, path.total * (0.62 - hi * 0.12)));
       const h = {
-        id: newId(s), owner: pi, slot: hi, heroId, metaLv: (p.heroLv && p.heroLv[heroId]) || 0, lv: 1, xp: 0,
+        id: newId(s), owner: pi, slot: hi, heroId, skin: (p.skins && p.skins[heroId]) || null, metaLv: (p.heroLv && p.heroLv[heroId]) || 0, lv: 1, xp: 0,
         x: q.x + 0.6, y: q.y - 0.6, tx: 0, ty: 0, post: null, facing: 1, hp: 0, maxHp: 0, dmg: 0, skillMult: 1,
         cd: 0, skillCd: 2, ultCd: HEROES[heroId].ult.cd * 0.5, dead: false, respawn: 0, engaged: [], atkCount: 0,
         anim: 0, moving: false, hurtT: -9, buffs: { invulnT: 0, dmgT: 0, drT: 0, gwakT: 0 },
@@ -132,6 +136,7 @@ export function applyCommand(s, c) {
       return;
     }
     case 'combo': return pressCombo(s, c.p);
+    case 'item': return cmdItem(s, pl, c);
     case 'nextWave': return cmdNextWave(s, pl);
     case 'sendGold': {
       const to = s.players[1 - c.p];
@@ -208,6 +213,54 @@ function cmdUpgrade(s, pl, c) {
   recomputeSynergy(s);
   ev(s, 'upgrade', { x: t.cx, y: t.cy, type: t.type, branch: t.branch, level: t.level });
   ev(s, 'sfx', { n: 'upgrade' });
+}
+
+// 보급품 사용
+function cmdItem(s, pl, c) {
+  const def = ITEMS[c.id];
+  if (!def || !pl.items || !(pl.items[c.id] > 0) || pl.itemCd > 0 || s.result) return;
+  pl.items[c.id]--;
+  pl.itemCd = ITEM_CD;
+  pl.stats.itemsUsed++;
+  const src = { p: pl.idx, kind: 'skill' };
+  const map = mapOf(s);
+  switch (c.id) {
+    case 'insam':
+      s.lives += def.lives;
+      s.maxLives = Math.max(s.maxLives, s.lives);
+      ev(s, 'announce', { text: '산삼', sub: `민심 +${def.lives}`, color: '#8fe3a0' });
+      ev(s, 'heal', { x: map.base.x, y: map.base.y });
+      ev(s, 'sfx', { n: 'heal' });
+      break;
+    case 'chest':
+      addGold(pl, def.gold);
+      ev(s, 'toast', { p: pl.idx, text: `${def.name}: 군자금 +${def.gold}냥` });
+      ev(s, 'sfx', { n: 'coin' });
+      break;
+    case 'hwacha': {
+      const x = clamp(+c.x || 0, 0, map.w);
+      const y = clamp(+c.y || 0, 0, map.h);
+      for (let i = 0; i < def.n; i++) {
+        const q = randomPointIn(s, x, y, def.radius);
+        drop(s, 'rocket', q.x, q.y, 0.3 + i * 0.045, { r: 0.6, dmg: def.dmg, type: 'fire', stun: def.stun }, src, { sx: x - 4, sy: y - 7 });
+      }
+      ev(s, 'sfx', { n: 'rockets' });
+      break;
+    }
+    case 'bujeok': {
+      const pts = [];
+      for (const e of s.enemies) {
+        if (e.hp <= 0) continue;
+        applyStun(e, def.freeze);
+        e.iceT = e.stunT;
+        pts.push([Math.round(e.x * 10) / 10, Math.round(e.y * 10) / 10]);
+      }
+      ev(s, 'freeze', { pts });
+      ev(s, 'announce', { text: def.name, sub: '모든 왜군이 얼어붙었다', color: '#bfe6ff' });
+      ev(s, 'sfx', { n: 'ice' });
+      break;
+    }
+  }
 }
 
 function cmdSell(s, pl, c) {
@@ -351,7 +404,10 @@ export function step(s) {
 function updateBuffs(s) {
   const b = s.buffs;
   for (const k of ['dmgT', 'asT', 'slowT', 'revealT', 'vulnT', 'armorZeroT']) if (b[k] > 0) b[k] -= DT;
-  for (const pl of s.players) for (const sl of pl.skills) if (sl.cd > 0) sl.cd -= DT;
+  for (const pl of s.players) {
+    for (const sl of pl.skills) if (sl.cd > 0) sl.cd -= DT;
+    if (pl.itemCd > 0) pl.itemCd -= DT;
+  }
   if (s.wave.n > 0 && s.wave.phase !== 'prep') addResonance(s, 0.25 * DT);
 }
 
@@ -444,6 +500,7 @@ function updateEnemies(s) {
     const def = ENEMIES[e.type];
     if (e.slowT > 0) e.slowT -= DT;
     if (e.stunT > 0) e.stunT -= DT;
+    if (e.iceT > 0) e.iceT -= DT;
     if (e.vulnT > 0) e.vulnT -= DT;
     if (e.hasteT > 0) e.hasteT -= DT;
     if (e.chargeT > 0) e.chargeT -= DT;

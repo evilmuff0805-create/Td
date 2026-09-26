@@ -2,7 +2,7 @@
 import { drawHero, drawEnemy } from '../render/draw-units.js';
 import { taegeuk, TS } from '../render/paint.js';
 
-export function heroPortrait(heroId, size = 46, owner = 0) {
+export function heroPortrait(heroId, size = 46, owner = 0, skin = null) {
   const cv = document.createElement('canvas');
   const dpr = 2;
   cv.width = size * dpr;
@@ -11,20 +11,20 @@ export function heroPortrait(heroId, size = 46, owner = 0) {
   ctx.scale(dpr, dpr);
   // 가슴 위 흉상: 단위 좌표 y -31 ~ -7 이 보이도록
   const k = size / 25;
-  drawHero(ctx, { heroId, id: 0, owner, facing: 1, moving: false, anim: 0, hp: 1, maxHp: 1, lv: 1, buffs: {} }, 0.3, {
-    x: size / 2 - 0.6 * k, y: size + 6.5 * k, scale: k, portrait: true, noBar: true,
+  drawHero(ctx, { heroId, skin, id: 0, owner, facing: 1, moving: false, anim: 0, hp: 1, maxHp: 1, lv: 1, buffs: {} }, 0.3, {
+    x: size / 2 - 0.6 * k, y: size + 6.5 * k, scale: k, portrait: true, noBar: true, noAura: true,
   });
   return cv;
 }
 
-export function heroFull(heroId, size = 200) {
+export function heroFull(heroId, size = 200, skin = null) {
   const cv = document.createElement('canvas');
   const dpr = 2;
   cv.width = size * dpr;
   cv.height = size * dpr;
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
-  drawHero(ctx, { heroId, id: 0, owner: 0, facing: 1, moving: false, anim: 0, hp: 1, maxHp: 1, lv: 1, buffs: {} }, 0.3, {
+  drawHero(ctx, { heroId, skin, id: 0, owner: 0, facing: 1, moving: false, anim: 0, hp: 1, maxHp: 1, lv: 1, buffs: {} }, 0.3, {
     x: size / 2, y: size * 0.95, scale: size / 44, portrait: true, noBar: true,
   });
   return cv;

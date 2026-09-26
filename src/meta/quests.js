@@ -76,6 +76,25 @@ export function progressQuests(p, deltas) {
   return done;
 }
 
+// 옥으로 임무 교체 (완료·수령 전 임무만)
+export const REROLL_PRICE = { daily: 10, weekly: 30 };
+export function canReroll(p, kind, i) {
+  const q = p.quests[kind].list[i];
+  const def = q && questDef(kind, q.id);
+  return !!def && !q.claimed && q.prog < def.n;
+}
+export function rerollQuest(p, kind, i) {
+  if (!canReroll(p, kind, i) || p.jade < REROLL_PRICE[kind]) return false;
+  const list = p.quests[kind].list;
+  const used = new Set(list.map((x) => x.id));
+  const pool = QUEST_POOL[kind].filter((d) => !used.has(d.id));
+  if (!pool.length) return false;
+  p.jade -= REROLL_PRICE[kind];
+  const d = pool[Math.floor(Math.random() * pool.length)];
+  list[i] = { id: d.id, prog: 0, claimed: false };
+  return true;
+}
+
 export function claimQuest(p, kind, i) {
   const q = p.quests[kind].list[i];
   const def = questDef(kind, q.id);

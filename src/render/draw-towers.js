@@ -591,16 +591,26 @@ export function drawTower(ctx, t, time, opts = {}) {
     ctx.ellipse(cx, gy, 19 * sc, 5.5 * sc, 0, 0, Math.PI * 2);
     ctx.stroke();
   }
+  // 쏘는 순간 몸통이 살짝 눌렸다 튀어 오른다
+  const rc = opts.recoil || 0;
+  const rx = 1 + 0.06 * rc;
+  const ry = 1 - 0.08 * rc;
   if (opts.direct) {
     ctx.save();
     ctx.translate(cx, gy);
     ctx.scale(sc, sc);
     BODY[t.type](ctx, t);
     ctx.restore();
+  } else if (rc > 0) {
+    ctx.save();
+    ctx.translate(cx, gy);
+    ctx.scale(rx, ry);
+    blit(ctx, bodySprite(t), 0, 0, sc);
+    ctx.restore();
   } else blit(ctx, bodySprite(t), cx, gy, sc);
   ctx.save();
   ctx.translate(cx, gy);
-  ctx.scale(sc, sc);
+  ctx.scale(sc * rx, sc * ry);
   OVERLAY[t.type](ctx, t, time);
   if (!opts.noPips) {
     if (t.branch) {

@@ -117,7 +117,7 @@ class GameAudio {
   play(name) {
     if (!this.ctx || this.sfxVol <= 0) return;
     const now = performance.now();
-    const gap = { bell: 260, arrow: 70, star: 90, cannon: 110, rockets: 180, coin: 60, boom: 70 }[name] ?? 40;
+    const gap = { bell: 260, arrow: 70, star: 90, cannon: 110, rockets: 180, coin: 60, boom: 70, hit: 55, crit: 90, kill: 45, tick: 30 }[name] ?? 40;
     if (this.last[name] && now - this.last[name] < gap) return;
     this.last[name] = now;
     const n = (i) => 293.66 * Math.pow(2, (PENTA[i % 5] + 12 * Math.floor(i / 5)) / 12);
@@ -241,6 +241,28 @@ class GameAudio {
         break;
       case 'lose':
         [7, 5, 4, 2, 0].forEach((k, i) => this.pluck(n(k), { t: i * 0.22, vol: 0.18, dur: 1.4 }));
+        break;
+      case 'tick':
+        this.tone(1200, 0.04, { type: 'triangle', vol: 0.06 });
+        break;
+      case 'hit':
+        // 둔탁한 타격음: 짧은 저음 + 걸린 잡음
+        this.tone(170 + Math.random() * 40, 0.07, { type: 'triangle', vol: 0.09, slide: 0.55 });
+        this.noise(0.05, { vol: 0.07, type: 'bandpass', freq: 1400 + Math.random() * 600, q: 1.2 });
+        break;
+      case 'crit':
+        this.noise(0.09, { vol: 0.16, type: 'highpass', freq: 2600, sweep: 0.6 });
+        this.tone(1900, 0.12, { type: 'square', vol: 0.035, slide: 0.7, filter: 3200 });
+        this.tone(140, 0.14, { vol: 0.2, slide: 0.5 });
+        break;
+      case 'kill':
+        this.tone(520 + Math.random() * 120, 0.08, { type: 'triangle', vol: 0.07, slide: 1.6 });
+        this.noise(0.07, { vol: 0.06, type: 'lowpass', freq: 900 });
+        break;
+      case 'bigKill':
+        this.drum(48, { vol: 0.9 });
+        this.noise(0.7, { vol: 0.3, type: 'lowpass', freq: 700, sweep: 0.3 });
+        this.gong(120, { t: 0.05, vol: 0.25, dur: 1.8 });
         break;
       case 'deny':
         this.tone(200, 0.12, { type: 'square', vol: 0.05, filter: 900 });

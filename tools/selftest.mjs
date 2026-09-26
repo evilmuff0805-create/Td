@@ -15,7 +15,8 @@ import { getMap, T_BUILD } from '../src/sim/map.js';
 import { createGame, step, queueCommand } from '../src/sim/sim.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { SnapshotEncoder, emptyView, applySnapshot } from '../src/sim/snapshot.js';
-import { ensureQuests, progressQuests, claimQuest, checkIn, canCheckIn, weekKey } from '../src/meta/quests.js';
+import { ensureQuests, progressQuests, claimQuest, checkIn, canCheckIn, weekKey, rerollQuest } from '../src/meta/quests.js';
+import { ITEM_ORDER, ITEM_PER_BATTLE } from '../src/data/items.js';
 
 let passed = 0;
 const test = (name, fn) => {
@@ -151,6 +152,60 @@ test('임무 · 출석부', () => {
   checkIn(p);
   assert.ok(!canCheckIn(p));
   assert.equal(weekKey(new Date(2026, 8, 26)), '2026-09-21');
+});
+
+test('보급품: 전투마다 종류별 한도, 효과, 스냅샷', () => {
+  const all = Object.keys(TOWERS);
+  const items = Object.fromEntries(ITEM_ORDER.map((id) => [id, 9]));
+  const s = createGame({ stageId: 's1', difficulty: 'normal', mode: 'solo', seed: 3, players: [{ heroes: ['yi', 'sejong'], skills: ['singijeon', 'bongsu'], towers: all, items, skins: { yi: 'yi_gold' } }] });
+  assert.equal(s.players[0].items.insam, ITEM_PER_BATTLE);
+  assert.equal(s.heroes[0].skin, 'yi_gold');
+  queueCommand(s, { t: 'nextWave', p: 0 });
+  for (let k = 0; k < 60 * 8; k++) step(s);
+  const lives = s.lives;
+  const gold = s.players[0].gold;
+  queueCommand(s, { t: 'item', p: 0, id: 'insam' });
+  step(s);
+  assert.equal(s.lives, lives + 3);
+  queueCommand(s, { t: 'item', p: 0, id: 'chest' }); // 재사용 대기 중이라 무시
+  step(s);
+  assert.equal(s.players[0].items.chest, ITEM_PER_BATTLE);
+  for (let k = 0; k < 60 * 4; k++) step(s);
+  queueCommand(s, { t: 'item', p: 0, id: 'chest' });
+  step(s);
+  assert.ok(s.players[0].gold >= gold + 120);
+  for (let k = 0; k < 60 * 4; k++) step(s);
+  queueCommand(s, { t: 'item', p: 0, id: 'bujeok' });
+  step(s);
+  assert.ok(s.enemies.length === 0 || s.enemies.every((e) => e.stunT > 0));
+  for (let k = 0; k < 60 * 4; k++) step(s);
+  const e0 = s.enemies[0];
+  queueCommand(s, { t: 'item', p: 0, id: 'hwacha', x: e0 ? e0.x : 5, y: e0 ? e0.y : 5 });
+  for (let k = 0; k < 60 * 2; k++) step(s);
+  assert.equal(s.players[0].stats.itemsUsed, 4);
+  // 한도를 다 쓰면 더는 안 된다
+  for (let n = 0; n < 3; n++) {
+    for (let k = 0; k < 60 * 4; k++) step(s);
+    queueCommand(s, { t: 'item', p: 0, id: 'insam' });
+    step(s);
+  }
+  assert.equal(s.players[0].items.insam, 0);
+  assert.equal(s.players[0].stats.itemsUsed, 5);
+  const v = emptyView({ stageId: 's1', difficulty: 'normal' });
+  applySnapshot(v, new SnapshotEncoder().encode(s, []));
+  assert.equal(v.players[0].items.insam, 0);
+  assert.equal(v.heroes[0].skin, 'yi_gold');
+});
+
+test('임무 교체 (옥)', () => {
+  const p = { quests: { daily: null, weekly: null }, attendance: { last: '', count: 0 }, coins: 0, jade: 15 };
+  ensureQuests(p, new Date(2026, 8, 26));
+  const before = p.quests.daily.list.map((q) => q.id);
+  assert.ok(rerollQuest(p, 'daily', 1));
+  assert.equal(p.jade, 5);
+  assert.notEqual(p.quests.daily.list[1].id, before[1]);
+  assert.equal(new Set(p.quests.daily.list.map((q) => q.id)).size, 3);
+  assert.ok(!rerollQuest(p, 'daily', 0)); // 옥 부족
 });
 
 console.log(`\n자체 점검 통과: ${passed}개`);

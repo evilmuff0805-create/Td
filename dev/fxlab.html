@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>이펙트 실험실</title>
+<style>body{margin:0;background:#222}canvas{display:block;width:960px;height:560px}</style></head>
+<body><canvas id="c"></canvas>
+<script type="module">
+// 타격감 확인용: 유산을 촘촘히 세우고 왜군을 몰아넣은 뒤 실시간으로 그린다. ?t=초 뒤 window.done
+import { createGame, step, queueCommand } from '../src/sim/sim.js';
+import { spawnEnemy } from '../src/sim/combat.js';
+import { Renderer } from '../src/render/renderer.js';
+import { TOWERS } from '../src/data/towers.js';
+import { getMap, T_BUILD } from '../src/sim/map.js';
+const q = new URLSearchParams(location.search);
+const stageId = q.get('s') || 's1';
+const until = +(q.get('t') || 3);
+const all = Object.keys(TOWERS);
+const s = createGame({ stageId, difficulty: 'normal', mode: 'solo', seed: 7, players: [{ heroes: ['gang', 'eulji'], skills: ['singijeon', 'bigyeok'], towers: all }] });
+s.players[0].gold = 99999;
+const map = getMap(stageId);
+// 길 가까운 빈 칸마다 유산
+const kinds = ['hwaseong', 'sungnyemun', 'cheomseongdae', 'bosingak', 'hwaseong', 'sungnyemun'];
+let n = 0;
+for (let y = 0; y < map.h && n < 14; y++) for (let x = 0; x < map.w && n < 14; x++) {
+  if (map.grid[y * map.w + x] !== T_BUILD) continue;
+  const near = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => map.grid[(y + dy) * map.w + x + dx] === 1);
+  if (!near || x < 4 || x > 16) continue;
+  queueCommand(s, { t: 'build', p: 0, x, y, tower: kinds[n % kinds.length] });
+  n++;
+}
+step(s);
+for (const t of s.towers) { for (let i = 0; i < 2; i++) { queueCommand(s, { t: 'upgrade', p: 0, id: t.id }); step(s); } }
+s.events.length = 0;
+const r = new Renderer(document.getElementById('c'));
+await document.fonts.ready;
+r.setup(stageId);
+const types = (q.get('e') || 'ashigaru,ashigaru,teppo,samurai,ashigaru,armored').split(',');
+let spawnT = 0;
+let last = performance.now();
+let acc = 0;
+const t0 = performance.now();
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000);
+  last = now;
+  acc += dt;
+  while (acc >= 1 / 60) {
+    spawnT -= 1 / 60;
+    if (spawnT <= 0 && s.enemies.length < 40) {
+      spawnT = 0.18;
+      spawnEnemy(s, types[Math.floor(Math.random() * types.length)], 0, 6, 3 + Math.random() * 4);
+    }
+    step(s);
+    r.events(s.events);
+    s.events.length = 0;
+    acc -= 1 / 60;
+  }
+  r.render(s, { clock: s.time }, dt);
+  if ((now - t0) / 1000 > until) window.done = true;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script></body></html>

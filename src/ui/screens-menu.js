@@ -1,15 +1,16 @@
 // 타이틀 · 진영(허브) · 임무 · 설정
 import { h, clear, toast, modal, fmt } from './dom.js';
 import { setBackdrop } from './backdrop.js';
-import { heroPortrait } from './icons.js';
+import { heroFull } from './icons.js';
 import { renderMapBackground } from '../render/draw-map.js';
 import { getMap } from '../sim/map.js';
 import { STAGES } from '../data/stages.js';
 import { RANKS, RANK_TITLES, rankXpNeeded, ATTENDANCE } from '../data/quests.js';
 import { HERO_ORDER } from '../data/heroes.js';
-import { saveProfile, rankName, stageUnlocked, resetProfile } from '../meta/profile.js';
+import { saveProfile, rankName, stageUnlocked, resetProfile, heroSkin } from '../meta/profile.js';
 import {
   ensureQuests, questDef, questText, claimQuest, bonusState, claimBonus, claimableCount, canCheckIn, checkIn, msToReset, fmtDuration,
+  canReroll, rerollQuest, REROLL_PRICE,
 } from '../meta/quests.js';
 import { audio } from '../audio/audio.js';
 
@@ -39,14 +40,8 @@ export function titleScreen(app) {
     h('div', { class: 'title-wrap' },
       h('div', { class: 'logo', role: 'heading', 'aria-level': '1' }, '호국영웅전', h('span', { class: 'logo-seal', 'aria-hidden': 'true' }, h('span', {}, '護'), h('span', {}, '國'))),
       h('div', { class: 'tagline' }, '임진년, 영웅들이 다시 일어선다'),
-      h('div', { class: 'row', style: { justifyContent: 'center', gap: '8px' } },
-        HERO_ORDER.map((id) => {
-          const c = heroPortrait(id, 56, 0);
-          c.style.width = '56px';
-          c.style.height = '56px';
-          c.style.filter = 'sepia(0.25)';
-          return c;
-        })),
+      h('div', { class: 'hero-line', 'aria-hidden': 'true' },
+        HERO_ORDER.map((id, i) => h('div', { class: 'hl', style: { animationDelay: `${-i * 0.37}s` } }, heroFull(id, 100, heroSkin(app.profile, id))))),
       h('button', { class: 'btn btn-seal btn-big', onclick: start, autofocus: true }, '출정하기'),
       h('div', { class: 'title-hint' }, '유산을 세우고, 영웅을 이끌고, 동료와 호흡을 맞춰 도성을 지켜라'),
     ));
@@ -90,14 +85,14 @@ export function hubScreen(app) {
           h('div', { class: 'rank-seal' }, h('span', {}, RANKS[r]), h('small', { style: { fontSize: '13px', fontFamily: 'var(--f-body)' } }, RANK_TITLES[r])),
           h('div', {}, h('b', { class: 'num', style: { fontSize: '19px' } }, `${rankName(r)} ${RANK_TITLES[r]}`), h('span', { class: 'dim', style: { fontSize: '14px' } }, ` · 품계 ${r + 1}/${RANKS.length}`)),
           h('div', {}, h('div', { class: 'bar' }, h('i', { style: { width: `${Math.min(100, (p.rankXp / need) * 100)}%` } })),
-            h('span', { class: 'dim', style: { fontSize: '14px' } }, `다음 품계까지 ${fmt(need - p.rankXp)} 공적`))),
+            h('span', { class: 'dim', style: { fontSize: '14px' } }, `다음 품계까지 ${fmt(need - p.rankXp)} 공적 · ${p.stats.games}전 ${p.stats.wins}승 · 처치 ${fmt(p.stats.kills)}`))),
         tile('영웅', '여섯 위인 · 해금과 강화', 'heroes'),
         tile('비기', '조선의 비밀 병기 · 장착과 강화', 'skills'),
         tile('유산', '문화유산 도감 · 복원(영구 강화)', 'relics'),
         tile('임무', '일일 · 주간 임무, 출석부', 'quests', claimable > 0),
+        h('button', { class: 'side-tile jade-tile', onclick: () => app.go('shop') },
+          h('span', { class: 't' }, h('span', { class: 'jade' }, '◆ '), '옥 상점'), h('span', { class: 's' }, '보급품 · 영웅 의복')),
         tile('설정', '소리 · 이름 · 도움말', 'settings'),
-        h('div', { class: 'side-tile', style: { cursor: 'default' } }, h('span', { class: 't' }, '전투 기록'),
-          h('span', { class: 's' }, `${p.stats.games}전 ${p.stats.wins}승 · 처치 ${fmt(p.stats.kills)} · 합격기 ${p.stats.combos}`)),
       )),
   );
   if (canCheckIn(p)) setTimeout(() => attendanceModal(app), 350);
@@ -169,6 +164,17 @@ export function questsScreen(app, params = {}) {
           h('span', { class: 'dim num', style: { fontSize: '14px' } }, `${fmt(item.prog)} / ${fmt(def.n)}`)),
         h('div', { class: 'stack', style: { gap: '4px', justifyItems: 'end' } },
           h('span', { class: 'reward' }, rewardText(def.reward)),
+          canReroll(p, tab, i) ? h('button', {
+            class: 'btn btn-small', title: '다른 임무로 바꿉니다', disabled: p.jade < REROLL_PRICE[tab],
+            onclick: () => {
+              if (rerollQuest(p, tab, i)) {
+                saveProfile();
+                audio.play('ui');
+                toast('새 임무가 내려왔습니다');
+                app.go('quests', { tab });
+              }
+            },
+          }, '교체 ', h('span', { class: 'jade num' }, `◆${REROLL_PRICE[tab]}`)) : null,
           h('button', {
             class: `btn btn-small ${done && !item.claimed ? 'btn-seal' : ''}`, disabled: !done || item.claimed,
             onclick: () => {
@@ -235,7 +241,8 @@ export function settingsScreen(app) {
           }, '저장'))),
         slider('sfx', '효과음', 'sfx'),
         slider('bgm', '배경음 (국악풍)', 'bgm'),
-        check('dmg', '치명타 숫자 표시', 'dmgNumbers'),
+        check('dmg', '피해 숫자 표시', 'dmgNumbers'),
+        check('shake', '타격 시 화면 흔들림', 'shake'),
         check('hints', '전투 도움말 보기', 'hints'),
         h('div', { class: 'toggle' }, h('span', {}, '도움말 다시 보기'), h('button', { class: 'btn btn-small', onclick: () => { p.hintsSeen = []; saveProfile(); toast('다음 전투에서 도움말이 다시 나옵니다'); } }, '초기화')),
         h('div', { class: 'toggle' }, h('span', { class: 'dim' }, '모든 기록 지우기 (되돌릴 수 없음)'),

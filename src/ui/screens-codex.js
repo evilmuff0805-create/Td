@@ -10,7 +10,8 @@ import { TOWERS, TOWER_ORDER, CATEGORIES } from '../data/towers.js';
 import { COMBOS } from '../data/combos.js';
 import { STAGES } from '../data/stages.js';
 import { RANKS, towerMetaCost, TOWER_META_MAX, TOWER_META_BONUS } from '../data/quests.js';
-import { heroUnlockState, unlockHero, upgradeHero, skillUnlocked, upgradeSkill, upgradeTower } from '../meta/profile.js';
+import { heroUnlockState, unlockHero, unlockHeroJade, HERO_JADE_UNLOCK, heroSkin, upgradeHero, skillUnlocked, upgradeSkill, upgradeTower } from '../meta/profile.js';
+import { skinDef } from '../data/skins.js';
 import { audio } from '../audio/audio.js';
 
 function pips(n, max) {
@@ -31,23 +32,29 @@ export function heroesScreen(app, params = {}) {
   const list = h('div', { class: 'grid-cards', style: { gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))' } }, HERO_ORDER.map((id) => {
     const u = heroUnlockState(p, id).unlocked;
     return h('button', { class: `card${u ? '' : ' locked'}`, 'aria-pressed': String(id === sel), onclick: () => app.go('heroes', { id }) },
-      h('div', { class: 'pic' }, heroPortrait(id, 80, 0)), h('span', { class: 'nm' }, HEROES[id].name), h('span', { class: 'sub' }, u ? `강화 ${p.heroes[id].lv}/${HERO_META_MAX}` : '🔒'));
+      h('div', { class: 'pic' }, heroPortrait(id, 80, 0, heroSkin(p, id))), h('span', { class: 'nm' }, HEROES[id].name), h('span', { class: 'sub' }, u ? `강화 ${p.heroes[id].lv}/${HERO_META_MAX}` : '🔒'));
   }));
   const action = !st.unlocked
     ? h('div', { class: 'stack' },
       h('span', { class: 'dim' }, st.stageOk ? '해금 조건을 모두 갖췄습니다.' : `${st.stage}에서 승리하면 해금할 수 있습니다.`),
-      h('button', {
-        class: 'btn btn-seal', disabled: !st.stageOk || p.coins < st.cost.coins,
-        onclick: () => { if (unlockHero(p, sel)) { audio.play('win'); toast(`${def.name} 합류!`); app.go('heroes', { id: sel }); } },
-      }, `해금 · 엽전 ${fmt(st.cost.coins)}`))
+      h('div', { class: 'row' },
+        h('button', {
+          class: 'btn btn-seal', disabled: !st.stageOk || p.coins < st.cost.coins,
+          onclick: () => { if (unlockHero(p, sel)) { audio.play('win'); toast(`${def.name} 합류!`); app.go('heroes', { id: sel }); } },
+        }, `해금 · 엽전 ${fmt(st.cost.coins)}`),
+        h('button', {
+          class: 'btn', disabled: p.jade < HERO_JADE_UNLOCK,
+          onclick: () => { if (unlockHeroJade(p, sel)) { audio.play('win'); toast(`${def.name} 합류!`); app.go('heroes', { id: sel }); } },
+        }, '바로 해금 · ', h('span', { class: 'jade num' }, `◆${HERO_JADE_UNLOCK}`))))
     : h('div', { class: 'row' }, h('span', {}, '영구 강화 '), pips(ph.lv, HERO_META_MAX),
       ph.lv < HERO_META_MAX ? h('button', {
         class: 'btn btn-gold', disabled: p.coins < cost,
         onclick: () => { if (upgradeHero(p, sel)) { audio.play('upgrade'); app.go('heroes', { id: sel }); } },
       }, `강화 · 엽전 ${fmt(cost)}`) : h('span', { class: 'chip' }, '최고 단계'),
       h('span', { class: 'dim', style: { fontSize: '14px' } }, '단계당 체력·공격·기술 +4%'));
-  const pic = heroFull(sel, 200);
+  const pic = heroFull(sel, 200, heroSkin(p, sel));
   pic.className = 'pic';
+  const sk = skinDef(sel, heroSkin(p, sel));
   const detail = h('div', { class: 'panel detail' },
     pic,
     h('div', { class: 'stack' },
@@ -62,6 +69,8 @@ export function heroesScreen(app, params = {}) {
         h('div', {}, h('b', {}, `기술 · ${def.skill.name}`), ` (${def.skill.cd}초)`, h('br'), def.skill.desc),
         h('div', {}, h('b', {}, `궁극기 · ${def.ult.name}`), ` (${def.ult.cd}초)`, h('br'), def.ult.desc)),
       combos.length ? h('div', { class: 'dim', style: { fontSize: '15px' } }, '전용 합격기: ', combos.map((c) => `${c.name}(${HEROES[c.pair.find((x) => x !== sel)].name})`).join(', ')) : null,
+      h('div', { class: 'row' }, h('span', {}, '의복 '), h('span', { class: 'chip' }, sk ? sk.name : '기본 복장'),
+        h('button', { class: 'btn btn-small', onclick: () => app.go('shop', { tab: 'skins', hero: sel }) }, '의상실 ', h('span', { class: 'jade' }, '◆'))),
       action));
   return h('div', { class: 'screen' }, topbar(app, '영웅'), h('div', { class: 'content stack' }, list, detail));
 }

@@ -15,6 +15,9 @@ import { EARLY_BONUS_PER_SEC } from '../sim/sim.js';
 import { getMap, tileAt, T_BUILD } from '../sim/map.js';
 import { autoAim } from '../sim/abilities.js';
 import { audio } from '../audio/audio.js';
+import { Ring, spread } from './ring.js';
+import { ITEMS, ITEM_ORDER, ITEM_CD } from '../data/items.js';
+import { spendItem } from '../meta/profile.js';
 
 const W = 960;
 const H = 560;
@@ -22,6 +25,7 @@ const SKILL_AIM = { yi: 4.2, sejong: 1.8, eulji: 1.5, gang: 0.8, gwon: 1.6, gwak
 const ULT_AIM = { yi: 0.8, eulji: 3, gwon: 0.7 };
 const ULT_TARGETLESS = { sejong: true, gang: true, gwak: true };
 const TARGET_LABEL = { first: '선두', last: '후미', strong: '강적', close: '근접' };
+const TARGET_GLYPH = { first: '先', last: '後', strong: '强', close: '近' };
 const HERO_GLYPH = { yi: '忠', sejong: '訓', eulji: '薩', gang: '星', gwon: '幸', gwak: '紅' };
 const SKILL_GLYPH = { singijeon: '神', bongsu: '烽', uibyeong: '義', bigyeok: '震', gunryang: '糧', cheonja: '砲', donguibogam: '醫', hanpa: '寒' };
 
@@ -39,7 +43,11 @@ export class GameUI {
     this.solo = session.kind === 'solo';
     this.stage = STAGE_BY_ID[session.stageId];
     this.map = getMap(session.stageId);
-    this.ui = { clock: 0, hover: null, hoverOk: false, placing: null, selTower: null, selHeroes: [], aim: null, p2cursor: null, moveMark: null };
+    this.ui = { clock: 0, hover: null, hoverOk: false, placing: null, selTower: null, selHeroes: [], aim: null, p2cursor: null, moveMark: null, buildAt: null, p2intent: null };
+    // 누가 어디를 만지는지: 협동에서는 내 색과 꼬리표를 칸 위에 띄운다
+    const myColor = (this.local ? 0 : this.me) === 1 ? '#d9483b' : '#3d7fd6';
+    this.ui.meColor = myColor;
+    this.ui.meTag = this.local ? '1P' : this.s.coop ? '나' : '';
     this.selHero = this.myHeroIdx()[0] ?? 0;
     this.targeting = null;
     this.pop = null;
@@ -56,6 +64,9 @@ export class GameUI {
     this.renderer = new Renderer(this.cv);
     this.renderer.setup(session.stageId);
     this.renderer.fx.showDamage = profile.settings.dmgNumbers;
+    this.renderer.fx.shakeOn = profile.settings.shake !== false;
+    this.renderer.fx.coopTags = this.s.coop;
+    this.renderer.fx.onSound = (n) => audio.play(n);
     this.bindInput();
     this.resize();
     this.last = performance.now();
@@ -105,7 +116,9 @@ export class GameUI {
     // 가운데
     this.cv = h('canvas', { id: 'cv', 'aria-label': '전장' });
     this.overlay = h('div', { class: 'overlay' });
-    this.area = h('div', { class: 'stage-area' }, this.cv, this.overlay);
+    this.xray = h('canvas', { class: 'xray', 'aria-hidden': 'true' });
+    this.xctx = this.xray.getContext('2d');
+    this.area = h('div', { class: 'stage-area' }, this.cv, this.overlay, this.xray);
     const tip = h('div', { class: 'rotate-tip' }, '화면을 가로로 돌리면 전장이 더 크게 보입니다');
     // 하단
     this.bottom = h('div', { class: 'hud-bottom' });
@@ -131,6 +144,7 @@ export class GameUI {
     clear(this.bottom);
     this.heroEls = [];
     this.skillEls = [];
+    this.itemEls = [];
     const groups = this.s.coop ? [0, 1] : [0];
     const makeGroup = (p) => {
       const g = h('div', { class: `pgroup p${p}` });
@@ -138,7 +152,7 @@ export class GameUI {
       const mine = p === this.me || (this.local && p === 1);
       heroes.forEach(({ hh, i }, k) => {
         const def = HEROES[hh.heroId];
-        const canvas = heroPortrait(hh.heroId, 46, p);
+        const canvas = heroPortrait(hh.heroId, 46, p, hh.skin);
         const hp = h('i', { style: { width: '100%' } });
         const lv = h('span', { class: 'num dim', style: { fontSize: '13px' } });
         const card = h('button', { class: 'hero-card', 'aria-pressed': 'false', title: `${def.name} — 클릭해 선택`, onclick: () => this.selectHero(i) },
@@ -160,6 +174,22 @@ export class GameUI {
         });
         g.append(box);
       }
+      // 보급품 (옥 상점에서 산 소모품) — 마우스를 쓰는 사람만
+      const ids = pl && pl.items && this.itemUser(p) ? ITEM_ORDER.filter((id) => id in pl.items) : [];
+      if (ids.length) {
+        const box = h('div', { class: 'skills items', 'aria-label': '보급품' });
+        for (const id of ids) {
+          const it = ITEMS[id];
+          const key = this.local ? '' : 'ZXCV'[ITEM_ORDER.indexOf(id)];
+          const b = this.skillButton(it.glyph, `${it.name} — ${it.desc}`, key, () => this.useItem(p, id), false);
+          b.el.classList.add('item');
+          b.cnt = h('span', { class: 'cnt num' });
+          b.el.append(b.cnt);
+          this.itemEls.push({ p, id, ...b });
+          box.append(b.el);
+        }
+        g.append(box);
+      }
       return g;
     };
     // 중앙: 합격기 + 파도 버튼
@@ -170,6 +200,30 @@ export class GameUI {
     const center = h('div', { class: 'center-cmd' }, this.comboBtn, this.waveBtn);
     this.bottom.append(makeGroup(0), center);
     if (groups.includes(1)) this.bottom.append(makeGroup(1));
+  }
+
+  itemUser(p) {
+    return this.local || this.solo ? p === 0 : p === this.me;
+  }
+
+  useItem(p, id, at) {
+    const pl = this.s.view.players[p];
+    const it = ITEMS[id];
+    if (!pl || !pl.items || !(pl.items[id] > 0)) {
+      audio.play('deny');
+      return toast(`${it.name}: 이번 전투에서 더 쓸 수 없습니다`);
+    }
+    if (pl.itemCd > 0) {
+      audio.play('deny');
+      return toast(`보급품 재사용 대기 ${Math.ceil(pl.itemCd)}초`);
+    }
+    const fire = (x, y) => {
+      this.s.send({ t: 'item', p, id, x, y });
+      spendItem(this.profile, id);
+    };
+    if (it.target !== 'point') return fire(0, 0);
+    if (at) fire(at.x, at.y);
+    else this.startTargeting({ r: it.radius, run: fire });
   }
 
   keyLabels(p, heroSlot) {
@@ -204,6 +258,7 @@ export class GameUI {
       this.ui.p2cursor = h2 && !h2.dead ? this.p2Tile(h2) : null;
     }
     this.renderer.render(v, this.ui, dt);
+    this.drawXray(v);
     this.updateHud(dt);
     this.hintTimer -= dt;
     if (this.hintTimer <= 0) {
@@ -248,6 +303,52 @@ export class GameUI {
     const left = (r.width - W * k) / 2;
     const top = (r.height - H * k) / 2;
     Object.assign(this.overlay.style, { left: `${left}px`, top: `${top}px`, width: `${W * k}px`, height: `${H * k}px` });
+    Object.assign(this.xray.style, { left: `${left}px`, top: `${top}px`, width: `${W * k}px`, height: `${H * k}px` });
+    this.xdpr = Math.min(2, window.devicePixelRatio || 1);
+    this.xray.width = Math.round(W * k * this.xdpr);
+    this.xray.height = Math.round(H * k * this.xdpr);
+    this.xrayDirty = true;
+    if (this.pop) this.pop.kind === 'build' ? this.openBuildMenu(this.pop.x, this.pop.y) : this.openTowerPanel(this.pop.id);
+    if (this.p2menu) this.renderP2Menu();
+  }
+
+  // ───── 창에 가려진 영웅 비추기 ─────
+  occluders() {
+    const out = [];
+    if (this.pop) out.push(...this.pop.ring.rects());
+    if (this.p2menu) out.push(...this.p2menu.ring.rects());
+    const base = this.overlay.getBoundingClientRect();
+    for (const el of [this.waveCardEl, this.hintEl, this.bossEl]) {
+      if (!el || !el.isConnected) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width && r.height) out.push({ x: r.left - base.left, y: r.top - base.top, w: r.width, h: r.height });
+    }
+    return out;
+  }
+
+  drawXray(v) {
+    const c = this.xctx;
+    const occ = this.occluders();
+    if (!occ.length && !this.xrayDirty) return;
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    c.clearRect(0, 0, this.xray.width, this.xray.height);
+    this.xrayDirty = false;
+    if (!occ.length) return;
+    const k = this.scale;
+    c.setTransform(this.xdpr * k, 0, 0, this.xdpr * k, 0, 0);
+    for (const hh of v.heroes) {
+      if (hh.dead) continue;
+      const sx = hh.x * TS * k;
+      const sy = (hh.y * TS + 9) * k;
+      const bx = { x: sx - 16 * k, y: sy - 50 * k, w: 32 * k, h: 52 * k };
+      const hits = occ.filter((r) => bx.x < r.x + r.w && bx.x + bx.w > r.x && bx.y < r.y + r.h && bx.y + bx.h > r.y);
+      if (!hits.length) continue;
+      this.xrayDirty = true;
+      const tag = this.local ? `${hh.owner + 1}P ` : this.s.coop ? (hh.owner === this.me ? '나 · ' : '동료 · ') : '';
+      // 고리 버튼 위에서는 반투명으로(버튼도 보이게), 설명·카드 위에서는 또렷하게
+      const ghost = hits.every((r) => r.btn);
+      this.renderer.drawHeroOnTop(c, hh, this.ui.clock, `${tag}${HEROES[hh.heroId].name}`, ghost ? 0.55 : 1);
+    }
   }
 
   // ───────────────────────── 입력 ─────────────────────────
@@ -400,6 +501,15 @@ export class GameUI {
       case 'KeyF': this.useEquip(this.local ? 0 : this.me, 1, mouse); break;
       case 'Space': e.preventDefault(); this.pressCombo(this.local ? 0 : this.me); break;
       case 'KeyN': this.callWave(); break;
+      case 'KeyZ':
+      case 'KeyX':
+      case 'KeyC':
+      case 'KeyV': {
+        const id = ITEM_ORDER['ZXCV'.indexOf(code[3])];
+        const pl = this.s.view.players[this.me];
+        if (id && pl && pl.items && id in pl.items) this.useItem(this.me, id, mouse);
+        break;
+      }
       case 'KeyG': if (mouse && this.s.coop) this.s.send({ t: 'ping', p: this.local ? 0 : this.me, x: mouse.x, y: mouse.y }); break;
       case 'Tab':
         if (this.solo) {
@@ -460,8 +570,11 @@ export class GameUI {
         else audio.play('deny');
         this.closeP2Menu();
         return true;
-      } else if (c === 'KeyQ' || c === 'Backspace') this.closeP2Menu();
-      else return true;
+      } else if (c === 'KeyQ' || c === 'Backspace') {
+        this.closeP2Menu();
+        return true;
+      } else return true;
+      audio.play('tick');
       this.renderP2Menu();
       return true;
     }
@@ -552,53 +665,76 @@ export class GameUI {
     const hero = v.heroes.find((x) => x.owner === 1);
     if (!hero || hero.dead) return;
     const tile = this.p2Tile(hero);
-    const pl = v.players[1];
     const tower = v.towers.find((t) => t.x === tile.x && t.y === tile.y);
+    if (!tower && !this.canBuildAt(tile.x, tile.y)) return;
+    this.closeP2Menu();
+    this.p2menu = { tile, towerId: tower ? tower.id : null, idx: 0, options: [], ring: new Ring({ owner: 1, kbd: true, help: '←→ 고르기 · E 확정 · Q 취소' }) };
+    this.overlay.append(this.p2menu.ring.el);
+    this.renderP2Menu();
+    audio.play('ui');
+  }
+
+  p2Options() {
+    const v = this.s.view;
+    const m = this.p2menu;
+    const pl = v.players[1];
+    const tower = m.towerId !== null ? v.towers.find((t) => t.id === m.towerId) : null;
     const options = [];
     if (tower) {
       const def = TOWERS[tower.type];
       if (!tower.branch && tower.level < def.levels.length) {
         const cost = def.levels[tower.level].cost;
-        options.push({ label: '강화', cost, icon: towerIcon(tower.type, tower.level + 1), disabled: pl.gold < cost, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id }) });
+        options.push({ label: `${def.name} 강화`, cost, icon: towerIcon(tower.type, tower.level + 1), disabled: pl.gold < cost, desc: this.upgradeDiff(tower), run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id }) });
       } else if (!tower.branch) {
         for (const b of ['A', 'B']) {
           const br = def.branches[b];
-          options.push({ label: br.name, cost: br.cost, icon: towerIcon(tower.type, 3, b), disabled: pl.gold < br.cost, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id, branch: b }) });
+          options.push({ label: `특화 · ${br.name}`, cost: br.cost, icon: towerIcon(tower.type, 3, b), disabled: pl.gold < br.cost, desc: br.desc, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id, branch: b }) });
         }
       }
-      if (tower.owner === 1) options.push({ label: '철거', cost: null, icon: null, run: () => this.s.send({ t: 'sell', p: 1, id: tower.id }) });
-    } else if (this.canBuildAt(tile.x, tile.y)) {
+      if (tower.owner === 1) {
+        const refund = Math.floor((tower.spent[0] + tower.spent[1]) * SELL_RATE);
+        options.push({ label: `${def.name} 철거`, cost: `+${refund}`, glyph: '撤', cls: 'sell', desc: `투자한 군자금의 ${Math.round(SELL_RATE * 100)}%를 돌려받습니다.`, run: () => this.s.send({ t: 'sell', p: 1, id: tower.id }) });
+      }
+    } else {
       for (const type of this.buildList(1)) {
-        const cost = TOWERS[type].levels[0].cost;
-        options.push({ label: TOWERS[type].name, cost, icon: towerIcon(type), disabled: pl.gold < cost, run: () => this.s.send({ t: 'build', p: 1, x: tile.x, y: tile.y, tower: type }) });
+        const def = TOWERS[type];
+        const cost = def.levels[0].cost;
+        options.push({ type, label: `${def.name} · ${def.title}`, cost, icon: towerIcon(type), disabled: pl.gold < cost, desc: def.desc, cat: def.cat, run: () => this.s.send({ t: 'build', p: 1, x: m.tile.x, y: m.tile.y, tower: type }) });
       }
     }
-    if (!options.length) return;
-    this.p2menu = { tile, options, idx: 0 };
-    this.renderP2Menu();
+    return options;
   }
 
   renderP2Menu() {
-    if (this.p2menuEl) this.p2menuEl.remove();
     const m = this.p2menu;
     if (!m) return;
-    const el = h('div', { class: 'panel pop' },
-      h('h3', {}, '2P 명령'),
-      h('div', { class: 'dim', style: { fontSize: '14px' } }, '←→ 고르기 · E 확정 · Q 취소'),
-      h('div', { class: 'build-grid' }, m.options.map((o, i) =>
-        h('div', { class: 'bcard', style: { outline: i === m.idx ? '3px solid #ff8a7a' : 'none', opacity: o.disabled ? 0.5 : 1 } },
-          o.icon ? h('img', { src: o.icon, alt: '' }) : h('span', { class: 'brush', style: { fontSize: '34px' } }, '撤'),
-          h('span', {}, o.label), o.cost !== null && o.cost !== undefined ? h('span', { class: 'c num' }, o.cost) : null))),
-    );
-    this.place(el, m.tile.x, m.tile.y);
-    this.overlay.append(el);
-    this.p2menuEl = el;
+    m.options = this.p2Options();
+    if (!m.options.length) return this.closeP2Menu();
+    m.idx = Math.min(m.idx, m.options.length - 1);
+    const k = this.scale;
+    m.ring.layout((m.tile.x + 0.5) * TS * k, (m.tile.y + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k);
+    const angles = spread(m.options.length);
+    m.ring.hoverKey = m.idx;
+    m.ring.render(m.options.map((o, i) => ({
+      key: i, angle: angles[i], icon: o.icon, glyph: o.glyph, cost: o.cost, cls: `${o.cls || ''}${o.disabled ? ' poor' : ''}`, active: i === m.idx, label: o.label,
+      tip: () => this.tipBody(o.label, o.cost, o.desc, o.cat, o.disabled),
+    })), null);
+    const o = m.options[m.idx];
+    this.ui.p2intent = { x: m.tile.x, y: m.tile.y, type: o && o.type ? o.type : null, towerId: m.towerId };
+    m.sig = this.p2Sig();
+  }
+
+  p2Sig() {
+    const v = this.s.view;
+    const m = this.p2menu;
+    const t = m.towerId !== null ? v.towers.find((x) => x.id === m.towerId) : null;
+    return `${v.players[1] ? v.players[1].gold : 0}|${t ? `${t.level}${t.branch}` : v.towers.some((x) => x.x === m.tile.x && x.y === m.tile.y)}`;
   }
 
   closeP2Menu() {
+    if (this.p2menu) this.p2menu.ring.remove();
     this.p2menu = null;
-    if (this.p2menuEl) this.p2menuEl.remove();
-    this.p2menuEl = null;
+    this.ui.p2intent = null;
   }
 
   // ───────────────────────── 명령 ─────────────────────────
@@ -693,73 +829,93 @@ export class GameUI {
     this.closePop();
   }
 
-  // ───────────────────────── 팝업 ─────────────────────────
-  place(el, tx, ty) {
+  // ───────────────────────── 원형 명령 고리 ─────────────────────────
+  tipBody(title, cost, desc, cat, poor) {
+    return h('div', {},
+      h('div', { class: 'tt' }, cat ? h('i', { class: 'dot', style: { background: CATEGORIES[cat].color } }) : null, h('b', {}, title),
+        cost !== undefined && cost !== null ? h('span', { class: `num ${poor ? 'poor' : 'coin'}` }, typeof cost === 'number' ? `${cost}냥` : `${cost}냥`) : null),
+      desc ? h('div', { class: 'td' }, desc) : null);
+  }
+
+  openRing(tx, ty) {
+    const ring = new Ring({ owner: this.local ? 0 : this.me });
     const k = this.scale;
-    const px = (tx + 0.5) * TS * k;
-    const py = (ty + 0.5) * TS * k;
-    const w = Math.min(340, this.overlay.clientWidth - 16);
-    let left = px + 26 * k;
-    if (left + w > this.overlay.clientWidth - 8) left = px - w - 26 * k;
-    left = Math.max(8, left);
-    el.style.left = `${left}px`;
-    el.style.top = '8px';
-    requestAnimationFrame(() => {
-      const hgt = el.offsetHeight;
-      let top = py - hgt / 2;
-      top = Math.max(8, Math.min(this.overlay.clientHeight - hgt - 8, top));
-      el.style.top = `${top}px`;
-    });
+    ring.layout((tx + 0.5) * TS * k, (ty + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k);
+    this.overlay.append(ring.el);
+    return ring;
   }
 
   closePop() {
-    if (this.pop) this.pop.el.remove();
+    if (this.pop) this.pop.ring.remove();
     this.pop = null;
     this.ui.placing = null;
     this.ui.selTower = null;
+    this.ui.buildAt = null;
   }
 
   openBuildMenu(x, y) {
     this.closePop();
+    const ring = this.openRing(x, y);
+    this.pop = { kind: 'build', ring, x, y, sig: '' };
+    ring.onleave = () => {
+      this.ui.placing = null;
+    };
+    this.ui.buildAt = { x, y };
+    this.renderBuildRing();
+    audio.play('ui');
+  }
+
+  renderBuildRing() {
+    const pop = this.pop;
     const pl = this.s.view.players[this.me];
-    const tip = h('div', { class: 'tip' }, '유산을 고르세요. 같은 계열의 다른 유산이 2칸 안에 있으면 공명(+12%)합니다.');
     const list = this.buildList(this.me);
-    const cards = list.map((type, i) => {
+    const angles = spread(list.length);
+    const keys = !this.local && !('ontouchstart' in window);
+    pop.sig = list.map((t) => (pl.gold >= TOWERS[t].levels[0].cost ? 1 : 0)).join('');
+    pop.ring.render(list.map((type, i) => {
       const def = TOWERS[type];
       const cost = def.levels[0].cost;
-      const b = h('button', {
-        class: 'bcard', disabled: pl.gold < cost, title: `${def.name} (${i + 1})`,
-        onmouseenter: () => {
+      const poor = pl.gold < cost;
+      return {
+        key: type, angle: angles[i], icon: towerIcon(type), cost, cls: poor ? 'poor' : '', label: `${def.name} (${cost}냥)`, num: keys ? String(i + 1) : null,
+        tip: () => this.tipBody(`${def.name} · ${def.title}`, cost, def.desc, def.cat, poor),
+        onhover: () => {
           this.ui.placing = type;
-          this.ui.hover = { x, y };
-          this.ui.hoverOk = true;
-          clear(tip).append(h('b', { style: { color: CATEGORIES[def.cat].color } }, `${def.name} · ${def.title}`), ` [${CATEGORIES[def.cat].name}] `, def.desc);
         },
-        onclick: () => this.build(x, y, type),
-      }, h('img', { src: towerIcon(type), alt: '' }), h('span', {}, def.name), h('span', { class: 'c num' }, cost));
-      return b;
-    });
-    const el = h('div', { class: 'panel pop', role: 'dialog', 'aria-label': '유산 건설' },
-      h('button', { class: 'x', onclick: () => this.closePop(), 'aria-label': '닫기' }, '✕'),
-      h('h3', {}, '유산 건설', h('span', { class: 'dim', style: { fontSize: '14px' } }, `숫자키 1~${list.length}`)),
-      h('div', { class: 'build-grid' }, cards), tip);
-    this.overlay.append(el);
-    this.place(el, x, y);
-    this.pop = { kind: 'build', el, x, y };
-    this.ui.placing = list[0];
-    this.ui.hover = { x, y };
-    this.ui.hoverOk = true;
-    audio.play('ui');
+        run: () => (poor ? this.denyGold(cost) : this.build(pop.x, pop.y, type)),
+      };
+    }), h('div', {}, h('div', { class: 'tt' }, h('b', {}, '유산 건설')),
+      h('div', { class: 'td' }, '같은 계열의 다른 유산이 2칸 안에 있으면 공명(1종당 +12%)합니다.')));
+  }
+
+  denyGold(cost) {
+    audio.play('deny');
+    const pl = this.s.view.players[this.me];
+    toast(`군자금이 ${cost - pl.gold}냥 모자랍니다`, 1200);
   }
 
   openTowerPanel(id) {
     this.closePop();
-    const el = h('div', { class: 'panel pop', role: 'dialog', 'aria-label': '유산 정보' });
-    this.overlay.append(el);
-    this.pop = { kind: 'tower', el, id, sig: '' };
+    const t = this.s.view.towers.find((x) => x.id === id);
+    if (!t) return;
+    const ring = this.openRing(t.x, t.y);
+    this.pop = { kind: 'tower', ring, id, sig: '', armSell: false };
     this.ui.selTower = id;
     this.refreshTowerPanel(true);
     audio.play('ui');
+  }
+
+  upgradeDiff(t) {
+    const def = TOWERS[t.type];
+    const next = def.levels[t.level];
+    const cur = def.levels[t.level - 1];
+    const diff = [];
+    if (next.dmg) diff.push(`피해 ${cur.dmg}→${next.dmg}`);
+    if (next.dps) diff.push(`초당 ${cur.dps}→${next.dps}`);
+    if (next.range) diff.push(`사거리 ${cur.range}→${next.range}`);
+    if (next.buffDmg) diff.push(`강화 +${Math.round(cur.buffDmg * 100)}→${Math.round(next.buffDmg * 100)}%`);
+    if (next.income) diff.push(`수입 ${cur.income}→${next.income}`);
+    return diff.join(' · ');
   }
 
   refreshTowerPanel(force) {
@@ -768,66 +924,73 @@ export class GameUI {
     const t = v.towers.find((x) => x.id === pop.id);
     if (!t) return this.closePop();
     const pl = v.players[this.me];
-    const sig = `${t.level}${t.branch}${t.mode}${t.kills}${pl.gold}${t.syn}${t.disabledT > 0}`;
+    const sig = `${t.level}${t.branch}${t.mode}${t.kills}${pl.gold}${t.syn}${t.disabledT > 0}${pop.armSell}`;
     if (!force && sig === pop.sig) return;
     pop.sig = sig;
     const def = TOWERS[t.type];
     const st = towerBase(t.type, t.level, t.branch);
-    const el = clear(pop.el);
     const spent = t.spent[0] + t.spent[1];
+    const refund = Math.floor(spent * SELL_RATE);
     const mine = t.owner === this.me || (this.local && t.owner === 0);
     const ownerName = this.s.coop ? this.playerName(t.owner) : '';
-    const stat = (label, val) => h('div', {}, label, h('b', {}, val));
-    const statsRow = [];
-    if (st.dmg) statsRow.push(stat('피해', Math.round(st.dmg * (t.dmgMult || 1))));
-    if (st.dps) statsRow.push(stat('초당', Math.round(st.dps * (t.dmgMult || 1))));
-    if (st.cd) statsRow.push(stat('속도', `${(st.cd / (t.asMult || 1)).toFixed(2)}s`));
-    if (st.range) statsRow.push(stat('사거리', (st.range * (t.rangeMult || 1)).toFixed(1)));
-    if (st.buffDmg) statsRow.push(stat('강화', `+${Math.round(st.buffDmg * 100)}%`));
-    if (st.income) statsRow.push(stat('수입', `${st.income}`));
-    statsRow.push(stat('처치', t.kills || 0));
-    el.append(...[
-      h('button', { class: 'x', onclick: () => this.closePop(), 'aria-label': '닫기' }, '✕'),
-      h('h3', {}, def.name, h('span', { class: 'dim', style: { fontSize: '14px' } }, `${t.branch ? def.branches[t.branch].name : `${t.level}단계`} · ${CATEGORIES[def.cat].name}${ownerName ? ` · ${ownerName}` : ''}`)),
-      h('div', { class: 'stats' }, statsRow.slice(0, 8)),
-      t.syn ? h('div', { class: 'tip', style: { minHeight: 0, color: '#ffe68c' } }, `유산 공명 +${t.syn * 12}% (같은 계열 ${t.syn}종 인접)`) : null,
-      t.disabledT > 0 ? h('div', { class: 'tip', style: { minHeight: 0, color: '#ff8a7a' } }, `봉쇄됨 ${Math.ceil(t.disabledT)}초`) : null,
-    ].filter(Boolean));
-    if (def.kind !== 'palace' && def.kind !== 'sutra') {
-      el.append(h('div', { class: 'target-modes', role: 'group', 'aria-label': '조준 우선순위' },
-        Object.entries(TARGET_LABEL).map(([m, label]) => h('button', {
-          'aria-pressed': String(t.mode === m), onclick: () => {
-            this.s.send({ t: 'target', p: this.me, id: t.id, mode: m });
-          },
-        }, label))));
-    }
+    const items = [];
     if (!t.branch && t.level < def.levels.length) {
-      const next = def.levels[t.level];
-      const cur = def.levels[t.level - 1];
-      const diff = [];
-      if (next.dmg) diff.push(`피해 ${cur.dmg}→${next.dmg}`);
-      if (next.dps) diff.push(`초당 ${cur.dps}→${next.dps}`);
-      if (next.range) diff.push(`사거리 ${cur.range}→${next.range}`);
-      if (next.buffDmg) diff.push(`강화 +${Math.round(cur.buffDmg * 100)}→${Math.round(next.buffDmg * 100)}%`);
-      el.append(h('button', {
-        class: 'btn btn-gold', style: { width: '100%' }, disabled: pl.gold < next.cost, onclick: () => this.s.send({ t: 'upgrade', p: this.me, id: t.id }),
-      }, `강화 (U) · ${next.cost}냥`), h('div', { class: 'tip', style: { minHeight: 0 } }, diff.join(' · ')));
+      const cost = def.levels[t.level].cost;
+      const poor = pl.gold < cost;
+      items.push({
+        key: 'up', angle: -90, icon: towerIcon(t.type, t.level + 1), cost, cls: `up${poor ? ' poor' : ''}`, label: `강화 (${cost}냥)`, num: this.local ? null : 'U',
+        tip: () => this.tipBody(`${t.level + 1}단계로 강화`, cost, this.upgradeDiff(t), null, poor),
+        run: () => (poor ? this.denyGold(cost) : this.s.send({ t: 'upgrade', p: this.me, id: t.id })),
+      });
     } else if (!t.branch) {
-      el.append(h('div', { class: 'dim', style: { fontSize: '14px', margin: '4px 0' } }, '특화를 하나 고르세요 (되돌릴 수 없음)'),
-        h('div', { class: 'branches' }, ['A', 'B'].map((b) => {
-          const br = def.branches[b];
-          return h('button', { class: `branch ${b}`, disabled: pl.gold < br.cost, onclick: () => this.s.send({ t: 'upgrade', p: this.me, id: t.id, branch: b }) },
-            h('img', { src: towerIcon(t.type, 3, b, 52), alt: '', style: { width: '40px', height: '40px', justifySelf: 'center' } }),
-            h('b', {}, br.name), h('span', { class: 'num coin' }, `${br.cost}냥`), h('span', {}, br.desc));
-        })));
-    } else {
-      el.append(h('div', { class: 'tip', style: { minHeight: 0 } }, def.branches[t.branch].desc));
+      for (const [b, ang] of [['A', -128], ['B', -52]]) {
+        const br = def.branches[b];
+        const poor = pl.gold < br.cost;
+        items.push({
+          key: b, angle: ang, icon: towerIcon(t.type, 3, b), cost: br.cost, cls: `br${b}${poor ? ' poor' : ''}`, label: `특화 ${br.name}`,
+          tip: () => this.tipBody(`특화 · ${br.name}`, br.cost, `${br.desc} (되돌릴 수 없음)`, null, poor),
+          run: () => (poor ? this.denyGold(br.cost) : this.s.send({ t: 'upgrade', p: this.me, id: t.id, branch: b })),
+        });
+      }
     }
-    el.append(h('div', { class: 'row', style: { marginTop: '8px', justifyContent: 'space-between' } },
-      h('span', { class: 'dim', style: { fontSize: '14px' } }, `투자 ${spent}냥`),
-      h('button', { class: 'btn btn-small', disabled: !mine, onclick: () => { this.s.send({ t: 'sell', p: this.me, id: t.id }); this.closePop(); } },
-        `철거 +${Math.floor(spent * SELL_RATE)}냥`)));
-    this.place(el, t.x, t.y);
+    if (def.kind !== 'palace' && def.kind !== 'sutra') {
+      const modes = Object.keys(TARGET_LABEL);
+      const nextMode = modes[(modes.indexOf(t.mode) + 1) % modes.length];
+      items.push({
+        key: 'tg', angle: 0, glyph: TARGET_GLYPH[t.mode], cls: 'tg', label: `조준 ${TARGET_LABEL[t.mode]}`, cost: null,
+        tip: () => this.tipBody(`조준 우선순위 · ${TARGET_LABEL[t.mode]}`, null, `누르면 ${TARGET_LABEL[nextMode]}(으)로 바꿉니다. 선두 → 후미 → 강적 → 근접`),
+        run: () => this.s.send({ t: 'target', p: this.me, id: t.id, mode: nextMode }),
+      });
+    }
+    items.push({
+      key: 'sell', angle: 90, glyph: pop.armSell ? '確' : '撤', cost: `+${refund}`, cls: `sell${pop.armSell ? ' armed' : ''}`, disabled: !mine, label: `철거 +${refund}냥`,
+      tip: () => this.tipBody(pop.armSell ? '한 번 더 누르면 철거' : '철거', `+${refund}`, mine ? `투자 ${spent}냥 중 ${refund}냥을 돌려받습니다.` : '동료의 유산은 철거할 수 없습니다.'),
+      run: () => {
+        if (!pop.armSell) {
+          pop.armSell = true;
+          audio.play('ui');
+          return this.refreshTowerPanel(true);
+        }
+        this.s.send({ t: 'sell', p: this.me, id: t.id });
+        this.closePop();
+      },
+    });
+    const stats = [];
+    if (st.dmg) stats.push(`피해 ${Math.round(st.dmg * (t.dmgMult || 1))}`);
+    if (st.dps) stats.push(`초당 ${Math.round(st.dps * (t.dmgMult || 1))}`);
+    if (st.cd) stats.push(`속도 ${(st.cd / (t.asMult || 1)).toFixed(2)}s`);
+    if (st.range) stats.push(`사거리 ${(st.range * (t.rangeMult || 1)).toFixed(1)}`);
+    if (st.buffDmg) stats.push(`강화 +${Math.round(st.buffDmg * 100)}%`);
+    if (st.income) stats.push(`수입 ${st.income}`);
+    stats.push(`처치 ${t.kills || 0}`);
+    const info = h('div', {},
+      h('div', { class: 'tt' }, h('i', { class: 'dot', style: { background: CATEGORIES[def.cat].color } }), h('b', {}, def.name),
+        h('span', { class: 'dim' }, `${t.branch ? def.branches[t.branch].name : `${t.level}단계`}${ownerName ? ` · ${ownerName}` : ''}`)),
+      h('div', { class: 'td num' }, stats.join(' · ')),
+      t.syn ? h('div', { class: 'td', style: { color: '#ffe68c' } }, `유산 공명 +${t.syn * 12}%`) : null,
+      t.disabledT > 0 ? h('div', { class: 'td', style: { color: '#ff8a7a' } }, `봉쇄됨 ${Math.ceil(t.disabledT)}초`) : null,
+      t.branch ? h('div', { class: 'td' }, def.branches[t.branch].desc) : null);
+    pop.ring.render(items, info);
   }
 
   // ───────────────────────── HUD 갱신 ─────────────────────────
@@ -845,9 +1008,17 @@ export class GameUI {
       this.buildBottom();
       v.players.forEach((_, i) => this.elGoldLbl[i] && (this.elGoldLbl[i].textContent = this.goldLabel(i)));
     }
+    if (this.cache.livesN !== undefined && v.lives < this.cache.livesN) this.pulse(this.elLives, 'hurt');
+    this.cache.livesN = v.lives;
     this.set('lives', this.elLives, `${v.lives}/${v.maxLives}`);
     this.set('wave', this.elWave, `${Math.max(1, v.wave.n)}/${v.wave.total}`);
-    v.players.forEach((p, i) => this.elGold[i] && this.set(`g${i}`, this.elGold[i], fmt(p.gold)));
+    v.players.forEach((p, i) => {
+      if (!this.elGold[i]) return;
+      const key = `gn${i}`;
+      if (this.cache[key] !== undefined && p.gold > this.cache[key]) this.pulse(this.elGold[i], 'bump');
+      this.cache[key] = p.gold;
+      this.set(`g${i}`, this.elGold[i], fmt(p.gold));
+    });
     if (this.cache.paused !== v.paused) {
       this.cache.paused = v.paused;
       this.btnPause.textContent = v.paused ? '계속' : '일시정지';
@@ -867,6 +1038,13 @@ export class GameUI {
     for (const e of this.skillEls) {
       const slot = v.players[e.p] && v.players[e.p].skills[e.si];
       if (slot) this.cdStyle(e, slot.cd, slot.max, false);
+    }
+    for (const e of this.itemEls) {
+      const pl = v.players[e.p];
+      if (!pl || !pl.items) continue;
+      const n = pl.items[e.id] || 0;
+      this.cdStyle(e, pl.itemCd || 0, ITEM_CD, n <= 0);
+      this.set(`it${e.p}${e.id}`, e.cnt, `×${n}`);
     }
     // 공명
     const press = v.resonance.press[this.local ? 0 : this.me];
@@ -904,11 +1082,19 @@ export class GameUI {
     if (this.pop && this.pop.kind === 'tower') this.refreshTowerPanel(false);
     if (this.pop && this.pop.kind === 'build') {
       const pl = v.players[this.me];
-      this.pop.el.querySelectorAll('.bcard').forEach((b, i) => {
-        const type = this.buildList(this.me)[i];
-        b.disabled = pl.gold < TOWERS[type].levels[0].cost;
-      });
+      const sig = this.buildList(this.me).map((t) => (pl.gold >= TOWERS[t].levels[0].cost ? 1 : 0)).join('');
+      if (this.pop.sig !== sig) this.renderBuildRing();
+      if (v.towers.some((t) => t.x === this.pop.x && t.y === this.pop.y)) this.closePop();
     }
+    if (this.p2menu && this.p2menu.sig !== this.p2Sig()) this.renderP2Menu();
+  }
+
+  // 수치가 바뀔 때 칸을 톡 튀게 (군자금 증가 · 민심 감소)
+  pulse(el, cls) {
+    const box = el.closest('.hud-stat');
+    if (!box || box.classList.contains(cls)) return;
+    box.classList.add(cls);
+    setTimeout(() => box.classList.remove(cls), cls === 'hurt' ? 420 : 300);
   }
 
   cdStyle(o, cd, max, dead) {
@@ -1054,10 +1240,11 @@ export class GameUI {
 
   comboCine(e) {
     const combo = findCombo(e.a, e.b);
+    const skin = (id) => (this.s.view.heroes.find((x) => x.heroId === id) || {}).skin || null;
     const el = h('div', { class: 'combo-cine' },
-      heroPortrait(e.a, 130, 0),
+      heroPortrait(e.a, 130, 0, skin(e.a)),
       h('div', { class: 'nm' }, h('div', { class: 'sub' }, '합 격 기'), h('div', { class: 'big' }, e.name), h('div', { class: 'sub', style: { letterSpacing: '0.05em', color: '#f0e2c4' } }, combo.desc)),
-      heroPortrait(e.b, 130, 1));
+      heroPortrait(e.b, 130, 1, skin(e.b)));
     this.overlay.append(el);
     setTimeout(() => el.remove(), 2000);
   }
@@ -1088,6 +1275,7 @@ export class GameUI {
         ['1P 클릭', '빈 터: 유산 건설 · 유산: 정보/강화 · 기술 버튼 → 지점 클릭으로 시전'],
         ['1P 우클릭', '영웅 이동 (길 클릭도 가능)'],
         ['1P 태극 버튼', '합격기 (2P Space와 2.5초 안에 함께)'],
+        ['1P 보급 버튼', '보급품 (옥 상점에서 산 소모품)'],
         ['2P ← ↑ → ↓', '2P 영웅 이동'],
         ['2P A · S', '기술 · 궁극기 (적이 몰린 곳 자동 조준)'],
         ['2P D · F', '비기 1 · 2'],
@@ -1101,6 +1289,7 @@ export class GameUI {
         ['우클릭 / 길 클릭', '선택한 영웅 이동 (터치: 길게 누르기)'],
         [this.solo ? 'Q W / E R' : 'Q W', this.solo ? '1번 영웅 / 2번 영웅의 기술·궁극기 (마우스 위치에 시전)' : '영웅 기술 · 궁극기'],
         ['D F', '비기 1 · 2'],
+        ['Z X C V', '보급품 (옥 상점에서 산 산삼·궤짝·화차·부적)'],
         ['Space', '합격기 (공명 가득 + 두 영웅 5칸 이내)'],
         ['N', '다음 파도 조기 호출 (보너스 군자금)'],
       ];

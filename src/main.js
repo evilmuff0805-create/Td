@@ -1,9 +1,11 @@
 // 호국영웅전 — 앱 진입점과 화면 전환
-import { clear, toast, modal } from './ui/dom.js';
+import { clear, toast, modal, h } from './ui/dom.js';
+import { STAGE_BY_ID, DIFFICULTY } from './data/stages.js';
 import { loadProfile, applyBattle, saveProfile } from './meta/profile.js';
 import { titleScreen, hubScreen, questsScreen, settingsScreen } from './ui/screens-menu.js';
 import { campaignScreen, loadoutScreen, coopScreen, localSetupScreen, lobbyScreen, resultScreen } from './ui/screens-play.js';
 import { heroesScreen, skillsScreen, relicsScreen } from './ui/screens-codex.js';
+import { shopScreen } from './ui/screens-shop.js';
 import { Session } from './game/session.js';
 import { GameUI } from './ui/hud.js';
 import { audio } from './audio/audio.js';
@@ -22,6 +24,7 @@ const SCREENS = {
   heroes: heroesScreen,
   skills: skillsScreen,
   relics: relicsScreen,
+  shop: shopScreen,
 };
 
 class App {
@@ -61,6 +64,13 @@ class App {
     const b = { ...battle, seed: battle.seed ?? ((Math.random() * 1e9) | 0) };
     const session = new Session(b);
     document.body.classList.add('in-game');
+    // 먹 장막이 걷히며 전장이 드러난다
+    const st = STAGE_BY_ID[b.stageId];
+    const wipe = h('div', { class: 'ink-wipe', 'aria-hidden': 'true' },
+      h('div', { class: 'nm' }, h('div', { class: 'big' }, st.name), h('div', { class: 'sub' }, `${DIFFICULTY[b.difficulty].name} · ${st.waves.length}파도`)));
+    document.body.append(wipe);
+    setTimeout(() => wipe.remove(), 1400);
+    audio.play('wave');
     const onPeerLeft = () => {
       if (b.kind === 'host') {
         session.send({ t: 'leave', p: 1 });

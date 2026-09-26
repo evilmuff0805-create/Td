@@ -5,6 +5,10 @@ import { TOWER_ORDER } from '../data/towers.js';
 import { STAGES, START_TOWERS, STAGE_BY_ID, DIFFICULTY, DIFF_ORDER } from '../data/stages.js';
 import { RANKS, rankXpNeeded, towerMetaCost, TOWER_META_MAX, battleRewards } from '../data/quests.js';
 import { ensureQuests, progressQuests } from './quests.js';
+import { ITEMS, ITEM_ORDER, ITEM_BUNDLE } from '../data/items.js';
+import { skinDef } from '../data/skins.js';
+
+export const HERO_JADE_UNLOCK = 120; // 전장 조건 없이 옥으로 바로 해금
 
 const KEY = 'hoguk.profile.v1';
 
@@ -20,6 +24,8 @@ export function defaultProfile() {
     skills: Object.fromEntries(SKILL_ORDER.map((id) => [id, { lv: 0 }])),
     towers: Object.fromEntries(TOWER_ORDER.map((id) => [id, { lv: 0 }])),
     towersUnlocked: [...START_TOWERS],
+    items: Object.fromEntries(ITEM_ORDER.map((id) => [id, 0])),
+    skins: { owned: [], eq: {} },
     stages: {},
     loadout: {
       solo: { heroes: ['yi', 'sejong'], skills: ['singijeon', 'bongsu'] },
@@ -141,6 +147,52 @@ export function unlockHero(p, id) {
   saveProfile();
   return true;
 }
+export function unlockHeroJade(p, id) {
+  const st = heroUnlockState(p, id);
+  if (st.unlocked || !pay(p, { jade: HERO_JADE_UNLOCK })) return false;
+  p.heroes[id].unlocked = true;
+  saveProfile();
+  return true;
+}
+
+// ───── 옥 상점: 보급품 · 의복 ─────
+export function itemPrice(id, n = 1) {
+  const unit = ITEMS[id].price;
+  return n >= ITEM_BUNDLE ? unit * (n - 1) : unit * n;
+}
+export function buyItem(p, id, n = 1) {
+  if (!ITEMS[id] || !pay(p, { jade: itemPrice(id, n) })) return false;
+  p.items[id] = (p.items[id] || 0) + n;
+  saveProfile();
+  return true;
+}
+export function spendItem(p, id) {
+  if (!(p.items[id] > 0)) return false;
+  p.items[id]--;
+  saveProfile();
+  return true;
+}
+export function ownsSkin(p, skinId) {
+  return p.skins.owned.includes(skinId);
+}
+export function buySkin(p, heroId, skinId) {
+  const sk = skinDef(heroId, skinId);
+  if (!sk || ownsSkin(p, skinId) || !pay(p, { jade: sk.price })) return false;
+  p.skins.owned.push(skinId);
+  p.skins.eq[heroId] = skinId;
+  saveProfile();
+  return true;
+}
+export function equipSkin(p, heroId, skinId) {
+  if (skinId && !ownsSkin(p, skinId)) return false;
+  p.skins.eq[heroId] = skinId || null;
+  saveProfile();
+  return true;
+}
+export function heroSkin(p, heroId) {
+  const id = p.skins.eq[heroId];
+  return id && ownsSkin(p, id) ? id : null;
+}
 
 // ───── 영구 강화 ─────
 export function upgradeHero(p, id) {
@@ -169,11 +221,13 @@ export function upgradeTower(p, id) {
 }
 
 // 시뮬레이션에 넘길 플레이어 정보
-export function playerSpec(p, heroes, skills, name) {
+export function playerSpec(p, heroes, skills, name, opts = {}) {
   return {
     name: name || p.name,
     heroes,
     skills,
+    items: opts.noItems ? {} : { ...p.items },
+    skins: Object.fromEntries(heroes.map((id) => [id, heroSkin(p, id)])),
     towers: [...p.towersUnlocked],
     heroLv: Object.fromEntries(heroes.map((h) => [h, p.heroes[h].lv])),
     skillLv: Object.fromEntries(skills.map((s) => [s, p.skills[s].lv])),

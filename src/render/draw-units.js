@@ -1,6 +1,7 @@
 // 영웅·왜군·의병·거북선 — 입체 카툰 캐릭터 (큰 머리 2.5등신 인형 비율)
 // 캐릭터마다 옷·모자·무기만 정의하고, 몸의 뼈대(rig)는 모두 같은 것을 쓴다.
 // 걷기 6프레임 · 숨쉬기 4프레임 · 공격 1프레임을 스프라이트로 미리 그려 둔다.
+import { skinDef, GOLD_LOOK } from '../data/skins.js';
 import { TS, PAL, rgba, shade, glow, star } from './paint.js';
 import { OL, LW, fillToon, sphere, gloss, rrect, capsule, cylinder, softShadow, eye, sprite, blit } from './toon.js';
 import { HEROES } from '../data/heroes.js';
@@ -1040,7 +1041,8 @@ function animFrame(moving, attacking, t) {
 // ───────────────────────── 왜군 그리기 ─────────────────────────
 const TIER_SCALE = { 1: 1.05, 2: 1.12, 3: 1.28, 4: 1.75 };
 
-export function drawEnemy(ctx, e, time, alpha = 1) {
+// hit: { flash 0~1 (하얗게 번쩍), sq 0~1 (맞아서 찌그러짐) } — 렌더러가 체력 변화로 계산해 넘긴다
+export function drawEnemy(ctx, e, time, alpha = 1, hit = null) {
   const def = ENEMIES[e.type];
   const x = e.x * TS;
   const y = e.y * TS + 8;
@@ -1048,17 +1050,56 @@ export function drawEnemy(ctx, e, time, alpha = 1) {
   const moving = !e.blockedBy && !(e.stunT > 0);
   const flip = e.dx < -0.1;
   const sc = TIER_SCALE[def.tier] * (e.type === 'armored' ? 1.08 : 1);
+  const fl = hit ? hit.flash : 0;
+  const sq = hit ? hit.sq : 0;
   ctx.save();
   ctx.globalAlpha = alpha * (e.stealth && !e.revealed ? 0.28 : 1);
-  softShadow(ctx, x, y, 9 * sc, 3.2 * sc, 0.32);
+  if (!e.noShadow) softShadow(ctx, x, y, 9 * sc, 3.2 * sc, 0.32);
   if (def.tier === 4 && !e.noBar) glow(ctx, x, y - 16 * sc, 24 * sc, e.type === 'taiko' ? '#8a4ad6' : '#c0392b', 0.18 + 0.08 * Math.sin(time * 4));
   if (e.enraged) glow(ctx, x, y - 12, 16, '#ff5a3a', 0.35);
-  if (e.type === 'cavalry') drawCavalry(ctx, x, y, t, moving, flip, sc, e.swing > 0);
-  else if (e.type === 'ram') drawRam(ctx, x, y, t, moving, flip);
-  else {
-    const look = ENEMY_LOOK[e.type] || ENEMY_LOOK.ashigaru;
-    const [anim, frame] = animFrame(moving, e.swing > 0, t * (e.type === 'scout' ? 1.5 : 1));
-    blit(ctx, charSprite('e', e.type, look, anim, frame), x, y, sc, flip);
+  if (sq > 0) {
+    // 발밑을 축으로 옆으로 퍼지고 뒤로 살짝 밀린다
+    const back = (flip ? 1 : -1) * 2.6 * sq * (def.tier === 4 ? 0.4 : 1);
+    ctx.translate(x + back, y);
+    ctx.scale(1 + 0.16 * sq, 1 - 0.13 * sq);
+    ctx.translate(-x, -y);
+  }
+  const body = () => {
+    if (e.type === 'cavalry') drawCavalry(ctx, x, y, t, moving, flip, sc, e.swing > 0);
+    else if (e.type === 'ram') drawRam(ctx, x, y, t, moving, flip);
+    else {
+      const look = ENEMY_LOOK[e.type] || ENEMY_LOOK.ashigaru;
+      const [anim, frame] = animFrame(moving, e.swing > 0, t * (e.type === 'scout' ? 1.5 : 1));
+      blit(ctx, charSprite('e', e.type, look, anim, frame), x, y, sc, flip);
+    }
+  };
+  body();
+  if (e.iceT > 0) {
+    // 얼음 덩어리
+    ctx.globalAlpha *= 0.62;
+    rrect(ctx, x - 11 * sc, y - 30 * sc, 22 * sc, 31 * sc, 4 * sc);
+    const ig = ctx.createLinearGradient(x - 11 * sc, y - 30 * sc, x + 11 * sc, y);
+    ig.addColorStop(0, '#e8f7ff');
+    ig.addColorStop(1, '#7fc0ea');
+    ctx.fillStyle = ig;
+    ctx.fill();
+    ctx.globalAlpha /= 0.62;
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x - 7 * sc, y - 25 * sc);
+    ctx.lineTo(x - 3 * sc, y - 18 * sc);
+    ctx.moveTo(x + 4 * sc, y - 27 * sc);
+    ctx.lineTo(x + 7 * sc, y - 22 * sc);
+    ctx.stroke();
+  }
+  if (fl > 0.02) {
+    // 같은 그림을 더하기 합성으로 한 번 더: 윤곽 안쪽만 하얗게 번쩍
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.globalAlpha *= Math.min(1, fl);
+    body();
+    if (fl > 0.5) body();
   }
   ctx.restore();
   // 상태 표시
@@ -1233,14 +1274,43 @@ function drawRam(ctx, x, y, t, moving, flip) {
 }
 
 // ───────────────────────── 영웅 그리기 ─────────────────────────
+// 의복(스킨)을 입힌 모습: 옷 색만 바꿔 끼운다
+const lookCache = new Map();
+function heroLook(id, skinId) {
+  if (!skinId) return HERO_LOOK[id];
+  const key = `${id}:${skinId}`;
+  let l = lookCache.get(key);
+  if (!l) {
+    const sk = skinDef(id, skinId);
+    l = sk ? { ...HERO_LOOK[id], ...(sk.gold ? GOLD_LOOK : {}), ...(sk.body ? { body: sk.body } : {}), ...(sk.sleeve ? { sleeve: sk.sleeve } : {}), ...(sk.boots ? { boots: sk.boots } : {}) } : HERO_LOOK[id];
+    lookCache.set(key, l);
+  }
+  return l;
+}
+
+// 금빛 전설: 발밑 금빛 기운 + 맴도는 불티
+function goldAura(ctx, x, y, time, k = 1) {
+  glow(ctx, x, y - 16 * k, 26 * k, '#ffd24a', 0.28 + 0.08 * Math.sin(time * 3));
+  for (let i = 0; i < 4; i++) {
+    const a = time * 1.8 + (i * Math.PI) / 2;
+    const px = x + Math.cos(a) * 13 * k;
+    const py = y - 10 * k - ((time * 18 + i * 9) % 30) * k;
+    ctx.fillStyle = `rgba(255,226,120,${0.8 - (((time * 18 + i * 9) % 30) / 30) * 0.8})`;
+    star(ctx, px, py, 2.2 * k, 4, 0.35);
+    ctx.fill();
+  }
+}
+
 export function drawHero(ctx, h, time, opts = {}) {
-  const look = HERO_LOOK[h.heroId];
+  const look = heroLook(h.heroId, h.skin);
+  const gold = h.skin && skinDef(h.heroId, h.skin)?.gold;
   const x = opts.x ?? h.x * TS;
   const y = opts.y ?? h.y * TS + 9;
   const sc = opts.scale || 1.38;
   const t = time + h.id;
   if (opts.portrait) {
     // 초상화는 캐시 없이 크게 직접 그린다
+    if (gold && !opts.noAura) goldAura(ctx, x, y, time, sc * 0.9);
     ctx.save();
     ctx.translate(x, y);
     ctx.scale(sc, sc);
@@ -1268,7 +1338,8 @@ export function drawHero(ctx, h, time, opts = {}) {
     ctx.stroke();
   }
   const [anim, frame] = animFrame(h.moving, h.anim > 0, t);
-  blit(ctx, charSprite('h', h.heroId, look, anim, frame), x, y, sc, (h.facing || 1) < 0);
+  if (gold) goldAura(ctx, x, y, time);
+  blit(ctx, charSprite('h', h.skin ? `${h.heroId}:${h.skin}` : h.heroId, look, anim, frame), x, y, sc, (h.facing || 1) < 0);
   if (!opts.noBar) {
     const w = 28;
     const hy = y - 44;

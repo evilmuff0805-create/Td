@@ -28,16 +28,16 @@ export class SnapshotEncoder {
       w: [s.wave.n, s.wave.total, PHASES.indexOf(s.wave.phase), r1(s.wave.timer), s.wave.tactic || '', s.wave.nextTactic || ''],
       r: [r1(s.resonance.gauge), r2(s.resonance.press[0]), r2(s.resonance.press[1])],
       b: [r1(b.slowT), r1(b.revealT), r1(b.dmgT), r1(b.armorZeroT), r1(b.vulnT), r1(b.asT)],
-      p: s.players.map((p) => [p.gold, p.left ? 1 : 0, p.name, p.skills.map((k) => [k.id, r1(k.cd), r1(k.max), k.lv])]),
+      p: s.players.map((p) => [p.gold, p.left ? 1 : 0, p.name, p.skills.map((k) => [k.id, r1(k.cd), r1(k.max), k.lv]), p.items || {}, r1(p.itemCd || 0)]),
       h: s.heroes.map((h) => [
         h.id, h.owner, h.heroId, r2(h.x), r2(h.y), h.hp | 0, h.maxHp | 0, h.lv, h.dead ? 1 : 0, r1(h.respawn), h.facing,
         h.moving ? 1 : 0, h.anim > 0 ? 1 : 0, r1(h.skillCd), r1(h.ultCd),
-        (h.buffs.invulnT > 0 ? 1 : 0) | (h.buffs.dmgT > 0 ? 2 : 0) | (h.buffs.drT > 0 ? 4 : 0) | (h.buffs.gwakT > 0 ? 8 : 0), h.xp | 0, h.slot,
+        (h.buffs.invulnT > 0 ? 1 : 0) | (h.buffs.dmgT > 0 ? 2 : 0) | (h.buffs.drT > 0 ? 4 : 0) | (h.buffs.gwakT > 0 ? 8 : 0), h.xp | 0, h.slot, h.skin || '',
       ]),
       e: s.enemies.map((e) => [
         e.id, ENEMY_IDS.indexOf(e.type), r2(e.x), r2(e.y), e.hp | 0, e.maxHp | 0,
         (e.stunT > 0 ? 1 : 0) | (e.slowT > 0 || e.auraSlow > 0.05 ? 2 : 0) | (e.vulnT > 0 ? 4 : 0) | (e.stealth ? 8 : 0) | (e.revealed ? 16 : 0) |
-          (e.blockedBy ? 32 : 0) | (e.enraged ? 64 : 0) | (e.swing > 0 ? 128 : 0),
+          (e.blockedBy ? 32 : 0) | (e.enraged ? 64 : 0) | (e.swing > 0 ? 128 : 0) | (e.iceT > 0 ? 256 : 0),
         e.shield | 0, r1(e.dx), r1(e.dy),
       ]),
       T: sendT ? T : null,
@@ -74,16 +74,16 @@ export function applySnapshot(v, snap) {
   v.resonance = { gauge: snap.r[0], press: [snap.r[1], snap.r[2]] };
   const [slowT, revealT, dmgT, armorZeroT, vulnT, asT] = snap.b;
   v.buffs = { slowT, revealT, dmgT, armorZeroT, vulnT, asT };
-  v.players = snap.p.map(([gold, left, name, skills], idx) => ({
-    idx, gold, left: !!left, name, skills: skills.map(([id, cd, max, lv]) => ({ id, cd, max, lv })), stats: {},
+  v.players = snap.p.map(([gold, left, name, skills, items, itemCd], idx) => ({
+    idx, gold, left: !!left, name, skills: skills.map(([id, cd, max, lv]) => ({ id, cd, max, lv })), items: items || {}, itemCd: itemCd || 0, stats: {},
   }));
   const prevH = new Map(v.heroes.map((h) => [h.id, h]));
   v.heroes = snap.h.map((a) => {
-    const [id, owner, heroId, x, y, hp, maxHp, lv, dead, respawn, facing, moving, anim, skillCd, ultCd, bm, xp, slot] = a;
+    const [id, owner, heroId, x, y, hp, maxHp, lv, dead, respawn, facing, moving, anim, skillCd, ultCd, bm, xp, slot, skin] = a;
     const p = prevH.get(id);
     return {
       id, owner, heroId, x: p ? p.x : x, y: p ? p.y : y, _x0: p ? p.x : x, _y0: p ? p.y : y, _x1: x, _y1: y,
-      hp, maxHp, lv, dead: !!dead, respawn, facing, moving: !!moving, anim: anim ? 0.2 : 0, skillCd, ultCd, xp, slot,
+      hp, maxHp, lv, dead: !!dead, respawn, facing, moving: !!moving, anim: anim ? 0.2 : 0, skillCd, ultCd, xp, slot, skin: skin || null,
       buffs: { invulnT: bm & 1 ? 1 : 0, dmgT: bm & 2 ? 1 : 0, drT: bm & 4 ? 1 : 0, gwakT: bm & 8 ? 1 : 0 },
     };
   });
@@ -94,7 +94,7 @@ export function applySnapshot(v, snap) {
     return {
       id, type, tier: ENEMIES[type].tier, x: p ? p.x : x, y: p ? p.y : y, _x0: p ? p.x : x, _y0: p ? p.y : y, _x1: x, _y1: y,
       hp, maxHp, stunT: f & 1 ? 1 : 0, slowT: f & 2 ? 1 : 0, auraSlow: 0, vulnT: f & 4 ? 1 : 0, stealth: !!(f & 8), revealed: !!(f & 16),
-      blockedBy: f & 32 ? 1 : 0, enraged: !!(f & 64), swing: f & 128 ? 0.2 : 0, shield, dx, dy,
+      blockedBy: f & 32 ? 1 : 0, enraged: !!(f & 64), swing: f & 128 ? 0.2 : 0, iceT: f & 256 ? 1 : 0, shield, dx, dy,
     };
   });
   if (snap.T) {

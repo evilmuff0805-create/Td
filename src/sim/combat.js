@@ -212,7 +212,7 @@ export function killEnemy(s, e, src) {
     const so = def.spawnOnDeath;
     for (let i = 0; i < so.n; i++) spawnEnemy(s, so.type, e.path, e.wave, Math.max(0, e.d - i * 0.35), { bountyMult: 0.5 });
   }
-  ev(s, 'death', { x: e.x, y: e.y, type: e.type, tier: e.tier });
+  ev(s, 'death', { x: e.x, y: e.y, type: e.type, tier: e.tier, id: e.id, f: e.dx < -0.1 ? -1 : 1, g: Math.round(bounty) });
   if (def.tier === 4) {
     ev(s, 'announce', { text: `${def.name} 격퇴!`, sub: def.title, color: '#f0c75e' });
     ev(s, 'sfx', { n: 'victoryGong' });

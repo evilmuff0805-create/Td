@@ -13,7 +13,8 @@ import { SKILLS, SKILL_ORDER, skillDesc } from '../data/skills.js';
 import { TOWERS } from '../data/towers.js';
 import { findCombo } from '../data/combos.js';
 import { RANKS } from '../data/quests.js';
-import { stageUnlocked, diffUnlocked, heroUnlockState, skillUnlocked, playerSpec, saveProfile, rankName } from '../meta/profile.js';
+import { stageUnlocked, diffUnlocked, heroUnlockState, skillUnlocked, playerSpec, saveProfile, rankName, heroSkin } from '../meta/profile.js';
+import { ITEMS, ITEM_ORDER, ITEM_PER_BATTLE } from '../data/items.js';
 import { questText } from '../meta/quests.js';
 import { Net } from '../net/net.js';
 import { audio } from '../audio/audio.js';
@@ -137,7 +138,7 @@ function heroPicker(app, selected, max, onChange, taken = []) {
         onChange(next);
       },
     },
-    h('div', { class: 'pic' }, heroPortrait(id, 90, 0)),
+    h('div', { class: 'pic' }, heroPortrait(id, 90, 0, heroSkin(p, id))),
     idx >= 0 && max > 1 ? h('span', { class: 'sel-no' }, idx + 1) : null,
     h('span', { class: 'nm' }, def.name, h('span', { class: 'dim', style: { fontSize: '14px' } }, ` ${def.title}`)),
     h('span', { class: 'sub' }, isTaken ? '동료가 선택함' : st.unlocked ? `${def.role} · 강화 ${p.heroes[id].lv}` : '🔒 잠김'));
@@ -173,11 +174,25 @@ function skillPicker(app, selected, onChange) {
   }));
 }
 
-function comboPreview(a, b) {
+// 보급품 요약 (옥 상점에서 산 소모품)
+function supplyPanel(app, note) {
+  const p = app.profile;
+  const owned = ITEM_ORDER.filter((id) => p.items[id] > 0);
+  return h('div', { class: 'panel row supply' },
+    h('b', {}, '보급품'),
+    owned.length
+      ? owned.map((id) => h('span', { class: 'chip', title: ITEMS[id].desc }, h('span', { class: 'brush', style: { color: '#bff5dc' } }, ITEMS[id].glyph), ` ${ITEMS[id].name} ×${Math.min(ITEM_PER_BATTLE, p.items[id])}`))
+      : h('span', { class: 'dim' }, '가진 보급품이 없습니다'),
+    h('span', { class: 'dim', style: { fontSize: '14px' } }, note || `전투마다 종류별 ${ITEM_PER_BATTLE}개까지 · 전투 중 Z X C V`),
+    h('span', { class: 'spacer' }),
+    h('button', { class: 'btn btn-small', onclick: () => app.go('shop') }, '옥 상점 ', h('span', { class: 'jade' }, '◆')));
+}
+
+function comboPreview(a, b, p) {
   if (!a || !b) return h('div', { class: 'panel' }, h('span', { class: 'dim' }, '두 영웅을 고르면 합격기가 정해집니다.'));
   const c = findCombo(a, b);
   return h('div', { class: 'panel row', style: { alignItems: 'flex-start' } },
-    heroPortrait(a, 56, 0), heroPortrait(b, 56, 1),
+    heroPortrait(a, 56, 0, p ? heroSkin(p, a) : null), heroPortrait(b, 56, 1, p ? heroSkin(p, b) : null),
     h('div', { class: 'stack', style: { gap: '4px', flex: 1, minWidth: '200px' } },
       h('span', { class: 'dim', style: { fontSize: '14px' } }, c.id === 'generic' ? '합격기 (기본)' : '합격기 · 전용 조합'),
       h('span', { class: 'brush', style: { fontSize: '34px', color: 'var(--gold-hi)' } }, c.name),
@@ -207,9 +222,10 @@ export function loadoutScreen(app, params) {
         }, ready ? '출전!' : '영웅 2명 · 비기 2개')),
       h('h3', {}, `영웅 선택 (${lo.heroes.length}/2)`),
       heroPicker(app, lo.heroes, 2, (next) => { lo.heroes = next; rerender(); }),
-      comboPreview(lo.heroes[0], lo.heroes[1]),
+      comboPreview(lo.heroes[0], lo.heroes[1], p),
       h('h3', {}, `비기 장착 (${lo.skills.length}/2)`),
       skillPicker(app, lo.skills, (next) => { lo.skills = next; rerender(); }),
+      supplyPanel(app),
     ));
 }
 
@@ -284,11 +300,12 @@ export function localSetupScreen(app, params = {}) {
             saveProfile();
             app.startBattle({
               kind: 'local', stageId, difficulty: diff,
-              specs: [playerSpec(p, [a.hero], a.skills, '1P'), playerSpec(p, [b.hero], b.skills, '2P')],
+              specs: [playerSpec(p, [a.hero], a.skills, '1P'), playerSpec(p, [b.hero], b.skills, '2P', { noItems: true })],
             });
           },
         }, ready ? '함께 출전!' : '각자 영웅 1 · 비기 2')),
-      comboPreview(a.hero, b.hero),
+      comboPreview(a.hero, b.hero, p),
+      supplyPanel(app, `1P가 아래 보급 버튼으로 씁니다 · 종류별 ${ITEM_PER_BATTLE}개까지`),
       h('div', { class: 'lobby' }, col('1P (마우스만)', a, b, '#6fa8ff'), col('2P (키보드: 방향키 + ASDF)', b, a, '#ff8a7a'))));
 }
 
@@ -376,6 +393,19 @@ export function lobbyScreen(app, params) {
 }
 
 // ───────────── 결과 ─────────────
+// 보상 숫자가 0부터 차오른다
+function countUp(target, ms = 900) {
+  const el = h('span', { class: 'num' }, '+0');
+  const t0 = performance.now() + 500;
+  const tick = (now) => {
+    const k = Math.max(0, Math.min(1, (now - t0) / ms));
+    el.textContent = `+${fmt(Math.round(target * (1 - (1 - k) ** 3)))}`;
+    if (k < 1 && el.isConnected !== false) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+  return el;
+}
+
 export function resultScreen(app, params) {
   setBackdrop('lacquer');
   const { battle, result, applied, stats } = params;
@@ -389,15 +419,17 @@ export function resultScreen(app, params) {
     ['합격기', stats.combos], ['비기 사용', stats.skillsUsed], ['무손실 파도', stats.perfectWaves], ['전술 파훼', stats.tacticsBroken],
   ];
   const r = applied.rewards;
+  if (win) for (let i = 0; i < result.stars; i++) setTimeout(() => audio.play('upgrade'), 520 + i * 300);
   const el = h('div', { class: 'screen' },
     h('div', { class: 'result panel' },
       h('div', { class: 'verdict', style: { color: win ? 'var(--gold-hi)' : '#ff8a7a' } }, win ? '대승' : '패전'),
       h('div', { class: 'brush', style: { fontSize: '30px' } }, `${st.name} · ${DIFFICULTY[battle.difficulty].name}`),
-      win ? h('div', { class: 'stars-big' }, starStr(result.stars)) : h('p', { class: 'dim' }, `${result.wavesCleared}파도까지 버텼습니다. 유산과 영웅을 강화해 다시 도전하세요.`),
+      win ? h('div', { class: 'stars-big', 'aria-label': `별 ${result.stars}개` }, [0, 1, 2].map((i) => h('span', { class: `st${i < result.stars ? ' on' : ''}`, style: { animationDelay: `${0.45 + i * 0.3}s` } }, '★')))
+        : h('p', { class: 'dim' }, `${result.wavesCleared}파도까지 버텼습니다. 유산과 영웅을 강화해 다시 도전하세요.`),
       h('div', { class: 'rewards' },
-        h('span', { class: 'chip' }, h('span', { class: 'coin' }, '●'), ` 엽전 +${fmt(r.coins)}`),
-        r.jade ? h('span', { class: 'chip' }, h('span', { class: 'jade' }, '◆'), ` 옥 +${r.jade}`) : null,
-        h('span', { class: 'chip' }, `공적 +${r.xp}`)),
+        h('span', { class: 'chip' }, h('span', { class: 'coin' }, '●'), '엽전', countUp(r.coins)),
+        r.jade ? h('span', { class: 'chip' }, h('span', { class: 'jade' }, '◆'), '옥', countUp(r.jade)) : null,
+        h('span', { class: 'chip' }, '공적', countUp(r.xp))),
       applied.firstClear ? h('p', { style: { color: '#ffe68c' } }, '첫 승리 보너스!') : null,
       ...applied.rankUps.map((u) => h('p', { style: { color: '#ffe68c' } }, `품계 승진: ${rankName(u.rank)}! 보상 ${plainReward(u.reward)}${u.skills.length ? ` · 새 비기 해금: ${u.skills.map((s) => SKILLS[s].name).join(', ')}` : ''}`)),
       ...applied.newTowers.map((t) => h('p', { class: 'row', style: { justifyContent: 'center', color: '#ffe68c' } }, h('img', { src: towerIcon(t), alt: '', width: 40, height: 40 }), `새 유산 해금: ${TOWERS[t].name}`)),
