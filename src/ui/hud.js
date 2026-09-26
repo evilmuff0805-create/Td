@@ -92,7 +92,7 @@ export class GameUI {
       [1, 2, 3].map((n) => h('button', { 'aria-pressed': n === 1 ? 'true' : 'false', onclick: () => this.setSpeed(n), disabled: this.s.kind === 'guest' }, `×${n}`)));
     this.btnPause = h('button', { class: 'btn btn-small', onclick: () => this.togglePause(), hidden: this.s.kind === 'guest' }, '일시정지');
     const top = h('div', { class: 'hud-top' },
-      h('div', { class: 'hud-stat' }, h('span', { class: 'brush', style: { fontSize: '22px', color: 'var(--gold-hi)' } }, this.stage.name),
+      h('div', { class: 'hud-stat' }, h('span', { class: 'brush', style: { fontSize: '25px', color: 'var(--gold-hi)' } }, this.stage.name),
         h('span', { class: 'lbl' }, DIFFICULTY[this.s.difficulty].name)),
       h('div', { class: 'hud-stat', title: '민심 (0이 되면 패배)' }, h('span', { class: 'heart' }, '♥'), h('span', { class: 'lbl' }, '민심'), this.elLives),
       h('div', { class: 'hud-stat' }, h('span', { class: 'lbl' }, '파도'), this.elWave),
@@ -140,7 +140,7 @@ export class GameUI {
         const def = HEROES[hh.heroId];
         const canvas = heroPortrait(hh.heroId, 46, p);
         const hp = h('i', { style: { width: '100%' } });
-        const lv = h('span', { class: 'num dim', style: { fontSize: '11px' } });
+        const lv = h('span', { class: 'num dim', style: { fontSize: '13px' } });
         const card = h('button', { class: 'hero-card', 'aria-pressed': 'false', title: `${def.name} — 클릭해 선택`, onclick: () => this.selectHero(i) },
           canvas, h('span', { class: 'nm' }, def.name, ' ', lv), h('div', { class: 'bar green hpbar' }, hp));
         const keys = this.keyLabels(p, k);
@@ -165,15 +165,15 @@ export class GameUI {
     // 중앙: 합격기 + 파도 버튼
     this.resCv = h('canvas', { width: 148, height: 148 });
     this.comboBtn = h('button', { class: 'combo', title: '합격기 (공명 게이지가 가득 차고 두 영웅이 5칸 이내일 때)', onclick: () => this.pressCombo(this.local ? 0 : this.me) },
-      this.resCv, h('span', { class: 'lbl' }, this.s.coop && !this.local ? '합격기 Space' : this.local ? 'Space / 우Shift' : '합격기 Space'));
-    this.waveBtn = h('button', { class: 'btn btn-seal wave-btn', onclick: () => this.callWave() }, h('span', {}, '출정!'), h('small', {}, 'N 키'));
+      this.resCv, this.local ? h('span', { class: 'lbl' }, '1P 클릭 · 2P Space') : h('span', { class: 'lbl' }, '합격기', h('span', { class: 'k' }, ' Space')));
+    this.waveBtn = h('button', { class: 'btn btn-seal wave-btn', onclick: () => this.callWave() }, h('span', {}, '출정!'), h('small', {}, this.local ? '클릭 · 2P W' : 'N 키'));
     const center = h('div', { class: 'center-cmd' }, this.comboBtn, this.waveBtn);
     this.bottom.append(makeGroup(0), center);
     if (groups.includes(1)) this.bottom.append(makeGroup(1));
   }
 
   keyLabels(p, heroSlot) {
-    if (this.local && p === 1) return { skill: '/', ult: '.', equip: [';', "'"] };
+    if (this.local) return p === 1 ? { skill: 'A', ult: 'S', equip: ['D', 'F'] } : { skill: '', ult: '', equip: ['', ''] };
     if (this.solo) return { skill: heroSlot ? 'E' : 'Q', ult: heroSlot ? 'R' : 'W', equip: ['D', 'F'] };
     if (p !== this.me) return { skill: '', ult: '', equip: ['', ''] };
     return { skill: 'Q', ult: 'W', equip: ['D', 'F'] };
@@ -362,9 +362,14 @@ export class GameUI {
     if (document.querySelector('.modal-back')) return;
     audio.init();
     const code = e.code;
-    // 로컬 2P (오른쪽 키보드)
-    if (this.local && this.p2Key(e)) {
-      e.preventDefault();
+    // 로컬 협동: 키보드는 모두 2P 것 (1P는 마우스만)
+    if (this.local) {
+      if (this.p2Key(e)) e.preventDefault();
+      else if (code === 'Escape') {
+        if (this.targeting) this.cancelTargeting();
+        else if (this.pop) this.closePop();
+        else this.openMenu();
+      }
       return;
     }
     const k = e.key.toLowerCase();
@@ -438,6 +443,7 @@ export class GameUI {
     return best || { x, y };
   }
 
+  // 2P: 방향키 이동 + 왼손 A S D F · E Q · W · Space
   p2Key(e) {
     const c = e.code;
     const arrows = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
@@ -448,18 +454,23 @@ export class GameUI {
       const m = this.p2menu;
       if (c === 'ArrowLeft' || c === 'ArrowUp') m.idx = (m.idx + m.options.length - 1) % m.options.length;
       else if (c === 'ArrowRight' || c === 'ArrowDown') m.idx = (m.idx + 1) % m.options.length;
-      else if (c === 'Enter' || c === 'NumpadEnter') {
+      else if (c === 'KeyE' || c === 'Space' || c === 'Enter') {
         const o = m.options[m.idx];
         if (o && !o.disabled) o.run();
+        else audio.play('deny');
         this.closeP2Menu();
         return true;
-      } else if (c === 'Backspace' || c === 'Delete' || c === 'NumpadDecimal') this.closeP2Menu();
-      else return false;
+      } else if (c === 'KeyQ' || c === 'Backspace') this.closeP2Menu();
+      else return true;
       this.renderP2Menu();
       return true;
     }
     if (arrows.includes(c)) {
       this.p2keys.add(c);
+      return true;
+    }
+    if (c === 'KeyW') {
+      this.callWave();
       return true;
     }
     if (!hero) return false;
@@ -468,27 +479,24 @@ export class GameUI {
       return a || { x: hero.x + hero.facing * 1.5, y: hero.y };
     };
     switch (c) {
-      case 'Enter':
-      case 'NumpadEnter':
+      case 'KeyE':
         this.openP2Menu();
         return true;
-      case 'Slash':
-      case 'Numpad1': {
+      case 'KeyA': {
+        if (hero.dead || hero.skillCd > 0) return this.p2Deny(hero, 'skill');
         const a = aim(SKILL_AIM[hero.heroId]);
         this.s.send({ t: 'heroSkill', p: 1, h: hi, x: a.x, y: a.y });
         return true;
       }
-      case 'Period':
-      case 'Numpad2': {
+      case 'KeyS': {
+        if (hero.dead || hero.ultCd > 0) return this.p2Deny(hero, 'ult');
         const a = hero.heroId === 'yi' || hero.heroId === 'gang' ? aim(2.5) : aim(ULT_AIM[hero.heroId] || 2);
         this.s.send({ t: 'heroUlt', p: 1, h: hi, x: a.x, y: a.y });
         return true;
       }
-      case 'Semicolon':
-      case 'Numpad4':
-      case 'Quote':
-      case 'Numpad5': {
-        const si = c === 'Semicolon' || c === 'Numpad4' ? 0 : 1;
+      case 'KeyD':
+      case 'KeyF': {
+        const si = c === 'KeyD' ? 0 : 1;
         const slot = v.players[1].skills[si];
         if (!slot) return true;
         if (slot.cd > 0) {
@@ -499,12 +507,19 @@ export class GameUI {
         this.s.send({ t: 'skill', p: 1, slot: si, x: a.x, y: a.y });
         return true;
       }
-      case 'ShiftRight':
-      case 'Numpad0':
+      case 'Space':
         this.pressCombo(1);
+        return true;
+      case 'KeyQ':
         return true;
     }
     return false;
+  }
+
+  p2Deny(hero, kind) {
+    audio.play('deny');
+    if (!hero.dead) toast(`2P ${kind === 'skill' ? HEROES[hero.heroId].skill.name : HEROES[hero.heroId].ult.name} 재사용 대기 ${Math.ceil(kind === 'skill' ? hero.skillCd : hero.ultCd)}초`, 1200);
+    return true;
   }
 
   p2Tick(t) {
@@ -544,18 +559,18 @@ export class GameUI {
       const def = TOWERS[tower.type];
       if (!tower.branch && tower.level < def.levels.length) {
         const cost = def.levels[tower.level].cost;
-        options.push({ label: `강화 ${cost}냥`, icon: towerIcon(tower.type, tower.level + 1), disabled: pl.gold < cost, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id }) });
+        options.push({ label: '강화', cost, icon: towerIcon(tower.type, tower.level + 1), disabled: pl.gold < cost, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id }) });
       } else if (!tower.branch) {
         for (const b of ['A', 'B']) {
           const br = def.branches[b];
-          options.push({ label: `${br.name} ${br.cost}냥`, icon: towerIcon(tower.type, 3, b), disabled: pl.gold < br.cost, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id, branch: b }) });
+          options.push({ label: br.name, cost: br.cost, icon: towerIcon(tower.type, 3, b), disabled: pl.gold < br.cost, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id, branch: b }) });
         }
       }
-      if (tower.owner === 1) options.push({ label: '철거', icon: null, run: () => this.s.send({ t: 'sell', p: 1, id: tower.id }) });
+      if (tower.owner === 1) options.push({ label: '철거', cost: null, icon: null, run: () => this.s.send({ t: 'sell', p: 1, id: tower.id }) });
     } else if (this.canBuildAt(tile.x, tile.y)) {
       for (const type of this.buildList(1)) {
         const cost = TOWERS[type].levels[0].cost;
-        options.push({ label: `${TOWERS[type].name} ${cost}`, icon: towerIcon(type), disabled: pl.gold < cost, run: () => this.s.send({ t: 'build', p: 1, x: tile.x, y: tile.y, tower: type }) });
+        options.push({ label: TOWERS[type].name, cost, icon: towerIcon(type), disabled: pl.gold < cost, run: () => this.s.send({ t: 'build', p: 1, x: tile.x, y: tile.y, tower: type }) });
       }
     }
     if (!options.length) return;
@@ -567,12 +582,13 @@ export class GameUI {
     if (this.p2menuEl) this.p2menuEl.remove();
     const m = this.p2menu;
     if (!m) return;
-    const el = h('div', { class: 'panel pop', style: { width: '250px' } },
-      h('h3', {}, '2P 명령', h('span', { class: 'dim', style: { fontSize: '12px' } }, '←→ 선택 · Enter 확정 · Backspace 취소')),
+    const el = h('div', { class: 'panel pop' },
+      h('h3', {}, '2P 명령'),
+      h('div', { class: 'dim', style: { fontSize: '14px' } }, '←→ 고르기 · E 확정 · Q 취소'),
       h('div', { class: 'build-grid' }, m.options.map((o, i) =>
-        h('div', { class: 'bcard', style: { outline: i === m.idx ? '2px solid #ff8a7a' : 'none', opacity: o.disabled ? 0.5 : 1 } },
-          o.icon ? h('img', { src: o.icon, alt: '' }) : h('span', { class: 'brush', style: { fontSize: '30px' } }, '撤'),
-          h('span', {}, o.label)))),
+        h('div', { class: 'bcard', style: { outline: i === m.idx ? '3px solid #ff8a7a' : 'none', opacity: o.disabled ? 0.5 : 1 } },
+          o.icon ? h('img', { src: o.icon, alt: '' }) : h('span', { class: 'brush', style: { fontSize: '34px' } }, '撤'),
+          h('span', {}, o.label), o.cost !== null && o.cost !== undefined ? h('span', { class: 'c num' }, o.cost) : null))),
     );
     this.place(el, m.tile.x, m.tile.y);
     this.overlay.append(el);
@@ -682,7 +698,7 @@ export class GameUI {
     const k = this.scale;
     const px = (tx + 0.5) * TS * k;
     const py = (ty + 0.5) * TS * k;
-    const w = Math.min(290, this.overlay.clientWidth - 16);
+    const w = Math.min(340, this.overlay.clientWidth - 16);
     let left = px + 26 * k;
     if (left + w > this.overlay.clientWidth - 8) left = px - w - 26 * k;
     left = Math.max(8, left);
@@ -725,7 +741,7 @@ export class GameUI {
     });
     const el = h('div', { class: 'panel pop', role: 'dialog', 'aria-label': '유산 건설' },
       h('button', { class: 'x', onclick: () => this.closePop(), 'aria-label': '닫기' }, '✕'),
-      h('h3', {}, '유산 건설', h('span', { class: 'dim', style: { fontSize: '12px' } }, `숫자키 1~${list.length}`)),
+      h('h3', {}, '유산 건설', h('span', { class: 'dim', style: { fontSize: '14px' } }, `숫자키 1~${list.length}`)),
       h('div', { class: 'build-grid' }, cards), tip);
     this.overlay.append(el);
     this.place(el, x, y);
@@ -772,7 +788,7 @@ export class GameUI {
     statsRow.push(stat('처치', t.kills || 0));
     el.append(...[
       h('button', { class: 'x', onclick: () => this.closePop(), 'aria-label': '닫기' }, '✕'),
-      h('h3', {}, def.name, h('span', { class: 'dim', style: { fontSize: '12px' } }, `${t.branch ? def.branches[t.branch].name : `${t.level}단계`} · ${CATEGORIES[def.cat].name}${ownerName ? ` · ${ownerName}` : ''}`)),
+      h('h3', {}, def.name, h('span', { class: 'dim', style: { fontSize: '14px' } }, `${t.branch ? def.branches[t.branch].name : `${t.level}단계`} · ${CATEGORIES[def.cat].name}${ownerName ? ` · ${ownerName}` : ''}`)),
       h('div', { class: 'stats' }, statsRow.slice(0, 8)),
       t.syn ? h('div', { class: 'tip', style: { minHeight: 0, color: '#ffe68c' } }, `유산 공명 +${t.syn * 12}% (같은 계열 ${t.syn}종 인접)`) : null,
       t.disabledT > 0 ? h('div', { class: 'tip', style: { minHeight: 0, color: '#ff8a7a' } }, `봉쇄됨 ${Math.ceil(t.disabledT)}초`) : null,
@@ -797,7 +813,7 @@ export class GameUI {
         class: 'btn btn-gold', style: { width: '100%' }, disabled: pl.gold < next.cost, onclick: () => this.s.send({ t: 'upgrade', p: this.me, id: t.id }),
       }, `강화 (U) · ${next.cost}냥`), h('div', { class: 'tip', style: { minHeight: 0 } }, diff.join(' · ')));
     } else if (!t.branch) {
-      el.append(h('div', { class: 'dim', style: { fontSize: '12px', margin: '4px 0' } }, '특화를 하나 고르세요 (되돌릴 수 없음)'),
+      el.append(h('div', { class: 'dim', style: { fontSize: '14px', margin: '4px 0' } }, '특화를 하나 고르세요 (되돌릴 수 없음)'),
         h('div', { class: 'branches' }, ['A', 'B'].map((b) => {
           const br = def.branches[b];
           return h('button', { class: `branch ${b}`, disabled: pl.gold < br.cost, onclick: () => this.s.send({ t: 'upgrade', p: this.me, id: t.id, branch: b }) },
@@ -808,7 +824,7 @@ export class GameUI {
       el.append(h('div', { class: 'tip', style: { minHeight: 0 } }, def.branches[t.branch].desc));
     }
     el.append(h('div', { class: 'row', style: { marginTop: '8px', justifyContent: 'space-between' } },
-      h('span', { class: 'dim', style: { fontSize: '12px' } }, `투자 ${spent}냥`),
+      h('span', { class: 'dim', style: { fontSize: '14px' } }, `투자 ${spent}냥`),
       h('button', { class: 'btn btn-small', disabled: !mine, onclick: () => { this.s.send({ t: 'sell', p: this.me, id: t.id }); this.closePop(); } },
         `철거 +${Math.floor(spent * SELL_RATE)}냥`)));
     this.place(el, t.x, t.y);
@@ -864,7 +880,7 @@ export class GameUI {
     let dis = false;
     if (w.n === 0) {
       label = '출정!';
-      sub = 'N 키 · 첫 파도';
+      sub = this.local ? '클릭 · 2P W' : 'N 키 · 첫 파도';
     } else if (w.phase === 'prep') {
       label = `다음 파도`;
       sub = `+${Math.floor(w.timer * EARLY_BONUS_PER_SEC)}냥 · ${Math.ceil(w.timer)}초`;
@@ -937,7 +953,7 @@ export class GameUI {
     if (tac && tac.add) for (const a of tac.add) counts.set(a.type, (counts.get(a.type) || 0) + a.n);
     const el = h('div', { class: 'panel wave-card' },
       h('button', { class: 'collapse', onclick: () => { this.waveCardOpen = !this.waveCardOpen; this.cache.wc = null; }, 'aria-label': '접기' }, this.waveCardOpen ? '−' : '+'),
-      h('h3', { style: { fontSize: '15px' } }, `다음: 제 ${n} 파도`, h('span', { class: 'dim', style: { fontSize: '12px' } }, ` / ${w.total}`)),
+      h('h3', { style: { fontSize: '17px' } }, `다음: 제 ${n} 파도`, h('span', { class: 'dim', style: { fontSize: '14px' } }, ` / ${w.total}`)),
     );
     if (this.waveCardOpen) {
       el.append(h('div', { class: 'enemies' }, [...counts.entries()].map(([type, c]) => {
@@ -1007,7 +1023,7 @@ export class GameUI {
           if (e.p === -1 || e.p === this.me || this.local || this.solo) toast(e.text);
           break;
         case 'comboWait':
-          if (this.local) toast(`${e.p === 0 ? '1P' : '2P'}가 합격기를 눌렀습니다! ${COMBO_WINDOW}초 안에 ${e.p === 0 ? '2P는 우Shift' : '1P는 Space'}`);
+          if (this.local) toast(`${e.p === 0 ? '1P' : '2P'}가 합격기를 눌렀습니다! ${COMBO_WINDOW}초 안에 ${e.p === 0 ? '2P는 Space' : '1P는 태극 버튼 클릭'}`, 2400);
           else if (e.p === this.me) toast('동료의 호흡을 기다리는 중…');
           else toast(`${this.playerName(e.p)}이(가) 합격기를 눌렀습니다! Space로 호흡을 맞추세요`, 2400);
           break;
@@ -1066,18 +1082,30 @@ export class GameUI {
   }
 
   controlsHelp() {
-    const rows = [
-      ['클릭', '빈 터: 유산 건설 · 유산: 정보/강화 · 영웅: 선택'],
-      ['우클릭 / 길 클릭', '선택한 영웅 이동 (터치: 길게 누르기)'],
-      [this.solo ? 'Q W / E R' : 'Q W', this.solo ? '1번 영웅 / 2번 영웅의 기술·궁극기 (마우스 위치에 시전)' : '영웅 기술 · 궁극기'],
-      ['D F', '비기 1 · 2'],
-      ['Space', '합격기 (공명 가득 + 두 영웅 5칸 이내)'],
-      ['N', '다음 파도 조기 호출 (보너스 군자금)'],
-    ];
-    if (this.solo) rows.push(['Tab / 1 2', '영웅 선택 전환']);
-    if (this.s.coop) rows.push(['G', '핑 — 동료에게 위치 알리기']);
+    let rows;
     if (this.local) {
-      rows.push(['2P ← ↑ → ↓', '2P 영웅 이동'], ['2P Enter', '영웅 발밑에 건설/강화 (←→ 선택, Enter 확정)'], ['2P / .', '2P 영웅 기술 · 궁극기 (자동 조준)'], ["2P ; '", '2P 비기 1 · 2'], ['2P 우Shift', '2P 합격기']);
+      rows = [
+        ['1P 클릭', '빈 터: 유산 건설 · 유산: 정보/강화 · 기술 버튼 → 지점 클릭으로 시전'],
+        ['1P 우클릭', '영웅 이동 (길 클릭도 가능)'],
+        ['1P 태극 버튼', '합격기 (2P Space와 2.5초 안에 함께)'],
+        ['2P ← ↑ → ↓', '2P 영웅 이동'],
+        ['2P A · S', '기술 · 궁극기 (적이 몰린 곳 자동 조준)'],
+        ['2P D · F', '비기 1 · 2'],
+        ['2P E', '영웅 발밑에 건설/강화 (←→ 고르고 E 확정, Q 취소)'],
+        ['2P Space', '합격기'],
+        ['2P W', '다음 파도 부르기'],
+      ];
+    } else {
+      rows = [
+        ['클릭', '빈 터: 유산 건설 · 유산: 정보/강화 · 영웅: 선택'],
+        ['우클릭 / 길 클릭', '선택한 영웅 이동 (터치: 길게 누르기)'],
+        [this.solo ? 'Q W / E R' : 'Q W', this.solo ? '1번 영웅 / 2번 영웅의 기술·궁극기 (마우스 위치에 시전)' : '영웅 기술 · 궁극기'],
+        ['D F', '비기 1 · 2'],
+        ['Space', '합격기 (공명 가득 + 두 영웅 5칸 이내)'],
+        ['N', '다음 파도 조기 호출 (보너스 군자금)'],
+      ];
+      if (this.solo) rows.push(['Tab / 1 2', '영웅 선택 전환']);
+      if (this.s.coop) rows.push(['G', '핑 — 동료에게 위치 알리기']);
     }
     return h('div', { class: 'keys' }, rows.flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)]));
   }
@@ -1106,13 +1134,15 @@ export class GameUI {
     if (v.wave.n === 0 && v.towers.length === 0)
       return show('build', '<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '38%', top: '40%' });
     if (v.wave.n === 0 && v.towers.length > 0)
-      return show('wave', '준비되면 아래 <b>출정!</b> 버튼(N 키)으로 첫 파도를 부르세요. 다음 파도부터는 일찍 부를수록 보너스 군자금!', { right: '12px', bottom: '12px' });
+      return show('wave', `준비되면 아래 <b>출정!</b> 버튼(${this.local ? '클릭 또는 2P의 W' : 'N 키'})으로 첫 파도를 부르세요. 다음 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
     if (v.wave.n >= 2)
-      if (show('hero', `영웅을 클릭해 고르고 <b>우클릭</b>(또는 길 클릭)으로 옮기세요. ${this.solo ? '<b>Q/W</b>는 1번, <b>E/R</b>은 2번 영웅의 기술입니다.' : '<b>Q/W</b>로 기술을 씁니다.'} 마우스를 올린 곳에 시전됩니다.`, { left: '12px', bottom: '12px' })) return;
-    if (v.wave.n >= 3) if (show('equip', '<b>D/F</b>는 장착한 비기입니다. 적이 몰린 곳에 쓰세요. 비기는 진영의 <b>비기</b> 메뉴에서 바꾸고 강화합니다.', { left: '12px', bottom: '12px' })) return;
+      if (show('hero', this.local
+        ? '1P는 <b>우클릭</b>으로 영웅을 옮기고, 아래 기술 버튼을 누른 뒤 지점을 클릭해 시전합니다. 2P는 <b>방향키</b>로 움직이고 <b>A·S</b>로 기술을 씁니다.'
+        : `영웅을 클릭해 고르고 <b>우클릭</b>(또는 길 클릭)으로 옮기세요. ${this.solo ? '<b>Q/W</b>는 1번, <b>E/R</b>은 2번 영웅의 기술입니다.' : '<b>Q/W</b>로 기술을 씁니다.'} 마우스를 올린 곳에 시전됩니다.`, { left: '12px', bottom: '12px' })) return;
+    if (v.wave.n >= 3) if (show('equip', this.local ? '비기: 1P는 아래 버튼 클릭 후 지점 클릭, 2P는 <b>D·F</b>. 2P는 <b>E</b>로 발밑에 유산을 세울 수 있습니다.' : '<b>D/F</b>는 장착한 비기입니다. 적이 몰린 곳에 쓰세요. 비기는 진영의 <b>비기</b> 메뉴에서 바꾸고 강화합니다.', { left: '12px', bottom: '12px' })) return;
     if (v.wave.nextTactic) if (show('tactic', '<b>왜군 전술 카드</b>가 공개됐습니다! 대비책을 세워 한 명도 놓치지 않으면 <b>전술 파훼</b> 보너스를 받습니다.', { left: '270px', top: '12px' })) return;
     if (v.resonance.gauge >= RESONANCE_MAX)
-      if (show('combo', `<b>공명 게이지</b>가 찼습니다. 두 영웅을 <b>5칸 안</b>에 모으고 ${this.s.coop ? '두 사람이 <b>2.5초 안에 함께</b>' : ''} <b>Space</b>를 누르면 <b>합격기</b>가 발동합니다!`, { left: '40%', bottom: '12px' })) return;
+      if (show('combo', `<b>공명 게이지</b>가 찼습니다. 두 영웅을 <b>5칸 안</b>에 모으고 ${this.local ? '1P는 <b>태극 버튼</b>, 2P는 <b>Space</b>를 2.5초 안에 함께' : this.s.coop ? '두 사람이 <b>2.5초 안에 함께</b> <b>Space</b>를' : '<b>Space</b>를'} 누르면 <b>합격기</b>가 발동합니다!`, { left: '40%', bottom: '12px' })) return;
     if (v.towers.some((t) => t.level >= 3 && !t.branch))
       if (show('branch', '3단계 유산은 <b>두 갈래 특화</b> 중 하나를 고를 수 있습니다. 유산을 클릭해 보세요.', { right: '12px', top: '12px' })) return;
     if (v.towers.some((t) => t.syn > 0))

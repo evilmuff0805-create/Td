@@ -108,7 +108,7 @@ export function campaignScreen(app, params = {}) {
       h('dt', {}, '첫 승리'), h('dd', {}, st.unlockTowers.length ? `유산 해금: ${st.unlockTowers.map((t) => TOWERS[t].name).join(', ')} · 옥 30` : '옥 30'),
       h('dt', {}, '기록'), h('dd', {}, DIFF_ORDER.map((d) => h('span', { style: { marginRight: '10px' } }, `${DIFFICULTY[d].name} `, starStr(rec[d] || 0))))),
     h('div', { class: 'row' }, diffSeg(p, stageId, diff, (d) => app.go('campaign', { stage: stageId, diff: d })),
-      h('span', { class: 'dim', style: { fontSize: '12px' } }, diff === 'normal' ? '' : `적 체력 ×${DIFFICULTY[diff].hp} · 민심 ${DIFFICULTY[diff].lives} · 보상 ×${DIFFICULTY[diff].reward}`)),
+      h('span', { class: 'dim', style: { fontSize: '14px' } }, diff === 'normal' ? '' : `적 체력 ×${DIFFICULTY[diff].hp} · 민심 ${DIFFICULTY[diff].lives} · 보상 ×${DIFFICULTY[diff].reward}`)),
   );
   return h('div', { class: 'screen' }, topbar(app, '홀로 출정'),
     h('div', { class: 'content campaign' }, koreaMap(p, stageId, (id) => app.go('campaign', { stage: id })), info));
@@ -139,7 +139,7 @@ function heroPicker(app, selected, max, onChange, taken = []) {
     },
     h('div', { class: 'pic' }, heroPortrait(id, 90, 0)),
     idx >= 0 && max > 1 ? h('span', { class: 'sel-no' }, idx + 1) : null,
-    h('span', { class: 'nm' }, def.name, h('span', { class: 'dim', style: { fontSize: '12px' } }, ` ${def.title}`)),
+    h('span', { class: 'nm' }, def.name, h('span', { class: 'dim', style: { fontSize: '14px' } }, ` ${def.title}`)),
     h('span', { class: 'sub' }, isTaken ? '동료가 선택함' : st.unlocked ? `${def.role} · 강화 ${p.heroes[id].lv}` : '🔒 잠김'));
     return card;
   }));
@@ -179,7 +179,7 @@ function comboPreview(a, b) {
   return h('div', { class: 'panel row', style: { alignItems: 'flex-start' } },
     heroPortrait(a, 56, 0), heroPortrait(b, 56, 1),
     h('div', { class: 'stack', style: { gap: '4px', flex: 1, minWidth: '200px' } },
-      h('span', { class: 'dim', style: { fontSize: '12px' } }, c.id === 'generic' ? '합격기 (기본)' : '합격기 · 전용 조합'),
+      h('span', { class: 'dim', style: { fontSize: '14px' } }, c.id === 'generic' ? '합격기 (기본)' : '합격기 · 전용 조합'),
       h('span', { class: 'brush', style: { fontSize: '34px', color: 'var(--gold-hi)' } }, c.name),
       h('span', {}, c.desc)));
 }
@@ -234,9 +234,9 @@ export function coopScreen(app) {
     h('div', { class: 'content lobby' },
       h('div', { class: 'panel stack' },
         h('h3', {}, '한 화면 협동 (로컬 2인)'),
-        h('p', {}, '한 대의 컴퓨터로 둘이 함께. 1P는 마우스와 왼손 키, 2P는 방향키와 오른쪽 키로 영웅을 직접 몰며 발밑에 유산을 세웁니다.'),
+        h('p', {}, '한 대의 컴퓨터로 둘이 함께. 1P는 마우스만, 2P는 키보드만 씁니다. 2P는 오른손 방향키로 영웅을 몰고, 왼손으로 기술을 쓰며 발밑에 유산을 세웁니다.'),
         h('div', { class: 'keys' },
-          [['1P', '마우스 · Q W 기술 · D F 비기 · Space 합격기'], ['2P', '← ↑ → ↓ 이동 · Enter 건설/강화 · / . 기술 · ; \' 비기 · 우Shift 합격기']].flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)])),
+          [['1P 마우스', '클릭 건설·강화 · 우클릭 이동 · 버튼으로 기술·비기·합격기'], ['2P ← ↑ → ↓', '영웅 이동'], ['2P A S', '기술 · 궁극기'], ['2P D F', '비기 1 · 2'], ['2P E', '발밑에 건설 / 강화 (Q 취소)'], ['2P Space', '합격기'], ['2P W', '다음 파도']].flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)])),
         h('div', {}, h('button', { class: 'btn btn-seal', onclick: () => app.go('localSetup') }, '로컬 협동 준비'))),
       h('div', { class: 'panel stack' },
         h('h3', {}, '온라인 협동 (방 코드)'),
@@ -289,7 +289,7 @@ export function localSetupScreen(app, params = {}) {
           },
         }, ready ? '함께 출전!' : '각자 영웅 1 · 비기 2')),
       comboPreview(a.hero, b.hero),
-      h('div', { class: 'lobby' }, col('1P (마우스)', a, b, '#6fa8ff'), col('2P (방향키)', b, a, '#ff8a7a'))));
+      h('div', { class: 'lobby' }, col('1P (마우스만)', a, b, '#6fa8ff'), col('2P (키보드: 방향키 + ASDF)', b, a, '#ff8a7a'))));
 }
 
 // ───────────── 온라인 로비 ─────────────
@@ -372,7 +372,7 @@ export function lobbyScreen(app, params) {
           h('h3', {}, '비기'),
           skillPicker(app, L.me.skills, (n) => { L.me.skills = n; L.me.ready = false; sendMe(); rerender(); })),
         h('div', { class: 'panel stack', style: { borderColor: host ? '#ff8a7a' : '#6fa8ff' } }, h('h3', {}, '동료'), peerBox,
-          h('p', { class: 'dim', style: { fontSize: '13px' } }, '팁: 전투 중 G 키로 핑을 찍어 위치를 알리고, 합격기는 두 사람이 2.5초 안에 함께 Space를 눌러야 발동합니다.')))));
+          h('p', { class: 'dim', style: { fontSize: '15px' } }, '팁: 전투 중 G 키로 핑을 찍어 위치를 알리고, 합격기는 두 사람이 2.5초 안에 함께 Space를 눌러야 발동합니다.')))));
 }
 
 // ───────────── 결과 ─────────────

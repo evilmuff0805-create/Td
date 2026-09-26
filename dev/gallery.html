@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>그림 도감</title>
+<style>body{margin:0;background:#8fb56b}canvas{display:block}</style></head>
+<body><canvas id="c" width="1600" height="1100"></canvas>
+<script type="module">
+import { drawHero, drawEnemy, drawSummon, drawTurtle } from '../src/render/draw-units.js';
+import { drawTower } from '../src/render/draw-towers.js';
+import { HERO_ORDER } from '../src/data/heroes.js';
+import { TOWER_ORDER } from '../src/data/towers.js';
+import { ENEMIES } from '../src/data/enemies.js';
+import { TS } from '../src/render/paint.js';
+const q = new URLSearchParams(location.search);
+const cv = document.getElementById('c');
+const ctx = cv.getContext('2d');
+await document.fonts.ready;
+const t = +(q.get('t') || 0.3);
+ctx.fillStyle = '#9cc47a'; ctx.fillRect(0, 0, 1600, 1100);
+// 영웅: 2배 확대
+ctx.save(); ctx.scale(2, 2);
+HERO_ORDER.forEach((id, i) => drawHero(ctx, { heroId: id, id: i, owner: i % 2, facing: 1, moving: q.get('walk') === '1', anim: q.get('atk') === '1' ? 1 : 0, hp: 70, maxHp: 100, lv: 3, x: (60 + i * 120) / TS / 2 * 2 / 2, y: 0, buffs: {} }, t, { x: 40 + i * 60, y: 70, selected: i === 0 }));
+// 왜군
+Object.keys(ENEMIES).forEach((id, i) => drawEnemy(ctx, { type: id, id: i, x: (30 + (i % 10) * 70) / TS, y: (i < 10 ? 135 : 215) / TS, dx: 1, dy: 0, hp: 60, maxHp: 100, stunT: 0, slowT: 0, vulnT: 0, shield: 0, stealth: false, revealed: true, blockedBy: 0, auraSlow: 0, swing: q.get('atk') === '1' ? 1 : 0 }, t));
+drawSummon(ctx, { id: 1, kind: 'militia', x: 630 / TS, y: 215 / TS, hp: 50, maxHp: 100, anim: 0 }, t);
+drawSummon(ctx, { id: 2, kind: 'wall', x: 700 / TS, y: 215 / TS, hp: 80, maxHp: 100, anim: 0 }, t);
+drawTurtle(ctx, { x: 740 / TS, y: 60 / TS, dx: -1, dy: 0 }, t);
+ctx.restore();
+// 유산: 1.6배, 모든 단계
+ctx.save(); ctx.scale(1.6, 1.6);
+TOWER_ORDER.forEach((type, r) => {
+  [[1, null], [2, null], [3, null], [3, 'A'], [3, 'B']].forEach(([lv, br], k) => {
+    drawTower(ctx, { type, level: lv, branch: br, angle: -0.7, flash: 0, beamPow: 0.6 }, t, { x: 60 + k * 70 + (r % 2) * 400, y: 330 + Math.floor(r / 2) * 85, owner: 0 });
+  });
+});
+ctx.restore();
+window.done = true;
+</script></body></html>

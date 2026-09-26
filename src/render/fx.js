@@ -1,5 +1,6 @@
 // 이펙트: 시뮬레이션 이벤트 → 파티클, 링, 번개, 떠오르는 글자
 import { TS, rgba, glow, star } from './paint.js';
+import { sphere } from './toon.js';
 import { ENEMIES } from '../data/enemies.js';
 
 const JAMO = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅜㅠㅡㅣ';
@@ -269,14 +270,14 @@ export class FX {
       ctx.closePath();
       ctx.fill();
       ctx.fillStyle = '#fff';
-      ctx.font = 'bold 11px sans-serif';
+      ctx.font = 'bold 13px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('!', pg.x, pg.y - 12);
     }
     for (const t of this.texts) {
       const k = t.life / t.max;
       ctx.globalAlpha = Math.min(1, k * 2);
-      ctx.font = `700 ${t.size}px "Black Han Sans", "Gowun Batang", sans-serif`;
+      ctx.font = `700 ${t.size + 3}px "Black Han Sans", "Gowun Batang", sans-serif`;
       ctx.textAlign = 'center';
       ctx.lineWidth = 3;
       ctx.strokeStyle = 'rgba(20,12,8,0.85)';
@@ -320,11 +321,8 @@ export function drawProjectile(ctx, p, time) {
     }
     case 'orb': {
       const col = p.hue === 'sejong' ? '#ffe08a' : p.hue === 'eulji' ? '#8fe3c0' : '#bfe6ff';
-      glow(ctx, x, y, 9, col, 0.9);
-      ctx.fillStyle = '#fff';
-      ctx.beginPath();
-      ctx.arc(x, y, 2.2, 0, Math.PI * 2);
-      ctx.fill();
+      glow(ctx, x, y, 11, col, 0.9);
+      sphere(ctx, x, y, 3.2, col, { lw: 0.8 });
       break;
     }
     case 'shell':
@@ -345,14 +343,7 @@ export function drawProjectile(ctx, p, time) {
           ctx.fillStyle = '#6b4a2b';
           ctx.fillRect(x - 1, yy - 4, 2, 7);
         } else {
-          ctx.fillStyle = '#1d1c1a';
-          ctx.beginPath();
-          ctx.arc(x, yy, big ? 5 : 3.4, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.fillStyle = 'rgba(255,255,255,0.35)';
-          ctx.beginPath();
-          ctx.arc(x - 1, yy - 1, 1.2, 0, Math.PI * 2);
-          ctx.fill();
+          sphere(ctx, x, yy, big ? 5.5 : 4, '#3a3a40', { lw: 1 });
         }
       } else {
         // 하늘에서 떨어지는 천자총통 포탄 / 신기전
@@ -374,11 +365,8 @@ export function drawProjectile(ctx, p, time) {
           ctx.lineTo(cx - (x - sx) * 0.12, cy - (y - sy) * 0.12);
           ctx.stroke();
         } else {
-          ctx.fillStyle = '#1d1c1a';
-          ctx.beginPath();
-          ctx.arc(cx, cy, 6, 0, Math.PI * 2);
-          ctx.fill();
-          glow(ctx, cx, cy, 12, '#ff8a3c', 0.5);
+          glow(ctx, cx, cy, 13, '#ff8a3c', 0.5);
+          sphere(ctx, cx, cy, 6.5, '#3a3a40', { lw: 1 });
         }
       }
       break;
@@ -434,10 +422,7 @@ export function drawProjectile(ctx, p, time) {
       ctx.beginPath();
       ctx.ellipse(x, y, 4, 1.8, 0, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = '#8f8a80';
-      ctx.beginPath();
-      ctx.arc(x - (1 - k) * 30, fy, 3.5, 0, Math.PI * 2);
-      ctx.fill();
+      sphere(ctx, x - (1 - k) * 30, fy, 4, '#9a958a', { lw: 0.9 });
       break;
     }
     case 'bomb': {
@@ -450,10 +435,7 @@ export function drawProjectile(ctx, p, time) {
       ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.stroke();
       ctx.setLineDash([]);
-      ctx.fillStyle = '#2a2622';
-      ctx.beginPath();
-      ctx.arc(x, y - 4, 6, 0, Math.PI * 2);
-      ctx.fill();
+      sphere(ctx, x, y - 4, 7, '#34302c', { lw: 1 });
       ctx.fillStyle = '#6b6f7a';
       ctx.fillRect(x - 1, y - 12, 2, 3);
       glow(ctx, x + 1, y - 13, 5 + Math.random() * 3, '#ffcf6b', 0.9);

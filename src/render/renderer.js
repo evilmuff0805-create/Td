@@ -137,16 +137,22 @@ export class Renderer {
       if (!h.dead) continue;
       const x = h.x * TS;
       const y = h.y * TS;
-      ctx.fillStyle = 'rgba(40,30,30,0.6)';
+      ctx.fillStyle = 'rgba(40,30,30,0.7)';
+      ctx.strokeStyle = '#2b1a12';
+      ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.arc(x, y - 6, 9, 0, Math.PI * 2);
+      ctx.arc(x, y - 6, 12, 0, Math.PI * 2);
       ctx.fill();
+      ctx.stroke();
       ctx.fillStyle = '#fff';
-      ctx.font = '700 10px "Black Han Sans", sans-serif';
+      ctx.font = '700 14px "Black Han Sans", sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(Math.ceil(h.respawn), x, y - 2);
-      ctx.font = '600 9px "Gowun Batang", serif';
-      ctx.fillText(HEROES[h.heroId].name, x, y - 18);
+      ctx.fillText(Math.ceil(h.respawn), x, y - 1);
+      ctx.font = '700 13px "Gowun Batang", serif';
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = 'rgba(0,0,0,0.8)';
+      ctx.strokeText(HEROES[h.heroId].name, x, y - 22);
+      ctx.fillText(HEROES[h.heroId].name, x, y - 22);
     }
 
     // 로컬 2P 커서
@@ -293,7 +299,7 @@ export class Renderer {
       ctx.stroke();
     }
     if (seen.size) {
-      ctx.font = '700 12px "Black Han Sans", sans-serif';
+      ctx.font = '700 15px "Black Han Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.lineWidth = 3;
       ctx.strokeStyle = 'rgba(0,0,0,0.7)';

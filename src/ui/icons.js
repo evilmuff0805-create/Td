@@ -9,8 +9,10 @@ export function heroPortrait(heroId, size = 46, owner = 0) {
   cv.height = size * dpr;
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
+  // 가슴 위 흉상: 단위 좌표 y -31 ~ -7 이 보이도록
+  const k = size / 25;
   drawHero(ctx, { heroId, id: 0, owner, facing: 1, moving: false, anim: 0, hp: 1, maxHp: 1, lv: 1, buffs: {} }, 0.3, {
-    x: size / 2, y: size * 1.02, scale: size / 23, portrait: true, noBar: true,
+    x: size / 2 - 0.6 * k, y: size + 6.5 * k, scale: k, portrait: true, noBar: true,
   });
   return cv;
 }
@@ -23,7 +25,7 @@ export function heroFull(heroId, size = 200) {
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
   drawHero(ctx, { heroId, id: 0, owner: 0, facing: 1, moving: false, anim: 0, hp: 1, maxHp: 1, lv: 1, buffs: {} }, 0.3, {
-    x: size / 2, y: size * 0.92, scale: size / 30, portrait: true, noBar: true,
+    x: size / 2, y: size * 0.95, scale: size / 44, portrait: true, noBar: true,
   });
   return cv;
 }
@@ -38,12 +40,13 @@ export function enemyIcon(type, size = 22) {
   cv.height = size * dpr;
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
-  const big = ['konishi', 'kato', 'wakizaka', 'ukita', 'taiko'].includes(type);
-  const k = size / (big ? 60 : type === 'ram' || type === 'armored' || type === 'cavalry' ? 40 : 30);
+  const boss = ['konishi', 'kato', 'wakizaka', 'ukita', 'taiko'].includes(type);
+  const tall = boss ? 66 : type === 'cavalry' ? 44 : type === 'ram' ? 34 : type === 'armored' ? 44 : 36;
+  const k = (size * 0.94) / tall;
   ctx.scale(k, k);
   drawEnemy(ctx, {
-    type, id: 1, x: (size / 2 / k) / TS, y: ((size * 0.86) / k - 6) / TS, dx: 1, dy: 0, hp: 1, maxHp: 1, stunT: 0, slowT: 0, vulnT: 0,
-    shield: 0, stealth: false, revealed: true, blockedBy: 1, auraSlow: 0,
+    type, id: 1, x: (size / 2 / k) / TS, y: ((size * 0.96) / k - 8) / TS, dx: 1, dy: 0, hp: 1, maxHp: 1, stunT: 0, slowT: 0, vulnT: 0,
+    shield: 0, stealth: false, revealed: true, blockedBy: 1, auraSlow: 0, noBar: true,
   }, 0.2);
   const url = cv.toDataURL();
   enemyCache.set(key, url);

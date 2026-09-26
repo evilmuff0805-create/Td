@@ -45,7 +45,7 @@ export function heroesScreen(app, params = {}) {
         class: 'btn btn-gold', disabled: p.coins < cost,
         onclick: () => { if (upgradeHero(p, sel)) { audio.play('upgrade'); app.go('heroes', { id: sel }); } },
       }, `강화 · 엽전 ${fmt(cost)}`) : h('span', { class: 'chip' }, '최고 단계'),
-      h('span', { class: 'dim', style: { fontSize: '12px' } }, '단계당 체력·공격·기술 +4%'));
+      h('span', { class: 'dim', style: { fontSize: '14px' } }, '단계당 체력·공격·기술 +4%'));
   const pic = heroFull(sel, 200);
   pic.className = 'pic';
   const detail = h('div', { class: 'panel detail' },
@@ -61,7 +61,7 @@ export function heroesScreen(app, params = {}) {
         h('div', {}, h('b', {}, `상시 · ${def.passive.name}`), h('br'), def.passive.desc),
         h('div', {}, h('b', {}, `기술 · ${def.skill.name}`), ` (${def.skill.cd}초)`, h('br'), def.skill.desc),
         h('div', {}, h('b', {}, `궁극기 · ${def.ult.name}`), ` (${def.ult.cd}초)`, h('br'), def.ult.desc)),
-      combos.length ? h('div', { class: 'dim', style: { fontSize: '13px' } }, '전용 합격기: ', combos.map((c) => `${c.name}(${HEROES[c.pair.find((x) => x !== sel)].name})`).join(', ')) : null,
+      combos.length ? h('div', { class: 'dim', style: { fontSize: '15px' } }, '전용 합격기: ', combos.map((c) => `${c.name}(${HEROES[c.pair.find((x) => x !== sel)].name})`).join(', ')) : null,
       action));
   return h('div', { class: 'screen' }, topbar(app, '영웅'), h('div', { class: 'content stack' }, list, detail));
 }
@@ -81,7 +81,7 @@ export function skillsScreen(app) {
         return h('div', { class: `card${ok ? '' : ' locked'}` },
           h('div', { class: 'row' }, h('span', { class: 'brush', style: { fontSize: '36px', color: 'var(--gold-hi)' } }, sd.name.slice(0, 1)), h('div', { class: 'stack', style: { gap: 0 } },
             h('span', { class: 'nm' }, sd.name), h('span', { class: 'sub' }, ok ? `재사용 ${Math.round(sd.cd * skillCdMult(lv))}초` : `🔒 ${RANKS[sd.rank]} 달성 시`))),
-          h('span', { style: { fontSize: '13px', lineHeight: 1.5 } }, skillDesc(id, lv)),
+          h('span', { style: { fontSize: '15px', lineHeight: 1.5 } }, skillDesc(id, lv)),
           ok ? h('div', { class: 'row' }, pips(lv, SKILL_META_MAX), lv < SKILL_META_MAX
             ? h('button', { class: 'btn btn-small btn-gold', disabled: p.coins < cost, onclick: () => { if (upgradeSkill(p, id)) { audio.play('upgrade'); app.go('skills'); } } }, `강화 ${fmt(cost)}`)
             : h('span', { class: 'chip' }, '최고')) : null);
@@ -112,7 +112,7 @@ export function relicsScreen(app, params = {}) {
     s.meteorEvery ? `${s.meteorEvery}타 유성` : '', s.vuln ? `취약 +${Math.round(s.vuln * 100)}%` : '', s.chain ? `연쇄 ${s.chain}` : '', s.killGold ? `처치 +${s.killGold}냥` : '',
   ].filter(Boolean).join(' · ');
   const rows = [...def.levels.map((s, i) => [`${i + 1}단계`, s]), ...['A', 'B'].map((b) => [def.branches[b].name, def.branches[b]])];
-  const table = h('div', { style: { overflowX: 'auto' } }, h('table', { style: { width: '100%', borderCollapse: 'collapse', fontSize: '13px' } },
+  const table = h('div', { style: { overflowX: 'auto' } }, h('table', { style: { width: '100%', borderCollapse: 'collapse', fontSize: '15px' } },
     h('thead', {}, h('tr', {}, cols.map((c) => h('th', { style: { textAlign: 'left', padding: '4px 6px', color: 'var(--text-dim)', borderBottom: '1px solid var(--line)' } }, c)))),
     h('tbody', {}, rows.map(([name, s]) => h('tr', {},
       [name, s.cost, s.dmg ?? (s.dps ? `${s.dps}/초` : '—'), s.cd ? `${s.cd}초` : '지속', s.range, special(s)].map((v) => h('td', { class: 'num', style: { padding: '4px 6px', borderBottom: '1px solid rgba(240,199,94,0.1)', fontFamily: 'var(--f-body)' } }, v)))))));
@@ -121,12 +121,12 @@ export function relicsScreen(app, params = {}) {
     h('div', { class: 'stack' },
       h('div', { class: 'row' }, h('h2', {}, def.name), h('span', { class: 'chip', style: { color: CATEGORIES[def.cat].color } }, `${CATEGORIES[def.cat].name} · ${def.title}`)),
       h('p', {}, def.desc),
-      h('p', { class: 'dim', style: { fontSize: '13px' } }, `유산 공명: 같은 계열(${CATEGORIES[def.cat].name}: ${TOWER_ORDER.filter((t) => TOWERS[t].cat === def.cat).map((t) => TOWERS[t].name).join(', ')})의 다른 유산이 2칸 안에 있으면 1종당 +12%.`),
+      h('p', { class: 'dim', style: { fontSize: '15px' } }, `유산 공명: 같은 계열(${CATEGORIES[def.cat].name}: ${TOWER_ORDER.filter((t) => TOWERS[t].cat === def.cat).map((t) => TOWERS[t].name).join(', ')})의 다른 유산이 2칸 안에 있으면 1종당 +12%.`),
       table,
       unlocked
         ? h('div', { class: 'row' }, h('span', {}, '복원 '), pips(lv, TOWER_META_MAX), lv < TOWER_META_MAX
           ? h('button', { class: 'btn btn-gold', disabled: p.coins < cost, onclick: () => { if (upgradeTower(p, sel)) { audio.play('upgrade'); app.go('relics', { id: sel }); } } }, `복원 · 엽전 ${fmt(cost)}`)
-          : h('span', { class: 'chip' }, '완전 복원'), h('span', { class: 'dim', style: { fontSize: '12px' } }, `단계당 효과 +${Math.round(TOWER_META_BONUS * 100)}%`))
+          : h('span', { class: 'chip' }, '완전 복원'), h('span', { class: 'dim', style: { fontSize: '14px' } }, `단계당 효과 +${Math.round(TOWER_META_BONUS * 100)}%`))
         : h('p', { style: { color: '#ffb3a6' } }, `🔒 ${from ? from.name : ''} 첫 승리 시 해금`)));
   return h('div', { class: 'screen' }, topbar(app, '유산'), h('div', { class: 'content stack' }, list, detail));
 }
