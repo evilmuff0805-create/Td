@@ -37,7 +37,7 @@ export function titleScreen(app) {
   };
   const el = h('div', { class: 'screen', id: 'title' },
     h('div', { class: 'title-wrap' },
-      h('div', { class: 'logo', role: 'heading', 'aria-level': '1' }, '호국영웅전', h('span', { class: 'logo-seal', 'aria-hidden': 'true' }, '護國')),
+      h('div', { class: 'logo', role: 'heading', 'aria-level': '1' }, '호국영웅전', h('span', { class: 'logo-seal', 'aria-hidden': 'true' }, h('span', {}, '護'), h('span', {}, '國'))),
       h('div', { class: 'tagline' }, '임진년, 영웅들이 다시 일어선다'),
       h('div', { class: 'row', style: { justifyContent: 'center', gap: '8px' } },
         HERO_ORDER.map((id) => {

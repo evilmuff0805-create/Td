@@ -44,7 +44,7 @@ export const TOWERS = {
         desc: '거대한 포탄이 넓은 범위를 강타하고 잠시 기절시킨다.',
       },
       B: {
-        name: '화차 신기전', cost: 240, dmg: 40, cd: 2.2, range: 3.8, splash: 0.7, rockets: 6,
+        name: '화차 신기전', cost: 240, dmg: 46, cd: 2.2, range: 3.8, splash: 0.7, rockets: 6,
         desc: '화차에서 신기전 6발을 흩뿌린다. 넓게 퍼진 적에게 강하다.',
       },
     },
@@ -63,7 +63,7 @@ export const TOWERS = {
         desc: '신종의 울림. 세 번째 타종마다 범위 내 모든 적을 기절시킨다.',
       },
       B: {
-        name: '인정·파루', cost: 200, dmg: 24, cd: 1.2, range: 2.8, slow: 0.55, slowDur: 1.6, vuln: 0.15,
+        name: '인정·파루', cost: 200, dmg: 20, cd: 1.2, range: 2.8, slow: 0.55, slowDur: 1.6, vuln: 0.15,
         desc: '통행금지의 종. 강한 둔화와 함께 받는 피해를 15% 늘린다.',
       },
     },
@@ -78,7 +78,7 @@ export const TOWERS = {
     ],
     branches: {
       A: {
-        name: '혼천의', cost: 260, dmg: 150, cd: 1.5, range: 5.6, meteorEvery: 3, meteorMult: 2, meteorSplash: 1.3,
+        name: '혼천의', cost: 260, dmg: 135, cd: 1.5, range: 5.6, meteorEvery: 3, meteorMult: 2, meteorSplash: 1.3,
         desc: '천체의 운행을 계산해 세 번째 공격마다 유성을 떨어뜨린다.',
       },
       B: {
@@ -116,8 +116,8 @@ export const TOWERS = {
     ],
     branches: {
       A: {
-        name: '대광명', cost: 320, dps: 72, ramp: 6, rampTime: 3.5, range: 4.0,
-        desc: '빛이 최대 6배까지 강해진다. 적장 사냥에 특화.',
+        name: '대광명', cost: 320, dps: 85, ramp: 7, rampTime: 3, range: 4.0,
+        desc: '빛이 3초 만에 최대 7배까지 강해진다. 적장 사냥에 특화.',
       },
       B: {
         name: '천불 광배', cost: 300, dps: 56, ramp: 4, rampTime: 3, range: 3.8, chain: 2, chainMult: 0.6,

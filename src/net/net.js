@@ -9,7 +9,7 @@ export class Net {
   }
 
   static available() {
-    return typeof WebSocket !== 'undefined' && /^https?:$/.test(location.protocol);
+    return typeof WebSocket !== 'undefined' && /^https?:$/.test(location.protocol) && !window.__HOGUK_STANDALONE__;
   }
 
   on(type, fn) {

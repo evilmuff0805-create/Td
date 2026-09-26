@@ -3,11 +3,10 @@ import { HEROES } from '../data/heroes.js';
 import { SKILLS, skillPower } from '../data/skills.js';
 import { findCombo, COMBO_RANGE, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import {
-  ev, d2, clamp, mapOf, aoe, damage, applySlow, applyStun, knockback, addSummon, drop, randomPointIn,
-  grant, addGold, heroPower, isTargetable, addResonance, releaseBlocker,
+  ev, d2, clamp, mapOf, aoe, damage, applySlow, applyStun, addSummon, drop, randomPointIn,
+  addGold, heroPower, isTargetable, addResonance, releaseBlocker,
 } from './combat.js';
 import { nearestOnPath, posAt } from './map.js';
-import { rand } from './rng.js';
 
 const SKILL_RANGE = 5;
 

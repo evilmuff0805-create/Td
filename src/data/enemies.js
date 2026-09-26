@@ -36,7 +36,7 @@ export const ENEMIES = {
   onmyoji: {
     name: '음양사', title: '주술사', tier: 2, hp: 210, speed: 0.85, armor: 0, resist: 0.5, bounty: 17, lives: 2, atk: 10, size: 0.3,
     heal: { range: 2.0, pct: 0.06, cd: 3 },
-    desc: '3초마다 주변 아군 체력을 6% 회복시킨다. 신성 저항이 높다.',
+    desc: '3초마다 주변 아군 체력을 6% 회복시킨다(여럿이어도 겹치지 않음). 신성 저항이 높다.',
   },
   cavalry: {
     name: '기마무사', title: '기병', tier: 2, hp: 230, speed: 1.5, armor: 0.15, resist: 0, bounty: 17, lives: 2, atk: 18, size: 0.36,

@@ -241,7 +241,7 @@ export function coopScreen(app) {
       h('div', { class: 'panel stack' },
         h('h3', {}, '온라인 협동 (방 코드)'),
         h('p', {}, '호스트가 방을 만들고 코드를 알려 주면 친구가 참가합니다. 두 사람 모두 같은 서버 주소로 접속해야 합니다.'),
-        netOk ? null : h('p', { style: { color: '#ffb3a6' } }, '이 화면은 서버 없이 열렸습니다. 터미널에서 node server/server.js 를 실행한 뒤 표시되는 주소로 접속하면 온라인 협동을 쓸 수 있습니다.'),
+        netOk ? null : h('p', { style: { color: '#ffb3a6' } }, '지금은 서버 없이 실행 중이라 온라인 방을 만들 수 없습니다. 터미널에서 node server/server.js 를 실행하고 표시되는 주소로 접속하세요. 로컬 협동은 지금 바로 할 수 있습니다.'),
         h('div', { class: 'row' },
           h('button', { class: 'btn btn-blue', disabled: !netOk, onclick: () => go((n) => n.create()) }, '방 만들기'),
           codeInput,

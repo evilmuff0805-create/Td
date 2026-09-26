@@ -1,1 +1,16 @@
-{"name":"hoguk-td","private":true,"type":"module"}
+{
+  "name": "hoguk-td",
+  "version": "1.0.0",
+  "description": "호국영웅전 — 한국 위인과 문화유산으로 임진왜란의 전장을 지키는 협동 타워 디펜스",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node tools/selftest.mjs",
+    "balance": "node tools/balance.mjs",
+    "build": "node tools/build.mjs"
+  }
+}

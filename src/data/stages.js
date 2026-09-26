@@ -11,7 +11,7 @@ export const MAP_H = 14;
 export const DIFFICULTY = {
   normal: { name: '보통', hp: 1, speed: 1, bounty: 1, lives: 20, reward: 1 },
   hard: { name: '어려움', hp: 1.3, speed: 1.05, bounty: 0.92, lives: 15, reward: 1.6 },
-  hell: { name: '지옥', hp: 1.8, speed: 1.1, bounty: 0.85, lives: 10, reward: 2.4 },
+  hell: { name: '지옥', hp: 1.6, speed: 1.08, bounty: 0.9, lives: 10, reward: 2.4 },
 };
 export const DIFF_ORDER = ['normal', 'hard', 'hell'];
 
@@ -197,7 +197,7 @@ export const STAGES = [
     id: 's5', name: '한양 수복', date: '1593년 4월', season: 'autumn', base: '경복궁',
     desc: '마지막 결전. 도성으로 향하는 두 길을 모두 지키고, 침략의 원흉을 물리쳐라.',
     region: { x: 133, y: 255 },
-    startGold: 450, hpBase: 1.22, hpGrowth: 0.1,
+    startGold: 450, hpBase: 1.26, hpGrowth: 0.1,
     unlockTowers: [],
     grid: [
       'TT..TTT..MMMMM....TTTKKK',
@@ -223,11 +223,11 @@ export const STAGES = [
       'ash*12@0.8>a',
       'sco*14@0.5>a, tep*8@1>a+5',
       'sam*4@2>a, ash*14@0.6>a+3',
-      'cav*6@1.2>a, onm*2@3>a+5',
+      'cav*4@1.4>a, onm*2@3>a+5',
       'nin*4@1.4>a, drm*1>a+3, ash*16@0.5>a+6',
       'arm*3@3>a, tep*14@0.6>a+4',
       'ram*2@4>a, sam*6@1.4>a+4, sco*16@0.35>a+10',
-      'onm*4@2>a, cav*10@0.8>a+3, nin*6@1>a+10',
+      'onm*3@2>a, cav*8@0.9>a+3, nin*5@1.1>a+10',
       'arm*5@2.4>a, drm*3@3>a+2, ash*24@0.4>a+6',
       'konishi>0, sam*8@1.2>a+3, tep*16@0.5>a+8',
       'nin*12@0.7>a, cav*10@0.8>a+6',

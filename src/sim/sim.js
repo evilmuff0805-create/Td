@@ -515,8 +515,10 @@ function enemyAbilities(s, e, def) {
       const r2 = def.heal.range ** 2;
       let healed = 0;
       for (const o of s.enemies) {
-        if (o.hp <= 0 || d2(o, e) > r2 || o.hp >= o.maxHp) continue;
+        // 치유는 겹치지 않는다: 한 적은 2.5초에 한 번만 회복
+        if (o.hp <= 0 || d2(o, e) > r2 || o.hp >= o.maxHp || s.time - (o.healT ?? -9) < 2.5) continue;
         o.hp = Math.min(o.maxHp, o.hp + o.maxHp * def.heal.pct * (o.tier === 4 ? 0.3 : 1));
+        o.healT = s.time;
         healed++;
       }
       if (healed) ev(s, 'enemyHeal', { x: e.x, y: e.y, r: def.heal.range });

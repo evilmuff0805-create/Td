@@ -79,7 +79,6 @@ export class GameUI {
 
   // ───────────────────────── DOM 구성 ─────────────────────────
   buildDom() {
-    const v = this.s.view;
     this.el = h('div', { id: 'game' });
     // 상단
     this.elLives = h('span', { class: 'num' });
@@ -107,9 +106,11 @@ export class GameUI {
     this.cv = h('canvas', { id: 'cv', 'aria-label': '전장' });
     this.overlay = h('div', { class: 'overlay' });
     this.area = h('div', { class: 'stage-area' }, this.cv, this.overlay);
+    const tip = h('div', { class: 'rotate-tip' }, '화면을 가로로 돌리면 전장이 더 크게 보입니다');
     // 하단
     this.bottom = h('div', { class: 'hud-bottom' });
     this.el.append(top, this.area, this.bottom);
+    top.after(tip);
     clear(this.root).append(this.el);
     this.buildBottom();
   }
@@ -667,7 +668,6 @@ export class GameUI {
   }
 
   buildList(p) {
-    const pl = this.s.view.players[p];
     const allowed = this.s.state ? this.s.state.players[p].towers : this.profile.towersUnlocked;
     return TOWER_ORDER.filter((t) => allowed.includes(t));
   }

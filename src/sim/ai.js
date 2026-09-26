@@ -109,6 +109,16 @@ export function botThink(s, bot, send) {
       return;
     }
   }
+  // 중장(철갑·충차)이 오면 갑옷을 무시하는 신성·화기 유산을 먼저
+  const heavy = upcoming.has('armored') || upcoming.has('ram');
+  const antiArmor = s.towers.filter((t) => t.owner === bot.p && ['seokguram', 'cheomseong', 'hwaseong'].includes(t.type)).length;
+  if (heavy && antiArmor < 2 + Math.floor(s.wave.n / 6)) {
+    const pick = pl.towers.includes('seokguram') && pl.gold >= TOWERS.seokguram.levels[0].cost ? 'seokguram' : 'cheomseong';
+    if (pl.gold < TOWERS[pick].levels[0].cost) return;
+    const sp = freeSpot(s, bot, TOWERS[pick].kind);
+    if (sp) send({ t: 'build', p: bot.p, x: sp.x, y: sp.y, tower: pick });
+    return;
+  }
   // 소비
   for (let guard = 0; guard < 4; guard++) {
     const action = bot.plan[bot.step % bot.plan.length];
