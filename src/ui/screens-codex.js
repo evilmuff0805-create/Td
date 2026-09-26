@@ -9,10 +9,18 @@ import { SKILLS, SKILL_ORDER, skillDesc, skillMetaCost, SKILL_META_MAX, skillCdM
 import { TOWERS, TOWER_ORDER, CATEGORIES } from '../data/towers.js';
 import { COMBOS } from '../data/combos.js';
 import { STAGES } from '../data/stages.js';
-import { RANKS, towerMetaCost, TOWER_META_MAX, TOWER_META_BONUS } from '../data/quests.js';
+import { RANKS, towerMetaCost, TOWER_META_MAX, TOWER_META_BONUS, TOWER_MILESTONES } from '../data/quests.js';
 import { heroUnlockState, unlockHero, unlockHeroJade, HERO_JADE_UNLOCK, heroSkin, upgradeHero, skillUnlocked, upgradeSkill, upgradeTower } from '../meta/profile.js';
 import { skinDef } from '../data/skins.js';
 import { audio } from '../audio/audio.js';
+
+// 긴 단계(30단계)용: 막대 + 이정표 눈금
+function levelBar(n, max, marks = []) {
+  return h('div', { class: 'lvbar', role: 'meter', 'aria-valuenow': n, 'aria-valuemax': max, 'aria-label': `${n}/${max}단계` },
+    h('div', { class: 'track' }, h('i', { style: { width: `${(n / max) * 100}%` } }),
+      marks.map((m) => h('span', { class: `mark${n >= m.lv ? ' on' : ''}`, style: { left: `${(m.lv / max) * 100}%` }, title: `${m.lv}단계: ${m.text}` }))),
+    h('b', { class: 'num' }, `${n}`, h('span', { class: 'dim' }, ` / ${max}`)));
+}
 
 function pips(n, max) {
   return h('span', { class: 'num', 'aria-label': `${n}/${max}` }, h('span', { style: { color: 'var(--gold-hi)' } }, '◆'.repeat(n)), h('span', { style: { color: 'rgba(255,255,255,0.2)' } }, '◆'.repeat(max - n)));
@@ -111,7 +119,7 @@ export function relicsScreen(app, params = {}) {
     const u = p.towersUnlocked.includes(id);
     return h('button', { class: `card${u ? '' : ' locked'}`, 'aria-pressed': String(id === sel), onclick: () => app.go('relics', { id }) },
       h('div', { class: 'pic' }, h('img', { src: towerIcon(id, 3, null, 96), alt: '' })),
-      h('span', { class: 'nm' }, TOWERS[id].name), h('span', { class: 'sub', style: { color: CATEGORIES[TOWERS[id].cat].color } }, CATEGORIES[TOWERS[id].cat].name));
+      h('span', { class: 'nm' }, TOWERS[id].name), h('span', { class: 'sub', style: { color: CATEGORIES[TOWERS[id].cat].color } }, `${CATEGORIES[TOWERS[id].cat].name}${u ? ` · 복원 ${p.towers[id].lv}` : ''}`));
   }));
   const cols = ['단계', '비용', '피해', '속도', '사거리', '특수'];
   const special = (s) => [
@@ -133,9 +141,28 @@ export function relicsScreen(app, params = {}) {
       h('p', { class: 'dim', style: { fontSize: '15px' } }, `유산 공명: 같은 계열(${CATEGORIES[def.cat].name}: ${TOWER_ORDER.filter((t) => TOWERS[t].cat === def.cat).map((t) => TOWERS[t].name).join(', ')})의 다른 유산이 2칸 안에 있으면 1종당 +12%.`),
       table,
       unlocked
-        ? h('div', { class: 'row' }, h('span', {}, '복원 '), pips(lv, TOWER_META_MAX), lv < TOWER_META_MAX
-          ? h('button', { class: 'btn btn-gold', disabled: p.coins < cost, onclick: () => { if (upgradeTower(p, sel)) { audio.play('upgrade'); app.go('relics', { id: sel }); } } }, `복원 · 엽전 ${fmt(cost)}`)
-          : h('span', { class: 'chip' }, '완전 복원'), h('span', { class: 'dim', style: { fontSize: '14px' } }, `단계당 효과 +${Math.round(TOWER_META_BONUS * 100)}%`))
+        ? h('div', { class: 'stack restore' },
+          h('div', { class: 'row' }, h('b', {}, '복원'), levelBar(lv, TOWER_META_MAX, TOWER_MILESTONES),
+            h('span', { class: 'dim', style: { fontSize: '14px' } }, `단계당 효과 +${Math.round(TOWER_META_BONUS * 100)}% · 지금 +${Math.round(TOWER_META_BONUS * 100 * lv)}%`)),
+          h('div', { class: 'row' }, TOWER_MILESTONES.map((m) => h('span', { class: `chip milestone${lv >= m.lv ? ' on' : ''}` }, `${m.lv}단계 · ${m.text}`))),
+          lv < TOWER_META_MAX
+            ? h('div', { class: 'row' },
+              h('button', { class: 'btn btn-gold', disabled: p.coins < cost, onclick: () => { if (upgradeTower(p, sel)) { audio.play('upgrade'); app.go('relics', { id: sel }); } } }, `복원 · 엽전 ${fmt(cost)}`),
+              (() => {
+                // 5단계 한꺼번에 (살 수 있는 만큼)
+                let n = 0;
+                let sum = 0;
+                while (n < 5 && lv + n < TOWER_META_MAX && sum + towerMetaCost(lv + n) <= p.coins) sum += towerMetaCost(lv + n++);
+                return h('button', {
+                  class: 'btn', disabled: n < 2,
+                  onclick: () => {
+                    for (let k = 0; k < n; k++) upgradeTower(p, sel);
+                    audio.play('upgrade');
+                    app.go('relics', { id: sel });
+                  },
+                }, `${Math.max(n, 2)}단계 한꺼번에 · 엽전 ${fmt(n >= 2 ? sum : towerMetaCost(lv) + towerMetaCost(lv + 1))}`);
+              })())
+            : h('span', { class: 'chip on' }, '완전 복원'))
         : h('p', { style: { color: '#ffb3a6' } }, `🔒 ${from ? from.name : ''} 첫 승리 시 해금`)));
   return h('div', { class: 'screen' }, topbar(app, '유산'), h('div', { class: 'content stack' }, list, detail));
 }

@@ -52,12 +52,22 @@ export function rankXpNeeded(rank) {
   return Math.round(120 * Math.pow(1.22, rank));
 }
 
-// 유산 복원(타워 영구 강화)
-export const TOWER_META_MAX = 5;
+// 유산 복원(타워 영구 강화): 30단계, 단계마다 효과 +2%, 10·20·30단계에 이정표 보너스
+export const TOWER_META_MAX = 30;
 export function towerMetaCost(lv) {
-  return 180 * (lv + 1);
+  return 60 + 25 * lv;
 }
-export const TOWER_META_BONUS = 0.04; // 레벨당 공격력(효과) +4%
+export const TOWER_META_BONUS = 0.02;
+export const TOWER_MILESTONES = [
+  { lv: 10, text: '사거리 +6%' },
+  { lv: 20, text: '건설·강화 비용 -10%' },
+  { lv: 30, text: '공격 속도 +10% (완전 복원)' },
+];
+// 이정표 효과
+export const metaRangeMult = (lv) => (lv >= 10 ? 1.06 : 1);
+export const metaCostMult = (lv) => (lv >= 20 ? 0.9 : 1);
+export const metaAsMult = (lv) => (lv >= 30 ? 1.1 : 1);
+export const metaCost = (base, lv) => Math.round(base * metaCostMult(lv));
 
 // 전투 보상
 export function battleRewards({ win, stars, wavesCleared, difficulty, firstClear, diffReward }) {

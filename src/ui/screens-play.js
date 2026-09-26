@@ -6,7 +6,7 @@ import { heroPortrait } from './icons.js';
 import { towerIcon } from '../render/draw-towers.js';
 import { renderMapBackground } from '../render/draw-map.js';
 import { getMap } from '../sim/map.js';
-import { STAGES, STAGE_BY_ID, DIFFICULTY, DIFF_ORDER, parseWave } from '../data/stages.js';
+import { STAGES, STAGE_BY_ID, DIFFICULTY, DIFF_ORDER, parseWave, CHAPTERS } from '../data/stages.js';
 import { ENEMIES } from '../data/enemies.js';
 import { HEROES, HERO_ORDER } from '../data/heroes.js';
 import { SKILLS, SKILL_ORDER, skillDesc } from '../data/skills.js';
@@ -35,31 +35,37 @@ const KOREA = [
   [64, 249], [67, 211], [80, 200], [71, 171], [50, 160],
 ];
 
-function koreaMap(p, selected, onPick) {
+function koreaMap(p, selected, onPick, chapter) {
   const pts = KOREA.map(([x, y]) => `${x},${y}`).join(' ');
   const root = svg('svg', { viewBox: '0 0 280 470', role: 'img', 'aria-label': '임진왜란 전장 지도' },
     svg('rect', { x: 0, y: 0, width: 280, height: 470, fill: '#16222a', rx: 8 }),
     svg('polygon', { points: pts, fill: '#e7dcc2', stroke: '#1b1a17', 'stroke-width': 2, 'stroke-linejoin': 'round' }),
     svg('ellipse', { cx: 107, cy: 452, rx: 16, ry: 8, fill: '#e7dcc2', stroke: '#1b1a17', 'stroke-width': 1.5 }),
+    // 대마도와 규슈 (가상 전장)
+    svg('ellipse', { cx: 226, cy: 414, rx: 5, ry: 11, fill: '#d8ccb0', stroke: '#1b1a17', 'stroke-width': 1.3, transform: 'rotate(18 226 414)' }),
+    svg('polygon', { points: '236,440 252,430 272,432 280,440 280,470 244,470 238,458', fill: '#d8ccb0', stroke: '#1b1a17', 'stroke-width': 1.5, 'stroke-linejoin': 'round' }),
   );
-  // 백두대간 붓질
   const ridge = svg('path', { d: 'M165 61 C 170 110, 160 140, 150 175 S 170 230, 185 260 S 195 320, 190 350', fill: 'none', stroke: 'rgba(60,70,50,0.35)', 'stroke-width': 7, 'stroke-linecap': 'round' });
   root.append(ridge);
-  // 전장 순서 선
-  const order = STAGES.map((s) => s.region);
-  root.append(svg('polyline', { points: order.map((r) => `${r.x},${r.y}`).join(' '), fill: 'none', stroke: '#b8322a', 'stroke-width': 1.6, 'stroke-dasharray': '4 4', opacity: 0.8 }));
+  // 전장 순서 선: 지난 장은 옅게, 이번 장은 붉게
+  root.append(svg('polyline', { points: STAGES.map((st) => `${st.region.x},${st.region.y}`).join(' '), fill: 'none', stroke: 'rgba(184,50,42,0.35)', 'stroke-width': 1.2, 'stroke-dasharray': '3 4' }));
+  const cur = STAGES.filter((st) => st.chapter === chapter);
+  root.append(svg('polyline', { points: cur.map((st) => `${st.region.x},${st.region.y}`).join(' '), fill: 'none', stroke: '#b8322a', 'stroke-width': 2, 'stroke-dasharray': '5 4' }));
   STAGES.forEach((st, i) => {
     const unlocked = stageUnlocked(p, st.id);
-    const stars = Math.max(0, ...DIFF_ORDER.map((d) => (p.stages[st.id] || {})[d] || 0));
+    const mine = st.chapter === chapter;
     const sel = st.id === selected;
-    const g = svg('g', { class: 'stage-node', tabindex: unlocked ? 0 : -1, role: 'button', 'aria-label': `${st.name}${unlocked ? '' : ' (잠김)'}` },
-      svg('circle', { cx: st.region.x, cy: st.region.y, r: sel ? 13 : 10, fill: unlocked ? (sel ? '#b8322a' : '#7a221c') : '#555', stroke: sel ? '#f0c75e' : '#efe4cc', 'stroke-width': sel ? 3 : 1.5 }),
-      svg('text', { x: st.region.x, y: st.region.y + 4, 'text-anchor': 'middle', fill: '#fff', 'font-size': 11, 'font-family': 'Black Han Sans, sans-serif' }, document.createTextNode(unlocked ? String(i + 1) : '🔒')),
+    const cleared = DIFF_ORDER.some((d) => ((p.stages[st.id] || {})[d] || 0) > 0);
+    if (!mine) {
+      root.append(svg('circle', { cx: st.region.x, cy: st.region.y, r: 3, fill: cleared ? '#7a221c' : '#8a8070', stroke: '#1b1a17', 'stroke-width': 0.8 }));
+      return;
+    }
+    const g = svg('g', { class: 'stage-node', tabindex: unlocked ? 0 : -1, role: 'button', 'aria-label': `${i + 1}. ${st.name}${unlocked ? '' : ' (잠김)'}` },
+      svg('title', {}, document.createTextNode(st.name)),
+      svg('circle', { cx: st.region.x, cy: st.region.y, r: sel ? 12 : 9.5, fill: unlocked ? (sel ? '#b8322a' : cleared ? '#7a221c' : '#a3342b') : '#555', stroke: sel ? '#f0c75e' : '#efe4cc', 'stroke-width': sel ? 3 : 1.5 }),
+      svg('text', { x: st.region.x, y: st.region.y + 4, 'text-anchor': 'middle', fill: '#fff', 'font-size': 10.5, 'font-family': 'Black Han Sans, sans-serif' }, document.createTextNode(unlocked ? String(i + 1) : '🔒')),
     );
-    const label = svg('text', { x: st.region.x + (i === 3 ? -16 : 16), y: st.region.y + (i === 4 ? -12 : 4), 'text-anchor': i === 3 ? 'end' : 'start', fill: '#1b1a17', 'font-size': 11, 'font-family': 'Gowun Batang, serif', 'font-weight': 700 },
-      document.createTextNode(`${st.name}${stars ? ' ' + '★'.repeat(stars) : ''}`));
-    const bg = svg('text', { x: label.getAttribute('x'), y: label.getAttribute('y'), 'text-anchor': label.getAttribute('text-anchor'), stroke: '#e7dcc2', 'stroke-width': 3, 'font-size': 11, 'font-family': 'Gowun Batang, serif', 'font-weight': 700 }, document.createTextNode(label.textContent));
-    root.append(bg, label, g);
+    root.append(g);
     if (unlocked) {
       g.addEventListener('click', () => onPick(st.id));
       g.addEventListener('keydown', (e) => e.key === 'Enter' && onPick(st.id));
@@ -67,6 +73,30 @@ function koreaMap(p, selected, onPick) {
   });
   root.append(svg('text', { x: 18, y: 28, fill: '#e7dcc2', 'font-size': 20, 'font-family': 'Nanum Brush Script, serif' }, document.createTextNode('임진년 전장도')));
   return h('div', { class: 'korea' }, root);
+}
+
+// 장 고르기 + 장 안의 전장 목록
+function chapterPanel(app, p, chapter, stageId) {
+  const tabs = h('div', { class: 'seg chapter-seg', role: 'group', 'aria-label': '장' }, CHAPTERS.map((c, ci) => {
+    const first = c.stages[0];
+    const ok = stageUnlocked(p, first);
+    return h('button', {
+      'aria-pressed': String(ci === chapter), disabled: !ok, title: c.name,
+      onclick: () => app.go('campaign', { stage: [...c.stages].reverse().find((id) => stageUnlocked(p, id)) || first }),
+    }, `${ci + 1}장`);
+  }));
+  const list = h('div', { class: 'stage-list' }, CHAPTERS[chapter].stages.map((id) => {
+    const st = STAGE_BY_ID[id];
+    const idx = STAGES.findIndex((x) => x.id === id);
+    const ok = stageUnlocked(p, id);
+    const stars = Math.max(0, ...DIFF_ORDER.map((d) => (p.stages[id] || {})[d] || 0));
+    return h('button', { class: `stage-row${id === stageId ? ' on' : ''}`, disabled: !ok, onclick: () => app.go('campaign', { stage: id }) },
+      h('span', { class: 'no num' }, ok ? idx + 1 : '🔒'),
+      h('span', { class: 'nm' }, st.name),
+      h('span', { class: 'dt dim' }, st.date),
+      h('span', { class: 'st' }, starStr(stars)));
+  }));
+  return h('div', { class: 'stack', style: { gap: '8px' } }, h('b', { class: 'brush chapter-name' }, CHAPTERS[chapter].name), tabs, list);
 }
 
 function diffSeg(p, stageId, value, onChange) {
@@ -111,8 +141,11 @@ export function campaignScreen(app, params = {}) {
     h('div', { class: 'row' }, diffSeg(p, stageId, diff, (d) => app.go('campaign', { stage: stageId, diff: d })),
       h('span', { class: 'dim', style: { fontSize: '14px' } }, diff === 'normal' ? '' : `적 체력 ×${DIFFICULTY[diff].hp} · 민심 ${DIFFICULTY[diff].lives} · 보상 ×${DIFFICULTY[diff].reward}`)),
   );
+  const chapter = st.chapter || 0;
   return h('div', { class: 'screen' }, topbar(app, '홀로 출정'),
-    h('div', { class: 'content campaign' }, koreaMap(p, stageId, (id) => app.go('campaign', { stage: id })), info));
+    h('div', { class: 'content campaign' },
+      h('div', { class: 'stack' }, koreaMap(p, stageId, (id) => app.go('campaign', { stage: id }), chapter), chapterPanel(app, p, chapter, stageId)),
+      info));
 }
 
 // ───────────── 영웅 · 비기 고르기 ─────────────
@@ -181,7 +214,7 @@ function supplyPanel(app, note) {
   return h('div', { class: 'panel row supply' },
     h('b', {}, '보급품'),
     owned.length
-      ? owned.map((id) => h('span', { class: 'chip', title: ITEMS[id].desc }, h('span', { class: 'brush', style: { color: '#bff5dc' } }, ITEMS[id].glyph), ` ${ITEMS[id].name} ×${Math.min(ITEM_PER_BATTLE, p.items[id])}`))
+      ? owned.map((id) => h('span', { class: 'chip', title: ITEMS[id].desc }, `${ITEMS[id].name} ×${Math.min(ITEM_PER_BATTLE, p.items[id])}`))
       : h('span', { class: 'dim' }, '가진 보급품이 없습니다'),
     h('span', { class: 'dim', style: { fontSize: '14px' } }, note || `전투마다 종류별 ${ITEM_PER_BATTLE}개까지 · 전투 중 Z X C V`),
     h('span', { class: 'spacer' }),

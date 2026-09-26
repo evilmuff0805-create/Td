@@ -13,7 +13,7 @@ const q = new URLSearchParams(location.search);
 const stageId = q.get('s') || 's1';
 const until = +(q.get('t') || 3);
 const all = Object.keys(TOWERS);
-const s = createGame({ stageId, difficulty: 'normal', mode: 'solo', seed: 7, players: [{ heroes: ['gang', 'eulji'], skills: ['singijeon', 'bigyeok'], towers: all }] });
+const s = createGame({ stageId, difficulty: 'normal', mode: 'solo', seed: 7, players: [{ heroes: (q.get('h') || 'gang,eulji').split(','), skills: ['singijeon', 'bigyeok'], towers: all }] });
 s.players[0].gold = 99999;
 const map = getMap(stageId);
 // 길 가까운 빈 칸마다 유산
@@ -33,6 +33,7 @@ const r = new Renderer(document.getElementById('c'));
 await document.fonts.ready;
 r.setup(stageId);
 const types = (q.get('e') || 'ashigaru,ashigaru,teppo,samurai,ashigaru,armored').split(',');
+if (q.get('b')) spawnEnemy(s, q.get('b'), 0, s.wave.total, +(q.get('bd') || 9));
 let spawnT = 0;
 let last = performance.now();
 let acc = 0;

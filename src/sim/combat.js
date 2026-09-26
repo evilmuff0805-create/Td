@@ -144,8 +144,10 @@ export function spawnEnemy(s, type, pathIdx, wave, d = -0.4, extra = {}) {
   const diff = diffOf(s);
   const tac = extra.tactic ? TACTICS[extra.tactic] : null;
   const hpMult =
-    stage.hpBase * (def.tier === 4 ? 1 : 1 + stage.hpGrowth * (wave - 1)) * diff.hp * (s.coop ? s.coopHp : 1) * (tac && tac.hpMult ? tac.hpMult : 1);
-  const hp = def.hp * hpMult;
+    (def.fixedHp ? 1 : def.tier === 4 ? stage.bossHp ?? stage.hpBase : s.hpBase ?? stage.hpBase) * (def.tier === 4 ? 1 : 1 + stage.hpGrowth * (wave - 1)) * diff.hp * (s.coop ? s.coopHp : 1) * (tac && tac.hpMult ? tac.hpMult : 1);
+  // 전장 중간에 나오는 적장은 가볍다 (방어선이 덜 갖춰진 이른 파도일수록 더): 절반쯤이면 65%
+  const midBoss = def.tier === 4 && !def.fixedHp && wave < stage.waves.length ? 0.35 + 0.6 * (wave / stage.waves.length) : 1;
+  const hp = def.hp * hpMult * midBoss;
   const e = {
     id: newId(s), type, tier: def.tier, path: pathIdx, d, off: randRange(s, -0.2, 0.2),
     x: 0, y: 0, dx: 1, dy: 0,
@@ -162,14 +164,16 @@ export function spawnEnemy(s, type, pathIdx, wave, d = -0.4, extra = {}) {
     bountyMult: extra.bountyMult ?? 1, hitT: -9, chargeT: 0,
   };
   if (def.boss) {
+    // 능력마다 따로 도는 재사용 시계 (한 적장이 여러 능력을 가질 수 있게)
     const b = def.boss;
-    if (b.summon) e.abT = b.summon.cd;
-    if (b.charge) e.abT = b.charge.cd * 0.6;
+    e.ab = {};
+    if (b.summon) e.ab.summon = b.summon.cd;
+    if (b.charge) e.ab.charge = b.charge.cd * 0.6;
     if (b.shield) {
-      e.abT = b.shield.cd;
+      e.ab.shield = b.shield.cd;
       e.shield = e.maxHp * b.shield.pct;
     }
-    if (b.rally) e.abT = b.rally.cd * 0.7;
+    if (b.rally) e.ab.rally = b.rally.cd * 0.7;
   }
   if (def.shoot) e.abT = randRange(s, 0.5, def.shoot.cd);
   if (def.heal) e.abT = def.heal.cd;

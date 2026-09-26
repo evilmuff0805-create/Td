@@ -18,16 +18,14 @@ import { audio } from '../audio/audio.js';
 import { Ring, spread } from './ring.js';
 import { ITEMS, ITEM_ORDER, ITEM_CD } from '../data/items.js';
 import { spendItem } from '../meta/profile.js';
+import { metaCost } from '../data/quests.js';
 
 const W = 960;
 const H = 560;
-const SKILL_AIM = { yi: 4.2, sejong: 1.8, eulji: 1.5, gang: 0.8, gwon: 1.6, gwak: 1 };
+const SKILL_AIM = { yi: 4.2, sejong: 1.8, eulji: 1.5, gang: 0.8, gwon: 1.6, gwak: 1, ahn: 2.2, dangun: 1.4 };
 const ULT_AIM = { yi: 0.8, eulji: 3, gwon: 0.7 };
-const ULT_TARGETLESS = { sejong: true, gang: true, gwak: true };
+const ULT_TARGETLESS = { sejong: true, gang: true, gwak: true, ahn: true, dangun: true };
 const TARGET_LABEL = { first: '선두', last: '후미', strong: '강적', close: '근접' };
-const TARGET_GLYPH = { first: '先', last: '後', strong: '强', close: '近' };
-const HERO_GLYPH = { yi: '忠', sejong: '訓', eulji: '薩', gang: '星', gwon: '幸', gwak: '紅' };
-const SKILL_GLYPH = { singijeon: '神', bongsu: '烽', uibyeong: '義', bigyeok: '震', gunryang: '糧', cheonja: '砲', donguibogam: '醫', hanpa: '寒' };
 
 export class GameUI {
   constructor({ root, session, profile, names, onEnd, onQuit, onRestart }) {
@@ -158,8 +156,8 @@ export class GameUI {
         const card = h('button', { class: 'hero-card', 'aria-pressed': 'false', title: `${def.name} — 클릭해 선택`, onclick: () => this.selectHero(i) },
           canvas, h('span', { class: 'nm' }, def.name, ' ', lv), h('div', { class: 'bar green hpbar' }, hp));
         const keys = this.keyLabels(p, k);
-        const sk = this.skillButton(`${HERO_GLYPH[hh.heroId]}`, def.skill.name, keys.skill, () => this.useHeroSkill(i, 'skill'), !mine);
-        const ul = this.skillButton(`${HERO_GLYPH[hh.heroId]}`, def.ult.name, keys.ult, () => this.useHeroSkill(i, 'ult'), !mine, true);
+        const sk = this.skillButton(def.skill.short, `${def.name} 기술 · ${def.skill.name}`, keys.skill, () => this.useHeroSkill(i, 'skill'), !mine);
+        const ul = this.skillButton(def.ult.short, `${def.name} 궁극기 · ${def.ult.name}`, keys.ult, () => this.useHeroSkill(i, 'ult'), !mine, true);
         this.heroEls.push({ i, card, hp, lv, canvas, sk, ul });
         g.append(card, h('div', { class: 'skills' }, sk.el, ul.el));
       });
@@ -168,7 +166,7 @@ export class GameUI {
         const box = h('div', { class: 'skills' });
         pl.skills.forEach((slot, si) => {
           const sd = SKILLS[slot.id];
-          const b = this.skillButton(SKILL_GLYPH[slot.id], sd.name, this.keyLabels(p, 0).equip[si], () => this.useEquip(p, si), !mine);
+          const b = this.skillButton(sd.short, `비기 · ${sd.name}`, this.keyLabels(p, 0).equip[si], () => this.useEquip(p, si), !mine);
           this.skillEls.push({ p, si, ...b });
           box.append(b.el);
         });
@@ -181,7 +179,7 @@ export class GameUI {
         for (const id of ids) {
           const it = ITEMS[id];
           const key = this.local ? '' : 'ZXCV'[ITEM_ORDER.indexOf(id)];
-          const b = this.skillButton(it.glyph, `${it.name} — ${it.desc}`, key, () => this.useItem(p, id), false);
+          const b = this.skillButton(it.short, `보급품 · ${it.name} — ${it.desc}`, key, () => this.useItem(p, id), false);
           b.el.classList.add('item');
           b.cnt = h('span', { class: 'cnt num' });
           b.el.append(b.cnt);
@@ -233,10 +231,12 @@ export class GameUI {
     return { skill: 'Q', ult: 'W', equip: ['D', 'F'] };
   }
 
-  skillButton(glyph, name, key, onclick, disabled, ult = false) {
+  // 버튼 글씨: 누구나 읽을 수 있는 한글 짧은 이름 (두 줄까지)
+  skillButton(label, name, key, onclick, disabled, ult = false) {
     const cd = h('span', { class: 'cd' });
+    const long = Math.max(...label.split('\n').map((l) => l.length)) >= 3;
     const el = h('button', { class: `sk${ult ? ' ult' : ''}`, title: name, 'aria-label': name, onclick, disabled },
-      h('span', { class: 'ic' }, glyph), key ? h('span', { class: 'key' }, key) : null, cd);
+      h('span', { class: `ic${long ? ' l3' : ''}` }, label), key ? h('span', { class: 'key' }, key) : null, cd);
     return { el, cd };
   }
 
@@ -344,10 +344,10 @@ export class GameUI {
       const hits = occ.filter((r) => bx.x < r.x + r.w && bx.x + bx.w > r.x && bx.y < r.y + r.h && bx.y + bx.h > r.y);
       if (!hits.length) continue;
       this.xrayDirty = true;
-      const tag = this.local ? `${hh.owner + 1}P ` : this.s.coop ? (hh.owner === this.me ? '나 · ' : '동료 · ') : '';
+      const tag = this.local ? `${hh.owner + 1}P` : this.s.coop ? (hh.owner === this.me ? '나' : '동료') : '';
       // 고리 버튼 위에서는 반투명으로(버튼도 보이게), 설명·카드 위에서는 또렷하게
       const ghost = hits.every((r) => r.btn);
-      this.renderer.drawHeroOnTop(c, hh, this.ui.clock, `${tag}${HEROES[hh.heroId].name}`, ghost ? 0.55 : 1);
+      this.renderer.drawHeroOnTop(c, hh, this.ui.clock, tag, ghost ? 0.55 : 1);
     }
   }
 
@@ -683,22 +683,23 @@ export class GameUI {
     if (tower) {
       const def = TOWERS[tower.type];
       if (!tower.branch && tower.level < def.levels.length) {
-        const cost = def.levels[tower.level].cost;
+        const cost = this.price(tower.type, def.levels[tower.level].cost);
         options.push({ label: `${def.name} 강화`, cost, icon: towerIcon(tower.type, tower.level + 1), disabled: pl.gold < cost, desc: this.upgradeDiff(tower), run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id }) });
       } else if (!tower.branch) {
         for (const b of ['A', 'B']) {
           const br = def.branches[b];
-          options.push({ label: `특화 · ${br.name}`, cost: br.cost, icon: towerIcon(tower.type, 3, b), disabled: pl.gold < br.cost, desc: br.desc, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id, branch: b }) });
+          const bc = this.price(tower.type, br.cost);
+          options.push({ label: `특화 · ${br.name}`, cost: bc, icon: towerIcon(tower.type, 3, b), disabled: pl.gold < bc, desc: br.desc, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id, branch: b }) });
         }
       }
       if (tower.owner === 1) {
         const refund = Math.floor((tower.spent[0] + tower.spent[1]) * SELL_RATE);
-        options.push({ label: `${def.name} 철거`, cost: `+${refund}`, glyph: '撤', cls: 'sell', desc: `투자한 군자금의 ${Math.round(SELL_RATE * 100)}%를 돌려받습니다.`, run: () => this.s.send({ t: 'sell', p: 1, id: tower.id }) });
+        options.push({ label: `${def.name} 철거`, cost: `+${refund}`, glyph: '철거', cls: 'sell', desc: `투자한 군자금의 ${Math.round(SELL_RATE * 100)}%를 돌려받습니다.`, run: () => this.s.send({ t: 'sell', p: 1, id: tower.id }) });
       }
     } else {
       for (const type of this.buildList(1)) {
         const def = TOWERS[type];
-        const cost = def.levels[0].cost;
+        const cost = this.price(type, def.levels[0].cost);
         options.push({ type, label: `${def.name} · ${def.title}`, cost, icon: towerIcon(type), disabled: pl.gold < cost, desc: def.desc, cat: def.cat, run: () => this.s.send({ t: 'build', p: 1, x: m.tile.x, y: m.tile.y, tower: type }) });
       }
     }
@@ -871,10 +872,10 @@ export class GameUI {
     const list = this.buildList(this.me);
     const angles = spread(list.length);
     const keys = !this.local && !('ontouchstart' in window);
-    pop.sig = list.map((t) => (pl.gold >= TOWERS[t].levels[0].cost ? 1 : 0)).join('');
+    pop.sig = list.map((t) => (pl.gold >= this.price(t, TOWERS[t].levels[0].cost) ? 1 : 0)).join('');
     pop.ring.render(list.map((type, i) => {
       const def = TOWERS[type];
-      const cost = def.levels[0].cost;
+      const cost = this.price(type, def.levels[0].cost);
       const poor = pl.gold < cost;
       return {
         key: type, angle: angles[i], icon: towerIcon(type), cost, cls: poor ? 'poor' : '', label: `${def.name} (${cost}냥)`, num: keys ? String(i + 1) : null,
@@ -886,6 +887,12 @@ export class GameUI {
       };
     }), h('div', {}, h('div', { class: 'tt' }, h('b', {}, '유산 건설')),
       h('div', { class: 'td' }, '같은 계열의 다른 유산이 2칸 안에 있으면 공명(1종당 +12%)합니다.')));
+  }
+
+  // 유산 복원 20단계부터 건설·강화 10% 할인 (내 기록 기준 — 시뮬레이션도 같은 값을 쓴다)
+  price(type, base) {
+    const t = this.profile.towers && this.profile.towers[type];
+    return metaCost(base, t ? t.lv : 0);
   }
 
   denyGold(cost) {
@@ -935,7 +942,7 @@ export class GameUI {
     const ownerName = this.s.coop ? this.playerName(t.owner) : '';
     const items = [];
     if (!t.branch && t.level < def.levels.length) {
-      const cost = def.levels[t.level].cost;
+      const cost = this.price(t.type, def.levels[t.level].cost);
       const poor = pl.gold < cost;
       items.push({
         key: 'up', angle: -90, icon: towerIcon(t.type, t.level + 1), cost, cls: `up${poor ? ' poor' : ''}`, label: `강화 (${cost}냥)`, num: this.local ? null : 'U',
@@ -945,11 +952,12 @@ export class GameUI {
     } else if (!t.branch) {
       for (const [b, ang] of [['A', -128], ['B', -52]]) {
         const br = def.branches[b];
-        const poor = pl.gold < br.cost;
+        const bc = this.price(t.type, br.cost);
+        const poor = pl.gold < bc;
         items.push({
-          key: b, angle: ang, icon: towerIcon(t.type, 3, b), cost: br.cost, cls: `br${b}${poor ? ' poor' : ''}`, label: `특화 ${br.name}`,
-          tip: () => this.tipBody(`특화 · ${br.name}`, br.cost, `${br.desc} (되돌릴 수 없음)`, null, poor),
-          run: () => (poor ? this.denyGold(br.cost) : this.s.send({ t: 'upgrade', p: this.me, id: t.id, branch: b })),
+          key: b, angle: ang, icon: towerIcon(t.type, 3, b), cost: bc, cls: `br${b}${poor ? ' poor' : ''}`, label: `특화 ${br.name}`,
+          tip: () => this.tipBody(`특화 · ${br.name}`, bc, `${br.desc} (되돌릴 수 없음)`, null, poor),
+          run: () => (poor ? this.denyGold(bc) : this.s.send({ t: 'upgrade', p: this.me, id: t.id, branch: b })),
         });
       }
     }
@@ -957,13 +965,13 @@ export class GameUI {
       const modes = Object.keys(TARGET_LABEL);
       const nextMode = modes[(modes.indexOf(t.mode) + 1) % modes.length];
       items.push({
-        key: 'tg', angle: 0, glyph: TARGET_GLYPH[t.mode], cls: 'tg', label: `조준 ${TARGET_LABEL[t.mode]}`, cost: null,
+        key: 'tg', angle: 0, glyph: TARGET_LABEL[t.mode], cls: 'tg', label: `조준 ${TARGET_LABEL[t.mode]}`, cost: null,
         tip: () => this.tipBody(`조준 우선순위 · ${TARGET_LABEL[t.mode]}`, null, `누르면 ${TARGET_LABEL[nextMode]}(으)로 바꿉니다. 선두 → 후미 → 강적 → 근접`),
         run: () => this.s.send({ t: 'target', p: this.me, id: t.id, mode: nextMode }),
       });
     }
     items.push({
-      key: 'sell', angle: 90, glyph: pop.armSell ? '確' : '撤', cost: `+${refund}`, cls: `sell${pop.armSell ? ' armed' : ''}`, disabled: !mine, label: `철거 +${refund}냥`,
+      key: 'sell', angle: 90, glyph: pop.armSell ? '확인' : '철거', cost: `+${refund}`, cls: `sell${pop.armSell ? ' armed' : ''}`, disabled: !mine, label: `철거 +${refund}냥`,
       tip: () => this.tipBody(pop.armSell ? '한 번 더 누르면 철거' : '철거', `+${refund}`, mine ? `투자 ${spent}냥 중 ${refund}냥을 돌려받습니다.` : '동료의 유산은 철거할 수 없습니다.'),
       run: () => {
         if (!pop.armSell) {
@@ -1082,7 +1090,7 @@ export class GameUI {
     if (this.pop && this.pop.kind === 'tower') this.refreshTowerPanel(false);
     if (this.pop && this.pop.kind === 'build') {
       const pl = v.players[this.me];
-      const sig = this.buildList(this.me).map((t) => (pl.gold >= TOWERS[t].levels[0].cost ? 1 : 0)).join('');
+      const sig = this.buildList(this.me).map((t) => (pl.gold >= this.price(t, TOWERS[t].levels[0].cost) ? 1 : 0)).join('');
       if (this.pop.sig !== sig) this.renderBuildRing();
       if (v.towers.some((t) => t.x === this.pop.x && t.y === this.pop.y)) this.closePop();
     }
@@ -1171,8 +1179,9 @@ export class GameUI {
       const def = ENEMIES[boss.type];
       this.bossFill = h('i', {});
       this.bossShield = h('i', { class: 'shield', style: { position: 'absolute', left: 0, top: 0, height: '4px' } });
-      this.bossEl = h('div', { class: 'bossbar', 'data-id': boss.id },
-        h('div', { class: 'nm' }, `${def.title} ${def.name}`),
+      this.bossEl = h('div', { class: `bossbar${def.fixedHp ? ' final' : ''}`, 'data-id': boss.id },
+        h('div', { class: 'nm' }, `${def.title} ${def.name}`,
+          h('span', { class: 'armor' }, `갑옷 ${Math.round(def.armor * 100)}% · 저항 ${Math.round(def.resist * 100)}%`)),
         h('div', { class: 'bar', style: { position: 'relative' } }, this.bossFill, this.bossShield));
       this.overlay.append(this.bossEl);
     }
@@ -1202,7 +1211,7 @@ export class GameUI {
           break;
         case 'boss': {
           const def = ENEMIES[e.type];
-          this.announce(def.name, `${def.title} 출현 — ${def.desc}`, '#ff9a8a');
+          this.announce(def.name, `${def.title} 출현 — ${def.line || def.desc}`, def.fixedHp ? '#ffd24a' : '#ff9a8a');
           break;
         }
         case 'toast':

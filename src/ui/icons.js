@@ -1,6 +1,7 @@
 // 초상화·아이콘 (캔버스로 그려 재사용)
 import { drawHero, drawEnemy } from '../render/draw-units.js';
 import { taegeuk, TS } from '../render/paint.js';
+import { ENEMIES } from '../data/enemies.js';
 
 export function heroPortrait(heroId, size = 46, owner = 0, skin = null) {
   const cv = document.createElement('canvas');
@@ -40,8 +41,8 @@ export function enemyIcon(type, size = 22) {
   cv.height = size * dpr;
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
-  const boss = ['konishi', 'kato', 'wakizaka', 'ukita', 'taiko'].includes(type);
-  const tall = boss ? 66 : type === 'cavalry' ? 44 : type === 'ram' ? 34 : type === 'armored' ? 44 : 36;
+  const boss = ENEMIES[type].tier === 4;
+  const tall = type === 'hideyoshi' ? 84 : boss ? 66 : type === 'cavalry' ? 44 : type === 'ram' ? 34 : type === 'armored' ? 44 : 36;
   const k = (size * 0.94) / tall;
   ctx.scale(k, k);
   drawEnemy(ctx, {

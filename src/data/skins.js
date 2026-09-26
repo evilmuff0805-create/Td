@@ -25,6 +25,14 @@ export const SKINS = {
     { id: 'gwak_black', name: '흑의 의병', price: 60, body: '#2c2b33', sleeve: '#3a3944', desc: '밤을 틈타 기습하던 검은 옷.' },
     { id: 'gwak_gold', name: '금빛 전설', price: 150, gold: true, desc: '금빛 홍의와 전설의 기운.' },
   ],
+  ahn: [
+    { id: 'ahn_militia', name: '대한의군 군복', price: 60, body: '#4a5a3a', sleeve: '#3e4c30', desc: '연해주 의병 부대의 국방색 군복.' },
+    { id: 'ahn_gold', name: '금빛 전설', price: 150, gold: true, desc: '금빛 외투와 전설의 기운.' },
+  ],
+  dangun: [
+    { id: 'dangun_sky', name: '천제의 푸른 옷', price: 60, body: '#3a6a9a', sleeve: '#4a7aaa', desc: '하늘에서 내려온 환웅의 푸른 옷.' },
+    { id: 'dangun_gold', name: '금빛 전설', price: 150, gold: true, desc: '금빛 신의(神衣)와 전설의 기운.' },
+  ],
 };
 
 export const GOLD_LOOK = { body: '#caa12a', sleeve: '#b8901f', boots: '#5a3a14' };

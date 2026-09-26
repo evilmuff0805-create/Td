@@ -7,7 +7,6 @@ import { FX, drawProjectile } from './fx.js';
 import { getMap, T_BUILD } from '../sim/map.js';
 import { STAGE_BY_ID } from '../data/stages.js';
 import { TOWERS, towerBase, SYNERGY_RANGE } from '../data/towers.js';
-import { HEROES } from '../data/heroes.js';
 
 export class Renderer {
   constructor(canvas) {
@@ -304,11 +303,6 @@ export class Renderer {
       ctx.font = '700 14px "Black Han Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(Math.ceil(h.respawn), x, y - 1);
-      ctx.font = '700 13px "Gowun Batang", serif';
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = 'rgba(0,0,0,0.8)';
-      ctx.strokeText(HEROES[h.heroId].name, x, y - 22);
-      ctx.fillText(HEROES[h.heroId].name, x, y - 22);
     }
 
     // 로컬 2P 커서
@@ -372,7 +366,7 @@ export class Renderer {
 
     // 야습
     const night = v.wave.tactic === 'night' && v.wave.phase !== 'prep';
-    if (night) this.drawNight(ctx, v);
+    if (night || this.stage.night) this.drawNight(ctx, v, night ? 0.45 : 0.3);
     if (this.fx.clockT > 0) {
       ctx.fillStyle = `rgba(90,150,220,${Math.min(0.18, this.fx.clockT * 0.05)})`;
       ctx.fillRect(0, 0, this.W, this.H);
@@ -506,6 +500,10 @@ export class Renderer {
     ctx.fill();
     drawHero(ctx, h, time, { noBar: true });
     ctx.globalAlpha = 1;
+    if (!label) {
+      ctx.restore();
+      return;
+    }
     ctx.font = '400 14px "Black Han Sans", sans-serif';
     ctx.textAlign = 'center';
     const w = ctx.measureText(label).width + 14;
@@ -605,10 +603,10 @@ export class Renderer {
     }
   }
 
-  drawNight(ctx, v) {
+  drawNight(ctx, v, a = 0.45) {
     // 어둠 + 유산·영웅 주변 불빛
     ctx.save();
-    ctx.fillStyle = 'rgba(12,16,40,0.45)';
+    ctx.fillStyle = `rgba(12,16,40,${a})`;
     ctx.fillRect(0, 0, this.W, this.H);
     ctx.globalCompositeOperation = 'lighter';
     for (const t of v.towers) glow(ctx, (t.x + 0.5) * TS, (t.y + 0.5) * TS - 8, 34, '#ffb35c', 0.18);

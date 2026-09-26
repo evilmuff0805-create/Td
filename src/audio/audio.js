@@ -117,7 +117,7 @@ class GameAudio {
   play(name) {
     if (!this.ctx || this.sfxVol <= 0) return;
     const now = performance.now();
-    const gap = { bell: 260, arrow: 70, star: 90, cannon: 110, rockets: 180, coin: 60, boom: 70, hit: 55, crit: 90, kill: 45, tick: 30 }[name] ?? 40;
+    const gap = { bell: 260, arrow: 70, star: 90, cannon: 110, rockets: 180, coin: 60, boom: 70, hit: 55, crit: 90, kill: 45, tick: 30, gun: 90 }[name] ?? 40;
     if (this.last[name] && now - this.last[name] < gap) return;
     this.last[name] = now;
     const n = (i) => 293.66 * Math.pow(2, (PENTA[i % 5] + 12 * Math.floor(i / 5)) / 12);
@@ -241,6 +241,25 @@ class GameAudio {
         break;
       case 'lose':
         [7, 5, 4, 2, 0].forEach((k, i) => this.pluck(n(k), { t: i * 0.22, vol: 0.18, dur: 1.4 }));
+        break;
+      case 'gun':
+        this.noise(0.09, { vol: 0.22, type: 'highpass', freq: 1800, sweep: 0.4 });
+        this.tone(220, 0.12, { vol: 0.2, slide: 0.4 });
+        break;
+      case 'gunVolley':
+        for (let i = 0; i < 7; i++) {
+          this.noise(0.08, { vol: 0.18, type: 'highpass', freq: 1800, sweep: 0.4, t: i * 0.07 });
+          this.tone(210, 0.1, { vol: 0.14, slide: 0.4, t: i * 0.07 });
+        }
+        break;
+      case 'snipe':
+        this.noise(0.5, { vol: 0.35, type: 'highpass', freq: 1400, sweep: 0.2 });
+        this.tone(140, 0.6, { vol: 0.35, slide: 0.3 });
+        this.gong(196, { t: 0.15, vol: 0.18, dur: 1.6 });
+        break;
+      case 'thunder':
+        for (let i = 0; i < 3; i++) this.noise(0.6, { vol: 0.3, type: 'lowpass', freq: 1600, sweep: 0.2, t: i * 0.35 });
+        this.tone(70, 1.2, { vol: 0.3, slide: 0.6 });
         break;
       case 'tick':
         this.tone(1200, 0.04, { type: 'triangle', vol: 0.06 });

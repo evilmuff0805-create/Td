@@ -79,10 +79,55 @@ export const ENEMIES = {
     boss: { rally: { cd: 12, heal: 0.08, haste: 0.3, dur: 3 } },
     desc: '12초마다 전군을 독려해 모든 왜군의 체력 8% 회복, 3초간 이동 속도 +30%.',
   },
-  taiko: {
-    name: '태합의 망령', title: '침략의 원흉', tier: 4, hp: 12500, speed: 0.45, armor: 0.4, resist: 0.4, bounty: 800, lives: 999, atk: 200, size: 0.72,
-    boss: { phases: [0.7, 0.35], phaseSummon: [{ type: 'samurai', n: 3 }, { type: 'ninja', n: 3 }], disableN: 3, disableDur: 5 },
-    desc: '최종 적장. 체력 70%·35%에서 정예를 소환하고 유산 3개를 봉쇄한다. 도성에 닿으면 즉시 패배.',
+  ishida: {
+    name: '이시다 미쓰나리', title: '삼봉행', tier: 4, hp: 12500, speed: 0.45, armor: 0.4, resist: 0.4, bounty: 600, lives: 14, atk: 200, size: 0.66,
+    boss: { phases: [0.7, 0.35], phaseSummon: [{ type: 'samurai', n: 3 }, { type: 'ninja', n: 3 }], disableN: 3, disableDur: 5, phaseText: '봉행의 계략' },
+    desc: '침략을 꾸린 책사. 체력 70%·35%에서 정예를 부르고 유산 3개를 봉쇄한다.',
+  },
+  so: {
+    name: '소 요시토시', title: '대마도주', tier: 4, hp: 5200, speed: 0.6, armor: 0.25, resist: 0.3, bounty: 240, lives: 6, atk: 80, size: 0.55,
+    boss: { summon: { type: 'scout', n: 5, cd: 8, text: '길잡이 척후대!' } },
+    desc: '길잡이 노릇을 한 대마도주. 8초마다 척후병 5명을 풀어 방어선을 흔든다.',
+  },
+  kuroda: {
+    name: '구로다 나가마사', title: '제3군 대장', tier: 4, hp: 7200, speed: 0.5, armor: 0.4, resist: 0.25, bounty: 280, lives: 7, atk: 110, size: 0.57,
+    boss: { summon: { type: 'teppo', n: 5, cd: 10, text: '철포대 사격 준비!' } },
+    desc: '조총 부대를 앞세운 장수. 10초마다 조총병 5명을 불러낸다.',
+  },
+  todo: {
+    name: '도도 다카토라', title: '수군 장수', tier: 4, hp: 6400, speed: 0.55, armor: 0.3, resist: 0.3, bounty: 300, lives: 7, atk: 110, size: 0.57,
+    boss: { shield: { pct: 0.08, cd: 13, text: '판옥 방패!' }, summon: { type: 'ashigaru', n: 4, cd: 12, text: '수군 상륙!' } },
+    desc: '옥포·칠천량의 수군 장수. 13초마다 보호막(8%), 12초마다 아시가루 4명 상륙.',
+  },
+  kuki: {
+    name: '구키 요시타카', title: '수군 대장', tier: 4, hp: 7600, speed: 0.5, armor: 0.4, resist: 0.3, bounty: 320, lives: 8, atk: 120, size: 0.58,
+    boss: { shield: { pct: 0.12, cd: 15, text: '철갑선 방벽!' } },
+    desc: '철갑선을 몰던 수군 대장. 15초마다 최대 체력 12%의 두꺼운 보호막.',
+  },
+  kurushima: {
+    name: '구루시마 미치후사', title: '선봉 수군장', tier: 4, hp: 9000, speed: 0.6, armor: 0.3, resist: 0.3, bounty: 330, lives: 9, atk: 130, size: 0.58,
+    boss: { rally: { cd: 10, heal: 0.05, haste: 0.35, dur: 3, text: '노를 저어라!' } },
+    desc: '명량의 선봉. 10초마다 모든 왜군 체력 5% 회복, 3초간 이동 속도 +35%.',
+  },
+  shimazu: {
+    name: '시마즈 요시히로', title: '귀신 시마즈', tier: 4, hp: 14000, speed: 0.5, armor: 0.5, resist: 0.35, bounty: 450, lives: 12, atk: 170, size: 0.62,
+    enrage: { at: 0.4, speed: 1.5 },
+    boss: { charge: { cd: 10, dur: 1.4, mult: 3, text: '귀신 돌격!' }, disable: { range: 3.2, dur: 4 } },
+    desc: '가장 사나운 적장. 10초마다 유산 하나를 봉쇄하며 돌진하고, 체력 40% 아래에서 더 빨라진다.',
+  },
+
+  // ───── 최종 적장 ─────
+  hideyoshi: {
+    name: '도요토미 히데요시', title: '태합 · 침략의 원흉', tier: 4, hp: 38000, speed: 0.3, armor: 0.88, resist: 0.55, bounty: 3000, lives: 999, atk: 400, size: 0.8,
+    scale: 2.15, fixedHp: true, // 전장 체력 배율과 상관없이 고정 (난이도·협동 배율만 받는다)
+    line: '갑옷 88% — 화기·신성·갑옷 깎기로 공략하라!',
+    boss: {
+      phases: [0.75, 0.5, 0.25],
+      phaseSummon: [{ type: 'samurai', n: 4 }, { type: 'armored', n: 3 }, { type: 'ninja', n: 6 }],
+      disableN: 4, disableDur: 6, phaseText: '천하인의 호령',
+      shield: { pct: 0.05, cd: 15, text: '황금 표주박!' },
+    },
+    desc: '단 한 명. 갑옷 88% — 물리 피해가 거의 통하지 않는다. 화기(갑옷 절반 무시)·신성·갑옷 깎기로 공략하라. 도성에 닿으면 즉시 패배.',
   },
 };
 

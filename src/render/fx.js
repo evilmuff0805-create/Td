@@ -19,6 +19,8 @@ const BOOM = {
   stone: ['#f4efe4', '#cfc6b4', '#a89f8c', '#8a8274'],
   star: ['#ffffff', '#fff1b0', '#c9e4ff', null],
   hangul: ['#ffffff', '#ffe08a', '#fff1b0', null],
+  garlic: ['#ffffff', '#f7f3e0', '#dfe8a8', null],
+  thunder: ['#ffffff', '#e8f4ff', '#9fd0ff', null],
 };
 
 export class FX {
@@ -167,6 +169,12 @@ export class FX {
   explode(x, y, r, kind) {
     const pal = BOOM[kind] || BOOM.shell;
     const magic = !pal[3];
+    if (kind === 'thunder') {
+      // 하늘에서 내리꽂히는 번개
+      this.lines.push({ x1: x + rnd(-20, 20), y1: y - 190, x2: x, y2: y - 4, life: 0.22, max: 0.22, color: '#dff2ff', w: 5, jag: true });
+      this.addTrauma(0.08);
+    }
+    if (kind === 'garlic' && Math.random() < 0.35) this.texts.push({ x, y: y - 22, text: '매워!', color: '#e9f5b0', size: 12, life: 0.8, max: 0.8, vy: -26, pop: 0.12 });
     // 섬광
     this.puffs.push({ x, y, r0: r * 0.25, r1: r * 0.75, col: pal[0], life: 0.1, max: 0.1, vx: 0, vy: 0, edge: false, disc: true });
     this.rings.push({ x, y, r0: r * 0.3, r1: r * 1.05, life: 0.3, max: 0.3, color: magic ? pal[1] : '#fff4d8', w: magic ? 4 : 3 });
@@ -259,10 +267,26 @@ export class FX {
         this.spark(px(ev.x2), px(ev.y2) - 8, 11, ev.c || '#bfe6ff', 0.14);
         break;
       case 'shot':
-        this.lines.push({ x1: px(ev.x1), y1: px(ev.y1) - 4, x2: px(ev.x2), y2: px(ev.y2) - 8, life: 0.12, max: 0.12, color: '#fff3c0', w: 1.4 });
+        this.lines.push({ x1: px(ev.x1), y1: px(ev.y1) - 4, x2: px(ev.x2), y2: px(ev.y2) - 8, life: 0.12, max: 0.12, color: '#fff3c0', w: ev.gun ? 2 : 1.4 });
         this.spark(px(ev.x1), px(ev.y1) - 6, 7, '#ffe08a', 0.08);
         this.puff(px(ev.x1), px(ev.y1) - 6, 2, 6, '#dcd4c8', 0.5, 0, -14);
+        if (ev.gun) this.spark(px(ev.x2), px(ev.y2) - 10, 8, '#ffffff', 0.1);
         break;
+      case 'snipe': {
+        // 하얼빈의 총성: 전장을 가로지르는 한 줄기 탄도
+        const x2 = px(ev.x2);
+        const y2 = px(ev.y2) - 12;
+        this.lines.push({ x1: px(ev.x1), y1: px(ev.y1) - 6, x2, y2, life: 0.4, max: 0.4, color: '#fff3c0', w: 4 });
+        this.rings.push({ x: x2, y: y2, r0: 4, r1: 40, life: 0.4, max: 0.4, color: '#ffe08a', w: 4 });
+        this.spark(x2, y2, 26, '#ffffff', 0.2);
+        this.spark(px(ev.x1), px(ev.y1) - 6, 16, '#ffe08a', 0.12);
+        this.burst(x2, y2, 20, '#ffe08a', 120, 0.5, 2.4);
+        this.flash = 0.25;
+        this.flashColor = '#fff6d8';
+        this.addTrauma(0.5);
+        this.kick(x2, y2, 0.8);
+        break;
+      }
       case 'disable':
         this.lines.push({ x1: px(ev.x1), y1: px(ev.y1) - 10, x2: px(ev.x2), y2: px(ev.y2) - 10, life: 0.6, max: 0.6, color: '#b98aff', w: 3, jag: true });
         break;
@@ -357,6 +381,14 @@ export class FX {
         break;
       case 'clock':
         this.clockT = 6;
+        break;
+      case 'boss':
+        // 최종 적장 등장: 금빛 섬광과 큰 흔들림
+        if (ENEMIES[ev.type] && ENEMIES[ev.type].fixedHp) {
+          this.flash = 0.6;
+          this.flashColor = '#ffd24a';
+          this.addTrauma(0.7);
+        } else this.addTrauma(0.25);
         break;
       case 'freeze':
         this.flash = 0.45;
@@ -884,6 +916,45 @@ export function drawProjectile(ctx, p, time) {
       ctx.ellipse(x, y, 4, 1.8, 0, 0, Math.PI * 2);
       ctx.fill();
       sphere(ctx, x - (1 - k) * 30, fy, 4, '#9a958a', { lw: 0.9 });
+      break;
+    }
+    case 'garlic': {
+      // 마늘 한 통이 포물선을 그리며 날아간다
+      const k = p.k || 0;
+      const sx = p.sx !== undefined ? p.sx * TS : x - 40;
+      const sy = p.sy !== undefined ? p.sy * TS : y - 20;
+      const cx = sx + (x - sx) * k;
+      const cy = sy + (y - sy) * k - Math.sin(k * Math.PI) * 46;
+      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      ctx.beginPath();
+      ctx.ellipse(x, y, 3 + k * 3, 1.4 + k, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(time * 14 + p.id);
+      sphere(ctx, 0, 0, 4.4, '#f6f1e2', { lw: 0.9 });
+      ctx.strokeStyle = 'rgba(150,120,160,0.7)';
+      ctx.lineWidth = 0.7;
+      for (const a of [-0.5, 0, 0.5]) {
+        ctx.beginPath();
+        ctx.moveTo(Math.sin(a) * 1.5, -4);
+        ctx.quadraticCurveTo(Math.sin(a) * 4.4, 0, Math.sin(a) * 1.5, 4);
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#8a7a50';
+      ctx.fillRect(-0.6, -6.2, 1.2, 2.2);
+      ctx.restore();
+      break;
+    }
+    case 'thunder': {
+      // 번개가 떨어질 자리: 땅에 빛 고리가 조여 든다
+      const k = p.k || 0;
+      ctx.strokeStyle = `rgba(200,235,255,${0.3 + k * 0.6})`;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(x, y, 16 * (1.2 - k * 0.7), 7 * (1.2 - k * 0.7), 0, 0, Math.PI * 2);
+      ctx.stroke();
+      glow(ctx, x, y, 12, '#bfe6ff', 0.2 + k * 0.5);
       break;
     }
     case 'bomb': {

@@ -30,6 +30,22 @@ export const COMBOS = [
     id: 'gang_yi', pair: ['yi', 'gang'], name: '불멸의 대첩',
     desc: '가장 강한 적 12명에게 유성 + 거북선 포격. 대상마다 신성 피해 500.',
   },
+  {
+    id: 'ahn_sejong', pair: ['sejong', 'ahn'], name: '대한 독립 만세',
+    desc: '한글로 새긴 만세 소리가 울려 퍼진다. 모든 적 기절 2초 + 화기 피해 380, 8초간 모든 유산 공격 속도 +25%.',
+  },
+  {
+    id: 'dangun_eulji', pair: ['eulji', 'dangun'], name: '고조선의 후예',
+    desc: '하늘 문이 열려 모든 적에게 번개. 신성 피해 420 + 적장은 받는 피해 +40% (8초).',
+  },
+  {
+    id: 'ahn_yi', pair: ['yi', 'ahn'], name: '필사즉생의 총성',
+    desc: '가장 강한 적 6명에게 거북선 포격과 저격이 겹친다. 대상마다 화기 피해 700.',
+  },
+  {
+    id: 'dangun_sejong', pair: ['sejong', 'dangun'], name: '홍익의 나라',
+    desc: '모든 영웅 완전 회복·8초 무적, 모든 플레이어 군자금 +200.',
+  },
 ];
 
 export const GENERIC_COMBO = {

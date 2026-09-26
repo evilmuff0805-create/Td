@@ -4,7 +4,7 @@ import { setBackdrop } from './backdrop.js';
 import { heroFull } from './icons.js';
 import { renderMapBackground } from '../render/draw-map.js';
 import { getMap } from '../sim/map.js';
-import { STAGES } from '../data/stages.js';
+import { STAGES, STAGE_BY_ID } from '../data/stages.js';
 import { RANKS, RANK_TITLES, rankXpNeeded, ATTENDANCE } from '../data/quests.js';
 import { HERO_ORDER } from '../data/heroes.js';
 import { saveProfile, rankName, stageUnlocked, resetProfile, heroSkin } from '../meta/profile.js';
@@ -61,7 +61,7 @@ export function hubScreen(app) {
   const lastStage = [...STAGES].reverse().find((s) => stageUnlocked(p, s.id)) || STAGES[0];
   const thumb = renderMapBackground(getMap(lastStage.id), lastStage, 1);
   thumb.setAttribute('aria-hidden', 'true');
-  const thumb2 = renderMapBackground(getMap('s4'), STAGES[3], 1);
+  const thumb2 = renderMapBackground(getMap('s4'), STAGE_BY_ID.s4, 1);
   thumb2.setAttribute('aria-hidden', 'true');
   const claimable = claimableCount(p);
   const tile = (t, s, go, dot) => h('button', { class: 'side-tile', onclick: () => app.go(go) }, dot ? h('span', { class: 'badge-dot', 'aria-label': '받을 보상 있음' }) : null, h('span', { class: 't' }, t), h('span', { class: 's' }, s));

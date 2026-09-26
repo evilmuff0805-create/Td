@@ -45,7 +45,7 @@ function itemsTab(app) {
         }
       };
       return h('div', { class: 'card item-card' },
-        h('div', { class: 'item-medal' }, h('span', {}, it.glyph), h('kbd', {}, 'ZXCV'[i])),
+        h('div', { class: 'item-medal' }, h('span', {}, it.short), h('kbd', {}, 'ZXCV'[i])),
         h('span', { class: 'nm' }, it.name),
         h('span', { class: 'sub' }, `보유 ${p.items[id] || 0}개`),
         h('span', { class: 'desc' }, it.desc),

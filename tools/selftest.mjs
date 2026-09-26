@@ -26,6 +26,13 @@ const test = (name, fn) => {
 };
 
 test('지도와 웨이브 데이터', () => {
+  assert.equal(STAGES.length, 25);
+  // 도요토미 히데요시는 마지막 전장의 마지막 파도에만, 단 한 명
+  for (const st of STAGES) {
+    const n = st.waves.flatMap((w) => parseWave(w)).filter((g) => g.type === 'hideyoshi').reduce((a, g) => a + g.n, 0);
+    assert.equal(n, st.id === STAGES[STAGES.length - 1].id ? 1 : 0, `${st.id} 히데요시 ${n}명`);
+  }
+  assert.ok(parseWave(STAGES[STAGES.length - 1].waves.at(-1)).every((g) => g.type === 'hideyoshi'));
   for (const st of STAGES) {
     const map = getMap(st.id);
     const buildable = map.grid.filter((t) => t === T_BUILD).length;

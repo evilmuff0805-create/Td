@@ -16,24 +16,27 @@ const flags = Object.fromEntries(args.filter((a) => a.startsWith('--')).map((a) 
 }));
 const pos = args.filter((a) => !a.startsWith('--'));
 
-const HERO_PAIRS = [['yi', 'sejong'], ['eulji', 'gang'], ['gwon', 'gwak']];
+const HERO_PAIRS = [['yi', 'sejong'], ['eulji', 'gang'], ['gwon', 'gwak'], ['ahn', 'dangun']];
 const SKILL_SETS = [['singijeon', 'bongsu'], ['bigyeok', 'uibyeong'], ['cheonja', 'hanpa']];
 
-// 스테이지 진행에 따른 예상 영구 강화 수준
-const META_BY_STAGE = { s1: 0, s2: 1, s3: 2, s4: 3, s5: 4 };
+// 스테이지 진행(0~24번째 전장)에 따른 예상 영구 강화 수준: 영웅 0~10, 비기 0~5, 유산 복원 0~30
+export function expectedMeta(stageId) {
+  const i = STAGES.findIndex((st) => st.id === stageId);
+  return { hero: Math.min(10, Math.round(i * 0.45)), skill: Math.min(5, Math.round(i * 0.22)), tower: Math.min(30, Math.round(i * 1.3)) };
+}
 
-export function runOne({ stageId, difficulty, mode, seed = 1, plan = 'balanced', meta = 'auto', heroes, skills, useSkills = true, verbose = false }) {
-  const m = meta === 'auto' ? META_BY_STAGE[stageId] : +meta;
-  const lvMap = (keys) => Object.fromEntries(keys.map((k) => [k, m]));
+export function runOne({ stageId, difficulty, mode, seed = 1, plan = 'balanced', meta = 'auto', heroes, skills, useSkills = true, verbose = false, hpBase }) {
+  const m = meta === 'auto' ? expectedMeta(stageId) : { hero: Math.min(10, +meta), skill: Math.min(5, +meta), tower: Math.min(30, +meta * 3) };
+  const lvMap = (keys, v) => Object.fromEntries(keys.map((k) => [k, v]));
   const allTowers = Object.keys(TOWERS);
   const mk = (i, hs, sk) => ({
     name: `봇${i + 1}`, heroes: hs, skills: sk, towers: allTowers,
-    heroLv: lvMap(hs), skillLv: lvMap(sk), towerLv: lvMap(allTowers),
+    heroLv: lvMap(hs, m.hero), skillLv: lvMap(sk, m.skill), towerLv: lvMap(allTowers, m.tower),
   });
   const pair = heroes || HERO_PAIRS[(seed - 1) % HERO_PAIRS.length];
   const sk = skills || SKILL_SETS[(seed - 1) % SKILL_SETS.length];
   const players = mode === 'solo' ? [mk(0, pair, sk)] : [mk(0, [pair[0]], sk), mk(1, [pair[1]], SKILL_SETS[seed % SKILL_SETS.length])];
-  const s = createGame({ stageId, difficulty, mode, seed: seed * 7919, players });
+  const s = createGame({ stageId, difficulty, mode, seed: seed * 7919, players, hpBase });
   const bots = players.map((_, i) => createBot(s, i, { plan, skills: useSkills }));
   const send = (c) => queueCommand(s, c);
   let lastWave = 0;
@@ -87,10 +90,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.log(`결과: ${r.win ? '승리' : '패배'} 민심 ${r.lives}/${r.maxLives} 별 ${r.stars} 파도 ${r.wave}/${r.total} 합격기 ${r.combos}회 ${r.time}초 남은 군자금 ${r.goldLeft}`);
   } else {
     const diffs = (flags.diff || 'normal,hard,hell').split(',');
+    const only = flags.stages ? flags.stages.split(',') : null;
     const modes = (flags.mode || 'solo,coop').split(',');
     console.log(`전략=${plan} 시드=${seeds} 영구강화=${meta} 스킬=${useSkills}`);
     console.log(pad('스테이지', 10) + pad('난이도', 8) + pad('모드', 6) + '결과 (승/전, 평균 남은 민심, 평균 도달 파도)');
     for (const st of STAGES) {
+      if (only && !only.includes(st.id)) continue;
       for (const difficulty of diffs) {
         for (const mode of modes) {
           const rs = [];

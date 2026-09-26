@@ -7,7 +7,7 @@ import { HEROES } from '../data/heroes.js';
 import { SKILLS, skillCdMult } from '../data/skills.js';
 import { TACTICS, TACTIC_ORDER, TACTIC_CHANCE, TACTIC_MIN_WAVE } from '../data/tactics.js';
 import { STAGE_BY_ID, STAGES, DIFFICULTY, COOP, parseWave } from '../data/stages.js';
-import { TOWER_META_BONUS } from '../data/quests.js';
+import { TOWER_META_BONUS, metaRangeMult, metaAsMult, metaCost } from '../data/quests.js';
 import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
 import { getMap, posAt, tileAt, T_BUILD } from './map.js';
 import { rand, randInt } from './rng.js';
@@ -16,7 +16,7 @@ import {
   isTargetable, hurtHero, hurtSummon, releaseBlocker, releaseEnemy, findEnemy, findBlocker, recalcHero,
   addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn,
 } from './combat.js';
-import { castHeroSkill, castHeroUlt, castEquipSkill, pressCombo } from './abilities.js';
+import { castHeroSkill, castHeroUlt, castEquipSkill, pressCombo, AHN_BOSS_MULT } from './abilities.js';
 
 export const DT = 1 / 60;
 export const PREP_TIME = 18;
@@ -40,6 +40,7 @@ export function createGame(opts) {
     buffs: { dmgT: 0, dmg: 0, asT: 0, as: 0, slowT: 0, slow: 0, revealT: 0, vulnT: 0, vuln: 0, armorZeroT: 0 },
     events: [], cmds: [], result: null,
   };
+  if (opts.hpBase) s.hpBase = opts.hpBase; // 밸런스 도구용 덮어쓰기
   const startGold = coop ? Math.round(stage.startGold * COOP.startGoldShare) : stage.startGold;
   opts.players.forEach((p, i) => {
     s.players.push({
@@ -174,7 +175,7 @@ function cmdBuild(s, pl, c) {
   const map = mapOf(s);
   if (tileAt(map, c.x, c.y) !== T_BUILD) return;
   if (s.towers.some((t) => t.x === c.x && t.y === c.y)) return;
-  const cost = def.levels[0].cost;
+  const cost = metaCost(def.levels[0].cost, pl.towerLv[c.tower] || 0);
   if (pl.gold < cost) return ev(s, 'toast', { p: pl.idx, text: '군자금이 부족합니다' });
   pl.gold -= cost;
   const t = {
@@ -196,13 +197,14 @@ function cmdUpgrade(s, pl, c) {
   if (!t || t.branch) return;
   const def = TOWERS[t.type];
   let cost;
+  const mlv = pl.towerLv[t.type] || 0;
   if (t.level < def.levels.length) {
-    cost = def.levels[t.level].cost;
+    cost = metaCost(def.levels[t.level].cost, mlv);
     if (pl.gold < cost) return ev(s, 'toast', { p: pl.idx, text: '군자금이 부족합니다' });
     t.level++;
   } else {
     if (!def.branches[c.branch]) return;
-    cost = def.branches[c.branch].cost;
+    cost = metaCost(def.branches[c.branch].cost, mlv);
     if (pl.gold < cost) return ev(s, 'toast', { p: pl.idx, text: '군자금이 부족합니다' });
     t.branch = c.branch;
     if (def.branches[c.branch].target) t.mode = def.branches[c.branch].target;
@@ -486,9 +488,9 @@ function updateTowerBuffs(s) {
   for (const t of s.towers) {
     let as = t.bAs + (b.asT > 0 ? b.as : 0);
     for (const h of yiAura) if ((t.cx - h.x) ** 2 + (t.cy - h.y) ** 2 <= 6.25) as += 0.12;
-    t.asMult = 1 + as;
+    t.asMult = (1 + as) * metaAsMult(t.metaLv);
     t.dmgMult = (1 + t.bDmg + t.syn * SYNERGY_BONUS + (b.dmgT > 0 ? b.dmg : 0)) * (1 + TOWER_META_BONUS * t.metaLv);
-    t.rangeMult = (1 + t.bRange) * (night ? 0.85 : 1);
+    t.rangeMult = (1 + t.bRange) * (night ? 0.85 : 1) * metaRangeMult(t.metaLv);
   }
 }
 
@@ -616,18 +618,19 @@ function enemyAbilities(s, e, def) {
 }
 
 function bossAbilities(s, e, b) {
-  if (b.summon) {
-    e.abT -= DT;
-    if (e.abT <= 0) {
-      e.abT = b.summon.cd;
-      for (let i = 0; i < b.summon.n; i++) spawnEnemy(s, b.summon.type, e.path, e.wave, Math.max(0, e.d - 0.5 - i * 0.3), { bountyMult: 0.5 });
-      ev(s, 'bossSkill', { x: e.x, y: e.y, text: '선봉대 소집!' });
-    }
+  const ab = e.ab || (e.ab = {});
+  const tick = (k) => {
+    ab[k] = (ab[k] ?? 3) - DT;
+    return ab[k] <= 0;
+  };
+  if (b.summon && tick('summon')) {
+    ab.summon = b.summon.cd;
+    for (let i = 0; i < b.summon.n; i++) spawnEnemy(s, b.summon.type, e.path, e.wave, Math.max(0, e.d - 0.5 - i * 0.3), { bountyMult: 0.5 });
+    ev(s, 'bossSkill', { x: e.x, y: e.y, text: b.summon.text || '선봉대 소집!' });
   }
   if (b.charge) {
-    e.abT -= DT;
-    if (e.abT <= 0) {
-      e.abT = b.charge.cd;
+    if (tick('charge')) {
+      ab.charge = b.charge.cd;
       e.chargeT = b.charge.dur;
       if (e.blockedBy) releaseEnemy(s, e);
       let best = null;
@@ -643,28 +646,24 @@ function bossAbilities(s, e, b) {
         best.disabledT = b.disable.dur;
         ev(s, 'disable', { x1: e.x, y1: e.y, x2: best.cx, y2: best.cy });
       }
-      ev(s, 'bossSkill', { x: e.x, y: e.y, text: '창 돌격!' });
+      ev(s, 'bossSkill', { x: e.x, y: e.y, text: b.charge.text || '창 돌격!' });
     }
   }
-  if (b.shield) {
-    e.abT -= DT;
-    if (e.abT <= 0) {
-      e.abT = b.shield.cd;
-      e.shield = e.maxHp * b.shield.pct;
-      ev(s, 'bossSkill', { x: e.x, y: e.y, text: '안택선 방패!' });
-    }
+  if (b.shield && tick('shield')) {
+    ab.shield = b.shield.cd;
+    e.shield = e.maxHp * b.shield.pct;
+    ev(s, 'bossSkill', { x: e.x, y: e.y, text: b.shield.text || '안택선 방패!' });
   }
   if (b.rally) {
-    e.abT -= DT;
-    if (e.abT <= 0) {
-      e.abT = b.rally.cd;
+    if (tick('rally')) {
+      ab.rally = b.rally.cd;
       for (const o of s.enemies) {
         if (o.hp <= 0) continue;
         o.hp = Math.min(o.maxHp, o.hp + o.maxHp * b.rally.heal * (o.tier === 4 ? 0.25 : 1));
         o.hasteT = b.rally.dur;
         o.hasteA = b.rally.haste;
       }
-      ev(s, 'bossSkill', { x: e.x, y: e.y, text: '전군 돌격하라!' });
+      ev(s, 'bossSkill', { x: e.x, y: e.y, text: b.rally.text || '전군 돌격하라!' });
       ev(s, 'sfx', { n: 'warcry' });
     }
   }
@@ -679,7 +678,7 @@ function bossAbilities(s, e, b) {
         ev(s, 'disable', { x1: e.x, y1: e.y, x2: t.cx, y2: t.cy });
       }
       e.phase++;
-      ev(s, 'announce', { text: '태합의 저주', sub: '유산이 봉쇄되고 정예가 나타난다', color: '#ff6b6b' });
+      ev(s, 'announce', { text: b.phaseText || '적장의 계략', sub: '유산이 봉쇄되고 정예가 나타난다', color: '#ff6b6b' });
       ev(s, 'sfx', { n: 'bossWave' });
     }
   }
@@ -707,6 +706,7 @@ function heroTarget(s, h, def) {
 
 function updateHeroes(s) {
   const base = mapOf(s).base;
+  const dangunAura = s.heroes.some((h) => h.heroId === 'dangun' && !h.dead);
   for (const h of s.heroes) {
     const def = HEROES[h.heroId];
     const bf = h.buffs;
@@ -728,8 +728,8 @@ function updateHeroes(s) {
       }
       continue;
     }
-    // 회복
-    const regen = (def.regen || 0) + (s.time - h.hurtT > 4 ? 0.01 : 0);
+    // 회복 (단군의 홍익인간: 모든 영웅 +0.7%/초)
+    const regen = (def.regen || 0) + (s.time - h.hurtT > 4 ? 0.01 : 0) + (dangunAura ? 0.007 : 0);
     h.hp = Math.min(h.maxHp, h.hp + h.maxHp * regen * DT);
     // 근접 영웅: 거점 주변 적을 가로막으러 이동
     if (def.block > 0 && h.engaged.length === 0 && h.post) {
@@ -780,7 +780,31 @@ function heroAttack(s, h, def, e) {
   h.atkCount++;
   const dmg = h.dmg * (h.buffs.dmgT > 0 ? 2 : 1);
   const src = { p: h.owner, kind: 'hero', ref: h };
-  if (def.attack === 'melee') {
+  if (def.attack === 'gun') {
+    // 권총: 즉시 명중 (적장에게 +30%)
+    damage(s, e, dmg * (e.tier === 4 ? AHN_BOSS_MULT : 1), def.dmgType, src);
+    ev(s, 'shot', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y, gun: 1 });
+    ev(s, 'sfx', { n: 'gun' });
+  } else if (def.attack === 'lightning') {
+    // 번개: 맞은 적 옆 1명에게 절반 피해로 튄다
+    damage(s, e, dmg, def.dmgType, src);
+    ev(s, 'bolt', { x1: h.x, y1: h.y - 0.5, x2: e.x, y2: e.y, c: '#dff2ff' });
+    let next = null;
+    let bd = 1.8 * 1.8;
+    for (const o of s.enemies) {
+      if (o === e || !isTargetable(o)) continue;
+      const dd = d2(o, e);
+      if (dd < bd) {
+        bd = dd;
+        next = o;
+      }
+    }
+    if (next) {
+      damage(s, next, dmg * 0.5, def.dmgType, src);
+      ev(s, 'bolt', { x1: e.x, y1: e.y, x2: next.x, y2: next.y, c: '#bfe6ff' });
+    }
+    ev(s, 'sfx', { n: 'star' });
+  } else if (def.attack === 'melee') {
     damage(s, e, dmg, def.dmgType, src);
     ev(s, 'slash', { x: e.x, y: e.y, f: h.facing });
     if (h.heroId === 'gang' && h.atkCount % 4 === 0) {
@@ -1144,7 +1168,7 @@ function explode(s, p) {
     if (e && e.hp > 0) damage(s, e, h.dmg, h.type, p.src);
     aoe(s, p.tx, p.ty, 0.8, h.dmg * 0.3, h.type, p.src);
   } else {
-    aoe(s, p.tx, p.ty, h.r, h.dmg, h.type, p.src, { stun: h.stun || 0 });
+    aoe(s, p.tx, p.ty, h.r, h.dmg, h.type, p.src, { stun: h.stun || 0, slow: h.slow || 0, slowDur: h.slowDur || 0 });
   }
   ev(s, 'boom', { x: p.tx, y: p.ty, r: h.r, kind: p.kind });
 }

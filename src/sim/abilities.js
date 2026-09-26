@@ -3,9 +3,23 @@ import { HEROES } from '../data/heroes.js';
 import { SKILLS, skillPower } from '../data/skills.js';
 import { findCombo, COMBO_RANGE, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import {
-  ev, d2, clamp, mapOf, aoe, damage, applySlow, applyStun, addSummon, drop, randomPointIn,
+  ev, d2, clamp, mapOf, aoe, damage, applySlow, applyStun, applyVuln, addSummon, drop, randomPointIn,
   addGold, heroPower, isTargetable, addResonance, releaseBlocker,
 } from './combat.js';
+
+// 안중근의 상시 효과: 적장에게 +25%
+export const AHN_BOSS_MULT = 1.25;
+const bossMult = (h, e) => (h.heroId === 'ahn' && e.tier === 4 ? AHN_BOSS_MULT : 1);
+
+// 전장에서 가장 강한 적 (적장 우선, 다음은 남은 체력)
+function strongest(s) {
+  let best = null;
+  for (const e of s.enemies) {
+    if (e.hp <= 0) continue;
+    if (!best || (e.tier === 4) > (best.tier === 4) || ((e.tier === 4) === (best.tier === 4) && e.hp > best.hp)) best = e;
+  }
+  return best;
+}
 import { nearestOnPath, posAt } from './map.js';
 
 const SKILL_RANGE = 5;
@@ -126,6 +140,32 @@ export function castHeroSkill(s, h, x, y) {
       ev(s, 'sfx', { n: 'horn' });
       break;
     }
+    case 'ahn': {
+      // 일곱 발의 총성: 지점 주변 적에게 7발
+      const p = clampToHero(h, x, y);
+      const dmg = scaled(h, def.skill.base, def.skill.perLv);
+      const near = s.enemies.filter((e) => e.hp > 0 && (e.x - p.x) ** 2 + (e.y - p.y) ** 2 <= 2.2 * 2.2).sort((a, b) => d2(a, p) - d2(b, p));
+      for (let i = 0; i < 7 && near.length; i++) {
+        const e = near[i % near.length];
+        damage(s, e, dmg * bossMult(h, e), 'fire', src);
+        ev(s, 'shot', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y, gun: 1 });
+      }
+      h.facing = p.x >= h.x ? 1 : -1;
+      ev(s, 'sfx', { n: 'gunVolley' });
+      break;
+    }
+    case 'dangun': {
+      // 마늘 던지기: 매워서 둔화
+      const p = clampToHero(h, x, y);
+      const dmg = scaled(h, def.skill.base, def.skill.perLv);
+      for (let i = 0; i < 3; i++) {
+        const q = i === 0 ? p : randomPointIn(s, p.x, p.y, 1.2);
+        drop(s, 'garlic', q.x, q.y, 0.45 + i * 0.12, { r: 0.9, dmg, type: 'holy', slow: 0.35, slowDur: 3 }, src, { sx: h.x, sy: h.y - 0.4 });
+      }
+      h.facing = p.x >= h.x ? 1 : -1;
+      ev(s, 'sfx', { n: 'throw' });
+      break;
+    }
   }
   addResonance(s, 4);
 }
@@ -181,6 +221,32 @@ export function castHeroUlt(s, h, x, y) {
       h.buffs.gwakT = 8;
       ev(s, 'announce', { text: '홍의 질풍', sub: '하늘이 내린 붉은 옷의 장군', color: '#ff7b6b' });
       ev(s, 'sfx', { n: 'horn' });
+      break;
+    }
+    case 'ahn': {
+      // 하얼빈 의거: 가장 강한 적을 저격
+      const e = strongest(s);
+      if (e) {
+        applyStun(e, 1.5);
+        applyVuln(e, 0.3, 6);
+        damage(s, e, scaled(h, def.ult.base, def.ult.perLv) * bossMult(h, e), 'fire', src);
+        ev(s, 'snipe', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y });
+        h.facing = e.x >= h.x ? 1 : -1;
+      }
+      ev(s, 'announce', { text: '하얼빈의 총성', sub: '대한 독립 만세!', color: '#f0c75e' });
+      ev(s, 'sfx', { n: 'snipe' });
+      break;
+    }
+    case 'dangun': {
+      // 천부인 번개: 가장 강한 적 12명에게 차례로
+      const dmg = scaled(h, def.ult.base, def.ult.perLv);
+      const targets = s.enemies.filter((e) => e.hp > 0).sort((a, b) => (b.tier === 4) - (a.tier === 4) || b.hp - a.hp);
+      for (let i = 0; i < 12 && targets.length; i++) {
+        const e = targets[i % targets.length];
+        drop(s, 'thunder', e.x, e.y, 0.3 + i * 0.13, { r: 0.7, dmg, type: 'holy', stun: 0.8 }, src, { follow: e.id });
+      }
+      ev(s, 'announce', { text: '천부인 번개', sub: '하늘이 열린다', color: '#bfe6ff' });
+      ev(s, 'sfx', { n: 'thunder' });
       break;
     }
   }
@@ -346,6 +412,39 @@ export function fireCombo(s) {
       targets.forEach((e, i) => drop(s, 'meteor', e.x, e.y, 0.4 + i * 0.1, { r: 0.6, dmg: 500 + lvSum * 15, type: 'holy', follow: e.id }, src));
       break;
     }
+    case 'ahn_sejong':
+      for (const e of alive()) {
+        applyStun(e, 2);
+        damage(s, e, 380 + lvSum * 12, 'fire', src);
+      }
+      s.buffs.asT = Math.max(s.buffs.asT, 8);
+      s.buffs.as = Math.max(s.buffs.as, 0.25);
+      ev(s, 'announce', { text: '대한 독립 만세!', color: '#f0c75e' });
+      break;
+    case 'dangun_eulji':
+      alive().forEach((e, i) => {
+        damage(s, e, 420 + lvSum * 12, 'holy', src);
+        if (e.tier === 4) applyVuln(e, 0.4, 8);
+        if (i < 16) ev(s, 'boom', { x: e.x, y: e.y, r: 0.6, kind: 'thunder' });
+      });
+      break;
+    case 'ahn_yi': {
+      const targets = alive().sort((x, y) => (y.tier === 4) - (x.tier === 4) || y.hp - x.hp).slice(0, 6);
+      targets.forEach((e, i) => drop(s, 'bigshell', e.x, e.y, 0.4 + i * 0.12, { r: 0.6, dmg: 700 + lvSum * 15, type: 'fire', single: e.id }, src, { sx: e.x - 8, sy: e.y - 4, follow: e.id }));
+      break;
+    }
+    case 'dangun_sejong':
+      for (const h of s.heroes) {
+        if (h.dead) {
+          h.dead = false;
+          h.respawn = 0;
+        }
+        h.hp = h.maxHp;
+        h.buffs.invulnT = 8;
+        ev(s, 'heal', { x: h.x, y: h.y });
+      }
+      for (const pl of s.players) addGold(pl, 200);
+      break;
     default: {
       const dmg = 260 + lvSum * 18;
       for (const e of alive()) {

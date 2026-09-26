@@ -4,7 +4,6 @@
 import { skinDef, GOLD_LOOK } from '../data/skins.js';
 import { TS, PAL, rgba, shade, glow, star } from './paint.js';
 import { OL, LW, fillToon, sphere, gloss, rrect, capsule, cylinder, softShadow, eye, sprite, blit } from './toon.js';
-import { HEROES } from '../data/heroes.js';
 import { ENEMIES } from '../data/enemies.js';
 
 const SKIN = '#f6cfa3';
@@ -283,6 +282,20 @@ function jingasa(color) {
     gloss(c, x - 2.5, y - r + 0.5, 3.4, 1.1, 0.4);
     sphere(c, x, y - r - 4.2, 1.2, PAL.gold, { lw: 0.6, gloss: false });
   };
+}
+
+// 군배(지휘 부채)
+function gunbai(c, h, pose, color = '#1d1c1a') {
+  c.save();
+  c.translate(h.x, h.y);
+  c.rotate(pose.atk ? -0.4 : -0.9);
+  c.fillStyle = OL;
+  c.fillRect(-0.4, -1, 0.8, -5);
+  c.beginPath();
+  c.ellipse(0, -8, 3.4, 4, 0, 0, Math.PI * 2);
+  fillToon(c, color, -3, -12, 3, -4, { lw: 0.7 });
+  sphere(c, 0, -8, 1.6, '#c0392b', { lw: 0.4, gloss: false });
+  c.restore();
 }
 
 function flagPole(color, h = 16, mark = null) {
@@ -614,6 +627,169 @@ const HERO_LOOK = {
       c.stroke();
     },
     weapon: (c, h, pose) => bow(c, h, pose),
+  },
+  // 안중근: 검은 외투 + 흰 셔츠와 붉은 넥타이 + 챙 달린 모자 + 짙은 콧수염 + 권총
+  ahn: {
+    body: '#2e2e36', sleeve: '#2a2a31', boots: '#141312', mood: 'calm', hairBack: '#1d1a17',
+    backItem: (c, pose) => {
+      // 외투 자락
+      c.beginPath();
+      c.moveTo(-4.4, -8);
+      c.quadraticCurveTo(-7 - pose.step, -2, -6, 0.4);
+      c.lineTo(-2, -1.5);
+      c.closePath();
+      fillToon(c, '#26262c', -7, -8, -2, 0);
+    },
+    chest: (c) => {
+      c.beginPath();
+      c.moveTo(-1.8, -13.3);
+      c.lineTo(0.3, -8.8);
+      c.lineTo(2.4, -13.3);
+      c.closePath();
+      c.fillStyle = '#f4f1e8';
+      c.fill();
+      c.fillStyle = '#9a2a20';
+      c.beginPath();
+      c.moveTo(0.3, -12.6);
+      c.lineTo(-0.6, -9.8);
+      c.lineTo(0.3, -8.4);
+      c.lineTo(1.2, -9.8);
+      c.closePath();
+      c.fill();
+      // 외투 옷깃과 단추
+      c.strokeStyle = 'rgba(0,0,0,0.5)';
+      c.lineWidth = 0.6;
+      c.beginPath();
+      c.moveTo(-1.8, -13.3);
+      c.lineTo(-0.6, -5.2);
+      c.moveTo(2.4, -13.3);
+      c.lineTo(1.4, -5.2);
+      c.stroke();
+      c.fillStyle = '#c8a24a';
+      for (const yy of [-7.6, -5.6]) {
+        c.beginPath();
+        c.arc(2.4, yy, 0.55, 0, Math.PI * 2);
+        c.fill();
+      }
+    },
+    beard: (c) => {
+      // 짙은 팔자 콧수염
+      c.fillStyle = '#1d1a17';
+      c.beginPath();
+      c.moveTo(3.6, -16.9);
+      c.quadraticCurveTo(1.2, -17.8, -0.4, -16.2);
+      c.quadraticCurveTo(1.4, -16.4, 3.6, -16.2);
+      c.moveTo(3.8, -16.9);
+      c.quadraticCurveTo(6.4, -17.8, 7.8, -16.2);
+      c.quadraticCurveTo(6, -16.4, 3.8, -16.2);
+      c.fill();
+    },
+    hat: (c) => {
+      const { x, y, r } = HEAD;
+      // 챙 모자
+      c.beginPath();
+      c.ellipse(x + 1.6, y - 3.4, r + 3.4, 1.8, 0, 0, Math.PI * 2);
+      fillToon(c, '#23232a', x - r, y - 5, x + r + 4, y - 2, { lw: 0.8 });
+      c.beginPath();
+      c.arc(x, y - 3.4, r - 0.4, Math.PI, Math.PI * 2);
+      c.closePath();
+      fillToon(c, '#2c2c34', x - r, y - r - 3, x + r * 0.5, y - 3, { hi: 0.4 });
+      gloss(c, x - 2.6, y - r + 0.4, 2.4, 0.9, 0.35);
+      c.fillStyle = '#9a2a20';
+      c.fillRect(x - r + 0.8, y - 5.4, 2 * r - 1.6, 1.3);
+    },
+    weapon: (c, h, pose) => {
+      // 권총
+      c.save();
+      c.translate(h.x, h.y);
+      c.rotate(pose.atk ? -0.12 : 0.9);
+      rrect(c, -0.9, -1.2, 2.2, 4, 0.6);
+      fillToon(c, '#4a3322', -1, -1, 1.4, 3, { lw: 0.7 });
+      rrect(c, -1, -2.4, 7.5, 2, 0.5);
+      fillToon(c, '#56585e', -1, -2.4, 6.5, -0.4, { lw: 0.7, hi: 0.5 });
+      c.restore();
+      if (pose.atk) glow(c, h.x + 7, h.y - 2.4, 6, '#ffcf6b', 0.95);
+    },
+  },
+  // 단군왕검: 흰 도포 + 긴 흰 수염 + 금빛 머리띠와 상투 + 청동거울 + 비파형 동검
+  dangun: {
+    body: '#efe9da', sleeve: '#e6dfcc', boots: '#6b5a4a', longRobe: true, flare: 1.18, mood: 'calm', hairBack: '#e8e4da',
+    backItem: (c, pose) => {
+      // 뒤로 날리는 초록 띠
+      c.beginPath();
+      c.moveTo(-3, -12.6);
+      c.quadraticCurveTo(-9 - pose.step * 1.5, -9, -10.5, -3);
+      c.lineTo(-8.6, -2.6);
+      c.quadraticCurveTo(-7.4, -8, -2.2, -10.6);
+      c.closePath();
+      fillToon(c, '#3a8a5a', -10, -12, -2, -3, { lw: 0.7 });
+    },
+    chest: (c) => {
+      c.fillStyle = '#3a8a5a';
+      c.fillRect(-6, -5.6, 12, 1.5);
+      // 청동거울(천부인 중 하나)
+      sphere(c, 0.2, -9.8, 2.5, '#6aa38a', { lw: 0.7 });
+      c.strokeStyle = '#c8a24a';
+      c.lineWidth = 0.6;
+      c.beginPath();
+      c.arc(0.2, -9.8, 1.5, 0, Math.PI * 2);
+      c.stroke();
+    },
+    beard: (c) => {
+      // 길게 늘어진 흰 수염
+      c.fillStyle = '#f7f4ec';
+      c.beginPath();
+      c.moveTo(0.4, -15.8);
+      c.quadraticCurveTo(1.2, -9.4, 3.8, -6.8);
+      c.quadraticCurveTo(6.4, -9.4, 7.2, -15.8);
+      c.quadraticCurveTo(3.8, -14.4, 0.4, -15.8);
+      c.fill();
+      c.strokeStyle = OL;
+      c.lineWidth = 0.55;
+      c.stroke();
+      c.beginPath();
+      c.moveTo(1.8, -17);
+      c.quadraticCurveTo(3.8, -17.6, 6, -17);
+      c.quadraticCurveTo(3.8, -16.2, 1.8, -17);
+      c.fill();
+    },
+    hat: (c) => {
+      const { x, y, r } = HEAD;
+      // 흰 머리 위 상투 + 금빛 머리띠와 잎 장식
+      c.beginPath();
+      c.arc(x, y - 2.4, r + 0.3, Math.PI, Math.PI * 2);
+      c.quadraticCurveTo(x, y - 1.6, x - r - 0.3, y - 2.4);
+      c.closePath();
+      fillToon(c, '#efece4', x - r, y - r - 2, x + r * 0.5, y - 2, { hi: 0.3 });
+      sphere(c, x - 0.6, y - r - 2.4, 2.6, '#efece4', { lw: 0.8 });
+      rrect(c, x - r - 0.6, y - 4, 2 * r + 1.2, 1.6, 0.6);
+      fillToon(c, '#d9a300', x - r, y - 4, x + r, y - 2.4, { lw: 0.6, hi: 0.5 });
+      for (const dx of [-3.4, 0, 3.4]) {
+        c.beginPath();
+        c.moveTo(x + dx, y - 4);
+        c.quadraticCurveTo(x + dx - 1.4, y - 7, x + dx, y - 8.4);
+        c.quadraticCurveTo(x + dx + 1.4, y - 7, x + dx, y - 4);
+        fillToon(c, '#f0c75e', x + dx - 1.4, y - 8.4, x + dx + 1.4, y - 4, { lw: 0.5 });
+      }
+    },
+    weapon: (c, h, pose) => {
+      // 비파형 동검 (청동빛)
+      c.save();
+      c.translate(h.x, h.y);
+      c.rotate(pose.atk ? -0.2 : -1.2);
+      c.beginPath();
+      c.moveTo(0.5, 0);
+      c.quadraticCurveTo(4, -2.4, 6, -1.2);
+      c.quadraticCurveTo(8, -2.2, 12, 0);
+      c.quadraticCurveTo(8, 2.2, 6, 1.2);
+      c.quadraticCurveTo(4, 2.4, 0.5, 0);
+      c.closePath();
+      fillToon(c, '#6fae93', 0, -2.4, 12, 2.4, { lw: 0.8, hi: 0.5 });
+      c.fillStyle = '#c8a24a';
+      c.fillRect(-1.2, -1.4, 1.8, 2.8);
+      c.restore();
+      if (pose.atk) glow(c, h.x + 8, h.y - 6, 9, '#bfe6ff', 0.9);
+    },
   },
 };
 
@@ -971,20 +1147,15 @@ const ENEMY_LOOK = {
     hat: kabuto('#6a5010', '#fff1b0', 'v', true),
     weapon: (c, h, pose) => sword(c, h, pose, 14, '#f7f0d0'),
   },
-  taiko: {
-    body: '#3a2458', sleeve: '#2c1a44', boots: '#1d1a26', mood: 'glow', bodyW: 1.18, skin: '#d7cde6',
-    backItem: (c, pose) => {
-      // 금빛 표주박 깃발
-      c.strokeStyle = OL;
-      c.lineWidth = 1.4;
-      c.beginPath();
-      c.moveTo(-4, -8);
-      c.lineTo(-4, -30);
-      c.stroke();
-      sphere(c, -4, -31.5, 2.4, '#e7b83a', { lw: 0.7 });
-      sphere(c, -4, -27.6, 3.2, '#e7b83a', { lw: 0.7 });
-      sphere(c, -4, -23.2, 2.1, '#e7b83a', { lw: 0.7 });
-    },
+  // 이시다 미쓰나리: 책사. 보라 전포 + 초승달 투구 + 군배 부채 + 大一大万大吉 깃발
+  ishida: {
+    body: '#3a2458', sleeve: '#2c1a44', boots: '#1d1a26', mood: 'angry', bodyW: 1.14,
+    backItem: flagPole('#f4f1e8', 20, (c, x, y) => {
+      c.fillStyle = '#1d1c1a';
+      c.fillRect(x - 2, y - 2.4, 4, 0.8);
+      c.fillRect(x - 0.4, y - 2.4, 0.8, 4.8);
+      c.fillRect(x - 2, y + 1.2, 4, 0.8);
+    }),
     chest: (c) => {
       c.strokeStyle = 'rgba(231,184,58,0.6)';
       c.lineWidth = 0.6;
@@ -995,25 +1166,255 @@ const ENEMY_LOOK = {
         c.stroke();
       }
     },
-    hat: (c) => {
-      const { x, y, r } = HEAD;
-      // 햇살 투구
-      c.fillStyle = '#e7b83a';
-      for (let k = 0; k < 11; k++) {
-        const a = Math.PI + (k / 10) * Math.PI;
+    beard: (c) => {
+      c.fillStyle = '#231a14';
+      c.fillRect(1.6, -17.1, 4.2, 0.8);
+    },
+    hat: kabuto('#2a1c36', '#e7b83a', 'moon', true),
+    weapon: (c, h, pose) => gunbai(c, h, pose, '#3a2458'),
+  },
+  // 소 요시토시: 대마도주. 청록 전포 + 마름모 깃발
+  so: {
+    body: '#2f5a4a', sleeve: '#244a3c', boots: '#1d1c1a', mood: 'angry', bodyW: 1.08,
+    backItem: flagPole('#f4f1e8', 18, (c, x, y) => {
+      c.fillStyle = '#2f5a4a';
+      for (const [dx, dy] of [[0, -1.6], [1.6, 0], [0, 1.6], [-1.6, 0]]) {
         c.beginPath();
-        c.moveTo(x + Math.cos(a) * (r - 1), y - 1 + Math.sin(a) * (r - 1));
-        c.lineTo(x + Math.cos(a - 0.08) * (r + 6), y - 1 + Math.sin(a - 0.08) * (r + 6));
-        c.lineTo(x + Math.cos(a + 0.08) * (r + 6), y - 1 + Math.sin(a + 0.08) * (r + 6));
-        c.closePath();
+        c.moveTo(x + dx, y + dy - 0.9);
+        c.lineTo(x + dx + 0.9, y + dy);
+        c.lineTo(x + dx, y + dy + 0.9);
+        c.lineTo(x + dx - 0.9, y + dy);
         c.fill();
-        c.strokeStyle = OL;
-        c.lineWidth = 0.4;
+      }
+    }),
+    chest: (c) => {
+      c.strokeStyle = 'rgba(0,0,0,0.4)';
+      c.lineWidth = 0.6;
+      for (let r = 0; r < 3; r++) {
+        c.beginPath();
+        c.moveTo(-5, -12 + r * 2.6);
+        c.lineTo(5.2, -12 + r * 2.6);
         c.stroke();
       }
-      kabuto('#2a1c36', '#e7b83a', 'none', false)(c);
     },
-    weapon: (c, h, pose) => sword(c, h, pose, 14, '#e8d8ff'),
+    hat: kabuto('#233a30', '#dfe5ea', 'moon', true),
+    weapon: (c, h, pose) => sword(c, h, pose, 12),
+  },
+  // 구로다 나가마사: 검은 갑옷 + 일의 계곡 투구(높은 판)
+  kuroda: {
+    body: '#2a2a2e', sleeve: '#1f1f22', boots: '#1d1c1a', mood: 'angry', bodyW: 1.12,
+    chest: (c) => {
+      c.strokeStyle = 'rgba(231,184,58,0.55)';
+      c.lineWidth = 0.6;
+      for (let r = 0; r < 4; r++) {
+        c.beginPath();
+        c.moveTo(-5, -12 + r * 2.1);
+        c.lineTo(5.2, -12 + r * 2.1);
+        c.stroke();
+      }
+      sphere(c, 0, -8.8, 1.6, '#f4f1e8', { lw: 0.5, gloss: false });
+    },
+    beard: (c) => {
+      c.fillStyle = '#231a14';
+      c.fillRect(1.4, -17.1, 4.6, 0.9);
+    },
+    hat: (c) => {
+      const { x, y, r } = HEAD;
+      kabuto('#26262a', PAL.gold, 'none', true)(c);
+      c.beginPath();
+      c.moveTo(x - 1.2, y - r - 1);
+      c.lineTo(x - 5, y - r - 13);
+      c.lineTo(x + 3.2, y - r - 14);
+      c.lineTo(x + 2.2, y - r - 1);
+      c.closePath();
+      fillToon(c, '#3a3a40', x - 5, y - r - 14, x + 3, y - r, { hi: 0.4 });
+    },
+    weapon: (c, h, pose) => sword(c, h, pose, 13),
+  },
+  // 도도 다카토라: 수군. 푸른 갑옷 + 긴 뿔 투구 + 창
+  todo: {
+    body: '#2f5a7a', sleeve: '#244a66', boots: '#1d1c1a', mood: 'angry', bodyW: 1.1,
+    chest: (c) => {
+      c.strokeStyle = 'rgba(220,235,250,0.45)';
+      c.lineWidth = 0.6;
+      for (let r = 0; r < 4; r++) {
+        c.beginPath();
+        c.moveTo(-5, -12 + r * 2.1);
+        c.lineTo(5.2, -12 + r * 2.1);
+        c.stroke();
+      }
+    },
+    beard: (c) => {
+      c.fillStyle = '#231a14';
+      c.fillRect(1.4, -17.1, 4.6, 0.9);
+    },
+    hat: kabuto('#1c2e40', '#e8e0c8', 'horns', true),
+    weapon: (c, h, pose) => spear(c, h, pose, 23),
+  },
+  // 구키 요시타카: 철갑선 수군 대장. 강철빛 갑옷 + 은빛 투구
+  kuki: {
+    body: '#48546a', sleeve: '#3a4458', boots: '#1d1c1a', mood: 'angry', bodyW: 1.16,
+    chest: (c) => {
+      rrect(c, -4.6, -12.8, 9.4, 6.6, 1.6);
+      fillToon(c, '#8f9aab', -4.6, -12.8, 4.8, -6.2, { lw: 0.8, hi: 0.4 });
+      c.fillStyle = '#2a3140';
+      for (const [px, py] of [[-2.6, -11], [2.6, -11], [-2.6, -8], [2.6, -8]]) {
+        c.beginPath();
+        c.arc(px, py, 0.6, 0, Math.PI * 2);
+        c.fill();
+      }
+    },
+    beard: (c) => {
+      c.fillStyle = '#231a14';
+      c.beginPath();
+      c.moveTo(1, -15.2);
+      c.quadraticCurveTo(3.7, -11, 6.8, -15.2);
+      c.quadraticCurveTo(3.7, -14, 1, -15.2);
+      c.fill();
+    },
+    hat: kabuto('#5a6478', '#dfe5ea', 'v', true),
+    weapon: (c, h, pose) => gunbai(c, h, pose, '#48546a'),
+  },
+  // 구루시마 미치후사: 명량의 선봉. 붉은 갈색 + 뿔 투구 + 칼
+  kurushima: {
+    body: '#8a3a2a', sleeve: '#6e2c20', boots: '#1d1c1a', mood: 'angry', bodyW: 1.1,
+    backItem: flagPole('#f4f1e8', 18, (c, x, y) => {
+      c.strokeStyle = '#8a3a2a';
+      c.lineWidth = 1;
+      c.beginPath();
+      c.arc(x, y, 1.9, 0, Math.PI * 2);
+      c.moveTo(x - 1.9, y);
+      c.lineTo(x + 1.9, y);
+      c.stroke();
+    }),
+    chest: (c) => {
+      c.strokeStyle = 'rgba(0,0,0,0.4)';
+      c.lineWidth = 0.6;
+      for (let r = 0; r < 4; r++) {
+        c.beginPath();
+        c.moveTo(-5, -12 + r * 2.1);
+        c.lineTo(5.2, -12 + r * 2.1);
+        c.stroke();
+      }
+    },
+    beard: (c) => {
+      c.fillStyle = '#231a14';
+      c.fillRect(1.4, -17.1, 4.6, 0.9);
+    },
+    hat: kabuto('#4a1e16', PAL.gold, 'horns', true),
+    weapon: (c, h, pose) => sword(c, h, pose, 13),
+  },
+  // 시마즈 요시히로: 귀신 시마즈. 검은 갑옷 + 가슴의 원 안 십자 문장 + 금빛 투구
+  shimazu: {
+    body: '#1d1c1a', sleeve: '#141312', boots: '#141312', mood: 'angry', bodyW: 1.18,
+    backItem: flagPole('#f4f1e8', 21, (c, x, y) => {
+      c.strokeStyle = '#1d1c1a';
+      c.lineWidth = 0.9;
+      c.beginPath();
+      c.arc(x, y, 2, 0, Math.PI * 2);
+      c.moveTo(x - 2, y);
+      c.lineTo(x + 2, y);
+      c.moveTo(x, y - 2);
+      c.lineTo(x, y + 2);
+      c.stroke();
+    }),
+    chest: (c) => {
+      c.strokeStyle = '#f4f1e8';
+      c.lineWidth = 0.9;
+      c.beginPath();
+      c.arc(0.2, -9.4, 2.4, 0, Math.PI * 2);
+      c.moveTo(-2.2, -9.4);
+      c.lineTo(2.6, -9.4);
+      c.moveTo(0.2, -11.8);
+      c.lineTo(0.2, -7);
+      c.stroke();
+    },
+    beard: (c) => {
+      c.fillStyle = '#e8e2d4';
+      c.beginPath();
+      c.moveTo(0.8, -15.2);
+      c.quadraticCurveTo(3.7, -9.5, 6.8, -15.2);
+      c.quadraticCurveTo(3.7, -14, 0.8, -15.2);
+      c.fill();
+      c.strokeStyle = OL;
+      c.lineWidth = 0.5;
+      c.stroke();
+    },
+    hat: kabuto('#1a1918', '#e7b83a', 'v', true),
+    weapon: (c, h, pose) => sword(c, h, pose, 16, '#f2f4f6'),
+  },
+  // 도요토미 히데요시: 금빛 갑옷 + 햇살 투구 + 천성표주박 깃발 + 붉은 진바오리
+  hideyoshi: {
+    body: '#c9a227', sleeve: '#a8841a', boots: '#3a2410', mood: 'angry', bodyW: 1.22, skin: '#e8b98c', eyeSize: 1.35,
+    backItem: (c, pose) => {
+      // 붉은 진바오리(망토)
+      c.beginPath();
+      c.moveTo(-4, -13);
+      c.quadraticCurveTo(-13 - pose.step * 1.5, -6, -10, -0.4);
+      c.lineTo(-1.5, -2.5);
+      c.closePath();
+      fillToon(c, '#b3241c', -13, -13, -1, 0);
+      // 천성표주박(금빛 표주박 깃대)
+      c.strokeStyle = OL;
+      c.lineWidth = 1.4;
+      c.beginPath();
+      c.moveTo(-5, -8);
+      c.lineTo(-5, -33);
+      c.stroke();
+      sphere(c, -5, -35, 2.6, '#f2c53a', { lw: 0.7 });
+      sphere(c, -5, -30.6, 3.5, '#f2c53a', { lw: 0.7 });
+      sphere(c, -5, -25.8, 2.3, '#f2c53a', { lw: 0.7 });
+      c.fillStyle = '#b3241c';
+      c.fillRect(-5.6, -33.4, 1.2, 1.4);
+    },
+    chest: (c) => {
+      c.strokeStyle = 'rgba(90,50,0,0.6)';
+      c.lineWidth = 0.6;
+      for (let r = 0; r < 4; r++) {
+        c.beginPath();
+        c.moveTo(-5, -12 + r * 2.1);
+        c.lineTo(5.2, -12 + r * 2.1);
+        c.stroke();
+      }
+      // 오동잎 문장
+      c.fillStyle = '#6a3d0a';
+      for (const dx of [-1.4, 0, 1.4]) {
+        c.beginPath();
+        c.ellipse(0.2 + dx, -9.6 - (dx ? 0 : 0.8), 0.6, 1.4, 0, 0, Math.PI * 2);
+        c.fill();
+      }
+    },
+    beard: (c) => {
+      c.fillStyle = '#3a2a1a';
+      c.beginPath();
+      c.moveTo(1.2, -16.4);
+      c.quadraticCurveTo(0, -17.8, -1, -15.6);
+      c.moveTo(6, -16.4);
+      c.quadraticCurveTo(7.6, -17.8, 8, -15.4);
+      c.fill();
+      c.beginPath();
+      c.moveTo(3, -14.2);
+      c.quadraticCurveTo(3.7, -12.4, 4.4, -14.2);
+      c.fill();
+    },
+    hat: (c) => {
+      const { x, y, r } = HEAD;
+      // 햇살 투구: 금빛 가시가 부챗살처럼 뻗는다
+      for (let k = 0; k < 15; k++) {
+        const a = Math.PI * 1.02 + (k / 14) * Math.PI * 0.96;
+        c.beginPath();
+        c.moveTo(x + Math.cos(a) * (r - 1), y - 1.5 + Math.sin(a) * (r - 1));
+        c.lineTo(x + Math.cos(a - 0.07) * (r + 9), y - 1.5 + Math.sin(a - 0.07) * (r + 9));
+        c.lineTo(x + Math.cos(a + 0.07) * (r + 9), y - 1.5 + Math.sin(a + 0.07) * (r + 9));
+        c.closePath();
+        fillToon(c, '#f2c53a', x - r - 9, y - r - 10, x + r + 9, y, { lw: 0.45 });
+      }
+      kabuto('#3a1c10', '#f2c53a', 'none', true)(c);
+    },
+    weapon: (c, h, pose) => {
+      gunbai(c, h, pose, '#f2c53a');
+      if (pose.atk) glow(c, h.x + 2, h.y - 8, 8, '#ffe08a', 0.8);
+    },
   },
 };
 
@@ -1049,13 +1450,13 @@ export function drawEnemy(ctx, e, time, alpha = 1, hit = null) {
   const t = time + e.id * 0.37;
   const moving = !e.blockedBy && !(e.stunT > 0);
   const flip = e.dx < -0.1;
-  const sc = TIER_SCALE[def.tier] * (e.type === 'armored' ? 1.08 : 1);
+  const sc = def.scale || TIER_SCALE[def.tier] * (e.type === 'armored' ? 1.08 : 1);
   const fl = hit ? hit.flash : 0;
   const sq = hit ? hit.sq : 0;
   ctx.save();
   ctx.globalAlpha = alpha * (e.stealth && !e.revealed ? 0.28 : 1);
   if (!e.noShadow) softShadow(ctx, x, y, 9 * sc, 3.2 * sc, 0.32);
-  if (def.tier === 4 && !e.noBar) glow(ctx, x, y - 16 * sc, 24 * sc, e.type === 'taiko' ? '#8a4ad6' : '#c0392b', 0.18 + 0.08 * Math.sin(time * 4));
+  if (def.tier === 4 && !e.noBar) glow(ctx, x, y - 16 * sc, 24 * sc, e.type === 'hideyoshi' ? '#ffd24a' : '#c0392b', 0.18 + 0.08 * Math.sin(time * 4));
   if (e.enraged) glow(ctx, x, y - 12, 16, '#ff5a3a', 0.35);
   if (sq > 0) {
     // 발밑을 축으로 옆으로 퍼지고 뒤로 살짝 밀린다
@@ -1349,14 +1750,14 @@ export function drawHero(ctx, h, time, opts = {}) {
     ctx.fillRect(x - w / 2, hy, w, 3);
     ctx.fillStyle = '#5ad16a';
     ctx.fillRect(x - w / 2, hy, w * Math.max(0, h.hp / h.maxHp), 3);
-    ctx.font = '700 13px "Gowun Batang", serif';
-    ctx.textAlign = 'center';
-    ctx.lineWidth = 3.2;
-    ctx.strokeStyle = 'rgba(0,0,0,0.8)';
-    const label = `${HEROES[h.heroId].name} ${h.lv}`;
-    ctx.strokeText(label, x, hy - 4);
-    ctx.fillStyle = h.owner === 1 ? '#ffd0c8' : '#d6e6ff';
-    ctx.fillText(label, x, hy - 4);
+    // 이름 글씨는 건설을 가려서 빼고, 체력 막대 옆에 주인 색 점만
+    ctx.fillStyle = h.owner === 1 ? PAL.p1 : PAL.p0;
+    ctx.strokeStyle = OL;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(x - w / 2 - 4.5, hy + 1.5, 2.6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
   }
 }
 

@@ -619,7 +619,7 @@ export function drawTower(ctx, t, time, opts = {}) {
       ctx.font = 'bold 7px serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(t.branch === 'A' ? '甲' : '乙', 16, -4.6);
+      ctx.fillText(t.branch === 'A' ? '갑' : '을', 16, -4.6);
       ctx.textBaseline = 'alphabetic';
     } else {
       for (let i = 0; i < t.level; i++) sphere(ctx, -6 + i * 6, 3.5, 1.9, PAL.gold, { lw: 0.6, gloss: false });
