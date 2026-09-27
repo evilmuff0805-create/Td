@@ -35,7 +35,8 @@ export function defaultProfile() {
     quests: { daily: null, weekly: null },
     attendance: { last: '', count: 0 },
     stats: { games: 0, wins: 0, kills: 0, combos: 0, bossKills: 0 },
-    settings: { sfx: 0.7, bgm: 0.35, dmgNumbers: true, shake: true, hints: true },
+    // shakeLv: 화면 흔들림 0 끔 · 1 약하게 · 2 보통
+    settings: { sfx: 0.7, bgm: 0.35, dmgNumbers: true, shakeLv: 1, hints: true },
     tutorialDone: false,
   };
 }
@@ -51,6 +52,11 @@ export function loadProfile() {
     saved = null;
   }
   profile = saved ? merge(d, saved) : d;
+  // 예전 켜기/끄기 설정: 끈 사람만 그대로 끔, 켠 사람은 새 기본값(약하게)
+  if (profile.settings.shake !== undefined) {
+    if (profile.settings.shake === false) profile.settings.shakeLv = 0;
+    delete profile.settings.shake;
+  }
   ensureQuests(profile, new Date());
   return profile;
 }

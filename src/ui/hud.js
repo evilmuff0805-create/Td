@@ -45,7 +45,6 @@ export class GameUI {
     // 누가 어디를 만지는지: 협동에서는 내 색과 꼬리표를 칸 위에 띄운다
     const myColor = (this.local ? 0 : this.me) === 1 ? '#d9483b' : '#3d7fd6';
     this.ui.meColor = myColor;
-    this.ui.meTag = this.local ? '1P' : this.s.coop ? '나' : '';
     this.selHero = this.myHeroIdx()[0] ?? 0;
     this.targeting = null;
     this.pop = null;
@@ -62,7 +61,7 @@ export class GameUI {
     this.renderer = new Renderer(this.cv);
     this.renderer.setup(session.stageId);
     this.renderer.fx.showDamage = profile.settings.dmgNumbers;
-    this.renderer.fx.shakeOn = profile.settings.shake !== false;
+    this.renderer.fx.shakeLevel = profile.settings.shakeLv ?? 1;
     this.renderer.fx.coopTags = this.s.coop;
     this.renderer.fx.onSound = (n) => audio.play(n);
     this.bindInput();
@@ -315,8 +314,10 @@ export class GameUI {
   // ───── 창에 가려진 영웅 비추기 ─────
   occluders() {
     const out = [];
-    if (this.pop) out.push(...this.pop.ring.rects());
-    if (this.p2menu) out.push(...this.p2menu.ring.rects());
+    // 고리마다 주인을 적어 둔다: 내 고리는 가운데가 내 영웅 자리라 비춰 줄 필요가 없다
+    const own = (rs, owner) => rs.map((r) => ({ ...r, owner }));
+    if (this.pop) out.push(...own(this.pop.ring.rects(), this.local ? 0 : this.me));
+    if (this.p2menu) out.push(...own(this.p2menu.ring.rects(), 1));
     const base = this.overlay.getBoundingClientRect();
     for (const el of [this.waveCardEl, this.hintEl, this.bossEl]) {
       if (!el || !el.isConnected) continue;
@@ -341,13 +342,12 @@ export class GameUI {
       const sx = hh.x * TS * k;
       const sy = (hh.y * TS + 9) * k;
       const bx = { x: sx - 16 * k, y: sy - 50 * k, w: 32 * k, h: 52 * k };
-      const hits = occ.filter((r) => bx.x < r.x + r.w && bx.x + bx.w > r.x && bx.y < r.y + r.h && bx.y + bx.h > r.y);
+      const hits = occ.filter((r) => r.owner !== hh.owner && bx.x < r.x + r.w && bx.x + bx.w > r.x && bx.y < r.y + r.h && bx.y + bx.h > r.y);
       if (!hits.length) continue;
       this.xrayDirty = true;
-      const tag = this.local ? `${hh.owner + 1}P` : this.s.coop ? (hh.owner === this.me ? '나' : '동료') : '';
-      // 고리 버튼 위에서는 반투명으로(버튼도 보이게), 설명·카드 위에서는 또렷하게
+      // 남의 고리 버튼 위에서는 반투명으로(버튼도 보이게), 설명·카드 위에서는 또렷하게
       const ghost = hits.every((r) => r.btn);
-      this.renderer.drawHeroOnTop(c, hh, this.ui.clock, tag, ghost ? 0.55 : 1);
+      this.renderer.drawHeroOnTop(c, hh, this.ui.clock, ghost ? 0.5 : 1);
     }
   }
 

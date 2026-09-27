@@ -227,6 +227,16 @@ export function settingsScreen(app) {
   };
   const check = (id, label, key) => h('label', { class: 'toggle', for: id }, h('span', {}, label),
     h('input', { type: 'checkbox', id, checked: s[key], onchange: (e) => { s[key] = e.target.checked; saveProfile(); } }));
+  // 여러 칸 중 하나 고르기 (화면 흔들림 세기)
+  const choice = (label, key, opts) => {
+    const seg = h('div', { class: 'seg', role: 'group', 'aria-label': label });
+    const paint = () => [...seg.children].forEach((b, i) => b.setAttribute('aria-pressed', String(opts[i][0] === s[key])));
+    for (const [v, t] of opts) {
+      seg.appendChild(h('button', { type: 'button', onclick: () => { s[key] = v; saveProfile(); paint(); audio.play('ui'); } }, t));
+    }
+    paint();
+    return h('div', { class: 'toggle' }, h('span', {}, label), seg);
+  };
   const name = h('input', { type: 'text', id: 'name', value: p.name, maxlength: 10, 'aria-label': '장수 이름' });
   const el = h('div', { class: 'screen' }, topbar(app, '설정'),
     h('div', { class: 'content', style: { maxWidth: '620px' } },
@@ -242,7 +252,7 @@ export function settingsScreen(app) {
         slider('sfx', '효과음', 'sfx'),
         slider('bgm', '배경음 (국악풍)', 'bgm'),
         check('dmg', '피해 숫자 표시', 'dmgNumbers'),
-        check('shake', '타격 시 화면 흔들림', 'shake'),
+        choice('화면 흔들림 (합격기 · 적장 처치 때만)', 'shakeLv', [[0, '끔'], [1, '약하게'], [2, '보통']]),
         check('hints', '전투 도움말 보기', 'hints'),
         h('div', { class: 'toggle' }, h('span', {}, '도움말 다시 보기'), h('button', { class: 'btn btn-small', onclick: () => { p.hintsSeen = []; saveProfile(); toast('다음 전투에서 도움말이 다시 나옵니다'); } }, '초기화')),
         h('div', { class: 'toggle' }, h('span', { class: 'dim' }, '모든 기록 지우기 (되돌릴 수 없음)'),

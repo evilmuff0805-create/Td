@@ -8,6 +8,8 @@ const JAMO = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅜㅠ
 const rnd = (a, b) => a + Math.random() * (b - a);
 const easeOut = (k) => 1 - (1 - k) * (1 - k);
 const wobble = (t) => Math.sin(t) * 0.6 + Math.sin(t * 2.3 + 1.3) * 0.4;
+// 설정의 화면 흔들림: 0 끔 · 1 약하게(기본) · 2 보통
+const SHAKE_MULT = [0, 0.5, 1];
 
 // 폭발 종류별 색: [섬광, 불꽃1, 불꽃2, 연기]
 const BOOM = {
@@ -48,14 +50,17 @@ export class FX {
     this.flashColor = '#fff';
     this.clockT = 0;
     this.showDamage = true;
-    this.shakeOn = true;
+    this.shakeLevel = 1;
     this.coopTags = false;
     this.onSound = null;
   }
 
-  // ───── 카메라: 충격량(trauma)의 제곱만큼 흔들리고, 큰 타격은 살짝 당겨진다 ─────
+  // ───── 카메라: 흔들림은 합격기 · 적장 처치 같은 '큰 순간'에만 ─────
+  // 유산이 쏘고, 지어지고, 적이 쓰러질 때마다 흔들면 유산이 늘수록 화면이 쉬지 않고 떨려
+  // 멀미가 난다. 평소 타격감은 섬광 · 불꽃 · 반동 · 찌그러짐 같은 제자리 효과로만 낸다.
   addTrauma(a) {
-    this.trauma = Math.min(1, this.trauma + a);
+    // 쌓일수록 덜 쌓인다: 큰 순간이 겹쳐도 상한 근처에서 멈춘다
+    this.trauma = Math.min(0.8, this.trauma + a * (1 - this.trauma));
   }
 
   kick(x, y, amount) {
@@ -66,25 +71,18 @@ export class FX {
   }
 
   camera(W, H) {
-    const s = this.shakeOn ? this.trauma * this.trauma : 0;
-    const t = this.t * 38;
-    const dx = s * 10 * wobble(t);
-    const dy = s * 8 * wobble(t + 17.3);
-    const zp = this.shakeOn ? 1 + 0.035 * this.punch * this.punch : 1;
+    const m = SHAKE_MULT[this.shakeLevel] ?? 0;
+    const s = this.trauma * this.trauma * m;
+    // 느리고 작게: 빠른 잔떨림이 멀미를 가장 크게 부른다
+    const t = this.t * 22;
+    const dx = s * 12 * wobble(t);
+    const dy = s * 9 * wobble(t + 17.3);
+    const zp = 1 + 0.03 * m * this.punch * this.punch;
     // 흔들려도 가장자리가 비지 않게 그만큼 확대
     const zs = 1 + (2.3 * Math.max(Math.abs(dx), Math.abs(dy))) / Math.min(W, H);
     const zoom = Math.max(zp, zs);
     const pz = this.punch > 0.01 && zp >= zs;
     return { dx, dy, zoom, zx: pz ? this.punchX : W / 2, zy: pz ? this.punchY : H / 2 };
-  }
-
-  // 옛 코드와의 호환: 픽셀 단위 흔들림 요청
-  set shake(px) {
-    this.trauma = Math.max(this.trauma, Math.min(1, Math.sqrt(px / 16)));
-  }
-
-  get shake() {
-    return this.trauma * 16;
   }
 
   burst(x, y, n, color, speed = 60, life = 0.5, size = 2, g = 0) {
@@ -163,7 +161,6 @@ export class FX {
     for (let i = 0; i < (big ? 4 : 3); i++) {
       this.puff(cx + Math.cos(a) * i * 4, cy + Math.sin(a) * i * 2, 2, rnd(5, 8) * (big ? 1.4 : 1), '#d8d0c4', rnd(0.4, 0.6), Math.cos(a) * rnd(15, 30), -rnd(10, 25));
     }
-    if (big) this.addTrauma(0.08);
   }
 
   explode(x, y, r, kind) {
@@ -172,7 +169,6 @@ export class FX {
     if (kind === 'thunder') {
       // 하늘에서 내리꽂히는 번개
       this.lines.push({ x1: x + rnd(-20, 20), y1: y - 190, x2: x, y2: y - 4, life: 0.22, max: 0.22, color: '#dff2ff', w: 5, jag: true });
-      this.addTrauma(0.08);
     }
     if (kind === 'garlic' && Math.random() < 0.35) this.texts.push({ x, y: y - 22, text: '매워!', color: '#e9f5b0', size: 12, life: 0.8, max: 0.8, vy: -26, pop: 0.12 });
     // 섬광
@@ -237,13 +233,13 @@ export class FX {
         this.ko(ev);
         if (this.onSound) this.onSound(def.tier === 4 ? 'bigKill' : 'kill');
         if (def.tier === 4) {
-          this.addTrauma(0.9);
+          this.addTrauma(0.6);
           this.kick(px(ev.x), px(ev.y), 1);
           this.flash = 0.5;
           this.flashColor = '#fff6d8';
           this.burst(px(ev.x), px(ev.y), 50, '#f0c75e', 160, 1.3, 3.2);
           this.explode(px(ev.x), px(ev.y), 70, 'bomb');
-        } else if (def.tier === 3) this.addTrauma(0.18);
+        }
         break;
       }
       case 'boom': {
@@ -257,9 +253,8 @@ export class FX {
             this.texts.push({ x: x + Math.cos(a) * r * 0.6, y: y + Math.sin(a) * r * 0.6, text: JAMO[Math.floor(Math.random() * JAMO.length)], color: '#ffe08a', size: 14, life: 0.7, max: 0.7, vy: -22, pop: 0.1 });
           }
         }
-        const tr = { shell: 0.14, bigshell: 0.34, bomb: 0.5, meteor: 0.3, rocket: 0.07, stone: 0.12, star: 0.1, hangul: 0.12 }[ev.kind] ?? 0.1;
-        this.addTrauma(tr);
-        if (ev.kind === 'bomb' || ev.kind === 'bigshell' || ev.kind === 'meteor') this.kick(x, y, ev.kind === 'bomb' ? 1 : 0.6);
+        // 유산 · 영웅의 평소 포격은 제자리 효과만. 비격진천뢰(비기)만 살짝 울린다
+        if (ev.kind === 'bomb') this.addTrauma(0.25);
         break;
       }
       case 'bolt':
@@ -283,8 +278,7 @@ export class FX {
         this.burst(x2, y2, 20, '#ffe08a', 120, 0.5, 2.4);
         this.flash = 0.25;
         this.flashColor = '#fff6d8';
-        this.addTrauma(0.5);
-        this.kick(x2, y2, 0.8);
+        this.addTrauma(0.3);
         break;
       }
       case 'disable':
@@ -292,14 +286,12 @@ export class FX {
         break;
       case 'ring':
         this.rings.push({ x: px(ev.x), y: px(ev.y), r0: 6, r1: ev.r * TS, life: 0.5, max: 0.5, color: ev.big ? '#ffe36b' : '#fff1b0', w: ev.big ? 5 : 3 });
-        if (ev.big) this.addTrauma(0.12);
         break;
       case 'enemyHeal':
         this.rings.push({ x: px(ev.x), y: px(ev.y), r0: 4, r1: ev.r * TS, life: 0.6, max: 0.6, color: '#8fe3a0', w: 2 });
         break;
       case 'cone':
         this.cones.push({ x: px(ev.x), y: px(ev.y), a: ev.a, r: ev.r * TS, w: ev.w, life: 0.4, max: 0.4 });
-        this.addTrauma(0.12);
         break;
       case 'flood': {
         const x = px(ev.x);
@@ -311,13 +303,11 @@ export class FX {
           const a = (i / 12) * Math.PI * 2;
           this.puff(x + Math.cos(a) * ev.r * TS * 0.5, y + Math.sin(a) * ev.r * TS * 0.35, 4, rnd(10, 16), '#cfeefb', rnd(0.5, 0.8), Math.cos(a) * 50, Math.sin(a) * 30 - 10);
         }
-        this.addTrauma(0.55);
-        this.kick(x, y, 0.7);
+        this.addTrauma(0.3);
         break;
       }
       case 'dash':
         this.lines.push({ x1: px(ev.x1), y1: px(ev.y1) - 8, x2: px(ev.x2), y2: px(ev.y2) - 8, life: 0.35, max: 0.35, color: '#f0c75e', w: 7 });
-        this.addTrauma(0.15);
         break;
       case 'slash':
         this.slashes.push({ x: px(ev.x), y: px(ev.y) - 12, f: ev.f || 1, life: 0.16, max: 0.16 });
@@ -326,7 +316,6 @@ export class FX {
       case 'crit':
         this.dmg(px(ev.x), px(ev.y) - 30, ev.v, true);
         this.spark(px(ev.x), px(ev.y) - 12, 16, '#ffd23a', 0.16);
-        this.addTrauma(0.05);
         if (this.onSound) this.onSound('crit');
         break;
       case 'levelUp':
@@ -339,13 +328,12 @@ export class FX {
         break;
       case 'heroDown':
         this.text(px(ev.x), px(ev.y) - 30, '쓰러짐', '#ff8a7a', 12, 1.2);
-        this.addTrauma(0.2);
         break;
       case 'leak':
         this.flash = 0.35;
         this.flashColor = '#c0392b';
         this.text(px(ev.x), px(ev.y) - 16, `민심 -${ev.lives}`, '#ff7b6b', 13, 1.2);
-        this.addTrauma(0.3);
+        this.addTrauma(0.2);
         break;
       case 'gold':
         break;
@@ -359,9 +347,9 @@ export class FX {
           const a = (i / 7) * Math.PI * 2;
           this.puff(x + Math.cos(a) * 10, y + Math.sin(a) * 4, 3, rnd(7, 10), '#d9ccb2', rnd(0.4, 0.6), Math.cos(a) * 50, Math.sin(a) * 14 - 8);
         }
-        this.rings.push({ x, y, r0: 8, r1: 28, life: 0.35, max: 0.35, color: '#fff1d0', w: 2 });
-        this.addTrauma(0.1);
-        if (this.coopTags && ev.p !== undefined && ev.type) this.texts.push({ x, y: y - 58, text: `${ev.p + 1}P`, color: ev.p === 1 ? '#ffb0a4' : '#b8d4ff', size: 12, life: 1, max: 1, vy: -16, pop: 0.12, tag: ev.p });
+        // 협동: 누가 지었는지는 글씨 대신 그 사람 색의 고리로 (글씨는 영웅과 건설을 가린다)
+        const own = this.coopTags && ev.p !== undefined && ev.type;
+        this.rings.push({ x, y, r0: 8, r1: 28, life: 0.35, max: 0.35, color: own ? (ev.p === 1 ? '#ff9a8c' : '#9cc4ff') : '#fff1d0', w: own ? 3 : 2 });
         break;
       }
       case 'upgrade':
@@ -387,13 +375,13 @@ export class FX {
         if (ENEMIES[ev.type] && ENEMIES[ev.type].fixedHp) {
           this.flash = 0.6;
           this.flashColor = '#ffd24a';
-          this.addTrauma(0.7);
-        } else this.addTrauma(0.25);
+          this.addTrauma(0.5);
+        }
         break;
       case 'freeze':
         this.flash = 0.45;
         this.flashColor = '#bfe6ff';
-        this.addTrauma(0.3);
+        this.addTrauma(0.15);
         for (const [x, y] of ev.pts || []) {
           this.rings.push({ x: px(x), y: px(y) - 10, r0: 4, r1: 20, life: 0.45, max: 0.45, color: '#dff4ff', w: 3 });
           this.spark(px(x) + rnd(-6, 6), px(y) - rnd(8, 22), rnd(7, 11), '#dff4ff', rnd(0.25, 0.4));
@@ -402,11 +390,10 @@ export class FX {
       case 'combo':
         this.flash = 0.8;
         this.flashColor = '#fff4d0';
-        this.addTrauma(0.85);
+        this.addTrauma(0.5);
         break;
       case 'bossSkill':
         this.text(px(ev.x), px(ev.y) - 50, ev.text, '#ff9a8a', 14, 1.5);
-        this.addTrauma(0.3);
         break;
     }
   }
@@ -496,7 +483,7 @@ export class FX {
     if (this.parts.length > 900) this.parts.splice(0, this.parts.length - 900);
     if (this.puffs.length > 400) this.puffs.splice(0, this.puffs.length - 400);
     if (this.debris.length > 200) this.debris.splice(0, this.debris.length - 200);
-    this.trauma = Math.max(0, this.trauma - dt * 1.6);
+    this.trauma = Math.max(0, this.trauma - dt * 2.2);
     this.punch = Math.max(0, this.punch - dt * 5);
     this.flash = Math.max(0, this.flash - dt);
     this.clockT = Math.max(0, this.clockT - dt);

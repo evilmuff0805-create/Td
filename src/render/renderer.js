@@ -315,10 +315,10 @@ export class Renderer {
       ctx.setLineDash([]);
     }
     // 각자 고른 자리 (누가 어디에 짓는지 서로 보이게)
-    if (ui.buildAt) this.intentMark(ctx, ui.buildAt.x, ui.buildAt.y, ui.meColor || PAL.p0, ui.meTag, time);
+    if (ui.buildAt) this.intentMark(ctx, ui.buildAt.x, ui.buildAt.y, ui.meColor || PAL.p0, time);
     else if (ui.selTower) {
       const t = v.towers.find((x) => x.id === ui.selTower);
-      if (t) this.intentMark(ctx, t.x, t.y, ui.meColor || PAL.p0, ui.meTag, time);
+      if (t) this.intentMark(ctx, t.x, t.y, ui.meColor || PAL.p0, time);
     }
     if (p2) {
       if (p2.type) {
@@ -327,7 +327,7 @@ export class Renderer {
         ctx.globalAlpha = 1;
         this.previewSynergy(ctx, v, p2.type, p2.x, p2.y);
       }
-      this.intentMark(ctx, p2.x, p2.y, PAL.p1, '2P', time);
+      this.intentMark(ctx, p2.x, p2.y, PAL.p1, time);
     }
     // 배치 유령
     if (ui.placing && at) {
@@ -439,8 +439,8 @@ export class Renderer {
     ctx.setLineDash([]);
   }
 
-  // 플레이어가 지금 손대는 칸: 색 모서리 + 꼬리표
-  intentMark(ctx, x, y, color, tag, time) {
+  // 플레이어가 지금 손대는 칸: 그 사람 색의 모서리 (1P 청 · 2P 홍). 글씨 꼬리표는 영웅을 가려서 달지 않는다
+  intentMark(ctx, x, y, color, time) {
     const px = x * TS;
     const py = y * TS;
     const pulse = 0.5 + 0.5 * Math.sin(time * 6);
@@ -459,33 +459,12 @@ export class Renderer {
     }
     ctx.fillStyle = rgba(color, 0.12 + pulse * 0.08);
     ctx.fillRect(px, py, TS, TS);
-    if (tag) {
-      ctx.font = '400 15px "Black Han Sans", sans-serif';
-      ctx.textAlign = 'center';
-      const w = ctx.measureText(tag).width + 12;
-      const tx = px + TS / 2;
-      const ty = py - 8 - pulse * 2;
-      ctx.fillStyle = color;
-      ctx.strokeStyle = '#2b1a12';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.roundRect(tx - w / 2, ty - 17, w, 19, 6);
-      ctx.fill();
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(tx - 4, ty + 2);
-      ctx.lineTo(tx + 4, ty + 2);
-      ctx.lineTo(tx, ty + 7);
-      ctx.closePath();
-      ctx.fill();
-      ctx.fillStyle = '#fff';
-      ctx.fillText(tag, tx, ty - 2);
-    }
     ctx.restore();
   }
 
   // 창에 가려진 영웅을 창 위에 다시 그린다 (xray 캔버스, 월드 좌표 변환은 호출 쪽에서)
-  drawHeroOnTop(ctx, h, time, label, alpha = 1) {
+  // 주인은 빛깔과 발밑 고리 색으로만 알린다: '2P' 같은 글씨는 고리 버튼을 가렸다
+  drawHeroOnTop(ctx, h, time, alpha = 1) {
     const x = h.x * TS;
     const y = h.y * TS + 9;
     const col = h.owner === 1 ? PAL.p1 : PAL.p0;
@@ -499,23 +478,6 @@ export class Renderer {
     ctx.arc(x, y - 18, 34, 0, Math.PI * 2);
     ctx.fill();
     drawHero(ctx, h, time, { noBar: true });
-    ctx.globalAlpha = 1;
-    if (!label) {
-      ctx.restore();
-      return;
-    }
-    ctx.font = '400 14px "Black Han Sans", sans-serif';
-    ctx.textAlign = 'center';
-    const w = ctx.measureText(label).width + 14;
-    ctx.fillStyle = col;
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.roundRect(x - w / 2, y - 66, w, 20, 10);
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = '#fff';
-    ctx.fillText(label, x, y - 51);
     ctx.restore();
   }
 
