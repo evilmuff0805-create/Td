@@ -13,6 +13,7 @@ import { SKILL_ORDER } from '../src/data/skills.js';
 import { HERO_ORDER } from '../src/data/heroes.js';
 import { getMap, T_BUILD } from '../src/sim/map.js';
 import { createGame, step, queueCommand } from '../src/sim/sim.js';
+import { spawnEnemy } from '../src/sim/combat.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { SnapshotEncoder, emptyView, applySnapshot } from '../src/sim/snapshot.js';
 import { ensureQuests, progressQuests, claimQuest, checkIn, canCheckIn, weekKey, rerollQuest } from '../src/meta/quests.js';
@@ -118,6 +119,79 @@ test('명령 검증: 남의 유산 철거 불가, 길 위 건설 불가', () => 
   queueCommand(s, { t: 'sell', p: 0, id });
   step(s);
   assert.equal(s.towers.length, 0);
+});
+
+test('새 유산: 남한산성 병사 · 석빙고 얼림 · 불국사 체력 비례 피해', () => {
+  const all = Object.keys(TOWERS);
+  const s = createGame({ stageId: 's1', difficulty: 'normal', mode: 'solo', seed: 5, players: [{ heroes: [], skills: [], towers: all }] });
+  s.players[0].gold = 1e5;
+  const build = (tower, x, y) => {
+    queueCommand(s, { t: 'build', p: 0, x, y, tower });
+    step(s);
+    return s.towers.at(-1);
+  };
+  const run = (sec) => {
+    for (let i = 0; i < sec * 60; i++) {
+      step(s);
+      s.events.length = 0;
+    }
+  };
+  // 남한산성: 가장 가까운 길목에 병사 2명, 3단계에서 3명, 쓰러지면 재정비 뒤 다시 채움, 철거하면 사라짐
+  const b = build('namhansan', 6, 6);
+  run(2);
+  const guards = () => s.summons.filter((m) => m.tower === b.id);
+  assert.equal(guards().length, 2);
+  for (const m of guards()) assert.ok(Math.hypot(m.x - 5.5, 0) < 0.6, `병사가 길 위에 있어야 함: ${m.x}`);
+  queueCommand(s, { t: 'upgrade', p: 0, id: b.id });
+  queueCommand(s, { t: 'upgrade', p: 0, id: b.id });
+  run(2);
+  assert.equal(guards().length, 3);
+  guards()[0].hp = 0;
+  run(1);
+  assert.equal(guards().length, 2);
+  run(TOWERS.namhansan.levels[2].respawn + 1);
+  assert.equal(guards().length, 3);
+  queueCommand(s, { t: 'sell', p: 0, id: b.id });
+  step(s);
+  step(s);
+  assert.equal(guards().length, 0);
+  // 석빙고: 네 번째 얼음마다 얼림(iceT)
+  s.wave.phase = 'final';
+  s.wave.n = s.wave.total;
+  s.waveStats[1] = { remaining: 0, queued: 0, leaks: 0 };
+  const e = spawnEnemy(s, 'samurai', 0, 1, 5); // 적이 먼저 있어야 전투가 끝나지 않는다
+  e.hp = e.maxHp = 1e5;
+  const f = build('seokbinggo', 4, 6);
+  queueCommand(s, { t: 'upgrade', p: 0, id: f.id });
+  step(s);
+  let frozen = false;
+  for (let i = 0; i < 60 * 8 && !frozen; i++) {
+    step(s);
+    s.events.length = 0;
+    frozen = e.iceT > 0 && e.stunT > 0;
+  }
+  assert.ok(frozen, '석빙고가 적을 얼려야 함');
+  // 불국사: 갑옷 88% 히데요시에게도 최대 체력 비례 피해가 그대로 (상한까지)
+  queueCommand(s, { t: 'sell', p: 0, id: f.id });
+  const hy = spawnEnemy(s, 'hideyoshi', 0, 1, 6);
+  e.hp = 0; // 강적 우선 조준이 히데요시를 고르도록
+  const pg = build('bulguksa', 6, 4);
+  const st = TOWERS.bulguksa.levels[0];
+  const pool = () => hy.hp + (hy.shield || 0); // 황금 표주박 보호막이 먼저 받는다
+  const hp0 = pool();
+  let hitAt = -1;
+  for (let i = 0; i < 60 * 6 && hitAt < 0; i++) {
+    step(s);
+    s.events.length = 0;
+    if (pool() < hp0) hitAt = i;
+  }
+  assert.ok(hitAt >= 0, '불국사가 쏘아야 함');
+  const expect = (st.dmg + Math.min(st.pctCap, st.pct * hy.maxHp)) * pg.dmgMult;
+  assert.ok(Math.abs(hp0 - pool() - expect) < 1, `인과 피해 ${hp0 - pool()} ≈ ${expect}`);
+  // 스냅샷에 병사 종류와 얼음 투사체가 실린다
+  const v = emptyView({ stageId: 's1', difficulty: 'normal' });
+  applySnapshot(v, new SnapshotEncoder().encode(s, []));
+  assert.equal(v.towers.length, s.towers.length);
 });
 
 test('모든 영웅 기술 · 비기 시전 경로', () => {

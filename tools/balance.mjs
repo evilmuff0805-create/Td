@@ -2,7 +2,7 @@
 // 밸런스 시뮬레이터: 봇으로 모든 스테이지 × 난이도 × 모드를 자동 플레이한다.
 //   node tools/balance.mjs                 전체 요약
 //   node tools/balance.mjs s1 normal solo  단일 실행 + 파도별 로그
-//   옵션: --plan=arrows|balanced|greedy  --seeds=3  --meta=auto|0..10  --noskills
+//   옵션: --plan=arrows|balanced|greedy|fresh|nam|ice|bul  --seeds=3  --meta=auto|0..10  --noskills
 import { createGame, step, queueCommand } from '../src/sim/sim.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { STAGES } from '../src/data/stages.js';

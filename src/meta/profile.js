@@ -52,6 +52,11 @@ export function loadProfile() {
     saved = null;
   }
   profile = saved ? merge(d, saved) : d;
+  // 새로 생긴 유산: 이미 이긴 전장이 해금하는 유산은 바로 열어 준다
+  for (const st of STAGES) {
+    if (!Object.values(profile.stages[st.id] || {}).some((v) => v > 0)) continue;
+    for (const t of st.unlockTowers) if (!profile.towersUnlocked.includes(t)) profile.towersUnlocked.push(t);
+  }
   // 예전 켜기/끄기 설정: 끈 사람만 그대로 끔, 켠 사람은 새 기본값(약하게)
   if (profile.settings.shake !== undefined) {
     if (profile.settings.shake === false) profile.settings.shakeLv = 0;

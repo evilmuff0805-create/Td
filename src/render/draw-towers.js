@@ -362,6 +362,184 @@ const BODY = {
       sphere(c, -18.5, -9.5, 1.8, PAL.gold, { lw: 0.5 });
     }
   },
+  // 남한산성: 산성 성벽 + 암문 + 수어장대(2층 누각)
+  namhansan(c, t) {
+    box(c, -20, 0, 40, 14, 6, '#c7bda3');
+    stoneLines(c, -20, 0, 40, 14, 3.5);
+    for (let i = 0; i < 5; i++) box(c, -20 + i * 8.4, -14, 5.4, 4.6, 2.6, '#b6aa8f', { lw: 0.8 });
+    // 암문
+    c.beginPath();
+    c.moveTo(-4.5, 0);
+    c.lineTo(-4.5, -6);
+    c.arc(0, -6, 4.5, Math.PI, 0);
+    c.lineTo(4.5, 0);
+    c.closePath();
+    const g = c.createLinearGradient(0, -11, 0, 0);
+    g.addColorStop(0, '#120c08');
+    g.addColorStop(1, '#4a3526');
+    c.fillStyle = g;
+    c.fill();
+    c.strokeStyle = OL;
+    c.lineWidth = LW;
+    c.stroke();
+    // 수어장대
+    const tall = t.level >= 2 || t.branch;
+    rrect(c, -13, -20.5, 26, 2.4, 0.8);
+    fillToon(c, '#6b4a2b', -13, -20.5, 13, -18, { lw: 0.8 });
+    pillarRow(c, -10, 10, -19, tall ? 7 : 5, 4, t.branch === 'B' ? '#8a5a33' : '#b8322a');
+    dancheongBand(c, -12, tall ? -28.5 : -26.5, 24, 2.6);
+    roof3d(c, 0, tall ? -28.5 : -26.5, 36, 8.5);
+    if (t.level >= 3 || t.branch) {
+      pillarRow(c, -6, 6, -39, 3.5, 3);
+      dancheongBand(c, -8, -41.5, 16, 2.2);
+      roof3d(c, 0, -41.5, 25, 8);
+    }
+    if (t.branch === 'A') sphere(c, 0, -51.5, 1.8, PAL.gold, { lw: 0.6 });
+  },
+  // 석빙고: 잔디 덮인 흙 둔덕 + 돌 입구 + 환기구
+  seokbinggo(c, t) {
+    c.beginPath();
+    c.ellipse(0, -1, 23, 26, 0, Math.PI, 0);
+    c.closePath();
+    const g = c.createRadialGradient(-8, -20, 3, 0, -4, 30);
+    g.addColorStop(0, t.branch === 'A' ? '#f4fbff' : '#a9c870');
+    g.addColorStop(0.55, t.branch === 'A' ? '#cfe6f2' : '#7ba24a');
+    g.addColorStop(1, t.branch === 'A' ? '#8fb4c8' : '#4f7132');
+    c.fillStyle = g;
+    c.fill();
+    c.strokeStyle = OL;
+    c.lineWidth = LW;
+    c.stroke();
+    // 잔디 결 / 눈 결
+    c.save();
+    c.clip();
+    c.strokeStyle = t.branch === 'A' ? 'rgba(255,255,255,0.5)' : 'rgba(40,70,20,0.3)';
+    c.lineWidth = 0.6;
+    for (let i = 1; i < 5; i++) {
+      c.beginPath();
+      c.ellipse(0, -1, 23, i * 5.4, 0, Math.PI * 1.05, Math.PI * 1.95);
+      c.stroke();
+    }
+    c.restore();
+    gloss(c, -9, -18, 5, 2.4, 0.35);
+    // 환기구 (돌 굴뚝)
+    const vents = t.level >= 3 || t.branch ? [-9, 0, 9] : t.level >= 2 ? [-5, 5] : [0];
+    for (const vx of vents) {
+      const vy = -1 - 26 * Math.sqrt(1 - (vx / 23) ** 2);
+      box(c, vx - 2.2, vy + 2, 4.4, 4, 2, '#bfb8a8', { lw: 0.7 });
+      rrect(c, vx - 3.2, vy - 3, 6.4, 1.8, 0.6);
+      fillToon(c, '#a8a192', vx - 3.2, vy - 3, vx + 3.2, vy - 1.2, { lw: 0.6 });
+    }
+    // 앞쪽 돌 입구
+    box(c, -10, 0, 20, 13, 3, '#d8d2c3', { lw: 0.9 });
+    stoneLines(c, -10, 0, 20, 13, 3.2);
+    c.beginPath();
+    c.moveTo(-4.8, 0);
+    c.lineTo(-4.8, -6.2);
+    c.arc(0, -6.2, 4.8, Math.PI, 0);
+    c.lineTo(4.8, 0);
+    c.closePath();
+    const g2 = c.createLinearGradient(0, -11, 0, 0);
+    g2.addColorStop(0, '#0e1a24');
+    g2.addColorStop(1, '#2f4a5e');
+    c.fillStyle = g2;
+    c.fill();
+    c.strokeStyle = OL;
+    c.lineWidth = 0.9;
+    c.stroke();
+    // 입구의 서리
+    c.fillStyle = 'rgba(220,244,255,0.85)';
+    c.fillRect(-4, -1.6, 8, 1.2);
+  },
+  // 불국사: 석축과 청운교 계단 위의 다보탑 (특화 갑은 석가탑)
+  bulguksa(c, t) {
+    box(c, -22, 0, 44, 11, 5, '#d6cbb2');
+    stoneLines(c, -22, 0, 44, 11, 3.6);
+    // 청운교 · 백운교: 무지개 다리 + 계단
+    c.beginPath();
+    c.moveTo(-6, 0);
+    c.lineTo(-6, -3.4);
+    c.arc(0, -3.4, 6, Math.PI, 0);
+    c.lineTo(6, 0);
+    c.closePath();
+    c.fillStyle = '#3e2f24';
+    c.fill();
+    c.strokeStyle = OL;
+    c.lineWidth = 0.8;
+    c.stroke();
+    for (let i = 0; i < 4; i++) {
+      rrect(c, -7 + i * 0.6, -11 + i * 1.6 - 1.2, 14 - i * 1.2, 1.4, 0.4);
+      c.fillStyle = i % 2 ? '#e6dfcd' : '#cfc6b0';
+      c.fill();
+    }
+    const stone = (x, y, w, h, col = '#e4dfd2') => {
+      rrect(c, x, y, w, h, 0.6);
+      fillToon(c, col, x, y, x + w, y + h, { lw: 0.8, hi: 0.35 });
+    };
+    if (t.branch === 'A') {
+      // 석가탑: 이층 기단 + 삼층 탑신, 날렵한 지붕돌
+      stone(-10, -14, 20, 3);
+      stone(-8, -18, 16, 4);
+      let y = -18;
+      for (let i = 0; i < 3; i++) {
+        const w = 9 - i * 1.6;
+        const hgt = i === 0 ? 7 : 3.4;
+        stone(-w / 2, y - hgt, w, hgt);
+        y -= hgt;
+        const rw = w + 7;
+        c.beginPath();
+        c.moveTo(-rw / 2, y);
+        c.quadraticCurveTo(0, y + 1.2, rw / 2, y);
+        c.lineTo(rw / 2 - 1.6, y - 2);
+        c.lineTo(-rw / 2 + 1.6, y - 2);
+        c.closePath();
+        fillToon(c, '#d8d2c3', -rw / 2, y - 2, rw / 2, y + 1, { lw: 0.8 });
+        y -= 2;
+      }
+      for (let i = 0; i < 4; i++) sphere(c, 0, y - 1.4 - i * 2.4, 1.3 - i * 0.12, i === 3 ? PAL.gold : '#cfc8b8', { lw: 0.5, gloss: false });
+      return;
+    }
+    // 다보탑
+    stone(-10, -14, 20, 3);
+    // 사방 계단 난간 기둥
+    for (const x of [-8.5, -3, 3, 8.5]) cylinder(c, x - 0.9, -14, 1.8, 7, '#e8e3d6', { lw: 0.6 });
+    stone(-12, -23.5, 24, 2.4);
+    // 팔각 난간
+    stone(-8, -28.5, 16, 5, '#ece7da');
+    c.strokeStyle = 'rgba(80,70,55,0.45)';
+    c.lineWidth = 0.55;
+    for (let x = -6.5; x <= 6.5; x += 2.6) {
+      c.beginPath();
+      c.moveTo(x, -28);
+      c.lineTo(x, -24);
+      c.stroke();
+    }
+    // 연꽃 받침 + 팔각 몸돌
+    lotus(c, 0, -30.5, 6, '#efe7d6');
+    stone(-4.5, -36, 9, 5);
+    // 팔각 지붕돌
+    c.beginPath();
+    c.moveTo(-8.5, -36);
+    c.quadraticCurveTo(0, -35, 8.5, -36);
+    c.lineTo(6.5, -38.5);
+    c.lineTo(-6.5, -38.5);
+    c.closePath();
+    fillToon(c, '#d8d2c3', -8.5, -38.5, 8.5, -35, { lw: 0.8 });
+    // 상륜
+    for (let i = 0; i < 4; i++) sphere(c, 0, -40 - i * 2.3, 1.4 - i * 0.12, i === 3 ? PAL.gold : '#cfc8b8', { lw: 0.5, gloss: false });
+    if (t.level >= 2 || t.branch) {
+      // 석등 둘
+      for (const sx of [-17, 17]) {
+        cylinder(c, sx - 0.8, -11, 1.6, 4, '#ddd7c8', { lw: 0.5 });
+        rrect(c, sx - 2.2, -18, 4.4, 3.4, 0.6);
+        fillToon(c, '#e8e3d6', sx - 2.2, -18, sx + 2.2, -14.6, { lw: 0.6 });
+        c.fillStyle = '#ffd77a';
+        c.fillRect(sx - 1, -17.2, 2, 1.8);
+        rrect(c, sx - 3, -19.4, 6, 1.6, 0.6);
+        fillToon(c, '#d8d2c3', sx - 3, -19.4, sx + 3, -17.8, { lw: 0.6 });
+      }
+    }
+  },
 };
 
 function bodySprite(t) {
@@ -575,6 +753,79 @@ const OVERLAY = {
     glow(c, 0, -50, 9 + pulse * 3, '#ffd24a', 0.35);
     flagLive(c, -22, -5, 28, PAL.dancheongY, time);
     if (t.level >= 2) flagLive(c, 22, -5, 28, PAL.dancheongR, time + 0.7, -1);
+  },
+  namhansan(c, t, time) {
+    const col = t.branch === 'A' ? PAL.dancheongR : t.branch === 'B' ? '#c9a15a' : PAL.dancheongB;
+    flagLive(c, -18, -14, 18, col, time);
+    if (t.level >= 2 || t.branch) flagLive(c, 18, -14, 18, col, time + 0.8, -1);
+    if (t.flash > 0) glow(c, 0, -6, 12, '#ffe08a', 0.4);
+  },
+  seokbinggo(c, t, time) {
+    const lit = t.flash > 0;
+    const pulse = 0.5 + 0.5 * Math.sin(time * 2.2);
+    glow(c, 0, -6, lit ? 16 : 9 + pulse * 3, '#cfeeff', lit ? 0.9 : 0.45);
+    // 흩날리는 눈송이
+    const n = t.level >= 3 || t.branch ? 4 : t.level >= 2 ? 3 : 2;
+    for (let i = 0; i < n; i++) {
+      const k = (time * 0.35 + i / n) % 1;
+      const x = Math.sin(time * 1.3 + i * 2.1) * 14;
+      const y = -34 + k * 30;
+      c.globalAlpha = Math.sin(k * Math.PI);
+      c.fillStyle = '#ffffff';
+      star(c, x, y, 1.8, 6, 0.4);
+      c.fill();
+      c.globalAlpha = 1;
+    }
+    if (t.branch === 'B') {
+      // 떠 있는 얼음 결정
+      const y = -40 + Math.sin(time * 2) * 1.5;
+      c.save();
+      c.translate(0, y);
+      c.rotate(Math.sin(time) * 0.15);
+      c.beginPath();
+      c.moveTo(0, -7);
+      c.lineTo(4, 0);
+      c.lineTo(0, 7);
+      c.lineTo(-4, 0);
+      c.closePath();
+      fillToon(c, '#bfe6ff', -4, -7, 4, 7, { lw: 0.8, hi: 0.6 });
+      c.restore();
+      glow(c, 0, y, lit ? 14 : 9, '#dff4ff', 0.7);
+    }
+    if (t.branch === 'A') {
+      c.strokeStyle = 'rgba(230,246,255,0.7)';
+      c.lineWidth = 1.2;
+      for (let i = 0; i < 3; i++) {
+        c.beginPath();
+        c.ellipse(0, -30, 12 + i * 3, 3 + i, 0, time * (1.4 + i * 0.5) + i * 2, time * (1.4 + i * 0.5) + i * 2 + 2.2);
+        c.stroke();
+      }
+    }
+  },
+  bulguksa(c, t, time) {
+    const lit = t.flash > 0;
+    const top = t.branch === 'A' ? -36 : -48;
+    glow(c, 0, top, lit ? 20 : 10 + Math.sin(time * 1.8) * 2, '#ffe08a', lit ? 0.95 : 0.45);
+    if (lit) {
+      c.strokeStyle = 'rgba(255,224,138,0.8)';
+      c.lineWidth = 1.4;
+      c.beginPath();
+      c.arc(0, top, 9, 0, Math.PI * 2);
+      c.stroke();
+    }
+    if (t.branch === 'B') {
+      // 떠 있는 연등 셋
+      for (let i = 0; i < 3; i++) {
+        const a = time * 0.9 + (i * Math.PI * 2) / 3;
+        const x = Math.cos(a) * 17;
+        const y = -34 + Math.sin(a) * 4 + Math.sin(time * 2 + i) * 1.5;
+        glow(c, x, y, 8, '#ffb86b', 0.55);
+        rrect(c, x - 2.6, y - 3.2, 5.2, 6.4, 2.4);
+        fillToon(c, ['#e8504a', '#f2a13a', '#e76fa0'][i], x - 2.6, y - 3.2, x + 2.6, y + 3.2, { lw: 0.6, hi: 0.5 });
+        c.fillStyle = PAL.gold;
+        c.fillRect(x - 1.6, y - 3.8, 3.2, 0.8);
+      }
+    }
   },
 };
 

@@ -1,14 +1,18 @@
 // 유산(遺産) 타워 데이터
 // 모든 수치는 tools/balance.mjs 시뮬레이션으로 검증한다.
 // range 단위 = 타일, cd 단위 = 초, dmg = 1회 피해 (aura/beam 은 초당 피해)
+// 병영(barracks)의 dmg · cd · hp 는 병사 한 명 기준, range 는 병사를 세울 수 있는 거리
 
 export const CATEGORIES = {
   palace: { name: '궁궐', color: '#c8412f', desc: '왕실의 위엄. 궁수와 종, 그리고 왕의 가호.' },
   temple: { name: '사찰', color: '#d9a300', desc: '부처의 가피. 저주와 빛으로 적을 약화시킨다.' },
-  fortress: { name: '성곽·과학', color: '#2f6f9f', desc: '조선의 기술력. 화포와 천문으로 멀리 본다.' },
+  fortress: { name: '성곽·과학', color: '#2f6f9f', desc: '조선의 기술력. 화포와 천문, 산성의 군사와 얼음 창고.' },
 };
 
-export const TOWER_ORDER = ['sungnyemun', 'hwaseong', 'bosingak', 'cheomseong', 'haeinsa', 'seokguram', 'gyeongbok'];
+export const TOWER_ORDER = ['sungnyemun', 'hwaseong', 'bosingak', 'cheomseong', 'haeinsa', 'seokguram', 'gyeongbok', 'namhansan', 'seokbinggo', 'bulguksa'];
+
+// 피해 종류 이름 (도감 · 설명용). 인과 = 갑옷과 저항을 모두 무시
+export const DMG_TYPE_NAME = { phys: '물리', fire: '화기', holy: '신성', true: '인과', none: '없음' };
 
 export const TOWERS = {
   sungnyemun: {
@@ -144,6 +148,65 @@ export const TOWERS = {
       },
     },
   },
+  namhansan: {
+    name: '남한산성', title: '수어장대', cat: 'fortress', kind: 'barracks', dmgType: 'phys',
+    desc: '산성을 지키는 수어청 군사. 가장 가까운 길목에 병사를 세워 적을 붙잡는다. 쓰러진 병사는 잠시 뒤 다시 나온다.',
+    levels: [
+      { cost: 90, soldiers: 2, hp: 175, dmg: 11, cd: 1, respawn: 8, range: 2.2 },
+      { cost: 75, soldiers: 2, hp: 265, dmg: 17, cd: 1, respawn: 8, range: 2.4 },
+      { cost: 120, soldiers: 3, hp: 340, dmg: 23, cd: 1, respawn: 7, range: 2.6 },
+    ],
+    branches: {
+      A: {
+        name: '수어청 정예', cost: 230, soldiers: 3, hp: 680, dmg: 38, cd: 1, respawn: 7, range: 2.8, armor: 0.4,
+        desc: '두꺼운 갑옷을 입은 정예병 셋. 받는 피해 -40%. 적장 앞에서도 오래 버틴다.',
+      },
+      B: {
+        name: '의승군', cost: 210, soldiers: 4, hp: 360, dmg: 27, cd: 1, respawn: 6, range: 2.8, regen: 0.03, soldierType: 'holy',
+        desc: '남한산성을 쌓은 승병 넷. 신성 피해로 싸우고 초당 체력 3%씩 스스로 회복한다.',
+      },
+    },
+  },
+  seokbinggo: {
+    name: '석빙고', title: '얼음 창고', cat: 'fortress', kind: 'frost', dmgType: 'phys',
+    desc: '한여름에도 녹지 않는 얼음 창고. 얼음 덩이가 맞은 자리의 적들을 느리게 하고, 몇 번째마다 맞은 적을 꽁꽁 얼려 멈춰 세운다.',
+    levels: [
+      { cost: 110, dmg: 12, cd: 1.2, range: 3.0, splash: 0.5, slow: 0.3, slowDur: 1.6, freezeEvery: 5, freeze: 1.0 },
+      { cost: 80, dmg: 18, cd: 1.15, range: 3.2, splash: 0.55, slow: 0.35, slowDur: 1.7, freezeEvery: 4, freeze: 1.1 },
+      { cost: 120, dmg: 26, cd: 1.1, range: 3.4, splash: 0.6, slow: 0.4, slowDur: 1.8, freezeEvery: 4, freeze: 1.3 },
+    ],
+    branches: {
+      A: {
+        name: '한파', cost: 230, dmg: 40, cd: 1.3, range: 3.6, slow: 0.45, slowDur: 2, splash: 1.1, freezeEvery: 3, freeze: 1.0, freezeAll: true,
+        desc: '큰 얼음 덩이가 넓게 터진다. 세 번째마다 터진 자리의 적을 모두 1초 얼린다.',
+      },
+      B: {
+        name: '얼음 감옥', cost: 220, dmg: 50, cd: 1.0, range: 3.8, slow: 0.45, slowDur: 2, splash: 0.5, freezeEvery: 3, freeze: 2.0, shatter: 0.3, target: 'strong',
+        desc: '세 번째마다 한 적을 2초 얼음에 가둔다. 얼어 있는 동안 받는 피해 +30%. 강한 적 우선.',
+      },
+    },
+  },
+
+  bulguksa: {
+    name: '불국사', title: '다보탑', cat: 'temple', kind: 'pagoda', dmgType: 'true',
+    desc: '부처님 나라의 탑. 하늘에서 내린 빛기둥이 적의 최대 체력에 비례한 피해를 주고, 갑옷과 저항을 모두 무시한다. 적장에게 강하다.',
+    levels: [
+      { cost: 150, dmg: 20, pct: 0.03, pctCap: 150, cd: 2.5, range: 3.4 },
+      { cost: 110, dmg: 30, pct: 0.04, pctCap: 240, cd: 2.4, range: 3.6 },
+      { cost: 150, dmg: 45, pct: 0.05, pctCap: 330, cd: 2.3, range: 3.8 },
+    ],
+    branches: {
+      A: {
+        name: '석가탑', cost: 280, dmg: 70, pct: 0.08, pctCap: 650, cd: 2.4, range: 4.2,
+        desc: '그림자 없는 탑. 최대 체력의 8%(한 번에 최대 650) + 70. 적장 사냥 전용.',
+      },
+      B: {
+        name: '연등회', cost: 260, dmg: 50, pct: 0.035, pctCap: 220, cd: 2.3, range: 4.0, targets: 3, vuln: 0.15, vulnDur: 3,
+        desc: '연등 셋이 세 적을 한꺼번에 비춘다. 맞은 적은 3초간 받는 피해 +15%.',
+      },
+    },
+  },
+
 };
 
 export const SELL_RATE = 0.7;

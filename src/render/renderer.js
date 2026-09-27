@@ -4,7 +4,7 @@ import { renderMapBackground, drawBase, drawSpawns, SEASONS } from './draw-map.j
 import { drawTower } from './draw-towers.js';
 import { drawEnemy, drawHero, drawSummon, drawTurtle } from './draw-units.js';
 import { FX, drawProjectile } from './fx.js';
-import { getMap, T_BUILD } from '../sim/map.js';
+import { getMap, nearestOnPath, T_BUILD } from '../sim/map.js';
 import { STAGE_BY_ID } from '../data/stages.js';
 import { TOWERS, towerBase, SYNERGY_RANGE } from '../data/towers.js';
 
@@ -137,7 +137,7 @@ export class Renderer {
   trackProjectiles(v) {
     const now = new Map();
     for (const p of v.projectiles) {
-      if (p.kind !== 'arrow' && p.kind !== 'bolt' && p.kind !== 'orb') continue;
+      if (p.kind !== 'arrow' && p.kind !== 'bolt' && p.kind !== 'orb' && p.kind !== 'ice') continue;
       now.set(p.id, { kind: p.kind, x: p.x, y: p.y, a: p.a || 0, crit: p.crit, hue: p.hue });
     }
     for (const [id, p] of this.projPrev) if (!now.has(id)) this.fx.impact(p.kind, p.x * TS, p.y * TS, p.a, p.crit, p.hue);
@@ -437,6 +437,54 @@ export class Renderer {
     ctx.fill();
     ctx.stroke();
     ctx.setLineDash([]);
+    if (TOWERS[type].kind === 'barracks') this.rallyMark(ctx, x, y, st.range * Math.max(1, mult), color);
+  }
+
+  // 남한산성: 병사가 설 길목에 깃발 (사거리 밖이면 붉은 X)
+  rallyMark(ctx, x, y, range, color) {
+    const np = nearestOnPath(this.map, x + 0.5, y + 0.5);
+    if (!np) return;
+    const px = np.x * TS;
+    const py = np.y * TS;
+    const ok = np.dist <= range;
+    ctx.save();
+    ctx.strokeStyle = ok ? rgba(color || '#ffffff', 0.7) : 'rgba(255,80,60,0.8)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo((x + 0.5) * TS, (y + 0.5) * TS);
+    ctx.lineTo(px, py);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    if (!ok) {
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(px - 6, py - 6);
+      ctx.lineTo(px + 6, py + 6);
+      ctx.moveTo(px + 6, py - 6);
+      ctx.lineTo(px - 6, py + 6);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = 'rgba(0,0,0,0.25)';
+      ctx.beginPath();
+      ctx.ellipse(px, py + 2, 7, 2.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#2b1a12';
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(px, py + 2);
+      ctx.lineTo(px, py - 18);
+      ctx.stroke();
+      ctx.fillStyle = color || PAL.dancheongB;
+      ctx.beginPath();
+      ctx.moveTo(px, py - 18);
+      ctx.lineTo(px + 10, py - 15);
+      ctx.lineTo(px, py - 11);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+    }
+    ctx.restore();
   }
 
   // 플레이어가 지금 손대는 칸: 그 사람 색의 모서리 (1P 청 · 2P 홍). 글씨 꼬리표는 영웅을 가려서 달지 않는다

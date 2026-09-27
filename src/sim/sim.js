@@ -9,12 +9,12 @@ import { TACTICS, TACTIC_ORDER, TACTIC_CHANCE, TACTIC_MIN_WAVE } from '../data/t
 import { STAGE_BY_ID, STAGES, DIFFICULTY, COOP, parseWave } from '../data/stages.js';
 import { TOWER_META_BONUS, metaRangeMult, metaAsMult, metaCost } from '../data/quests.js';
 import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
-import { getMap, posAt, tileAt, T_BUILD } from './map.js';
+import { getMap, posAt, tileAt, nearestOnPath, T_BUILD } from './map.js';
 import { rand, randInt } from './rng.js';
 import {
   ev, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
   isTargetable, hurtHero, hurtSummon, releaseBlocker, releaseEnemy, findEnemy, findBlocker, recalcHero,
-  addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn,
+  addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn, addSummon,
 } from './combat.js';
 import { castHeroSkill, castHeroUlt, castEquipSkill, pressCombo, AHN_BOSS_MULT } from './abilities.js';
 
@@ -181,9 +181,15 @@ function cmdBuild(s, pl, c) {
   const t = {
     id: newId(s), type: c.tower, x: c.x, y: c.y, cx: c.x + 0.5, cy: c.y + 0.5, level: 1, branch: null,
     owner: pl.idx, cd: 0.4, angle: -Math.PI / 2, spent: [0, 0], kills: 0, dmgDone: 0, shots: 0,
-    ramp: 0, beam: [], disabledT: 0, flash: 0, mode: def.kind === 'beam' ? 'strong' : 'first',
+    ramp: 0, beam: [], disabledT: 0, flash: 0, mode: def.kind === 'beam' || def.kind === 'pagoda' ? 'strong' : 'first',
     syn: 0, synIds: [], bDmg: 0, bAs: 0, bRange: 0, metaLv: pl.towerLv[c.tower] || 0, built: s.time,
   };
+  if (def.kind === 'barracks') {
+    // 병사를 세울 길목: 유산에서 가장 가까운 길 위 지점
+    const np = nearestOnPath(map, t.cx, t.cy);
+    t.rally = np ? { path: np.path, d: np.d, dist: np.dist } : null;
+    t.respawnT = 0;
+  }
   t.spent[pl.idx] = cost;
   s.towers.push(t);
   pl.stats.builds++;
@@ -212,6 +218,7 @@ function cmdUpgrade(s, pl, c) {
   }
   pl.gold -= cost;
   t.spent[pl.idx] += cost;
+  if (def.kind === 'barracks') t.respawnT = 0; // 늘어난 자리는 바로 채운다
   recomputeSynergy(s);
   ev(s, 'upgrade', { x: t.cx, y: t.cy, type: t.type, branch: t.branch, level: t.level });
   ev(s, 'sfx', { n: 'upgrade' });
@@ -272,6 +279,11 @@ function cmdSell(s, pl, c) {
   if (t.owner !== pl.idx) return ev(s, 'toast', { p: pl.idx, text: '자기 유산만 철거할 수 있습니다' });
   t.spent.forEach((v, pi) => addGold(s.players[pi], v * SELL_RATE));
   s.towers.splice(i, 1);
+  for (const m of s.summons) {
+    if (m.tower !== t.id) continue;
+    m.hp = 0;
+    releaseBlocker(s, m.id);
+  }
   recomputeSynergy(s);
   ev(s, 'sell', { x: t.cx, y: t.cy });
   ev(s, 'sfx', { n: 'coin' });
@@ -528,7 +540,7 @@ function updateEnemies(s) {
         if (e.atkCd <= 0) {
           e.atkCd = 1;
           if (b.heroId) hurtHero(s, b, e.atk);
-          else hurtSummon(s, b, e.atk);
+          else hurtSummon(s, b, e.atk * (b.tower && e.tier === 4 ? 2 : 1));
           e.swing = 0.25;
         }
         continue;
@@ -830,6 +842,7 @@ function updateSummons(s) {
       continue;
     }
     if (m.kind === 'wall') continue;
+    if (m.regen) m.hp = Math.min(m.maxHp, m.hp + m.maxHp * m.regen * DT);
     if (m.engaged.length === 0) {
       let near = null;
       let bd = 1.3 * 1.3;
@@ -864,8 +877,9 @@ function updateSummons(s) {
         }
       }
       if (e) {
-        damage(s, e, m.dmg, 'phys', { p: m.owner, kind: 'summon' });
-        m.cd = 1;
+        const tw = m.tower ? s.towers.find((t) => t.id === m.tower) : null;
+        damage(s, e, m.dmg, m.dtype || 'phys', tw ? { p: m.owner, kind: 'tower', ref: tw } : { p: m.owner, kind: 'summon' });
+        m.cd = m.rate || 1;
         m.anim = 0.2;
       }
     }
@@ -948,6 +962,7 @@ function updateTowers(s) {
         break;
       }
       case 'beam': updateBeam(s, t, st, range, src); break;
+      case 'barracks': updateBarracks(s, t, st); break;
       case 'palace': break;
       default: {
         t.cd -= DT * t.asMult;
@@ -1032,6 +1047,33 @@ function fireTower(s, t, def, st, range, src) {
       ev(s, 'sfx', { n: 'star' });
       return true;
     }
+    case 'frost': {
+      const [tg] = inRangeTargets(s, t, range, t.mode, 1);
+      if (!tg) return false;
+      t.count = (t.count || 0) + 1;
+      const freeze = st.freezeEvery && t.count % st.freezeEvery === 0 ? st.freeze : 0;
+      addProjectile(s, {
+        kind: 'ice', mode: 'homing', x: t.cx, y: t.cy - 0.55, target: tg.e.id, speed: 11, dmg, type: 'phys', src, crit: !!freeze,
+        frost: { slow: st.slow, slowDur: st.slowDur, freeze, all: !!st.freezeAll, shatter: st.shatter || 0, r: st.splash || 0 },
+      });
+      aimAt(t, tg.e);
+      ev(s, 'sfx', { n: 'shard' });
+      return true;
+    }
+    case 'pagoda': {
+      // 인과응보: 최대 체력 비례 피해(상한 있음) + 기본 피해, 갑옷 · 저항 무시
+      const targets = inRangeTargets(s, t, range, t.mode, st.targets || 1);
+      if (!targets.length) return false;
+      for (const { e } of targets) {
+        const d = (st.dmg + Math.min(st.pctCap, st.pct * e.maxHp)) * t.dmgMult;
+        if (st.vuln) applyVuln(e, st.vuln, st.vulnDur);
+        ev(s, 'smite', { x: e.x, y: e.y, big: t.branch === 'A', lamp: t.branch === 'B' });
+        damage(s, e, d, 'true', src);
+      }
+      aimAt(t, targets[0].e);
+      ev(s, 'sfx', { n: 'smite' });
+      return true;
+    }
     case 'bell': {
       const r2 = range * range;
       let any = false;
@@ -1051,6 +1093,57 @@ function fireTower(s, t, def, st, range, src) {
     }
   }
   return false;
+}
+
+// ───── 병영(남한산성): 가장 가까운 길목에 병사를 세우고, 쓰러지면 잠시 뒤 다시 채운다 ─────
+function guardSlot(s, t, i, n) {
+  const path = mapOf(s).paths[t.rally.path];
+  const q = posAt(path, clamp(t.rally.d + (i - (n - 1) / 2) * 0.5, 0, path.total));
+  const side = (i % 2 ? 1 : -1) * 0.2;
+  return { x: q.x - q.dy * side, y: q.y + q.dx * side };
+}
+
+function updateBarracks(s, t, st) {
+  const n = st.soldiers;
+  const alive = s.summons.filter((m) => m.tower === t.id && m.hp > 0);
+  const hpMult = 1 + TOWER_META_BONUS * t.metaLv;
+  const kind = t.branch === 'B' ? 'monk' : t.branch === 'A' ? 'elite' : 'guard';
+  for (const m of alive) {
+    // 강화 · 공명 · 경복궁 버프를 매 틱 반영 (늘어난 최대 체력만큼 바로 회복)
+    const maxHp = st.hp * hpMult;
+    if (maxHp > m.maxHp) m.hp += maxHp - m.maxHp;
+    m.maxHp = maxHp;
+    m.hp = Math.min(m.hp, maxHp);
+    m.dmg = st.dmg * t.dmgMult;
+    m.rate = st.cd / t.asMult;
+    m.armor = st.armor || 0;
+    m.regen = st.regen || 0;
+    m.dtype = st.soldierType || 'phys';
+    m.kind = kind;
+  }
+  if (!t.rally || t.rally.dist > st.range * Math.max(1, t.rangeMult)) return;
+  if (alive.length < (t.alive ?? 0) && t.respawnT <= 0) t.respawnT = st.respawn;
+  t.alive = alive.length;
+  if (alive.length >= n) return;
+  if (t.respawnT > 0) {
+    t.respawnT -= DT;
+    return;
+  }
+  const used = new Set(alive.map((m) => m.slot));
+  for (let i = 0; i < n; i++) {
+    if (used.has(i)) continue;
+    const home = guardSlot(s, t, i, n);
+    const m = addSummon(s, {
+      kind, owner: t.owner, tower: t.id, slot: i, x: t.cx, y: t.cy + 0.2, hp: st.hp * hpMult, maxHp: st.hp * hpMult,
+      dmg: st.dmg * t.dmgMult, rate: st.cd / t.asMult, armor: st.armor || 0, regen: st.regen || 0, dtype: st.soldierType || 'phys', life: 1e9,
+    });
+    // 성문에서 나와 제자리로 걸어간다
+    m.px = home.x;
+    m.py = home.y;
+  }
+  t.alive = s.summons.filter((m) => m.tower === t.id && m.hp > 0).length;
+  ev(s, 'rally', { x: t.cx, y: t.cy });
+  ev(s, 'sfx', { n: 'rally' });
 }
 
 function updateBeam(s, t, st, range, src) {
@@ -1141,7 +1234,25 @@ function updateProjectiles(s) {
   }
 }
 
+// 석빙고 얼음: 맞은 자리 둘레까지 둔화, 몇 번째마다 맞은 적을 얼림(한파는 둘레 전부, 적장은 짧게), 얼음 감옥은 얼어 있는 동안 취약
+function frostHit(s, p, e) {
+  const f = p.frost;
+  const r2 = f.r * f.r;
+  const hits = f.r ? s.enemies.filter((o) => o.hp > 0 && d2(o, e) <= r2) : [e];
+  for (const o of hits) {
+    applySlow(o, f.slow, f.slowDur);
+    if (f.freeze && (o === e || f.all)) {
+      applyStun(o, f.freeze);
+      o.iceT = Math.max(o.iceT || 0, o.stunT);
+      if (f.shatter) applyVuln(o, f.shatter, o.stunT);
+    }
+    damage(s, o, o === e ? p.dmg : p.dmg * 0.6, p.type, p.src);
+  }
+  if (f.freeze || f.r > 0.8) ev(s, 'frost', { x: e.x, y: e.y, r: f.freeze && !f.all ? 0.35 : f.r, freeze: !!f.freeze });
+}
+
 function projectileHit(s, p, e) {
+  if (p.frost) return frostHit(s, p, e);
   if (p.splash) aoe(s, e.x, e.y, p.splash, p.dmg, p.type, p.src);
   else damage(s, e, p.dmg, p.type, p.src);
   if (p.crit) ev(s, 'crit', { x: e.x, y: e.y, v: Math.round(p.dmg) });

@@ -4,7 +4,7 @@ import { ENEMIES } from '../data/enemies.js';
 
 const ENEMY_IDS = Object.keys(ENEMIES);
 const PHASES = ['prep', 'spawn', 'final'];
-const PKINDS = ['arrow', 'bolt', 'orb', 'shell', 'bigshell', 'rocket', 'meteor', 'star', 'hangul', 'stone', 'bomb', 'garlic', 'thunder'];
+const PKINDS = ['arrow', 'bolt', 'orb', 'shell', 'bigshell', 'rocket', 'meteor', 'star', 'hangul', 'stone', 'bomb', 'garlic', 'thunder', 'ice'];
 const r2 = (v) => Math.round(v * 100) / 100;
 const r1 = (v) => Math.round(v * 10) / 10;
 

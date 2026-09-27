@@ -12,13 +12,13 @@ import { TACTICS } from '../data/tactics.js';
 import { STAGE_BY_ID, DIFFICULTY, parseWave } from '../data/stages.js';
 import { findCombo, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import { EARLY_BONUS_PER_SEC } from '../sim/sim.js';
-import { getMap, tileAt, T_BUILD } from '../sim/map.js';
+import { getMap, tileAt, nearestOnPath, T_BUILD } from '../sim/map.js';
 import { autoAim } from '../sim/abilities.js';
 import { audio } from '../audio/audio.js';
 import { Ring, spread } from './ring.js';
 import { ITEMS, ITEM_ORDER, ITEM_CD } from '../data/items.js';
 import { spendItem } from '../meta/profile.js';
-import { metaCost } from '../data/quests.js';
+import { metaCost, TOWER_META_BONUS } from '../data/quests.js';
 
 const W = 960;
 const H = 560;
@@ -486,9 +486,9 @@ export class GameUI {
       else this.openMenu();
       return;
     }
-    if (this.pop && this.pop.kind === 'build' && /^[1-7]$/.test(e.key)) {
+    if (this.pop && this.pop.kind === 'build' && /^[0-9]$/.test(e.key)) {
       const list = this.buildList(this.me);
-      const type = list[+e.key - 1];
+      const type = list[(+e.key + 9) % 10];
       if (type) this.build(this.pop.x, this.pop.y, type);
       return;
     }
@@ -713,7 +713,7 @@ export class GameUI {
     if (!m.options.length) return this.closeP2Menu();
     m.idx = Math.min(m.idx, m.options.length - 1);
     const k = this.scale;
-    m.ring.layout((m.tile.x + 0.5) * TS * k, (m.tile.y + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k);
+    m.ring.layout((m.tile.x + 0.5) * TS * k, (m.tile.y + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k, m.options.length);
     const angles = spread(m.options.length);
     m.ring.hoverKey = m.idx;
     m.ring.render(m.options.map((o, i) => ({
@@ -838,10 +838,10 @@ export class GameUI {
       desc ? h('div', { class: 'td' }, desc) : null);
   }
 
-  openRing(tx, ty) {
+  openRing(tx, ty, n = 0) {
     const ring = new Ring({ owner: this.local ? 0 : this.me });
     const k = this.scale;
-    ring.layout((tx + 0.5) * TS * k, (ty + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k);
+    ring.layout((tx + 0.5) * TS * k, (ty + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k, n);
     this.overlay.append(ring.el);
     return ring;
   }
@@ -856,7 +856,7 @@ export class GameUI {
 
   openBuildMenu(x, y) {
     this.closePop();
-    const ring = this.openRing(x, y);
+    const ring = this.openRing(x, y, this.buildList(this.me).length);
     this.pop = { kind: 'build', ring, x, y, sig: '' };
     ring.onleave = () => {
       this.ui.placing = null;
@@ -878,7 +878,7 @@ export class GameUI {
       const cost = this.price(type, def.levels[0].cost);
       const poor = pl.gold < cost;
       return {
-        key: type, angle: angles[i], icon: towerIcon(type), cost, cls: poor ? 'poor' : '', label: `${def.name} (${cost}냥)`, num: keys ? String(i + 1) : null,
+        key: type, angle: angles[i], icon: towerIcon(type), cost, cls: poor ? 'poor' : '', label: `${def.name} (${cost}냥)`, num: keys && i < 10 ? String((i + 1) % 10) : null,
         tip: () => this.tipBody(`${def.name} · ${def.title}`, cost, def.desc, def.cat, poor),
         onhover: () => {
           this.ui.placing = type;
@@ -912,12 +912,22 @@ export class GameUI {
     audio.play('ui');
   }
 
+  // 남한산성 병사가 설 길목이 사거리 안에 있는가
+  rallyOk(t, st) {
+    const np = nearestOnPath(this.map, t.x + 0.5, t.y + 0.5);
+    return !!np && np.dist <= st.range * Math.max(1, t.rangeMult || 1);
+  }
+
   upgradeDiff(t) {
     const def = TOWERS[t.type];
     const next = def.levels[t.level];
     const cur = def.levels[t.level - 1];
     const diff = [];
+    if (next.soldiers && next.soldiers !== cur.soldiers) diff.push(`병사 ${cur.soldiers}→${next.soldiers}명`);
+    if (next.hp) diff.push(`병사 체력 ${cur.hp}→${next.hp}`);
     if (next.dmg) diff.push(`피해 ${cur.dmg}→${next.dmg}`);
+    if (next.pct) diff.push(`체력 비례 ${Math.round(cur.pct * 100)}→${Math.round(next.pct * 100)}%`);
+    if (next.freezeEvery && next.freezeEvery !== cur.freezeEvery) diff.push(`${cur.freezeEvery}→${next.freezeEvery}번째마다 얼림`);
     if (next.dps) diff.push(`초당 ${cur.dps}→${next.dps}`);
     if (next.range) diff.push(`사거리 ${cur.range}→${next.range}`);
     if (next.buffDmg) diff.push(`강화 +${Math.round(cur.buffDmg * 100)}→${Math.round(next.buffDmg * 100)}%`);
@@ -961,7 +971,7 @@ export class GameUI {
         });
       }
     }
-    if (def.kind !== 'palace' && def.kind !== 'sutra') {
+    if (def.kind !== 'palace' && def.kind !== 'sutra' && def.kind !== 'barracks') {
       const modes = Object.keys(TARGET_LABEL);
       const nextMode = modes[(modes.indexOf(t.mode) + 1) % modes.length];
       items.push({
@@ -984,6 +994,9 @@ export class GameUI {
       },
     });
     const stats = [];
+    if (st.soldiers) stats.push(`병사 ${st.soldiers}명 · 체력 ${Math.round(st.hp * (1 + TOWER_META_BONUS * (t.metaLv || 0)))}`);
+    if (st.pct) stats.push(`최대 체력 ${Math.round(st.pct * 100)}%(최대 ${st.pctCap})`);
+    if (st.freezeEvery) stats.push(`${st.freezeEvery}번째마다 ${st.freeze}초 얼림`);
     if (st.dmg) stats.push(`피해 ${Math.round(st.dmg * (t.dmgMult || 1))}`);
     if (st.dps) stats.push(`초당 ${Math.round(st.dps * (t.dmgMult || 1))}`);
     if (st.cd) stats.push(`속도 ${(st.cd / (t.asMult || 1)).toFixed(2)}s`);
@@ -997,6 +1010,7 @@ export class GameUI {
       h('div', { class: 'td num' }, stats.join(' · ')),
       t.syn ? h('div', { class: 'td', style: { color: '#ffe68c' } }, `유산 공명 +${t.syn * 12}%`) : null,
       t.disabledT > 0 ? h('div', { class: 'td', style: { color: '#ff8a7a' } }, `봉쇄됨 ${Math.ceil(t.disabledT)}초`) : null,
+      def.kind === 'barracks' && !this.rallyOk(t, st) ? h('div', { class: 'td', style: { color: '#ff8a7a' } }, '길이 멀어 병사를 세울 수 없습니다. 길 가까이 지으세요.') : null,
       t.branch ? h('div', { class: 'td' }, def.branches[t.branch].desc) : null);
     pop.ring.render(items, info);
   }

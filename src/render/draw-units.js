@@ -1783,6 +1783,120 @@ const MILITIA = {
   },
 };
 
+// 남한산성 병사: 수어청 군사(청색 군복 + 전립 + 창) · 정예(두정갑 + 투구) · 의승군(회색 장삼 + 가사 + 석장)
+function jeonlip(c) {
+  const { x, y, r } = HEAD;
+  // 전립: 검은 벙거지 + 붉은 상모 술
+  c.fillStyle = 'rgba(28,24,22,0.95)';
+  c.beginPath();
+  c.ellipse(x, y - 3.4, r + 3.4, 1.9, 0, 0, Math.PI * 2);
+  c.fill();
+  c.strokeStyle = OL;
+  c.lineWidth = 0.8;
+  c.stroke();
+  c.beginPath();
+  c.arc(x, y - 3.6, r - 0.6, Math.PI, 0);
+  c.closePath();
+  fillToon(c, '#2a2522', x - r, y - r - 3, x + r, y - 3.4, { hi: 0.3, lw: 0.8 });
+  c.beginPath();
+  c.moveTo(x, y - r - 2.6);
+  c.quadraticCurveTo(x - 3.6, y - r - 2.2, x - 4.2, y - r + 1.4);
+  c.quadraticCurveTo(x - 1.4, y - r - 0.6, x + 0.6, y - r - 2.4);
+  c.closePath();
+  fillToon(c, '#d33a2c', x - 4, y - r - 3, x + 1, y - r + 1, { lw: 0.6 });
+  sphere(c, x, y - r - 2.7, 1, PAL.gold, { lw: 0.5, gloss: false });
+}
+const GUARD = {
+  body: '#2f5a8a', sleeve: '#b8322a', boots: '#1d1c1a',
+  chest: (c) => {
+    c.fillStyle = '#1d1c1a';
+    c.fillRect(-5.8, -5.4, 11.6, 1.3);
+    c.fillStyle = '#e7d9a8';
+    c.fillRect(-0.6, -13, 1.2, 7.4);
+  },
+  hat: jeonlip,
+  weapon: (c, h, pose) => spear(c, h, pose, 21),
+};
+const ELITE = {
+  body: '#6e2a24', sleeve: '#6e2a24', boots: '#1d1c1a', bodyW: 1.08,
+  chest: (c) => {
+    c.fillStyle = PAL.gold;
+    for (let r = 0; r < 3; r++) for (let k = 0; k < 3; k++) {
+      c.beginPath();
+      c.arc(-2.4 + k * 2.6, -11.2 + r * 2.5, 0.55, 0, Math.PI * 2);
+      c.fill();
+    }
+    c.fillStyle = '#1d1c1a';
+    c.fillRect(-6, -5.4, 12, 1.4);
+  },
+  hat: (c, pose) => {
+    const { x, y, r } = HEAD;
+    kabuto('#34363d', PAL.gold, 'none', true)(c);
+    c.beginPath();
+    c.moveTo(x, y - r - 0.6);
+    c.quadraticCurveTo(x - 3 + pose.step, y - r - 6, x + 1.4, y - r - 7.4);
+    c.quadraticCurveTo(x + 2.6, y - r - 4.4, x + 1.2, y - r - 0.6);
+    c.closePath();
+    fillToon(c, '#d33a2c', x - 3, y - r - 7, x + 3, y - r, { lw: 0.7 });
+  },
+  backHand: (c, h) => {
+    // 방패
+    sphere(c, h.x - 0.6, h.y - 1, 4.8, '#7a3a24', { lw: 0.9, glossA: 0.3 });
+    c.strokeStyle = PAL.gold;
+    c.lineWidth = 0.7;
+    c.beginPath();
+    c.arc(h.x - 0.6, h.y - 1, 3.2, 0, Math.PI * 2);
+    c.stroke();
+  },
+  weapon: (c, h, pose) => spear(c, h, pose, 23, '#f1f4f6'),
+};
+const MONK = {
+  body: '#8d8a84', sleeve: '#9b978f', boots: '#4a4238', longRobe: true, flare: 1.08,
+  chest: (c) => {
+    // 가사: 어깨에서 비스듬히
+    c.beginPath();
+    c.moveTo(-5.6, -13.4);
+    c.lineTo(-2.6, -13.4);
+    c.lineTo(5.8, -4.6);
+    c.lineTo(2.4, -4.6);
+    c.closePath();
+    fillToon(c, '#a4432c', -5.6, -13.4, 5.8, -4.6, { lw: 0.6 });
+    c.fillStyle = '#e7d9a8';
+    c.fillRect(-5.8, -5.6, 11.6, 1);
+  },
+  hat: (c) => {
+    // 삭발한 머리에 얕은 그늘
+    const { x, y, r } = HEAD;
+    c.fillStyle = 'rgba(90,70,60,0.28)';
+    c.beginPath();
+    c.arc(x, y - 0.6, r, Math.PI * 1.08, Math.PI * 1.92);
+    c.fill();
+  },
+  weapon: (c, h, pose) => {
+    // 석장: 긴 나무 지팡이 끝에 쇠고리
+    const a = pose.atk ? -0.35 : -1.25;
+    const ex = h.x + Math.cos(a) * 15;
+    const ey = h.y + Math.sin(a) * 15;
+    c.lineCap = 'round';
+    c.strokeStyle = OL;
+    c.lineWidth = 2.2;
+    c.beginPath();
+    c.moveTo(h.x - Math.cos(a) * 6, h.y - Math.sin(a) * 6);
+    c.lineTo(ex, ey);
+    c.stroke();
+    c.strokeStyle = '#8a5a33';
+    c.lineWidth = 1.2;
+    c.stroke();
+    c.strokeStyle = '#d9c070';
+    c.lineWidth = 1;
+    c.beginPath();
+    c.arc(ex, ey - 1.6, 2.2, 0, Math.PI * 2);
+    c.stroke();
+    if (pose.atk) glow(c, ex, ey, 6, '#ffe08a', 0.7);
+  },
+};
+const SOLDIER_LOOK = { guard: GUARD, elite: ELITE, monk: MONK };
+
 export function drawSummon(ctx, m, time) {
   const x = m.x * TS;
   const y = m.y * TS + 8;
@@ -1812,8 +1926,17 @@ export function drawSummon(ctx, m, time) {
   const t = time + m.id;
   softShadow(ctx, x, y, 8, 2.8, 0.3);
   const [anim, frame] = animFrame(false, m.anim > 0, t);
-  blit(ctx, charSprite('m', 'militia', MILITIA, anim, frame), x, y, 0.95, false);
-  bar(ctx, x, y - 32, 16, m.hp / m.maxHp, '#8fe3a0');
+  const look = SOLDIER_LOOK[m.kind];
+  if (look) {
+    // 남한산성 병사: 주인 색 발 고리
+    ctx.strokeStyle = rgba(m.owner === 1 ? PAL.p1 : PAL.p0, 0.6);
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.ellipse(x, y + 0.5, 9, 3.2, 0, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+  blit(ctx, charSprite('m', look ? m.kind : 'militia', look || MILITIA, anim, frame), x, y, m.kind === 'elite' ? 1.02 : 0.95, false);
+  bar(ctx, x, y - 32, 16, m.hp / m.maxHp, look ? '#9cc4ff' : '#8fe3a0');
 }
 
 function bar(ctx, x, y, w, k, color) {

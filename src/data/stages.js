@@ -276,6 +276,7 @@ const NEW_STAGES = {
     grid: genGrid({ seed: 8, land: [[0, 0, 17, 13], [18, 3, 20, 10]], trees: 0.3, houses: [[1, 11], [2, 12], [1, 12]] }),
     paths: [[[24, 1], [15, 1], [15, 5], [9, 5], [9, 1], [3, 1], [3, 9], [12, 9], [12, 12], [4, 12]]],
     gen: { level: 3, n: 14, boss: { 14: 'todo' }, weights: { sco: 1.3, tep: 1.3 } },
+    unlockTowers: ['namhansan'],
   },
   s9: {
     id: 's9', name: '사천 해전', date: '1592년 5월', season: 'sea', base: '사천 포구',
@@ -333,6 +334,7 @@ const NEW_STAGES = {
       [[24, 11], [16, 11], [16, 9], [12, 9], [12, 3], [6, 3], [6, 7], [2, 7]],
     ],
     gen: { level: 8, n: 16, boss: { 8: ['so', 1], 16: ['konishi', 0] }, weights: { arm: 1.4 } },
+    unlockTowers: ['seokbinggo'],
   },
   s14: {
     id: 's14', name: '진주성 2차 전투', date: '1593년 6월', season: 'summer', base: '촉석루',
@@ -346,6 +348,7 @@ const NEW_STAGES = {
       [[-1, 6], [21, 6]],
     ],
     gen: { level: 10, n: 18, boss: { 9: ['kuroda', 0], 18: ['kato', 1] }, weights: { ram: 1.3, sam: 1.3 } },
+    unlockTowers: ['bulguksa'],
   },
   s15: {
     id: 's15', name: '칠천량의 밤', date: '1597년 7월', season: 'sea', base: '한산 수영',

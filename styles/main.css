@@ -2301,3 +2301,14 @@ div.side-tile:hover {
     animation: none;
   }
 }
+
+/* 유산이 8종을 넘으면 건설 고리 버튼을 조금 작게 */
+.ring.dense .rbtn {
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+}
+.ring.dense .rbtn img {
+  width: 41px;
+  height: 41px;
+}

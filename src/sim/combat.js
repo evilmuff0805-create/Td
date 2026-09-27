@@ -298,7 +298,7 @@ export function hurtHero(s, h, amt) {
 }
 
 export function hurtSummon(s, m, amt) {
-  m.hp -= amt;
+  m.hp -= amt * (1 - (m.armor || 0));
   if (m.hp <= 0) {
     m.hp = 0;
     releaseBlocker(s, m.id);

@@ -117,7 +117,7 @@ class GameAudio {
   play(name) {
     if (!this.ctx || this.sfxVol <= 0) return;
     const now = performance.now();
-    const gap = { bell: 260, arrow: 70, star: 90, cannon: 110, rockets: 180, coin: 60, boom: 70, hit: 55, crit: 90, kill: 45, tick: 30, gun: 90 }[name] ?? 40;
+    const gap = { bell: 260, arrow: 70, star: 90, cannon: 110, rockets: 180, coin: 60, boom: 70, hit: 55, crit: 90, kill: 45, tick: 30, gun: 90, shard: 80, smite: 200, rally: 400 }[name] ?? 40;
     if (this.last[name] && now - this.last[name] < gap) return;
     this.last[name] = now;
     const n = (i) => 293.66 * Math.pow(2, (PENTA[i % 5] + 12 * Math.floor(i / 5)) / 12);
@@ -211,6 +211,22 @@ class GameAudio {
         break;
       case 'ice':
         [9, 11, 12].forEach((k, i) => this.tone(n(k), 0.6, { type: 'triangle', vol: 0.05, t: i * 0.05 }));
+        break;
+      case 'shard':
+        // 석빙고: 얼음이 부딪는 짧은 소리
+        this.tone(2400, 0.08, { type: 'triangle', vol: 0.05, slide: 0.7 });
+        this.noise(0.05, { vol: 0.05, type: 'highpass', freq: 5000 });
+        break;
+      case 'smite':
+        // 불국사: 풍경 소리 + 낮은 울림
+        this.tone(n(12), 0.9, { type: 'sine', vol: 0.06 });
+        this.tone(n(14), 0.7, { type: 'sine', vol: 0.04, t: 0.05 });
+        this.bell(147, { vol: 0.06, dur: 0.9 });
+        break;
+      case 'rally':
+        // 남한산성: 북 한 번 + 짧은 나각
+        this.drum(80, { vol: 0.5 });
+        this.tone(220, 0.25, { type: 'sawtooth', vol: 0.03, slide: 1.1, filter: 900 });
         break;
       case 'combo':
         this.gong(98, { vol: 0.5, dur: 3.2 });

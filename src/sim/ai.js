@@ -13,6 +13,12 @@ const PLANS = {
   balanced: ['sungnyemun', 'sungnyemun', 'hwaseong', 'bosingak', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'seokguram', 'gyeongbok', 'hwaseong', 'U', 'U', 'sungnyemun', 'cheomseong', 'U', 'U', 'U', 'bosingak', 'seokguram', 'U', 'U', 'U', 'U'],
   arrows: ['sungnyemun', 'sungnyemun', 'sungnyemun', 'U', 'sungnyemun', 'U', 'sungnyemun', 'U', 'U', 'sungnyemun', 'U', 'U', 'U'],
   greedy: ['sungnyemun', 'gyeongbok', 'hwaseong', 'U', 'sungnyemun', 'cheomseong', 'U', 'U', 'seokguram', 'haeinsa', 'U', 'U', 'U', 'U'],
+  // 새 유산 검증용: balanced 에서 숭례문 · 보신각 · 석굴암 자리를 남한산성 · 석빙고 · 불국사로
+  fresh: ['sungnyemun', 'namhansan', 'hwaseong', 'seokbinggo', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'bulguksa', 'gyeongbok', 'hwaseong', 'U', 'U', 'namhansan', 'cheomseong', 'U', 'U', 'U', 'seokbinggo', 'bulguksa', 'U', 'U', 'U', 'U'],
+  // 하나씩만 바꾼 비교용
+  nam: ['sungnyemun', 'namhansan', 'hwaseong', 'bosingak', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'seokguram', 'gyeongbok', 'hwaseong', 'U', 'U', 'namhansan', 'cheomseong', 'U', 'U', 'U', 'bosingak', 'seokguram', 'U', 'U', 'U', 'U'],
+  ice: ['sungnyemun', 'sungnyemun', 'hwaseong', 'seokbinggo', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'seokguram', 'gyeongbok', 'hwaseong', 'U', 'U', 'sungnyemun', 'cheomseong', 'U', 'U', 'U', 'seokbinggo', 'seokguram', 'U', 'U', 'U', 'U'],
+  bul: ['sungnyemun', 'sungnyemun', 'hwaseong', 'bosingak', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'bulguksa', 'gyeongbok', 'hwaseong', 'U', 'U', 'sungnyemun', 'cheomseong', 'U', 'U', 'U', 'bosingak', 'bulguksa', 'U', 'U', 'U', 'U'],
 };
 
 export function createBot(s, p, opts = {}) {
@@ -59,7 +65,7 @@ function freeSpot(s, bot, kind, pathIdx = -1) {
     const near = (sp) => map.samples.filter((sm) => sm.path === pathIdx && sm.d < total * 0.8 && (sm.x - sp.x - 0.5) ** 2 + (sm.y - sp.y - 0.5) ** 2 <= 9).length;
     return bot.spots.filter((sp) => !taken.has(sp.y * 100 + sp.x)).sort((a, b) => near(b) - near(a))[0];
   }
-  const list = kind === 'bell' || kind === 'sutra' ? [...bot.spots].sort((a, b) => b.near - a.near) : bot.spots;
+  const list = kind === 'bell' || kind === 'sutra' || kind === 'barracks' ? [...bot.spots].sort((a, b) => b.near - a.near) : bot.spots;
   if (kind === 'palace') {
     // 유산이 많이 모인 곳
     let best = null;

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><title>그림 도감</title>
 <style>body{margin:0;background:#8fb56b}canvas{display:block}</style></head>
-<body><canvas id="c" width="1600" height="1100"></canvas>
+<body><canvas id="c" width="1600" height="1300"></canvas>
 <script type="module">
 import { drawHero, drawEnemy, drawSummon, drawTurtle } from '../src/render/draw-units.js';
 import { drawTower } from '../src/render/draw-towers.js';
@@ -14,7 +14,7 @@ const cv = document.getElementById('c');
 const ctx = cv.getContext('2d');
 await document.fonts.ready;
 const t = +(q.get('t') || 0.3);
-ctx.fillStyle = '#9cc47a'; ctx.fillRect(0, 0, 1600, 1100);
+ctx.fillStyle = '#9cc47a'; ctx.fillRect(0, 0, 1600, 1300);
 // 영웅: 2배 확대
 ctx.save(); ctx.scale(2, 2);
 HERO_ORDER.forEach((id, i) => drawHero(ctx, { heroId: id, id: i, owner: i % 2, facing: 1, moving: q.get('walk') === '1', anim: q.get('atk') === '1' ? 1 : 0, hp: 70, maxHp: 100, lv: 3, x: (60 + i * 120) / TS / 2 * 2 / 2, y: 0, buffs: {} }, t, { x: 40 + i * 58, y: 70, selected: i === 0 }));
@@ -22,6 +22,7 @@ HERO_ORDER.forEach((id, i) => drawHero(ctx, { heroId: id, id: i, owner: i % 2, f
 Object.keys(ENEMIES).forEach((id, i) => drawEnemy(ctx, { type: id, id: i, x: (30 + (i % 11) * 68) / TS, y: (135 + Math.floor(i / 11) * 80) / TS, dx: 1, dy: 0, hp: 60, maxHp: 100, stunT: 0, slowT: 0, vulnT: 0, shield: 0, stealth: false, revealed: true, blockedBy: 0, auraSlow: 0, swing: q.get('atk') === '1' ? 1 : 0 }, t));
 drawSummon(ctx, { id: 1, kind: 'militia', x: 740 / TS, y: 135 / TS, hp: 50, maxHp: 100, anim: 0 }, t);
 drawSummon(ctx, { id: 2, kind: 'wall', x: 740 / TS, y: 215 / TS, hp: 80, maxHp: 100, anim: 0 }, t);
+['guard', 'elite', 'monk'].forEach((kind, i) => drawSummon(ctx, { id: 3 + i, kind, owner: i % 2, x: (700 + i * 30) / TS, y: 290 / TS, hp: 70, maxHp: 100, anim: q.get('atk') === '1' ? 1 : 0 }, t));
 drawTurtle(ctx, { x: 740 / TS, y: 60 / TS, dx: -1, dy: 0 }, t);
 ctx.restore();
 // 유산: 1.6배, 모든 단계

@@ -1,5 +1,5 @@
 // 이펙트: 시뮬레이션 이벤트 → 파티클, 연기, 불꽃, 쓰러짐, 떠오르는 글자, 화면 흔들림
-import { TS, rgba, glow, star } from './paint.js';
+import { TS, rgba, glow, star, lotus } from './paint.js';
 import { sphere, OL } from './toon.js';
 import { drawEnemy } from './draw-units.js';
 import { ENEMIES } from '../data/enemies.js';
@@ -34,6 +34,7 @@ export class FX {
     this.corpses = [];
     this.pings = [];
     this.cones = [];
+    this.pillars = [];
     this.puffs = [];
     this.sparks = [];
     this.debris = [];
@@ -144,6 +145,12 @@ export class FX {
       for (let i = 0; i < 2; i++) {
         const aa = a + Math.PI + rnd(-0.7, 0.7);
         this.debris.push({ x, y, vx: Math.cos(aa) * rnd(40, 80), vy: Math.sin(aa) * rnd(40, 80) - 40, z: 0, life: 0.35, max: 0.35, col: '#8a6a44', w: 3, h: 1, rot: rnd(0, 3), vr: rnd(-12, 12) });
+      }
+    } else if (kind === 'ice') {
+      this.spark(x, y, crit ? 12 : 8, '#e8f8ff', 0.14);
+      for (let i = 0; i < 3; i++) {
+        const aa = a + Math.PI + rnd(-0.9, 0.9);
+        this.debris.push({ x, y, vx: Math.cos(aa) * rnd(40, 90), vy: Math.sin(aa) * rnd(40, 90) - 50, z: 0, life: 0.4, max: 0.4, col: '#cfeeff', w: 2.4, h: 2.4, rot: rnd(0, 3), vr: rnd(-12, 12) });
       }
     } else if (kind === 'orb') {
       const col = hue === 'sejong' ? '#ffe08a' : hue === 'eulji' ? '#8fe3c0' : '#bfe6ff';
@@ -279,6 +286,40 @@ export class FX {
         this.flash = 0.25;
         this.flashColor = '#fff6d8';
         this.addTrauma(0.3);
+        break;
+      }
+      case 'smite': {
+        // 불국사: 하늘에서 내리꽂히는 빛기둥, 발밑에 연꽃
+        const x = px(ev.x);
+        const y = px(ev.y);
+        const col = ev.lamp ? '#ffb86b' : '#ffe08a';
+        this.pillars.push({ x, y, life: 0.5, max: 0.5, w: ev.big ? 15 : 10, col });
+        this.rings.push({ x, y: y + 2, r0: 4, r1: ev.big ? 28 : 18, life: 0.4, max: 0.4, color: col, w: ev.big ? 4 : 3 });
+        this.spark(x, y - 12, ev.big ? 18 : 12, '#fff6d8', 0.18);
+        this.burst(x, y - 4, ev.big ? 16 : 9, col, 70, 0.6, 2.2, -60);
+        break;
+      }
+      case 'frost': {
+        // 석빙고: 얼음이 부서지는 고리 + 결정 조각
+        const x = px(ev.x);
+        const y = px(ev.y);
+        const r = ev.r * TS;
+        this.rings.push({ x, y, r0: 4, r1: Math.max(16, r), life: 0.35, max: 0.35, color: '#dff4ff', w: ev.freeze ? 4 : 2 });
+        if (ev.freeze) {
+          this.spark(x, y - 10, 14, '#ffffff', 0.2);
+          for (let i = 0; i < 6; i++) {
+            const a = (i / 6) * Math.PI * 2;
+            this.debris.push({ x, y: y - 8, vx: Math.cos(a) * rnd(50, 90), vy: Math.sin(a) * rnd(30, 60) - 60, z: 0, life: 0.5, max: 0.5, col: '#dff4ff', w: 3, h: 3, rot: rnd(0, 3), vr: rnd(-10, 10) });
+          }
+        }
+        if (ev.r > 0.5) this.burst(x, y, 12, '#e8f8ff', ev.r * TS * 1.6, 0.5, 2, 0);
+        break;
+      }
+      case 'rally': {
+        // 남한산성: 성문에서 병사가 나올 때 흙먼지
+        const x = px(ev.x);
+        const y = px(ev.y) + 12;
+        for (let i = 0; i < 4; i++) this.puff(x + rnd(-8, 8), y + rnd(-2, 3), 3, rnd(6, 9), '#d9ccb2', rnd(0.35, 0.5), rnd(-20, 20), -rnd(6, 14));
         break;
       }
       case 'disable':
@@ -473,6 +514,7 @@ export class FX {
     this.corpses = step(this.corpses);
     this.pings = step(this.pings);
     this.cones = step(this.cones);
+    this.pillars = step(this.pillars);
     this.puffs = step(this.puffs);
     this.sparks = step(this.sparks);
     this.debris = step(this.debris);
@@ -536,6 +578,23 @@ export class FX {
       ctx.rotate(k.rot * 0.28);
       ctx.translate(0, 12 * sc);
       drawEnemy(ctx, { type: k.type, id: 0, x: 0, y: -8 / TS, dx: k.f < 0 ? -1 : 1, hp: 1, maxHp: 1, noBar: true, noShadow: true }, time, 1, { flash: Math.max(0, (a - 0.75) * 4), sq: 0 });
+      ctx.restore();
+    }
+    for (const p of this.pillars) {
+      const k = p.life / p.max;
+      const w = p.w * (0.4 + 0.6 * Math.min(1, k * 1.6));
+      const top = p.y - 220;
+      ctx.save();
+      const g = ctx.createLinearGradient(0, top, 0, p.y);
+      g.addColorStop(0, rgba(p.col, 0));
+      g.addColorStop(0.35, rgba(p.col, 0.55 * k));
+      g.addColorStop(1, rgba('#fff6d8', 0.95 * k));
+      ctx.fillStyle = g;
+      ctx.fillRect(p.x - w / 2, top, w, p.y - top);
+      ctx.fillStyle = rgba('#ffffff', 0.8 * k);
+      ctx.fillRect(p.x - w * 0.15, top + 40, w * 0.3, p.y - top - 40);
+      ctx.globalAlpha = Math.min(1, k * 2);
+      lotus(ctx, p.x, p.y + 2, 6 + (1 - k) * 6, '#f6d8a8');
       ctx.restore();
     }
     for (const c of this.cones) {
@@ -794,6 +853,32 @@ export function drawProjectile(ctx, p, time) {
       ctx.fillRect(-9, -1.6, 3, 1.2);
       ctx.fillRect(-9, 0.4, 3, 1.2);
       if (p.kind === 'bolt') glow(ctx, 0, 0, 7, '#ffe08a', 0.5);
+      ctx.restore();
+      break;
+    }
+    case 'ice': {
+      // 석빙고 얼음 조각 (얼리는 한 발은 더 크다)
+      const a = p.a ?? 0;
+      const sz = p.crit ? 1.5 : 1;
+      for (let i = 3; i >= 1; i--) glow(ctx, x - Math.cos(a) * i * 5, y - Math.sin(a) * i * 5, (6 - i) * sz, '#cfeeff', 0.35 - i * 0.07);
+      glow(ctx, x, y, 9 * sz, '#bfe6ff', 0.75);
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(a);
+      ctx.beginPath();
+      ctx.moveTo(6 * sz, 0);
+      ctx.lineTo(0, -2.6 * sz);
+      ctx.lineTo(-5 * sz, 0);
+      ctx.lineTo(0, 2.6 * sz);
+      ctx.closePath();
+      const g = ctx.createLinearGradient(0, -2.6 * sz, 0, 2.6 * sz);
+      g.addColorStop(0, '#ffffff');
+      g.addColorStop(1, '#8cc8ec');
+      ctx.fillStyle = g;
+      ctx.fill();
+      ctx.strokeStyle = '#2d5a7a';
+      ctx.lineWidth = 0.9;
+      ctx.stroke();
       ctx.restore();
       break;
     }

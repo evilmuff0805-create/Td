@@ -6,7 +6,7 @@ import { heroPortrait, heroFull } from './icons.js';
 import { towerIcon } from '../render/draw-towers.js';
 import { HEROES, HERO_ORDER, heroMetaCost, HERO_META_MAX } from '../data/heroes.js';
 import { SKILLS, SKILL_ORDER, skillDesc, skillMetaCost, SKILL_META_MAX, skillCdMult } from '../data/skills.js';
-import { TOWERS, TOWER_ORDER, CATEGORIES } from '../data/towers.js';
+import { TOWERS, TOWER_ORDER, CATEGORIES, DMG_TYPE_NAME } from '../data/towers.js';
 import { COMBOS } from '../data/combos.js';
 import { STAGES } from '../data/stages.js';
 import { RANKS, towerMetaCost, TOWER_META_MAX, TOWER_META_BONUS, TOWER_MILESTONES } from '../data/quests.js';
@@ -123,6 +123,9 @@ export function relicsScreen(app, params = {}) {
   }));
   const cols = ['단계', '비용', '피해', '속도', '사거리', '특수'];
   const special = (s) => [
+    s.soldiers ? `병사 ${s.soldiers}명 · 체력 ${s.hp}` : '', s.respawn ? `재정비 ${s.respawn}초` : '', s.armor ? `받는 피해 -${Math.round(s.armor * 100)}%` : '',
+    s.regen ? `초당 회복 ${Math.round(s.regen * 100)}%` : '', s.pct ? `최대 체력 ${Math.round(s.pct * 100)}%(최대 ${s.pctCap})` : '', s.targets ? `${s.targets}명` : '',
+    s.freezeEvery ? `${s.freezeEvery}타 ${s.freeze}초 얼림` : '', s.shatter ? `얼면 취약 +${Math.round(s.shatter * 100)}%` : '',
     s.splash ? `범위 ${s.splash}` : '', s.slow ? `둔화 ${Math.round(s.slow * 100)}%` : '', s.shred ? `갑옷 -${Math.round(s.shred * 100)}%` : '',
     s.buffDmg ? `공격 +${Math.round(s.buffDmg * 100)}%` : '', s.income ? `수입 ${s.income}` : '', s.ramp ? `최대 ×${s.ramp}` : '',
     s.multishot ? `${s.multishot}발` : '', s.rockets ? `${s.rockets}발` : '', s.crit ? `치명 ${Math.round(s.crit * 100)}%` : '', s.stunEvery ? `${s.stunEvery}타 기절` : '',
@@ -138,6 +141,7 @@ export function relicsScreen(app, params = {}) {
     h('div', { class: 'stack' },
       h('div', { class: 'row' }, h('h2', {}, def.name), h('span', { class: 'chip', style: { color: CATEGORIES[def.cat].color } }, `${CATEGORIES[def.cat].name} · ${def.title}`)),
       h('p', {}, def.desc),
+      def.dmgType !== 'none' ? h('p', { class: 'dim', style: { fontSize: '15px' } }, `피해 종류: ${DMG_TYPE_NAME[def.dmgType]}${def.dmgType === 'true' ? ' (갑옷 · 저항 무시)' : ''}${def.kind === 'barracks' ? ' · 표의 피해 · 속도는 병사 한 명 기준' : ''}`) : null,
       h('p', { class: 'dim', style: { fontSize: '15px' } }, `유산 공명: 같은 계열(${CATEGORIES[def.cat].name}: ${TOWER_ORDER.filter((t) => TOWERS[t].cat === def.cat).map((t) => TOWERS[t].name).join(', ')})의 다른 유산이 2칸 안에 있으면 1종당 +12%.`),
       table,
       unlocked

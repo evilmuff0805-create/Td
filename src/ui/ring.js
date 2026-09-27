@@ -3,6 +3,7 @@
 import { h, clear } from './dom.js';
 
 const BTN = 52; // 버튼 지름(px)
+const BTN_DENSE = 46; // 버튼이 많을 때(유산 8종 이상)
 
 // items: { key, angle(도), icon(src) | glyph, cost, label, disabled, active, cls, tip(): Node|string, run() }
 export class Ring {
@@ -17,10 +18,13 @@ export class Ring {
     this.items = [];
   }
 
-  // cx, cy: 타일 중심(오버레이 px), bw, bh: 오버레이 크기, k: 캔버스 배율
-  layout(cx, cy, bw, bh, k) {
-    this.R = Math.max(54, Math.min(74, 1.45 * 40 * k));
-    const m = this.R + BTN / 2 + 6;
+  // cx, cy: 타일 중심(오버레이 px), bw, bh: 오버레이 크기, k: 캔버스 배율, n: 버튼 수
+  layout(cx, cy, bw, bh, k, n = 0) {
+    // 버튼이 많으면 조금 작게, 고리는 버튼이 겹치지 않을 만큼만 넓힌다
+    this.dense = n > 8;
+    this.btn = this.dense ? BTN_DENSE : BTN;
+    this.R = Math.max(54, Math.min(74, 1.45 * 40 * k), (n * (this.btn + 4)) / (2 * Math.PI));
+    const m = this.R + this.btn / 2 + 6;
     this.cx = Math.max(m, Math.min(bw - m, cx));
     this.cy = Math.max(m, Math.min(bh - m - 10, cy));
     this.bw = bw;
@@ -32,7 +36,7 @@ export class Ring {
     this.defaultTip = defaultTip;
     const wrap = clear(this.el);
     // 처음 열 때만 튀어나오는 연출 (군자금이 바뀌어 다시 그릴 때는 가만히)
-    const ring = h('div', { class: `ring${this.fresh ? ' fresh' : ''}`, style: { left: `${this.cx}px`, top: `${this.cy}px` } },
+    const ring = h('div', { class: `ring${this.fresh ? ' fresh' : ''}${this.dense ? ' dense' : ''}`, style: { left: `${this.cx}px`, top: `${this.cy}px` } },
       h('div', { class: 'ring-halo', style: { width: `${this.R * 2}px`, height: `${this.R * 2}px` } }));
     this.fresh = false;
     items.forEach((it, i) => {
@@ -78,7 +82,7 @@ export class Ring {
     const t = this.tipEl;
     const w = t.offsetWidth || 260;
     const hgt = t.offsetHeight || 60;
-    const off = this.R + BTN / 2 + 14;
+    const off = this.R + this.btn / 2 + 14;
     const below = this.cy + off;
     const above = this.cy - off - hgt;
     let top = this.above ? above : below;
@@ -98,7 +102,7 @@ export class Ring {
   // 가려짐 판정용 사각형들 (오버레이 좌표)
   rects() {
     const out = [];
-    const b = BTN / 2 + 4;
+    const b = this.btn / 2 + 4;
     for (const it of this.items) {
       const a = (it.angle * Math.PI) / 180;
       out.push({ x: this.cx + Math.cos(a) * this.R - b, y: this.cy + Math.sin(a) * this.R - b, w: b * 2, h: b * 2 + 10, btn: true });
