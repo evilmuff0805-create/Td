@@ -5,6 +5,7 @@ import { drawTower } from './draw-towers.js';
 import { drawEnemy, drawHero, drawSummon, drawTurtle, drawCourier } from './draw-units.js';
 import { FX, drawProjectile } from './fx.js';
 import { moodOf, gradeBackground, makeMoodLight, drawLightPools, drawMoodGlow, drawFog } from './mood.js';
+import { backgroundArt } from './art.js';
 import { getMap, nearestOnPath, T_BUILD } from '../sim/map.js';
 import { STAGE_BY_ID } from '../data/stages.js';
 import { TOWERS, towerBase, SYNERGY_RANGE } from '../data/towers.js';
@@ -32,11 +33,26 @@ export class Renderer {
     this.dpr = Math.min(2, window.devicePixelRatio || 1);
     this.canvas.width = this.W * this.dpr;
     this.canvas.height = this.H * this.dpr;
-    this.bg = renderMapBackground(map, this.stage, this.dpr);
     this.cinema = opts.mood !== 'bright';
     this.mood = moodOf(this.stage);
     this.moodLayers = null;
-    if (this.cinema) {
+    // 그림 배경이 있으면 그것을 (조명이 이미 그려져 있으므로 색보정 · 불빛 웅덩이 없이)
+    const art = backgroundArt(stageId);
+    this.painted = !!art;
+    if (art) {
+      const cv = document.createElement('canvas');
+      cv.width = this.W * this.dpr;
+      cv.height = this.H * this.dpr;
+      const c = cv.getContext('2d');
+      c.imageSmoothingQuality = 'high';
+      // 비율이 조금 달라도 가운데를 기준으로 꽉 채운다
+      const iw = art.img.naturalWidth;
+      const ih = art.img.naturalHeight;
+      const k = Math.max(cv.width / iw, cv.height / ih);
+      c.drawImage(art.img, (cv.width - iw * k) / 2, (cv.height - ih * k) / 2, iw * k, ih * k);
+      this.bg = cv;
+    } else this.bg = renderMapBackground(map, this.stage, this.dpr);
+    if (this.cinema && !art) {
       this.moodLayers = gradeBackground(this.bg, this.mood, this.W, this.H, this.dpr);
       this.bg = this.moodLayers.dark;
     }
@@ -201,7 +217,7 @@ export class Renderer {
     ctx.translate(cam.dx, cam.dy);
     ctx.drawImage(this.bg, 0, 0, this.W, this.H);
     if (this.moodLayers) drawLightPools(ctx, this.moodLayers, v, map, time, this.W, this.H);
-    this.drawWater(ctx, time);
+    if (!this.painted) this.drawWater(ctx, time);
 
     // 건설 가능 격자 (배치 중)
     if (ui.placing || ui.showGrid) this.drawGrid(ctx, v, ui);
@@ -253,7 +269,7 @@ export class Renderer {
     for (const h of v.heroes) if (!h.dead) list.push({ y: h.y + 0.05, k: 2, o: h });
     for (const m of v.summons) list.push({ y: m.y, k: 3, o: m });
     list.sort((a, b) => a.y - b.y);
-    drawBase(ctx, map, this.stage, time);
+    if (!this.painted) drawBase(ctx, map, this.stage, time);
     for (const it of list) {
       if (it.k === 0) {
         const tf = this.towerFire.get(it.o.id);

@@ -85,7 +85,16 @@ export function preloadArt() {
       if (img) loaded.set(`portrait:${id}`, { img, face: a.face });
     }));
   }
+  for (const [id, src] of Object.entries(ART.backgrounds || {})) {
+    jobs.push(loadImage(src).then((img) => {
+      if (img) loaded.set(`bg:${id}`, { img });
+    }));
+  }
   return Promise.all(jobs);
+}
+
+export function backgroundArt(stageId) {
+  return loaded.get(`bg:${stageId}`) || null;
 }
 
 export function heroArt(heroId) {
