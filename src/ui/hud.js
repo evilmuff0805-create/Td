@@ -1080,10 +1080,10 @@ export class GameUI {
     let dis = false;
     if (w.n === 0) {
       label = '출정!';
-      sub = this.local ? '클릭 · 2P W' : 'N 키 · 첫 파도';
+      sub = `${Math.max(0, Math.ceil(w.timer))}초 뒤 자동 · ${this.local ? '2P W' : 'N 키'}`;
     } else if (w.phase === 'prep') {
       label = `다음 파도`;
-      sub = `+${Math.floor(w.timer * EARLY_BONUS_PER_SEC)}냥 · ${Math.ceil(w.timer)}초`;
+      sub = `${Math.max(0, Math.ceil(w.timer))}초 뒤 자동 · +${Math.floor(w.timer * EARLY_BONUS_PER_SEC)}냥`;
     } else if (w.phase === 'final') {
       label = '최후의 파도';
       sub = `남은 적 ${v.enemies.length}`;
@@ -1346,7 +1346,7 @@ export class GameUI {
     if (v.wave.n === 0 && v.towers.length === 0)
       return show('build', '<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '38%', top: '40%' });
     if (v.wave.n === 0 && v.towers.length > 0)
-      return show('wave', `준비되면 아래 <b>출정!</b> 버튼(${this.local ? '클릭 또는 2P의 W' : 'N 키'})으로 첫 파도를 부르세요. 다음 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
+      return show('wave', `파도는 <b>누르지 않아도 저절로</b> 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 <b>출정!</b>(${this.local ? '클릭 또는 2P의 W' : 'N 키'})으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
     if (v.wave.n >= 2)
       if (show('hero', this.local
         ? '1P는 <b>우클릭</b>으로 영웅을 옮기고, 아래 기술 버튼을 누른 뒤 지점을 클릭해 시전합니다. 2P는 <b>방향키</b>로 움직이고 <b>A·S</b>로 기술을 씁니다.'

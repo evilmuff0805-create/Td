@@ -12,7 +12,7 @@ import { TOWERS } from '../src/data/towers.js';
 import { SKILL_ORDER } from '../src/data/skills.js';
 import { HERO_ORDER } from '../src/data/heroes.js';
 import { getMap, T_BUILD } from '../src/sim/map.js';
-import { createGame, step, queueCommand } from '../src/sim/sim.js';
+import { createGame, step, queueCommand, FIRST_PREP } from '../src/sim/sim.js';
 import { spawnEnemy } from '../src/sim/combat.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { SnapshotEncoder, emptyView, applySnapshot } from '../src/sim/snapshot.js';
@@ -100,6 +100,20 @@ test('스냅샷 왕복', () => {
   }
   const size = JSON.stringify(snap).length;
   assert.ok(size < 40000, `스냅샷이 너무 큼: ${size}B`);
+});
+
+test('파도는 누르지 않아도 저절로 시작 (첫 파도 보너스 없음)', () => {
+  const s = createGame({ stageId: 's1', difficulty: 'normal', mode: 'solo', seed: 2, players: [{ heroes: ['yi'], skills: [] }] });
+  for (let i = 0; i < 60 * (FIRST_PREP + 1); i++) step(s);
+  assert.equal(s.wave.n, 1);
+  for (let i = 0; i < 60 * 60 && s.wave.n < 2; i++) step(s);
+  assert.equal(s.wave.n, 2);
+  const t = createGame({ stageId: 's1', difficulty: 'normal', mode: 'solo', seed: 2, players: [{ heroes: ['yi'], skills: [] }] });
+  const gold = t.players[0].gold;
+  queueCommand(t, { t: 'nextWave', p: 0 });
+  step(t);
+  assert.equal(t.wave.n, 1);
+  assert.equal(t.players[0].gold, gold);
 });
 
 test('명령 검증: 남의 유산 철거 불가, 길 위 건설 불가', () => {

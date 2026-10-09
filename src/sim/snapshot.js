@@ -1,6 +1,7 @@
 // 온라인 협동: 호스트 → 게스트 상태 스냅샷 (압축 배열) 과 게스트 쪽 복원/보간
 import { TOWER_ORDER } from '../data/towers.js';
 import { ENEMIES } from '../data/enemies.js';
+import { FIRST_PREP } from './sim.js';
 
 const ENEMY_IDS = Object.keys(ENEMIES);
 const PHASES = ['prep', 'spawn', 'final'];
@@ -55,7 +56,7 @@ export class SnapshotEncoder {
 export function emptyView(opts) {
   return {
     stageId: opts.stageId, difficulty: opts.difficulty, mode: opts.mode, coop: true, time: 0, lives: 20, maxLives: 20, speed: 1, paused: false,
-    wave: { n: 0, total: 1, phase: 'prep', timer: -1, tactic: null, nextTactic: null },
+    wave: { n: 0, total: 1, phase: 'prep', timer: FIRST_PREP, tactic: null, nextTactic: null },
     resonance: { gauge: 0, press: [-99, -99] },
     buffs: { slowT: 0, revealT: 0, dmgT: 0, armorZeroT: 0, vulnT: 0, asT: 0 },
     players: [], heroes: [], enemies: [], towers: [], projectiles: [], summons: [], zones: [], movers: [], result: null, events: [],

@@ -20,6 +20,7 @@ import { castHeroSkill, castHeroUlt, castEquipSkill, pressCombo, AHN_BOSS_MULT }
 
 export const DT = 1 / 60;
 export const PREP_TIME = 18;
+export const FIRST_PREP = 30; // 첫 파도도 누르지 않으면 이만큼 뒤에 저절로 온다
 export const EARLY_BONUS_PER_SEC = 2;
 const BLOCK_R = 0.55;
 
@@ -34,7 +35,7 @@ export function createGame(opts) {
     coopHp: COOP.hpMult, seed, rng: seed, tick: 0, time: 0, nextId: 1, speed: 1, paused: false,
     lives: diff.lives, maxLives: diff.lives, goldMult: 1,
     players: [], heroes: [], towers: [], enemies: [], projectiles: [], summons: [], zones: [], movers: [],
-    wave: { n: 0, total: stage.waves.length, phase: 'prep', timer: -1, queue: [], tactic: null, nextTactic: null, alt: 0 },
+    wave: { n: 0, total: stage.waves.length, phase: 'prep', timer: FIRST_PREP, queue: [], tactic: null, nextTactic: null, alt: 0 },
     waveStats: {},
     resonance: { gauge: 0, press: [-99, -99] },
     buffs: { dmgT: 0, dmg: 0, asT: 0, as: 0, slowT: 0, slow: 0, revealT: 0, vulnT: 0, vuln: 0, armorZeroT: 0 },
@@ -292,7 +293,8 @@ function cmdSell(s, pl, c) {
 function cmdNextWave(s, pl) {
   const w = s.wave;
   if (w.phase !== 'prep' || w.n >= w.total) return;
-  if (w.timer > 0) {
+  // 조기 출정 보너스는 둘째 파도부터 (첫 파도는 바로 불러도 군자금이 늘지 않는다)
+  if (w.timer > 0 && w.n > 0) {
     const bonus = Math.floor(w.timer * EARLY_BONUS_PER_SEC);
     if (bonus > 0) {
       grant(s, bonus);
