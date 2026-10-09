@@ -9,6 +9,7 @@ import { shopScreen } from './ui/screens-shop.js';
 import { Session } from './game/session.js';
 import { GameUI } from './ui/hud.js';
 import { audio } from './audio/audio.js';
+import { preloadArt } from './render/art.js';
 
 const SCREENS = {
   title: titleScreen,
@@ -109,9 +110,11 @@ class App {
 
 const app = new App(document.getElementById('app'));
 window.__app = app;
-const ready = document.fonts && document.fonts.load ? Promise.all([
+const fonts = document.fonts && document.fonts.load ? Promise.all([
   document.fonts.load('40px "Nanum Brush Script"'),
   document.fonts.load('16px "Black Han Sans"'),
   document.fonts.load('16px "Gowun Batang"'),
 ]).catch(() => {}) : Promise.resolve();
+// 영웅 그림 파일도 첫 화면 전에 (초상 · 전장 그림이 처음부터 보이도록)
+const ready = Promise.all([fonts, preloadArt().catch(() => {})]);
 Promise.race([ready, new Promise((r) => setTimeout(r, 2500))]).then(() => app.go('title'));

@@ -100,7 +100,7 @@ node tools/heromatrix.mjs s5 normal   # 영웅 2인 조합 15가지 평가
 npm run build                         # dist/hoguk.html 단일 파일 빌드
 ```
 
-자세한 설계와 밸런스 근거는 [docs/GAME_DESIGN.md](docs/GAME_DESIGN.md), [docs/BALANCE.md](docs/BALANCE.md)에 있습니다.
+자세한 설계와 밸런스 근거는 [docs/GAME_DESIGN.md](docs/GAME_DESIGN.md), [docs/BALANCE.md](docs/BALANCE.md)에, 영웅 그림 파일을 만들어 넣는 방법(규격 · 프롬프트)은 [docs/ART.md](docs/ART.md)에 있습니다.
 
 ## 구조
 

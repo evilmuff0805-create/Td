@@ -5,6 +5,7 @@ import { skinDef, GOLD_LOOK } from '../data/skins.js';
 import { TS, PAL, rgba, shade, glow, star } from './paint.js';
 import { OL, LW, fillToon, sphere, gloss, rrect, capsule, cylinder, softShadow, eye, sprite, blit } from './toon.js';
 import { ENEMIES } from '../data/enemies.js';
+import { heroArt } from './art.js';
 
 const SKIN = '#f6cfa3';
 const SPR_W = 44;
@@ -1702,6 +1703,24 @@ function goldAura(ctx, x, y, time, k = 1) {
   }
 }
 
+// 그림 파일 유닛: 한 장짜리 그림에 걷기(통통 튐 + 앞으로 기울기) · 공격(앞으로 내딛기) · 숨쉬기를 코드로 붙인다
+export const ART_H = 56; // 전장에서 그림 영웅의 키(px)
+export function drawArtUnit(ctx, a, x, y, t, moving, atk, flip, H = ART_H) {
+  const k = H / a.h;
+  const w = a.canvas.width * k;
+  const hh = a.canvas.height * k;
+  const pad = a.pad * k;
+  const dir = flip ? -1 : 1;
+  const bob = moving ? -Math.abs(Math.sin(t * 9)) * 2.4 : 0;
+  const breathe = 1 + Math.sin(t * 2.2) * 0.012;
+  ctx.save();
+  ctx.translate(x + dir * (atk ? 3.5 : 0), y + bob);
+  ctx.rotate(dir * (moving ? 0.07 : atk ? 0.05 : 0));
+  ctx.scale(dir * (atk ? 1.04 : 1), breathe * (atk ? 0.97 : 1));
+  ctx.drawImage(a.canvas, -pad - (w - 2 * pad) * a.ax, -(hh - pad), w, hh);
+  ctx.restore();
+}
+
 export function drawHero(ctx, h, time, opts = {}) {
   const look = heroLook(h.heroId, h.skin);
   const gold = h.skin && skinDef(h.heroId, h.skin)?.gold;
@@ -1740,10 +1759,13 @@ export function drawHero(ctx, h, time, opts = {}) {
   }
   const [anim, frame] = animFrame(h.moving, h.anim > 0, t);
   if (gold) goldAura(ctx, x, y, time);
-  blit(ctx, charSprite('h', h.skin ? `${h.heroId}:${h.skin}` : h.heroId, look, anim, frame), x, y, sc, (h.facing || 1) < 0);
+  // 그림 파일이 있으면 그것으로 (의복을 입었으면 의복이 보이도록 기본 그림)
+  const art = h.skin ? null : heroArt(h.heroId);
+  if (art) drawArtUnit(ctx, art, x, y, t, h.moving, h.anim > 0, (h.facing || 1) < 0);
+  else blit(ctx, charSprite('h', h.skin ? `${h.heroId}:${h.skin}` : h.heroId, look, anim, frame), x, y, sc, (h.facing || 1) < 0);
   if (!opts.noBar) {
     const w = 28;
-    const hy = y - 44;
+    const hy = art ? y - ART_H - 6 : y - 44;
     ctx.fillStyle = OL;
     ctx.fillRect(x - w / 2 - 1.2, hy - 1.2, w + 2.4, 5.4);
     ctx.fillStyle = '#1f3a22';
