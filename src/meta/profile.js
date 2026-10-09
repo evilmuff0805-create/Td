@@ -36,7 +36,8 @@ export function defaultProfile() {
     attendance: { last: '', count: 0 },
     stats: { games: 0, wins: 0, kills: 0, combos: 0, bossKills: 0 },
     // shakeLv: 화면 흔들림 0 끔 · 1 약하게 · 2 보통
-    settings: { sfx: 0.7, bgm: 0.35, dmgNumbers: true, shakeLv: 1, hints: true },
+    // mood: 전장 분위기 'cinema'(영화풍) | 'bright'(밝은 낮)
+    settings: { sfx: 0.7, bgm: 0.35, dmgNumbers: true, shakeLv: 1, hints: true, mood: 'cinema' },
     tutorialDone: false,
   };
 }

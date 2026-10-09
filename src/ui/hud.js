@@ -59,7 +59,7 @@ export class GameUI {
     this.hintTimer = 0;
     this.buildDom();
     this.renderer = new Renderer(this.cv);
-    this.renderer.setup(session.stageId);
+    this.renderer.setup(session.stageId, { mood: profile.settings.mood });
     this.renderer.fx.showDamage = profile.settings.dmgNumbers;
     this.renderer.fx.shakeLevel = profile.settings.shakeLv ?? 1;
     this.renderer.fx.coopTags = this.s.coop;

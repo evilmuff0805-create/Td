@@ -253,6 +253,7 @@ export function settingsScreen(app) {
         slider('bgm', '배경음 (국악풍)', 'bgm'),
         check('dmg', '피해 숫자 표시', 'dmgNumbers'),
         choice('화면 흔들림 (합격기 · 적장 처치 때만)', 'shakeLv', [[0, '끔'], [1, '약하게'], [2, '보통']]),
+        choice('전장 분위기', 'mood', [['cinema', '영화풍'], ['bright', '밝은 낮']]),
         check('hints', '전투 도움말 보기', 'hints'),
         h('div', { class: 'toggle' }, h('span', {}, '도움말 다시 보기'), h('button', { class: 'btn btn-small', onclick: () => { p.hintsSeen = []; saveProfile(); toast('다음 전투에서 도움말이 다시 나옵니다'); } }, '초기화')),
         h('div', { class: 'toggle' }, h('span', { class: 'dim' }, '모든 기록 지우기 (되돌릴 수 없음)'),

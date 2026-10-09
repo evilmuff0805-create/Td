@@ -4,6 +4,7 @@ import { renderMapBackground, drawBase, drawSpawns, SEASONS } from './draw-map.j
 import { drawTower } from './draw-towers.js';
 import { drawEnemy, drawHero, drawSummon, drawTurtle, drawCourier } from './draw-units.js';
 import { FX, drawProjectile } from './fx.js';
+import { moodOf, gradeBackground, makeMoodLight, drawLightPools, drawMoodGlow, drawFog } from './mood.js';
 import { getMap, nearestOnPath, T_BUILD } from '../sim/map.js';
 import { STAGE_BY_ID } from '../data/stages.js';
 import { TOWERS, towerBase, SYNERGY_RANGE } from '../data/towers.js';
@@ -21,7 +22,8 @@ export class Renderer {
     this.H = 0;
   }
 
-  setup(stageId) {
+  // opts.mood: 'cinema'(영화풍, 기본) | 'bright'(예전 밝은 낮)
+  setup(stageId, opts = {}) {
     const map = getMap(stageId);
     this.map = map;
     this.stage = STAGE_BY_ID[stageId];
@@ -31,6 +33,13 @@ export class Renderer {
     this.canvas.width = this.W * this.dpr;
     this.canvas.height = this.H * this.dpr;
     this.bg = renderMapBackground(map, this.stage, this.dpr);
+    this.cinema = opts.mood !== 'bright';
+    this.mood = moodOf(this.stage);
+    this.moodLayers = null;
+    if (this.cinema) {
+      this.moodLayers = gradeBackground(this.bg, this.mood, this.W, this.H, this.dpr);
+      this.bg = this.moodLayers.dark;
+    }
     this.stageId = stageId;
     this.fx = new FX();
     this.weather = [];
@@ -38,7 +47,8 @@ export class Renderer {
     this.projPrev = new Map();
     this.towerFire = new Map();
     this.frames = 0;
-    this.light = this.makeLight();
+    this.light = this.cinema ? makeMoodLight(this.mood, this.W, this.H) : this.makeLight();
+    this.fog = [0, 1, 2, 3, 4].map((i) => ({ x: Math.random() * this.W, y: 60 + (i * (this.H - 80)) / 4, w: 180 + Math.random() * 160, v: 6 + Math.random() * 8 }));
     this.cloud = this.makeCloud();
     this.clouds = [0, 1, 2].map((i) => ({ x: (i * this.W) / 3 + Math.random() * 120, y: 60 + i * (this.H / 3) + Math.random() * 60, s: 0.9 + Math.random() * 0.6 }));
   }
@@ -190,6 +200,7 @@ export class Renderer {
     }
     ctx.translate(cam.dx, cam.dy);
     ctx.drawImage(this.bg, 0, 0, this.W, this.H);
+    if (this.moodLayers) drawLightPools(ctx, this.moodLayers, v, map, time, this.W, this.H);
     this.drawWater(ctx, time);
 
     // 건설 가능 격자 (배치 중)
@@ -367,14 +378,17 @@ export class Renderer {
       ctx.stroke();
     }
 
-    // 야습
+    // 영화풍: 유산 등불 · 영웅 횃불 · 성의 횃불
+    if (this.cinema) drawMoodGlow(ctx, v, map, this.mood, time, this.stage.night ? 1.4 : 1);
+    // 야습 (영화풍은 이미 어두우므로 덜 덮는다)
     const night = v.wave.tactic === 'night' && v.wave.phase !== 'prep';
-    if (night || this.stage.night) this.drawNight(ctx, v, night ? 0.45 : 0.3);
+    if (night || this.stage.night) this.drawNight(ctx, v, (night ? 0.45 : 0.3) * (this.cinema ? 0.55 : 1));
     if (this.fx.clockT > 0) {
       ctx.fillStyle = `rgba(90,150,220,${Math.min(0.18, this.fx.clockT * 0.05)})`;
       ctx.fillRect(0, 0, this.W, this.H);
     }
     this.drawWeather(ctx, dt, time);
+    if (this.cinema) drawFog(ctx, this.fog, this.mood, this.W, this.H, dt);
     // 구름 그림자 + 빛
     for (const c of this.clouds) {
       c.x += 9 * dt;
@@ -630,7 +644,7 @@ export class Renderer {
   drawWeather(ctx, dt, time) {
     const season = this.stage.season;
     const pal = SEASONS[season];
-    const want = season === 'winter' ? 90 : season === 'spring' || season === 'autumn' ? 30 : season === 'summer' ? 14 : 0;
+    const want = (season === 'winter' ? 90 : season === 'spring' || season === 'autumn' ? 30 : season === 'summer' ? 14 : 0) * (this.cinema && season === 'winter' ? 1.8 : 1);
     while (this.weather.length < want) {
       this.weather.push({ x: Math.random() * this.W, y: Math.random() * this.H, s: 0.5 + Math.random(), p: Math.random() * 6 });
     }
