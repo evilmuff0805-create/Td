@@ -116,6 +116,38 @@ test('파도는 누르지 않아도 저절로 시작 (첫 파도 보너스 없�
   assert.equal(t.players[0].gold, gold);
 });
 
+test('급보 전령: 5% 확률, 한 판에 한 번, 1P · 2P 모두 같은 군자금', () => {
+  const mk = (seed, courier) => createGame({ stageId: 's4', difficulty: 'normal', mode: 'local', seed, courier, players: [{ heroes: ['yi'], skills: [] }, { heroes: ['sejong'], skills: [] }] });
+  let hits = 0;
+  for (let sd = 1; sd <= 2000; sd++) if (mk(sd).courier) hits++;
+  assert.ok(hits > 60 && hits < 140, `발동률 ${hits / 20}%`);
+  // 주 난수를 건드리지 않는다 (밸런스 결과 그대로)
+  assert.equal(mk(9, true).rng, mk(9, false).rng);
+  const s = mk(9, true);
+  const c = s.courier;
+  assert.ok(c.gold >= 100 && c.gold <= 500 && c.gold % 10 === 0);
+  s.lives = 9999;
+  let arrived = 0;
+  let before = null;
+  let after = null;
+  for (let i = 0; i < 60 * 900 && !s.result; i++) {
+    if (s.movers.some((m) => m.kind === 'courier')) before = before || s.players.map((p) => p.gold);
+    step(s);
+    for (const e of s.events) {
+      if (e.k === 'courier' && e.gold) {
+        arrived++;
+        after = after || s.players.map((p) => p.gold);
+      }
+    }
+    s.events.length = 0;
+  }
+  assert.equal(arrived, 1);
+  assert.ok(c.done);
+  assert.equal(after[0] - after[1], before[0] - before[1]); // 둘 다 같은 액수
+  assert.ok(after[0] - before[0] >= c.gold);
+  assert.equal(mk(9, false).courier, null);
+});
+
 test('명령 검증: 남의 유산 철거 불가, 길 위 건설 불가', () => {
   const all = Object.keys(TOWERS);
   const s = createGame({ stageId: 's1', difficulty: 'normal', mode: 'local', seed: 1, players: [{ heroes: ['yi'], skills: [], towers: all }, { heroes: ['sejong'], skills: [], towers: all }] });

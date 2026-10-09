@@ -315,6 +315,25 @@ export class FX {
         if (ev.r > 0.5) this.burst(x, y, 12, '#e8f8ff', ev.r * TS * 1.6, 0.5, 2, 0);
         break;
       }
+      case 'courier': {
+        // 급보 전령: 출발할 때 흙먼지, 성에 닿으면 엽전이 쏟아진다
+        const x = px(ev.x);
+        const y = px(ev.y) + 8;
+        if (ev.start) {
+          for (let i = 0; i < 6; i++) this.puff(x + rnd(-10, 10), y + rnd(-3, 3), 3, rnd(7, 11), '#d9ccb2', rnd(0.4, 0.6), rnd(-30, 30), -rnd(8, 16));
+          break;
+        }
+        this.rings.push({ x, y, r0: 6, r1: 46, life: 0.6, max: 0.6, color: '#f0c75e', w: 4 });
+        this.burst(x, y - 10, 30, '#f0c75e', 120, 1, 2.6, 160);
+        for (let i = 0; i < 10; i++) {
+          this.coins.push({ x: x + rnd(-8, 8), y: y - 14, gy: y + rnd(-4, 6), vx: rnd(-80, 80), vy: -rnd(140, 220), life: 1.1, max: 1.1, ph: rnd(0, 6), bounced: false });
+        }
+        // 성은 보통 지도 끝에 있으므로 글씨는 안쪽으로 당겨 잘리지 않게
+        this.texts.push({ x: Math.min(Math.max(x, 60), 24 * TS - 60), y: y - 40, text: `+${ev.gold}냥`, color: '#ffe08a', size: 20, life: 1.8, max: 1.8, vy: -22, pop: 0.2 });
+        this.flash = 0.25;
+        this.flashColor = '#fff1b0';
+        break;
+      }
       case 'rally': {
         // 남한산성: 성문에서 병사가 나올 때 흙먼지
         const x = px(ev.x);

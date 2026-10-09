@@ -2005,3 +2005,125 @@ export function drawTurtle(ctx, m, time) {
 }
 
 export { HERO_LOOK, ENEMY_LOOK, rig, poseOf, cylinder, capsule, shade };
+
+// ───────────────────────── 급보 전령 (조선 기마 전령) ─────────────────────────
+// 흰 말 + 청색 군복 · 전립 + 등에 꽂은 '급' 깃발, 머리 위에 "급보요, 급보!" 말풍선
+export function drawCourier(ctx, m, time) {
+  const x = m.x * TS;
+  const y = m.y * TS + 8;
+  const flip = m.dx < -0.1;
+  const frame = Math.floor(time * 16) % 6;
+  const s = sprite(`courier:${frame}`, 56, 70, 28, 56, (c) => {
+    const ph = (frame / 6) * Math.PI * 2;
+    const g = Math.sin(ph) * 3.2;
+    for (const [lx, off] of [[-7, g], [-3, -g], [5, -g], [9, g]]) {
+      limb(c, lx, -8, lx + off, 0, 2.2, '#d9d2c4');
+      boot(c, lx + off, 0.8, '#4a4038');
+    }
+    c.beginPath();
+    c.ellipse(1, -10 - Math.abs(g) * 0.3, 11, 5.5, 0, 0, Math.PI * 2);
+    fillToon(c, '#f1ece2', -10, -16, 10, -4);
+    c.beginPath();
+    c.moveTo(7, -13);
+    c.quadraticCurveTo(12, -21, 15.5, -20);
+    c.lineTo(17, -16);
+    c.quadraticCurveTo(12, -13, 10, -8);
+    c.closePath();
+    fillToon(c, '#f1ece2', 7, -21, 17, -8);
+    c.beginPath();
+    c.ellipse(16, -18, 3.2, 2.2, 0.5, 0, Math.PI * 2);
+    fillToon(c, '#e6dfd2', 13, -20, 19, -16);
+    eye(c, 15.8, -19.2, 0.8, 0.3, 'none');
+    // 갈기 · 꼬리 (바람에 날린다)
+    c.fillStyle = '#8a7a64';
+    c.beginPath();
+    c.moveTo(8, -14);
+    c.quadraticCurveTo(10, -22, 15, -21.5);
+    c.lineTo(12, -17);
+    c.closePath();
+    c.fill();
+    c.beginPath();
+    c.moveTo(-9.5, -12);
+    c.quadraticCurveTo(-17, -14 + g * 0.6, -16, -6);
+    c.lineTo(-10, -9);
+    c.closePath();
+    c.fill();
+    // 고삐 · 안장
+    c.strokeStyle = '#6b3f22';
+    c.lineWidth = 0.8;
+    c.beginPath();
+    c.moveTo(16, -17);
+    c.lineTo(7, -20);
+    c.stroke();
+    rrect(c, -3, -16.5, 8, 3, 1.2);
+    fillToon(c, '#2f5a8a', -3, -16.5, 5, -13.5, { lw: 0.7 });
+    // 등에 꽂은 전령 깃발
+    const wave = Math.sin(ph) * 1.2;
+    c.strokeStyle = OL;
+    c.lineWidth = 1.4;
+    c.beginPath();
+    c.moveTo(-3, -18);
+    c.lineTo(-6, -46);
+    c.stroke();
+    c.strokeStyle = '#8a5a33';
+    c.lineWidth = 0.7;
+    c.stroke();
+    c.beginPath();
+    c.moveTo(-6, -46);
+    c.quadraticCurveTo(-13, -45 + wave, -19, -44 + wave);
+    c.lineTo(-18.5, -34 + wave);
+    c.quadraticCurveTo(-12, -35 - wave, -5.2, -36);
+    c.closePath();
+    fillToon(c, '#d33a2c', -19, -46, -5, -34, { lw: 0.8 });
+    c.fillStyle = '#ffe9a8';
+    c.font = 'bold 7px "Black Han Sans", sans-serif';
+    c.textAlign = 'center';
+    c.fillText('급', -12, -37.5);
+    // 기수
+    c.save();
+    c.translate(1, -14);
+    c.scale(0.8, 0.8);
+    c.translate(0, -Math.abs(Math.cos(ph)) * 1.2);
+    torso(c, '#2f5a8a', 0.95, 0.9);
+    head(c, { mood: 'angry' });
+    jeonlip(c);
+    limb(c, 3.9, -11.6, 9, -9, 3.1, '#b8322a');
+    hand(c, 9, -9);
+    c.restore();
+  });
+  // 흙먼지
+  ctx.fillStyle = 'rgba(200,180,140,0.35)';
+  for (let i = 0; i < 3; i++) {
+    const k = (time * 3 + i / 3) % 1;
+    const bx = x + (flip ? 1 : -1) * (12 + k * 16);
+    ctx.beginPath();
+    ctx.ellipse(bx, y - 1 - k * 4, 3 + k * 4, 2 + k * 2, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  softShadow(ctx, x, y, 13, 4, 0.3);
+  glow(ctx, x, y - 16, 22, '#8fd3ff', 0.22);
+  blit(ctx, s, x, y, 1.2, flip);
+  // 말풍선
+  const text = Math.floor(time * 2.5) % 2 ? '급보요, 급보!' : '급보요!';
+  ctx.font = '400 13px "Black Han Sans", sans-serif';
+  ctx.textAlign = 'center';
+  const w = ctx.measureText('급보요, 급보!').width + 14;
+  const by = y - 74 + Math.sin(time * 10) * 1.2;
+  ctx.fillStyle = '#fffaf0';
+  ctx.strokeStyle = '#2b1a12';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.roundRect(x - w / 2, by - 15, w, 20, 8);
+  ctx.fill();
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x - 4, by + 5);
+  ctx.lineTo(x + 4, by + 5);
+  ctx.lineTo(x, by + 11);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillRect(x - 3.2, by + 3.4, 6.4, 2.2);
+  ctx.fillStyle = '#c0392b';
+  ctx.fillText(text, x, by);
+}

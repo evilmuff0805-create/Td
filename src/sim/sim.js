@@ -10,7 +10,7 @@ import { STAGE_BY_ID, STAGES, DIFFICULTY, COOP, parseWave } from '../data/stages
 import { TOWER_META_BONUS, metaRangeMult, metaAsMult, metaCost } from '../data/quests.js';
 import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
 import { getMap, posAt, tileAt, nearestOnPath, T_BUILD } from './map.js';
-import { rand, randInt } from './rng.js';
+import { rand, randInt, makeRng } from './rng.js';
 import {
   ev, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
   isTargetable, hurtHero, hurtSummon, releaseBlocker, releaseEnemy, findEnemy, findBlocker, recalcHero,
@@ -21,6 +21,10 @@ import { castHeroSkill, castHeroUlt, castEquipSkill, pressCombo, AHN_BOSS_MULT }
 export const DT = 1 / 60;
 export const PREP_TIME = 18;
 export const FIRST_PREP = 30; // 첫 파도도 누르지 않으면 이만큼 뒤에 저절로 온다
+// 급보: 한 판에 한 번, 이 확률로 조선 전령이 적의 길을 따라 성으로 달려와 모두에게 군자금을 준다
+export const COURIER_CHANCE = 0.05;
+export const COURIER_SPEED = 3.4; // 칸/초 (가장 빠른 척후병의 두 배쯤)
+export const COURIER_GOLD = [100, 500]; // 10냥 단위
 export const EARLY_BONUS_PER_SEC = 2;
 const BLOCK_R = 0.55;
 
@@ -42,6 +46,7 @@ export function createGame(opts) {
     events: [], cmds: [], result: null,
   };
   if (opts.hpBase) s.hpBase = opts.hpBase; // 밸런스 도구용 덮어쓰기
+  s.courier = planCourier(seed, stage, map, opts.courier);
   const startGold = coop ? Math.round(stage.startGold * COOP.startGoldShare) : stage.startGold;
   opts.players.forEach((p, i) => {
     s.players.push({
@@ -334,9 +339,29 @@ function rollTactic(s, n) {
   return pool[randInt(s, pool.length)];
 }
 
+// 급보 계획: 주 난수(s.rng)를 건드리지 않도록 시드에서 따로 뽑는다 (밸런스 결과가 흔들리지 않게).
+// force: true 면 반드시, false 면 절대 (시험 · 도구용)
+function planCourier(seed, stage, map, force) {
+  const r = makeRng((seed ^ 0x51ab1e) >>> 0);
+  const roll = r();
+  if (force === false || (force !== true && roll >= COURIER_CHANCE)) return null;
+  const total = stage.waves.length;
+  const [lo, hi] = COURIER_GOLD;
+  return {
+    wave: 2 + Math.floor(r() * Math.max(1, total - 3)), // 둘째 ~ 끝에서 둘째 파도 사이
+    delay: 3 + r() * 8,
+    path: Math.floor(r() * map.paths.length),
+    gold: lo + Math.floor(r() * ((hi - lo) / 10 + 1)) * 10,
+    at: -1,
+    sent: false,
+    done: false,
+  };
+}
+
 export function startWave(s) {
   const w = s.wave;
   const n = ++w.n;
+  if (s.courier && s.courier.at < 0 && n >= s.courier.wave) s.courier.at = s.time + s.courier.delay;
   const map = mapOf(s);
   const nPaths = map.paths.length;
   const tactic = w.nextTactic;
@@ -1301,7 +1326,36 @@ function updateZones(s) {
 
 function updateMovers(s) {
   const map = mapOf(s);
+  const c = s.courier;
+  if (c && !c.sent && c.at >= 0 && s.time >= c.at) {
+    c.sent = true;
+    const p = posAt(map.paths[c.path], 0);
+    s.movers.push({ id: newId(s), kind: 'courier', path: c.path, d: 0, speed: COURIER_SPEED, x: p.x, y: p.y, dx: p.dx, dy: p.dy });
+    ev(s, 'announce', { text: '급보요, 급보!', sub: '조선 전령이 왜군의 길을 뚫고 성으로 달려옵니다', color: '#8fd3ff' });
+    ev(s, 'courier', { x: p.x, y: p.y, start: true });
+    ev(s, 'sfx', { n: 'horn' });
+  }
   for (const m of s.movers) {
+    if (m.kind === 'courier') {
+      // 적과 부딪히지 않고 길을 따라 성까지 내달린다
+      const path = map.paths[m.path];
+      m.d += m.speed * DT;
+      const p = posAt(path, Math.min(m.d, path.total));
+      m.x = p.x;
+      m.y = p.y;
+      m.dx = p.dx;
+      m.dy = p.dy;
+      if (m.d >= path.total) {
+        m.done = true;
+        c.done = true;
+        // 1P · 2P 모두에게 같은 액수 (나눠 갖지 않는다)
+        for (const pl of s.players) if (!pl.left) addGold(pl, c.gold);
+        ev(s, 'courier', { x: m.x, y: m.y, gold: c.gold });
+        ev(s, 'announce', { text: '급보 도착!', sub: `군자금 +${c.gold}냥${s.players.length > 1 ? ' — 1P · 2P 모두' : ''}`, color: '#f0c75e' });
+        ev(s, 'sfx', { n: 'coin' });
+      }
+      continue;
+    }
     if (m.kind !== 'turtle') continue;
     m.d -= m.speed * DT;
     const p = posAt(map.paths[m.path], Math.max(0, m.d));

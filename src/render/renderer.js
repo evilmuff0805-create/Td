@@ -2,7 +2,7 @@
 import { TS, PAL, rgba, glow } from './paint.js';
 import { renderMapBackground, drawBase, drawSpawns, SEASONS } from './draw-map.js';
 import { drawTower } from './draw-towers.js';
-import { drawEnemy, drawHero, drawSummon, drawTurtle } from './draw-units.js';
+import { drawEnemy, drawHero, drawSummon, drawTurtle, drawCourier } from './draw-units.js';
 import { FX, drawProjectile } from './fx.js';
 import { getMap, nearestOnPath, T_BUILD } from '../sim/map.js';
 import { STAGE_BY_ID } from '../data/stages.js';
@@ -257,7 +257,10 @@ export class Renderer {
       else if (it.k === 2) drawHero(ctx, it.o, time, { selected: ui.selHeroes && ui.selHeroes.includes(v.heroes.indexOf(it.o)) });
       else drawSummon(ctx, it.o, time);
     }
-    for (const m of v.movers) if (m.kind === 'turtle') drawTurtle(ctx, m, time);
+    for (const m of v.movers) {
+      if (m.kind === 'turtle') drawTurtle(ctx, m, time);
+      else if (m.kind === 'courier') drawCourier(ctx, m, time);
+    }
 
     // 석굴암 광선
     for (const t of v.towers) {
