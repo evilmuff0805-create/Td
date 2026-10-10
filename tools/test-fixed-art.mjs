@@ -9,15 +9,18 @@ import { newWinterGame,newBattleGame,canBuildAt } from '../src/3d/scenario.js';
 import { applyCommand,step,DT } from '../src/sim/sim.js';
 import { hurtHero,spawnEnemy } from '../src/sim/combat.js';
 import { SEASONS } from '../src/3d/seasons.js';
+import { HERO_ORDER } from '../src/data/heroes.js';
+import { HERO_POSE_ART } from '../src/3d/hero-pose-data.js';
 
 let passed=0;
 function test(name,run){run();passed++;console.log(`  ✔ ${name}`);}
-function context(){
+function context(directional=false){
   const camera=new T.OrthographicCamera(-8,8,6,-6,.1,100);camera.position.set(17,26,26);camera.lookAt(0,0,0);camera.updateMatrixWorld();
   const world=Object.assign(Object.create(WinterWorld.prototype),{camera,theme:SEASONS.winter,renderer:{domElement:{dataset:{}}},scene:new T.Scene(),units:new Map(),unitTemplates:new Map(),towers:new Map(),bullets:new Map(),scenery:new Map(),fx:{reset(){}},placement:new T.Group(),marker:new T.Group(),corpses:[],pickables:[],enemyCues:new Map(),range:new T.Group(),batchCrowd:false,projectiles(){},combatScenery(){}});
   world.crowd=new CrowdRenderer(world.scene);
   const canvas={width:80,height:80},frames=Array.from({length:16},(_,i)=>({left:(i%4)*20,top:Math.floor(i/4)*20,width:16,height:18,anchor:.5}));
   const art=Object.assign(Object.create(FixedBattleArt.prototype),{world,ready:true,textures:new Map(),materials:new Map(),geometries:new Map(),yi:{canvas,frames}});
+  if(directional){art.heroPoses=Object.fromEntries(Object.entries(HERO_POSE_ART).map(([id,layout])=>[id,{poseAtlas:true,canvas:{width:layout.width,height:layout.height},frames:layout.frames,isolated:layout.frames.map(frame=>({canvas:{width:frame.width+24,height:frame.height+24},frame:{...frame,left:12,top:12}}))}]));art.yi=art.heroPoses.yi;}
   art.shadowTexture=new T.DataTexture(new Uint8Array([255,255,255,255]),1,1);art.shadowMaterial=new T.MeshBasicMaterial({map:art.shadowTexture});world.art=art;
   art.unitArt=(entity,hero,ally)=>hero?FixedBattleArt.prototype.unitArt.call(art,entity,hero,ally):{canvas};
   return {world,art};
@@ -57,6 +60,52 @@ test('고정 카메라에서 네 방향·걷기·사격은 발 위치와 월드 
   h.stealth=true;h.revealed=false;art.updateUnit(root,h,false,0,2);assert.equal(d.image.material.opacity,.25);
   h.revealed=true;art.updateUnit(root,h,false,0,2);assert.equal(d.image.material.opacity,1);
   world.disposeCharacter(root);art.dispose();
+});
+test('기본 영웅 8명의 실제 전투 루트는 128포즈와 본체·그림자·가림 그림을 함께 전환한다',()=>{
+  const {world,art}=context(true),poses=new Set();
+  for(const kind of HERO_ORDER){
+    const hero=newBattleGame({heroIds:[kind],support:false}).heroes[0],root=world.unit(hero,true),d=root.userData.fixedImage;root.userData.phase=0;
+    assert.equal(d.art,art.heroPoses[kind]);assert.equal(d.directional,true);
+    for(const yaw of [0,Math.PI/2,Math.PI,Math.PI*1.5])for(const [moving,attack,time]of [[false,0,0],[true,0,0],[true,0,1/5.5],[false,.2,0]]){
+      root.rotation.y=yaw;art.updateUnit(root,hero,moving,attack,time);poses.add(`${kind}:${d.poseIndex}`);
+      const f=d.art.isolated[d.poseIndex],map=d.image.material.map;
+      assert.equal(map.image,f.canvas);assert.equal(d.shadow.material.map,map);assert.equal(d.hint.material.map,map);assert.equal(d.shadow.geometry,d.image.geometry);assert.equal(d.hint.geometry,d.image.geometry);
+      const q=root.quaternion.clone().multiply(d.image.quaternion);assert.ok(q.angleTo(world.camera.quaternion)<1e-6);
+      const uv=d.image.geometry.attributes.uv;for(let i=0;i<uv.count;i++)assert.ok(uv.getX(i)>0&&uv.getX(i)<1&&uv.getY(i)>0&&uv.getY(i)<1,'각 포즈는 독립 그림과 사방 투명 여백을 사용');
+    }
+    world.disposeCharacter(root);
+  }
+  assert.equal(poses.size,128);art.dispose();
+});
+test('포즈마다 실루엣이 달라도 같은 영웅의 픽셀당 크기와 양발 기준 원점은 일정하다',()=>{
+  const {world,art}=context(true);
+  for(const kind of HERO_ORDER){
+    const hero=newBattleGame({heroIds:[kind]}).heroes[0],root=world.unit(hero,true),d=root.userData.fixedImage;
+    for(const {canvas,frame}of d.art.isolated){
+      const g=art.geometry(canvas,frame,d.height);g.computeBoundingBox();const b=g.boundingBox,scale=d.height/frame.referenceHeight;
+      assert.ok(Math.abs((b.max.y-b.min.y)/frame.height-scale)<1e-8);assert.ok(Math.abs((b.max.x-b.min.x)/frame.width-scale)<1e-8);
+      assert.ok(Math.abs(b.min.y)<1e-7);assert.ok(Math.abs(b.min.x+frame.anchor*frame.width*scale)<1e-7,'발 중심은 월드 원점에 놓임');
+    }
+    world.disposeCharacter(root);
+  }
+  art.dispose();
+});
+test('계절을 바꾸고 여러 번 공격해도 해당 영웅의 그림만 바뀌며 공유 포즈 자원은 전장 종료 때 해제된다',()=>{
+  const {world,art}=context(true),h=newBattleGame({heroIds:['sejong']}).heroes[0],a=world.unit(h,true),b=world.unit({...h,id:h.id+100},true);
+  a.userData.phase=b.userData.phase=0;let disposed=0;
+  art.updateUnit(a,h,false,0,0);const initial=a.userData.fixedImage.image.material.map;initial.addEventListener('dispose',()=>disposed++);
+  world.theme={id:'autumn',...SEASONS.autumn};art.updateUnit(a,h,true,.2,1);art.updateUnit(b,h,true,.2,1);
+  const attack=a.userData.fixedImage.image.material.map;attack.addEventListener('dispose',()=>disposed++);
+  assert.notEqual(attack,initial);assert.equal(b.userData.fixedImage.image.material.map,attack);assert.equal(a.userData.fixedImage.image.material.color.getHexString(),'e7d3c2');
+  world.disposeCharacter(a);assert.equal(disposed,0);art.updateUnit(b,h,false,0,2);assert.equal(b.userData.fixedImage.image.material.map,initial);
+  world.disposeCharacter(b);assert.equal(disposed,0);art.dispose();assert.equal(disposed,2);
+});
+test('선택 영웅의 포즈 시트만 빠져도 다른 영웅의 방향 그림과 해당 영웅의 대체 모델은 유지된다',()=>{
+  const {world,art}=context(true);art.heroPoses.sejong=null;
+  const game=newBattleGame({heroIds:['sejong','ahn']}),missing=world.unit(game.heroes[0],true),ready=world.unit(game.heroes[1],true);
+  assert.equal(missing.userData.fixedImage,undefined,'그림이 없으면 실제 기존 영웅 모델을 남김');assert.ok(missing.userData.rig.children.length>0);
+  assert.equal(ready.userData.fixedImage.kind,'ahn');assert.equal(ready.userData.fixedImage.directional,true);assert.equal(art.ready,true);
+  world.disposeCharacter(missing);world.disposeCharacter(ready);art.dispose();
 });
 test('투명 그림 여백·숨긴 3D는 무시하며 기존 군중의 선택용 메시와 상위 가림을 구분한다',()=>{
   const camera=new T.OrthographicCamera(-2,2,2,-2,.1,20);camera.position.set(0,.5,5);camera.lookAt(0,.5,0);camera.updateMatrixWorld();

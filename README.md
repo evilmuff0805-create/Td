@@ -8,13 +8,13 @@
 
 현재 구현·검증·남은 작업과 GitHub 반영 기준은 [프로젝트 리뷰](docs/PROJECT_REVIEW.md)에 기록합니다. 상위 작업 폴더의 `호국영웅전_PROJECT_REVIEW.md`도 함께 갱신합니다. 완료한 작업 단위마다 같은 브랜치에 커밋·푸시하고 원격 반영을 확인합니다.
 
-[최신 그림 가이드](docs/ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
+[최신 그림 가이드](docs/ART.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
 
 ![현재 전장의 최종 강화 건물](docs/screenshots/tower-stage-battle-max-a.png)
 
 ![유산 기본·2·3·최종 A/B 외형](docs/screenshots/tower-stages-bosingak.png)
 
-이순신 기본 의복에 방향별 16포즈를 적용했습니다. 다른 캐릭터의 방향별 애니메이션, 자연스러운 길 경계와 기기별 검증은 이어서 진행할 범위입니다. 이전 관절 모델·재질 개발 이력은 [정식 3D 통합](docs/3D_FULL_GAME.md), [전체 개선](docs/POLISH_RELEASE.md), [조형](docs/SCULPTED_MODELS.md), [지형 재질](docs/PAINTED_ENVIRONMENTS.md), [영웅](docs/HERO_MODELS_AND_MOTION.md), [적군](docs/ENEMY_MODELS_AND_MOTION.md), [캐릭터 재질](docs/CHARACTER_SURFACES.md)에 보존합니다. 해당 문서의 화면·검사 수·성능 수치는 각 작업 당시의 기록입니다.
+기본 영웅 8명 모두 네 방향의 준비·걷기 두 자세·공격, 총 **128포즈**를 사용합니다. [영웅 포즈 비교](http://localhost:8080/dev/3d-hero-pose-review.html)에서 확인할 수 있습니다. 긴 보행 주기, 병력·의복의 방향별 그림, 자연스러운 길 경계와 기기별 검증은 이어서 진행할 범위입니다. 이전 관절 모델·재질 개발 이력은 [정식 3D 통합](docs/3D_FULL_GAME.md), [전체 개선](docs/POLISH_RELEASE.md), [조형](docs/SCULPTED_MODELS.md), [지형 재질](docs/PAINTED_ENVIRONMENTS.md), [영웅](docs/HERO_MODELS_AND_MOTION.md), [적군](docs/ENEMY_MODELS_AND_MOTION.md), [캐릭터 재질](docs/CHARACTER_SURFACES.md)에 보존합니다. 해당 문서의 화면·검사 수·성능 수치는 각 작업 당시의 기록입니다.
 
 별도의 [자유 전장](http://localhost:8080/3d.html?mute=1)은 해금·지원 수치를 바꾸는 미술/전투 비교용입니다. 이 화면의 F·G·C 조작과 별 기록은 정식 캠페인과 구분됩니다. [미리보기 조작](docs/3D_CAMPAIGN.md)
 

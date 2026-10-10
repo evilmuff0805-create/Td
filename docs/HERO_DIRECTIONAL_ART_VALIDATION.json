@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-10",
+  "scope": {
+    "baseHeroes": 8,
+    "posesPerHero": 16,
+    "totalPoses": 128,
+    "newHeroes": 7,
+    "newPoses": 112,
+    "skins": "existing static recolors",
+    "enemies": "existing static illustrations",
+    "walk": "two generated poses, not guaranteed opposite strides",
+    "towerHeight": 1.2
+  },
+  "generation": {
+    "mode": "built-in imagegen",
+    "prompts": "assets/3d/fixed/*.prompt.json",
+    "sources": "assets/3d/fixed/source/*.png",
+    "euljiRuntimeVersion": 2,
+    "astraReview": "GPT-6 Astra xhigh: separation, complete visible-pixel coverage and boot pivots"
+  },
+  "assets": {
+    "report": "HERO_POSE_ASSET_VALIDATION.json",
+    "newDeliveryBytes": 2565298,
+    "totalDeliveryBytes": 3094492,
+    "foreignVisiblePixels": 0,
+    "uncoveredVisiblePixels": 0,
+    "duplicateVisiblePixels": 0,
+    "alphaDifferences": 0
+  },
+  "tests": [
+    {
+      "command": "node tools/selftest.mjs",
+      "passed": 14
+    },
+    {
+      "command": "node tools/test-3d.mjs",
+      "passed": 41
+    },
+    {
+      "command": "node tools/test-fixed-art.mjs",
+      "passed": 15
+    },
+    {
+      "command": "node tools/test-campaign.mjs",
+      "passed": 16
+    },
+    {
+      "command": "node tools/test-effects.mjs",
+      "passed": 8
+    }
+  ],
+  "totalTestCases": 94,
+  "pixelCheck": {
+    "command": "node tools/hero-pose-assets.mjs",
+    "passed": true,
+    "heroes": 8,
+    "poses": 128
+  },
+  "build": {
+    "serverBundle": true,
+    "standalone": true,
+    "standaloneBytes": 22471662,
+    "poseSheetsEmbeddedExactlyOnce": true
+  },
+  "browser": {
+    "comparison": {
+      "url": "/dev/3d-hero-pose-review.html",
+      "selectedStates": 16,
+      "heroPoseSelections": 128,
+      "poseStatus": "ready",
+      "heroPoseCount": 8,
+      "seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "playPause": true,
+      "animatedFramesObserved": 3643
+    },
+    "freeBattle": {
+      "url": "/3d.html?stage=s1&season=winter&mute=1",
+      "heroes": [
+        "sejong",
+        "ahn"
+      ],
+      "waveObserved": 5,
+      "gateHp": 18,
+      "gateMaxHp": 20,
+      "heroSwitch": true,
+      "normalMovementCommands": true,
+      "pausedAfterCheck": true
+    },
+    "standalone": {
+      "url": "/dist/hoguk.html?mute=1",
+      "stage": "s2",
+      "heroes": [
+        "yi",
+        "sejong"
+      ],
+      "fixedArtStatus": "ready",
+      "heroPoseStatus": "ready",
+      "heroPoseCount": 8,
+      "paused": true,
+      "stoppedBeforeFirstWave": true,
+      "fileProtocolTested": false
+    },
+    "mobile": {
+      "viewport": {
+        "width": 414,
+        "height": 896
+      },
+      "comparison": {
+        "clientWidth": 399,
+        "scrollWidth": 399,
+        "overflow": false,
+        "longFanPoseVisible": true
+      },
+      "standalone": {
+        "scrollWidth": 414,
+        "overflow": false
+      }
+    },
+    "consoleWarnings": 0,
+    "consoleErrors": 0,
+    "existingUserBattlesPreserved": true,
+    "muteQuery": 1,
+    "formalBattleRewardsTriggered": false,
+    "physicalMobileTested": false
+  },
+  "screenshots": [
+    "screenshots/hero-poses-idle-front.jpg",
+    "screenshots/hero-poses-attack-front.jpg",
+    "screenshots/hero-poses-attack-back.jpg",
+    "screenshots/hero-poses-battle-sejong-ahn.jpg",
+    "screenshots/hero-poses-release-battle.jpg",
+    "screenshots/hero-poses-release-mobile.jpg",
+    "screenshots/hero-poses-mobile.jpg",
+    "screenshots/hero-poses-mobile-attack.jpg"
+  ],
+  "limitations": [
+    "Two-frame walk needs further stride refinement.",
+    "Skins, troops and bosses do not yet use directional pose sheets.",
+    "Longer attack transitions and exact artwork-specific weapon tips remain future refinement.",
+    "Browser mobile viewport verification does not replace physical-device testing."
+  ]
+}

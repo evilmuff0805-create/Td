@@ -2,10 +2,18 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 const require=createRequire(import.meta.url);
-const sharp=require('C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
-const root=path.resolve(import.meta.dirname,'..');
+let sharp;try{sharp=require('sharp');}catch{sharp=require('C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');}
+const root=fileURLToPath(new URL('../',import.meta.url));
 const sources={
+  'sejong-directions-v1': ['exec-ddabb449-945f-4afe-8205-70309881e75e.png','fixed',null],
+  'eulji-directions-v2': ['exec-2004277d-9822-4559-838f-12621fa649de.png','fixed',null],
+  'gang-directions-v1': ['exec-3971483e-6a3b-4a92-968f-6ecd28feca35.png','fixed',null],
+  'gwon-directions-v1': ['exec-09e67f54-1369-4b70-9c58-ddf53ebbb412.png','fixed',null],
+  'gwak-directions-v1': ['exec-80181b22-c6a1-4743-8f89-5bc3045b59ec.png','fixed',null],
+  'ahn-directions-v1': ['exec-86ca7d26-c20a-4ac0-9bb2-fecc0d392dec.png','fixed',null],
+  'dangun-directions-v1': ['exec-e7fb7d40-a8b8-4c21-a338-80e077be0e54.png','fixed',null],
   'granite-v2': ['exec-812f9906-52b6-49b2-8563-0be74457a4b8.png','painted',512],
   'ground-v2': ['exec-654defbc-df65-4049-ae8d-acd6f1c6f525.png','painted',512],
   'ground-v3': ['exec-7414116a-5b5b-4b90-8441-db9851e458ec.png','painted',512],
@@ -24,9 +32,10 @@ const sources={
 const generated='C:/Users/USER/.codex/generated_images/01a1208e-1f21-7ee1-8355-345389c0c96c';
 for(const [name,[file,folder,size]] of Object.entries(sources)) {
   if(process.argv.length>2&&!process.argv.slice(2).includes(name))continue;
-  const dir=path.join(root,'assets/3d',folder),source=path.join(generated,file);
+  const dir=path.join(root,'assets/3d',folder),preserved=path.join(dir,'source',name+'.png');
+  const source=await fs.access(path.join(generated,file)).then(()=>path.join(generated,file)).catch(()=>preserved);
   await fs.mkdir(path.join(dir,'source'),{recursive:true});
-  await fs.copyFile(source,path.join(dir,'source',name+'.png'));
+  if(source!==preserved)await fs.copyFile(source,preserved);
   let img=sharp(source);if(size)img=img.resize(...(Array.isArray(size)?size:[size,size]),{fit:'fill'});
   const out=path.join(dir,name+'.webp');
   await img.webp({quality:folder==='fixed'?90:84,alphaQuality:100,effort:6}).toFile(out);
