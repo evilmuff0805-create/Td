@@ -36,7 +36,7 @@ for(const [id,tag]of [['s6','봄 · 꽃잎과 성곽'],['s10','여름 · 녹음�
     const game=newBattleGame({stageId:id});
     for(const t of game.towers){const root=art.ready?new T.Group():seasonalize(towerModel(t.type,2),theme);root.position.set(t.cx,.03,t.cy);art.attachTower(root,t.type,2,null);scene.add(root);}
     for(const h of game.heroes){const root=art.ready?new T.Group():combatantModel(h.heroId);root.position.set(h.x,.035,h.y);root.rotation.y=Math.PI/5;art.attachUnit(root,h,true,false);art.updateUnit(root,h,false,0,0);scene.add(root);}
-    card.dataset.roadTriangles=String(field.roads.triangles);card.dataset.roadLayers=theme.snow?'2':'1';card.dataset.landmarkHeight='1.2';card.dataset.art=art.ready?'painted':'fallback';card.dataset.seasonTreeArt=art.seasonTrees?'ready':'fallback';card.dataset.shoreTriangles=String(field.shore.triangles);item.ready=true;draw();
+    card.dataset.roadTriangles=String(field.roads.triangles);card.dataset.roadLayers=theme.snow?'2':'1';card.dataset.landmarkHeight='1.2';card.dataset.art=art.ready?'painted':'fallback';card.dataset.seasonTreeArt=art.seasonTrees?'ready':'fallback';card.dataset.shoreTriangles=String(field.shore.triangles);card.dataset.sceneryLayout=field.scenery?'clustered':'model';card.dataset.sceneryCrowns=String(field.scenery?.metrics.crowns??0);card.dataset.sceneryLowTrees=String(field.scenery?.metrics.understory??0);card.dataset.sceneryLamps=String(field.lamps.length);item.ready=true;draw();
   });
 }
 function draw(){
@@ -48,7 +48,7 @@ function draw(){
     renderer.toneMappingExposure=theme.exposure;renderer.setViewport(r.left,height-r.bottom,r.width,r.height);renderer.setScissor(r.left,height-r.bottom,r.width,r.height);renderer.render(scene,camera);
   }
   Object.assign(document.body.dataset,{renderer:'webgl2',loading:String(cards.some(c=>!c.ready)),terrain:'continuous',paintedReady:String(paintedSurfaceStatus().ready)});
-  document.getElementById('status').textContent=cards.every(c=>c.ready)?'고정 시점 그림 전장 · 유산 높이 1.2칸 · 사계절의 연속 도로':'사계절의 전장 그림을 준비하는 중…';
+  document.getElementById('status').textContent=cards.every(c=>c.ready)?'고정 시점 그림 전장 · 유산 높이 1.2칸 · 사계절 소품과 연속 도로':'사계절의 전장 그림을 준비하는 중…';
 }
 addEventListener('resize',draw);addEventListener('scroll',draw,{passive:true});const unsubscribe=onPaintedSurface(draw);
 addEventListener('pagehide',event=>{if(event.persisted)return;destroyed=true;unsubscribe();for(const {scene,art}of cards){WinterWorld.prototype.disposeModel(scene);scene.traverse(o=>{if(o.isLight)o.dispose?.();});art.dispose();}environment.dispose();renderer.dispose();});

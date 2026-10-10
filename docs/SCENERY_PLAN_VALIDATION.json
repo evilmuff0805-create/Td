@@ -1,0 +1,249 @@
+{
+  "date": "2026-10-11",
+  "passedTests": 8,
+  "campaignStages": 25,
+  "additionalWinterStage": true,
+  "seasonCombinations": 104,
+  "mapAndPathsUnchanged": true,
+  "protectedBuildCenterMargin": 0.3,
+  "protectedRoadMargin": 0.58,
+  "waterAndBridgeFootprintsClear": true,
+  "maximumLamps": 9,
+  "localCoopOwnerAndBudgetPreserved": true,
+  "stages": [
+    {
+      "stage": "s1",
+      "props": 38,
+      "crowns": 9,
+      "understory": 12,
+      "houses": 3,
+      "cargo": 1,
+      "lamps": 7
+    },
+    {
+      "stage": "s6",
+      "props": 81,
+      "crowns": 12,
+      "understory": 6,
+      "houses": 2,
+      "cargo": 1,
+      "lamps": 7
+    },
+    {
+      "stage": "s7",
+      "props": 49,
+      "crowns": 16,
+      "understory": 8,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 5
+    },
+    {
+      "stage": "s2",
+      "props": 36,
+      "crowns": 13,
+      "understory": 12,
+      "houses": 0,
+      "cargo": 0,
+      "lamps": 2
+    },
+    {
+      "stage": "s8",
+      "props": 19,
+      "crowns": 5,
+      "understory": 10,
+      "houses": 1,
+      "cargo": 1,
+      "lamps": 5
+    },
+    {
+      "stage": "s9",
+      "props": 26,
+      "crowns": 6,
+      "understory": 3,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 5
+    },
+    {
+      "stage": "s10",
+      "props": 61,
+      "crowns": 19,
+      "understory": 9,
+      "houses": 2,
+      "cargo": 0,
+      "lamps": 5
+    },
+    {
+      "stage": "s3",
+      "props": 13,
+      "crowns": 1,
+      "understory": 7,
+      "houses": 2,
+      "cargo": 1,
+      "lamps": 4
+    },
+    {
+      "stage": "s11",
+      "props": 44,
+      "crowns": 7,
+      "understory": 13,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s12",
+      "props": 65,
+      "crowns": 16,
+      "understory": 17,
+      "houses": 2,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s13",
+      "props": 64,
+      "crowns": 13,
+      "understory": 11,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 5
+    },
+    {
+      "stage": "s4",
+      "props": 54,
+      "crowns": 10,
+      "understory": 14,
+      "houses": 0,
+      "cargo": 0,
+      "lamps": 5
+    },
+    {
+      "stage": "s5",
+      "props": 81,
+      "crowns": 10,
+      "understory": 19,
+      "houses": 0,
+      "cargo": 0,
+      "lamps": 2
+    },
+    {
+      "stage": "s14",
+      "props": 53,
+      "crowns": 8,
+      "understory": 12,
+      "houses": 2,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s15",
+      "props": 25,
+      "crowns": 10,
+      "understory": 13,
+      "houses": 0,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s16",
+      "props": 48,
+      "crowns": 5,
+      "understory": 20,
+      "houses": 1,
+      "cargo": 1,
+      "lamps": 4
+    },
+    {
+      "stage": "s17",
+      "props": 39,
+      "crowns": 16,
+      "understory": 18,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 6
+    },
+    {
+      "stage": "s18",
+      "props": 6,
+      "crowns": 2,
+      "understory": 2,
+      "houses": 0,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s19",
+      "props": 51,
+      "crowns": 7,
+      "understory": 9,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s20",
+      "props": 43,
+      "crowns": 4,
+      "understory": 10,
+      "houses": 1,
+      "cargo": 1,
+      "lamps": 4
+    },
+    {
+      "stage": "s21",
+      "props": 51,
+      "crowns": 7,
+      "understory": 13,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 5
+    },
+    {
+      "stage": "s22",
+      "props": 31,
+      "crowns": 2,
+      "understory": 26,
+      "houses": 0,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s23",
+      "props": 5,
+      "crowns": 2,
+      "understory": 0,
+      "houses": 1,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s24",
+      "props": 38,
+      "crowns": 6,
+      "understory": 12,
+      "houses": 0,
+      "cargo": 0,
+      "lamps": 4
+    },
+    {
+      "stage": "s25",
+      "props": 65,
+      "crowns": 6,
+      "understory": 2,
+      "houses": 1,
+      "cargo": 1,
+      "lamps": 5
+    },
+    {
+      "stage": "winter3d",
+      "props": 52,
+      "crowns": 16,
+      "understory": 21,
+      "houses": 2,
+      "cargo": 2,
+      "lamps": 7
+    }
+  ]
+}

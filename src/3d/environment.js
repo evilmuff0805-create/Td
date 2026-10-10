@@ -7,6 +7,7 @@ import { foliageCluster } from './vegetation.js';
 import { paintSurface,albedoPlaceholder } from './painted-surfaces.js';
 import { roadTerrain,roadLayer,roadSample,roadCellIsDry } from './road-terrain.js';
 import { seasonalTreeKind } from './seasonal-props.js';
+import { sceneryPlan } from './scenery-plan.js';
 import { shoreField,shoreGeometry,waterGeometry,farWaterGeometry,waterMaterial,shoreLayer } from './water-terrain.js';
 import { MAT,material,mesh,box,ball,cylinder,cone,between,bakeStatic,hanok,pine,rock,fence,supplies,gate,wallSegment } from './models.js';
 
@@ -155,9 +156,17 @@ export function buildBattlefield(stage,theme,art=null) {
       between(root,MAT.woodDark,[a[0],-.4,a[2]],[a[0],.52,a[2]],.035);between(root,MAT.wood,[a[0],.4,a[2]],[b[0],.4,b[2]],.025);
     }
   }
+  const dressing=art?sceneryPlan(stage,theme):null;
+  if(dressing){
+    for(const p of [...dressing.items,...dressing.supplies]){
+      const prop=art.prop(p.kind,p.height,p.variation);prop.position.set(p.x,0,p.z);prop.userData.scenery=p;root.add(prop);
+    }
+    lamps.push(...dressing.lamps);
+  }
   const houses=new Set(),blocks=new Map(map.decor.filter(d=>d.ch==='H').map(d=>[`${d.x},${d.y}`,d]));
   for(const d of map.decor) {
     const x=d.x+.5,z=d.y+.5;
+    if(dressing&&d.ch!=='f')continue;
     if(d.ch==='H') {
       if(houses.has(`${d.x},${d.y}`))continue;
       const cluster=[],todo=[d];while(todo.length){const q=todo.pop(),key=`${q.x},${q.y}`;if(houses.has(key))continue;houses.add(key);cluster.push(q);for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const next=blocks.get(`${q.x+dx},${q.y+dy}`);if(next&&!houses.has(`${next.x},${next.y}`))todo.push(next);}}
@@ -181,17 +190,19 @@ export function buildBattlefield(stage,theme,art=null) {
   }
   const base=map.base,lastPath=map.paths[0].pts.at(-1),prev=map.paths[0].pts.at(-2),fort=art?art.prop('gate',2.3):seasonalize(gate(),theme);
   if(!art){fort.scale.set(.36,.55,.48);fort.rotation.y=Math.atan2(lastPath.x-prev.x,lastPath.y-prev.y)+Math.PI;}fort.position.set(base.x+.5,.025,base.y+.5);root.add(fort);
-  lamps.push([base.x+.5-.7,base.y+.5,.75,true],[base.x+.5+.7,base.y+.5,.75,true]);
+  if(!dressing)lamps.push([base.x+.5-.7,base.y+.5,.75,true],[base.x+.5+.7,base.y+.5,.75,true]);
   // Side props stay on blocked cells, preserving every original buildable tile.
-  for(const d of map.decor.filter(d=>d.ch==='J'||d.ch==='H').slice(0,4)) {const s=art?art.prop('supplies',.48):seasonalize(supplies(),theme);if(!art)s.scale.setScalar(.45);s.position.set(d.x+.38,0,d.y+.4);root.add(s);}
-  const path=map.paths[0];for(const f of [.28,.55,.78]){const q=path.pts[Math.max(1,Math.floor((path.pts.length-1)*f))];lamps.push([q.x+.65,q.y+.5,.65,false]);}
+  if(!dressing){
+    for(const d of map.decor.filter(d=>d.ch==='J'||d.ch==='H').slice(0,4)) {const s=seasonalize(supplies(),theme);s.scale.setScalar(.45);s.position.set(d.x+.38,0,d.y+.4);root.add(s);}
+    const path=map.paths[0];for(const f of [.28,.55,.78]){const q=path.pts[Math.max(1,Math.floor((path.pts.length-1)*f))];lamps.push([q.x+.65,q.y+.5,.65,false]);}
+  }
   // Tall scenery stays behind the board in the default southeast view.
   // A southern rim can hide heroes and roads even when it is outside the grid.
-  let borderTrees=0;
+  let borderTrees=0;const borderRng=makeRng(stageSeed(stage.id)+1771);
   for(const [x,z,step]of surroundings.land) {
     if(z>=0&&x>=0&&x<map.w)continue;
-    if(rng()>.035)continue;if(borderTrees++>=20)break;
-    const shrub=art?art.prop(seasonalTreeKind(theme,noise(x*.63+4,z*.63+8)),1.1+rng()*.9,rng()):theme.snow?seasonalize(pine(.75+rng()*.65,rng()*9),theme):broadleaf(theme,.8+rng()*.7,rng()*9);
+    if(borderRng()>.035)continue;if(borderTrees++>=20)break;
+    const shrub=art?art.prop(seasonalTreeKind(theme,noise(x*.63+4,z*.63+8)),1.1+borderRng()*.9,borderRng()):theme.snow?seasonalize(pine(.75+borderRng()*.65,borderRng()*9),theme):broadleaf(theme,.8+borderRng()*.7,borderRng()*9);
     shrub.position.set(x+step/2,-.035,z+step/2);root.add(shrub);
   }
   if(water.length<30) {
@@ -212,5 +223,5 @@ export function buildBattlefield(stage,theme,art=null) {
   root.add(roadLayer(roads.road,surface(theme,true)));
   if(theme.snow)root.add(roadLayer(roads.snow,surface(theme),'snow'));else roads.snow.dispose();
   const bank=shoreLayer(bankGeometry,MAT.stone);bank.material.color.set(theme.shore);bank.material.bumpScale=.008;root.add(bank);
-  return {root,water:waterMesh,lamps:lamps.slice(0,9),plan,surroundings,roads:roads.metrics,shoreline,shore:{segments:shoreline.segments.length,triangles:bankGeometry.index.count/3,waterTriangles:waterMesh.geometry.index.count/3+(waterMesh.children[0]?.geometry.index.count??0)/3,farWaterTriangles:(waterMesh.children[0]?.geometry.index.count??0)/3}};
+  return {root,water:waterMesh,lamps:lamps.slice(0,9),plan,surroundings,scenery:dressing,roads:roads.metrics,shoreline,shore:{segments:shoreline.segments.length,triangles:bankGeometry.index.count/3,waterTriangles:waterMesh.geometry.index.count/3+(waterMesh.children[0]?.geometry.index.count??0)/3,farWaterTriangles:(waterMesh.children[0]?.geometry.index.count??0)/3}};
 }
