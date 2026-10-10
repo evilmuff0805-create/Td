@@ -1,0 +1,2705 @@
+{
+  "date": "2026-10-11",
+  "poseChecks": [
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 0
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 1
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 2
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 3
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 4
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 5
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 6
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 7
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 8
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 9
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 10
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 11
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 12
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 13
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 14
+    },
+    {
+      "group": "troops",
+      "kind": "ashigaru",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "teppo",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "scout",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "samurai",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "ninja",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "onmyoji",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "cavalry",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "drum",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "armored",
+      "pose": 15
+    },
+    {
+      "group": "troops",
+      "kind": "ram",
+      "pose": 15
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 0
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 0
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 0
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 0
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 0
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 0
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 1
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 1
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 1
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 1
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 1
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 1
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 2
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 2
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 2
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 2
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 2
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 2
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 3
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 3
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 3
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 3
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 3
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 3
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 4
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 4
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 4
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 4
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 4
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 4
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 5
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 5
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 5
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 5
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 5
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 5
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 6
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 6
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 6
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 6
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 6
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 6
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 7
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 7
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 7
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 7
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 7
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 7
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 8
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 8
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 8
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 8
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 8
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 8
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 9
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 9
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 9
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 9
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 9
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 9
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 10
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 10
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 10
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 10
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 10
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 10
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 11
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 11
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 11
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 11
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 11
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 11
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 12
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 12
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 12
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 12
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 12
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 12
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 13
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 13
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 13
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 13
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 13
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 13
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 14
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 14
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 14
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 14
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 14
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 14
+    },
+    {
+      "group": "boss-a",
+      "kind": "konishi",
+      "pose": 15
+    },
+    {
+      "group": "boss-a",
+      "kind": "kato",
+      "pose": 15
+    },
+    {
+      "group": "boss-a",
+      "kind": "wakizaka",
+      "pose": 15
+    },
+    {
+      "group": "boss-a",
+      "kind": "ukita",
+      "pose": 15
+    },
+    {
+      "group": "boss-a",
+      "kind": "ishida",
+      "pose": 15
+    },
+    {
+      "group": "boss-a",
+      "kind": "so",
+      "pose": 15
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 0
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 0
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 0
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 0
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 0
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 0
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 1
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 1
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 1
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 1
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 1
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 1
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 2
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 2
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 2
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 2
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 2
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 2
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 3
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 3
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 3
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 3
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 3
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 3
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 4
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 4
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 4
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 4
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 4
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 4
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 5
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 5
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 5
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 5
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 5
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 5
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 6
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 6
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 6
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 6
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 6
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 6
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 7
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 7
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 7
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 7
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 7
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 7
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 8
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 8
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 8
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 8
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 8
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 8
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 9
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 9
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 9
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 9
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 9
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 9
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 10
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 10
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 10
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 10
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 10
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 10
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 11
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 11
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 11
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 11
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 11
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 11
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 12
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 12
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 12
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 12
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 12
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 12
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 13
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 13
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 13
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 13
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 13
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 13
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 14
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 14
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 14
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 14
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 14
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 14
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuroda",
+      "pose": 15
+    },
+    {
+      "group": "boss-b",
+      "kind": "todo",
+      "pose": 15
+    },
+    {
+      "group": "boss-b",
+      "kind": "kuki",
+      "pose": 15
+    },
+    {
+      "group": "boss-b",
+      "kind": "kurushima",
+      "pose": 15
+    },
+    {
+      "group": "boss-b",
+      "kind": "shimazu",
+      "pose": 15
+    },
+    {
+      "group": "boss-b",
+      "kind": "hideyoshi",
+      "pose": 15
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 0
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 0
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 0
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 0
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 0
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 0
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 1
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 1
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 1
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 1
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 1
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 1
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 2
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 2
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 2
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 2
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 2
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 2
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 3
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 3
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 3
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 3
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 3
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 3
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 4
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 4
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 4
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 4
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 4
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 4
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 5
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 5
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 5
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 5
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 5
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 5
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 6
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 6
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 6
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 6
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 6
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 6
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 7
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 7
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 7
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 7
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 7
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 7
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 8
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 8
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 8
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 8
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 8
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 8
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 9
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 9
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 9
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 9
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 9
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 9
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 10
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 10
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 10
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 10
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 10
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 10
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 11
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 11
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 11
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 11
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 11
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 11
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 12
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 12
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 12
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 12
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 12
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 12
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 13
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 13
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 13
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 13
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 13
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 13
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 14
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 14
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 14
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 14
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 14
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 14
+    },
+    {
+      "group": "allies",
+      "kind": "militia",
+      "pose": 15
+    },
+    {
+      "group": "allies",
+      "kind": "guard",
+      "pose": 15
+    },
+    {
+      "group": "allies",
+      "kind": "elite",
+      "pose": 15
+    },
+    {
+      "group": "allies",
+      "kind": "monk",
+      "pose": 15
+    },
+    {
+      "group": "allies",
+      "kind": "courier",
+      "pose": 15
+    },
+    {
+      "group": "allies",
+      "kind": "turtle",
+      "pose": 15
+    }
+  ],
+  "groupResources": [
+    {
+      "group": "troops",
+      "actorCount": "10",
+      "facing": "3",
+      "focus": "all",
+      "frames": "26",
+      "geometries": "137",
+      "loading": "false",
+      "motion": "attack",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "129",
+      "totalActors": "28"
+    },
+    {
+      "group": "boss-a",
+      "actorCount": "6",
+      "facing": "3",
+      "focus": "all",
+      "frames": "50",
+      "geometries": "103",
+      "loading": "false",
+      "motion": "attack",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "97",
+      "totalActors": "28"
+    },
+    {
+      "group": "boss-b",
+      "actorCount": "6",
+      "facing": "3",
+      "focus": "all",
+      "frames": "74",
+      "geometries": "103",
+      "loading": "false",
+      "motion": "attack",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "97",
+      "totalActors": "28"
+    },
+    {
+      "group": "allies",
+      "actorCount": "6",
+      "facing": "3",
+      "focus": "all",
+      "frames": "98",
+      "geometries": "103",
+      "loading": "false",
+      "motion": "attack",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "97",
+      "totalActors": "28"
+    }
+  ],
+  "seasons": [
+    {
+      "actorCount": "6",
+      "facing": "0",
+      "focus": "all",
+      "frames": "101",
+      "geometries": "103",
+      "group": "allies",
+      "loading": "false",
+      "motion": "idle",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "spring",
+      "textures": "97",
+      "totalActors": "28"
+    },
+    {
+      "actorCount": "6",
+      "facing": "0",
+      "focus": "all",
+      "frames": "102",
+      "geometries": "103",
+      "group": "allies",
+      "loading": "false",
+      "motion": "idle",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "summer",
+      "textures": "97",
+      "totalActors": "28"
+    },
+    {
+      "actorCount": "6",
+      "facing": "0",
+      "focus": "all",
+      "frames": "103",
+      "geometries": "103",
+      "group": "allies",
+      "loading": "false",
+      "motion": "idle",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "autumn",
+      "textures": "97",
+      "totalActors": "28"
+    },
+    {
+      "actorCount": "6",
+      "facing": "0",
+      "focus": "all",
+      "frames": "104",
+      "geometries": "103",
+      "group": "allies",
+      "loading": "false",
+      "motion": "idle",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "97",
+      "totalActors": "28"
+    }
+  ],
+  "screenshots": [
+    "docs/screenshots/combat-poses-allies-idle.jpg",
+    "docs/screenshots/combat-poses-shimazu-attack.jpg",
+    "docs/screenshots/combat-poses-mobile-shimazu.jpg",
+    "docs/screenshots/combat-poses-mobile-turtle.jpg",
+    "docs/screenshots/combat-poses-actual-battle.jpg",
+    "docs/screenshots/combat-poses-actual-turtle.jpg",
+    "docs/screenshots/combat-poses-standalone-ready.jpg",
+    "docs/screenshots/combat-poses-standalone-mobile.jpg"
+  ],
+  "playing": {
+    "actorCount": "6",
+    "facing": "0",
+    "focus": "all",
+    "frames": "121",
+    "geometries": "103",
+    "group": "allies",
+    "loading": "false",
+    "motion": "walk",
+    "playing": "true",
+    "poseStatus": "ready",
+    "season": "winter",
+    "textures": "97",
+    "totalActors": "28"
+  },
+  "paused": {
+    "actorCount": "6",
+    "facing": "0",
+    "focus": "all",
+    "frames": "126",
+    "geometries": "103",
+    "group": "allies",
+    "loading": "false",
+    "motion": "walk",
+    "playing": "false",
+    "poseStatus": "ready",
+    "season": "winter",
+    "textures": "97",
+    "totalActors": "28"
+  },
+  "mobile": {
+    "cards": [
+      {
+        "kind": "shimazu",
+        "rect": {
+          "height": 410,
+          "width": 390,
+          "x": 12,
+          "y": 293.59375
+        }
+      }
+    ],
+    "data": {
+      "actorCount": "6",
+      "facing": "0",
+      "focus": "shimazu",
+      "frames": "132",
+      "geometries": "4",
+      "group": "boss-b",
+      "loading": "false",
+      "motion": "attack",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "3",
+      "totalActors": "28"
+    },
+    "height": 896,
+    "overflow": false,
+    "scrollWidth": 414,
+    "width": 414
+  },
+  "mobileTurtle": {
+    "data": {
+      "actorCount": "6",
+      "facing": "1",
+      "focus": "turtle",
+      "frames": "138",
+      "geometries": "6",
+      "group": "allies",
+      "loading": "false",
+      "motion": "walk",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "5",
+      "totalActors": "28"
+    },
+    "overflow": false
+  },
+  "performance": [
+    {
+      "combatPoseActive": "true",
+      "combatPoseCount": "28",
+      "combatPoseExpected": "28",
+      "combatPoseKinds": "ashigaru,teppo,scout,samurai,ninja,onmyoji,cavalry,drum,armored,ram,konishi,kato,wakizaka,ukita,ishida,so,kuroda,todo,kuki,kurushima,shimazu,hideyoshi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseLastKind": "turtle",
+      "combatPoseLastState": "walk-left",
+      "combatPoseStatus": "ready",
+      "count": "64",
+      "directionalActors": "70",
+      "directionalKinds": "28",
+      "drawCalls": "503",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "fps": "60",
+      "geometries": "316",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "p95": "17",
+      "ready": "true",
+      "roster": "all",
+      "sampleWindow": "29",
+      "setupMs": "2442",
+      "spawnMs": "76",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    {
+      "combatPoseActive": "true",
+      "combatPoseCount": "28",
+      "combatPoseExpected": "28",
+      "combatPoseKinds": "ashigaru,teppo,scout,samurai,ninja,onmyoji,cavalry,drum,armored,ram,konishi,kato,wakizaka,ukita,ishida,so,kuroda,todo,kuki,kurushima,shimazu,hideyoshi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseLastKind": "turtle",
+      "combatPoseLastState": "walk-right",
+      "combatPoseStatus": "ready",
+      "count": "128",
+      "directionalActors": "134",
+      "directionalKinds": "28",
+      "drawCalls": "823",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "fps": "60",
+      "geometries": "370",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "p95": "17",
+      "ready": "true",
+      "roster": "all",
+      "sampleWindow": "16",
+      "setupMs": "2489",
+      "spawnMs": "50",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    {
+      "combatPoseActive": "true",
+      "combatPoseCount": "28",
+      "combatPoseExpected": "28",
+      "combatPoseKinds": "ashigaru,teppo,scout,samurai,ninja,onmyoji,cavalry,drum,armored,ram,konishi,kato,wakizaka,ukita,ishida,so,kuroda,todo,kuki,kurushima,shimazu,hideyoshi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseLastKind": "turtle",
+      "combatPoseLastState": "walk-right",
+      "combatPoseStatus": "ready",
+      "count": "64",
+      "directionalActors": "70",
+      "directionalKinds": "28",
+      "drawCalls": "503",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "fps": "60",
+      "geometries": "307",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "p95": "17",
+      "ready": "true",
+      "roster": "all",
+      "sampleWindow": "14",
+      "setupMs": "2416",
+      "spawnMs": "45",
+      "yiFacing": "0",
+      "yiPose": "idle"
+    }
+  ],
+  "battleInitial": {
+    "combatPoseActive": "true",
+    "combatPoseCount": "12",
+    "combatPoseExpected": "12",
+    "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+    "combatPoseLastKind": "ashigaru",
+    "combatPoseLastState": "walk-right",
+    "combatPoseStatus": "ready",
+    "effectArtStatus": "ready",
+    "engine": "three.js r186",
+    "fixedArt": "true",
+    "fixedArtStatus": "ready",
+    "heroPoseCount": "8",
+    "heroPoseStatus": "ready",
+    "landmarkArtStatus": "ready",
+    "yiFacing": "3",
+    "yiPose": "idle"
+  },
+  "battleManeuvers": {
+    "combatPoseActive": "true",
+    "combatPoseCount": "12",
+    "combatPoseExpected": "12",
+    "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+    "combatPoseLastKind": "teppo",
+    "combatPoseLastState": "walk-right",
+    "combatPoseStatus": "ready",
+    "effectArtStatus": "ready",
+    "engine": "three.js r186",
+    "fixedArt": "true",
+    "fixedArtStatus": "ready",
+    "heroPoseCount": "8",
+    "heroPoseStatus": "ready",
+    "landmarkArtStatus": "ready",
+    "yiFacing": "3",
+    "yiPose": "idle"
+  },
+  "battleTurtle": {
+    "combatPoseActive": "true",
+    "combatPoseCount": "12",
+    "combatPoseExpected": "12",
+    "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+    "combatPoseLastKind": "turtle",
+    "combatPoseLastState": "walk-left",
+    "combatPoseStatus": "ready",
+    "effectArtStatus": "ready",
+    "engine": "three.js r186",
+    "fixedArt": "true",
+    "fixedArtStatus": "ready",
+    "heroPoseCount": "8",
+    "heroPoseStatus": "ready",
+    "landmarkArtStatus": "ready",
+    "yiFacing": "2",
+    "yiPose": "attack"
+  },
+  "finalStageLoad": {
+    "combatPoseActive": "true",
+    "combatPoseCount": "21",
+    "combatPoseExpected": "21",
+    "combatPoseKinds": "scout,teppo,ashigaru,cavalry,onmyoji,samurai,ninja,konishi,ram,armored,drum,kato,ukita,shimazu,hideyoshi,militia,guard,elite,monk,courier,turtle",
+    "combatPoseLastKind": "turtle",
+    "combatPoseLastState": "walk-left",
+    "combatPoseStatus": "ready",
+    "effectArtStatus": "ready",
+    "engine": "three.js r186",
+    "fixedArt": "true",
+    "fixedArtStatus": "ready",
+    "heroPoseCount": "8",
+    "heroPoseStatus": "ready",
+    "landmarkArtStatus": "ready",
+    "yiFacing": "3",
+    "yiPose": "idle"
+  },
+  "standalone": {
+    "combatPoseCount": "13",
+    "combatPoseExpected": "13",
+    "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+    "combatPoseStatus": "ready",
+    "drawCalls": "141",
+    "effectArtStatus": "ready",
+    "engine": "three.js r186",
+    "fixedArt": "true",
+    "fixedArtStatus": "ready",
+    "fps": "31",
+    "geometries": "63",
+    "heroPoseCount": "8",
+    "heroPoseStatus": "ready",
+    "landmarkArtStatus": "ready",
+    "renderMode": "3d",
+    "textures": "38",
+    "triangles": "75682",
+    "yiFacing": "3",
+    "yiPose": "idle"
+  },
+  "standaloneMobile": {
+    "canvas": [
+      {
+        "combatPoseCount": "13",
+        "combatPoseExpected": "13",
+        "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "drawCalls": "141",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "fps": "62",
+        "geometries": "63",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "renderMode": "3d",
+        "textures": "38",
+        "triangles": "75682",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      }
+    ],
+    "height": 896,
+    "overflow": false,
+    "scrollWidth": 414,
+    "width": 414
+  },
+  "returnStageLoad": {
+    "combatPoseActive": "true",
+    "combatPoseCount": "12",
+    "combatPoseExpected": "12",
+    "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+    "combatPoseLastKind": "turtle",
+    "combatPoseLastState": "walk-left",
+    "combatPoseStatus": "ready",
+    "effectArtStatus": "ready",
+    "engine": "three.js r186",
+    "fixedArt": "true",
+    "fixedArtStatus": "ready",
+    "heroPoseCount": "8",
+    "heroPoseStatus": "ready",
+    "landmarkArtStatus": "ready",
+    "yiFacing": "3",
+    "yiPose": "idle"
+  },
+  "console": {
+    "comparison": [],
+    "performance": [],
+    "battle": [],
+    "standalone": []
+  },
+  "uniquePoseChecks": 448,
+  "notes": [
+    "Comparison controls exercised all 448 unique actor poses; offscreen cards were verified through their rendered DOM diagnostics.",
+    "Performance is a desktop render stress scene using real unit roots, with scripted movement rather than a complete combat simulation.",
+    "Free battle reached wave 4 and cast Yi turtle ultimate; final stage and first stage were loaded via the UI.",
+    "Standalone normal Dongnae battle was paused before first wave; no victory or defeat reward was produced.",
+    "414x896 is viewport emulation; no physical phone thermal or touch validation."
+  ]
+}

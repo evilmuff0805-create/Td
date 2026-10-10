@@ -1,0 +1,226 @@
+[
+  {
+    "side": "enemy",
+    "id": "ashigaru",
+    "name": "아시가루",
+    "cell": 0,
+    "identity": "A lean adult Japanese ashigaru spearman: muted mustard/olive cloth, dark simple lamellar chest protection, broad conical black jingasa with a small aged-brass round crest, wrapped calves and straw sandals. Long wooden yari spear, both hands on it. Attack: thrust the spear forward.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "teppo",
+    "name": "조총병",
+    "cell": 1,
+    "identity": "Japanese matchlock infantry: dusty brown padded coat and simple dark leather armor, broad shallow conical jingasa, calf wraps and straw sandals. One long wooden tanegashima matchlock held with both hands. Attack: shoulder and aim the matchlock forward. No modern firearms.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "scout",
+    "name": "척후병",
+    "cell": 2,
+    "identity": "Light agile Japanese scout: ivory/beige wrapped tunic, brown belts and leggings, dark hair tied back, simple dark forehead band, lightly bearded young adult face, no heavy armor or helmet. One short curved sword. Attack: low forward short-blade cut.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "samurai",
+    "name": "사무라이",
+    "cell": 3,
+    "identity": "Japanese samurai: deep crimson layered lamellar armor, black sleeves, dark kabuto with a clean gold U-shaped crescent crest and side guards. One katana, sheath on waist. Attack: balanced two-handed forward katana cut.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "ninja",
+    "name": "시노비",
+    "cell": 4,
+    "identity": "Japanese shinobi: dark indigo cloth hood and lower-face mask, only expressive eyes exposed, fitted navy wraps, small leather bracers, twin short steel daggers, low agile posture. Attack: close forward dagger strike. No floating shuriken or smoke.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "onmyoji",
+    "name": "음양사",
+    "cell": 5,
+    "identity": "Japanese onmyoji healer: tall narrow black eboshi hat, ivory robes with broad muted-purple hems and sash, mature slender face, a connected bundle of paper talismans in one hand and a small ritual charm held in the other. Attack/cast: lift the talisman hand forward in a ritual gesture. No floating paper, particles or detached glow.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "cavalry",
+    "name": "기마무사",
+    "cell": 6,
+    "identity": "ONE complete mounted Japanese samurai and his chestnut-brown horse, both as a single coherent actor. Dark steel/navy armor, gold U crest kabuto, blue saddlecloth and reins, horse has natural complete four legs. Rider holds a Japanese naginata polearm. Attack: mounted forward polearm strike. Preserve the whole horse, rider, reins and weapon in every cell.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "drum",
+    "name": "진군 고수",
+    "cell": 7,
+    "identity": "Japanese battlefield drummer: red cloth tunic, black trousers, dark hair and white forehead band, small brown shoulder guards. Large round brown taiko strapped visibly to chest with two short wooden mallets held in hands. Attack: hit the drum with a raised mallet. Keep drum straps connected to body.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "armored",
+    "name": "철갑무사",
+    "cell": 8,
+    "identity": "Broad heavy Japanese armored infantry: layered charcoal/slate iron plates, compact dark helmet with face guard, muted brass borders, thick gauntlets, huge curved steel cleaver and compact reinforced rectangular forearm shield. Stocky imposing armored silhouette. Attack: heavy forward cleaver cut.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "ram",
+    "name": "공성 충차",
+    "cell": 9,
+    "identity": "ONE covered wooden siege battering ram, no people. Brown timber shed body and pitched plank roof, dark iron straps, thick suspended horizontal log with a conical dark iron head projecting from the front, six chunky wooden wheels with iron rims. The log head identifies the facing front. Row 1 stationary, rows 2/3 two subtly different rolling-wheel/log positions, row 4 the attached battering log thrusts forward a short distance. Entire structure must stay connected and fit in each cell.",
+    "version": 1
+  },
+  {
+    "side": "ally",
+    "id": "militia",
+    "name": "의병",
+    "cell": 10,
+    "identity": "Korean militia spearman: off-white cotton jeogori and trousers, brown crossed belt, white forehead band, black tied hair, calf wraps and straw shoes. One long wooden spear with a small restrained red ribbon tied below the blade. Ordinary brave adult, no heavy armor. Attack: two-handed spear thrust.",
+    "version": 1
+  },
+  {
+    "side": "ally",
+    "id": "guard",
+    "name": "수비군",
+    "cell": 11,
+    "identity": "Korean gate guard: deep navy/charcoal uniform, clear crossed crimson chest straps and sash, dark broad brim helmet with restrained short red plume, dark boots, light lamellar torso protection. One long spear, upright disciplined posture. Attack: two-handed spear thrust.",
+    "version": 1
+  },
+  {
+    "side": "ally",
+    "id": "elite",
+    "name": "정예 수비군",
+    "cell": 12,
+    "identity": "Korean elite palace guard: richer crimson lamellar armor with restrained aged-brass borders, dark navy sleeves, Korean peaked helmet with flowing red plume, visible rounded small shield and a polearm with broad blade. Athletic adult guard, not a named hero. Attack: planted forward polearm strike, shield held defensively.",
+    "version": 1
+  },
+  {
+    "side": "ally",
+    "id": "monk",
+    "name": "승병",
+    "cell": 13,
+    "identity": "Korean warrior monk: shaved head, warm mature round face, gray-blue loose robe and ivory inner layers, large brown wooden prayer beads around neck, cloth leg wraps. One tall wooden staff with a small gold ring finial. Attack: two-handed staff strike. No detached magic or glow.",
+    "version": 1
+  },
+  {
+    "side": "ally",
+    "id": "courier",
+    "name": "전령",
+    "cell": 14,
+    "identity": "ONE complete Korean mounted courier on a chestnut horse: blue cloth jeogori and trousers, dark broad brim Joseon hat, simple brown saddle, visible reins, long crimson dispatch flag securely attached on back. No heavy armor or weapon. Preserve entire rider, horse, all four legs, flag and reins. Row 1 resting; rows 2/3 visibly distinct trotting leg poses; row 4 urgency/dashing pose, not an attack.",
+    "version": 1
+  },
+  {
+    "side": "ally",
+    "id": "turtle",
+    "name": "거북선",
+    "cell": 15,
+    "identity": "ONE small stylized Korean turtle warship, no people. Brown plank hull, broad curved dark iron armored roof with restrained short spikes, stout dragon-head prow identifying front, neat side cannon ports and short connected oars. Row 1 cruising at rest; rows 2/3 subtly different connected oar rowing poses; row 4 battle-ready ship with a slight forward prow lean. No water, flames, smoke, projectile, wake or floor. Preserve entire ship in every cell.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "konishi",
+    "name": "고니시 유키나가",
+    "cell": 0,
+    "identity": "Japanese commander Konishi Yukinaga: mature black mustache and short beard, black/navy lamellar armor, cream/ivory sleeveless overcoat with a simple black cross-in-circle crest, black kabuto with small gold U crest. Black-and-gold command fan and sheathed katana. Attack: short katana slash while keeping fan. Preserve his distinctive ivory coat.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "kato",
+    "name": "가토 기요마사",
+    "cell": 1,
+    "identity": "Japanese commander Kato Kiyomasa: lean mature stern face, charcoal-black armor, gray sash, extremely tall narrow black pointed-cone kabuto, pale side helmet guards. One long straight yari spear. Attack: strong forward spear thrust. The very tall cone helmet is his distinct silhouette.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "wakizaka",
+    "name": "와키자카 야스하루",
+    "cell": 2,
+    "identity": "Japanese naval commander Wakizaka Yasuharu: broad mature black-bearded face, deep navy/blue lamellar armor with aged-gold borders, large wide golden crescent across kabuto, blue coat skirt, curved naval sword and compact shield. Attack: forward sword cut. Strong wide crescent and blue/gold identity.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "ukita",
+    "name": "우키타 히데이에",
+    "cell": 3,
+    "identity": "Japanese commander Ukita Hideie: mature black mustache and pointed beard, plum-purple lamellar armor with restrained gold rims, plum kabuto with prominent round golden disk crest, deep red neck scarf. Black-and-gold command fan and katana. Attack: commanding fan thrust with a ready short sword. Preserve plum color and disk crest.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "ishida",
+    "name": "이시다 미쓰나리",
+    "cell": 4,
+    "identity": "Japanese strategist Ishida Mitsunari: mature narrow face with short black beard, huge soft white shaggy mane headdress attached around dark/gold helmet, ivory/cream overcoat over black armor with restrained gold trim. Black-and-gold folding command fan and a rolled paper order held in hand. Attack/cast: point command fan forward. Preserve broad white mane silhouette; no detached scrolls or text.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "so",
+    "name": "소 요시토시",
+    "cell": 5,
+    "identity": "Japanese commander So Yoshitoshi: younger adult mature black short beard, muted forest-green lamellar armor and green coat, brown sash, dark helmet with a slim swept-back gold horn/wing crest. One curved sword. Attack: agile forward sword cut. Leaner silhouette and forest-green color.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "kuroda",
+    "name": "구로다 나가마사",
+    "cell": 6,
+    "identity": "Japanese commander Kuroda Nagamasa: broad mature face and thick black beard, black/charcoal lamellar armor with crisp muted-crimson lacing, tall angular black wing crest on kabuto, red rope sash. One dark wooden command yari spear. Attack: forceful spear thrust. Preserve angular black helmet and red-black armor.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "todo",
+    "name": "도도 다카토라",
+    "cell": 7,
+    "identity": "Japanese naval commander Todo Takatora: mature stern black mustache and beard, slate-blue layered armor and coat, tall narrow rectangular golden crest on kabuto, rounded wooden shield with a simple three-swirl medallion and a short naval blade. Attack: shield-forward blade strike. Preserve vertical crest, blue coat and round shield.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "kuki",
+    "name": "구키 요시타카",
+    "cell": 8,
+    "identity": "Japanese naval commander Kuki Yoshitaka: broad stocky mature face with a full black beard, heavy deep slate/navy iron armor with aged-brass edging, large rounded black dome kabuto with low side guards, dark blue coat and cream rope belt. One heavy curved naval cleaver with a compact armored forearm guard. Attack: heavy forward cleaver cut. No crescent or tall plume.",
+    "version": 1
+  },
+  {
+    "side": "enemy",
+    "id": "kurushima",
+    "name": "구루시마 미치후사",
+    "cell": 9,
+    "identity": "Japanese naval commander Kurushima Michifusa: lean mature black-bearded face, deep teal lamellar armor with red lacing and red cord sash, small sharp gold crescent kabuto, dark teal coat. A black-and-gold command fan and a curved naval sword. Attack: assertive sword strike with fan retained. Distinct teal/red costume and narrower crest than Wakizaka.",
+    "version": 2
+  },
+  {
+    "side": "enemy",
+    "id": "shimazu",
+    "name": "시마즈 요시히로",
+    "cell": 10,
+    "identity": "Elderly Japanese commander Shimazu Yoshihiro: full gray-white beard, rugged aged face, broad burgundy/dark red-brown layered armor with muted brass rims, black kabuto with two large outward-curving black horns, cream rope sash. One long heavy nodachi. Attack: powerful two-handed nodachi cut. Preserve gray beard and horned silhouette.",
+    "version": 2
+  },
+  {
+    "side": "enemy",
+    "id": "hideyoshi",
+    "name": "도요토미 히데요시",
+    "cell": 11,
+    "identity": "Final Japanese commander Toyotomi Hideyoshi: elderly face with short white-gray beard, ornate but readable golden lamellar armor, huge golden sunburst fan crest behind helmet, rich dark crimson and purple command cape with restrained gold motifs, two attached golden gourds at waist. Black-and-gold command fan and a katana. Attack: commanding fan point with sword held ready. Preserve unique sunburst silhouette, gold armor and attached gourds.",
+    "version": 1
+  }
+]

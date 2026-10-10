@@ -24,7 +24,7 @@ function glowTexture() {return texture(64,(c,s)=>{const g=c.createRadialGradient
 
 export class WinterWorld {
   constructor(canvas,stage=WINTER_STAGE,season='auto',options={}) {
-    this.stage=stage;this.theme=seasonFor(stage,season);
+    this.stage=stage;this.theme=seasonFor(stage,season);this.combatKinds=options.combatKinds;
     this.fixedCamera=options.fixedCamera!==false;this.useIllustrations=options.illustrated!==false;
     this.allowBatchCrowd=options.batchCrowd!==false;this.batchCrowd=this.allowBatchCrowd&&!this.useIllustrations;
     this.renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
@@ -123,6 +123,7 @@ export class WinterWorld {
   }
   loadStage(stage,season='auto') {
     this.reset();
+    this.art?.prepareCombatArt(stage);
     for(const object of [this.static,this.water,this.lampGroup,this.snow]) {
       this.scene.remove(object);this.disposeModel(object);
     }
@@ -199,7 +200,7 @@ export class WinterWorld {
       if(hero){hp.userData.front.material.color.set(e.owner===1?'#edaa97':'#93d3c3');const ring=root.userData.ownerRing;ring.material.color.set(e.owner===1?'#ed9b87':'#8bcbed');ring.material.opacity=(selected?.kind==='hero'&&game.heroes[selected.h??0]?.id===e.id) ? .9 : .45;}
       hp.quaternion.copy(this.camera.quaternion).premultiply(root.quaternion.clone().invert());
       hp.userData.front.scale.x=.52*ratio;hp.userData.front.position.x=-.26*(1-ratio);
-      this.art?.attachUnit(root,e,hero,ally);this.art?.updateUnit(root,e,move,hero||ally?e.anim:cue?Math.max(0,cue.until-game.time):e.swing||0,time);
+      this.art?.attachUnit(root,e,hero,ally);this.art?.updateUnit(root,e,move,hero||ally?e.anim:cue?Math.max(0,cue.until-game.time):e.swing||0,poseTime);
     }
     for(const [key,root] of this.units) if(!activeUnits.has(key)) {
       this.units.delete(key);this.pickables=this.pickables.filter((p)=>p!==root);root.userData.hp.visible=false;

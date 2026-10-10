@@ -20,6 +20,8 @@
     "test:3d": "node tools/test-3d.mjs",
     "test:fixed-art": "node tools/test-fixed-art.mjs",
     "test:hero-art": "node tools/hero-pose-assets.mjs",
+    "test:combat-art": "node tools/test-combat-art.mjs",
+    "test:combat-assets": "node tools/combat-pose-assets.mjs",
     "test:effects": "node tools/test-effects.mjs",
     "test:enemies": "node tools/test-enemies.mjs",
     "test:campaign": "node tools/test-campaign.mjs",

@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-11",
+  "milestone": "Expand approved fixed-camera painted character tone to every ordinary enemy, boss, allied troop and mover.",
+  "scope": {
+    "ordinaryEnemies": 10,
+    "bosses": 12,
+    "alliedTroopsAndMovers": 6,
+    "newActors": 28,
+    "newPoseSheets": 28,
+    "newPreparedPoses": 448,
+    "unchangedHeroes": 8,
+    "unchangedHeroPoses": 128,
+    "totalPreparedPoses": 576,
+    "heroArtBaseline": "0cb2bc2667c0dd0c8ec68dd12650703d7d659747",
+    "heroSourceDeliveryPromptsAndPoseDataUnchanged": true,
+    "landmarkHeightAllTiers": 1.2,
+    "representation": "fixed-camera 2.5D sprites on actual Three.js terrain",
+    "moverRuntimePoseCountEach": 12
+  },
+  "generation": {
+    "mode": "built-in imagegen",
+    "sourceAndFinalPromptIndex": "COMBAT_DIRECTIONAL_ART.md",
+    "sourceDirectory": "assets/3d/fixed/units/source/",
+    "finalDeliveryBytes": 10971904,
+    "alphaPreserved": true,
+    "sharpUse": "WebP encoding and pixel analysis only",
+    "rejectedVersionsPreserved": [
+      "kurushima-directions-v1",
+      "shimazu-directions-v1"
+    ],
+    "finalReplacements": [
+      "kurushima-directions-v2",
+      "shimazu-directions-v2"
+    ]
+  },
+  "assetValidation": {
+    "combat": "COMBAT_POSE_ASSET_VALIDATION.json",
+    "heroes": "HERO_POSE_ASSET_VALIDATION.json",
+    "combatPoses": 448,
+    "heroPoses": 128,
+    "foreignVisiblePixels": 0,
+    "uncoveredVisiblePixels": 0,
+    "duplicateVisiblePixels": 0,
+    "combatOuterBorderVisiblePixels": 0,
+    "alphaDifferences": 0,
+    "isolatedPadding": 12
+  },
+  "tests": [
+    {
+      "command": "node tools/selftest.mjs",
+      "passed": 14
+    },
+    {
+      "command": "node tools/test-3d.mjs",
+      "passed": 41
+    },
+    {
+      "command": "node tools/test-fixed-art.mjs",
+      "passed": 15
+    },
+    {
+      "command": "node tools/test-campaign.mjs",
+      "passed": 16
+    },
+    {
+      "command": "node tools/test-effects.mjs",
+      "passed": 8
+    },
+    {
+      "command": "node tools/test-enemies.mjs",
+      "passed": 12
+    },
+    {
+      "command": "node tools/test-combat-art.mjs",
+      "passed": 13
+    }
+  ],
+  "passedTests": 119,
+  "newRuntimeCoverage": [
+    "448 real unit-root pose transitions, UV, common pixel scale, foot/hull origin and ground shadows",
+    "all 25 stage waves, eligible tactics, death splits and boss phase summons",
+    "real shooting cue, stealth/reveal, stun clock, death cleanup",
+    "real Yi turtle ultimate and courier spawn, expiry and private versus shared resource disposal",
+    "one missing actor sheet falls back independently",
+    "core/combat load completion order and stale battle completion",
+    "stage retain/release and stale/destroyed request guards",
+    "actual free-battle dispatch and keyboard block ultimate consumption during art loading",
+    "verified layouts skip full image pixel readback"
+  ],
+  "build": {
+    "serverBundles": "node tools/build-3d.mjs passed",
+    "standalone": "node tools/build.mjs passed",
+    "standaloneBytes": 37104890,
+    "embeddedDirectionalSheets": 36,
+    "eachEmbeddedExactlyOnce": true,
+    "rejectedV1Embedded": false,
+    "generatedDistGitIgnored": true
+  },
+  "browser": {
+    "details": "COMBAT_DIRECTIONAL_ART_BROWSER_VALIDATION.json",
+    "uniquePoseCombinations": 448,
+    "seasons": 4,
+    "freeBattleWaveReached": 4,
+    "turtleUltimateCast": true,
+    "stageScopedActorCounts": [
+      12,
+      21,
+      12
+    ],
+    "standaloneStage": "s2 / Dongnae / normal / Yi + Sejong",
+    "standalonePreloadedActors": 13,
+    "standalonePausedBeforeFirstWave": true,
+    "officialVictoryOrDefeatRewardProduced": false,
+    "mobileViewport": {
+      "width": 414,
+      "height": 896,
+      "comparisonOverflow": false,
+      "standaloneOverflow": false
+    },
+    "warningAndErrorCount": 0,
+    "desktopStressScene": {
+      "enemyCounts": [
+        64,
+        128,
+        64
+      ],
+      "additionalAlliesAndMovers": 6,
+      "distinctActorKinds": 28,
+      "fps": [
+        60,
+        60,
+        60
+      ],
+      "p95Milliseconds": [
+        17,
+        17,
+        17
+      ],
+      "meaning": "render stress fixture with scripted movement; not a complete combat simulation or device guarantee"
+    }
+  },
+  "review": {
+    "requestedModel": "gpt-6-astra",
+    "reasoning": "xhigh",
+    "reason": "Conditional review after encountered loading/input/test and pose-spacing problems, as authorized by the user.",
+    "findingsAndResolution": [
+      "Updated stale enemy-renderer test fixture to include the production loading layer.",
+      "Bound each async ready callback to its original world request and battle, preventing old camera/overlay updates.",
+      "Blocked actual free-battle commands and keys during art loading; Escape still cancels.",
+      "Rejected Kurushima v1 with 9 foreign pixels and Shimazu v1 with 69; regenerated complete silhouettes with spacing. Final v2 passed image/pixel review with 61px and 42px problematic-row gaps."
+    ],
+    "finalArtConfirmation": "No required additional fixes."
+  },
+  "limits": [
+    "Movement currently alternates two poses; longer walking and attack sequences remain.",
+    "Turtle and courier use 12 runtime poses each; four additional readiness poses are prepared rather than used as attack animation.",
+    "Special costumes and menu/flat-mode portraits retain their existing catalogs.",
+    "Physical-phone memory, thermal behavior, sustained FPS and touch controls were not verified.",
+    "Terrain/path naturalization and per-skill independent effects remain separate art work."
+  ]
+}

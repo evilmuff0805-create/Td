@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-11",
+  "generationMode": "built-in imagegen",
+  "useCase": "identity-preserve + stylized-concept",
+  "side": "enemy",
+  "id": "shimazu",
+  "name": "시마즈 요시히로",
+  "cell": 10,
+  "identity": "Elderly Japanese commander Shimazu Yoshihiro: full gray-white beard, rugged aged face, broad burgundy/dark red-brown layered armor with muted brass rims, black kabuto with two large outward-curving black horns, cream rope sash. One long heavy nodachi. Attack: powerful two-handed nodachi cut. Preserve gray beard and horned silhouette.",
+  "version": 2,
+  "generatedFile": "exec-b911460f-954f-4f1c-8826-2f7ba1100766.png",
+  "references": [
+    "assets/3d/fixed/units/source/shimazu-directions-v1.png",
+    "assets/3d/fixed/source/yi-directions-v2.png"
+  ],
+  "referenceRoles": [
+    "edit target; preserve all sixteen identities and poses; spacing only",
+    "approved style and camera only"
+  ],
+  "transparentBackground": true,
+  "promptHistory": [
+    "Use case: identity-preserve + stylized-concept.\nAsset type: production transparent 4-column × 4-row sprite atlas for the fixed elevated-camera Korean tower-defense game Hoguk.\nImage 1 is an IDENTITY REFERENCE CATALOG, not an atlas to edit wholesale. Use ONLY the named catalog cell described below. Image 2 is the approved HERO STYLE AND CAMERA REFERENCE: soft painted 3D-animation finish, compact stylized adult proportions about 4 to 4.5 heads tall, broad readable color masses, rounded face planes, gentle cool ambient and warm upper-left key, restrained aged-metal highlights. Do not copy Yi's face or navy-red costume. Keep this unit's costume, palette, face, weapons and identity consistently in all sixteen cells.\nProduce exactly ONE named actor repeated in sixteen complete poses, not sixteen different characters. Orthographic view approximately 40 degrees above. All poses have the same body/object scale; no enlarged attack body.\nSTRICT LAYOUT: exactly FOUR equal columns and FOUR equal rows on an actual transparent RGBA background. Center each COMPLETE actor inside its own cell, occupying at most 70% of cell height and 72% of cell width, INCLUDING the longest weapon/horse/flag. Leave generous transparent gutters on every side. No part of an actor may touch a cell edge or enter a neighbour. A slightly smaller whole actor is preferable to clipping a spear tip.\nCOLUMNS in EVERY row: 1 front three-quarter toward screen LOWER RIGHT; 2 true back three-quarter toward UPPER RIGHT, back clearly shown; 3 true back three-quarter toward UPPER LEFT; 4 front three-quarter toward LOWER LEFT.\nROWS: 1 standing ready; 2 left-foot-forward walking; 3 visibly opposite right-foot-forward walking; 4 the specified attack directed along that column's facing. For horses/ships/ram follow their special row instructions instead. Clearly show BACKS in columns 2 and 3. Complete feet/hooves/wheels/hull in every cell.\nKeep weapons held, charm/flag/armor connected to the actor. No loose projectiles, floating charms, dust, detached particles or weapon effects. No detached accessories. No text, labels, frames, lines, floor, scenery, ground shadows, background colour, checkerboard, bloom or baked ambient glow. True alpha-zero empty background. The game supplies ground shadows.\nPrimary priority: match the approved softly painted heroes while maintaining this unit's distinctive silhouette and readable palette at small battlefield size.\nNAMED ACTOR: 시마즈 요시히로 (shimazu). In image 1 choose ONLY row 3, column 3, counted from top left.\nIDENTITY AND ATTACK: Elderly Japanese commander Shimazu Yoshihiro: full gray-white beard, rugged aged face, broad burgundy/dark red-brown layered armor with muted brass rims, black kabuto with two large outward-curving black horns, cream rope sash. One long heavy nodachi. Attack: powerful two-handed nodachi cut. Preserve gray beard and horned silhouette.",
+    "EDIT image 1, the transparent 4 by 4 sprite sheet of 시마즈 요시히로 (shimazu). Preserve this exact named actor's face, outfit, crest, beard, held weapon, soft painted animation style, elevated fixed camera, and all SIXTEEN poses in their existing order. Columns remain front-right, back-right, back-left, front-left. Rows remain idle, walk A, walk B, attack. Image 2 is only an approved style reference; never add or copy its character.\nFIX ONLY THE SPACING/COMPOSITION: re-layout all16 complete actors on a perfectly regular four by four transparent grid. Reduce the complete silhouette of EACH actor to about75 percent of its CURRENT pixel size, preserving the same body size across all cells. Center each actor fully inside its own cell, leaving generous clear transparent gutters on all four sides. Including hair, crest, fan, cape, raised sword and feet, EVERY pose bounding rectangle must fit inside the inner70percent of its own cell. Keep at least60 transparent pixels vertically and40 horizontally between neighboring complete bounding rectangles on a1280px sheet, scaled proportionally for other output sizes. No raised sword or helmet can intrude into the rectangle of the actor above it. Maintain the pose, all equipment and connected limbs; do not crop or erase any part of a character. TRUE transparent alpha background. No background, floor, cast shadows, particles, glow, detached marks, labels or text. Output exactly16 actors, no duplicates, no extra body parts."
+  ],
+  "supersedes": "assets/3d/fixed/units/shimazu-directions-v1.webp",
+  "reason": "Increase complete silhouette spacing to prevent neighboring visible pixels in rectangular pose extraction."
+}

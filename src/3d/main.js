@@ -20,6 +20,7 @@ import { abilityIcon } from './ability-icons.js';
 import { equippedAbility,comboView,rallyTargets } from './battle-controls.js';
 import { abilityIllustration,paintAbility } from './skill-art.js';
 import { paintBattleEvent } from './battle-events.js';
+import { whenBattleArtReady } from './battle-art-ready.js';
 
 const $=id=>document.getElementById(id),canvas=$('world'),query=new URLSearchParams(location.search);
 let config={stageId:STAGE_BY_ID[query.get('stage')]?query.get('stage'):'s1',heroIds:['yi','gwon'],skillIds:['singijeon','hanpa'],season:SEASONS[query.get('season')]?query.get('season'):'auto',support:true};
@@ -34,7 +35,7 @@ const modalOpen=()=>!!document.querySelector('dialog[open]');
 const cost=(type,base=TOWERS[type].levels[0].cost)=>metaCost(base,game.players[0].towerLv[type]||0);
 function notice(text) {$('notice').textContent=text;$('notice').classList.add('show');noticeUntil=performance.now()+2900;}
 function dispatch(command) {
-  if(game.result)return false;
+  if(game.result||world.art?.loading)return false;
   const h=game.heroes[command.h??activeHero],slot=equippedAbility(game,command.slot??0),combos=game.players[0].stats.combos;
   if(command.t==='skill'&&!slot)return false;
   const prior=command.t==='heroSkill'?h.skillCd:command.t==='heroUlt'?h.ultCd:command.t==='skill'?slot.cd:undefined;
@@ -106,6 +107,8 @@ function startBattle(nextConfig=config) {
   activeHero=0;started=false;paused=false;selected={kind:'hero',h:0};mode=null;hover=null;accumulator=0;resultShown=false;lastCommand='준비';
   if($('result-dialog').open)$('result-dialog').close();$('cast-banner').hidden=true;
   world.sync(game,0,DT,selected);world.home();updateHUD();notice(`${seasonFor(STAGE_BY_ID[config.stageId],config.season).name} · ${STAGE_BY_ID[config.stageId].name} · 출정을 준비하세요`);
+  $('loading').hidden=!world.art?.loading;
+  whenBattleArtReady(world,game,()=>game,()=>{world.sync(game,0,0,selected);world.home();$('loading').hidden=true;});
   const url=new URL(location.href);url.searchParams.set('stage',config.stageId);if(config.season==='auto')url.searchParams.delete('season');else url.searchParams.set('season',config.season);history.replaceState(null,'',url);
 }
 function towerUpgrade(branch=null) {
@@ -214,13 +217,14 @@ function input() {
   new ResizeObserver(entries=>{document.documentElement.style.setProperty('--commandbar-height',`${entries[0].target.getBoundingClientRect().height}px`);}).observe(document.querySelector('.commandbar'));
   document.addEventListener('keydown',e=>{
     if(modalOpen()||e.repeat)return;const key=e.key.toLowerCase();if(['1','2','3','q','r','f','g','c','b','n',' ','escape'].includes(key))e.preventDefault();
+    if(world.art?.loading&&key!=='escape')return;
     if(key==='1')chooseBuild(TOWER_TYPES[0]);else if(key==='2')chooseBuild(TOWER_TYPES[1]);else if(key==='3')cycleHero();else if(key==='b')openLibrary();
     else if(key==='q')chooseSkill('heroSkill');else if(key==='r')chooseSkill('heroUlt');else if(key==='f')chooseSkill('skill',0);else if(key==='g')chooseSkill('skill',1);else if(key==='c')chooseCombo();else if(key==='n')beginWave();else if(key===' ')pause();else if(key==='escape')selection(null);
   });
 }
 function frame(now) {
   const dt=Math.min(.1,(now-last)/1000);last=now;clock+=dt;uiClock+=dt;frames++;const modal=modalOpen();
-  if(started&&!paused&&!game.result&&!modal&&!document.hidden){accumulator=Math.min(.2,accumulator+dt);while(accumulator>=DT){step(game);accumulator-=DT;events();}}
+  if(started&&!paused&&!game.result&&!modal&&!document.hidden&&!world.art?.loading){accumulator=Math.min(.2,accumulator+dt);while(accumulator>=DT){step(game);accumulator-=DT;events();}}
   world.sync(game,started?game.time:clock,paused||modal?0:dt,mode?.kind==='build'?null:selected);world.buildPreview(mode?.kind==='build'?mode.type:null,hover,hover&&canBuildAt(game,Math.floor(hover.x),Math.floor(hover.z)));
   for(const e of firingEvents)world.firingLine(e);firingEvents.length=0;
   const target=abilityTarget(game,mode?.kind,hero(),hover,equippedAbility(game,mode?.slot??0)?.id);world.fx.preview(mode?.kind,hero(),hover,target);world.fx.update(paused||modal?0:dt);world.draw(clock,dt);towerLabels.update(game,world,selected,mode);
@@ -237,7 +241,7 @@ function frame(now) {
 }
 try {
   game=newBattleGame(config);world=new WinterWorld(canvas,STAGE_BY_ID[config.stageId],config.season);input();world.sync(game,0,DT,selected);world.home();world.draw(0,0);document.body.dataset.renderer='webgl2';
-  (world.art?.promise??Promise.resolve()).then(()=>{if(world.destroyed)return;world.sync(game,0,0,selected);world.home();$('loading').hidden=true;last=performance.now();});
+  whenBattleArtReady(world,game,()=>game,()=>{world.sync(game,0,0,selected);world.home();$('loading').hidden=true;last=performance.now();});
   updateHUD();last=performance.now();requestAnimationFrame(frame);
 } catch(error) {
   console.error(error);$('loading').querySelector('h2').textContent='3D 전장을 열 수 없습니다';$('loading').querySelector('p').textContent=/WebGL|context/i.test(error.message)?'WebGL2를 지원하는 브라우저와 그래픽 가속이 필요합니다. 브라우저 설정을 확인한 뒤 새로고침하세요.':'전장을 준비하는 중 오류가 발생했습니다. 새로고침 후 다시 시도하세요.';

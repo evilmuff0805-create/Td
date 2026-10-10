@@ -2,6 +2,8 @@ import * as T from 'three';
 import { preloadArt,heroArt,enemyArt,allyArt,towerArt,structureArt,propArt } from '../render/art.js';
 import { LANDMARK_STAGE_ART,landmarkFrame } from './tower-art-data.js';
 import { HERO_POSE_ART } from './hero-pose-data.js';
+import { COMBAT_POSE_ART } from './combat-pose-data.js';
+import { combatPoseRoster } from './combat-pose-roster.js';
 
 export const FIXED_ART={yi:HERO_POSE_ART.yi.path,towers:'assets/3d/fixed/tower-tiers-v2.webp',winter:'assets/3d/fixed/winter-props-v2.webp'};
 const atlases=new Map();
@@ -24,13 +26,13 @@ export function isolateFrame(source,frame,createCanvas=()=>document.createElemen
   canvas.getContext('2d').drawImage(source,frame.left,frame.top,frame.width,frame.height,padding,padding,frame.width,frame.height);
   return {canvas,frame:{...frame,left:padding,top:padding},sourceBounds:frame};
 }
-async function atlas(path,columns,rows,layout=null) {
-  if(!atlases.has(path))atlases.set(path,new Promise((resolve,reject)=>{
+async function atlas(path,columns,rows,layout=null,shared=true) {
+  const load=()=>new Promise((resolve,reject)=>{
     const url=path.startsWith('data:')?path:new URL(path,new URL('../../',import.meta.url)).href;
     new T.ImageLoader().load(url,img=>{
       const canvas=document.createElement('canvas');canvas.width=img.width;canvas.height=img.height;
       const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(img,0,0);
-      const pixels=ctx.getImageData(0,0,img.width,img.height).data,frames=[];
+      const pixels=layout?.frames?null:ctx.getImageData(0,0,img.width,img.height).data,frames=[];
       if(layout?.frames){
         for(const frame of layout.frames)frames.push({...frame,left:Math.round(frame.left*img.width/layout.width),top:Math.round(frame.top*img.height/layout.height),width:Math.round(frame.width*img.width/layout.width),height:Math.round(frame.height*img.height/layout.height),referenceHeight:frame.referenceHeight*img.height/layout.height});
       }else for(let row=0;row<rows;row++)for(let col=0;col<columns;col++){
@@ -39,29 +41,67 @@ async function atlas(path,columns,rows,layout=null) {
       }
       resolve({canvas,frames,width:img.width,height:img.height,isolated:layout?frames.map(frame=>isolateFrame(canvas,frame)):null,poseAtlas:!!layout?.frames});
     },undefined,reject);
-  }));
+  });
+  // Combat sheets belong to one battlefield; do not retain all 28 in a global cache.
+  if(!shared)return load();
+  if(!atlases.has(path))atlases.set(path,load());
   return atlases.get(path);
 }
 
 export class FixedBattleArt {
   constructor(world) {
-    this.world=world;this.ready=false;this.loading=true;this.failed=false;this.destroyed=false;this.textures=new Map();this.materials=new Map();this.geometries=new Map();
+    this.world=world;this.ready=false;this.loading=true;this.coreLoading=true;this.failed=false;this.destroyed=false;this.textures=new Map();this.materials=new Map();this.geometries=new Map();
+    this.combatPoses={enemy:{},ally:{}};this.combatGeneration=0;
     world.renderer.domElement.dataset.fixedArtStatus='loading';
     const landmarks=Object.values(LANDMARK_STAGE_ART).map(layout=>atlas(layout.path,5,4,layout).catch(error=>{console.warn('Landmark stage art unavailable; keeping base illustration.',error.message);return null;}));
     const heroPoses=Promise.all(Object.entries(HERO_POSE_ART).filter(([id])=>id!=='yi').map(async([id,layout])=>[id,await atlas(layout.path,4,4,layout).catch(error=>{console.warn('Hero poses unavailable; keeping base illustration.',id,error.message);return null;})]));
-    this.promise=Promise.all([preloadArt(),atlas(FIXED_ART.yi,4,4,HERO_POSE_ART.yi),atlas(FIXED_ART.towers,5,2),atlas(FIXED_ART.winter,3,2),...landmarks,heroPoses]).then(([,yi,towers,winter,a,b,poses])=>{
+    this.corePromise=Promise.all([preloadArt(),atlas(FIXED_ART.yi,4,4,HERO_POSE_ART.yi),atlas(FIXED_ART.towers,5,2),atlas(FIXED_ART.winter,3,2),...landmarks,heroPoses]).then(([,yi,towers,winter,a,b,poses])=>{
       if(this.destroyed)return;this.yi=yi;this.heroPoses={yi,...Object.fromEntries(poses)};this.towerFrames=towers;this.winter=winter;this.landmarks={a,b};this.ready=true;
       world.renderer.domElement.dataset.landmarkArtStatus=a&&b?'ready':a||b?'partial':'fallback';
       const poseCount=Object.values(this.heroPoses).filter(Boolean).length;
       world.renderer.domElement.dataset.heroPoseStatus=poseCount===8?'ready':'partial';world.renderer.domElement.dataset.heroPoseCount=String(poseCount);
     }).catch(error=>{this.failed=true;console.warn('Illustrated battle assets unavailable; keeping mesh fallback.',error.message);}).finally(()=>{
-      this.loading=false;if(!this.destroyed)world.renderer.domElement.dataset.fixedArtStatus=this.ready?'ready':'fallback';
+      this.coreLoading=false;this.updateLoading();
     });
+    this.prepareCombatArt(world.stage,world.combatKinds);
     const size=64,data=new Uint8Array(size*size*4);
     for(let y=0;y<size;y++)for(let x=0;x<size;x++){const d=Math.hypot((x+.5-size/2)/(size/2),(y+.5-size/2)/(size/2)),i=(y*size+x)*4;data.set([255,255,255,Math.round(Math.pow(Math.max(0,1-d),1.5)*255)],i);}
     this.shadowTexture=new T.DataTexture(data,size,size);this.shadowTexture.needsUpdate=true;
     this.shadowMaterial=new T.MeshBasicMaterial({map:this.shadowTexture,color:'#061725',transparent:true,opacity:.58,depthWrite:false,toneMapped:false});
     this.shadowMaterial.userData.fixedArt=true;
+  }
+  updateLoading(){
+    this.loading=!!(this.coreLoading||this.combatLoading);
+    if(!this.destroyed)this.world.renderer.domElement.dataset.fixedArtStatus=this.loading?'loading':this.ready?'ready':'fallback';
+  }
+  releasePoseAtlas(art){
+    for(const {canvas}of art?.isolated??[]){
+      const texture=this.textures.get(canvas);if(!texture)continue;
+      for(const key of [canvas,'shadow:'+texture.uuid]){this.materials.get(key)?.dispose();this.materials.delete(key);}
+      for(const [key,geometry]of this.geometries)if(key.startsWith(texture.uuid+':')){geometry.dispose();this.geometries.delete(key);}
+      texture.dispose();this.textures.delete(canvas);
+    }
+  }
+  prepareCombatArt(stage,explicit=null){
+    const generation=++this.combatGeneration,roster=combatPoseRoster(stage,explicit),requests=[];
+    this.combatPoses??={enemy:{},ally:{}};
+    for(const side of ['enemy','ally']){
+      const wanted=new Set(roster[side]);
+      for(const [id,art]of Object.entries(this.combatPoses[side]))if(!wanted.has(id)){this.releasePoseAtlas(art);delete this.combatPoses[side][id];}
+      for(const id of wanted){
+        const layout=COMBAT_POSE_ART[side][id],existing=this.combatPoses[side][id];
+        requests.push(Promise.resolve(existing??(layout?atlas(layout.path,4,4,layout,false):null)).catch(error=>{console.warn('Combat poses unavailable; keeping static illustration.',id,error.message);return null;}).then(art=>({side,id,art})));
+      }
+    }
+    this.combatLoading=true;this.updateLoading();
+    this.combatPromise=Promise.all(requests).then(results=>{
+      if(this.destroyed||generation!==this.combatGeneration)return;
+      this.combatPoses={enemy:{},ally:{}};for(const {side,id,art}of results)this.combatPoses[side][id]=art;
+      const count=results.filter(x=>x.art).length,dataset=this.world.renderer.domElement.dataset;
+      Object.assign(dataset,{combatPoseStatus:count===results.length?'ready':'partial',combatPoseCount:String(count),combatPoseExpected:String(results.length),combatPoseKinds:results.map(x=>x.id).join(',')});
+    }).finally(()=>{if(generation===this.combatGeneration){this.combatLoading=false;this.updateLoading();}});
+    this.promise=Promise.all([this.corePromise??Promise.resolve(),this.combatPromise]);
+    return this.promise;
   }
   texture(source) {
     if(!this.textures.has(source)){const tex=new T.CanvasTexture(source);tex.colorSpace=T.SRGBColorSpace;tex.anisotropy=4;tex.generateMipmaps=true;this.textures.set(source,tex);}
@@ -121,7 +161,7 @@ export class FixedBattleArt {
   hideModel(root) {for(const child of root.children)if(child!==root.userData.hp&&child!==root.userData.ownerRing)child.visible=false;}
   unitArt(entity,hero,ally) {
     const kind=hero?entity.heroId:ally?entity.kind:entity.type;
-    const poses=hero&&!entity.skin?(this.heroPoses?.[kind]??(kind==='yi'?this.yi:null)):null;
+    const poses=hero?(!entity.skin?(this.heroPoses?.[kind]??(kind==='yi'?this.yi:null)):null):this.combatPoses?.[ally?'ally':'enemy']?.[kind];
     return poses??(hero?heroArt(kind,entity.skin):ally?allyArt(kind):enemyArt(kind));
   }
   unitProxy(entity,ally=false) {
@@ -138,13 +178,13 @@ export class FixedBattleArt {
     const art=this.unitArt(entity,hero,ally);
     if(!art)return;const height=hero?1.85:['ram','turtle','courier','cavalry'].includes(kind)?1.5:1.36;
     this.hideModel(root);
-    const directional=hero&&(art.poseAtlas||art===this.yi),first=directional?art.isolated?.[0]:null;
+    const directional=!!art.poseAtlas||hero&&art===this.yi,first=directional?art.isolated?.[0]:null;
     const image=this.image(first??art,height,first?.frame??(directional?art.frames[0]:null),true);
     image.material=image.material.clone();image.material.userData.owned3d=true;root.add(image);
     const hint=hero?new T.Mesh(image.geometry,new T.MeshBasicMaterial({map:image.material.map,color:'#7cb4e6',transparent:true,opacity:.5,alphaTest:.18,depthTest:true,depthFunc:T.GreaterDepth,depthWrite:false,toneMapped:false,side:T.DoubleSide})):null;
     if(hint){hint.material.userData.owned3d=true;hint.renderOrder=30;hint.raycast=()=>{};root.add(hint);}
     this.shadow(root,hero?.85:.65,.5);const shadow=this.castImage(root,image);
-    root.userData.fixedImage={image,hint,height,art,kind,shadow,directional};root.userData.labelHeight=height+.18;
+    root.userData.fixedImage={image,hint,height,art,kind,shadow,directional,faction:hero?'hero':ally?'ally':'enemy'};root.userData.labelHeight=height+.18;
   }
   attachTower(root,type,tier,branch) {
     if(!this.ready||root.userData.fixedImage)return;
@@ -176,6 +216,7 @@ export class FixedBattleArt {
       image.scale.x=1;
       d.pose=['idle','walk-left','walk-right','attack'][row];d.facing=col;d.poseIndex=index;
       if(d.kind==='yi'){this.world.renderer.domElement.dataset.yiPose=d.pose;this.world.renderer.domElement.dataset.yiFacing=String(col);}
+      if(d.faction!=='hero'){const dataset=this.world.renderer.domElement.dataset;dataset.combatPoseActive='true';dataset.combatPoseLastKind=d.kind;dataset.combatPoseLastState=d.pose;}
     }else image.scale.x=dx<0?-1:1;
     image.position.y=moving?Math.abs(Math.sin(time*8+root.userData.phase))*.025:0;
     this.projectShadow(d.shadow,image,root);

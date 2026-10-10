@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "generationMode": "built-in imagegen",
+  "useCase": "identity-preserve + stylized-concept",
+  "side": "enemy",
+  "id": "shimazu",
+  "name": "시마즈 요시히로",
+  "cell": 10,
+  "identity": "Elderly Japanese commander Shimazu Yoshihiro: full gray-white beard, rugged aged face, broad burgundy/dark red-brown layered armor with muted brass rims, black kabuto with two large outward-curving black horns, cream rope sash. One long heavy nodachi. Attack: powerful two-handed nodachi cut. Preserve gray beard and horned silhouette.",
+  "version": 1,
+  "generatedFile": "exec-045545b7-b44b-46b7-9d9b-1241b082ec9e.png",
+  "references": [
+    "assets/illustrated/bosses.webp",
+    "assets/3d/fixed/source/yi-directions-v2.png"
+  ],
+  "referenceRoles": [
+    "identity catalog; stated row and column only",
+    "approved style/camera only"
+  ],
+  "transparentBackground": true,
+  "promptHistory": [
+    "Use case: identity-preserve + stylized-concept.\nAsset type: production transparent 4-column × 4-row sprite atlas for the fixed elevated-camera Korean tower-defense game Hoguk.\nImage 1 is an IDENTITY REFERENCE CATALOG, not an atlas to edit wholesale. Use ONLY the named catalog cell described below. Image 2 is the approved HERO STYLE AND CAMERA REFERENCE: soft painted 3D-animation finish, compact stylized adult proportions about 4 to 4.5 heads tall, broad readable color masses, rounded face planes, gentle cool ambient and warm upper-left key, restrained aged-metal highlights. Do not copy Yi's face or navy-red costume. Keep this unit's costume, palette, face, weapons and identity consistently in all sixteen cells.\nProduce exactly ONE named actor repeated in sixteen complete poses, not sixteen different characters. Orthographic view approximately 40 degrees above. All poses have the same body/object scale; no enlarged attack body.\nSTRICT LAYOUT: exactly FOUR equal columns and FOUR equal rows on an actual transparent RGBA background. Center each COMPLETE actor inside its own cell, occupying at most 70% of cell height and 72% of cell width, INCLUDING the longest weapon/horse/flag. Leave generous transparent gutters on every side. No part of an actor may touch a cell edge or enter a neighbour. A slightly smaller whole actor is preferable to clipping a spear tip.\nCOLUMNS in EVERY row: 1 front three-quarter toward screen LOWER RIGHT; 2 true back three-quarter toward UPPER RIGHT, back clearly shown; 3 true back three-quarter toward UPPER LEFT; 4 front three-quarter toward LOWER LEFT.\nROWS: 1 standing ready; 2 left-foot-forward walking; 3 visibly opposite right-foot-forward walking; 4 the specified attack directed along that column's facing. For horses/ships/ram follow their special row instructions instead. Clearly show BACKS in columns 2 and 3. Complete feet/hooves/wheels/hull in every cell.\nKeep weapons held, charm/flag/armor connected to the actor. No loose projectiles, floating charms, dust, detached particles or weapon effects. No detached accessories. No text, labels, frames, lines, floor, scenery, ground shadows, background colour, checkerboard, bloom or baked ambient glow. True alpha-zero empty background. The game supplies ground shadows.\nPrimary priority: match the approved softly painted heroes while maintaining this unit's distinctive silhouette and readable palette at small battlefield size.\nNAMED ACTOR: 시마즈 요시히로 (shimazu). In image 1 choose ONLY row 3, column 3, counted from top left.\nIDENTITY AND ATTACK: Elderly Japanese commander Shimazu Yoshihiro: full gray-white beard, rugged aged face, broad burgundy/dark red-brown layered armor with muted brass rims, black kabuto with two large outward-curving black horns, cream rope sash. One long heavy nodachi. Attack: powerful two-handed nodachi cut. Preserve gray beard and horned silhouette."
+  ]
+}
