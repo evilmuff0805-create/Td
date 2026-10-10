@@ -28,6 +28,8 @@
     "test:terrain-assets": "node tools/terrain-assets.mjs",
     "test:seasonal-props": "node tools/test-seasonal-props.mjs",
     "test:seasonal-prop-assets": "node tools/season-tree-assets.mjs",
+    "test:water": "node tools/test-water.mjs",
+    "test:water-assets": "node tools/water-assets.mjs",
     "test:embedded-art": "node tools/verify-embedded-art.mjs",
     "test:effects": "node tools/test-effects.mjs",
     "test:enemies": "node tools/test-enemies.mjs",

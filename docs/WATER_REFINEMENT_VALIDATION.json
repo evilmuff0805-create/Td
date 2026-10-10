@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-11",
+  "scope": "continuous low shores, painted water and bounded exterior water extension",
+  "waterTextureBytes": 18812,
+  "waterTextureResolution": [512, 512],
+  "campaignMapsChecked": 25,
+  "additionalWinterMapChecked": true,
+  "waterTestsPassed": 11,
+  "regressionTestsPassed": 147,
+  "totalTestsPassed": 158,
+  "testSuites": {
+    "selftest": 14,
+    "3d": 41,
+    "fixedArt": 15,
+    "campaign": 16,
+    "effects": 8,
+    "enemies": 12,
+    "combatArt": 13,
+    "skinArt": 14,
+    "terrain": 8,
+    "seasonalProps": 6,
+    "water": 11
+  },
+  "serverBuildPassed": true,
+  "standaloneBuildPassed": true,
+  "standaloneBytes": 45624044,
+  "embeddedDirectionalSheetsExactlyOnce": 52,
+  "embeddedTerrainSurfacesExactlyOnce": 3,
+  "embeddedSeasonTreeAtlasesExactlyOnce": 1,
+  "embeddedWaterSurfacesExactlyOnce": 1,
+  "rejectedArtVersionsEmbedded": 0,
+  "astraReview": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "mandatoryFixes": 2,
+    "fixesResolved": 2,
+    "exteriorWaterDesignReviewed": true,
+    "stripInterpolationOptimizationReviewed": true,
+    "finalMandatoryFixes": 0,
+    "independentlyReranWaterTests": 11
+  },
+  "browser": {
+    "checks": 10,
+    "screenshots": 7,
+    "actualBattleWave": 1,
+    "actualBattleLivesAtPause": 20,
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "mobileViewport": [414, 896],
+    "horizontalOverflow": false,
+    "consoleWarningsOrErrors": 0,
+    "officialProfileModified": false,
+    "standaloneTitleBootPassed": true
+  },
+  "preserved": [
+    "approved eight basic hero sheets and Yi v2",
+    "all landmark tiers height 1.2",
+    "simulation maps, paths, build cells, bridges, economy and damage",
+    "official user profile, purchases and rewards"
+  ],
+  "reports": [
+    "WATER_GEOMETRY_VALIDATION.json",
+    "WATER_ASSET_VALIDATION.json",
+    "WATER_BROWSER_VALIDATION.json"
+  ],
+  "limitations": [
+    "Underlying water and land shapes retain the original grid.",
+    "No new fluid simulation or freely curved simulation paths.",
+    "Responsive browser QA is not physical phone performance testing.",
+    "Standalone title boot and asset embedding do not imply a new full official campaign playthrough.",
+    "External-network co-op and human late-game balance remain separate verification."
+  ]
+}

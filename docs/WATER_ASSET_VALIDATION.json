@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-11",
+  "generation": "built-in imagegen; original PNG and full prompt preserved",
+  "processing": "resize 512x512 and WebP compression only; no repainting or seam retouch",
+  "source": "assets/3d/painted/source/water-v1.png",
+  "delivery": "assets/3d/painted/water-v1.webp",
+  "sourceWidth": 1254,
+  "sourceHeight": 1254,
+  "deliveryWidth": 512,
+  "deliveryHeight": 512,
+  "bytes": 18812,
+  "opaque": true,
+  "lumaMean": 72.936,
+  "lumaStdDev": 5.889,
+  "wrapping": "MirroredRepeatWrapping at runtime"
+}

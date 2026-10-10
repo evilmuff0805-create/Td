@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-11",
+  "passedTests": 11,
+  "campaignStages": 25,
+  "additionalWinterStage": true,
+  "waterOutsideOriginalBoardWetCoverageTriangles": 0,
+  "farWaterOnlyOutsideBoard": true,
+  "farWaterCoarseAndFadeStripInterpolationMatchesOriginal": true,
+  "farWaterInterpolationTolerance": 0.000002,
+  "farWaterTriangleBudgetPerMap": 40000,
+  "buildingAndDryPathCellCenterAndMarginAlpha": 0,
+  "simulationMapAndPathsUnchanged": true,
+  "waterlineRange": [
+    -0.084,
+    -0.066
+  ],
+  "shoreMaxHeight": 0.013,
+  "worldCoordinateContinuity": true,
+  "privateResourcesDisposedAndSharedTexturesRetained": true,
+  "geometry": [
+    {
+      "stage": "s1",
+      "segments": 51,
+      "shoreTriangles": 1944,
+      "waterTriangles": 1376,
+      "farWaterTriangles": 6328
+    },
+    {
+      "stage": "s6",
+      "segments": 0,
+      "shoreTriangles": 0,
+      "waterTriangles": 0,
+      "farWaterTriangles": 0
+    },
+    {
+      "stage": "s7",
+      "segments": 91,
+      "shoreTriangles": 3506,
+      "waterTriangles": 896,
+      "farWaterTriangles": 1120
+    },
+    {
+      "stage": "s2",
+      "segments": 60,
+      "shoreTriangles": 2312,
+      "waterTriangles": 1088,
+      "farWaterTriangles": 8638
+    },
+    {
+      "stage": "s8",
+      "segments": 56,
+      "shoreTriangles": 2172,
+      "waterTriangles": 1920,
+      "farWaterTriangles": 10246
+    },
+    {
+      "stage": "s9",
+      "segments": 81,
+      "shoreTriangles": 3190,
+      "waterTriangles": 1984,
+      "farWaterTriangles": 10706
+    },
+    {
+      "stage": "s10",
+      "segments": 116,
+      "shoreTriangles": 4516,
+      "waterTriangles": 1408,
+      "farWaterTriangles": 576
+    },
+    {
+      "stage": "s3",
+      "segments": 277,
+      "shoreTriangles": 10586,
+      "waterTriangles": 4032,
+      "farWaterTriangles": 19580
+    },
+    {
+      "stage": "s11",
+      "segments": 55,
+      "shoreTriangles": 2162,
+      "waterTriangles": 1920,
+      "farWaterTriangles": 9406
+    },
+    {
+      "stage": "s12",
+      "segments": 110,
+      "shoreTriangles": 4290,
+      "waterTriangles": 1408,
+      "farWaterTriangles": 576
+    },
+    {
+      "stage": "s13",
+      "segments": 80,
+      "shoreTriangles": 3010,
+      "waterTriangles": 416,
+      "farWaterTriangles": 280
+    },
+    {
+      "stage": "s4",
+      "segments": 41,
+      "shoreTriangles": 1620,
+      "waterTriangles": 576,
+      "farWaterTriangles": 4908
+    },
+    {
+      "stage": "s5",
+      "segments": 0,
+      "shoreTriangles": 0,
+      "waterTriangles": 0,
+      "farWaterTriangles": 0
+    },
+    {
+      "stage": "s14",
+      "segments": 110,
+      "shoreTriangles": 4340,
+      "waterTriangles": 1216,
+      "farWaterTriangles": 4020
+    },
+    {
+      "stage": "s15",
+      "segments": 223,
+      "shoreTriangles": 8760,
+      "waterTriangles": 2688,
+      "farWaterTriangles": 3456
+    },
+    {
+      "stage": "s16",
+      "segments": 0,
+      "shoreTriangles": 0,
+      "waterTriangles": 0,
+      "farWaterTriangles": 0
+    },
+    {
+      "stage": "s17",
+      "segments": 0,
+      "shoreTriangles": 0,
+      "waterTriangles": 0,
+      "farWaterTriangles": 0
+    },
+    {
+      "stage": "s18",
+      "segments": 132,
+      "shoreTriangles": 5238,
+      "waterTriangles": 4608,
+      "farWaterTriangles": 21396
+    },
+    {
+      "stage": "s19",
+      "segments": 61,
+      "shoreTriangles": 2332,
+      "waterTriangles": 960,
+      "farWaterTriangles": 5610
+    },
+    {
+      "stage": "s20",
+      "segments": 87,
+      "shoreTriangles": 3378,
+      "waterTriangles": 1120,
+      "farWaterTriangles": 7356
+    },
+    {
+      "stage": "s21",
+      "segments": 84,
+      "shoreTriangles": 3276,
+      "waterTriangles": 1408,
+      "farWaterTriangles": 7356
+    },
+    {
+      "stage": "s22",
+      "segments": 263,
+      "shoreTriangles": 10294,
+      "waterTriangles": 3072,
+      "farWaterTriangles": 2304
+    },
+    {
+      "stage": "s23",
+      "segments": 136,
+      "shoreTriangles": 5342,
+      "waterTriangles": 2304,
+      "farWaterTriangles": 23620
+    },
+    {
+      "stage": "s24",
+      "segments": 60,
+      "shoreTriangles": 2344,
+      "waterTriangles": 1056,
+      "farWaterTriangles": 9022
+    },
+    {
+      "stage": "s25",
+      "segments": 0,
+      "shoreTriangles": 0,
+      "waterTriangles": 0,
+      "farWaterTriangles": 0
+    },
+    {
+      "stage": "winter3d",
+      "segments": 0,
+      "shoreTriangles": 0,
+      "waterTriangles": 0,
+      "farWaterTriangles": 0
+    }
+  ]
+}

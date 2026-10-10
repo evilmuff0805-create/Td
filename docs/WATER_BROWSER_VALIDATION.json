@@ -1,0 +1,414 @@
+{
+  "date": "2026-10-11",
+  "scope": "continuous low banks and painted water in fixed-view battles",
+  "officialProfileModified": false,
+  "checks": [
+    {
+      "name": "Final spring coastal water extends beyond scenery cutoff",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s8&season=spring",
+      "canvas": {
+        "combatPoseCount": "14",
+        "combatPoseExpected": "14",
+        "combatPoseKinds": "scout,teppo,ashigaru,cavalry,samurai,ninja,todo,onmyoji,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "seasonTreeArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3564",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "2172",
+        "waterTriangles": "12166",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "lives": "20",
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "5"
+      },
+      "stage": "옥포 해전",
+      "state": "prebattle",
+      "viewport": [
+        1280,
+        720
+      ],
+      "wave": "0"
+    },
+    {
+      "name": "Final summer river with three original bridges",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s10&season=summer",
+      "canvas": {
+        "combatPoseCount": "15",
+        "combatPoseExpected": "15",
+        "combatPoseKinds": "teppo,scout,cavalry,samurai,ninja,drum,ashigaru,onmyoji,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "seasonTreeArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3898",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "4516",
+        "waterTriangles": "1984",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "lives": "20",
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "5"
+      },
+      "stage": "평양성 전투",
+      "state": "prebattle",
+      "viewport": [
+        1280,
+        720
+      ],
+      "wave": "0"
+    },
+    {
+      "name": "Final summer actual first wave and pause",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s10&season=summer",
+      "canvas": {
+        "combatPoseActive": "true",
+        "combatPoseCount": "15",
+        "combatPoseExpected": "15",
+        "combatPoseKinds": "teppo,scout,cavalry,samurai,ninja,drum,ashigaru,onmyoji,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseLastKind": "scout",
+        "combatPoseLastState": "walk-left",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "seasonTreeArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3898",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "4516",
+        "waterTriangles": "1984",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "lives": "20",
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "5"
+      },
+      "stage": "평양성 전투",
+      "state": "paused",
+      "viewport": [
+        1280,
+        720
+      ],
+      "wave": "1"
+    },
+    {
+      "name": "Final autumn coastline and road edge",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s20&season=autumn",
+      "canvas": {
+        "combatPoseCount": "18",
+        "combatPoseExpected": "18",
+        "combatPoseKinds": "teppo,ninja,scout,onmyoji,cavalry,samurai,drum,ashigaru,ram,armored,kurushima,shimazu,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "seasonTreeArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "4294",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "3378",
+        "waterTriangles": "8476",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "lives": "20",
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "5"
+      },
+      "stage": "사천 왜성 전투",
+      "state": "prebattle",
+      "viewport": [
+        1280,
+        720
+      ],
+      "wave": "0"
+    },
+    {
+      "name": "Final winter narrow river and snow edge",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s13&season=winter",
+      "canvas": {
+        "combatPoseCount": "18",
+        "combatPoseExpected": "18",
+        "combatPoseKinds": "ashigaru,scout,teppo,onmyoji,cavalry,ninja,drum,samurai,armored,so,ram,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "seasonTreeArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "2",
+        "terrainRoadTriangles": "3360",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "3010",
+        "waterTriangles": "696",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "lives": "20",
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "5"
+      },
+      "stage": "평양성 탈환",
+      "state": "prebattle",
+      "viewport": [
+        1280,
+        720
+      ],
+      "wave": "0"
+    },
+    {
+      "name": "Final winter sea with three separate land strips",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s22&season=winter",
+      "canvas": {
+        "combatPoseCount": "18",
+        "combatPoseExpected": "18",
+        "combatPoseKinds": "ashigaru,scout,cavalry,ninja,teppo,samurai,drum,onmyoji,kuki,ram,armored,shimazu,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "seasonTreeArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "2",
+        "terrainRoadTriangles": "4556",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "10294",
+        "waterTriangles": "5376",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "lives": "20",
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "5"
+      },
+      "stage": "노량 해전",
+      "state": "prebattle",
+      "viewport": [
+        1280,
+        720
+      ],
+      "wave": "0"
+    },
+    {
+      "name": "Final four season cards preserve 1.2 height and report continuous shore",
+      "url": "http://127.0.0.1:8080/dev/3d-season-review.html?mute=1",
+      "cards": [
+        {
+          "art": "painted",
+          "landmarkHeight": "1.2",
+          "roadLayers": "1",
+          "roadTriangles": "3570",
+          "season": "spring",
+          "seasonTreeArt": "ready",
+          "shoreTriangles": "0",
+          "stage": "s6"
+        },
+        {
+          "art": "painted",
+          "landmarkHeight": "1.2",
+          "roadLayers": "1",
+          "roadTriangles": "3898",
+          "season": "summer",
+          "seasonTreeArt": "ready",
+          "shoreTriangles": "4516",
+          "stage": "s10"
+        },
+        {
+          "art": "painted",
+          "landmarkHeight": "1.2",
+          "roadLayers": "1",
+          "roadTriangles": "3988",
+          "season": "autumn",
+          "seasonTreeArt": "ready",
+          "shoreTriangles": "4290",
+          "stage": "s12"
+        },
+        {
+          "art": "painted",
+          "landmarkHeight": "1.2",
+          "roadLayers": "2",
+          "roadTriangles": "3360",
+          "season": "winter",
+          "seasonTreeArt": "ready",
+          "shoreTriangles": "3010",
+          "stage": "s13"
+        }
+      ],
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "14"
+      }
+    },
+    {
+      "name": "Final summer coastline at 414x896 responsive viewport",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s8&season=summer",
+      "canvas": {
+        "combatPoseCount": "14",
+        "combatPoseExpected": "14",
+        "combatPoseKinds": "scout,teppo,ashigaru,cavalry,samurai,ninja,todo,onmyoji,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "seasonTreeArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3564",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "2172",
+        "waterTriangles": "12166",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "lives": "20",
+      "overflow": false,
+      "painted": {
+        "paintedFailed": "0",
+        "paintedPending": "0",
+        "paintedReady": "5"
+      },
+      "stage": "옥포 해전",
+      "state": "prebattle",
+      "viewport": [
+        414,
+        896
+      ],
+      "wave": "0"
+    },
+    {
+      "name": "Final standalone HTML title boot",
+      "url": "http://127.0.0.1:8080/dist/hoguk.html?mute=1",
+      "overflow": false,
+      "startButton": true,
+      "title": "호국영웅전"
+    },
+    {
+      "name": "Mobile final DOM geometry and full-page capture",
+      "url": "http://127.0.0.1:8080/3d.html?mute=1&stage=s8&season=summer",
+      "canvas": {
+        "height": 896,
+        "width": 414
+      },
+      "overflow": false,
+      "viewport": [
+        414,
+        896
+      ]
+    }
+  ],
+  "screenshots": [
+    "docs/screenshots/water-spring-coast.jpg",
+    "docs/screenshots/water-summer-river.jpg",
+    "docs/screenshots/water-summer-battle.jpg",
+    "docs/screenshots/water-autumn-coast.jpg",
+    "docs/screenshots/water-winter-river.jpg",
+    "docs/screenshots/water-winter-sea.jpg",
+    "docs/screenshots/water-mobile-coast.jpg"
+  ],
+  "logs": {
+    "spring": [],
+    "summer": [],
+    "autumn": [],
+    "winterRiver": [],
+    "winterSea": [],
+    "seasonCards": [],
+    "mobile": [],
+    "standalone": []
+  },
+  "limitations": [
+    "Responsive browser QA, not physical phone performance.",
+    "Standalone title boot and asset-embed checks, no new official purchases or victory."
+  ],
+  "buildBytes": 45624044
+}

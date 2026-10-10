@@ -36,7 +36,7 @@ for(const [id,tag]of [['s6','봄 · 꽃잎과 성곽'],['s10','여름 · 녹음�
     const game=newBattleGame({stageId:id});
     for(const t of game.towers){const root=art.ready?new T.Group():seasonalize(towerModel(t.type,2),theme);root.position.set(t.cx,.03,t.cy);art.attachTower(root,t.type,2,null);scene.add(root);}
     for(const h of game.heroes){const root=art.ready?new T.Group():combatantModel(h.heroId);root.position.set(h.x,.035,h.y);root.rotation.y=Math.PI/5;art.attachUnit(root,h,true,false);art.updateUnit(root,h,false,0,0);scene.add(root);}
-    card.dataset.roadTriangles=String(field.roads.triangles);card.dataset.roadLayers=theme.snow?'2':'1';card.dataset.landmarkHeight='1.2';card.dataset.art=art.ready?'painted':'fallback';card.dataset.seasonTreeArt=art.seasonTrees?'ready':'fallback';item.ready=true;draw();
+    card.dataset.roadTriangles=String(field.roads.triangles);card.dataset.roadLayers=theme.snow?'2':'1';card.dataset.landmarkHeight='1.2';card.dataset.art=art.ready?'painted':'fallback';card.dataset.seasonTreeArt=art.seasonTrees?'ready':'fallback';card.dataset.shoreTriangles=String(field.shore.triangles);item.ready=true;draw();
   });
 }
 function draw(){

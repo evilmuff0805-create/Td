@@ -30,4 +30,7 @@ for(const rel of terrain){
 const trees=fs.readFileSync(new URL('../'+SEASON_TREE_ART.path,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+trees),1,'Seasonal trees must be embedded exactly once');
 assert.ok(!html.includes(SEASON_TREE_ART.path));
-console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0},null,2));
+const water=fs.readFileSync(new URL('../'+PAINTED_SURFACES.water,import.meta.url)).toString('base64');
+assert.equal(count('data:image/webp;base64,'+water),1,'Painted water must be embedded exactly once');
+assert.ok(!html.includes(PAINTED_SURFACES.water));
+console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedWaterSurfaces:1,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0},null,2));

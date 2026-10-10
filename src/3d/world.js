@@ -111,6 +111,7 @@ export class WinterWorld {
   environment() {
     const field=buildBattlefield(this.stage,this.theme,this.art?.ready?this.art:null);this.static=field.root;this.water=field.water;this.field=field;
     Object.assign(this.renderer.domElement.dataset,{terrainRoad:'continuous',terrainRoadTriangles:String(field.roads.triangles),terrainRoadLayers:this.theme.snow?'2':'1'});
+    Object.assign(this.renderer.domElement.dataset,{terrainShore:'continuous',terrainShoreTriangles:String(field.shore.triangles),waterTriangles:String(field.shore.waterTriangles)});
     this.artEnvironmentReady=!!this.art?.ready;
     this.scene.add(this.static,this.water);this.lampGroup=new T.Group();this.scene.add(this.lampGroup);
     for(const args of field.lamps)this.lamp(...args);

@@ -7,6 +7,7 @@ import { foliageCluster } from './vegetation.js';
 import { paintSurface,albedoPlaceholder } from './painted-surfaces.js';
 import { roadTerrain,roadLayer,roadSample,roadCellIsDry } from './road-terrain.js';
 import { seasonalTreeKind } from './seasonal-props.js';
+import { shoreField,shoreGeometry,waterGeometry,farWaterGeometry,waterMaterial,shoreLayer } from './water-terrain.js';
 import { MAT,material,mesh,box,ball,cylinder,cone,between,bakeStatic,hanok,pine,rock,fence,supplies,gate,wallSegment } from './models.js';
 
 const surfaces=new Map();
@@ -123,17 +124,16 @@ export function buildBattlefield(stage,theme,art=null) {
   const earth=mesh(root,floor,surface(theme),12,-.13,7);earth.castShadow=false;
   mesh(root,tileSurface(land,.006,false,terrainScale),surface(theme),0,0,0);
   mesh(root,tileSurface(surroundings.land,0,true,terrainScale),surface(theme),0,0,0);
-  const waterMat=new T.MeshStandardMaterial({color:theme.water,roughness:.29,metalness:.26});waterMat.userData.owned3d=true;
-  const waterMesh=new T.Mesh(tileSurface([...water,...surroundings.water],-.075),waterMat);waterMesh.receiveShadow=true;
-  // Individual shore walls keep rivers/islands open instead of hiding them below a full ground plane.
+  const shoreline=shoreField(plan,surroundings),bankGeometry=shoreGeometry(shoreline);
+  const waterMesh=new T.Mesh(waterGeometry(shoreline),waterMaterial(theme));waterMesh.receiveShadow=true;
+  const farGeometry=farWaterGeometry(shoreline);
+  if(farGeometry.index.count){const far=new T.Mesh(farGeometry,waterMaterial(theme,true));far.name='water-surroundings';far.receiveShadow=true;far.renderOrder=-6;waterMesh.add(far);}else farGeometry.dispose();
+  // Sparse stones sit on the new low bank; advance the same RNG sequence so
+  // approved trees, cliffs, and scenery beyond the shore keep their variants.
   for(const [x,z] of land)for(const [dx,dz] of [[1,0],[-1,0],[0,1],[0,-1]]) {
     if(landSet.has(`${x+dx},${z+dz}`))continue;
     if(x+dx<0||z+dz<0||x+dx>=map.w||z+dz>=map.h)continue;
-    mesh(root,'bevel',MAT.stoneDark,x+.5+dx*.48,-.26,z+.5+dz*.48,dx?.09:1,.52,dz?.09:1);
-    if(x+dx>=0&&z+dz>=0&&x+dx<map.w&&z+dz<map.h) {
-      box(root,material(theme.shore),x+.5+dx*.42,.012,z+.5+dz*.42,dx?.15:1,.035,dz?.15:1);
-      if(rng()<.2) {const pebble=seasonalize(rock(.22+rng()*.25,rng()*6),theme);pebble.position.set(x+.5+dx*.42,.015,z+.5+dz*.42);root.add(pebble);}
-    }
+    if(rng()<.2) {const pebble=seasonalize(rock(.10+rng()*.11,rng()*6),theme);pebble.position.set(x+.5+dx*.48,-.015,z+.5+dz*.48);root.add(pebble);}
   }
   const roads=roadTerrain(stage),roadRng=makeRng(stageSeed(stage.id)+199),seen=new Set();
   // Low, irregular pebble groups leave every adjacent building center open.
@@ -211,5 +211,6 @@ export function buildBattlefield(stage,theme,art=null) {
   for(const child of root.children)if(child.material===surface(theme))child.castShadow=false;
   root.add(roadLayer(roads.road,surface(theme,true)));
   if(theme.snow)root.add(roadLayer(roads.snow,surface(theme),'snow'));else roads.snow.dispose();
-  return {root,water:waterMesh,lamps:lamps.slice(0,9),plan,surroundings,roads:roads.metrics};
+  const bank=shoreLayer(bankGeometry,MAT.stone);bank.material.color.set(theme.shore);bank.material.bumpScale=.008;root.add(bank);
+  return {root,water:waterMesh,lamps:lamps.slice(0,9),plan,surroundings,roads:roads.metrics,shoreline,shore:{segments:shoreline.segments.length,triangles:bankGeometry.index.count/3,waterTriangles:waterMesh.geometry.index.count/3+(waterMesh.children[0]?.geometry.index.count??0)/3,farWaterTriangles:(waterMesh.children[0]?.geometry.index.count??0)/3}};
 }

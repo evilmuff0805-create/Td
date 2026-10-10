@@ -8,6 +8,7 @@ export const PAINTED_SURFACES={
   road:'assets/3d/painted/road-v3.webp',
   ground:'assets/3d/painted/ground-v4.webp',
   'snow-ground':'assets/3d/painted/snow-ground-v3.webp',
+  water:'assets/3d/painted/water-v1.webp',
 };
 export const PAINTED_SIZE=512;
 // GPU texture storage keeps its initial dimensions, including when loading is slow.
