@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-11",
+  "generation": "built-in imagegen; original PNG and full prompt preserved",
+  "processing": "WebP compression and pixel analysis only; alpha unchanged",
+  "id": "season-trees-v1",
+  "source": "assets/3d/fixed/source/season-trees-v1.png",
+  "delivery": "assets/3d/fixed/season-trees-v1.webp",
+  "width": 1536,
+  "height": 1024,
+  "poses": 6,
+  "outerBorderVisiblePixels": 0,
+  "foreignVisiblePixels": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "uncoveredVisiblePixels": 0,
+  "duplicateVisiblePixels": 0,
+  "alphaDifferences": 0,
+  "referenceHeight": 456,
+  "pivotXOverrides": {},
+  "bytes": 575836,
+  "frames": [
+    {
+      "left": 44,
+      "top": 51,
+      "width": 458,
+      "height": 443,
+      "anchor": 0.51031,
+      "anchorY": 1,
+      "referenceHeight": 443
+    },
+    {
+      "left": 553,
+      "top": 40,
+      "width": 436,
+      "height": 456,
+      "anchor": 0.525476,
+      "anchorY": 1,
+      "referenceHeight": 456
+    },
+    {
+      "left": 1029,
+      "top": 32,
+      "width": 470,
+      "height": 465,
+      "anchor": 0.516112,
+      "anchorY": 1,
+      "referenceHeight": 465
+    },
+    {
+      "left": 29,
+      "top": 536,
+      "width": 467,
+      "height": 440,
+      "anchor": 0.620795,
+      "anchorY": 1,
+      "referenceHeight": 440
+    },
+    {
+      "left": 537,
+      "top": 527,
+      "width": 453,
+      "height": 458,
+      "anchor": 0.504335,
+      "anchorY": 1,
+      "referenceHeight": 458
+    },
+    {
+      "left": 1038,
+      "top": 525,
+      "width": 469,
+      "height": 454,
+      "anchor": 0.466093,
+      "anchorY": 1,
+      "referenceHeight": 454
+    }
+  ]
+}

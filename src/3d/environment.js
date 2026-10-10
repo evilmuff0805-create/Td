@@ -6,6 +6,7 @@ import { surfaceNoise as noise } from './surfaces.js';
 import { foliageCluster } from './vegetation.js';
 import { paintSurface,albedoPlaceholder } from './painted-surfaces.js';
 import { roadTerrain,roadLayer,roadSample,roadCellIsDry } from './road-terrain.js';
+import { seasonalTreeKind } from './seasonal-props.js';
 import { MAT,material,mesh,box,ball,cylinder,cone,between,bakeStatic,hanok,pine,rock,fence,supplies,gate,wallSegment } from './models.js';
 
 const surfaces=new Map();
@@ -164,7 +165,7 @@ export function buildBattlefield(stage,theme,art=null) {
       const house=art?art.prop('hanok',cluster.length===1?1.9:2.9,rng()):seasonalize(hanok(Math.min(3.2,maxX-minX+.8),Math.min(2.4,maxZ-minZ+.8)),theme);house.position.set((minX+maxX+1)/2,0,(minZ+maxZ+1)/2);if(!art&&cluster.length===1)house.scale.y=.72;root.add(house);
       lamps.push([house.position.x,house.position.z+.7,.75,true]);
     } else if(d.ch==='T') {
-      const tree=art?art.prop(theme.snow?'snowPine':theme.id==='autumn'?'maple':'pine',2.0+rng()*.8,rng()):theme.snow||rng()<.28?seasonalize(pine(2.3+rng()*1.3,rng()*6),theme):broadleaf(theme,2.2+rng()*1.1,rng()*9);tree.position.set(x,0,z);if(!art)tree.rotation.y=rng()*6;root.add(tree);
+      const tree=art?art.prop(seasonalTreeKind(theme,noise(x*.63+4,z*.63+8)),2.0+rng()*.8,rng()):theme.snow||rng()<.28?seasonalize(pine(2.3+rng()*1.3,rng()*6),theme):broadleaf(theme,2.2+rng()*1.1,rng()*9);tree.position.set(x,0,z);if(!art)tree.rotation.y=rng()*6;root.add(tree);
     } else if(d.ch==='R'||d.ch==='M') {
       const r=art?art.prop(d.ch==='M'?'cliff':theme.snow?'snowRock':'rock',d.ch==='M'?1.9+rng()*.7:.65+rng()*.4):seasonalize(rock(d.ch==='M'?1.6+rng()*.5:.55+rng()*.45,rng()*6),theme);r.position.set(x,0,z);if(!art&&d.ch==='M')r.scale.y=d.y>=map.h-2?.55:1.7;root.add(r);
     } else if(d.ch==='K') {
@@ -190,7 +191,7 @@ export function buildBattlefield(stage,theme,art=null) {
   for(const [x,z,step]of surroundings.land) {
     if(z>=0&&x>=0&&x<map.w)continue;
     if(rng()>.035)continue;if(borderTrees++>=20)break;
-    const shrub=art?art.prop(theme.snow?'snowPine':theme.id==='autumn'?'maple':'pine',1.1+rng()*.9,rng()):theme.snow?seasonalize(pine(.75+rng()*.65,rng()*9),theme):broadleaf(theme,.8+rng()*.7,rng()*9);
+    const shrub=art?art.prop(seasonalTreeKind(theme,noise(x*.63+4,z*.63+8)),1.1+rng()*.9,rng()):theme.snow?seasonalize(pine(.75+rng()*.65,rng()*9),theme):broadleaf(theme,.8+rng()*.7,rng()*9);
     shrub.position.set(x+step/2,-.035,z+step/2);root.add(shrub);
   }
   if(water.length<30) {

@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-11",
+  "scope": "six seasonal tree cutouts and responsive hero label repair",
+  "treeCutouts": 6,
+  "treeAtlasBytes": 575836,
+  "pixels": {
+    "foreignVisible": 0,
+    "uncoveredVisible": 0,
+    "duplicateVisible": 0,
+    "outerBorderVisible": 0,
+    "alphaDifferences": 0
+  },
+  "existingDirectionalPosesRevalidated": 832,
+  "storedPoseLayoutUnchanged": true,
+  "seasonalPropTestsPassed": 6,
+  "regressionTestsPassed": 141,
+  "totalTestsPassed": 147,
+  "testSuites": {
+    "selftest": 14,
+    "3d": 41,
+    "fixedArt": 15,
+    "campaign": 16,
+    "effects": 8,
+    "enemies": 12,
+    "combatArt": 13,
+    "skinArt": 14,
+    "terrain": 8,
+    "seasonalProps": 6
+  },
+  "afterMobileLabelRepair": {
+    "combatArtTestsPassed": 13,
+    "browserEdgeClampPassed": true,
+    "browserOffscreenHidePassed": true,
+    "browserStageDialogPassed": true,
+    "viewport": [
+      414,
+      896
+    ],
+    "horizontalOverflow": false
+  },
+  "serverBuildPassed": true,
+  "standaloneBuildPassed": true,
+  "standaloneBytes": 45592947,
+  "embeddedDirectionalSheetsExactlyOnce": 52,
+  "embeddedTerrainSurfacesExactlyOnce": 3,
+  "embeddedSeasonTreeAtlasesExactlyOnce": 1,
+  "rejectedArtVersionsEmbedded": 0,
+  "astraReview": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "seasonalPropsMandatoryFixes": 0,
+    "mobileLabelMandatoryFixes": 1,
+    "mobileLabelFixesResolved": 1,
+    "finalMandatoryFixes": 0
+  },
+  "preserved": [
+    "approved eight basic hero sheets and Yi v2",
+    "all landmark tiers height 1.2",
+    "winter snow-pine art",
+    "simulation maps, paths, build cells, economy, damage",
+    "official user profile and rewards"
+  ],
+  "reports": [
+    "SEASON_TREE_ASSET_VALIDATION.json",
+    "SEASON_TREE_BROWSER_VALIDATION.json"
+  ],
+  "limitations": [
+    "Fixed-view 2.5D scenery, not new full 3D tree models.",
+    "Distant forest and planar fallback retain earlier scenery.",
+    "Responsive browser QA is not physical phone performance testing.",
+    "Standalone title boot and embedded asset checks do not imply a new full official campaign playthrough.",
+    "External-network co-op and human late-game balance remain separate verification."
+  ]
+}

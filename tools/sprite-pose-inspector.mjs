@@ -24,16 +24,17 @@ function components(pixels,width,height){
   return {labels,actors:all.filter(c=>c.count>2000)};
 }
 
-export async function inspectPoseAtlas(root,{id,source,delivery,pivotXOverrides={}}){
+export async function inspectPoseAtlas(root,{id,source,delivery,pivotXOverrides={},columns=4,rows=4}){
   const {data,info}=await sharp(path.join(root,source)).ensureAlpha().raw().toBuffer({resolveWithObject:true});
   let outerBorderVisiblePixels=0;
   for(let y=0;y<info.height;y++)for(let x=0;x<info.width;x++)if((x===0||y===0||x===info.width-1||y===info.height-1)&&data[(y*info.width+x)*4+3]>=41)outerBorderVisiblePixels++;
   if(outerBorderVisiblePixels)throw new Error(`${id}: ${outerBorderVisiblePixels} visible pixels touch the sheet edge; artwork may be clipped`);
   const {labels,actors}=components(data,info.width,info.height);
-  if(actors.length!==16)throw new Error(`${id}: expected 16 separated actors, got ${actors.length}`);
+  const expected=columns*rows;
+  if(actors.length!==expected)throw new Error(`${id}: expected ${expected} separated actors, got ${actors.length}`);
   actors.sort((a,b)=>a.cy-b.cy);
-  const sorted=[];for(let row=0;row<4;row++)sorted.push(...actors.slice(row*4,row*4+4).sort((a,b)=>a.cx-b.cx));
-  const idleHeights=sorted.slice(0,4).map(c=>c.height).sort((a,b)=>a-b),referenceHeight=(idleHeights[1]+idleHeights[2])/2;
+  const sorted=[];for(let row=0;row<rows;row++)sorted.push(...actors.slice(row*columns,row*columns+columns).sort((a,b)=>a.cx-b.cx));
+  const idleHeights=sorted.slice(0,columns).map(c=>c.height).sort((a,b)=>a-b),middle=(idleHeights.length-1)/2,referenceHeight=(idleHeights[Math.floor(middle)]+idleHeights[Math.ceil(middle)])/2;
   const actorIds=new Set(actors.map(c=>c.id)),frames=[],foreignVisiblePixels=[];
   for(const [index,c]of sorted.entries()){
     let foreign=0,sum=0,weight=0;
@@ -57,5 +58,5 @@ export async function inspectPoseAtlas(root,{id,source,delivery,pivotXOverrides=
   if(encoded.info.width!==info.width||encoded.info.height!==info.height)throw new Error(`${id}: delivery dimensions differ`);
   let alphaDifferences=0;for(let p=3;p<data.length;p+=4)if(data[p]!==encoded.data[p])alphaDifferences++;
   if(alphaDifferences)throw new Error(`${id}: delivery changed ${alphaDifferences} alpha pixels`);
-  return {layout:{path:delivery,width:info.width,height:info.height,frames},validation:{id,source,delivery,width:info.width,height:info.height,poses:16,outerBorderVisiblePixels,foreignVisiblePixels,uncoveredVisiblePixels,duplicateVisiblePixels,alphaDifferences,referenceHeight,pivotXOverrides,bytes:(await fs.stat(path.join(root,delivery))).size,frames}};
+  return {layout:{path:delivery,width:info.width,height:info.height,frames},validation:{id,source,delivery,width:info.width,height:info.height,poses:expected,outerBorderVisiblePixels,foreignVisiblePixels,uncoveredVisiblePixels,duplicateVisiblePixels,alphaDifferences,referenceHeight,pivotXOverrides,bytes:(await fs.stat(path.join(root,delivery))).size,frames}};
 }

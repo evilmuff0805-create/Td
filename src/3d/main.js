@@ -229,7 +229,12 @@ function frame(now) {
   for(const e of firingEvents)world.firingLine(e);firingEvents.length=0;
   const target=abilityTarget(game,mode?.kind,hero(),hover,equippedAbility(game,mode?.slot??0)?.id);world.fx.preview(mode?.kind,hero(),hover,target);world.fx.update(paused||modal?0:dt);world.draw(clock,dt);towerLabels.update(game,world,selected,mode);
   const label=$('entity-label'),h=selected?.kind==='hero'?hero():null;
-  if(h&&!mode){const root=world.units.get(`h${h.id}`),anchor=world.art?.anchor(root,.14),p=anchor?world.project(anchor.x,anchor.y,anchor.z):world.project(h.x,root?.userData.labelHeight??1.85,h.y);label.hidden=!p.visible||h.dead;label.textContent=heroDef().name;label.style.left=`${p.x}px`;label.style.top=`${p.y}px`;}else label.hidden=true;
+  if(h&&!mode){
+    const root=world.units.get(`h${h.id}`),anchor=world.art?.anchor(root,.14),p=anchor?world.project(anchor.x,anchor.y,anchor.z):world.project(h.x,root?.userData.labelHeight??1.85,h.y);
+    label.hidden=!p.visible||h.dead||p.x<0||p.x>canvas.clientWidth||p.y<0||p.y>canvas.clientHeight;
+    const name=heroDef().name;if(label.textContent!==name)label.textContent=name;
+    if(!label.hidden){const margin=label.offsetWidth/2+8;label.style.left=`${Math.max(margin,Math.min(canvas.clientWidth-margin,p.x))}px`;label.style.top=`${Math.max(label.offsetHeight+8,p.y)}px`;}
+  }else label.hidden=true;
   if(uiClock>.5){fps=Math.round(frames/uiClock);frames=0;uiClock=0;updateHUD();}if(now>noticeUntil)$('notice').classList.remove('show');if(clock>castUntil)$('cast-banner').hidden=true;
   if(game.result&&!resultShown) {
     resultShown=true;if(game.result.win)saveWin(game);$('result-title').textContent=game.result.win?'방어선을 지켜냈습니다':'성문이 함락되었습니다';

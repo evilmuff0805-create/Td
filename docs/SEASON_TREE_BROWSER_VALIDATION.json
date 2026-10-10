@@ -1,0 +1,369 @@
+{
+  "date": "2026-10-11",
+  "scope": "six seasonal tree cutouts in actual fixed-view battles",
+  "officialProfileModified": false,
+  "checks": [
+    {
+      "name": "actual spring battle paused",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "13",
+          "combatPoseExpected": "13",
+          "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "scout",
+          "combatPoseLastState": "walk-right",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "seasonTreeArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3570",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "lives": "20",
+        "season": "spring",
+        "stage": "동래성 전투",
+        "state": "paused",
+        "wave": "3"
+      }
+    },
+    {
+      "name": "actual summer stage",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "15",
+          "combatPoseExpected": "15",
+          "combatPoseKinds": "teppo,scout,cavalry,samurai,ninja,drum,ashigaru,onmyoji,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "scout",
+          "combatPoseLastState": "walk-right",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "seasonTreeArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3898",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "season": "summer",
+        "stage": "평양성 전투"
+      }
+    },
+    {
+      "name": "actual autumn stage",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "17",
+          "combatPoseExpected": "17",
+          "combatPoseKinds": "scout,teppo,ashigaru,onmyoji,ninja,cavalry,drum,ram,samurai,armored,kuroda,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "scout",
+          "combatPoseLastState": "walk-right",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "seasonTreeArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3988",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "season": "autumn",
+        "stage": "진주대첩"
+      }
+    },
+    {
+      "name": "actual winter stage",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "18",
+          "combatPoseExpected": "18",
+          "combatPoseKinds": "ashigaru,scout,teppo,onmyoji,cavalry,ninja,drum,samurai,armored,so,ram,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "scout",
+          "combatPoseLastState": "walk-right",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "seasonTreeArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "2",
+          "terrainRoadTriangles": "3360",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "season": "winter",
+        "stage": "평양성 탈환"
+      }
+    },
+    {
+      "name": "four approved painted seasons",
+      "result": {
+        "body": {
+          "loading": "false",
+          "paintedReady": "10",
+          "renderer": "webgl2",
+          "terrain": "continuous"
+        },
+        "cards": [
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3570",
+            "season": "spring",
+            "seasonTreeArt": "ready",
+            "stage": "s6"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3898",
+            "season": "summer",
+            "seasonTreeArt": "ready",
+            "stage": "s10"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3988",
+            "season": "autumn",
+            "seasonTreeArt": "ready",
+            "stage": "s12"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "2",
+            "roadTriangles": "3360",
+            "season": "winter",
+            "seasonTreeArt": "ready",
+            "stage": "s13"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "name": "mobile spring battle",
+      "result": {
+        "canvas": {
+          "combatPoseCount": "13",
+          "combatPoseExpected": "13",
+          "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "seasonTreeArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3570",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "label": {
+          "bottom": 383.09375,
+          "hidden": false,
+          "left": 360.1953125,
+          "name": "이순신",
+          "right": 405.8046875,
+          "top": 358.09375
+        },
+        "overflow": false,
+        "viewport": [
+          414,
+          896
+        ]
+      }
+    },
+    {
+      "name": "mobile four-season review",
+      "result": {
+        "cards": [
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3570",
+            "season": "spring",
+            "seasonTreeArt": "ready",
+            "stage": "s6"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3898",
+            "season": "summer",
+            "seasonTreeArt": "ready",
+            "stage": "s10"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3988",
+            "season": "autumn",
+            "seasonTreeArt": "ready",
+            "stage": "s12"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "2",
+            "roadTriangles": "3360",
+            "season": "winter",
+            "seasonTreeArt": "ready",
+            "stage": "s13"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          414,
+          896
+        ]
+      }
+    },
+    {
+      "name": "rebuilt standalone title",
+      "title": "호국영웅전",
+      "standaloneBytes": 45592947
+    },
+    {
+      "name": "mobile camera pan hides offscreen hero label",
+      "result": {
+        "labelHidden": true,
+        "overflow": false,
+        "viewport": [
+          414,
+          896
+        ]
+      }
+    },
+    {
+      "name": "mobile stage dialog remains within viewport",
+      "result": {
+        "left": 10,
+        "open": true,
+        "overflow": false,
+        "right": 404,
+        "viewport": [
+          414,
+          896
+        ],
+        "width": 394
+      }
+    }
+  ],
+  "screenshots": [
+    "screenshots/season-trees-spring-battle.jpg",
+    "screenshots/season-trees-summer-battle.jpg",
+    "screenshots/season-trees-autumn-battle.jpg",
+    "screenshots/season-trees-four-seasons.jpg",
+    "screenshots/season-trees-mobile-battle.jpg",
+    "screenshots/season-trees-mobile-seasons.jpg"
+  ],
+  "logs": {
+    "battle": [],
+    "seasons": [],
+    "mobileAndStandalone": [],
+    "mobileLabelFix": []
+  },
+  "limitations": [
+    "Responsive browser checks, not physical phone performance.",
+    "Standalone title boot and single-embed asset verification, no new official purchase or victory."
+  ],
+  "issuesFixed": [
+    {
+      "issue": "Selected hero label extended beyond the 414 px mobile viewport.",
+      "before": {
+        "canvas": {
+          "combatPoseCount": "13",
+          "combatPoseExpected": "13",
+          "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "seasonTreeArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3570",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "overflow": true,
+        "viewport": [
+          414,
+          896
+        ]
+      },
+      "fix": "Clamp onscreen labels with an 8 px margin, hide labels for offscreen anchors, and clip battle overflow."
+    }
+  ]
+}

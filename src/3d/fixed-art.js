@@ -7,6 +7,8 @@ import { combatPoseRoster } from './combat-pose-roster.js';
 import { SKIN_POSE_ART } from './skin-pose-data.js';
 import { heroLookRoster,heroLooksKey } from './hero-look-roster.js';
 import { skinDef } from '../data/skins.js';
+import { SEASON_TREE_ART } from './season-tree-data.js';
+import { seasonalTreeIndex } from './seasonal-props.js';
 
 export const FIXED_ART={yi:HERO_POSE_ART.yi.path,towers:'assets/3d/fixed/tower-tiers-v2.webp',winter:'assets/3d/fixed/winter-props-v2.webp'};
 const atlases=new Map();
@@ -59,8 +61,10 @@ export class FixedBattleArt {
     world.renderer.domElement.dataset.fixedArtStatus='loading';
     const landmarks=Object.values(LANDMARK_STAGE_ART).map(layout=>atlas(layout.path,5,4,layout).catch(error=>{console.warn('Landmark stage art unavailable; keeping base illustration.',error.message);return null;}));
     const heroPoses=Promise.all(Object.entries(HERO_POSE_ART).filter(([id])=>id!=='yi').map(async([id,layout])=>[id,await atlas(layout.path,4,4,layout).catch(error=>{console.warn('Hero poses unavailable; keeping base illustration.',id,error.message);return null;})]));
-    this.corePromise=Promise.all([preloadArt(),atlas(FIXED_ART.yi,4,4,HERO_POSE_ART.yi),atlas(FIXED_ART.towers,5,2),atlas(FIXED_ART.winter,3,2),...landmarks,heroPoses]).then(([,yi,towers,winter,a,b,poses])=>{
-      if(this.destroyed)return;this.yi=yi;this.heroPoses={yi,...Object.fromEntries(poses)};this.towerFrames=towers;this.winter=winter;this.landmarks={a,b};this.ready=true;
+    const trees=atlas(SEASON_TREE_ART.path,3,2,SEASON_TREE_ART).catch(error=>{console.warn('Seasonal trees unavailable; keeping base scenery.',error.message);return null;});
+    this.corePromise=Promise.all([preloadArt(),atlas(FIXED_ART.yi,4,4,HERO_POSE_ART.yi),atlas(FIXED_ART.towers,5,2),atlas(FIXED_ART.winter,3,2),...landmarks,heroPoses,trees]).then(([,yi,towers,winter,a,b,poses,trees])=>{
+      if(this.destroyed)return;this.yi=yi;this.heroPoses={yi,...Object.fromEntries(poses)};this.towerFrames=towers;this.winter=winter;this.landmarks={a,b};this.seasonTrees=trees;this.ready=true;
+      world.renderer.domElement.dataset.seasonTreeArtStatus=trees?'ready':'fallback';
       world.renderer.domElement.dataset.landmarkArtStatus=a&&b?'ready':a||b?'partial':'fallback';
       const poseCount=Object.values(this.heroPoses).filter(Boolean).length;
       world.renderer.domElement.dataset.heroPoseStatus=poseCount===8?'ready':'partial';world.renderer.domElement.dataset.heroPoseCount=String(poseCount);
@@ -183,8 +187,10 @@ export class FixedBattleArt {
   }
   prop(kind,height=2,variation=0) {
     const index={snowPine:variation>=.5?1:0,snowRock:2,hanok:variation>=.5?4:3,cliff:5}[kind],winter=this.world.theme.snow&&index!==undefined;
-    const art=winter?this.winter:kind==='gate'?structureArt('gate'):propArt(kind);if(!art)return new T.Group();
-    const root=new T.Group(),image=this.image(art,height,winter?art.frames[index]:null);root.add(image);this.shadow(root,height*.55,height*.30);this.castImage(root,image);return root;
+    const treeIndex=seasonalTreeIndex(this.world.theme,kind,variation),tree=treeIndex===null?null:this.seasonTrees?.isolated?.[treeIndex];
+    const art=tree?.canvas??(winter?this.winter:kind==='gate'?structureArt('gate'):propArt(kind==='blossom'||kind==='broadleaf'?'pine':kind));if(!art)return new T.Group();
+    const root=new T.Group(),image=this.image(art,height,tree?.frame??(winter?art.frames[index]:null));root.add(image);this.shadow(root,height*.55,height*.30);this.castImage(root,image);
+    if(tree)root.userData.seasonTree={kind,index:treeIndex};return root;
   }
   hideModel(root) {for(const child of root.children)if(child!==root.userData.hp&&child!==root.userData.ownerRing)child.visible=false;}
   unitArt(entity,hero,ally) {

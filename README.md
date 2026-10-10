@@ -8,9 +8,11 @@
 
 현재 구현·검증·남은 작업과 GitHub 반영 기준은 [프로젝트 리뷰](docs/PROJECT_REVIEW.md)에 기록합니다. 상위 작업 폴더의 `호국영웅전_PROJECT_REVIEW.md`도 함께 갱신합니다. 완료한 작업 단위마다 같은 브랜치에 커밋·푸시하고 원격 반영을 확인합니다.
 
-[최신 그림 가이드](docs/ART.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
+[최신 그림 가이드](docs/ART.md) · [계절 수목·최신 검증](docs/SEASONAL_SCENERY.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
 
 이순신의 전장용 16포즈는 다른 영웅의 부드러운 톤에 맞춘 v2로 교체했습니다. 남색 망토·활·화살통으로 권율의 붉은 망토·창·방패와 구분합니다. [같은 크기 비교와 적용·검증](docs/YI_TONE_REFINEMENT.md)
+
+![새 계절 수목과 봄 전투](docs/screenshots/season-trees-spring-battle.jpg)
 
 ![최신 여름 강변 지면](docs/screenshots/terrain-summer-river.jpg)
 
@@ -18,9 +20,9 @@
 
 ![유산 기본·2·3·최종 A/B 외형](docs/screenshots/tower-stages-bosingak.png)
 
-기본 영웅 8명의 **128포즈**에 일반 왜군 10종·적장 12명·아군과 이동체 6종의 **448포즈**를 추가했습니다. 네 방향의 준비·이동 두 자세·공격을 사용하며, 전령·거북선의 마지막 네 자세는 예비 전투 준비 그림입니다. [영웅 비교](http://localhost:8080/dev/3d-hero-pose-review.html)와 [병력 비교](http://localhost:8080/dev/3d-combat-pose-review.html)에서 확인할 수 있습니다. 특수 의상 16종에도 같은 톤의 256포즈를 추가해 전체 전장 준비 그림은 832개입니다. [의상 비교](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1)에서 기본·특수·금빛 의상을 나란히 볼 수 있습니다. 현재 변경의 자동 검사 141개, 의상 256포즈의 픽셀·브라우저 검사와 실제 전투·모바일 표시·두 빌드를 통과했습니다. 단일 HTML은 44,823,927바이트이며 방향 시트 52장을 각각 한 번 포함합니다. [검증 결과와 정확한 범위](docs/SKIN_DIRECTIONAL_ART_VALIDATION.json)
+기본 영웅 8명의 **128포즈**에 일반 왜군 10종·적장 12명·아군과 이동체 6종의 **448포즈**를 추가했습니다. 네 방향의 준비·이동 두 자세·공격을 사용하며, 전령·거북선의 마지막 네 자세는 예비 전투 준비 그림입니다. [영웅 비교](http://localhost:8080/dev/3d-hero-pose-review.html)와 [병력 비교](http://localhost:8080/dev/3d-combat-pose-review.html)에서 확인할 수 있습니다. 특수 의상 16종에도 같은 톤의 256포즈를 추가해 전체 전장 준비 그림은 832개입니다. [의상 비교](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1)에서 기본·특수·금빛 의상을 나란히 볼 수 있습니다. 최신 통합의 자동 검사 147개, 기존 832포즈와 새 수목 6개의 픽셀 검사, 실제 전투·모바일 표시·두 빌드를 통과했습니다. 단일 HTML은 45,592,947바이트이며 방향 시트 52장·새 지면 3장·수목 1장을 각각 한 번 포함합니다. [검증 결과와 정확한 범위](docs/SEASONAL_SCENERY_VALIDATION.json)
 
-길은 연속 메시와 자연스러운 가장자리로 교체했고 풀·흙·눈·다져진 길 재질의 반복을 줄였습니다. 물·다리·건설 자리는 유지합니다. [실제 사계절 비교](http://localhost:8080/dev/3d-season-review.html?mute=1)에서 확인할 수 있습니다. 긴 보행·공격 연결, 수목·강 경계의 추가 미술과 실제 기기별 검증은 남아 있습니다. 이전 관절 모델·재질 개발 이력은 [정식 3D 통합](docs/3D_FULL_GAME.md), [전체 개선](docs/POLISH_RELEASE.md), [조형](docs/SCULPTED_MODELS.md), [지형 재질](docs/PAINTED_ENVIRONMENTS.md), [영웅](docs/HERO_MODELS_AND_MOTION.md), [적군](docs/ENEMY_MODELS_AND_MOTION.md), [캐릭터 재질](docs/CHARACTER_SURFACES.md)에 보존합니다. 해당 문서의 화면·검사 수·성능 수치는 각 작업 당시의 기록입니다.
+길은 연속 메시와 자연스러운 가장자리로 교체했고 풀·흙·눈·다져진 길 재질의 반복을 줄였습니다. 물·다리·건설 자리는 유지합니다. [실제 사계절 비교](http://localhost:8080/dev/3d-season-review.html?mute=1)에서 확인할 수 있습니다. 봄 꽃나무·여름 활엽수·가을 단풍 두 종류씩 총 6개도 실제 전장에 연결했습니다. 모바일 영웅 이름표의 화면 넘침도 수정했습니다. 긴 보행·공격 연결, 강 경계·개별 기술의 추가 미술과 실제 기기별 검증은 남아 있습니다. 이전 관절 모델·재질 개발 이력은 [정식 3D 통합](docs/3D_FULL_GAME.md), [전체 개선](docs/POLISH_RELEASE.md), [조형](docs/SCULPTED_MODELS.md), [지형 재질](docs/PAINTED_ENVIRONMENTS.md), [영웅](docs/HERO_MODELS_AND_MOTION.md), [적군](docs/ENEMY_MODELS_AND_MOTION.md), [캐릭터 재질](docs/CHARACTER_SURFACES.md)에 보존합니다. 해당 문서의 화면·검사 수·성능 수치는 각 작업 당시의 기록입니다.
 
 별도의 [자유 전장](http://localhost:8080/3d.html?mute=1)은 해금·지원 수치를 바꾸는 미술/전투 비교용입니다. 이 화면의 F·G·C 조작과 별 기록은 정식 캠페인과 구분됩니다. [미리보기 조작](docs/3D_CAMPAIGN.md)
 
