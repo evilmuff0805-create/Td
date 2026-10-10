@@ -1,0 +1,243 @@
+{
+  "date": "2026-10-10",
+  "scope": "Shared painted albedo, terrain outskirts, boulder geometry/UV and seasonal lighting. Local changes, no publishing.",
+  "tests": {
+    "selftest": 14,
+    "threeDimensional": 36,
+    "campaign": 15,
+    "total": 65
+  },
+  "generation": {
+    "mode": "built-in imagegen",
+    "prompts": "assets/3d/painted/prompts.json",
+    "runtimeFormat": "WebP quality 88",
+    "originalsPreserved": true,
+    "assets": [
+      {
+        "path": "assets/3d/painted/granite-v1.webp",
+        "bytes": 98548,
+        "sha256": "bfe7a389112949c90d1186bd5bde9075a8f6847e4e6d346e85386b8bc37639ff",
+        "width": 512,
+        "height": 512,
+        "source": "assets/3d/painted/source/granite-v1.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      },
+      {
+        "path": "assets/3d/painted/timber-v1.webp",
+        "bytes": 36126,
+        "sha256": "5963b1561f180b53a1a731739672401b552b2307678121dea6a4f2ad98e08cc4",
+        "width": 512,
+        "height": 512,
+        "source": "assets/3d/painted/source/timber-v1.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      },
+      {
+        "path": "assets/3d/painted/road-v1.webp",
+        "bytes": 77244,
+        "sha256": "c12d5ee8f0967e7c5d3ee2f3e2d96ba49aa571c24f904db71ee66922152556f8",
+        "width": 512,
+        "height": 512,
+        "source": "assets/3d/painted/source/road-v1.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      },
+      {
+        "path": "assets/3d/painted/ground-v1.webp",
+        "bytes": 105812,
+        "sha256": "7f2b17795f51ef3b77e4d8d82d6c7cf4f32a30ef92919a986d5a40dccdc714c2",
+        "width": 512,
+        "height": 512,
+        "source": "assets/3d/painted/source/ground-v1.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254
+      }
+    ]
+  },
+  "standalone": {
+    "path": "dist/hoguk.html",
+    "bytes": 14538347,
+    "sha256": "65f927b415820898dd5d4068441d5d9ec906c45bfbfe7fb5b36dd3cc00202402",
+    "externalPaintedReferences": 0
+  },
+  "review": {
+    "model": "GPT-6 Astra",
+    "reasoning": "xhigh",
+    "fixes": [
+      "Use 512 x 512 albedo placeholders before first GPU upload; retain small independent relief and roughness maps.",
+      "Exclude boulder top pole from cylinder UV seam detection before averaging its U coordinate."
+    ]
+  },
+  "browser": {
+    "environment": "Windows PC, Codex in-app browser, Three.js r186",
+    "audio": {
+      "bgm": 0,
+      "sfx": 0
+    },
+    "lateGpuUpload": {
+      "beforeFrames": 6580,
+      "afterFrames": 6601,
+      "ready": 4,
+      "pending": 0,
+      "failed": 0,
+      "gpuErrors": 0,
+      "consoleWarningsAndErrors": 0,
+      "initialColorSpaces": {
+        "stone": "sRGB",
+        "wood": "sRGB",
+        "road": "Linear-sRGB",
+        "ground": "Linear-sRGB"
+      },
+      "finalColorSpace": "sRGB"
+    },
+    "seasons": {
+      "ready": 9,
+      "pending": 0,
+      "failed": 0,
+      "consoleWarningsAndErrors": 0
+    },
+    "campaign": {
+      "path": "dist/hoguk.html?mute=1",
+      "stage": "s1",
+      "wave": 2,
+      "lives": 20,
+      "maxLives": 20,
+      "actions": [
+        "Built Sungnyemun for 70",
+        "Upgraded Sungnyemun for 60",
+        "Built Haeinsa for 90",
+        "Moved Yi by original UI right click",
+        "Cast Yi's Hakikjin by UI targeting",
+        "Built another Sungnyemun for 70 at 414 x 896"
+      ],
+      "goldAfter": 0,
+      "paintedReady": 4,
+      "consoleWarningsAndErrors": 0,
+      "oldFontButtons": 0
+    },
+    "responsive": {
+      "viewport": {
+        "width": 414,
+        "height": 896
+      },
+      "documentWidth": 414,
+      "horizontalOverflow": 0,
+      "labels": [
+        {
+          "label": "Sungnyemun level 2",
+          "x": 292.015625,
+          "y": 396.890625,
+          "width": 65,
+          "height": 46
+        },
+        {
+          "label": "Haeinsa level 1",
+          "x": 331.625,
+          "y": 474.71875,
+          "width": 65,
+          "height": 46
+        },
+        {
+          "label": "Sungnyemun level 1",
+          "x": 304.96875,
+          "y": 343.5,
+          "width": 65,
+          "height": 46
+        }
+      ],
+      "overlap": false,
+      "restoredViewport": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    "winterPreview": {
+      "stage": "s13",
+      "wave": 5,
+      "totalWaves": 16,
+      "lives": 9,
+      "maxLives": 20,
+      "gold": 434,
+      "heroLevel": 2,
+      "qualitySwitch": "high -> low -> high",
+      "paintedReady": 3,
+      "consoleWarningsAndErrors": 0,
+      "fullClear": false
+    }
+  },
+  "performance": {
+    "conditions": "1280 x 720, s12 autumn, same camera, 2 heroes, no towers, equal repeating ashigaru/samurai/teppo mix. Other tabs include paused campaign and static model reviews; short observation windows, 60 fps cap.",
+    "samples": [
+      {
+        "mode": "individual",
+        "count": 64,
+        "quality": "high",
+        "drawCalls": 5248,
+        "trianglesApprox": 4856000,
+        "fps": 53,
+        "p95ms": 33,
+        "unitSyncMs": 1427,
+        "setupMs": 2566,
+        "geometries": 2619
+      },
+      {
+        "mode": "batched",
+        "count": 64,
+        "quality": "high",
+        "drawCalls": 572,
+        "trianglesApprox": 4856000,
+        "fps": 60,
+        "p95ms": 17,
+        "unitSyncMs": 134,
+        "setupMs": 1461,
+        "geometries": 281
+      },
+      {
+        "mode": "batched",
+        "count": 128,
+        "quality": "high",
+        "drawCalls": 616,
+        "trianglesApprox": 7792000,
+        "fps": 60,
+        "p95ms": 17,
+        "unitSyncMs": 151,
+        "setupMs": 1389,
+        "geometries": 303
+      },
+      {
+        "mode": "batched",
+        "count": 128,
+        "quality": "low",
+        "drawCalls": 319,
+        "trianglesApprox": 3896000,
+        "fps": 60,
+        "p95ms": 17,
+        "unitSyncMs": 147,
+        "setupMs": 1391,
+        "geometries": 303
+      }
+    ],
+    "consoleWarningsAndErrors": 0,
+    "physicalPhoneValidated": false
+  },
+  "screenshots": [
+    "docs/screenshots/3d-painted-surfaces.jpg",
+    "docs/screenshots/3d-painted-fallback.jpg",
+    "docs/screenshots/3d-painted-seasons.jpg",
+    "docs/screenshots/3d-painted-towers.jpg",
+    "docs/screenshots/3d-painted-battle.jpg",
+    "docs/screenshots/3d-painted-mobile.jpg",
+    "docs/screenshots/3d-painted-winter.jpg",
+    "docs/screenshots/3d-painted-crowd-64.jpg",
+    "docs/screenshots/3d-painted-crowd-individual.jpg",
+    "docs/screenshots/3d-painted-crowd-128.jpg"
+  ],
+  "remaining": [
+    "Unique character sculpts, dedicated skin/hair textures and authored skin-rig animations",
+    "More natural landscape perimeter and cliff composition",
+    "Physical-phone sustained heat/memory/performance",
+    "Long external-network cooperative play",
+    "Human playtesting and paid progression on hard/hell"
+  ]
+}

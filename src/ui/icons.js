@@ -2,7 +2,7 @@
 import { drawHero, drawEnemy } from '../render/draw-units.js';
 import { taegeuk, TS } from '../render/paint.js';
 import { ENEMIES } from '../data/enemies.js';
-import { heroArt, portraitArt } from '../render/art.js';
+import { heroArt, portraitArt, enemyArt, drawIllustration } from '../render/art.js';
 
 export function heroPortrait(heroId, size = 46, owner = 0, skin = null) {
   const cv = document.createElement('canvas');
@@ -12,21 +12,21 @@ export function heroPortrait(heroId, size = 46, owner = 0, skin = null) {
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
   // 그림 파일: 초상 일러스트의 얼굴을 정사각으로 잘라 쓴다 (없으면 전투용 그림의 머리 부분)
-  const pa = skin ? null : portraitArt(heroId);
-  const sa = skin ? null : heroArt(heroId);
+  const pa = portraitArt(heroId, skin);
+  const sa = heroArt(heroId, skin);
   if (pa || sa) {
     ctx.imageSmoothingQuality = 'high';
     if (pa) {
-      const W = pa.img.naturalWidth;
-      const H = pa.img.naturalHeight;
+      const W = pa.img.naturalWidth || pa.img.width;
+      const H = pa.img.naturalHeight || pa.img.height;
       const [fx, fy, fs] = pa.face;
       const side = fs * H;
       const sx = Math.max(0, Math.min(W - side, fx * W - side / 2));
       const sy = Math.max(0, Math.min(H - side, fy * H - side / 2));
       ctx.drawImage(pa.img, sx, sy, side, side, 0, 0, size, size);
     } else {
-      const W = sa.img.naturalWidth;
-      const H = sa.img.naturalHeight;
+      const W = sa.img.naturalWidth || sa.img.width;
+      const H = sa.img.naturalHeight || sa.img.height;
       const side = H * 0.32;
       ctx.drawImage(sa.img, Math.max(0, sa.ax * W - side / 2), 0, side, side, 0, 0, size, size);
     }
@@ -47,11 +47,11 @@ export function heroFull(heroId, size = 200, skin = null) {
   cv.height = size * dpr;
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
-  const art = skin ? null : heroArt(heroId);
+  const art = heroArt(heroId, skin);
   if (art) {
     // 전신 그림을 칸 높이에 맞춰, 두 발 사이를 가운데로
-    const W = art.img.naturalWidth;
-    const H = art.img.naturalHeight;
+    const W = art.img.naturalWidth || art.img.width;
+    const H = art.img.naturalHeight || art.img.height;
     const hh = size * 0.96;
     const ww = (W / H) * hh;
     ctx.imageSmoothingQuality = 'high';
@@ -74,6 +74,14 @@ export function enemyIcon(type, size = 22) {
   cv.height = size * dpr;
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
+  const art = enemyArt(type);
+  if (art) {
+    const height = size * 0.9 * Math.min(1, art.img.height / art.img.width);
+    drawIllustration(ctx, { ...art, ax: 0.5 }, size / 2, size * 0.94, height);
+    const url = cv.toDataURL();
+    enemyCache.set(key, url);
+    return url;
+  }
   const boss = ENEMIES[type].tier === 4;
   const tall = type === 'hideyoshi' ? 84 : boss ? 66 : type === 'cavalry' ? 44 : type === 'ram' ? 34 : type === 'armored' ? 44 : 36;
   const k = (size * 0.94) / tall;

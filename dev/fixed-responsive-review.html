@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>호국영웅전 · 고정 시점 작은 화면 검증</title>
+<style>
+body{margin:0;padding:20px;background:#101c29;color:#e9dfcb;font:14px sans-serif}h1{font-size:20px;margin:0 0 8px}p{margin:0 0 20px;color:#b8c8d5}.screens{display:flex;gap:24px;align-items:flex-start}.phone{flex:none;width:414px}h2{font-size:15px;margin:0 0 10px}iframe{display:block;width:414px;height:896px;border:1px solid #526674;border-radius:8px;background:#172637}
+</style>
+<h1>고정 시점 · 작은 화면 검증</h1>
+<p>각 전장을 실제 414 × 896 CSS 픽셀로 실행합니다. 두 화면 모두 음소거 상태입니다.</p>
+<div class="screens">
+<section class="phone"><h2>겨울 전장</h2><iframe id="winter" title="414픽셀 겨울 전장" src="../3d.html?stage=winter3d&amp;season=winter&amp;mute=1"></iframe></section>
+<section class="phone"><h2>정식 캠페인</h2><iframe id="campaign" title="414픽셀 정식 캠페인" src="../dist/hoguk.html?mute=1"></iframe></section>
+</div>
+</html>

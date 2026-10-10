@@ -6,6 +6,8 @@
 //  - 합격기·전술·비기 명령 경로
 //  - 임무/출석 로직
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { ART } from '../src/data/art.js';
 import { STAGES, parseWave } from '../src/data/stages.js';
 import { ENEMIES } from '../src/data/enemies.js';
 import { TOWERS } from '../src/data/towers.js';
@@ -13,7 +15,7 @@ import { SKILL_ORDER } from '../src/data/skills.js';
 import { HERO_ORDER } from '../src/data/heroes.js';
 import { getMap, T_BUILD } from '../src/sim/map.js';
 import { createGame, step, queueCommand, FIRST_PREP } from '../src/sim/sim.js';
-import { spawnEnemy } from '../src/sim/combat.js';
+import { spawnEnemy, damage } from '../src/sim/combat.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { SnapshotEncoder, emptyView, applySnapshot } from '../src/sim/snapshot.js';
 import { ensureQuests, progressQuests, claimQuest, checkIn, canCheckIn, weekKey, rerollQuest } from '../src/meta/quests.js';
@@ -25,6 +27,24 @@ const test = (name, fn) => {
   passed++;
   console.log(`  ✔ ${name}`);
 };
+
+test('일러스트: 전체 영웅·왜군·유산과 모든 그림 파일 연결', () => {
+  for (const [group, ids] of [['heroes', HERO_ORDER], ['enemies', Object.keys(ENEMIES)], ['towers', Object.keys(TOWERS)]]) {
+    assert.deepEqual(Object.keys(ART[group]).sort(), [...ids].sort(), `${group} 그림 누락`);
+  }
+  for (const group of ['heroes', 'enemies', 'allies', 'towers', 'structures', 'props', 'terrain']) {
+    for (const [id, entry] of Object.entries(ART[group])) {
+      const atlas = ART.atlases[entry.atlas];
+      assert.ok(atlas, `${group}/${id} 시트 누락`);
+      assert.ok(Number.isInteger(entry.cell) && entry.cell >= 0 && entry.cell < atlas.columns * atlas.rows, `${group}/${id} 범위 밖 그림`);
+    }
+  }
+  for (const src of [...Object.values(ART.atlases).map((a) => a.src), ART.scene]) {
+    const buf = fs.readFileSync(new URL(`../${src}`, import.meta.url));
+    assert.equal(buf.toString('ascii', 0, 4), 'RIFF', `${src} WebP 파일 오류`);
+    assert.equal(buf.toString('ascii', 8, 12), 'WEBP', `${src} WebP 파일 오류`);
+  }
+});
 
 test('지도와 웨이브 데이터', () => {
   assert.equal(STAGES.length, 25);
@@ -335,4 +355,11 @@ test('임무 교체 (옥)', () => {
   assert.ok(!rerollQuest(p, 'daily', 0)); // 옥 부족
 });
 
+test('선택적 피해 진단은 초과 피해를 제외하고 실제 전투 결과를 바꾸지 않음',()=>{
+  const mk=()=>createGame({stageId:'s1',difficulty:'normal',mode:'solo',seed:2,players:[{heroes:['yi'],skills:[]}]});
+  const a=mk(),b=mk();a.damageLedger={};
+  for(const s of [a,b]){const e=spawnEnemy(s,'ashigaru',0,1);e.hp=10;e.armor=0;e.shield=0;damage(s,e,100,'phys',{p:0,kind:'hero',ref:s.heroes[0]});}
+  assert.equal(a.damageLedger['hero:yi'],10);assert.equal(a.players[0].stats.damage,100);
+  delete a.damageLedger;assert.deepEqual(a,b);
+});
 console.log(`\n자체 점검 통과: ${passed}개`);

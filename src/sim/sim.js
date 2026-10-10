@@ -539,6 +539,7 @@ function updateEnemies(s) {
   for (const e of s.enemies) {
     if (e.hp <= 0) continue;
     const def = ENEMIES[e.type];
+    if (e.swing > 0) e.swing = Math.max(0, e.swing - DT);
     if (e.slowT > 0) e.slowT -= DT;
     if (e.stunT > 0) e.stunT -= DT;
     if (e.iceT > 0) e.iceT -= DT;
@@ -569,6 +570,7 @@ function updateEnemies(s) {
           if (b.heroId) hurtHero(s, b, e.atk);
           else hurtSummon(s, b, e.atk * (b.tower && e.tier === 4 ? 2 : 1));
           e.swing = 0.25;
+          ev(s, 'enemyStrike', { enemy: e.id, x1: e.x, y1: e.y, x2: b.x, y2: b.y });
         }
         continue;
       }
@@ -589,7 +591,6 @@ function updateEnemies(s) {
     e.y = p.y + p.dx * e.off;
     e.dx = p.dx;
     e.dy = p.dy;
-    if (e.swing > 0) e.swing -= DT;
   }
 }
 
@@ -619,7 +620,7 @@ function enemyAbilities(s, e, def) {
         o.healT = s.time;
         healed++;
       }
-      if (healed) ev(s, 'enemyHeal', { x: e.x, y: e.y, r: def.heal.range });
+      if (healed) {e.swing = .25;ev(s, 'enemyHeal', { enemy: e.id, x: e.x, y: e.y, r: def.heal.range });}
     }
   }
   if (def.shoot) {
@@ -648,7 +649,8 @@ function enemyAbilities(s, e, def) {
         const dmg = def.shoot.dmg * e.shotMult * (1 + 0.05 * (e.wave - 1));
         if (tgt.heroId) hurtHero(s, tgt, dmg);
         else hurtSummon(s, tgt, dmg);
-        ev(s, 'shot', { x1: e.x, y1: e.y, x2: tgt.x, y2: tgt.y });
+        e.swing = .25;
+        ev(s, 'shot', { enemy: e.id, x1: e.x, y1: e.y, x2: tgt.x, y2: tgt.y });
         e.abT = def.shoot.cd;
       } else e.abT = 0.3;
     }
@@ -822,12 +824,12 @@ function heroAttack(s, h, def, e) {
   if (def.attack === 'gun') {
     // 권총: 즉시 명중 (적장에게 +30%)
     damage(s, e, dmg * (e.tier === 4 ? AHN_BOSS_MULT : 1), def.dmgType, src);
-    ev(s, 'shot', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y, gun: 1 });
+    ev(s, 'shot', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y, gun: 1, caster: h.id });
     ev(s, 'sfx', { n: 'gun' });
   } else if (def.attack === 'lightning') {
     // 번개: 맞은 적 옆 1명에게 절반 피해로 튄다
     damage(s, e, dmg, def.dmgType, src);
-    ev(s, 'bolt', { x1: h.x, y1: h.y - 0.5, x2: e.x, y2: e.y, c: '#dff2ff' });
+    ev(s, 'bolt', { x1: h.x, y1: h.y - 0.5, x2: e.x, y2: e.y, c: '#dff2ff', caster: h.id });
     let next = null;
     let bd = 1.8 * 1.8;
     for (const o of s.enemies) {
@@ -1294,7 +1296,7 @@ function projectileHit(s, p, e) {
         next = o;
       }
     }
-    if (next) addProjectile(s, { ...p, id: s.nextId++, x: e.x, y: e.y, target: next.id, bounce: p.bounce - 1, done: false, t: 0 });
+    if (next) addProjectile(s, { ...p, id: s.nextId++, x: e.x, y: e.y, target: next.id, bounce: p.bounce - 1, chained: true, done: false, t: 0 });
   }
 }
 

@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>호국영웅전 · 전용 재질 비교</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#102333;color:#e2e9e8;font:14px 'Malgun Gothic',sans-serif}header{padding:24px;max-width:1200px;margin:auto}h1{font-size:24px;margin:0 0 12px}p{color:#b2c4cc;line-height:1.6}button,a{font:inherit;background:#263e4d;color:#e8eee9;border:1px solid #9fb6c855;border-radius:6px;padding:9px 14px;margin-right:8px}button:disabled{opacity:.5}output{display:block;margin-top:16px;color:#f1d69e}main{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 24px;max-width:1200px;margin:auto}article{background:#203747;border:1px solid #9fb6c833;border-radius:10px;overflow:hidden}article h2{font-size:17px;padding:0 16px}article p{font-size:12px;padding:0 16px}.surface{height:300px}canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}header,article h2,article p{position:relative;z-index:2}@media(max-width:750px){main{grid-template-columns:repeat(2,1fr);gap:10px;padding:0 14px}.surface{height:190px}header{padding:18px}h1{font-size:21px}}
+</style>
+<header><h1>전용 재질 비교</h1><p>같은 입체 표면에 돌·목재·길·풀밭 재질을 적용합니다. 버튼을 누르면 먼저 그려진 대체 표면이 전용 이미지로 바뀝니다.</p><button id="apply">전용 재질 적용</button><button id="reset">대체 재질로 재시작</button><a href="3d-season-review.html">사계절 전장 →</a><output id="status" aria-live="polite">대체 재질 준비 중…</output></header>
+<main><article><div class="surface"></div><h2>화강암</h2><p>바위·석축 · 광물의 반점과 미세 균열</p></article><article><div class="surface"></div><h2>목재</h2><p>한옥·다리·소품 · 긴 나무결과 옹이</p></article><article><div class="surface"></div><h2>돌길</h2><p>전투 경로 · 닳은 판석과 자갈</p></article><article><div class="surface"></div><h2>풀밭</h2><p>계절별 지면 · 풀과 흙의 자연스러운 얼룩</p></article></main>
+<canvas id="materials" aria-label="전용 재질 네 종류를 적용한 실제 WebGL 입체 표면"></canvas>
+<script type="module" src="../assets/3d/material-review.js"></script></html>

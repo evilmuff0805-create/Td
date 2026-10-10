@@ -463,7 +463,7 @@ const NEW_STAGES = {
   },
   s25: {
     id: 's25', name: '나고야성 최후의 결전', date: '가상 · 1599년', season: 'autumn', base: '조선군 본진',
-    desc: '침략의 본영 히젠 나고야성. 네 명의 대장을 차례로 꺾고 나면 마침내 그가 성문을 나선다. 도요토미 히데요시.',
+    desc: '침략의 본영 히젠 나고야성. 네 명의 대장을 차례로 꺾고 나면 마침내 그가 성문을 나선다. 초반에는 두 길이 갈라지기 전 굽이에 영웅을 배치하라. 마지막 결전에서는 은신 탐지를 유지하고, 기여가 적은 유산을 철거해 강한 단일 공격의 특화 유산에 재투자하라.',
     region: { x: 246, y: 452 },
     startGold: 600, hpGrowth: 0.1, finale: true,
     grid: genGrid({ seed: 25, wall: { side: 'top', w: 1 }, mountains: { side: 'bottom', depth: 1 }, houses: [[1, 6], [1, 7], [2, 6]] }),

@@ -1,0 +1,29 @@
+{
+  "mode": "built-in imagegen",
+  "created": "2026-10-10",
+  "usage": "Shared real-time albedo maps; procedural relief maps remain separate.",
+  "source": "source/*.png",
+  "runtime": "512 x 512 WebP, quality 88",
+  "textures": [
+    {
+      "key": "stone",
+      "file": "granite-v1",
+      "prompt": "Use case: stylized-concept. Asset type: seamless square base-color/albedo texture for actual real-time 3D Korean historical fantasy game granite boulders and stone masonry. Create one 1024 x 1024 edge-to-edge texture swatch, flat orthographic straight-on, completely filling the image, no border. Hand-painted animated-film look: irregular softly sculpted Korean granite mineral mottling, large subtle pale gray planes, a few fine natural cracks, warm gray and cool silver undertones, delicate wear and faint lichen speckles. Very light neutral palette, average approximately RGB 210,210,205, so the game can tint the material. Texture must tile seamlessly on all four edges. Broad organic variation and quiet fine detail; the surface should feel painted and tactile. Uniform diffuse illumination with no baked directional light, no cast shadows, no specular hotspots, no perspective, no objects or stone block grid, no letters, no watermark. This is a production surface texture, not a concept scene or a material-ball render."
+    },
+    {
+      "key": "wood",
+      "prompt": "Use case: stylized-concept. Asset type: a seamless 1024 x 1024 square albedo/base-color texture for real-time 3D Korean hanok timber and wooden props. One flat texture swatch, edge to edge, no border. Hand-painted animated-film surface, very pale desaturated warm gray timber, mean color near RGB 220,210,195 so the game can tint it brown. Fine long organic vertical wood fibers, a few softly painted knots, subtle age and worn raised grain, no separate planks or deep seams. Quiet broad variation and readable medium detail, not noisy photographic grain. Perfectly seamless tiling on every edge. Flat uniform diffuse light, no baked directional lighting or shadows, no highlights, no material ball, no perspective, no objects, no letters or watermark.",
+      "file": "timber-v1"
+    },
+    {
+      "key": "road",
+      "prompt": "Use case: stylized-concept. Asset type: one seamless square 1024 x 1024 base-color/albedo texture for an actual real-time 3D historical Korean mountain village road. Flat orthographic top-down swatch covering the entire frame. Hand-painted animated-film style: irregular small worn gray flagstones and rounded pebbles partially buried in pale earth, uneven spacing and soft eroded edges, roughly 10 to 12 stones across the image. Broken stones and fine grit, varied broad shapes; subtle darker shallow dirt joints, no black outlines. Light desaturated neutral warm gray palette, average approximately RGB 210,205,195 for seasonal tinting by the engine. Perfect seamless tiling on all edges. No grass tufts, no vegetation, no snow, no footprints, no directional light or cast shadow or specular glints, no perspective, no border, no text, no watermark. This must be a usable surface texture, not a road illustration or landscape.",
+      "file": "road-v1"
+    },
+    {
+      "key": "ground",
+      "prompt": "Use case: stylized-concept. Asset type: one seamless 1024 x 1024 square neutral albedo/base-color texture for actual real-time 3D grassy earth, seasonal Korean historical fantasy battlefields. Flat orthographic top-down texture filling the frame. Hand-painted animated-film look: delicate short grass fibers and low moss interspersed with soft earthy patches, tiny dry fragments, quiet organic shapes, broad variation at several scales, small tactile brushwork. Very pale low-saturation neutral gray-olive palette, average approximately RGB 215,215,200 so the renderer can tint this spring green, summer green or autumn ochre. No distinct clumps protruding, no large stones, no flowers, no paths. Absolutely seamless on all four edges, not a repeating grid. Uniform diffuse illumination without any baked directional shadow or light, no perspective, no scene objects, no frame, no text, no watermark.",
+      "file": "ground-v1"
+    }
+  ]
+}

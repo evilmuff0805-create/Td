@@ -5,7 +5,7 @@ import { skinDef, GOLD_LOOK } from '../data/skins.js';
 import { TS, PAL, rgba, shade, glow, star } from './paint.js';
 import { OL, LW, fillToon, sphere, gloss, rrect, capsule, cylinder, softShadow, eye, sprite, blit } from './toon.js';
 import { ENEMIES } from '../data/enemies.js';
-import { heroArt } from './art.js';
+import { heroArt, enemyArt, allyArt, propArt, drawIllustration } from './art.js';
 
 const SKIN = '#f6cfa3';
 const SPR_W = 44;
@@ -1467,7 +1467,9 @@ export function drawEnemy(ctx, e, time, alpha = 1, hit = null) {
     ctx.translate(-x, -y);
   }
   const body = () => {
-    if (e.type === 'cavalry') drawCavalry(ctx, x, y, t, moving, flip, sc, e.swing > 0);
+    const art = enemyArt(e.type);
+    if (art) drawArtUnit(ctx, art, x, y, t, moving, e.swing > 0, flip, e.type === 'ram' ? 36 : e.type === 'cavalry' ? 49 : 32 * sc);
+    else if (e.type === 'cavalry') drawCavalry(ctx, x, y, t, moving, flip, sc, e.swing > 0);
     else if (e.type === 'ram') drawRam(ctx, x, y, t, moving, flip);
     else {
       const look = ENEMY_LOOK[e.type] || ENEMY_LOOK.ashigaru;
@@ -1728,9 +1730,14 @@ export function drawHero(ctx, h, time, opts = {}) {
   const y = opts.y ?? h.y * TS + 9;
   const sc = opts.scale || 1.38;
   const t = time + h.id;
+  const art = heroArt(h.heroId, h.skin);
   if (opts.portrait) {
     // 초상화는 캐시 없이 크게 직접 그린다
     if (gold && !opts.noAura) goldAura(ctx, x, y, time, sc * 0.9);
+    if (art) {
+      drawIllustration(ctx, art, x, y, 44 * sc);
+      return;
+    }
     ctx.save();
     ctx.translate(x, y);
     ctx.scale(sc, sc);
@@ -1759,8 +1766,7 @@ export function drawHero(ctx, h, time, opts = {}) {
   }
   const [anim, frame] = animFrame(h.moving, h.anim > 0, t);
   if (gold) goldAura(ctx, x, y, time);
-  // 그림 파일이 있으면 그것으로 (의복을 입었으면 의복이 보이도록 기본 그림)
-  const art = h.skin ? null : heroArt(h.heroId);
+  // 의복도 같은 그림의 옷 부분을 물들여 화풍을 유지한다.
   if (art) drawArtUnit(ctx, art, x, y, t, h.moving, h.anim > 0, (h.facing || 1) < 0);
   else blit(ctx, charSprite('h', h.skin ? `${h.heroId}:${h.skin}` : h.heroId, look, anim, frame), x, y, sc, (h.facing || 1) < 0);
   if (!opts.noBar) {
@@ -1941,7 +1947,7 @@ export function drawSummon(ctx, m, time) {
         fillToon(c, '#6b4424', -17, yy, 17, yy + 2.4, { lw: 0.7 });
       }
     });
-    blit(ctx, s, x, y, 1.1);
+    if (!drawIllustration(ctx, propArt('wall'), x, y, 27)) blit(ctx, s, x, y, 1.1);
     bar(ctx, x, y - 30, 26, m.hp / m.maxHp, '#e0c080');
     return;
   }
@@ -1957,7 +1963,9 @@ export function drawSummon(ctx, m, time) {
     ctx.ellipse(x, y + 0.5, 9, 3.2, 0, 0, Math.PI * 2);
     ctx.stroke();
   }
-  blit(ctx, charSprite('m', look ? m.kind : 'militia', look || MILITIA, anim, frame), x, y, m.kind === 'elite' ? 1.02 : 0.95, false);
+  const art = allyArt(m.kind) || allyArt('militia');
+  if (art) drawArtUnit(ctx, art, x, y, t, false, m.anim > 0, false, 32);
+  else blit(ctx, charSprite('m', look ? m.kind : 'militia', look || MILITIA, anim, frame), x, y, m.kind === 'elite' ? 1.02 : 0.95, false);
   bar(ctx, x, y - 32, 16, m.hp / m.maxHp, look ? '#9cc4ff' : '#8fe3a0');
 }
 
@@ -1974,6 +1982,15 @@ export function drawTurtle(ctx, m, time) {
   const y = m.y * TS + 4;
   const a = Math.atan2(m.dy, m.dx);
   glow(ctx, x, y + 4, 34, '#9fd6f0', 0.5);
+  const art = allyArt('turtle');
+  if (art) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(a);
+    drawIllustration(ctx, art, 0, 20 + Math.sin(time * 7), 43);
+    ctx.restore();
+    return;
+  }
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(a);
@@ -2098,7 +2115,7 @@ export function drawCourier(ctx, m, time) {
     c.closePath();
     fillToon(c, '#d33a2c', -19, -46, -5, -34, { lw: 0.8 });
     c.fillStyle = '#ffe9a8';
-    c.font = 'bold 7px "Black Han Sans", sans-serif';
+    c.font = '700 7px "Noto Sans KR", "Malgun Gothic", sans-serif';
     c.textAlign = 'center';
     c.fillText('급', -12, -37.5);
     // 기수
@@ -2124,10 +2141,12 @@ export function drawCourier(ctx, m, time) {
   }
   softShadow(ctx, x, y, 13, 4, 0.3);
   glow(ctx, x, y - 16, 22, '#8fd3ff', 0.22);
-  blit(ctx, s, x, y, 1.2, flip);
+  const art = allyArt('courier');
+  if (art) drawArtUnit(ctx, art, x, y, time, true, false, flip, 62);
+  else blit(ctx, s, x, y, 1.2, flip);
   // 말풍선
   const text = Math.floor(time * 2.5) % 2 ? '급보요, 급보!' : '급보요!';
-  ctx.font = '400 13px "Black Han Sans", sans-serif';
+  ctx.font = '700 13px "Noto Sans KR", "Malgun Gothic", sans-serif';
   ctx.textAlign = 'center';
   const w = ctx.measureText('급보요, 급보!').width + 14;
   const by = y - 74 + Math.sin(time * 10) * 1.2;

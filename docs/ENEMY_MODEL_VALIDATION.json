@@ -1,0 +1,452 @@
+{
+  "date": "2026-10-10",
+  "scope": "22 enemy forms including 12 bosses, shared reachable IK, mounted and siege motion, real combat cues and guest rendering. Local implementation and verification.",
+  "versions": {
+    "node": "24.19.0",
+    "three": "0.186.1",
+    "esbuild": "0.24.0"
+  },
+  "tests": {
+    "selftest": {
+      "command": "node tools/selftest.mjs",
+      "passed": 14
+    },
+    "threeDimensional": {
+      "command": "node tools/test-3d.mjs",
+      "passed": 41,
+      "rerunAfterFinalFixes": true
+    },
+    "campaign": {
+      "command": "node tools/test-campaign.mjs",
+      "passed": 15
+    },
+    "enemies": {
+      "command": "node tools/test-enemies.mjs",
+      "passed": 12
+    },
+    "total": 82,
+    "forms": 22,
+    "uniqueBossHelmets": 12,
+    "uniqueHumanoidFaceGeometries": 21,
+    "twoHandWeapons": {
+      "kinds": 6,
+      "statesPerKind": 48,
+      "attachmentErrorLessThan": 1e-8
+    },
+    "groundGaits": {
+      "kinds": 20,
+      "framesPerKind": 64,
+      "soleHeightRange": [
+        0,
+        0.11
+      ],
+      "groundedSoleLessThan": 0.007
+    },
+    "mountedGait": {
+      "frames": 64,
+      "diagonalPairs": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "hoofHeightRange": [
+        0,
+        0.08
+      ],
+      "reinAttachmentErrorLessThan": 1e-8,
+      "actualWorldHitFrames": 12
+    },
+    "actualEngineChecks": [
+      "Repeated blocked melee cooldown and swing decay",
+      "Rifle damage, source ID and 2.2-second cadence",
+      "Successful 6-percent healing only, 2.5-second duplicate limit",
+      "Simultaneous shot and blocked melee with different targets on host and guest",
+      "Actual first-frame Renderer3D cue, pose and muzzle ordering",
+      "Crowd source meshes stay hidden and cues expire/reset",
+      "Frozen drum stops and resumes after real negative-timer expiry; haste aura unchanged"
+    ],
+    "campaignSimulationStages": 25,
+    "previousPaidProgression138BattlesRerun": false,
+    "previousFullTwoBrowserOnlineSessionRerun": false
+  },
+  "astraReview": {
+    "model": "GPT-6 Astra",
+    "reasoning": "xhigh",
+    "readOnly": true,
+    "fixed": [
+      "Blocked melee animation timer did not decay",
+      "Missing rifle/heal source cues and first-frame effect ordering",
+      "Melee event overwrote simultaneous rifle aim",
+      "Reins disconnected by subsequent hit recoil",
+      "Frozen drum continued beating",
+      "Negative expired stun timer permanently stopped walk/trot/wheels"
+    ],
+    "finalReview": "The three cue/rein/frozen-pose fixes were confirmed. The final negative-timer finding was fixed afterward and covered by real step expiry regression. No additional defects found in reviewed death handling, fallback events, cloning or crowd ownership."
+  },
+  "browser": {
+    "environment": "Windows PC, Codex in-app browser, Three.js r186",
+    "audio": {
+      "bgm": 0,
+      "sfx": 0
+    },
+    "enemyReview": {
+      "url": "http://127.0.0.1:8080/dev/3d-enemy-review.html",
+      "models": 22,
+      "bosses": 12,
+      "ordinary": 10,
+      "checked": [
+        "All models through scrolling",
+        "Full body and faces",
+        "Surface and silhouette",
+        "Quarter, front and back",
+        "Walking playback",
+        "Attack ready and release"
+      ],
+      "finalState": "Bosses, full body, quarter, surface, idle, paused",
+      "visibleAtTop": 8,
+      "trianglesAtTop": 188596,
+      "drawCallsAtTop": 354,
+      "consoleErrorsAndWarnings": 0
+    },
+    "heroRegression": {
+      "heroes": 8,
+      "state": "Faces, front, idle, paused, latest bundle",
+      "triangles": 149704,
+      "consoleErrorsAndWarnings": 0
+    },
+    "freeBattle": {
+      "url": "http://127.0.0.1:8080/3d.html?stage=s12&season=autumn&mute=1",
+      "heroes": [
+        "yi",
+        "gwon"
+      ],
+      "checked": [
+        "Actual combat",
+        "Rally movement",
+        "Mounted and ritual enemy models",
+        "Winter skill aimed and cast"
+      ],
+      "finalWave": 4,
+      "waveTotal": 16,
+      "lives": 6,
+      "maxLives": 20,
+      "gold": 397,
+      "combo": 42,
+      "pausedAtCapture": true,
+      "fullStageClear": false,
+      "consoleErrorsAndWarnings": 0
+    },
+    "standalone": {
+      "url": "http://127.0.0.1:8080/dist/hoguk.html?mute=1",
+      "stage": "s2",
+      "heroes": [
+        "yi",
+        "sejong"
+      ],
+      "checked": [
+        "Existing profile and formation",
+        "Audio settings",
+        "Normal combat",
+        "Build Sung L1 for 70 gold while paused",
+        "Upgrade Sung L2 for 60 gold while paused"
+      ],
+      "profileAtEntry": {
+        "coins": 2156,
+        "jade": 70
+      },
+      "permanentPurchasesMade": false,
+      "profileReset": false,
+      "finalWave": 2,
+      "waveTotal": 12,
+      "lives": 18,
+      "maxLives": 20,
+      "gold": 157,
+      "tower": {
+        "kind": "sung",
+        "tier": 2,
+        "upgrades": 1,
+        "tile": [
+          14,
+          5
+        ]
+      },
+      "paused": true,
+      "blackHanButtons": 0,
+      "consoleErrorsAndWarnings": 0
+    },
+    "mobileDisplay": {
+      "width": 414,
+      "height": 896,
+      "documentWidth": 414,
+      "horizontalOverflow": 0,
+      "blackHanButtons": 0,
+      "towerLabel": {
+        "name": "숭례문, 2 / 4단계, 1회 강화",
+        "x": 236.59375,
+        "y": 294.203125,
+        "width": 65,
+        "height": 46
+      },
+      "actualPhysicalPhone": false,
+      "temporaryViewportReset": true,
+      "note": "Display check only; build/upgrade interactions were checked at desktop size."
+    },
+    "crowd": {
+      "stage": "s12",
+      "season": "autumn",
+      "width": 1280,
+      "height": 720,
+      "quality": "high",
+      "instancing": true,
+      "enemyCount": 128,
+      "enemyKinds": [
+        "ashigaru",
+        "samurai",
+        "teppo"
+      ],
+      "heroes": [
+        "yi",
+        "sejong"
+      ],
+      "towerCount": 0,
+      "fps": 60,
+      "frameIntervalP95Ms": 17,
+      "drawCalls": 658,
+      "trianglesApproximate": 7664000,
+      "geometries": 323,
+      "unitSyncMs": 120,
+      "setupMs": 1123,
+      "consoleErrorsAndWarnings": 0,
+      "note": "Short local PC observation before final broad automated test rerun; other battles paused and galleries static. Not a phone guarantee or a performance improvement claim."
+    }
+  },
+  "standalone": {
+    "path": "dist/hoguk.html",
+    "fileProtocolTested": false,
+    "note": "Game code and raster assets inlined; optional Google Fonts stylesheet has CSS fallbacks.",
+    "bytes": 14567628,
+    "sha256": "56febb874aa0073522eccae93d1956b34f477c67da2c18113cfa5e44864c3bed",
+    "externalRasterAssetReferences": 0,
+    "externalPaintedReferences": 0
+  },
+  "sourceArtifacts": [
+    {
+      "path": "src/3d/enemy-design.js",
+      "bytes": 4923,
+      "sha256": "95114a6ac95d72be63a02bcbeb8af5c1fe8c423c30d22e97b9fe9fd8e2de4d4e"
+    },
+    {
+      "path": "src/3d/enemy-detail.js",
+      "bytes": 10544,
+      "sha256": "d929e0f9ea643353f49c5a155c9f9826c5db89284022806c0843f718faba73c4"
+    },
+    {
+      "path": "src/3d/enemy-pose.js",
+      "bytes": 5170,
+      "sha256": "b1f91b3ef2cfaa9fcbcd7ba87d3d18ce60c538eae733756e095535447fd4813e"
+    },
+    {
+      "path": "src/3d/joint-poses.js",
+      "bytes": 2126,
+      "sha256": "f5ccbcfc4fecd08270ff72762a34574ce21abc2877c17c663fe0978da68cbd13"
+    },
+    {
+      "path": "src/3d/hero-design.js",
+      "bytes": 1557,
+      "sha256": "95629691e11ed06a53f10062d22705240c4c1727e1db51fb058172f72ed51e0b"
+    },
+    {
+      "path": "src/3d/hero-pose.js",
+      "bytes": 4078,
+      "sha256": "00e5c7f022fe38887fadbc2fa0dd0ac6e31723e1e7dbba534b0a264517c59acf"
+    },
+    {
+      "path": "src/3d/models.js",
+      "bytes": 45892,
+      "sha256": "7ad755a4397c14d8af17a7daf1a5c25a3277eb2b3a4d9685ab5fe1d2a935acdc"
+    },
+    {
+      "path": "src/3d/combat-models.js",
+      "bytes": 8454,
+      "sha256": "82c7814078655928fd5264ec55c993eaff98d4fdcf407b3c9c57869f02169259"
+    },
+    {
+      "path": "src/3d/world.js",
+      "bytes": 31986,
+      "sha256": "9b16546db0761945ccb0672c75e3efd79c4ba7b0936eefb157da00b5dcae33e8"
+    },
+    {
+      "path": "src/3d/renderer.js",
+      "bytes": 9243,
+      "sha256": "6f7f1ccc14def0b21ad4c1879ff9d10eded81a1e0e5cee78252ef94b5af404c4"
+    },
+    {
+      "path": "src/3d/main.js",
+      "bytes": 25913,
+      "sha256": "b928326b25710372df68868b9ee71fbe93236269f3c4acf2a5fa223bba196eb2"
+    },
+    {
+      "path": "src/sim/sim.js",
+      "bytes": 52986,
+      "sha256": "b744e7b4fc1d3737d612f770bb4fc4e22c94931003690ed9937885f870be871b"
+    },
+    {
+      "path": "src/3d/enemy-review.js",
+      "bytes": 4887,
+      "sha256": "022e29f05103d739a30e8ed97959684e1212dee186cd566e99bacc75c1f27f71"
+    },
+    {
+      "path": "dev/3d-enemy-review.html",
+      "bytes": 3441,
+      "sha256": "bd5a222b24f641e4ce4fc826a836f7744bca68305be9df0b59564d1c9887bd9c"
+    },
+    {
+      "path": "tools/build-3d.mjs",
+      "bytes": 1766,
+      "sha256": "f00b87cb2478c579c782135b48c5d94582d1cf43418c87d777487ac69e42d0d6"
+    },
+    {
+      "path": "tools/test-enemies.mjs",
+      "bytes": 14526,
+      "sha256": "caa90b3db5df63cbd76edf781305086f81b6facf11dff22a55ecf5146f804444"
+    }
+  ],
+  "builtArtifacts": [
+    {
+      "path": "assets/3d/app.js",
+      "bytes": 1135427,
+      "sha256": "b2e1784e95038fbc49919aed68ccf46a6c453a77b8781fc81698e3b9022a29d2"
+    },
+    {
+      "path": "assets/3d/game.js",
+      "bytes": 909746,
+      "sha256": "7a38517ffaddf10ecfc25c6842ba171e6e24c507025cdb722c0e2dca4a995f5c"
+    },
+    {
+      "path": "assets/3d/enemy-review.js",
+      "bytes": 661118,
+      "sha256": "40629748c949799fc315dc51be8e7fcfe4e27da3bb5ae6be30678eea35e2779c"
+    },
+    {
+      "path": "assets/3d/hero-review.js",
+      "bytes": 661198,
+      "sha256": "8be188ed0a21aad3232aa19f6bf0013f350a927510fe7d1f7810a6b3f606cf3f"
+    },
+    {
+      "path": "assets/3d/performance-review.js",
+      "bytes": 816556,
+      "sha256": "19180da1c2d9442926f6fc0566975ed4ae30c0f36ee439307bce3f691a6a55a7"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/screenshots/3d-enemy-identity-before.jpg",
+      "bytes": 66772,
+      "sha256": "4479f0a4ac0b7668f04e94df5404f6dc18366d26cda388be0bf25234255996b1",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing",
+      "note": "Historical baseline captured before loading the new enemy models."
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-silhouettes.jpg",
+      "bytes": 54855,
+      "sha256": "1b2b8ccb0261b5cb0cde5e9a68deee7e07268be6fd680005ba371d26573f591e",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing",
+      "note": "Silhouette QA before lowering fans and removing excess Konishi/Ukita back banners; final model screenshots are recorded separately."
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-bosses.jpg",
+      "bytes": 58832,
+      "sha256": "5616e019eaad474a941e7ffcdc4f0c4c41ddced4703435b87974ed2329564459",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-final-bosses.jpg",
+      "bytes": 65949,
+      "sha256": "b058db3b21a5b911e8aa2386951fd86dd08f608a33313059bac87a8ebe157599",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-faces.jpg",
+      "bytes": 100485,
+      "sha256": "181b54459c3dad30cfe4cbdb26c867f1f99846ac316754e7880b84a3977395e5",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-troops.jpg",
+      "bytes": 53596,
+      "sha256": "18802e70c0c4477f9d1f360f45c9feaaf5f37ae09cffbc0cf820b10c44cc3d5d",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-walk-back.jpg",
+      "bytes": 49990,
+      "sha256": "154fc8771deeac479b4afe1ce111425900a5c53b343f442e7e572d664005bd98",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-heavy-attack.jpg",
+      "bytes": 47752,
+      "sha256": "861551ba463748f3b05e6c1cabec1be323154d4557f73f2c11148b324249f913",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-battle.jpg",
+      "bytes": 153358,
+      "sha256": "96958ee46744a14f1711d305e204fe894bfa079f76db6f0e86cfd2e66f906793",
+      "width": 1280,
+      "height": 720,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-standalone.jpg",
+      "bytes": 150895,
+      "sha256": "ebe4ca61dd761d6c61a429e87f3827e5fbb79f6edc65f6a842d34d3d69474751",
+      "width": 1280,
+      "height": 720,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-mobile.jpg",
+      "bytes": 81619,
+      "sha256": "43ee67349cadb31a6226da9d026e2ac90b023e106d7eab04b3bdc9ad565cd656",
+      "width": 414,
+      "height": 896,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-enemy-identity-crowd-128.jpg",
+      "bytes": 147923,
+      "sha256": "0fcf0cb474e5c380a1a86bd884ea153182b0d12595ded7a7c1047d264076b758",
+      "width": 1280,
+      "height": 720,
+      "source": "Native browser screenshot; no image editing"
+    }
+  ],
+  "limitations": [
+    "Code-built meshes and joints; dedicated reference-level skin/hair, skinned rigs and authored animation remain art production.",
+    "Physical-phone sustained performance, heat and memory remain unverified.",
+    "Long external-internet co-op on two separate devices remains unverified.",
+    "Human balance review and earned-only progression on hard/hell remain."
+  ]
+}

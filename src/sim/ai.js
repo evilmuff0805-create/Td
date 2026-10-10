@@ -97,8 +97,9 @@ export function botThink(s, bot, send) {
     bot.posted = true;
     const map = mapOf(s);
     myHeroes.forEach((h, i) => {
-      const path = map.paths[Math.min(h.slot, map.paths.length - 1)];
-      const target = map.samples.filter((sm) => sm.path === path && sm.d > path.total * (0.35 + i * 0.15)).slice(0, 1)[0] ||
+      const pathIdx = Math.min(s.coop ? bot.p : h.slot, map.paths.length - 1);
+      const path = map.paths[pathIdx];
+      const target = map.samples.find((sm) => sm.path === pathIdx && sm.d > path.total * (0.35 + i * 0.15)) ||
         map.samples.find((sm) => sm.d > 4);
       const melee = HEROES[h.heroId].block > 0;
       if (target) send({ t: 'move', p: bot.p, h: s.heroes.indexOf(h), x: target.x + (melee ? 0 : 0.8), y: target.y + (melee ? 0 : 0.8) });

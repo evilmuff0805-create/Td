@@ -37,11 +37,12 @@ export function titleScreen(app) {
     app.go('hub');
   };
   const el = h('div', { class: 'screen', id: 'title' },
+    !window.__HOGUK_STANDALONE__ ? h('a', { class: 'btn btn-small title-3d-link', href: '3d.html', onkeydown: (e) => e.stopPropagation() }, '3D 전장 자유 미리보기 →') : null,
     h('div', { class: 'title-wrap' },
       h('div', { class: 'logo', role: 'heading', 'aria-level': '1' }, '호국영웅전', h('span', { class: 'logo-seal', 'aria-hidden': 'true' }, h('span', {}, '護'), h('span', {}, '國'))),
       h('div', { class: 'tagline' }, '임진년, 영웅들이 다시 일어선다'),
       h('div', { class: 'hero-line', 'aria-hidden': 'true' },
-        HERO_ORDER.map((id, i) => h('div', { class: 'hl', style: { animationDelay: `${-i * 0.37}s` } }, heroFull(id, 100, heroSkin(app.profile, id))))),
+        HERO_ORDER.map((id, i) => h('div', { class: 'hl', style: { animationDelay: `${-i * 0.37}s` } }, heroFull(id, 160, heroSkin(app.profile, id))))),
       h('button', { class: 'btn btn-seal btn-big', onclick: start, autofocus: true }, '출정하기'),
       h('div', { class: 'title-hint' }, '유산을 세우고, 영웅을 이끌고, 동료와 호흡을 맞춰 도성을 지켜라'),
     ));
@@ -55,6 +56,7 @@ export function titleScreen(app) {
 export function hubScreen(app) {
   setBackdrop('lacquer');
   const p = app.profile;
+  if(p.campaignBonusNotice>0){const coins=p.campaignBonusNotice;p.campaignBonusNotice=0;saveProfile();queueMicrotask(()=>toast(`기존 전장 공적의 첫 승리 포상: 엽전 +${coins.toLocaleString()}`,5000));}
   ensureQuests(p, new Date());
   const r = p.rank;
   const need = rankXpNeeded(r);
@@ -86,7 +88,7 @@ export function hubScreen(app) {
           h('div', {}, h('b', { class: 'num', style: { fontSize: '19px' } }, `${rankName(r)} ${RANK_TITLES[r]}`), h('span', { class: 'dim', style: { fontSize: '14px' } }, ` · 품계 ${r + 1}/${RANKS.length}`)),
           h('div', {}, h('div', { class: 'bar' }, h('i', { style: { width: `${Math.min(100, (p.rankXp / need) * 100)}%` } })),
             h('span', { class: 'dim', style: { fontSize: '14px' } }, `다음 품계까지 ${fmt(need - p.rankXp)} 공적 · ${p.stats.games}전 ${p.stats.wins}승 · 처치 ${fmt(p.stats.kills)}`))),
-        tile('영웅', '여섯 위인 · 해금과 강화', 'heroes'),
+        tile('영웅', '여덟 위인 · 해금과 강화', 'heroes'),
         tile('비기', '조선의 비밀 병기 · 장착과 강화', 'skills'),
         tile('유산', '문화유산 도감 · 복원(영구 강화)', 'relics'),
         tile('임무', '일일 · 주간 임무, 출석부', 'quests', claimable > 0),
@@ -254,6 +256,8 @@ export function settingsScreen(app) {
         check('dmg', '피해 숫자 표시', 'dmgNumbers'),
         choice('화면 흔들림 (합격기 · 적장 처치 때만)', 'shakeLv', [[0, '끔'], [1, '약하게'], [2, '보통']]),
         choice('전장 분위기', 'mood', [['cinema', '영화풍'], ['bright', '밝은 낮']]),
+          choice('전투 화면', 'renderer', [['3d', '입체 3D'], ['2d', '평면 2D']]),
+          choice('3D 그래픽 품질', 'quality', [['high', '그림자 · 고품질'], ['low', '가벼운 화면']]),
         check('hints', '전투 도움말 보기', 'hints'),
         h('div', { class: 'toggle' }, h('span', {}, '도움말 다시 보기'), h('button', { class: 'btn btn-small', onclick: () => { p.hintsSeen = []; saveProfile(); toast('다음 전투에서 도움말이 다시 나옵니다'); } }, '초기화')),
         h('div', { class: 'toggle' }, h('span', { class: 'dim' }, '모든 기록 지우기 (되돌릴 수 없음)'),

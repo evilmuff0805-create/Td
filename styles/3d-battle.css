@@ -1,0 +1,48 @@
+/* Two equipped abilities and the actual two-hero resonance system. */
+:root{--commandbar-height:108px}
+.commandbar{display:grid;grid-template-columns:138px repeat(6,minmax(0,1fr)) 145px;gap:6px;width:min(1180px,calc(100% - 36px));max-width:1180px;padding:10px}
+.commandbar .quick-build{display:none!important}
+.commandbar>button{min-width:0!important;max-width:none!important;min-height:82px!important;margin:0;order:0}
+.commandbar .command.skill{padding:8px!important}
+.commandbar .command{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.commandbar .command b,.commandbar .command small{align-self:stretch;text-align:center}
+.commandbar .ability-art{position:relative;inset:auto;width:38px;height:38px;margin:0 auto 5px}
+.commandbar .unit-button{padding:9px;gap:7px;grid-column:auto}
+.commandbar .unit-button .portrait{width:40px;height:44px}
+.commandbar .unit-button b{font-size:12px}.commandbar .unit-button small{font-size:8px}
+.commandbar #next{grid-column:auto}.commandbar .next b{font-size:17px}
+.commandbar #library .command-icon{font-size:28px;margin-bottom:5px}
+.commandbar .command.skill small{min-height:14px}
+.commandbar .combo{border-color:#779fb889;background:linear-gradient(145deg,#2d3f50,#182e3c)}
+.commandbar .combo:disabled{opacity:.76}
+.commandbar .combo-ready{border-color:#efd5a0;box-shadow:inset 0 0 18px #cfab5823,0 0 12px #f4cb6a45}
+.charge-track{position:absolute;bottom:0;left:7px;right:7px;height:3px;background:#5a6b735e;border-radius:2px;overflow:hidden}
+.charge-track i{display:block;width:var(--charge,0%);height:100%;background:linear-gradient(90deg,#68aecf,#efce85);transition:width .3s}
+.selection{bottom:calc(var(--commandbar-height) + 54px)}.camera-tools{bottom:calc(var(--commandbar-height) + 59px)}
+#hero-actions{border-top:1px solid #a1b9bc36;padding-top:10px;margin-top:10px}
+.combo-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}.combo-heading b{font-size:12px;color:#e8c78f}.combo-heading small{font-size:9px!important;letter-spacing:0!important;color:#b9d5e1}
+#resonance{display:block;width:100%;height:5px;margin:8px 0;appearance:none;border:0;border-radius:3px;overflow:hidden;background:#6c849044;color:#c9bc85}
+#resonance::-webkit-progress-bar{background:#6c849044}#resonance::-webkit-progress-value{background:linear-gradient(90deg,#65a7ce,#ebce88)}#resonance::-moz-progress-bar{background:linear-gradient(90deg,#65a7ce,#ebce88)}
+#hero-actions p{font-size:9px;margin:7px 0;color:#b6cfdd;line-height:1.7}
+#rally{width:100%;font-size:11px;padding:7px;border-color:#9cb9bb55;background:#34536455}
+#cast-pair{display:flex;align-items:center;gap:5px;flex-shrink:0}#cast-pair i{width:52px;height:62px;border:1px solid #dbc28a88;border-radius:7px;background-color:#162e42}
+#cast-art{width:65px;height:65px;flex-shrink:0;border-radius:7px;background-repeat:no-repeat}#selection-art,.ability-art{background-repeat:no-repeat}
+#cast-banner.combo-cast{border-color:#d4bc7b9c;max-width:min(650px,90%);background:linear-gradient(110deg,#243e52f5,#233a48ed)}
+body[data-skills='1'] .commandbar{grid-template-columns:138px repeat(5,minmax(0,1fr)) 145px}
+@media(max-width:1000px){.commandbar{grid-template-columns:126px repeat(6,minmax(0,1fr)) 126px;gap:5px;padding:8px}.commandbar .ability-art{width:33px;height:33px}.commandbar .command.skill b{font-size:10px}.commandbar .command.skill small{font-size:8px}.commandbar .next b{font-size:15px}.commandbar .unit-button .portrait{width:33px;height:39px}body[data-skills='1'] .commandbar{grid-template-columns:126px repeat(5,minmax(0,1fr)) 126px}}
+@media(max-width:700px){
+  .commandbar,body[data-skills='1'] .commandbar{grid-template-columns:repeat(3,minmax(0,1fr));width:calc(100% - 24px);padding:7px;bottom:18px;gap:5px}
+  .commandbar>button{order:2;min-height:78px!important;padding:6px!important}
+  .commandbar .command{min-height:78px!important;padding:6px!important}.commandbar .command.skill{padding:6px!important}.commandbar .command b,.commandbar .command small{margin:0;line-height:1.35}
+  .commandbar .unit-button{grid-column:span 2;order:0;min-height:58px!important;justify-content:flex-start;padding:7px 11px!important}.commandbar .unit-button small{margin-top:2px;line-height:1.35}
+  .commandbar #next{grid-column:span 1;order:1;min-height:52px!important;padding:7px!important}
+  .commandbar .unit-button .portrait{width:36px;height:36px}.commandbar .unit-button b{font-size:12px}.commandbar .unit-button small{font-size:8px}
+  .commandbar .ability-art{width:31px;height:31px;margin-bottom:4px}.commandbar #library .command-icon{font-size:24px;line-height:31px;margin:0 0 4px}.commandbar .command.skill b{font-size:11px}.commandbar .command.skill small{font-size:9px}
+  .commandbar .next b{font-size:13px}.commandbar .next small{font-size:8px;line-height:1.4}.commandbar kbd{font-size:8px;right:5px;top:5px}
+  .selection{bottom:calc(var(--commandbar-height) + 30px);left:15px;width:277px;padding:11px 13px;max-width:calc(100% - 72px)}
+  .camera-tools{bottom:calc(var(--commandbar-height) + 35px);right:15px}
+  #hero-actions{margin-top:8px;padding-top:8px}#hero-actions p{font-size:9px}.combo-heading b{font-size:11px}#rally{padding:6px}
+  #cast-banner{top:155px;gap:10px;min-width:0;width:calc(100% - 30px);max-width:calc(100% - 30px);padding:9px 12px}#cast-banner b{font-size:18px}#cast-banner em{font-size:9px;line-height:1.6}
+  #cast-pair{gap:3px}#cast-pair i{width:35px;height:45px}#cast-art{width:53px;height:53px}
+  body[data-skills='1'] #barrage{grid-column:span 2}
+}
+@media(max-height:650px) and (min-width:701px){#hero-actions p{margin:4px 0}#hero-actions{padding-top:7px;margin-top:7px}.selection{padding:10px 13px}.stage-caption p{display:none}}

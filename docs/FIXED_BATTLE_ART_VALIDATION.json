@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-10",
+  "delivery": "고정 시점의 2.5D 그림 전장. 기존 3D 엔진의 실제 지면 좌표와 전투 시뮬레이션 사용.",
+  "builds": {
+    "standalone": "node tools/build-3d.mjs",
+    "singleFile": "node tools/build.mjs",
+    "result": "passed",
+    "offlineAssetBundle": "dist/hoguk.html"
+  },
+  "tests": {
+    "selftest": 14,
+    "battle3d": 41,
+    "campaign": 16,
+    "enemies": 12,
+    "characterSurfaces": 7,
+    "fixedArt": 8,
+    "total": 98,
+    "latestAffectedRerun": [
+      "tools/test-fixed-art.mjs",
+      "tools/test-campaign.mjs",
+      "tools/test-3d.mjs"
+    ],
+    "result": "passed"
+  },
+  "browserChecks": [
+    "정식 캠페인: 실제 편성으로 동래성 출전, 숭례문 건설 및 실제 군자금으로 1→2→3 강화.",
+    "겨울 전장: 숭례문 1→2→3 외형, 이순신 실제 이동 및 방향별 포즈, 학익진 시전과 재사용 시간.",
+    "414×896: 두 전장의 HTML 너비와 스크롤 너비 모두 414픽셀. 수원화성 실제 90냥·140냥 비용으로 1→2→3 강화. 정식 게임 일시정지 버튼 작동.",
+    "겨울→행주대첩 겨울→탄금대 여름→진주대첩 가을 전환. 봄 정식 캠페인 확인.",
+    "대기 중 자동·수동 출정 보류, queued 명령 재개, 게스트 스냅샷 동기화는 GameUI·Session 통합 회귀로 확인.",
+    "공유 그림 자원 유지, 죽은 영웅 재출전 복구, 투명 여백 선택, 일부 그림 누락의 모델 묶기 복구 확인."
+  ],
+  "performance": {
+    "fps": 60,
+    "drawCalls": 777,
+    "triangles": 96000,
+    "p95Ms": 17,
+    "spawnMs": 79,
+    "setupMs": 1752,
+    "count": 128,
+    "quality": "high",
+    "measurement": "local in-app browser; successful asset load; 3 warm-up frames; not a device guarantee"
+  },
+  "review": {
+    "reviewer": "사용자가 요청한 Astra xhigh 검토 에이전트",
+    "finalOutcome": "추가 중요 결함 없음. 검토는 읽기 전용이며 테스트 재실행은 주 작업자가 수행."
+  },
+  "limitations": [
+    "실시간 입체 조형으로 모든 캐릭터를 재제작한 결과가 아닌 2.5D 그림 표현이다.",
+    "기본 이순신에 네 방향 16칸 신규 그림 적용. 다른 영웅·의복·일반 병력은 기존 고해상도 단일 그림과 방향 전환·작은 움직임 사용.",
+    "신규 단계별 그림은 숭례문·수원화성 각 5종. 나머지 8개 유산은 기존 그림과 크기·보강 표식을 사용하며 50개 전용 신규 그림은 아직 아니다.",
+    "길과 지형은 실제 격자 지도와 진입 경로를 따른다.",
+    "128명 측정은 이 로컬 환경의 결과이며 모든 기기에서 60fps를 보장하지 않는다.",
+    "새 그림의 긴 프레임 전투 애니메이션과 모든 영웅·적의 방향별 제작은 후속 미술 작업이다."
+  ],
+  "screenshots": [
+    "docs/screenshots/fixed-battle-tier1.jpg",
+    "docs/screenshots/fixed-battle-tier2.jpg",
+    "docs/screenshots/fixed-battle-tier3.jpg",
+    "docs/screenshots/fixed-battle-winter.jpg",
+    "docs/screenshots/fixed-battle-skill.jpg",
+    "docs/screenshots/fixed-release-spring.jpg",
+    "docs/screenshots/fixed-battle-summer.jpg",
+    "docs/screenshots/fixed-battle-autumn.jpg",
+    "docs/screenshots/fixed-mobile.jpg",
+    "docs/screenshots/fixed-crowd-128.jpg"
+  ],
+  "audio": "모든 브라우저 검증 URL에 mute=1 사용. 게임 음악과 효과음 꺼짐.",
+  "generationRecord": "docs/FIXED_BATTLE_ART_PROMPTS.json"
+}

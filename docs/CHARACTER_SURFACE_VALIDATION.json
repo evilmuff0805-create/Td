@@ -1,0 +1,555 @@
+{
+  "date": "2026-10-10",
+  "recordedAtUtc": "2026-10-10T08:55:43.890Z",
+  "timezone": "Asia/Seoul",
+  "node": "v24.19.0",
+  "three": "0.186.1",
+  "scope": {
+    "heroes": [
+      "yi",
+      "sejong",
+      "eulji",
+      "gang",
+      "gwon",
+      "gwak",
+      "ahn",
+      "dangun"
+    ],
+    "humanEnemies": [
+      "ashigaru",
+      "teppo",
+      "scout",
+      "samurai",
+      "ninja",
+      "onmyoji",
+      "cavalry",
+      "drum",
+      "armored",
+      "konishi",
+      "kato",
+      "wakizaka",
+      "ukita",
+      "ishida",
+      "so",
+      "kuroda",
+      "todo",
+      "kuki",
+      "kurushima",
+      "shimazu",
+      "hideyoshi"
+    ],
+    "allies": [
+      "militia",
+      "guard",
+      "elite",
+      "monk"
+    ],
+    "humanModels": 33,
+    "skinVariants": [
+      "yi_white",
+      "yi_gold",
+      "sejong_blue",
+      "sejong_gold",
+      "eulji_iron",
+      "eulji_gold",
+      "gang_crimson",
+      "gang_gold",
+      "gwon_hill",
+      "gwon_gold",
+      "gwak_black",
+      "gwak_gold",
+      "ahn_militia",
+      "ahn_gold",
+      "dangun_sky",
+      "dangun_gold"
+    ],
+    "surfaceKinds": [
+      "skin",
+      "hair",
+      "cloth",
+      "armor",
+      "leather"
+    ],
+    "sharedMaps": 15,
+    "mapPixels": [
+      128,
+      128
+    ],
+    "rawMapBytes": 983040
+  },
+  "tests": {
+    "suites": [
+      {
+        "command": "node tools/selftest.mjs",
+        "passed": 14,
+        "result": "passed after final face/hair correction"
+      },
+      {
+        "command": "node tools/test-3d.mjs",
+        "passed": 41,
+        "result": "passed after final face/hair correction"
+      },
+      {
+        "command": "node tools/test-campaign.mjs",
+        "passed": 15,
+        "result": "passed after final face/hair correction"
+      },
+      {
+        "command": "node tools/test-enemies.mjs",
+        "passed": 12,
+        "result": "passed after final face/hair correction"
+      },
+      {
+        "command": "node tools/test-character-surfaces.mjs",
+        "passed": 7,
+        "result": "passed after final face/hair correction"
+      }
+    ],
+    "total": 89,
+    "allPassed": true,
+    "finalFullRerun": true
+  },
+  "review": {
+    "model": "GPT-6 Astra",
+    "reasoning": "xhigh",
+    "readOnly": true,
+    "corrected": [
+      "Face cap centers excluded from front projection to avoid Float32 rounding distortion and degenerate triangles",
+      "Hair cap covers forehead and crown instead of exposing skin",
+      "Parting height distributed across lower rings to preserve vertical order",
+      "Closed hair UV seam normals averaged"
+    ],
+    "finalHairCheck": {
+      "ringRows": 21,
+      "verticalInversions": 0,
+      "minimumRowSpacing": 0.000829,
+      "reversedFrontTriangles": 0,
+      "seamNormalDifference": 0
+    }
+  },
+  "browser": {
+    "name": "Codex in-app browser",
+    "defaultViewport": [
+      1280,
+      720
+    ],
+    "renderer": "three.js r186 / WebGL2",
+    "heroes": {
+      "count": 8,
+      "focus": "face/body",
+      "outfits": [
+        "base",
+        "variant",
+        "gold"
+      ],
+      "lights": [
+        "neutral",
+        "warm",
+        "cool"
+      ],
+      "motion": [
+        "idle",
+        "walk-back",
+        "attack-0",
+        "attack-100"
+      ],
+      "resourceCycle": {
+        "sequence": [
+          "base",
+          "variant",
+          "gold",
+          "base"
+        ],
+        "restoredGeometries": 368,
+        "textures": 32,
+        "programs": 4,
+        "note": "Geometry upload count during intermediate face views varies with the camera frustum; end-of-cycle equals the initial count."
+      }
+    },
+    "enemies": {
+      "models": 22,
+      "faceModels": 21,
+      "scrollCaptures": 3
+    },
+    "game": {
+      "url": "http://127.0.0.1:8080/dist/hoguk.html?mute=1",
+      "stage": "s2",
+      "season": "spring",
+      "heroes": [
+        "yi",
+        "sejong"
+      ],
+      "heroLevels": [
+        1,
+        1
+      ],
+      "difficulty": "normal",
+      "wave": 3,
+      "wavesTotal": 12,
+      "lives": 20,
+      "livesMax": 20,
+      "gold": 232,
+      "tower": {
+        "kind": "sungnyemun",
+        "tile": [
+          14,
+          5
+        ],
+        "displayTier": 2,
+        "buildCost": 70,
+        "upgradeCost": 60
+      },
+      "actions": [
+        "build",
+        "upgrade",
+        "rally",
+        "ordinary attacks"
+      ],
+      "paused": true,
+      "fullClear": false,
+      "profile": {
+        "coins": 2156,
+        "jade": 70,
+        "permanentPurchases": false,
+        "reset": false
+      },
+      "blackHanButtons": 0
+    },
+    "mobile": {
+      "viewport": [
+        414,
+        896
+      ],
+      "documentWidth": 414,
+      "horizontalOverflow": false,
+      "towerLabel": {
+        "x": 236.59375,
+        "y": 294.203125,
+        "width": 65,
+        "height": 46
+      }
+    },
+    "audio": {
+      "sfx": 0,
+      "bgm": 0,
+      "verified": "Settings screen sliders"
+    },
+    "consoleErrors": 0,
+    "consoleWarnings": 0
+  },
+  "performance": {
+    "browserViewport": [
+      1280,
+      720
+    ],
+    "stage": "s12",
+    "season": "autumn",
+    "heroes": [
+      "yi",
+      "sejong"
+    ],
+    "towers": 0,
+    "enemies": 128,
+    "enemyTypes": [
+      "ashigaru",
+      "samurai",
+      "teppo"
+    ],
+    "batchCrowd": true,
+    "quality": "high",
+    "fps": 60,
+    "p95Ms": 17,
+    "drawCalls": 658,
+    "trianglesApprox": 8176000,
+    "geometries": 323,
+    "spawnSyncMs": 135,
+    "setupMs": 1214,
+    "sampleWindow": 6,
+    "windowApproxSeconds": 1,
+    "initialObservationFps": 44,
+    "otherBattlesPaused": true,
+    "galleriesStatic": true,
+    "automatedTestsRunning": false,
+    "notes": "Short desktop observation after warm-up. Startup may fluctuate; not a physical-phone benchmark. Performance page clears old measurements when reconstructing the scene."
+  },
+  "build": {
+    "standalone": "dist/hoguk.html",
+    "bytes": 14576003,
+    "remoteScriptReferences": [],
+    "externalRasterReferences": [],
+    "fontFallback": true
+  },
+  "remaining": [
+    "Authored high-resolution character textures and skinned deformation/animation matching the references",
+    "Paid progression through hard/hell difficulties and human balance play",
+    "Physical-phone sustained performance",
+    "Co-op between two devices over the external internet",
+    "file:// standalone execution not checked this pass"
+  ],
+  "historicalEvidence": {
+    "previousPass": "docs/ENEMY_MODEL_VALIDATION.json",
+    "baselineScreenshot": "docs/screenshots/3d-character-surfaces-before.jpg"
+  },
+  "artifacts": [
+    {
+      "path": "src/3d/character-surfaces.js",
+      "bytes": 4113,
+      "sha256": "5d0f01d25e927eeba2a1250904f1b5f36b3493357f4f50e7a3d36a6785003748"
+    },
+    {
+      "path": "src/3d/character-detail.js",
+      "bytes": 14338,
+      "sha256": "670ad5955f149b0cd451190cfbb99d3c3d3a24acf3fefa003972ce629ab942a3"
+    },
+    {
+      "path": "src/3d/sculpture.js",
+      "bytes": 8336,
+      "sha256": "7e31a56d944d6b237bb7973c1a7ef6dba21a8db428bce127437403331db53444"
+    },
+    {
+      "path": "src/3d/models.js",
+      "bytes": 46035,
+      "sha256": "c25c620cc805ee39d6dd5c795aa68c2770bbec1757d1968125db6788a7886591"
+    },
+    {
+      "path": "src/3d/hero-review.js",
+      "bytes": 6235,
+      "sha256": "37a5be263df2dbe043cfea3529bfc9a64e4794a3db623e734de271c32f53e144"
+    },
+    {
+      "path": "src/3d/performance-review.js",
+      "bytes": 3047,
+      "sha256": "a62faa1ba656469ff748594d2d5db395e8b28d4becaafe3410c11561b3dc4ef0"
+    },
+    {
+      "path": "src/3d/hero-design.js",
+      "bytes": 1557,
+      "sha256": "95629691e11ed06a53f10062d22705240c4c1727e1db51fb058172f72ed51e0b"
+    },
+    {
+      "path": "src/3d/enemy-design.js",
+      "bytes": 4923,
+      "sha256": "95114a6ac95d72be63a02bcbeb8af5c1fe8c423c30d22e97b9fe9fd8e2de4d4e"
+    },
+    {
+      "path": "src/3d/combat-models.js",
+      "bytes": 8454,
+      "sha256": "82c7814078655928fd5264ec55c993eaff98d4fdcf407b3c9c57869f02169259"
+    },
+    {
+      "path": "src/3d/world.js",
+      "bytes": 31986,
+      "sha256": "9b16546db0761945ccb0672c75e3efd79c4ba7b0936eefb157da00b5dcae33e8"
+    },
+    {
+      "path": "src/3d/crowd.js",
+      "bytes": 2898,
+      "sha256": "6277c8af61957a223b9a58c1b92f813714a11f433177b06d1be86b0744b1cef3"
+    },
+    {
+      "path": "src/data/skins.js",
+      "bytes": 2748,
+      "sha256": "4545678d62ef49b5b0f1ccdbfaf7323816a4cc2e92ffd3ecbc743ffb98f43276"
+    },
+    {
+      "path": "dev/3d-hero-review.html",
+      "bytes": 3392,
+      "sha256": "493d5b3052e5fc4c0afb27fdfc392ded2bdb37d2a1c1d0c77ccfb53a229308f6"
+    },
+    {
+      "path": "dev/3d-enemy-review.html",
+      "bytes": 3441,
+      "sha256": "bd5a222b24f641e4ce4fc826a836f7744bca68305be9df0b59564d1c9887bd9c"
+    },
+    {
+      "path": "dev/3d-performance-review.html",
+      "bytes": 1731,
+      "sha256": "2dac86b05c46b02ec899c8ca6ed5ec45babed0a8191ea7b0f73cd6a173124585"
+    },
+    {
+      "path": "tools/selftest.mjs",
+      "bytes": 17062,
+      "sha256": "a16a042aa44a4c2917b0d3e08db7a016e50e8ce14106c1543e64e6e739a1aac1"
+    },
+    {
+      "path": "tools/test-3d.mjs",
+      "bytes": 51305,
+      "sha256": "229a1c8c901a72638892638a71a22dbd768b2e724ecd64fd29f7082fc0ed1202"
+    },
+    {
+      "path": "tools/test-campaign.mjs",
+      "bytes": 17661,
+      "sha256": "2d8005cd20d1a2543eed2510992b37251e38aa06f0dacf3a0f4c3dccc5b58284"
+    },
+    {
+      "path": "tools/test-enemies.mjs",
+      "bytes": 14526,
+      "sha256": "caa90b3db5df63cbd76edf781305086f81b6facf11dff22a55ecf5146f804444"
+    },
+    {
+      "path": "tools/test-character-surfaces.mjs",
+      "bytes": 9130,
+      "sha256": "d4d7e7547454ba21cbd22de1427dacf788c9b80bc4bec3e5ea8a33c88db9da6f"
+    },
+    {
+      "path": "tools/build-3d.mjs",
+      "bytes": 1766,
+      "sha256": "f00b87cb2478c579c782135b48c5d94582d1cf43418c87d777487ac69e42d0d6"
+    },
+    {
+      "path": "tools/build.mjs",
+      "bytes": 2584,
+      "sha256": "b27ffbedde0d89112fbce1292bde8e4e0f70116b522ea0500b779b0cc079aac0"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1008,
+      "sha256": "cf06020f0447434970438232831012acb6dbc458315b113d5182471f92fe9e04"
+    },
+    {
+      "path": "assets/3d/app.js",
+      "bytes": 1143802,
+      "sha256": "5004f5604b32b5156ec9323e40a46cb1a0c49fda6d13bec114b77ec2fb80f95a"
+    },
+    {
+      "path": "assets/3d/enemy-review.js",
+      "bytes": 670711,
+      "sha256": "21238e22f19844a93a71f8271122c707e4ef47b55cc9fb37d1a3c5dfba011e44"
+    },
+    {
+      "path": "assets/3d/game.js",
+      "bytes": 918127,
+      "sha256": "8e833055771151079390ffd42c97be9e3b07eb74ad3dedd9c887558e8f099251"
+    },
+    {
+      "path": "assets/3d/hero-review.js",
+      "bytes": 671864,
+      "sha256": "c174b2d4195883a01888302a8f77f2def4535e83c3fef8d4ab722118cd3241a2"
+    },
+    {
+      "path": "assets/3d/material-review.js",
+      "bytes": 542612,
+      "sha256": "4f8f1b87036e86565082a42aa17711dd33dddefb09424c7a0fe432e885577ae0"
+    },
+    {
+      "path": "assets/3d/performance-review.js",
+      "bytes": 825077,
+      "sha256": "036b86cf167fc93f5f127472ceb27fbde12664eca32c2adea3a9ea8e23059f0f"
+    },
+    {
+      "path": "assets/3d/roster-review.js",
+      "bytes": 669733,
+      "sha256": "d068c48e693e3d56876c7a79801038dcecce2d52eb2cc5ccb061f08f5d59a48f"
+    },
+    {
+      "path": "assets/3d/season-review.js",
+      "bytes": 777774,
+      "sha256": "8200ed1207800653a89a1f62ec8fefd38cb7ffd7470f8960b7d7828418249ab5"
+    },
+    {
+      "path": "assets/3d/tower-review.js",
+      "bytes": 646199,
+      "sha256": "9c0db1dd42bd807c45b3949289561cf014726923dac287055d0b3b00f77e10a5"
+    },
+    {
+      "path": "dist/hoguk.html",
+      "bytes": 14576003,
+      "sha256": "2cf3f55705028e7580e426d9d15c92968a6f62069b3131af45d600387267f723"
+    },
+    {
+      "path": "README.md",
+      "bytes": 16690,
+      "sha256": "36da6fae2dc316893c7af2773ebc06cada637d20a6d11379ca2e92f66e431085"
+    },
+    {
+      "path": "docs/CHARACTER_SURFACES.md",
+      "bytes": 7297,
+      "sha256": "13221a41b02181ba769ca1d7e769d6e5246f9113a1220643454f4c65e96d41fa"
+    },
+    {
+      "path": "docs/3D_FULL_GAME.md",
+      "bytes": 10755,
+      "sha256": "2e187c83d3f88e2afe4efe573ade93249391382a885b8695ab10f0914c86211c"
+    },
+    {
+      "path": "docs/POLISH_RELEASE.md",
+      "bytes": 9221,
+      "sha256": "f06e01cd4c8b210f07c284210015f0ac38ec1e676881d7210ea73e1fe2b7a25c"
+    },
+    {
+      "path": "docs/HERO_MODELS_AND_MOTION.md",
+      "bytes": 7004,
+      "sha256": "bc7cc73473e874701ec29d5a94e45f7c1313f36d614f0191282639ee9dec98c9"
+    },
+    {
+      "path": "docs/ENEMY_MODELS_AND_MOTION.md",
+      "bytes": 9274,
+      "sha256": "75a2ecd3511cc906041b9cf0b45565cf976e48a6036cbd5df0d510fe1143619a"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-attack.jpg",
+      "bytes": 62202,
+      "sha256": "e78f4bfd1c90a2e3d50169cb7fc29d9d3a9493dec9aa57876d1ecaa6f06409c7"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-before.jpg",
+      "bytes": 83196,
+      "sha256": "05ae5e7fb29c571a33cb7fd6572cf0717abfbdf92b7253ebbadb11f86529227f"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-crowd-128.jpg",
+      "bytes": 148189,
+      "sha256": "6c447341428732b9b3805f6b13ab3b53a8cec408445db951b15be937a1620da0"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-enemy-bottom.jpg",
+      "bytes": 78782,
+      "sha256": "dda52c1ec6bff283acfaf7c97f7762f96dd9076bd65126595432f440f2be174f"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-enemy-middle.jpg",
+      "bytes": 88332,
+      "sha256": "de1e9538850b4fa8acb34a330e4fbcb276088fd7ef4f2a278ccc55609bae9b94"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-enemy-top.jpg",
+      "bytes": 68529,
+      "sha256": "1af53e89d8c65485a9c2317701474ee9222781fe7b6a950cf9b3417b8b2b03f6"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-faces.jpg",
+      "bytes": 81874,
+      "sha256": "572a77e37d44ecab67f105841947bd8e6e80a0abecedd192801b4b2feebff97c"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-gold-warm.jpg",
+      "bytes": 64589,
+      "sha256": "7aca71710d7e9f071bddbe900c22f0163c648b79df2030d0dc7f0da8ce61e8cc"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-mobile.jpg",
+      "bytes": 10611,
+      "sha256": "e5d036483e37d024b2c6cd15319b51fe3411974f41031b76b1754a1554ad1395"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-release.jpg",
+      "bytes": 62859,
+      "sha256": "6b8bcffd52f93bd978baeae9084cab50fbc2bf2028bdd77aad27724a7f8fe923"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-standalone.jpg",
+      "bytes": 154782,
+      "sha256": "e160b109e52474ce0853bd45b9e8a4da41c9bcf1a8cac82505762fe1a83eee3c"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-variant-cool.jpg",
+      "bytes": 81824,
+      "sha256": "9a8cf0e725f23e4be721398321a5ad3759fa43d82a6e6d106b47374424a1b854"
+    },
+    {
+      "path": "docs/screenshots/3d-character-surfaces-walk-back.jpg",
+      "bytes": 57828,
+      "sha256": "9cb8d3e4a7795e3a0855104d7675b9600b8c9d0480cbd46021008423e0f947bb"
+    }
+  ]
+}

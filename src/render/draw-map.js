@@ -4,6 +4,8 @@ import { OL, fillToon, sphere, gloss, rrect, box, cylinder, softShadow, eye, spr
 import { roof3d } from './draw-towers.js';
 import { T_WATER, T_PATH, T_BASE } from '../sim/map.js';
 import { makeRng, hashSeed } from '../sim/rng.js';
+import { renderIllustratedMap } from './illustrated-map.js';
+import { structureArt, drawIllustration } from './art.js';
 
 export const SEASONS = {
   spring: { ground: '#a8c47c', ground2: '#94b56b', path: '#d2b98f', pathEdge: '#a88c63', water: '#4d8fb3', flower: ['#f29bb8', '#fff2f6', '#f7c6d6'], tree: '#355e3b', sky: '#f7eed8' },
@@ -13,7 +15,9 @@ export const SEASONS = {
   autumn: { ground: '#c7b377', ground2: '#b39f63', path: '#bfa073', pathEdge: '#8e7350', water: '#4a86a6', flower: ['#e0562f', '#f0a13a', '#f7d77c'], tree: '#6b5a2a', sky: '#f4e8d0', maple: true },
 };
 
-export function renderMapBackground(map, stage, dpr = 1) {
+export function renderMapBackground(map, stage, dpr = 1, opts = {}) {
+  const painted = renderIllustratedMap(map, stage, dpr, opts);
+  if (painted) return painted;
   const W = map.w * TS;
   const H = map.h * TS;
   const cv = document.createElement('canvas');
@@ -563,9 +567,13 @@ export function drawBase(ctx, map, stage, t) {
   const x = map.base.x * TS + TS / 2;
   const y = map.base.y * TS + TS / 2 + 16;
   softShadow(ctx, x, y, 36, 9, 0.35);
-  blit(ctx, sprite('gate', 80, 90, 40, 80, gateBody), x, y, 0.95);
-  flagLiveMap(ctx, x - 30, y - 18, 30, PAL.dancheongR, t);
-  flagLiveMap(ctx, x + 30, y - 18, 30, PAL.dancheongB, t + 1, -1);
+  const art = structureArt('gate');
+  if (art) drawIllustration(ctx, art, x, y, 83);
+  else {
+    blit(ctx, sprite('gate', 80, 90, 40, 80, gateBody), x, y, 0.95);
+    flagLiveMap(ctx, x - 30, y - 18, 30, PAL.dancheongR, t);
+    flagLiveMap(ctx, x + 30, y - 18, 30, PAL.dancheongB, t + 1, -1);
+  }
   ctx.font = '700 14px "Gowun Batang", serif';
   ctx.textAlign = 'center';
   ctx.lineWidth = 4;

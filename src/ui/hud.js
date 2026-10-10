@@ -13,7 +13,9 @@ import { STAGE_BY_ID, DIFFICULTY, parseWave } from '../data/stages.js';
 import { findCombo, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import { EARLY_BONUS_PER_SEC } from '../sim/sim.js';
 import { getMap, tileAt, nearestOnPath, T_BUILD } from '../sim/map.js';
-import { autoAim } from '../sim/abilities.js';
+import { autoAim, comboStatus } from '../sim/abilities.js';
+import { abilityIllustration, paintAbility } from '../3d/skill-art.js';
+import { rallyTargets } from '../3d/battle-controls.js';
 import { audio } from '../audio/audio.js';
 import { Ring, spread } from './ring.js';
 import { ITEMS, ITEM_ORDER, ITEM_CD } from '../data/items.js';
@@ -28,10 +30,11 @@ const ULT_TARGETLESS = { sejong: true, gang: true, gwak: true, ahn: true, dangun
 const TARGET_LABEL = { first: '선두', last: '후미', strong: '강적', close: '근접' };
 
 export class GameUI {
-  constructor({ root, session, profile, names, onEnd, onQuit, onRestart }) {
+  constructor({ root, session, profile, names, onEnd, onQuit, onRestart, rendererClass = Renderer }) {
     this.root = root;
     this.s = session;
     this.profile = profile;
+    this.is3d = rendererClass.is3d === true;
     this.names = names || [];
     this.onEnd = onEnd;
     this.onQuit = onQuit;
@@ -58,8 +61,19 @@ export class GameUI {
     this.hintsSeen = new Set(profile.hintsSeen || []);
     this.hintTimer = 0;
     this.buildDom();
-    this.renderer = new Renderer(this.cv);
-    this.renderer.setup(session.stageId, { mood: profile.settings.mood });
+    try {
+      this.renderer = new rendererClass(this.cv, { overlay: this.overlay, onTowerSelect: id => { if (!this.targeting) this.openTowerPanel(id); }, onBuild: (x,y) => { if(this.canBuildAt(x,y)){this.cancelTargeting();this.openBuildMenu(x,y);} } });
+      this.renderer.setup(session.stageId, { mood: profile.settings.mood, quality: profile.settings.quality });
+    } catch (error) {
+      if (!this.is3d) throw error;
+      this.renderer?.destroy?.();
+      this.is3d = false;
+      this.buildDom(); // A WebGL canvas cannot be reused for a 2D context.
+      this.renderer = new Renderer(this.cv);
+      this.renderer.setup(session.stageId, { mood: profile.settings.mood });
+      toast('이 기기에서는 평면 전장으로 실행합니다. 설정에서 화면 모드를 바꿀 수 있습니다.', 4000);
+      console.warn('3D 전장 초기화 실패:', error.message);
+    }
     this.renderer.fx.showDamage = profile.settings.dmgNumbers;
     this.renderer.fx.shakeLevel = profile.settings.shakeLv ?? 1;
     this.renderer.fx.coopTags = this.s.coop;
@@ -87,7 +101,7 @@ export class GameUI {
 
   // ───────────────────────── DOM 구성 ─────────────────────────
   buildDom() {
-    this.el = h('div', { id: 'game' });
+    this.el = h('div', { id: 'game', class: this.is3d ? 'game-3d' : '' });
     // 상단
     this.elLives = h('span', { class: 'num' });
     this.elWave = h('span', { class: 'num' });
@@ -123,6 +137,15 @@ export class GameUI {
     top.after(tip);
     clear(this.root).append(this.el);
     this.buildBottom();
+    if (this.is3d) {
+      const cam = h('div', { class: 'battle-camera', 'aria-label': '전장 시점' },
+        h('span', { class: 'battle-season' }, '고정 시점 · 사계절 전장'),
+        h('button', { 'aria-pressed': 'false', onclick: e => { this.ui.showGrid=!this.ui.showGrid; e.currentTarget.setAttribute('aria-pressed',String(this.ui.showGrid)); } }, '건설 터'),
+        h('button', { onclick: () => this.renderer.world.home() }, '기본 시점'),
+        h('button', { onclick: () => this.rallyHeroes(), title: '내 영웅을 같은 길목에 모읍니다. 협동 동료의 영웅은 동료가 이동합니다.' }, '영웅 집결'));
+      this.overlay.append(cam);
+      this.xray.hidden = true;
+    }
   }
 
   goldLabel(p) {
@@ -157,6 +180,8 @@ export class GameUI {
         const keys = this.keyLabels(p, k);
         const sk = this.skillButton(def.skill.short, `${def.name} 기술 · ${def.skill.name}`, keys.skill, () => this.useHeroSkill(i, 'skill'), !mine);
         const ul = this.skillButton(def.ult.short, `${def.name} 궁극기 · ${def.ult.name}`, keys.ult, () => this.useHeroSkill(i, 'ult'), !mine, true);
+        this.paintSkill(sk, hh.heroId, 'heroSkill');
+        this.paintSkill(ul, hh.heroId, 'heroUlt');
         this.heroEls.push({ i, card, hp, lv, canvas, sk, ul });
         g.append(card, h('div', { class: 'skills' }, sk.el, ul.el));
       });
@@ -166,6 +191,7 @@ export class GameUI {
         pl.skills.forEach((slot, si) => {
           const sd = SKILLS[slot.id];
           const b = this.skillButton(sd.short, `비기 · ${sd.name}`, this.keyLabels(p, 0).equip[si], () => this.useEquip(p, si), !mine);
+          this.paintSkill(b, slot.id, 'skill');
           this.skillEls.push({ p, si, ...b });
           box.append(b.el);
         });
@@ -194,13 +220,35 @@ export class GameUI {
     this.comboBtn = h('button', { class: 'combo', title: '합격기 (공명 게이지가 가득 차고 두 영웅이 5칸 이내일 때)', onclick: () => this.pressCombo(this.local ? 0 : this.me) },
       this.resCv, this.local ? h('span', { class: 'lbl' }, '1P 클릭 · 2P Space') : h('span', { class: 'lbl' }, '합격기', h('span', { class: 'k' }, ' Space')));
     this.waveBtn = h('button', { class: 'btn btn-seal wave-btn', onclick: () => this.callWave() }, h('span', {}, '출정!'), h('small', {}, this.local ? '클릭 · 2P W' : 'N 키'));
-    const center = h('div', { class: 'center-cmd' }, this.comboBtn, this.waveBtn);
+    this.comboNote = h('small', { class: 'combo-note', 'aria-live': 'off' });
+    const center = h('div', { class: 'center-cmd' }, h('div', { class: 'combo-state' }, this.comboBtn, this.comboNote), this.waveBtn);
     this.bottom.append(makeGroup(0), center);
     if (groups.includes(1)) this.bottom.append(makeGroup(1));
   }
 
   itemUser(p) {
     return this.local || this.solo ? p === 0 : p === this.me;
+  }
+
+  paintSkill(button, id, kind) {
+    if (!this.is3d) return;
+    const art = abilityIllustration(id, kind, true);
+    if (!art) return;
+    const layer = h('span', { class: 'skill-art', 'aria-hidden': 'true' });
+    paintAbility(layer, art); button.el.prepend(layer); button.el.classList.add('illustrated');
+  }
+
+  rallyHeroes() {
+    const v = this.s.view, targets = rallyTargets(v);
+    if (!targets) return toast('두 영웅이 살아 있을 때 집결할 수 있습니다');
+    for (const i of this.local ? v.heroes.map((_, i) => i) : this.myHeroIdx()) {
+      if (!targets[i]) continue;
+      const p = this.local ? v.heroes[i].owner : this.me;
+      this.s.send({ t: 'move', p, h: i, x: targets[i].x, y: targets[i].y });
+    }
+    this.closePop();
+    this.ui.moveMark = { x: targets[0].x, y: targets[0].y, t: 1, p: this.me };
+    toast(this.s.coop && !this.local ? '내 영웅이 집결합니다. 동료도 집결하면 합격기를 쓸 수 있습니다.' : '두 영웅이 같은 길목으로 이동합니다.');
   }
 
   useItem(p, id, at) {
@@ -220,7 +268,7 @@ export class GameUI {
     };
     if (it.target !== 'point') return fire(0, 0);
     if (at) fire(at.x, at.y);
-    else this.startTargeting({ r: it.radius, run: fire });
+    else this.startTargeting({ kind: 'item', r: it.radius, run: fire });
   }
 
   keyLabels(p, heroSlot) {
@@ -245,8 +293,11 @@ export class GameUI {
     const dt = Math.min(0.1, (t - this.last) / 1000);
     this.last = t;
     this.ui.clock += dt;
-    if (this.local) this.p2Tick(t);
-    const evs = this.s.update(dt);
+    const waitingForRenderer = this.renderer.loading === true;
+    this.ui.assetWaitRemote = this.s.kind === 'guest';
+    this.bottom.inert = waitingForRenderer;
+    if (this.local && !waitingForRenderer) this.p2Tick(t);
+    const evs = this.s.update(dt, { waitingForRenderer });
     this.handleEvents(evs);
     this.renderer.events(evs);
     if (this.ui.moveMark) this.ui.moveMark.t -= dt;
@@ -257,6 +308,7 @@ export class GameUI {
       this.ui.p2cursor = h2 && !h2.dead ? this.p2Tile(h2) : null;
     }
     this.renderer.render(v, this.ui, dt);
+    if (this.is3d) this.repositionRings();
     this.drawXray(v);
     this.updateHud(dt);
     this.hintTimer -= dt;
@@ -273,28 +325,41 @@ export class GameUI {
     this.s.announceEnd();
     audio.play(this.s.view.result.win ? 'win' : 'lose');
     const wait = () => {
+      if (this.destroyed) return;
       if (this.s.kind === 'guest' && !this.s.endInfo && performance.now() - start < 4000) {
-        setTimeout(wait, 200);
+        this.finishTimer = setTimeout(wait, 200);
         return;
       }
       this.onEnd({ result: this.s.view.result, stats: this.s.stats(this.me), stats2: this.local ? this.s.stats(1) : null });
     };
     const start = performance.now();
-    setTimeout(wait, 2200);
+    this.finishTimer = setTimeout(wait, 2200);
   }
 
   destroy() {
+    if (this.destroyed) return;
     this.destroyed = true;
+    clearTimeout(this.finishTimer);
+    this.cancelPress?.();
     cancelAnimationFrame(this.raf);
     window.removeEventListener('resize', this.onResize);
     document.removeEventListener('keydown', this.onKeyDown);
     document.removeEventListener('keyup', this.onKeyUp);
     this.s.destroy();
+    this.renderer?.destroy?.();
     audio.stopBgm();
   }
 
   resize() {
     const r = this.area.getBoundingClientRect();
+    if (this.is3d) {
+      this.scale = Math.max(.65, Math.min(1.25, r.width / 960));
+      Object.assign(this.cv.style, { width: '100%', height: '100%' });
+      Object.assign(this.overlay.style, { left: '0px', top: '0px', width: '100%', height: '100%' });
+      this.renderer.resize();
+      this.repositionRings();
+      return;
+    }
     const k = Math.max(0.2, Math.min(r.width / W, r.height / H));
     this.scale = k;
     this.cv.style.width = `${W * k}px`;
@@ -328,6 +393,7 @@ export class GameUI {
   }
 
   drawXray(v) {
+    if (this.is3d) return;
     const c = this.xctx;
     const occ = this.occluders();
     if (!occ.length && !this.xrayDirty) return;
@@ -356,11 +422,14 @@ export class GameUI {
     this.onResize = () => this.resize();
     window.addEventListener('resize', this.onResize);
     const pos = (e) => {
+      if (this.is3d) return this.renderer.pick(e.clientX, e.clientY);
       const r = this.cv.getBoundingClientRect();
       return { x: ((e.clientX - r.left) / r.width) * (W / TS), y: ((e.clientY - r.top) / r.height) * (H / TS) };
     };
     this.cv.addEventListener('pointermove', (e) => {
+      if (down && Math.hypot(e.clientX-down.x, e.clientY-down.y)>6) { dragged=true; clearTimeout(pressTimer); }
       const p = pos(e);
+      if (!p) return;
       this.mouse = p;
       const tx = Math.floor(p.x);
       const ty = Math.floor(p.y);
@@ -375,13 +444,22 @@ export class GameUI {
     });
     let pressTimer = null;
     let longPressed = false;
+    let down = null, dragged = false, multiTouch = false;
+    const pointers = new Set();
+    this.cancelPress = () => { clearTimeout(pressTimer); pressTimer=null; down=null; pointers.clear(); multiTouch=false; };
     this.cv.addEventListener('pointerdown', (e) => {
       audio.init();
+      clearTimeout(pressTimer); pressTimer=null; pointers.add(e.pointerId);
+      if(pointers.size>1){multiTouch=true;dragged=true;down=null;return;}
+      down = { x:e.clientX, y:e.clientY }; dragged=false;
       if (e.button === 2) return;
       longPressed = false;
       if (e.pointerType === 'touch') {
         const p = pos(e);
+        if (!p) return;
         pressTimer = setTimeout(() => {
+          pressTimer=null;
+          if(!down||dragged||pointers.size!==1||this.destroyed)return;
           longPressed = true;
           this.moveHeroTo(p.x, p.y);
         }, 480);
@@ -389,11 +467,23 @@ export class GameUI {
     });
     this.cv.addEventListener('pointerup', (e) => {
       clearTimeout(pressTimer);
+      pointers.delete(e.pointerId);
+      if(multiTouch){if(!pointers.size)multiTouch=false;down=null;return;}
+      const wasDown=!!down; down=null;
+      if (this.is3d && (!wasDown || dragged)) return;
+      if (this.is3d && e.button === 2) {
+        const p=pos(e); if (!p) return;
+        if(this.targeting) this.cancelTargeting();
+        else {this.closePop();this.moveHeroTo(p.x,p.y);}
+        return;
+      }
       if (e.button === 2 || longPressed) return;
-      this.leftClick(pos(e));
+      const p=pos(e); if(p) this.leftClick(p);
     });
+    this.cv.addEventListener('pointercancel', this.cancelPress);
     this.cv.addEventListener('contextmenu', (e) => {
       e.preventDefault();
+      if (this.is3d) return;
       const p = pos(e);
       if (this.targeting) return this.cancelTargeting();
       this.closePop();
@@ -418,6 +508,12 @@ export class GameUI {
     }
     // 영웅 선택
     const mine = this.myHeroIdx();
+    if (this.is3d && p.entity?.kind === 'hero') {
+      const i=v.heroes.findIndex(hh=>hh.id===p.entity.id);
+      if (mine.includes(i)) this.selectHero(i);
+      return;
+    }
+    if (this.is3d && p.entity?.kind === 'tower') return this.openTowerPanel(p.entity.id);
     for (const i of mine) {
       const hh = v.heroes[i];
       if (!hh.dead && (hh.x - p.x) ** 2 + (hh.y - p.y + 0.35) ** 2 < 0.45) {
@@ -459,6 +555,7 @@ export class GameUI {
   }
 
   keyDown(e) {
+    if (this.renderer?.loading && e.code !== 'Escape') return;
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
     if (document.querySelector('.modal-back')) return;
     audio.init();
@@ -713,7 +810,7 @@ export class GameUI {
     if (!m.options.length) return this.closeP2Menu();
     m.idx = Math.min(m.idx, m.options.length - 1);
     const k = this.scale;
-    m.ring.layout((m.tile.x + 0.5) * TS * k, (m.tile.y + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k, m.options.length);
+    this.positionRing(m.ring, m.tile.x, m.tile.y, m.options.length);
     const angles = spread(m.options.length);
     m.ring.hoverKey = m.idx;
     m.ring.render(m.options.map((o, i) => ({
@@ -750,6 +847,7 @@ export class GameUI {
   }
 
   callWave() {
+    if (this.renderer?.loading) return;
     const v = this.s.view;
     if (v.wave.phase !== 'prep' || v.wave.n >= v.wave.total) return;
     this.s.send({ t: 'nextWave', p: this.me });
@@ -779,7 +877,7 @@ export class GameUI {
     }
     const r = kind === 'skill' ? SKILL_AIM[hh.heroId] : ULT_AIM[hh.heroId] || 1;
     if (at) this.s.send({ t, p, h: i, x: at.x, y: at.y });
-    else this.startTargeting({ r, run: (x, y) => this.s.send({ t, p, h: i, x, y }) });
+    else this.startTargeting({ kind: t, h: i, r, run: (x, y) => this.s.send({ t, p, h: i, x, y }) });
   }
 
   useEquip(p, si, at) {
@@ -797,12 +895,13 @@ export class GameUI {
       return;
     }
     if (at) this.s.send({ t: 'skill', p, slot: si, x: at.x, y: at.y });
-    else this.startTargeting({ r: sd.radius || 0.8, run: (x, y) => this.s.send({ t: 'skill', p, slot: si, x, y }) });
+    else this.startTargeting({ kind: 'skill', skillId: slot.id, r: sd.radius || 0.8, run: (x, y) => this.s.send({ t: 'skill', p, slot: si, x, y }) });
   }
 
   startTargeting(tg) {
     this.closePop();
     this.targeting = tg;
+    this.ui.targeting = tg;
     this.ui.aim = this.mouse ? { x: this.mouse.x, y: this.mouse.y, r: tg.r } : null;
     this.cv.style.cursor = 'crosshair';
     toast('대상 지점을 클릭하세요 (우클릭 취소)', 1400);
@@ -816,6 +915,7 @@ export class GameUI {
 
   cancelTargeting() {
     this.targeting = null;
+    this.ui.targeting = null;
     this.ui.aim = null;
     this.cv.style.cursor = '';
   }
@@ -841,9 +941,21 @@ export class GameUI {
   openRing(tx, ty, n = 0) {
     const ring = new Ring({ owner: this.local ? 0 : this.me });
     const k = this.scale;
-    ring.layout((tx + 0.5) * TS * k, (ty + 0.5) * TS * k, this.overlay.clientWidth, this.overlay.clientHeight, k, n);
+    this.positionRing(ring, tx, ty, n);
     this.overlay.append(ring.el);
     return ring;
+  }
+
+  positionRing(ring, x, y, n = 0) {
+    const p = this.is3d ? this.renderer.screenPoint(x+.5,y+.5,.35) : {x:(x+.5)*TS*this.scale,y:(y+.5)*TS*this.scale};
+    ring.layout(p.x,p.y,this.overlay.clientWidth,this.overlay.clientHeight,this.scale,n);
+    const el=ring.el.querySelector('.ring');
+    if(el){el.style.left=`${ring.cx}px`;el.style.top=`${ring.cy}px`;ring.placeTip();}
+  }
+
+  repositionRings() {
+    if(this.pop){const t=this.pop.kind==='tower'?this.s.view.towers.find(t=>t.id===this.pop.id):this.pop;if(t)this.positionRing(this.pop.ring,t.x,t.y,this.pop.ring.items.length);}
+    if(this.p2menu)this.positionRing(this.p2menu.ring,this.p2menu.tile.x,this.p2menu.tile.y,this.p2menu.options.length);
   }
 
   closePop() {
@@ -1006,7 +1118,7 @@ export class GameUI {
     stats.push(`처치 ${t.kills || 0}`);
     const info = h('div', {},
       h('div', { class: 'tt' }, h('i', { class: 'dot', style: { background: CATEGORIES[def.cat].color } }), h('b', {}, def.name),
-        h('span', { class: 'dim' }, `${t.branch ? def.branches[t.branch].name : `${t.level}단계`}${ownerName ? ` · ${ownerName}` : ''}`)),
+        h('span', { class: 'dim' }, `${t.branch ? `4단계 · 최대 · ${t.branch} ${def.branches[t.branch].name}` : `${t.level}단계`}${ownerName ? ` · ${ownerName}` : ''}`)),
       h('div', { class: 'td num' }, stats.join(' · ')),
       t.syn ? h('div', { class: 'td', style: { color: '#ffe68c' } }, `유산 공명 +${t.syn * 12}%`) : null,
       t.disabledT > 0 ? h('div', { class: 'td', style: { color: '#ff8a7a' } }, `봉쇄됨 ${Math.ceil(t.disabledT)}초`) : null,
@@ -1017,7 +1129,7 @@ export class GameUI {
 
   // ───────────────────────── HUD 갱신 ─────────────────────────
   set(key, el, val) {
-    if (this.cache[key] === val) return;
+    if (this.cache[key] === val && el.textContent === String(val)) return;
     this.cache[key] = val;
     el.textContent = val;
   }
@@ -1072,7 +1184,11 @@ export class GameUI {
     const press = v.resonance.press[this.local ? 0 : this.me];
     const waiting = this.s.coop && v.time - press < COMBO_WINDOW ? 1 - (v.time - press) / COMBO_WINDOW : 0;
     drawResonance(this.resCv, v.resonance.gauge, this.ui.clock, { waiting });
-    this.comboBtn.classList.toggle('ready', v.resonance.gauge >= RESONANCE_MAX);
+    const combo = comboStatus(v);
+    this.comboBtn.classList.toggle('ready', combo.ok);
+    this.comboBtn.title = combo.ok ? `${findCombo(v.heroes[0].heroId,v.heroes[1].heroId).name} · 합격기 시전 가능` : combo.why;
+    this.comboBtn.disabled = !combo.ok || !!v.result;
+    this.set('comboNote', this.comboNote, combo.ok ? (this.s.coop ? '두 사람 함께 시전' : '합격기 준비 완료') : v.resonance.gauge < RESONANCE_MAX ? `공명 ${Math.floor(v.resonance.gauge)}%` : combo.why);
     // 파도 버튼
     const w = v.wave;
     let label;
@@ -1135,7 +1251,7 @@ export class GameUI {
 
   showPausedBanner(on) {
     if (on) {
-      this.pauseEl = h('div', { class: 'announce', style: { animation: 'none', top: '40%' } }, h('div', { class: 'big' }, '일시정지'), h('div', { class: 'sub' }, '건설과 강화는 멈춘 상태에서도 할 수 있습니다'));
+      this.pauseEl = h('div', { class: this.is3d ? 'pause-notice' : 'announce', style: this.is3d ? {} : { animation: 'none', top: '40%' } }, h('div', { class: 'big' }, '일시정지'), h('div', { class: 'sub' }, '건설과 강화는 멈춘 상태에서도 할 수 있습니다'));
       this.overlay.append(this.pauseEl);
     } else if (this.pauseEl) {
       this.pauseEl.remove();
@@ -1319,6 +1435,7 @@ export class GameUI {
       if (this.solo) rows.push(['Tab / 1 2', '영웅 선택 전환']);
       if (this.s.coop) rows.push(['G', '핑 — 동료에게 위치 알리기']);
     }
+    if(this.is3d)rows.push(['화면 드래그 / 휠','시점 이동 / 확대·축소 (우클릭 드래그: 회전)'],['영웅 집결','내 영웅을 같은 길목으로 이동']);
     return h('div', { class: 'keys' }, rows.flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)]));
   }
 
@@ -1343,6 +1460,10 @@ export class GameUI {
       }, 12000);
       return true;
     };
+    if(v.stageId==='s25'&&v.wave.n<=2)
+      if(show('final-opening','두 갈래 길이 갈라지기 전 <b>입구의 첫 굽이</b>에 영웅을 배치하면 초반을 함께 막을 수 있습니다. <b>남한산성</b>의 병사와 <b>첨성대</b>의 은신 탐지도 준비하세요.',{left:'12px',bottom:'12px'}))return;
+    if(v.stageId==='s25'&&v.wave.n>=22)
+      if(show('final-reallocate','마지막 적장은 <b>은신 병력</b>을 계속 부릅니다. 탐지를 유지하고, 피해가 적은 유산을 철거해 <b>석굴암의 대광명(A 특화)</b>에 재투자하세요. 특화 유산의 높은 단일 피해가 중요합니다.',{left:'12px',bottom:'12px'}))return;
     if (v.wave.n === 0 && v.towers.length === 0)
       return show('build', '<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '38%', top: '40%' });
     if (v.wave.n === 0 && v.towers.length > 0)

@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-10",
+  "generationMode": "built-in image_gen.imagegen",
+  "cliFallbackUsed": false,
+  "apiKeyRequired": false,
+  "referenceImages": [
+    "D:/codex/hoguk/투명 배경의 이순신 장군.png",
+    "C:/Users/USER/Desktop/설원 파티에 합류한 한국 제독.png",
+    "C:/Users/USER/Desktop/화면 캡처 2026-10-09 202133.png"
+  ],
+  "assets": [
+    {
+      "name": "yi-directions-v1",
+      "description": "4 × 4: 네 방향 × 준비·걷기 두 장·활 공격",
+      "delivery": "assets/3d/fixed/yi-directions-v1.webp",
+      "preservedSource": "assets/3d/fixed/source/yi-directions-v1.png",
+      "promptHistory": [
+        {
+          "key": "yiSpritePrompt",
+          "prompt": "Use case: stylized-concept. Create ONE production sprite atlas on a genuinely transparent background, a strict 4 columns by 4 rows grid of 16 evenly sized cells. Reference image 1 defines Admiral Yi Sun-sin's identity, anatomy, navy brigandine armor with many small brass rivets, red silk cape and long red helmet plume, steel rounded Korean helmet, small mustache and narrow goatee, brown boots, quiver, Korean curved bow. Reference image 2 defines the intended game camera and painterly animated-film color tone only; do not include its other characters or scenery. Each cell contains exactly one consistent full-body Yi character, same size, feet at same baseline, generous clear transparent space separating cells, no overlap, no cropping of bow, cape or plume. Elevated fixed orthographic game camera looking down at about 45 degrees, NOT an eye-level portrait. Compact believable heroic adult proportions, expressive well-sculpted head, quality matches a premium illustrated real-time strategy game, rich dark navy and deep scarlet with tasteful gold accents. Clean diffuse cool ambient lighting with warm soft key from upper left, no cast ground shadow (game supplies it). Columns define viewing directions: column 1 seen from front three-quarter facing screen bottom-right; column 2 seen from right profile facing screen right/top-right; column 3 seen from back three-quarter facing screen top-left with back/cape visible; column 4 seen from left profile facing screen left/bottom-left. Rows define action poses and MUST preserve each column's viewing direction: row 1 steady idle holding bow low, row 2 walk stride left boot forward, row 3 walk opposite stride right boot forward, row 4 drawing bow and aiming an arrow in that column's facing direction. Keep same equipment and silhouette across all 16 cells, accurately separated 4x4 contact sheet layout. No text, grid lines, labels, scenery, floor, vignette, glow or other figures. Output the actual 16-sprite game asset, not a mockup."
+        }
+      ]
+    },
+    {
+      "name": "tower-tiers-v2",
+      "description": "5 × 2: 숭례문·수원화성 각 1·2·3·4A·4B",
+      "delivery": "assets/3d/fixed/tower-tiers-v2.webp",
+      "preservedSource": "assets/3d/fixed/source/tower-tiers-v2.png",
+      "promptHistory": [
+        {
+          "key": "towerSpritePrompt",
+          "prompt": "Use case: stylized-concept. ONE production transparent sprite atlas for a fixed elevated isometric Korean historical tower-defense game. Strict grid 5 columns by 2 rows, 10 equal cells, one full building per cell, generous transparent separation, consistent orthographic 40-degree downward camera and scale of bricks and details. The attached building atlas is an identity reference for Korean roof/timber/masonry style; attached Yi image is a palette quality reference only. Beautiful detailed painterly 3D illustration, cool navy blue curved tiled roofs, warm red lacquered timber, weathered warm gray stone, subtle aged brass trim, warm amber paper windows and lanterns. No scene, characters, text, labels, grid lines, numbers, ground plane or cast shadow. Never crop a roof, flag or base. Row 1 contains five clearly different upgrade stages of SUNGNYEMUN archer gate: column 1 a humble single-storey wooden guard pavilion with low stone foundation; column 2 a larger raised stone arched gate with one tiled pavilion and two small red flags; column 3 an impressive tall two-storey tiled Korean gate tower on a broad masonry plinth; column 4 the same completed gate specialized for rapid archery, two large side-mounted repeating crossbows, red-and-gold narrow flags and modest gold roof finials; column 5 the completed gate specialized for long range, taller top lookout with a large elegant long-range ballista and deep navy banners, distinct silhouette from column 4. Row 2 contains five upgrade stages of HWASEONG artillery fort: column 1 a small low circular stone gun platform with a wooden shelter and a short black cannon; column 2 a taller sturdy stone bastion, one tiled pavilion and longer iron cannon; column 3 a broad imposing round crenelated bastion with two-level small Korean roof lookout and a heavy long cannon; column 4 completed fort specialized for heavy siege, one huge long bronze-banded cannon, reinforced lower stone base and crimson banners; column 5 completed fort specialized for rapid artillery, three smaller forward cannons, navy banners, a distinct wider silhouette. All ten buildings fit separately inside their own cells, no overlap. Preserve understated premium animated-film realism and readable strong silhouettes. Transparent background."
+        },
+        {
+          "key": "towerCorrectionPrompt",
+          "prompt": "Edit this existing transparent 5-column by 2-row Korean tower upgrade atlas. Preserve the exact canvas size, grid alignment, transparency, all other nine buildings, their appearance and all cell positions. ONLY change the top-right cell (row 1 column 5): the protruding black metal cannon below the small upper lookout is wrong for this archer gate. Replace ONLY that weapon with a large elegant wooden long-range ballista: clearly visible curved bow limbs and a loaded long wooden bolt, aged brass fittings, projecting horizontally to the right from the same mounting point. Keep the tall lookout, navy banners, two-level tiled roof, gate stone base and warm windows completely unchanged. No tube, gun barrel or cannon remains anywhere on this top-right archer building. Preserve all other objects and the true transparent background."
+        }
+      ]
+    },
+    {
+      "name": "winter-props-v2",
+      "description": "3 × 2: 눈 소나무 두 종류·바위·한옥 두 종류·절벽",
+      "delivery": "assets/3d/fixed/winter-props-v2.webp",
+      "preservedSource": "assets/3d/fixed/source/winter-props-v2.png",
+      "promptHistory": [
+        {
+          "key": "winterPropsPrompt",
+          "prompt": "Use case: stylized-concept. Create ONE production game-prop sprite atlas on a genuinely transparent background, strict 3 columns by 2 rows, six equal cells, each object completely separated with clear transparent margin. Fixed elevated orthographic 40-degree downward game camera, matching reference image 1's snowy game environment and reference image 2's traditional Korean architecture. Beautiful premium painterly animated-film 3D illustration, restrained cinematic cool deep blue shadows and soft pale blue snow highlights, delicate details without noisy grain. Row 1 column 1: one tall slender natural fir tree with several tapered irregular tiers of blue-green needles and clumps of fresh snow, trunk visible at base. Row 1 column 2: a different slightly crooked snowy spruce tree with irregular asymmetrical branch sprays, same type of silhouette language. Row 1 column 3: a low irregular cluster of layered slate boulders with snow in crevices, no green moss. Row 2 column 1: a rustic Korean hanok cottage, curved dark navy tiled roof partially blanketed with irregular snow, timber framing and paper windows, a small open doorway with rich warm amber interior light, a wooden barrel by the doorway, stone step. Row 2 column 2: a smaller different Korean snowy cottage with a low porch and a hanging amber lantern, snow-covered navy curved roof and warm wood. Row 2 column 3: a dramatic broken slate cliff outcrop, broad clean planar forms and ledges with patches of snow, no moss. No ground planes, no cast shadows (game supplies them), no terrain, scenery, people, labels, numbers, grid lines, borders or opaque backdrop. All six objects isolated in their own cells, not touching. The architecture is Korean, not European log cabins. Shadow sides should have rich blue hues and warm light only comes from the house windows. These exact cutouts will be placed in a playable fixed-camera tower-defense battlefield."
+        },
+        {
+          "key": "winterCutoutPrompt",
+          "prompt": "Remove the entire blue/black studio background, every blue halo around each object, and all ground/cast shadows from this 3x2 sprite atlas. Output genuine RGBA transparency (alpha 0) in all the empty areas and all gaps between branches. Keep exactly the same six objects and same grid positions and overall dimensions. Preserve the object pixels: snow-laden fir in upper left, snowy spruce upper middle, snow boulders upper right, glowing Korean hanok lower left, small Korean cottage lower middle, slate snow cliff lower right. Do not repaint the objects or their colors. Fully isolated sharp clean cutouts on truly transparent background. No solid dark blue backdrop, no gradient, no checkerboard printed into the image, no glowing halo."
+        },
+        {
+          "key": "winterPropsRefinePrompt",
+          "prompt": "Edit only the bottom-right asset in this 3-column by 2-row game prop sprite atlas. Keep the other five sprites exactly unchanged in appearance, size, positions and spacing. Replace the unnatural square-column cliff with a naturally weathered Korean granite outcrop: irregular broad rounded boulders, sloping crags and chipped stone ledges, deep layered cracks, restrained softly painted blue-gray rock surfaces, snow resting naturally on tops and in crevices. Organic asymmetric silhouette, no uniform columns, no flat cubes, no hexagonal basalt pipes, no low-poly facets. Premium stylized animated film environment art matching the two Korean houses. Same elevated fixed isometric view, same cool blue ambient light and soft highlights. Entire atlas on true transparent alpha: every pixel outside the six objects fully transparent, no backdrop, no halos, no shadow rectangles or floor. Three equal columns and two equal rows must remain in the same image dimensions. No text. Every asset entirely inside its own original cell."
+        }
+      ]
+    },
+    {
+      "name": "granite-v2",
+      "description": "화강암 표면",
+      "delivery": "assets/3d/painted/granite-v2.webp",
+      "preservedSource": "assets/3d/painted/source/granite-v2.png",
+      "promptHistory": [
+        {
+          "key": "graniteV2Prompt",
+          "prompt": "Use case: stylized-concept. Production asset: one seamless square albedo texture for granite cliffs and boulders in a premium stylized Korean historical fantasy real-time 3D game. ONLY the stone surface fills the entire image edge to edge, orthographic straight-on material scan, no scene, no objects, no text, no border. Art direction: hand-painted animation-feature quality, generous broad clean slate-gray planes, muted cool blue-gray and warmer taupe-grey facets, a few controlled diagonal fractures and layered mineral ribbons, subtle moss in sparse recesses. Rich well-designed large and medium forms, restrained fine detail, beautifully painted transitions like sculpted rocks in a cinematic storybook forest. Base color must remain medium-light desaturated neutral slate so game lighting and seasonal tints control final hue. Even diffuse illumination without a baked directional light or cast shadows. The texture tiles seamlessly on all four edges. No photographic grit, no salt-and-pepper speckles, no busy uniform noise, no flat polygon grid, no shiny plastic, no vignette, no strong black cracks. This is an actual game material, not a screenshot or concept scene."
+        }
+      ]
+    },
+    {
+      "name": "ground-v3",
+      "description": "대비를 낮춘 흙과 풀 지면",
+      "delivery": "assets/3d/painted/ground-v3.webp",
+      "preservedSource": "assets/3d/painted/source/ground-v3.png",
+      "promptHistory": [
+        {
+          "key": "groundV2Prompt",
+          "prompt": "Use case: stylized-concept. Production asset: one seamless square flat albedo texture of a forest clearing ground, for a premium painterly stylized Korean historical fantasy 3D tower defense. The ground surface alone fills the entire square edge to edge, orthographic straight downward. Rich tasteful animated-film art direction, broad softly painted masses of short moss and flattened meadow grass with natural dark olive-sage clusters alternating with soft warm brown exposed earth; a few tiny dry leaves and understated roots. Large and medium shapes have beautiful intentional gradients and value grouping; fine detail restrained, no photographic grain. Colors: muted forest green, soft celadon sage, a little ochre brown, neutral medium brightness, not yellow overall, not bright lime. Even diffuse base-color illumination, no baked directional shadows, no horizon, no objects, no rocks, no paths, no flowers, no text, no borders. Seamlessly tile on all four edges. Avoid carpet-like photographic noise or uniform scattered speckles, avoid patchwork grids, avoid dramatic contrast or black holes. Hand-painted game environment surface with enough clarity to make small armored heroes easy to read."
+        },
+        {
+          "key": "groundRefinePrompt",
+          "prompt": "Refine this seamless terrain albedo for a sophisticated animated-film tower-defense game. Make it a quiet broad matte ground surface with 75 percent less visual clutter and less value contrast. Replace dense little leaves, repeated plant clumps, high contrast bare dirt patches and conspicuous roots with smooth short forest grass and soft flat moss. Use a restrained desaturated sage green, muted gray-green and cool umber palette with faint broad painted brush marks. No yellow-green checker blobs, no photographic noise, no strong shadows, no vignette, no grass blades standing upright. Flat orthographic top view, seamless opposite edges, no objects, no path, no text. Diffuse even illumination. The entire tile should be similar in value; tiny detailed heroes, stone architecture and warm lamps will sit on it and must be the focus. Premium painterly game art, organic subtle material texture, matte and calming rather than muddy or busy. Opaque background."
+        }
+      ]
+    },
+    {
+      "name": "road-v2",
+      "description": "길 표면",
+      "delivery": "assets/3d/painted/road-v2.webp",
+      "preservedSource": "assets/3d/painted/source/road-v2.png",
+      "promptHistory": [
+        {
+          "key": "roadV2Prompt",
+          "prompt": "Use case: stylized-concept. Production game asset: one seamless square base-color albedo texture for a well-used Korean village earth lane, viewed orthographically straight down, entire image only the flat ground material. Premium painterly animated-film / hand-painted 3D game style. Broad quiet shapes of packed warm gray-beige earth with scattered softly rounded worn slate paving stones half embedded in the soil, mostly earth (70 percent) with a few larger irregular stones (30 percent), a little dusty ochre between them. Tasteful warm-neutral taupe and gentle pale sandstone highlights, not yellow-orange. Medium-light value so the lane reads against a darker forest floor. Very restrained fine detail, smooth beautifully hand-painted medium-scale color transitions, subtle wheel wear but no continuous line. Uniform diffuse light, no baked cast shadow, no scene, no horizon, no borders, no labels. Seamless all four edges. Avoid photograph/photogrammetry, gravel everywhere, strong outlines, black cracks, green grass, regular grid/cobble pattern, excessive micro-noise. This image will really texture a 3D battle road, so keep a calm clear visual hierarchy."
+        }
+      ]
+    },
+    {
+      "name": "snow-ground-v2",
+      "description": "잔무늬를 줄인 푸른 설원",
+      "delivery": "assets/3d/painted/snow-ground-v2.webp",
+      "preservedSource": "assets/3d/painted/source/snow-ground-v2.png",
+      "promptHistory": [
+        {
+          "key": "snowGroundPrompt",
+          "prompt": "Create a seamless tileable terrain albedo texture for a premium hand-painted Korean historical fantasy tower-defense game at a fixed elevated camera. Square flat orthographic top view of wintry ground, no perspective, no objects, no text, no border. Restrained icy slate blue and desaturated blue-gray compacted snow with windbrushed fine pale frost and a few very subtle exposed smooth dark slate pebbles. Broad calm painted areas, delicate directional brush texture, soft organic transitions and material detail. Sophisticated animated film art direction, crisp enough for a game texture but no noisy gritty photography. Overall midtone cool blue, not white, no specular sheen. All illumination is diffuse and even: no baked directional shadows, no bright spotlight, no vignette. Crucially no square patches, no regular grid, no checker pattern, no big repeating blobs, no cobblestone layout, no footprints. Opposite edges must match seamlessly; continuous small-scale snow grain. Keep overall value contrast low so scarlet-and-gold characters and amber lanterns are the focal point. The game will add actual light and long contact shadows. 1024 square or larger. Opaque background."
+        },
+        {
+          "key": "snowGroundRefinePrompt",
+          "prompt": "Edit this game terrain albedo into a calm, softly hand-painted snow surface. Reduce the density and contrast of all small markings by 90 percent. Remove exposed pebbles, gritty speckles, high-frequency crust, repeated swirling mottling and scratch detail. Keep broad smooth matte snow with only very faint elongated windbrushed streaks and subtle diffuse frost at a much larger scale. Muted pale blue-gray with a hint of lavender, nearly neutral saturation, very low contrast. Think elegant clean animated-film environment paint, snow under soft moonlight, NOT a noisy photographic ice texture. Flat orthographic square top view with even diffuse light, no directional shadow, no vignette, no objects, no text, no grid. Seamless opposite edges. The result should remain quiet behind tiny detailed characters when tiled. Opaque background."
+        }
+      ]
+    }
+  ],
+  "encoding": "원본 PNG 보존. Sharp는 배포용 WebP 인코딩과 지면 512픽셀 축소에만 사용.",
+  "unusedVariantsPreserved": [
+    "ground-v2",
+    "snow-ground-v1",
+    "tower-tiers-v1",
+    "winter-props-v1"
+  ]
+}

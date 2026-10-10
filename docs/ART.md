@@ -1,74 +1,93 @@
-# 그림 파일 넣기 (영웅 이미지)
+# 일러스트 그림 가이드
 
-코드로 그린 기본 그림 대신 사람이 만든 이미지를 넣을 수 있습니다. **이미지가 있는 영웅만 바뀌고, 없는 영웅은 기본 그림 그대로**라 하나씩 바꿔 넣어도 됩니다.
+정식 게임은 현재 고정 시점의 2.5D 일러스트 전장을 기본으로 사용합니다. 최신 적용 범위는 아래의 ‘고정 시점 그림 전장’과 ‘유산 50개 강화 외형’에 정리했습니다. 앞부분의 캐릭터 시트·전장 조립 설명은 선택 가능한 평면 모드용이며, 초기 입체 모델 통합 기록은 [3D_FULL_GAME.md](3D_FULL_GAME.md)에 있습니다.
 
-## 넣는 방법
+## 3D 모델과 기술 그림
 
-1. 이미지를 `assets/heroes/<영웅 id>.webp`(전투용 전신)와 `assets/portraits/<영웅 id>.webp`(초상)로 저장합니다.
-2. `src/data/art.js`의 `ART` 목록에 한 줄씩 추가합니다.
-   - 전투용: `ax` = 두 발 사이 중심의 가로 위치(0~1, 망토나 활이 한쪽으로 튀어나오면 0.5가 아님)
-   - 초상: `face` = 얼굴 중심 `[x, y]`(0~1)과 정사각 잘라내기 크기(그림 높이 비율). 작은 초상(전투 화면 영웅 카드, 도감 목록)이 이 부분만 씁니다.
-3. `node tools/build.mjs` — 그림이 한 파일(`dist/hoguk.html`)에 담깁니다.
+`src/3d/models.js`, `combat-models.js`, `tower-visuals.js`가 관절 캐릭터·주변 건물·소품·단계별 유산을 조립합니다. 사계절 재질과 조명은 실제 전장 지형에 적용합니다. 의복은 각 모델의 옷·갑옷·망토 재질을 복제해 변경합니다.
 
-흰 배경 이미지는 배경을 따서 넣어야 합니다(이번 이순신 샘플은 테두리와 이어진 흰색 + 활시위 안쪽처럼 갇힌 순백 덩어리를 지우고, 경계는 반투명 처리).
+`assets/3d/art/hero-abilities-atlas-v1.png`은 4×4 기술 그림 시트입니다. 가로 방향으로 읽으며 행마다 이순신 Q/R·세종 Q/R, 을지문덕 Q/R·강감찬 Q/R, 권율 Q/R·곽재우 Q/R, 안중근 Q/R·단군 Q/R 순서입니다. 시트의 R은 궁극기를 뜻하며 정식 게임의 실제 입력은 1번 영웅 Q/W, 2번 영웅 E/R입니다. 이순신 학익진은 별도 전용 그림을 우선 사용합니다. 비기 8종과 합격기는 `skills-atlas-v1.png`의 3×3 칸을 사용합니다. 연결은 `src/3d/skill-art.js`에 있으며 생성 프롬프트는 그림 옆 `.prompt.txt` 파일에 보관합니다.
 
-## 전장 배경 (그림 한 장)
+## 화풍
 
-레퍼런스처럼 건물 · 눈길 · 질감까지 살린 배경은 전장마다 그림 한 장으로 넣습니다.
+입체 애니메이션풍 캐릭터와 손으로 칠한 듯한 재질을 사용합니다. 부드러운 얼굴·옷감, 푸른 환경광, 따뜻한 등불, 풍화된 기와·목재·돌을 함께 맞췄습니다. 한국 위인의 복식과 한국 건축의 형태는 유지합니다.
 
-1. `node tools/layout-guide.mjs <전장 id>` (서버를 켠 상태) → `art-guides/<id>-layout.png` 배치도 (1920×1120). 갈색 = 왜군 길, 밝은 땅 = 유산을 짓는 곳, 파랑 = 물, 초록 원 = 나무, 회색 삼각 = 산, 회색 타원 = 바위, 붉은 사각 = 우리 성.
-2. 배치도를 이미지 생성기에 **참고 이미지(구도 유지)**로 넣고 아래 프롬프트로 다시 칠합니다.
-3. `assets/backgrounds/<id>.webp`로 저장하고 `src/data/art.js`의 `backgrounds`에 추가합니다. 그림 배경이 있는 전장은 코드로 그린 바탕 · 성 · 물결 · 색보정을 쓰지 않습니다(조명이 그림에 이미 있으므로). 유산 · 영웅 주변의 따뜻한 번짐만 더합니다.
+영웅은 약 4~5등신, 약간 위에서 본 오른쪽 방향 전신입니다. 기존 걷기·숨쉬기·공격 전진·피격 반동은 그림에 변환을 적용해 유지하며, 현재 그림은 관절 애니메이션이나 공격 자세별 프레임 시트는 아닙니다.
 
-길 위치가 어긋나면 적이 그림 속 길 밖을 걷게 되므로, 생성 결과의 길을 배치도 위에 겹쳐 확인하세요.
+## 파일과 연결
 
-## 규격
+원본 생성에는 내장 `image_gen` 도구를 사용했습니다. 생성·수정에 사용한 최종 프롬프트는 [`assets/illustrated/prompts.json`](../assets/illustrated/prompts.json)에 있습니다. 배포용 그림은 투명도를 유지한 WebP로 압축합니다.
 
-| 구분 | 비율 · 크기 | 배경 | 쓰는 곳 |
-|---|---|---|---|
-| 전투용 전신 | 세로형, 높이 512px로 줄여 저장(WebP, 40KB 안팎) | 투명 | 전장(키 약 56px), 제목 화면 영웅 줄, 도감 큰 그림 |
-| 초상 | 가로 3:2, 1200×800 (WebP, 150KB 안팎) | 장면 포함 | 영웅 카드 · 도감 목록(얼굴 부분), 앞으로 큰 일러스트 자리 |
+| 파일 | 칸 구성 | 내용 |
+|---|---|---|
+| `heroes.webp` | 4×2 | 영웅 8명 |
+| `units.webp` | 4×4 | 일반 왜군 10종, 의병·수비군·정예·승병, 전령, 거북선 |
+| `bosses.webp` | 4×3 | 적장 11명, 히데요시 |
+| `buildings.webp` | 4×3 | 유산 10종, 본진 성문, 주변 전각 |
+| `props.webp` | 4×3 | 소나무·설송·단풍·대나무, 바위, 기와집·초가, 항아리·궤짝, 장승, 절벽, 목책 |
+| `terrain.webp` | 4×2 | 봄·여름·가을·겨울 땅, 흙돌길·눈길·박석·물 |
+| `scene.webp` | 한 장 | 타이틀·메뉴의 산성 마을 |
 
-- **오른쪽을 보는 한 장**이면 됩니다. 왼쪽은 뒤집어 그리고, 걷기(통통 튐 + 앞으로 기울기) · 공격(앞으로 내딛기) · 숨쉬기는 코드로 붙입니다.
-- 모든 영웅을 같은 카메라 각도(약간 위에서), 같은 조명(왼쪽 위 주광 + 차가운 달빛 + 따뜻한 테두리 빛), 같은 화풍으로 맞춥니다.
-- 전장에서는 작게 보이므로 얼굴보다 **실루엣과 색**이 뚜렷해야 합니다.
+모든 파일은 `assets/illustrated/`에 있습니다. `src/data/art.js`의 `atlases`가 파일 경로와 열·행 수를, 각 항목의 `{ atlas, cell }`이 사용할 칸을 정합니다. `cell`은 왼쪽 위부터 가로 방향으로 증가하는 0 기준 번호입니다. 시트 전체 해상도가 바뀌어도 열·행 비율이 같으면 사용할 수 있습니다.
 
-## 프롬프트
+전신·건물·소품은 진짜 투명 배경이며, 각 칸에 여백이 필요합니다. 이웃 칸으로 무기나 나뭇가지가 넘어가면 잘리거나 조각이 섞입니다. `terrain.webp`만 불투명하며 칸 전체를 재질로 채웁니다.
 
-### 공통 (전투용 전신)
+`src/render/art.js`는 시트마다 한 번만 이미지를 읽고 칸을 선택합니다. 투명 여백을 정리한 뒤 작은 전투용 캔버스를 캐시합니다. 영웅의 발 중심은 아래쪽 실루엣에서 잡고, 초상화의 얼굴 위치는 `ART.faces`에서 따로 지정합니다. 그림을 읽지 못하면 기존 코드 그림을 사용합니다.
+
+## 의복과 유산 단계
+
+의복 16벌은 같은 영웅 그림의 옷 색을 선택적으로 바꾸어 사용합니다. 새로 구매한 의복 때문에 기존 카툰으로 돌아가지 않습니다. 별도 의복 그림 16장이 생긴 것은 아니며, 얼굴·장비·실루엣을 유지한 색상 변형입니다.
+
+유산 10종에는 각각 기본 건물 그림 한 장이 있습니다. 단계가 오르면 크기·금속 장식·깃발이 추가되고, 갑 특화에는 금빛 장식, 을 특화에는 푸른 장식이 표시됩니다. 기존 50개 단계·특화 조합의 수치와 공격 효과를 유지합니다.
+
+## 전장 25곳
+
+`src/render/illustrated-map.js`가 시뮬레이션 지도의 좌표로 새 그림을 조립합니다.
+
+- 도로 중심선은 `map.paths`를 그대로 사용합니다. 그림 생성 결과의 길을 이동 경로로 사용하지 않습니다.
+- 땅·길·물·박석은 새 텍스처를 사용하며 반복 가장자리는 거울 배열로 연결합니다.
+- 기존 나무·집·바위·장승·산 위치에는 새 소품을 배치합니다. 소품과 본진에는 접지 그림자와 등불을 더합니다.
+- 계절을 유지합니다. 겨울은 눈길·설송·설산 바위, 가을은 낙엽과 단풍, 해전은 물 재질을 사용합니다.
+- `영화풍/밝은 낮` 설정을 유지합니다. 새 재질은 이미 명암이 있어 기존의 강한 색보정을 중복 적용하지 않습니다.
+
+이 방식은 전장별 완성 그림 25장을 생성한 방식과 다릅니다. 이동·건설 좌표에 맞는 그림 요소를 조립해 모든 전장에 같은 화풍을 적용합니다. `ART.backgrounds`에 전장 ID별 완성 그림을 추가하는 기존 기능도 유지합니다. 그 경우 길과 성 위치는 반드시 배치도와 일치해야 합니다.
+
+## 확인과 빌드
+
+```bash
+node server/server.js
+# http://localhost:8080/dev/art-review.html
+node tools/selftest.mjs
+npm install
+npm run build
 ```
-Stylized 3D game character render of <CHARACTER>.
-Full body, standing in a ready stance, facing right, <POSE / WEAPON>.
-Outfit: <OUTFIT>.
-Camera: slightly high 3/4 view, whole body visible, centered, feet at the bottom of the frame, small margin around the character.
-Style: high-quality stylized 3D render, slightly exaggerated heroic proportions, hand-painted textures, crisp readable silhouette, strong color separation.
-Lighting: key light from the upper left, cool blue moonlight fill, subtle warm rim light, soft ambient occlusion, cinematic mood.
-Background: plain solid flat white background, no ground, no scenery, no cast shadow, no text.
-```
 
-### 공통 (초상)
-```
-Stylized 3D cinematic character portrait of <CHARACTER>.
-Waist-up, three-quarter view, <POSE / WEAPON>, <EXPRESSION>.
-Outfit: <OUTFIT>.
-Setting: <SCENE>, night, cold blue moonlight, warm torch light, faint snow particles, misty atmosphere.
-Style: high-quality stylized 3D game cinematic art, hand-painted textures, dramatic rim lighting, shallow depth of field. 3:2 landscape.
-```
+미리보기 페이지는 25개 전장 렌더링, 그림 누락, 의복 색 변화를 확인합니다. 영웅·왜군·유산·소품을 확대해서 볼 수 있고 전장 그림을 PNG로 저장할 수 있습니다. 단일 HTML 빌드는 모든 사용 그림을 포함하며 소스 폴더 없이 실행할 수 있습니다. 온라인 협동에는 서버가 필요합니다.
 
-### 네거티브
-```
-Japanese samurai armor, Chinese armor, anime style, flat 2D, pixel art, photorealistic, text, watermark, logo, extra fingers, cropped feet, multiple characters, busy background, ground plane, harsh black shadows
-```
+## 2026-10-10 고정 시점 그림 전장
 
-### 영웅별 빈칸
+정식 게임과 사계절 전장은 이제 고정된 높은 시점에서 2.5D 그림을 표시합니다. Three.js의 실제 지면 좌표·깊이·카메라 투영을 사용하고, 캐릭터와 건물에는 투명 그림을 붙입니다. 카메라 이동과 확대는 유지하고 회전 입력은 잠급니다. 시뮬레이션의 길·사거리·피해·강화 비용은 그대로 사용합니다.
 
-| id | 영웅 | CHARACTER | POSE / WEAPON | OUTFIT | SCENE (초상) |
-|---|---|---|---|---|---|
-| `yi` | 이순신 ✅ | Yi Sun-sin, legendary Korean admiral of the Joseon dynasty (1590s) | holding a traditional Korean composite bow, quiver on his back | deep navy-blue Joseon dujeonggap studded brigandine with gold rivets, crimson red cape, Joseon steel helmet with a red horsehair tassel, black mustache and short beard | rocky Korean coastline, turtle ships in the stormy sea |
-| `sejong` | 세종대왕 | King Sejong the Great of Joseon (1440s), wise and gentle scholar-king | holding a thin blue-bound book (Hunminjeongeum), other hand raised in a calm gesture | red royal dragon robe (gonryongpo) with round gold dragon emblems on chest and shoulders, black ikseongwan hat with two upright flaps at the back, black jade belt, neat black beard | royal palace hall with glowing paper lanterns, Hangul letters floating as golden light |
-| `eulji` | 을지문덕 | Eulji Mundeok, Goguryeo general and strategist (612 AD) | holding a white feather fan, other hand on a sword hilt | dark green Goguryeo lamellar armor with bronze plates, helmet with two tall white feather plumes, long black beard, clever smile | river bank at night, floodwaters bursting from a broken dam |
-| `gang` | 강감찬 | Gang Gam-chan, elderly Goryeo general (Battle of Gwiju, 1019) | holding a straight double-edged sword pointed forward | purple and steel Goryeo lamellar armor, steel helmet with a gold star crest, long grey beard, sharp eyes | battlefield plain under a sky of falling meteors |
-| `gwon` | 권율 | Gwon Yul, Joseon general who defended Haengju Fortress (1593) | holding a long spear and a round wooden shield | brown leather-and-steel Joseon armor, helmet with a red tassel, sturdy build, short beard | wooden palisade of a mountain fortress, women carrying stones in aprons |
-| `gwak` | 곽재우 | Gwak Jae-u, the Red-Robed General, leader of the Joseon righteous army | holding a bow, arrow drawn | bright red flowing robe, wide-brimmed black Korean gat hat, black sash, fierce face with mustache | misty marsh with reeds, hidden militia torches |
-| `ahn` | 안중근 | An Jung-geun, Korean independence activist (1909) | holding an early 1900s pistol pointed down, determined stance | long dark wool overcoat over a dark suit, black flat cap, thick mustache | snowy train platform at night, steam and lamplight |
-| `dangun` | 단군왕검 | Dangun Wanggeom, mythical founding king of Gojoseon | one hand crackling with blue lightning, a bronze ritual bell at his belt, a small pouch of garlic bulbs | white hemp robes with a green sash, bronze crown with jade beads, long white hair and beard, sacred aura | mountain peak above the clouds, sacred birch tree, thunderclouds |
+`src/3d/fixed-art.js`가 그림의 발 위치, 방향별 포즈, 접지·투영 그림자, 투명 부분 선택 검사, 건물 가림 실루엣을 관리합니다. 기본 의복 이순신은 네 방향과 준비·걷기 두 장·활 공격의 16칸을 사용합니다. 유산 10종은 각각 기본·2·3·최종 A·최종 B의 다른 그림, 총 50개 외형을 사용합니다. 겨울에는 새 설송 두 종류·바위·한옥 두 종류·자연 절벽을 배치합니다. 지면과 길의 과한 작은 무늬를 줄이고, 남색·주홍색·금색 및 푸른 환경광·따뜻한 등불의 대비를 기준으로 색을 맞췄습니다.
+
+새 그림은 내장 imagegen으로 생성했으며 PNG 원본은 `assets/3d/fixed/source/`, `assets/3d/painted/source/`에 보존했습니다. 최종 경로와 모든 생성·수정 프롬프트는 `docs/FIXED_BATTLE_ART_PROMPTS.json`에 있습니다. Sharp는 배포용 WebP 변환과 지면 축소에만 사용합니다.
+
+일반 그림 병력에는 숨겨진 관절 모델을 만들지 않습니다. 그림 준비 중에는 솔로·로컬·호스트의 출정 시간과 명령 실행을 보류하고 게스트는 동기화를 계속하며 대기 화면을 표시합니다. 자산 실패 시 기존 모델로 복구하고, 일부 병력 그림만 누락돼도 가능한 대체 모델은 묶어서 그립니다.
+
+건설 유산 10종은 모든 강화 단계에서 그림 높이 1.2칸을 유지합니다. 이전 기본 단계보다 33%, 3단계보다 58% 작으며 강화 시 그림을 확대하지 않습니다. 단계별 구조·장비·최종 분기 그림과 단계 배지로 상태를 구분합니다. 접지 그림자·건설 미리보기·발사 위치도 축소한 그림을 기준으로 맞춥니다.
+
+현재 범위: 다른 영웅·의복·일반 병력은 기존 고해상도 그림의 좌우 전환과 작은 움직임을 사용합니다. 캐릭터의 방향별 전투 애니메이션은 이순신 기본 의복부터 적용한 상태입니다. 유산 50조합의 전용 그림은 모두 연결했습니다. 길은 실제 격자 경로에 맞추므로 참고 이미지처럼 완전히 자유로운 곡선 지형은 아닙니다.
+
+검증: `npm run test:fixed-art`, `npm run test:campaign`, `npm run test:3d`. 작은 화면은 `dev/fixed-responsive-review.html`에서 실제 414×896 전장 두 개로 확인합니다. 성능 비교는 `dev/3d-performance-review.html`에서 그림/모델 표현을 선택합니다. 측정 결과와 UI 확인 기록은 `docs/FIXED_BATTLE_ART_VALIDATION.json`에 정리합니다.
+
+## 2026-10-10 스킬 그림과 이동 병기
+
+화염·물결·서리·치유·참격·빛·학익진·합격기의 투명 효과 시트를 전장에 연결했습니다. 그림은 일반 알파 합성으로 표시하고, 실제 피해 범위·부채꼴·착탄 예고는 시뮬레이션의 좌표와 반경을 사용합니다. 지속 장판은 순간 효과 64개 상한과 별도로 유지합니다. 그림 로딩 실패 때는 기존 효과를 사용하며 전투를 중단하지 않습니다.
+
+정식 게임과 자유 전장은 `src/3d/battle-events.js`를 함께 사용합니다. 출격 거북선·전령은 기존 아군 그림을 사용하며 경로 이동·좌우 전환·접지 그림자를 유지합니다. 건물 크기와 전투 수치는 변경하지 않았습니다. 원본·프롬프트·적용 범위·검증은 [PAINTED_EFFECTS.md](PAINTED_EFFECTS.md), 사계절 비교는 `dev/3d-effect-review.html`에 있습니다.
+
+## 2026-10-10 유산 50개 강화 외형
+
+보신각·첨성대·해인사·석굴암·경복궁·남한산성·석빙고·불국사의 단계별 그림 40개를 추가했습니다. 기존 숭례문·수원화성 10개와 함께 전용 강화 외형 50개를 사용합니다. 강화 시 크기를 키우지 않고 등불·금속 장식·주요 장비·깃발로 단계를 구분합니다. 최종 특화는 종과 북, 혼천의와 관측기, 경판과 향로, 광배와 불상, 왕실 휘장과 국고, 군기와 기도 깃발, 얼음 결정과 창살, 석탑과 연등으로 나뉩니다.
+
+새 시트는 불균일한 행 경계를 명시하고 그림마다 투명 여백을 둔 별도 텍스처로 분리합니다. 작게 표시할 때 옆 건물의 색이나 그림이 섞이지 않습니다. 새 시트만 누락되면 기존 기본 그림과 단계 표식으로 대체합니다. 실제 전장 그림으로 바꾼 `dev/3d-tower-review.html`에서 10종·50개 조합과 계절을 비교할 수 있습니다. 원본·최종 프롬프트·자동 검사·브라우저 확인은 [TOWER_STAGE_ART.md](TOWER_STAGE_ART.md)에 있습니다.

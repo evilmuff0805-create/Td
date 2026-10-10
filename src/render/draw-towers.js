@@ -2,6 +2,7 @@
 // 움직이지 않는 건물 몸체는 스프라이트로 캐시하고, 화포·종·별빛 같은 움직이는 부분만 매 프레임 그린다.
 import { TS, PAL, rgba, glow, star, lotus, shade } from './paint.js';
 import { OL, LW, fillToon, sphere, gloss, rrect, box, cylinder, softShadow, sprite, blit } from './toon.js';
+import { towerArt, drawIllustration } from './art.js';
 
 const BODY_W = 70;
 const BODY_H = 80;
@@ -830,6 +831,45 @@ const OVERLAY = {
 };
 
 // t: {type, level, branch, angle, flash, disabledT, beamPow, owner}
+function paintedOverlay(ctx, t, time) {
+  const color = t.branch === 'B' ? '#8fcfff' : '#f1c97b';
+  // Higher restorations gain brass fittings and pennants; branches have distinct light.
+  if (t.level >= 2) {
+    ctx.strokeStyle = rgba(color, 0.65);
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(0, -2, 18, 4.5, 0, Math.PI, Math.PI * 2); ctx.stroke();
+    for (const side of [-1, 1]) {
+      ctx.fillStyle = color;
+      ctx.beginPath(); ctx.arc(side * 16, -8, 1.3, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  if (t.level >= 3) {
+    for (const side of [-1, 1]) {
+      ctx.strokeStyle = '#77654a'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(side * 19, -4); ctx.lineTo(side * 19, -29); ctx.stroke();
+      const wave = Math.sin(time * 3.5 + side) * 1.2;
+      const fabric = ctx.createLinearGradient(side * 19, -29, side * 24, -17);
+      fabric.addColorStop(0, t.branch === 'B' ? '#426e90' : '#a84838');
+      fabric.addColorStop(1, t.branch === 'B' ? '#29465f' : '#66312c');
+      ctx.fillStyle = fabric;
+      ctx.beginPath(); ctx.moveTo(side * 19, -29); ctx.lineTo(side * (26 + wave), -27);
+      ctx.lineTo(side * (26 - wave), -17); ctx.lineTo(side * 19, -20); ctx.closePath(); ctx.fill();
+    }
+  }
+  if (t.branch) glow(ctx, 0, -26, 26, color, 0.07 + Math.sin(time * 2) * 0.02);
+  if (t.branch === 'A') {
+    // Brass crown distinguishes the offensive branch from the base third tier.
+    ctx.fillStyle = '#dcb66c'; ctx.strokeStyle = '#74532e'; ctx.lineWidth = 0.7;
+    ctx.beginPath(); ctx.moveTo(-7, -51); ctx.lineTo(-7, -57); ctx.lineTo(-3, -54);
+    ctx.lineTo(0, -60); ctx.lineTo(3, -54); ctx.lineTo(7, -57); ctx.lineTo(7, -51); ctx.closePath(); ctx.fill(); ctx.stroke();
+  } else if (t.branch === 'B') {
+    glow(ctx, 0, -53, 8, '#aad9f6', 0.3);
+    ctx.fillStyle = '#bfe3ee'; ctx.strokeStyle = '#5b899c'; ctx.lineWidth = 0.7;
+    ctx.beginPath(); ctx.moveTo(0, -61); ctx.lineTo(4, -55); ctx.lineTo(0, -49); ctx.lineTo(-4, -55); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  if (t.flash > 0) glow(ctx, 0, -30, 23, t.type === 'seokbinggo' ? '#b7e8ff' : '#ffd795', Math.min(0.42, t.flash * 0.5));
+}
+
 export function drawTower(ctx, t, time, opts = {}) {
   const cx = opts.x ?? (t.x + 0.5) * TS;
   const gy = opts.y ?? (t.y + 0.5) * TS + 15;
@@ -846,7 +886,12 @@ export function drawTower(ctx, t, time, opts = {}) {
   const rc = opts.recoil || 0;
   const rx = 1 + 0.06 * rc;
   const ry = 1 - 0.08 * rc;
-  if (opts.direct) {
+  const art = towerArt(t.type);
+  if (art) {
+    ctx.save(); ctx.translate(cx, gy); ctx.scale(rx, ry);
+    drawIllustration(ctx, art, 0, 0, 59 * sc);
+    ctx.restore();
+  } else if (opts.direct) {
     ctx.save();
     ctx.translate(cx, gy);
     ctx.scale(sc, sc);
@@ -862,7 +907,8 @@ export function drawTower(ctx, t, time, opts = {}) {
   ctx.save();
   ctx.translate(cx, gy);
   ctx.scale(sc * rx, sc * ry);
-  OVERLAY[t.type](ctx, t, time);
+  if (art) paintedOverlay(ctx, t, time);
+  else OVERLAY[t.type](ctx, t, time);
   if (!opts.noPips) {
     if (t.branch) {
       sphere(ctx, 16, -5, 5.2, t.branch === 'A' ? '#c8412f' : '#2f6fb8', { lw: 0.9 });

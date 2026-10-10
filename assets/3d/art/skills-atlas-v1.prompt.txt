@@ -1,0 +1,14 @@
+Use case: stylized-concept
+Asset type: ONE production game UI texture atlas, square, exactly three equal columns by three equal rows, nine square cells, no gutters. Intended for CSS sprite-sheet cropping in a Korean historical fantasy tower-defense game.
+Primary request: A beautifully illustrated 3x3 skill icon atlas in a stylized animated 3D adventure film / painterly game-art style. Clearly sculpted shapes, rich wood, worn bronze and embroidered fabric, restrained detail, strong readable silhouettes at small sizes. Cool deep navy blue ambient shadows, warm amber flame highlights. Each cell is self-contained with a centered large subject and its own dark blue misty background. No borders, no frames, no text, no numbers, no calligraphy, no logos, no UI, no watermark. Precise equal 3x3 grid, important objects fully within each cell, with a 10% safe margin.
+Cell subjects in exact reading order, left to right:
+Top-left: a Joseon hwacha wooden multiple rocket launcher rack, bronze details, a few fiery rocket trails sweeping upwards, dynamic warm orange light.
+Top-middle: a rugged Korean stone beacon tower with a tall amber signal fire and curled smoke.
+Top-right: a red Korean militia banner on a spear with a sheathed traditional sword and a helmet, brave fabric silhouette, no written symbols.
+Middle-left: a round dark iron Joseon gunpowder time bomb with bronze bands and a glowing short fuse, floating sparks.
+Middle-middle: a tied straw rice sack beside golden grain and a few round bronze coins, warm reassuring supply light.
+Middle-right: a heavy bronze Joseon cannon on a carved wood carriage, distinct large barrel, small amber muzzle flame.
+Bottom-left: an open traditional stitched medical herb book, leafy medicinal herbs and a small ceramic medicine bowl, soft jade healing light, no legible writing.
+Bottom-middle: sharp sculpted icy blue crystal cluster, cold swirling frost, distinct snowflake energy.
+Bottom-right: a bold red-and-blue Korean taegeuk energy emblem made of two swirling sculpted wisps, surrounded by fine golden sparks, clear central circular red-blue form.
+Composition: one single square image atlas. Each cell has an identical scale and clean dark backdrop; no elements cross the cell boundaries. Subject occupies roughly 75% of each square. All nine subjects must be present. Vivid polished illustration, coherent lighting, no photorealism, no pixel art, no flat vector.

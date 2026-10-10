@@ -1,0 +1,2340 @@
+{
+  "generatedAt": "2026-10-10T01:34:40.012Z",
+  "sourceGeneratedAt": "2026-10-10T01:23:03.430Z",
+  "checkpointAttempt": 1,
+  "fixed": {
+    "coins": 60,
+    "jade": 935,
+    "heroes": {
+      "yi": 6,
+      "sejong": 1
+    },
+    "skills": {
+      "singijeon": 2,
+      "bongsu": 5
+    },
+    "towers": {
+      "sungnyemun": 22,
+      "hwaseong": 17,
+      "bosingak": 10,
+      "cheomseong": 25,
+      "haeinsa": 3,
+      "seokguram": 26,
+      "namhansan": 4,
+      "gyeongbok": 4,
+      "seokbinggo": 4,
+      "bulguksa": 4
+    }
+  },
+  "seed": 15838,
+  "notes": "Frozen actual paid profile. All runs same seed, no item use, meta purchases, rewards, or unlock additions. Yi+Sejong and Singijeon+Bongsu retained. Only normal opening move commands and wave24 seokguram A reallocations distinguish the winning strategy.",
+  "results": [
+    {
+      "plan": "balanced",
+      "branch": "alt",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "time": 196.5,
+      "combos": 2,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 4,
+        "samurai": 4,
+        "ninja": 6
+      },
+      "leaksByWave": {
+        "1": 6,
+        "3": 1,
+        "5": 5,
+        "6": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.2,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 33.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 17,
+          "time": 31.5,
+          "gold": 66
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 181
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 166
+        },
+        {
+          "wave": 5,
+          "lives": 12,
+          "time": 123.2,
+          "gold": 116
+        },
+        {
+          "wave": 6,
+          "lives": 10,
+          "time": 156.6,
+          "gold": 139
+        },
+        {
+          "wave": 7,
+          "lives": 2,
+          "time": 189.1,
+          "gold": 252
+        }
+      ]
+    },
+    {
+      "plan": "bul",
+      "branch": "alt",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "time": 199.2,
+      "combos": 2,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 4,
+        "samurai": 4,
+        "ninja": 6
+      },
+      "leaksByWave": {
+        "1": 6,
+        "3": 1,
+        "5": 5,
+        "6": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.2,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 33.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 17,
+          "time": 31.5,
+          "gold": 66
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 181
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 196
+        },
+        {
+          "wave": 5,
+          "lives": 12,
+          "time": 123.2,
+          "gold": 146
+        },
+        {
+          "wave": 6,
+          "lives": 10,
+          "time": 156.6,
+          "gold": 169
+        },
+        {
+          "wave": 7,
+          "lives": 2,
+          "time": 189.1,
+          "gold": 132
+        }
+      ]
+    },
+    {
+      "plan": "fresh",
+      "branch": "alt",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "time": 157.5,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 7,
+        "cavalry": 8,
+        "onmyoji": 4,
+        "ninja": 2
+      },
+      "leaksByWave": {
+        "1": 7,
+        "3": 1,
+        "4": 5,
+        "5": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.9,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 31.9,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 17,
+          "time": 31.5,
+          "gold": 89
+        },
+        {
+          "wave": 3,
+          "lives": 13,
+          "time": 65,
+          "gold": 128
+        },
+        {
+          "wave": 4,
+          "lives": 13,
+          "time": 94.2,
+          "gold": 156
+        },
+        {
+          "wave": 5,
+          "lives": 11,
+          "time": 123.2,
+          "gold": 139
+        },
+        {
+          "wave": 6,
+          "lives": 1,
+          "time": 156.6,
+          "gold": 115
+        }
+      ]
+    },
+    {
+      "plan": "greedy",
+      "branch": "alt",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "time": 106,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 19,
+        "cavalry": 2
+      },
+      "leaksByWave": {
+        "1": 19,
+        "3": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 25.3,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 26.9,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 27.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 27.9,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 7,
+          "time": 31.5,
+          "gold": 59
+        },
+        {
+          "wave": 3,
+          "lives": 1,
+          "time": 65,
+          "gold": 126
+        },
+        {
+          "wave": 4,
+          "lives": 1,
+          "time": 94.2,
+          "gold": 128
+        }
+      ]
+    },
+    {
+      "plan": "ice",
+      "branch": "alt",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "time": 133.9,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 14,
+        "cavalry": 6
+      },
+      "leaksByWave": {
+        "1": 14,
+        "3": 1,
+        "4": 2
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 27.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 27.9,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 28,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 28.4,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 12,
+          "time": 31.5,
+          "gold": 85
+        },
+        {
+          "wave": 3,
+          "lives": 6,
+          "time": 65,
+          "gold": 146
+        },
+        {
+          "wave": 4,
+          "lives": 6,
+          "time": 94.2,
+          "gold": 143
+        },
+        {
+          "wave": 5,
+          "lives": 4,
+          "time": 123.2,
+          "gold": 105
+        }
+      ]
+    },
+    {
+      "plan": "balanced",
+      "branch": "A",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "time": 196.5,
+      "combos": 2,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 4,
+        "samurai": 4,
+        "ninja": 6
+      },
+      "leaksByWave": {
+        "1": 6,
+        "3": 1,
+        "5": 5,
+        "6": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.2,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 33.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 17,
+          "time": 31.5,
+          "gold": 66
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 181
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 166
+        },
+        {
+          "wave": 5,
+          "lives": 12,
+          "time": 123.2,
+          "gold": 116
+        },
+        {
+          "wave": 6,
+          "lives": 10,
+          "time": 156.6,
+          "gold": 139
+        },
+        {
+          "wave": 7,
+          "lives": 2,
+          "time": 189.1,
+          "gold": 252
+        }
+      ]
+    },
+    {
+      "plan": "bul",
+      "branch": "A",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "time": 199.2,
+      "combos": 2,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 4,
+        "samurai": 4,
+        "ninja": 6
+      },
+      "leaksByWave": {
+        "1": 6,
+        "3": 1,
+        "5": 5,
+        "6": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.2,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 33.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 17,
+          "time": 31.5,
+          "gold": 66
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 181
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 196
+        },
+        {
+          "wave": 5,
+          "lives": 12,
+          "time": 123.2,
+          "gold": 146
+        },
+        {
+          "wave": 6,
+          "lives": 10,
+          "time": 156.6,
+          "gold": 169
+        },
+        {
+          "wave": 7,
+          "lives": 2,
+          "time": 189.1,
+          "gold": 132
+        }
+      ]
+    },
+    {
+      "plan": "fresh",
+      "branch": "A",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "time": 157.5,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 7,
+        "cavalry": 8,
+        "onmyoji": 4,
+        "ninja": 2
+      },
+      "leaksByWave": {
+        "1": 7,
+        "3": 1,
+        "4": 5,
+        "5": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.9,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 31.9,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 17,
+          "time": 31.5,
+          "gold": 89
+        },
+        {
+          "wave": 3,
+          "lives": 13,
+          "time": 65,
+          "gold": 128
+        },
+        {
+          "wave": 4,
+          "lives": 13,
+          "time": 94.2,
+          "gold": 156
+        },
+        {
+          "wave": 5,
+          "lives": 11,
+          "time": 123.2,
+          "gold": 139
+        },
+        {
+          "wave": 6,
+          "lives": 1,
+          "time": 156.6,
+          "gold": 115
+        }
+      ]
+    },
+    {
+      "plan": "greedy",
+      "branch": "A",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "time": 106,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 19,
+        "cavalry": 2
+      },
+      "leaksByWave": {
+        "1": 19,
+        "3": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 25.3,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 26.9,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 27.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 27.9,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 7,
+          "time": 31.5,
+          "gold": 59
+        },
+        {
+          "wave": 3,
+          "lives": 1,
+          "time": 65,
+          "gold": 126
+        },
+        {
+          "wave": 4,
+          "lives": 1,
+          "time": 94.2,
+          "gold": 128
+        }
+      ]
+    },
+    {
+      "plan": "ice",
+      "branch": "A",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "time": 133.9,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 14,
+        "cavalry": 6
+      },
+      "leaksByWave": {
+        "1": 14,
+        "3": 1,
+        "4": 2
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 27.8,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 27.9,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 28,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 28.4,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 12,
+          "time": 31.5,
+          "gold": 85
+        },
+        {
+          "wave": 3,
+          "lives": 6,
+          "time": 65,
+          "gold": 146
+        },
+        {
+          "wave": 4,
+          "lives": 6,
+          "time": 94.2,
+          "gold": 143
+        },
+        {
+          "wave": 5,
+          "lives": 4,
+          "time": 123.2,
+          "gold": 105
+        }
+      ]
+    },
+    {
+      "plan": "nam",
+      "branch": "alt",
+      "opening": true,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 24,
+      "time": 941.3,
+      "combos": 10,
+      "finalOrders": 0,
+      "bossMaxHp": 38000,
+      "bossMinHp": 9473.943849673286,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 2,
+        "onmyoji": 4,
+        "ninja": 8
+      },
+      "leaksByWave": {
+        "1": 6,
+        "4": 3,
+        "5": 2,
+        "24": 2
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.1,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.5,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 31.6,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 32.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 18,
+          "time": 31.5,
+          "gold": 93
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 133
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 150
+        },
+        {
+          "wave": 5,
+          "lives": 14,
+          "time": 123.2,
+          "gold": 154
+        },
+        {
+          "wave": 6,
+          "lives": 8,
+          "time": 156.6,
+          "gold": 117
+        },
+        {
+          "wave": 7,
+          "lives": 4,
+          "time": 189.1,
+          "gold": 174
+        },
+        {
+          "wave": 8,
+          "lives": 4,
+          "time": 219.9,
+          "gold": 168
+        },
+        {
+          "wave": 9,
+          "lives": 4,
+          "time": 250.2,
+          "gold": 151
+        },
+        {
+          "wave": 10,
+          "lives": 4,
+          "time": 281.8,
+          "gold": 98
+        },
+        {
+          "wave": 11,
+          "lives": 4,
+          "time": 319.5,
+          "gold": 271
+        },
+        {
+          "wave": 12,
+          "lives": 4,
+          "time": 363.9,
+          "gold": 115
+        },
+        {
+          "wave": 13,
+          "lives": 4,
+          "time": 401.3,
+          "gold": 127
+        },
+        {
+          "wave": 14,
+          "lives": 4,
+          "time": 432.3,
+          "gold": 223
+        },
+        {
+          "wave": 15,
+          "lives": 4,
+          "time": 462.3,
+          "gold": 158
+        },
+        {
+          "wave": 16,
+          "lives": 4,
+          "time": 497,
+          "gold": 246
+        },
+        {
+          "wave": 17,
+          "lives": 4,
+          "time": 530.6,
+          "gold": 183
+        },
+        {
+          "wave": 18,
+          "lives": 4,
+          "time": 568.3,
+          "gold": 203
+        },
+        {
+          "wave": 19,
+          "lives": 4,
+          "time": 598.3,
+          "gold": 280
+        },
+        {
+          "wave": 20,
+          "lives": 4,
+          "time": 629.5,
+          "gold": 242
+        },
+        {
+          "wave": 21,
+          "lives": 4,
+          "time": 669.5,
+          "gold": 276
+        },
+        {
+          "wave": 22,
+          "lives": 4,
+          "time": 711,
+          "gold": 201
+        },
+        {
+          "wave": 23,
+          "lives": 4,
+          "time": 750.6,
+          "gold": 216
+        },
+        {
+          "wave": 24,
+          "lives": 4,
+          "time": 786.6,
+          "gold": 197
+        }
+      ]
+    },
+    {
+      "plan": "nam",
+      "branch": "alt",
+      "opening": true,
+      "finalAdapt": true,
+      "seed": 15838,
+      "win": true,
+      "lives": 4,
+      "wave": 24,
+      "time": 864.4,
+      "combos": 10,
+      "finalOrders": 52,
+      "bossMaxHp": 38000,
+      "bossMinHp": 11.46220445950156,
+      "bossKilled": true,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 2,
+        "onmyoji": 4,
+        "ninja": 4
+      },
+      "leaksByWave": {
+        "1": 6,
+        "4": 3,
+        "5": 2
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.1,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.5,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 31.6,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 32.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 18,
+          "time": 31.5,
+          "gold": 93
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 133
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 150
+        },
+        {
+          "wave": 5,
+          "lives": 14,
+          "time": 123.2,
+          "gold": 154
+        },
+        {
+          "wave": 6,
+          "lives": 8,
+          "time": 156.6,
+          "gold": 117
+        },
+        {
+          "wave": 7,
+          "lives": 4,
+          "time": 189.1,
+          "gold": 174
+        },
+        {
+          "wave": 8,
+          "lives": 4,
+          "time": 219.9,
+          "gold": 168
+        },
+        {
+          "wave": 9,
+          "lives": 4,
+          "time": 250.2,
+          "gold": 151
+        },
+        {
+          "wave": 10,
+          "lives": 4,
+          "time": 281.8,
+          "gold": 98
+        },
+        {
+          "wave": 11,
+          "lives": 4,
+          "time": 319.5,
+          "gold": 271
+        },
+        {
+          "wave": 12,
+          "lives": 4,
+          "time": 363.9,
+          "gold": 115
+        },
+        {
+          "wave": 13,
+          "lives": 4,
+          "time": 401.3,
+          "gold": 127
+        },
+        {
+          "wave": 14,
+          "lives": 4,
+          "time": 432.3,
+          "gold": 223
+        },
+        {
+          "wave": 15,
+          "lives": 4,
+          "time": 462.3,
+          "gold": 158
+        },
+        {
+          "wave": 16,
+          "lives": 4,
+          "time": 497,
+          "gold": 246
+        },
+        {
+          "wave": 17,
+          "lives": 4,
+          "time": 530.6,
+          "gold": 183
+        },
+        {
+          "wave": 18,
+          "lives": 4,
+          "time": 568.3,
+          "gold": 203
+        },
+        {
+          "wave": 19,
+          "lives": 4,
+          "time": 598.3,
+          "gold": 280
+        },
+        {
+          "wave": 20,
+          "lives": 4,
+          "time": 629.5,
+          "gold": 242
+        },
+        {
+          "wave": 21,
+          "lives": 4,
+          "time": 669.5,
+          "gold": 276
+        },
+        {
+          "wave": 22,
+          "lives": 4,
+          "time": 711,
+          "gold": 201
+        },
+        {
+          "wave": 23,
+          "lives": 4,
+          "time": 750.6,
+          "gold": 216
+        },
+        {
+          "wave": 24,
+          "lives": 4,
+          "time": 786.6,
+          "gold": 197
+        }
+      ]
+    },
+    {
+      "plan": "nam",
+      "branch": "A",
+      "opening": true,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 24,
+      "time": 941.3,
+      "combos": 10,
+      "finalOrders": 0,
+      "bossMaxHp": 38000,
+      "bossMinHp": 9473.943849673286,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 2,
+        "onmyoji": 4,
+        "ninja": 8
+      },
+      "leaksByWave": {
+        "1": 6,
+        "4": 3,
+        "5": 2,
+        "24": 2
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.1,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.5,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 31.6,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 32.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 18,
+          "time": 31.5,
+          "gold": 93
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 133
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 150
+        },
+        {
+          "wave": 5,
+          "lives": 14,
+          "time": 123.2,
+          "gold": 154
+        },
+        {
+          "wave": 6,
+          "lives": 8,
+          "time": 156.6,
+          "gold": 117
+        },
+        {
+          "wave": 7,
+          "lives": 4,
+          "time": 189.1,
+          "gold": 174
+        },
+        {
+          "wave": 8,
+          "lives": 4,
+          "time": 219.9,
+          "gold": 168
+        },
+        {
+          "wave": 9,
+          "lives": 4,
+          "time": 250.2,
+          "gold": 151
+        },
+        {
+          "wave": 10,
+          "lives": 4,
+          "time": 281.8,
+          "gold": 98
+        },
+        {
+          "wave": 11,
+          "lives": 4,
+          "time": 319.5,
+          "gold": 271
+        },
+        {
+          "wave": 12,
+          "lives": 4,
+          "time": 363.9,
+          "gold": 115
+        },
+        {
+          "wave": 13,
+          "lives": 4,
+          "time": 401.3,
+          "gold": 127
+        },
+        {
+          "wave": 14,
+          "lives": 4,
+          "time": 432.3,
+          "gold": 223
+        },
+        {
+          "wave": 15,
+          "lives": 4,
+          "time": 462.3,
+          "gold": 158
+        },
+        {
+          "wave": 16,
+          "lives": 4,
+          "time": 497,
+          "gold": 246
+        },
+        {
+          "wave": 17,
+          "lives": 4,
+          "time": 530.6,
+          "gold": 183
+        },
+        {
+          "wave": 18,
+          "lives": 4,
+          "time": 568.3,
+          "gold": 203
+        },
+        {
+          "wave": 19,
+          "lives": 4,
+          "time": 598.3,
+          "gold": 280
+        },
+        {
+          "wave": 20,
+          "lives": 4,
+          "time": 629.5,
+          "gold": 242
+        },
+        {
+          "wave": 21,
+          "lives": 4,
+          "time": 669.5,
+          "gold": 276
+        },
+        {
+          "wave": 22,
+          "lives": 4,
+          "time": 711,
+          "gold": 201
+        },
+        {
+          "wave": 23,
+          "lives": 4,
+          "time": 750.6,
+          "gold": 216
+        },
+        {
+          "wave": 24,
+          "lives": 4,
+          "time": 786.6,
+          "gold": 197
+        }
+      ]
+    },
+    {
+      "plan": "nam",
+      "branch": "A",
+      "opening": true,
+      "finalAdapt": true,
+      "seed": 15838,
+      "win": true,
+      "lives": 4,
+      "wave": 24,
+      "time": 864.4,
+      "combos": 10,
+      "finalOrders": 52,
+      "bossMaxHp": 38000,
+      "bossMinHp": 11.46220445950156,
+      "bossKilled": true,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 6,
+        "cavalry": 2,
+        "onmyoji": 4,
+        "ninja": 4
+      },
+      "leaksByWave": {
+        "1": 6,
+        "4": 3,
+        "5": 2
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.1,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.5,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 31.6,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 32.7,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 18,
+          "time": 31.5,
+          "gold": 93
+        },
+        {
+          "wave": 3,
+          "lives": 14,
+          "time": 65,
+          "gold": 133
+        },
+        {
+          "wave": 4,
+          "lives": 14,
+          "time": 94.2,
+          "gold": 150
+        },
+        {
+          "wave": 5,
+          "lives": 14,
+          "time": 123.2,
+          "gold": 154
+        },
+        {
+          "wave": 6,
+          "lives": 8,
+          "time": 156.6,
+          "gold": 117
+        },
+        {
+          "wave": 7,
+          "lives": 4,
+          "time": 189.1,
+          "gold": 174
+        },
+        {
+          "wave": 8,
+          "lives": 4,
+          "time": 219.9,
+          "gold": 168
+        },
+        {
+          "wave": 9,
+          "lives": 4,
+          "time": 250.2,
+          "gold": 151
+        },
+        {
+          "wave": 10,
+          "lives": 4,
+          "time": 281.8,
+          "gold": 98
+        },
+        {
+          "wave": 11,
+          "lives": 4,
+          "time": 319.5,
+          "gold": 271
+        },
+        {
+          "wave": 12,
+          "lives": 4,
+          "time": 363.9,
+          "gold": 115
+        },
+        {
+          "wave": 13,
+          "lives": 4,
+          "time": 401.3,
+          "gold": 127
+        },
+        {
+          "wave": 14,
+          "lives": 4,
+          "time": 432.3,
+          "gold": 223
+        },
+        {
+          "wave": 15,
+          "lives": 4,
+          "time": 462.3,
+          "gold": 158
+        },
+        {
+          "wave": 16,
+          "lives": 4,
+          "time": 497,
+          "gold": 246
+        },
+        {
+          "wave": 17,
+          "lives": 4,
+          "time": 530.6,
+          "gold": 183
+        },
+        {
+          "wave": 18,
+          "lives": 4,
+          "time": 568.3,
+          "gold": 203
+        },
+        {
+          "wave": 19,
+          "lives": 4,
+          "time": 598.3,
+          "gold": 280
+        },
+        {
+          "wave": 20,
+          "lives": 4,
+          "time": 629.5,
+          "gold": 242
+        },
+        {
+          "wave": 21,
+          "lives": 4,
+          "time": 669.5,
+          "gold": 276
+        },
+        {
+          "wave": 22,
+          "lives": 4,
+          "time": 711,
+          "gold": 201
+        },
+        {
+          "wave": 23,
+          "lives": 4,
+          "time": 750.6,
+          "gold": 216
+        },
+        {
+          "wave": 24,
+          "lives": 4,
+          "time": 786.6,
+          "gold": 197
+        }
+      ]
+    },
+    {
+      "plan": "nam",
+      "branch": "alt",
+      "opening": false,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 24,
+      "time": 927.3,
+      "combos": 10,
+      "finalOrders": 0,
+      "bossMaxHp": 38000,
+      "bossMinHp": 7306.287543721395,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 13,
+        "samurai": 2,
+        "ninja": 6
+      },
+      "leaksByWave": {
+        "1": 13,
+        "5": 3,
+        "24": 1
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 26.6,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 28.7,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.3,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.2,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 13,
+          "time": 31.5,
+          "gold": 63
+        },
+        {
+          "wave": 3,
+          "lives": 7,
+          "time": 65,
+          "gold": 102
+        },
+        {
+          "wave": 4,
+          "lives": 7,
+          "time": 94.2,
+          "gold": 120
+        },
+        {
+          "wave": 5,
+          "lives": 7,
+          "time": 123.2,
+          "gold": 57
+        },
+        {
+          "wave": 6,
+          "lives": 7,
+          "time": 156.6,
+          "gold": 90
+        },
+        {
+          "wave": 7,
+          "lives": 1,
+          "time": 189.1,
+          "gold": 205
+        },
+        {
+          "wave": 8,
+          "lives": 1,
+          "time": 219.9,
+          "gold": 125
+        },
+        {
+          "wave": 9,
+          "lives": 1,
+          "time": 250.2,
+          "gold": 131
+        },
+        {
+          "wave": 10,
+          "lives": 1,
+          "time": 281.8,
+          "gold": 152
+        },
+        {
+          "wave": 11,
+          "lives": 1,
+          "time": 319.5,
+          "gold": 153
+        },
+        {
+          "wave": 12,
+          "lives": 1,
+          "time": 363.9,
+          "gold": 128
+        },
+        {
+          "wave": 13,
+          "lives": 1,
+          "time": 401.3,
+          "gold": 120
+        },
+        {
+          "wave": 14,
+          "lives": 1,
+          "time": 432.3,
+          "gold": 153
+        },
+        {
+          "wave": 15,
+          "lives": 1,
+          "time": 462.3,
+          "gold": 240
+        },
+        {
+          "wave": 16,
+          "lives": 1,
+          "time": 497,
+          "gold": 184
+        },
+        {
+          "wave": 17,
+          "lives": 1,
+          "time": 530.6,
+          "gold": 215
+        },
+        {
+          "wave": 18,
+          "lives": 1,
+          "time": 568.3,
+          "gold": 200
+        },
+        {
+          "wave": 19,
+          "lives": 1,
+          "time": 598.3,
+          "gold": 257
+        },
+        {
+          "wave": 20,
+          "lives": 1,
+          "time": 629.5,
+          "gold": 206
+        },
+        {
+          "wave": 21,
+          "lives": 1,
+          "time": 669.5,
+          "gold": 266
+        },
+        {
+          "wave": 22,
+          "lives": 1,
+          "time": 711,
+          "gold": 214
+        },
+        {
+          "wave": 23,
+          "lives": 1,
+          "time": 750.6,
+          "gold": 307
+        },
+        {
+          "wave": 24,
+          "lives": 1,
+          "time": 786.6,
+          "gold": 232
+        }
+      ]
+    },
+    {
+      "plan": "nam",
+      "branch": "alt",
+      "opening": false,
+      "finalAdapt": true,
+      "seed": 15838,
+      "win": true,
+      "lives": 1,
+      "wave": 24,
+      "time": 856.9,
+      "combos": 10,
+      "finalOrders": 61,
+      "bossMaxHp": 38000,
+      "bossMinHp": 5.04196116574758,
+      "bossKilled": true,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 13,
+        "samurai": 2,
+        "ninja": 4
+      },
+      "leaksByWave": {
+        "1": 13,
+        "5": 3
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 26.6,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 28.7,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.3,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 30.2,
+          "type": "scout",
+          "lives": 1
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 13,
+          "time": 31.5,
+          "gold": 63
+        },
+        {
+          "wave": 3,
+          "lives": 7,
+          "time": 65,
+          "gold": 102
+        },
+        {
+          "wave": 4,
+          "lives": 7,
+          "time": 94.2,
+          "gold": 120
+        },
+        {
+          "wave": 5,
+          "lives": 7,
+          "time": 123.2,
+          "gold": 57
+        },
+        {
+          "wave": 6,
+          "lives": 7,
+          "time": 156.6,
+          "gold": 90
+        },
+        {
+          "wave": 7,
+          "lives": 1,
+          "time": 189.1,
+          "gold": 205
+        },
+        {
+          "wave": 8,
+          "lives": 1,
+          "time": 219.9,
+          "gold": 125
+        },
+        {
+          "wave": 9,
+          "lives": 1,
+          "time": 250.2,
+          "gold": 131
+        },
+        {
+          "wave": 10,
+          "lives": 1,
+          "time": 281.8,
+          "gold": 152
+        },
+        {
+          "wave": 11,
+          "lives": 1,
+          "time": 319.5,
+          "gold": 153
+        },
+        {
+          "wave": 12,
+          "lives": 1,
+          "time": 363.9,
+          "gold": 128
+        },
+        {
+          "wave": 13,
+          "lives": 1,
+          "time": 401.3,
+          "gold": 120
+        },
+        {
+          "wave": 14,
+          "lives": 1,
+          "time": 432.3,
+          "gold": 153
+        },
+        {
+          "wave": 15,
+          "lives": 1,
+          "time": 462.3,
+          "gold": 240
+        },
+        {
+          "wave": 16,
+          "lives": 1,
+          "time": 497,
+          "gold": 184
+        },
+        {
+          "wave": 17,
+          "lives": 1,
+          "time": 530.6,
+          "gold": 215
+        },
+        {
+          "wave": 18,
+          "lives": 1,
+          "time": 568.3,
+          "gold": 200
+        },
+        {
+          "wave": 19,
+          "lives": 1,
+          "time": 598.3,
+          "gold": 257
+        },
+        {
+          "wave": 20,
+          "lives": 1,
+          "time": 629.5,
+          "gold": 206
+        },
+        {
+          "wave": 21,
+          "lives": 1,
+          "time": 669.5,
+          "gold": 266
+        },
+        {
+          "wave": 22,
+          "lives": 1,
+          "time": 711,
+          "gold": 214
+        },
+        {
+          "wave": 23,
+          "lives": 1,
+          "time": 750.6,
+          "gold": 307
+        },
+        {
+          "wave": 24,
+          "lives": 1,
+          "time": 786.6,
+          "gold": 232
+        }
+      ]
+    },
+    {
+      "plan": "balanced",
+      "branch": "alt",
+      "opening": true,
+      "finalAdapt": false,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "time": 161,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 3,
+        "cavalry": 6,
+        "onmyoji": 4,
+        "samurai": 2,
+        "ninja": 6
+      },
+      "leaksByWave": {
+        "1": 3,
+        "4": 5,
+        "5": 4
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.2,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 34.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 5,
+          "time": 128.7,
+          "type": "cavalry",
+          "lives": 2
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 18,
+          "time": 31.5,
+          "gold": 80
+        },
+        {
+          "wave": 3,
+          "lives": 17,
+          "time": 65,
+          "gold": 194
+        },
+        {
+          "wave": 4,
+          "lives": 17,
+          "time": 94.2,
+          "gold": 212
+        },
+        {
+          "wave": 5,
+          "lives": 17,
+          "time": 123.2,
+          "gold": 131
+        },
+        {
+          "wave": 6,
+          "lives": 5,
+          "time": 156.6,
+          "gold": 81
+        }
+      ]
+    },
+    {
+      "plan": "balanced",
+      "branch": "alt",
+      "opening": true,
+      "finalAdapt": true,
+      "seed": 15838,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "time": 161,
+      "combos": 1,
+      "finalOrders": 0,
+      "bossMaxHp": 0,
+      "bossMinHp": null,
+      "bossKilled": false,
+      "bossLeaked": false,
+      "heroDeaths": {},
+      "leaksByType": {
+        "scout": 3,
+        "cavalry": 6,
+        "onmyoji": 4,
+        "samurai": 2,
+        "ninja": 6
+      },
+      "leaksByWave": {
+        "1": 3,
+        "4": 5,
+        "5": 4
+      },
+      "firstLeaks": [
+        {
+          "wave": 1,
+          "time": 29.2,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 1,
+          "time": 29.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 2,
+          "time": 34.4,
+          "type": "scout",
+          "lives": 1
+        },
+        {
+          "wave": 5,
+          "time": 128.7,
+          "type": "cavalry",
+          "lives": 2
+        }
+      ],
+      "waveStarts": [
+        {
+          "wave": 1,
+          "lives": 20,
+          "time": 0,
+          "gold": 537
+        },
+        {
+          "wave": 2,
+          "lives": 18,
+          "time": 31.5,
+          "gold": 80
+        },
+        {
+          "wave": 3,
+          "lives": 17,
+          "time": 65,
+          "gold": 194
+        },
+        {
+          "wave": 4,
+          "lives": 17,
+          "time": 94.2,
+          "gold": 212
+        },
+        {
+          "wave": 5,
+          "lives": 17,
+          "time": 123.2,
+          "gold": 131
+        },
+        {
+          "wave": 6,
+          "lives": 5,
+          "time": 156.6,
+          "gold": 81
+        }
+      ]
+    }
+  ]
+}

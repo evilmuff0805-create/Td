@@ -1,0 +1,2884 @@
+{
+  "generatedAt": "2026-10-10T01:35:07.551Z",
+  "assumptions": "Original Session. Yi + Sejong; singijeon + bongsu; one balanced bot strategy, seed 7919. Only prior stage tower unlocks. expectedMeta permanent levels. Bot losses are not a claim of impossibility or human difficulty.",
+  "summary": {
+    "completed": 150,
+    "wins": 67,
+    "byMode": {
+      "solo": {
+        "played": 75,
+        "won": 33
+      },
+      "local": {
+        "played": 75,
+        "won": 34
+      }
+    },
+    "byDifficulty": {
+      "normal": {
+        "played": 50,
+        "won": 49
+      },
+      "hard": {
+        "played": 50,
+        "won": 15
+      },
+      "hell": {
+        "played": 50,
+        "won": 3
+      }
+    }
+  },
+  "results": [
+    {
+      "stage": "s1",
+      "name": "부산진 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 0
+      },
+      "unlockedTowers": 4,
+      "win": true,
+      "lives": 20,
+      "wave": 12,
+      "total": 12,
+      "combos": 4,
+      "bosses": 1,
+      "time": 396
+    },
+    {
+      "stage": "s1",
+      "name": "부산진 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 0
+      },
+      "unlockedTowers": 4,
+      "win": true,
+      "lives": 20,
+      "wave": 12,
+      "total": 12,
+      "combos": 4,
+      "bosses": 1,
+      "time": 389
+    },
+    {
+      "stage": "s1",
+      "name": "부산진 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 0
+      },
+      "unlockedTowers": 4,
+      "win": true,
+      "lives": 5,
+      "wave": 12,
+      "total": 12,
+      "combos": 4,
+      "bosses": 1,
+      "time": 424
+    },
+    {
+      "stage": "s1",
+      "name": "부산진 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 0
+      },
+      "unlockedTowers": 4,
+      "win": true,
+      "lives": 15,
+      "wave": 12,
+      "total": 12,
+      "combos": 4,
+      "bosses": 1,
+      "time": 399
+    },
+    {
+      "stage": "s1",
+      "name": "부산진 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 0
+      },
+      "unlockedTowers": 4,
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "total": 12,
+      "combos": 4,
+      "bosses": 1,
+      "time": 421
+    },
+    {
+      "stage": "s1",
+      "name": "부산진 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 0
+      },
+      "unlockedTowers": 4,
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "total": 12,
+      "combos": 5,
+      "bosses": 1,
+      "time": 425
+    },
+    {
+      "stage": "s6",
+      "name": "동래성 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 1
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "total": 12,
+      "combos": 4,
+      "bosses": 1,
+      "time": 400
+    },
+    {
+      "stage": "s6",
+      "name": "동래성 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 1
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 12,
+      "wave": 12,
+      "total": 12,
+      "combos": 5,
+      "bosses": 1,
+      "time": 388
+    },
+    {
+      "stage": "s6",
+      "name": "동래성 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 1
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "total": 12,
+      "combos": 4,
+      "bosses": 1,
+      "time": 396
+    },
+    {
+      "stage": "s6",
+      "name": "동래성 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 1
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "total": 12,
+      "combos": 5,
+      "bosses": 1,
+      "time": 390
+    },
+    {
+      "stage": "s6",
+      "name": "동래성 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 1
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 12,
+      "combos": 0,
+      "bosses": 0,
+      "time": 87
+    },
+    {
+      "stage": "s6",
+      "name": "동래성 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 0,
+        "skill": 0,
+        "tower": 1
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 12,
+      "combos": 1,
+      "bosses": 0,
+      "time": 159
+    },
+    {
+      "stage": "s7",
+      "name": "상주 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 1,
+        "skill": 0,
+        "tower": 3
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 20,
+      "wave": 14,
+      "total": 14,
+      "combos": 4,
+      "bosses": 1,
+      "time": 429
+    },
+    {
+      "stage": "s7",
+      "name": "상주 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 1,
+        "skill": 0,
+        "tower": 3
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 20,
+      "wave": 14,
+      "total": 14,
+      "combos": 5,
+      "bosses": 1,
+      "time": 424
+    },
+    {
+      "stage": "s7",
+      "name": "상주 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 1,
+        "skill": 0,
+        "tower": 3
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 15,
+      "wave": 14,
+      "total": 14,
+      "combos": 4,
+      "bosses": 1,
+      "time": 435
+    },
+    {
+      "stage": "s7",
+      "name": "상주 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 1,
+        "skill": 0,
+        "tower": 3
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 15,
+      "wave": 14,
+      "total": 14,
+      "combos": 5,
+      "bosses": 1,
+      "time": 429
+    },
+    {
+      "stage": "s7",
+      "name": "상주 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 1,
+        "skill": 0,
+        "tower": 3
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 6,
+      "wave": 14,
+      "total": 14,
+      "combos": 4,
+      "bosses": 1,
+      "time": 449
+    },
+    {
+      "stage": "s7",
+      "name": "상주 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 1,
+        "skill": 0,
+        "tower": 3
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 14,
+      "total": 14,
+      "combos": 5,
+      "bosses": 1,
+      "time": 452
+    },
+    {
+      "stage": "s2",
+      "name": "탄금대 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 1,
+        "skill": 1,
+        "tower": 4
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 20,
+      "wave": 15,
+      "total": 15,
+      "combos": 6,
+      "bosses": 1,
+      "time": 496
+    },
+    {
+      "stage": "s2",
+      "name": "탄금대 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 1,
+        "skill": 1,
+        "tower": 4
+      },
+      "unlockedTowers": 5,
+      "win": true,
+      "lives": 16,
+      "wave": 15,
+      "total": 15,
+      "combos": 7,
+      "bosses": 1,
+      "time": 491
+    },
+    {
+      "stage": "s2",
+      "name": "탄금대 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 1,
+        "skill": 1,
+        "tower": 4
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 15,
+      "combos": 3,
+      "bosses": 0,
+      "time": 278
+    },
+    {
+      "stage": "s2",
+      "name": "탄금대 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 1,
+        "skill": 1,
+        "tower": 4
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 14,
+      "total": 15,
+      "combos": 5,
+      "bosses": 0,
+      "time": 411
+    },
+    {
+      "stage": "s2",
+      "name": "탄금대 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 1,
+        "skill": 1,
+        "tower": 4
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 9,
+      "total": 15,
+      "combos": 3,
+      "bosses": 0,
+      "time": 261
+    },
+    {
+      "stage": "s2",
+      "name": "탄금대 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 1,
+        "skill": 1,
+        "tower": 4
+      },
+      "unlockedTowers": 5,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 15,
+      "combos": 3,
+      "bosses": 0,
+      "time": 272
+    },
+    {
+      "stage": "s8",
+      "name": "옥포 해전",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 5
+      },
+      "unlockedTowers": 6,
+      "win": true,
+      "lives": 20,
+      "wave": 14,
+      "total": 14,
+      "combos": 6,
+      "bosses": 1,
+      "time": 467
+    },
+    {
+      "stage": "s8",
+      "name": "옥포 해전",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 5
+      },
+      "unlockedTowers": 6,
+      "win": true,
+      "lives": 20,
+      "wave": 14,
+      "total": 14,
+      "combos": 7,
+      "bosses": 1,
+      "time": 478
+    },
+    {
+      "stage": "s8",
+      "name": "옥포 해전",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 5
+      },
+      "unlockedTowers": 6,
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "total": 14,
+      "combos": 3,
+      "bosses": 0,
+      "time": 300
+    },
+    {
+      "stage": "s8",
+      "name": "옥포 해전",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 5
+      },
+      "unlockedTowers": 6,
+      "win": false,
+      "lives": 0,
+      "wave": 13,
+      "total": 14,
+      "combos": 4,
+      "bosses": 0,
+      "time": 353
+    },
+    {
+      "stage": "s8",
+      "name": "옥포 해전",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 5
+      },
+      "unlockedTowers": 6,
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "total": 14,
+      "combos": 1,
+      "bosses": 0,
+      "time": 125
+    },
+    {
+      "stage": "s8",
+      "name": "옥포 해전",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 5
+      },
+      "unlockedTowers": 6,
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "total": 14,
+      "combos": 2,
+      "bosses": 0,
+      "time": 199
+    },
+    {
+      "stage": "s9",
+      "name": "사천 해전",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 7
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 2,
+      "wave": 15,
+      "total": 15,
+      "combos": 4,
+      "bosses": 2,
+      "time": 468
+    },
+    {
+      "stage": "s9",
+      "name": "사천 해전",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 7
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 18,
+      "wave": 15,
+      "total": 15,
+      "combos": 5,
+      "bosses": 2,
+      "time": 454
+    },
+    {
+      "stage": "s9",
+      "name": "사천 해전",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 7
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 15,
+      "combos": 2,
+      "bosses": 1,
+      "time": 257
+    },
+    {
+      "stage": "s9",
+      "name": "사천 해전",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 7
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 15,
+      "combos": 2,
+      "bosses": 1,
+      "time": 246
+    },
+    {
+      "stage": "s9",
+      "name": "사천 해전",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 7
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 15,
+      "combos": 2,
+      "bosses": 1,
+      "time": 244
+    },
+    {
+      "stage": "s9",
+      "name": "사천 해전",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 2,
+        "skill": 1,
+        "tower": 7
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 15,
+      "combos": 2,
+      "bosses": 1,
+      "time": 245
+    },
+    {
+      "stage": "s10",
+      "name": "평양성 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 3,
+        "skill": 1,
+        "tower": 8
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 10,
+      "wave": 15,
+      "total": 15,
+      "combos": 4,
+      "bosses": 1,
+      "time": 481
+    },
+    {
+      "stage": "s10",
+      "name": "평양성 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 3,
+        "skill": 1,
+        "tower": 8
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 14,
+      "wave": 15,
+      "total": 15,
+      "combos": 4,
+      "bosses": 1,
+      "time": 458
+    },
+    {
+      "stage": "s10",
+      "name": "평양성 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 3,
+        "skill": 1,
+        "tower": 8
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 15,
+      "combos": 1,
+      "bosses": 0,
+      "time": 162
+    },
+    {
+      "stage": "s10",
+      "name": "평양성 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 3,
+        "skill": 1,
+        "tower": 8
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 15,
+      "combos": 1,
+      "bosses": 0,
+      "time": 171
+    },
+    {
+      "stage": "s10",
+      "name": "평양성 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 3,
+        "skill": 1,
+        "tower": 8
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 15,
+      "combos": 1,
+      "bosses": 0,
+      "time": 165
+    },
+    {
+      "stage": "s10",
+      "name": "평양성 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 3,
+        "skill": 1,
+        "tower": 8
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "total": 15,
+      "combos": 0,
+      "bosses": 0,
+      "time": 105
+    },
+    {
+      "stage": "s3",
+      "name": "한산도 대첩",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 3,
+        "skill": 2,
+        "tower": 9
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 20,
+      "wave": 15,
+      "total": 15,
+      "combos": 6,
+      "bosses": 1,
+      "time": 532
+    },
+    {
+      "stage": "s3",
+      "name": "한산도 대첩",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 3,
+        "skill": 2,
+        "tower": 9
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 20,
+      "wave": 15,
+      "total": 15,
+      "combos": 7,
+      "bosses": 1,
+      "time": 530
+    },
+    {
+      "stage": "s3",
+      "name": "한산도 대첩",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 3,
+        "skill": 2,
+        "tower": 9
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 7,
+      "wave": 15,
+      "total": 15,
+      "combos": 7,
+      "bosses": 1,
+      "time": 548
+    },
+    {
+      "stage": "s3",
+      "name": "한산도 대첩",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 3,
+        "skill": 2,
+        "tower": 9
+      },
+      "unlockedTowers": 7,
+      "win": true,
+      "lives": 7,
+      "wave": 15,
+      "total": 15,
+      "combos": 7,
+      "bosses": 1,
+      "time": 549
+    },
+    {
+      "stage": "s3",
+      "name": "한산도 대첩",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 3,
+        "skill": 2,
+        "tower": 9
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 15,
+      "total": 15,
+      "combos": 6,
+      "bosses": 1,
+      "time": 544
+    },
+    {
+      "stage": "s3",
+      "name": "한산도 대첩",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 3,
+        "skill": 2,
+        "tower": 9
+      },
+      "unlockedTowers": 7,
+      "win": false,
+      "lives": 0,
+      "wave": 15,
+      "total": 15,
+      "combos": 8,
+      "bosses": 1,
+      "time": 545
+    },
+    {
+      "stage": "s11",
+      "name": "부산포 해전",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 10
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 20,
+      "wave": 16,
+      "total": 16,
+      "combos": 3,
+      "bosses": 2,
+      "time": 531
+    },
+    {
+      "stage": "s11",
+      "name": "부산포 해전",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 10
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 3,
+      "wave": 16,
+      "total": 16,
+      "combos": 4,
+      "bosses": 2,
+      "time": 530
+    },
+    {
+      "stage": "s11",
+      "name": "부산포 해전",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 10
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 15,
+      "wave": 16,
+      "total": 16,
+      "combos": 4,
+      "bosses": 2,
+      "time": 534
+    },
+    {
+      "stage": "s11",
+      "name": "부산포 해전",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 10
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 4,
+      "wave": 16,
+      "total": 16,
+      "combos": 4,
+      "bosses": 2,
+      "time": 535
+    },
+    {
+      "stage": "s11",
+      "name": "부산포 해전",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 10
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "total": 16,
+      "combos": 3,
+      "bosses": 1,
+      "time": 316
+    },
+    {
+      "stage": "s11",
+      "name": "부산포 해전",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 10
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "total": 16,
+      "combos": 3,
+      "bosses": 1,
+      "time": 317
+    },
+    {
+      "stage": "s12",
+      "name": "진주대첩",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 12
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 18,
+      "wave": 16,
+      "total": 16,
+      "combos": 4,
+      "bosses": 1,
+      "time": 484
+    },
+    {
+      "stage": "s12",
+      "name": "진주대첩",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 12
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 16,
+      "wave": 16,
+      "total": 16,
+      "combos": 5,
+      "bosses": 1,
+      "time": 475
+    },
+    {
+      "stage": "s12",
+      "name": "진주대첩",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 12
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 7,
+      "wave": 16,
+      "total": 16,
+      "combos": 4,
+      "bosses": 1,
+      "time": 489
+    },
+    {
+      "stage": "s12",
+      "name": "진주대첩",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 12
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 9,
+      "wave": 16,
+      "total": 16,
+      "combos": 4,
+      "bosses": 1,
+      "time": 482
+    },
+    {
+      "stage": "s12",
+      "name": "진주대첩",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 12
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 16,
+      "total": 16,
+      "combos": 4,
+      "bosses": 1,
+      "time": 486
+    },
+    {
+      "stage": "s12",
+      "name": "진주대첩",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 4,
+        "skill": 2,
+        "tower": 12
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 16,
+      "combos": 0,
+      "bosses": 0,
+      "time": 141
+    },
+    {
+      "stage": "s13",
+      "name": "평양성 탈환",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 13
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 17,
+      "wave": 16,
+      "total": 16,
+      "combos": 5,
+      "bosses": 2,
+      "time": 514
+    },
+    {
+      "stage": "s13",
+      "name": "평양성 탈환",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 13
+      },
+      "unlockedTowers": 8,
+      "win": true,
+      "lives": 20,
+      "wave": 16,
+      "total": 16,
+      "combos": 5,
+      "bosses": 2,
+      "time": 505
+    },
+    {
+      "stage": "s13",
+      "name": "평양성 탈환",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 13
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 16,
+      "combos": 2,
+      "bosses": 1,
+      "time": 260
+    },
+    {
+      "stage": "s13",
+      "name": "평양성 탈환",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 13
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 16,
+      "combos": 1,
+      "bosses": 0,
+      "time": 181
+    },
+    {
+      "stage": "s13",
+      "name": "평양성 탈환",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 13
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 16,
+      "combos": 0,
+      "bosses": 0,
+      "time": 102
+    },
+    {
+      "stage": "s13",
+      "name": "평양성 탈환",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 13
+      },
+      "unlockedTowers": 8,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 16,
+      "combos": 0,
+      "bosses": 0,
+      "time": 108
+    },
+    {
+      "stage": "s4",
+      "name": "행주대첩",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 14
+      },
+      "unlockedTowers": 9,
+      "win": true,
+      "lives": 20,
+      "wave": 18,
+      "total": 18,
+      "combos": 8,
+      "bosses": 1,
+      "time": 597
+    },
+    {
+      "stage": "s4",
+      "name": "행주대첩",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 14
+      },
+      "unlockedTowers": 9,
+      "win": true,
+      "lives": 20,
+      "wave": 18,
+      "total": 18,
+      "combos": 8,
+      "bosses": 1,
+      "time": 588
+    },
+    {
+      "stage": "s4",
+      "name": "행주대첩",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 14
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "total": 18,
+      "combos": 2,
+      "bosses": 0,
+      "time": 206
+    },
+    {
+      "stage": "s4",
+      "name": "행주대첩",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 14
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "total": 18,
+      "combos": 2,
+      "bosses": 0,
+      "time": 227
+    },
+    {
+      "stage": "s4",
+      "name": "행주대첩",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 14
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "total": 18,
+      "combos": 2,
+      "bosses": 0,
+      "time": 206
+    },
+    {
+      "stage": "s4",
+      "name": "행주대첩",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 2,
+        "tower": 14
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 18,
+      "combos": 2,
+      "bosses": 0,
+      "time": 192
+    },
+    {
+      "stage": "s5",
+      "name": "한양 수복",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 3,
+        "tower": 16
+      },
+      "unlockedTowers": 9,
+      "win": true,
+      "lives": 20,
+      "wave": 20,
+      "total": 20,
+      "combos": 9,
+      "bosses": 5,
+      "time": 681
+    },
+    {
+      "stage": "s5",
+      "name": "한양 수복",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 3,
+        "tower": 16
+      },
+      "unlockedTowers": 9,
+      "win": true,
+      "lives": 12,
+      "wave": 20,
+      "total": 20,
+      "combos": 10,
+      "bosses": 5,
+      "time": 670
+    },
+    {
+      "stage": "s5",
+      "name": "한양 수복",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 3,
+        "tower": 16
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 9,
+      "total": 20,
+      "combos": 2,
+      "bosses": 0,
+      "time": 246
+    },
+    {
+      "stage": "s5",
+      "name": "한양 수복",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 3,
+        "tower": 16
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "total": 20,
+      "combos": 2,
+      "bosses": 0,
+      "time": 218
+    },
+    {
+      "stage": "s5",
+      "name": "한양 수복",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 5,
+        "skill": 3,
+        "tower": 16
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 20,
+      "combos": 0,
+      "bosses": 0,
+      "time": 108
+    },
+    {
+      "stage": "s5",
+      "name": "한양 수복",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 5,
+        "skill": 3,
+        "tower": 16
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 20,
+      "combos": 2,
+      "bosses": 0,
+      "time": 200
+    },
+    {
+      "stage": "s14",
+      "name": "진주성 2차 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 17
+      },
+      "unlockedTowers": 9,
+      "win": true,
+      "lives": 20,
+      "wave": 18,
+      "total": 18,
+      "combos": 6,
+      "bosses": 2,
+      "time": 559
+    },
+    {
+      "stage": "s14",
+      "name": "진주성 2차 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 17
+      },
+      "unlockedTowers": 9,
+      "win": true,
+      "lives": 20,
+      "wave": 18,
+      "total": 18,
+      "combos": 6,
+      "bosses": 2,
+      "time": 562
+    },
+    {
+      "stage": "s14",
+      "name": "진주성 2차 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 17
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "total": 18,
+      "combos": 3,
+      "bosses": 1,
+      "time": 300
+    },
+    {
+      "stage": "s14",
+      "name": "진주성 2차 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 17
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 18,
+      "total": 18,
+      "combos": 7,
+      "bosses": 2,
+      "time": 558
+    },
+    {
+      "stage": "s14",
+      "name": "진주성 2차 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 17
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 18,
+      "combos": 1,
+      "bosses": 0,
+      "time": 146
+    },
+    {
+      "stage": "s14",
+      "name": "진주성 2차 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 17
+      },
+      "unlockedTowers": 9,
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "total": 18,
+      "combos": 1,
+      "bosses": 0,
+      "time": 203
+    },
+    {
+      "stage": "s15",
+      "name": "칠천량의 밤",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 18
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 16,
+      "total": 16,
+      "combos": 5,
+      "bosses": 2,
+      "time": 537
+    },
+    {
+      "stage": "s15",
+      "name": "칠천량의 밤",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 18
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 12,
+      "wave": 16,
+      "total": 16,
+      "combos": 7,
+      "bosses": 2,
+      "time": 543
+    },
+    {
+      "stage": "s15",
+      "name": "칠천량의 밤",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 18
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 7,
+      "wave": 16,
+      "total": 16,
+      "combos": 5,
+      "bosses": 2,
+      "time": 551
+    },
+    {
+      "stage": "s15",
+      "name": "칠천량의 밤",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 18
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 7,
+      "wave": 16,
+      "total": 16,
+      "combos": 7,
+      "bosses": 2,
+      "time": 550
+    },
+    {
+      "stage": "s15",
+      "name": "칠천량의 밤",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 18
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 2,
+      "wave": 16,
+      "total": 16,
+      "combos": 7,
+      "bosses": 2,
+      "time": 592
+    },
+    {
+      "stage": "s15",
+      "name": "칠천량의 밤",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 6,
+        "skill": 3,
+        "tower": 18
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 2,
+      "wave": 16,
+      "total": 16,
+      "combos": 7,
+      "bosses": 2,
+      "time": 586
+    },
+    {
+      "stage": "s16",
+      "name": "남원성 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 7,
+        "skill": 3,
+        "tower": 20
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 18,
+      "total": 18,
+      "combos": 7,
+      "bosses": 2,
+      "time": 682
+    },
+    {
+      "stage": "s16",
+      "name": "남원성 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 7,
+        "skill": 3,
+        "tower": 20
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 18,
+      "total": 18,
+      "combos": 8,
+      "bosses": 2,
+      "time": 690
+    },
+    {
+      "stage": "s16",
+      "name": "남원성 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 7,
+        "skill": 3,
+        "tower": 20
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 18,
+      "total": 18,
+      "combos": 8,
+      "bosses": 2,
+      "time": 680
+    },
+    {
+      "stage": "s16",
+      "name": "남원성 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 7,
+        "skill": 3,
+        "tower": 20
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 13,
+      "total": 18,
+      "combos": 5,
+      "bosses": 1,
+      "time": 368
+    },
+    {
+      "stage": "s16",
+      "name": "남원성 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 7,
+        "skill": 3,
+        "tower": 20
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "total": 18,
+      "combos": 4,
+      "bosses": 1,
+      "time": 360
+    },
+    {
+      "stage": "s16",
+      "name": "남원성 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 7,
+        "skill": 3,
+        "tower": 20
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "total": 18,
+      "combos": 5,
+      "bosses": 1,
+      "time": 363
+    },
+    {
+      "stage": "s17",
+      "name": "직산 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 7,
+        "skill": 4,
+        "tower": 21
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 16,
+      "wave": 18,
+      "total": 18,
+      "combos": 7,
+      "bosses": 1,
+      "time": 602
+    },
+    {
+      "stage": "s17",
+      "name": "직산 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 7,
+        "skill": 4,
+        "tower": 21
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 14,
+      "wave": 18,
+      "total": 18,
+      "combos": 7,
+      "bosses": 1,
+      "time": 604
+    },
+    {
+      "stage": "s17",
+      "name": "직산 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 7,
+        "skill": 4,
+        "tower": 21
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 18,
+      "combos": 2,
+      "bosses": 0,
+      "time": 267
+    },
+    {
+      "stage": "s17",
+      "name": "직산 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 7,
+        "skill": 4,
+        "tower": 21
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 15,
+      "total": 18,
+      "combos": 5,
+      "bosses": 0,
+      "time": 433
+    },
+    {
+      "stage": "s17",
+      "name": "직산 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 7,
+        "skill": 4,
+        "tower": 21
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "total": 18,
+      "combos": 1,
+      "bosses": 0,
+      "time": 129
+    },
+    {
+      "stage": "s17",
+      "name": "직산 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 7,
+        "skill": 4,
+        "tower": 21
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 18,
+      "combos": 1,
+      "bosses": 0,
+      "time": 168
+    },
+    {
+      "stage": "s18",
+      "name": "명량 대첩",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 22
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 18,
+      "wave": 20,
+      "total": 20,
+      "combos": 10,
+      "bosses": 1,
+      "time": 693
+    },
+    {
+      "stage": "s18",
+      "name": "명량 대첩",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 22
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 20,
+      "total": 20,
+      "combos": 11,
+      "bosses": 1,
+      "time": 687
+    },
+    {
+      "stage": "s18",
+      "name": "명량 대첩",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 22
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 15,
+      "total": 20,
+      "combos": 6,
+      "bosses": 0,
+      "time": 461
+    },
+    {
+      "stage": "s18",
+      "name": "명량 대첩",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 22
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 20,
+      "combos": 1,
+      "bosses": 0,
+      "time": 92
+    },
+    {
+      "stage": "s18",
+      "name": "명량 대첩",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 22
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 20,
+      "combos": 2,
+      "bosses": 0,
+      "time": 177
+    },
+    {
+      "stage": "s18",
+      "name": "명량 대첩",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 22
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 20,
+      "combos": 2,
+      "bosses": 0,
+      "time": 152
+    },
+    {
+      "stage": "s19",
+      "name": "울산성 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 23
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 19,
+      "total": 19,
+      "combos": 7,
+      "bosses": 1,
+      "time": 652
+    },
+    {
+      "stage": "s19",
+      "name": "울산성 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 23
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 19,
+      "total": 19,
+      "combos": 8,
+      "bosses": 1,
+      "time": 649
+    },
+    {
+      "stage": "s19",
+      "name": "울산성 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 23
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 19,
+      "combos": 1,
+      "bosses": 0,
+      "time": 152
+    },
+    {
+      "stage": "s19",
+      "name": "울산성 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 23
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 3,
+      "wave": 19,
+      "total": 19,
+      "combos": 9,
+      "bosses": 1,
+      "time": 660
+    },
+    {
+      "stage": "s19",
+      "name": "울산성 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 23
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 19,
+      "combos": 1,
+      "bosses": 0,
+      "time": 99
+    },
+    {
+      "stage": "s19",
+      "name": "울산성 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 8,
+        "skill": 4,
+        "tower": 23
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 19,
+      "combos": 2,
+      "bosses": 0,
+      "time": 184
+    },
+    {
+      "stage": "s20",
+      "name": "사천 왜성 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 25
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 20,
+      "total": 20,
+      "combos": 6,
+      "bosses": 2,
+      "time": 666
+    },
+    {
+      "stage": "s20",
+      "name": "사천 왜성 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 25
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 11,
+      "wave": 20,
+      "total": 20,
+      "combos": 8,
+      "bosses": 2,
+      "time": 656
+    },
+    {
+      "stage": "s20",
+      "name": "사천 왜성 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 25
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "total": 20,
+      "combos": 3,
+      "bosses": 1,
+      "time": 320
+    },
+    {
+      "stage": "s20",
+      "name": "사천 왜성 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 25
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 20,
+      "total": 20,
+      "combos": 9,
+      "bosses": 2,
+      "time": 661
+    },
+    {
+      "stage": "s20",
+      "name": "사천 왜성 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 25
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "total": 20,
+      "combos": 3,
+      "bosses": 1,
+      "time": 318
+    },
+    {
+      "stage": "s20",
+      "name": "사천 왜성 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 25
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 20,
+      "combos": 3,
+      "bosses": 1,
+      "time": 274
+    },
+    {
+      "stage": "s21",
+      "name": "순천 왜교성 전투",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 26
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 12,
+      "wave": 20,
+      "total": 20,
+      "combos": 8,
+      "bosses": 2,
+      "time": 708
+    },
+    {
+      "stage": "s21",
+      "name": "순천 왜교성 전투",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 26
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 12,
+      "wave": 20,
+      "total": 20,
+      "combos": 9,
+      "bosses": 2,
+      "time": 690
+    },
+    {
+      "stage": "s21",
+      "name": "순천 왜교성 전투",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 26
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "total": 20,
+      "combos": 1,
+      "bosses": 0,
+      "time": 161
+    },
+    {
+      "stage": "s21",
+      "name": "순천 왜교성 전투",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 26
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "total": 20,
+      "combos": 1,
+      "bosses": 0,
+      "time": 130
+    },
+    {
+      "stage": "s21",
+      "name": "순천 왜교성 전투",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 26
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 20,
+      "combos": 1,
+      "bosses": 0,
+      "time": 113
+    },
+    {
+      "stage": "s21",
+      "name": "순천 왜교성 전투",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 4,
+        "tower": 26
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 20,
+      "combos": 1,
+      "bosses": 0,
+      "time": 112
+    },
+    {
+      "stage": "s22",
+      "name": "노량 해전",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 5,
+        "tower": 27
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 21,
+      "total": 21,
+      "combos": 10,
+      "bosses": 2,
+      "time": 757
+    },
+    {
+      "stage": "s22",
+      "name": "노량 해전",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 5,
+        "tower": 27
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 21,
+      "total": 21,
+      "combos": 10,
+      "bosses": 2,
+      "time": 766
+    },
+    {
+      "stage": "s22",
+      "name": "노량 해전",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 5,
+        "tower": 27
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 21,
+      "total": 21,
+      "combos": 10,
+      "bosses": 2,
+      "time": 722
+    },
+    {
+      "stage": "s22",
+      "name": "노량 해전",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 5,
+        "tower": 27
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 14,
+      "total": 21,
+      "combos": 7,
+      "bosses": 1,
+      "time": 462
+    },
+    {
+      "stage": "s22",
+      "name": "노량 해전",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 9,
+        "skill": 5,
+        "tower": 27
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 14,
+      "total": 21,
+      "combos": 6,
+      "bosses": 1,
+      "time": 428
+    },
+    {
+      "stage": "s22",
+      "name": "노량 해전",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 9,
+        "skill": 5,
+        "tower": 27
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 21,
+      "combos": 2,
+      "bosses": 0,
+      "time": 182
+    },
+    {
+      "stage": "s23",
+      "name": "대마도 정벌",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 29
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 21,
+      "total": 21,
+      "combos": 9,
+      "bosses": 2,
+      "time": 719
+    },
+    {
+      "stage": "s23",
+      "name": "대마도 정벌",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 29
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 21,
+      "total": 21,
+      "combos": 9,
+      "bosses": 2,
+      "time": 713
+    },
+    {
+      "stage": "s23",
+      "name": "대마도 정벌",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 29
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 11,
+      "wave": 21,
+      "total": 21,
+      "combos": 10,
+      "bosses": 2,
+      "time": 732
+    },
+    {
+      "stage": "s23",
+      "name": "대마도 정벌",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 29
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "total": 21,
+      "combos": 3,
+      "bosses": 0,
+      "time": 228
+    },
+    {
+      "stage": "s23",
+      "name": "대마도 정벌",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 29
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 21,
+      "combos": 3,
+      "bosses": 0,
+      "time": 214
+    },
+    {
+      "stage": "s23",
+      "name": "대마도 정벌",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 29
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 21,
+      "combos": 2,
+      "bosses": 0,
+      "time": 165
+    },
+    {
+      "stage": "s24",
+      "name": "현해탄 상륙전",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 12,
+      "wave": 22,
+      "total": 22,
+      "combos": 9,
+      "bosses": 2,
+      "time": 788
+    },
+    {
+      "stage": "s24",
+      "name": "현해탄 상륙전",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 20,
+      "wave": 22,
+      "total": 22,
+      "combos": 10,
+      "bosses": 2,
+      "time": 783
+    },
+    {
+      "stage": "s24",
+      "name": "현해탄 상륙전",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 10,
+      "total": 22,
+      "combos": 3,
+      "bosses": 0,
+      "time": 291
+    },
+    {
+      "stage": "s24",
+      "name": "현해탄 상륙전",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 3,
+      "wave": 22,
+      "total": 22,
+      "combos": 11,
+      "bosses": 2,
+      "time": 787
+    },
+    {
+      "stage": "s24",
+      "name": "현해탄 상륙전",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 22,
+      "combos": 1,
+      "bosses": 0,
+      "time": 105
+    },
+    {
+      "stage": "s24",
+      "name": "현해탄 상륙전",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 7,
+      "total": 22,
+      "combos": 2,
+      "bosses": 0,
+      "time": 203
+    },
+    {
+      "stage": "s25",
+      "name": "나고야성 최후의 결전",
+      "difficulty": "normal",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 11,
+      "wave": 24,
+      "total": 24,
+      "combos": 8,
+      "bosses": 5,
+      "time": 873
+    },
+    {
+      "stage": "s25",
+      "name": "나고야성 최후의 결전",
+      "difficulty": "normal",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": true,
+      "lives": 18,
+      "wave": 24,
+      "total": 24,
+      "combos": 10,
+      "bosses": 5,
+      "time": 890
+    },
+    {
+      "stage": "s25",
+      "name": "나고야성 최후의 결전",
+      "difficulty": "hard",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 6,
+      "total": 24,
+      "combos": 1,
+      "bosses": 1,
+      "time": 159
+    },
+    {
+      "stage": "s25",
+      "name": "나고야성 최후의 결전",
+      "difficulty": "hard",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 22,
+      "total": 24,
+      "combos": 10,
+      "bosses": 4,
+      "time": 727
+    },
+    {
+      "stage": "s25",
+      "name": "나고야성 최후의 결전",
+      "difficulty": "hell",
+      "kind": "solo",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 2,
+      "total": 24,
+      "combos": 0,
+      "bosses": 0,
+      "time": 33
+    },
+    {
+      "stage": "s25",
+      "name": "나고야성 최후의 결전",
+      "difficulty": "hell",
+      "kind": "local",
+      "meta": {
+        "hero": 10,
+        "skill": 5,
+        "tower": 30
+      },
+      "unlockedTowers": 10,
+      "win": false,
+      "lives": 0,
+      "wave": 4,
+      "total": 24,
+      "combos": 1,
+      "bosses": 0,
+      "time": 119
+    }
+  ]
+}

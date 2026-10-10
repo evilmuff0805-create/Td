@@ -14,8 +14,11 @@ export class Net {
 
   on(type, fn) {
     if (!this.handlers.has(type)) this.handlers.set(type, new Set());
-    this.handlers.get(type).add(fn);
-    return () => this.handlers.get(type).delete(fn);
+    const handlers = this.handlers.get(type);
+    handlers.add(fn);
+    // Session cleanup may run after close() clears the map. Keep this exact
+    // subscription set so old cleanup is safe and cannot affect a later set.
+    return () => handlers.delete(fn);
   }
 
   emit(type, data) {

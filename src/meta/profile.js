@@ -27,6 +27,8 @@ export function defaultProfile() {
     items: Object.fromEntries(ITEM_ORDER.map((id) => [id, 0])),
     skins: { owned: [], eq: {} },
     stages: {},
+    campaignBonuses: {},
+    campaignBonusNotice: 0,
     loadout: {
       solo: { heroes: ['yi', 'sejong'], skills: ['singijeon', 'bongsu'] },
       coop: { hero: 'yi', skills: ['singijeon', 'bongsu'] },
@@ -37,7 +39,7 @@ export function defaultProfile() {
     stats: { games: 0, wins: 0, kills: 0, combos: 0, bossKills: 0 },
     // shakeLv: 화면 흔들림 0 끔 · 1 약하게 · 2 보통
     // mood: 전장 분위기 'cinema'(영화풍) | 'bright'(밝은 낮)
-    settings: { sfx: 0.7, bgm: 0.35, dmgNumbers: true, shakeLv: 1, hints: true, mood: 'cinema' },
+    settings: { sfx: 0.7, bgm: 0.35, dmgNumbers: true, shakeLv: 1, hints: true, mood: 'cinema', renderer: '3d', quality: 'high' },
     tutorialDone: false,
   };
 }
@@ -64,6 +66,8 @@ export function loadProfile() {
     delete profile.settings.shake;
   }
   ensureQuests(profile, new Date());
+  const catchUp=reconcileCampaignBonuses(profile);
+  if(catchUp){profile.campaignBonusNotice+=catchUp;saveProfile();}
   return profile;
 }
 
@@ -206,6 +210,22 @@ export function heroSkin(p, heroId) {
   return id && ownsSkin(p, id) ? id : null;
 }
 
+export function campaignFirstClearCoins(stageId, difficulty='normal') {
+  const stage=STAGE_BY_ID[stageId];
+  return !stage?0:Math.round((stage.chapter+1)*300*DIFFICULTY[difficulty].reward);
+}
+
+export function reconcileCampaignBonuses(p) {
+  p.campaignBonuses??={};let total=0;
+  for(const stage of STAGES)for(const difficulty of DIFF_ORDER){
+    const key=`${stage.id}:${difficulty}`;
+    if((p.stages[stage.id]?.[difficulty]??0)>0&&!p.campaignBonuses[key]){
+      const coins=campaignFirstClearCoins(stage.id,difficulty);p.campaignBonuses[key]=true;total+=coins;
+    }
+  }
+  p.coins+=total;return total;
+}
+
 // ───── 영구 강화 ─────
 export function upgradeHero(p, id) {
   const h = p.heroes[id];
@@ -253,6 +273,9 @@ export function applyBattle(p, { stageId, difficulty, mode, result, stats }) {
   const prevStars = (p.stages[stageId] || {})[difficulty] || 0;
   const firstClear = win && prevStars === 0;
   const rewards = battleRewards({ win, stars: result.stars, wavesCleared: result.wavesCleared, firstClear, diffReward: DIFFICULTY[difficulty].reward });
+  const firstClearCoins=firstClear?campaignFirstClearCoins(stageId,difficulty):0;
+  if(firstClearCoins){p.campaignBonuses??={};p.campaignBonuses[`${stageId}:${difficulty}`]=true;}
+  rewards.coins+=firstClearCoins;
   give(p, rewards);
   const rankUps = addRankXp(p, rewards.xp);
   if (win) {
@@ -285,5 +308,5 @@ export function applyBattle(p, { stageId, difficulty, mode, result, stats }) {
   p.stats.combos += stats.combos || 0;
   p.stats.bossKills += stats.bossKills || 0;
   saveProfile();
-  return { rewards, rankUps, newTowers, questDone, firstClear };
+  return { rewards, rankUps, newTowers, questDone, firstClear, firstClearCoins };
 }

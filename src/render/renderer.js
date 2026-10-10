@@ -51,8 +51,9 @@ export class Renderer {
       const k = Math.max(cv.width / iw, cv.height / ih);
       c.drawImage(art.img, (cv.width - iw * k) / 2, (cv.height - ih * k) / 2, iw * k, ih * k);
       this.bg = cv;
-    } else this.bg = renderMapBackground(map, this.stage, this.dpr);
-    if (this.cinema && !art) {
+    } else this.bg = renderMapBackground(map, this.stage, this.dpr, { cinema: this.cinema });
+    this.illustrated = !!this.bg.illustrated;
+    if (this.cinema && !art && !this.illustrated) {
       this.moodLayers = gradeBackground(this.bg, this.mood, this.W, this.H, this.dpr);
       this.bg = this.moodLayers.dark;
     }
@@ -63,7 +64,7 @@ export class Renderer {
     this.projPrev = new Map();
     this.towerFire = new Map();
     this.frames = 0;
-    this.light = this.cinema ? makeMoodLight(this.mood, this.W, this.H) : this.makeLight();
+    this.light = this.cinema ? makeMoodLight(this.illustrated ? { ...this.mood, vig: 0.3 } : this.mood, this.W, this.H) : this.makeLight();
     this.fog = [0, 1, 2, 3, 4].map((i) => ({ x: Math.random() * this.W, y: 60 + (i * (this.H - 80)) / 4, w: 180 + Math.random() * 160, v: 6 + Math.random() * 8 }));
     this.cloud = this.makeCloud();
     this.clouds = [0, 1, 2].map((i) => ({ x: (i * this.W) / 3 + Math.random() * 120, y: 60 + i * (this.H / 3) + Math.random() * 60, s: 0.9 + Math.random() * 0.6 }));
@@ -217,7 +218,7 @@ export class Renderer {
     ctx.translate(cam.dx, cam.dy);
     ctx.drawImage(this.bg, 0, 0, this.W, this.H);
     if (this.moodLayers) drawLightPools(ctx, this.moodLayers, v, map, time, this.W, this.H);
-    if (!this.painted) this.drawWater(ctx, time);
+    if (!this.painted && !this.illustrated) this.drawWater(ctx, time);
 
     // 건설 가능 격자 (배치 중)
     if (ui.placing || ui.showGrid) this.drawGrid(ctx, v, ui);
@@ -330,7 +331,7 @@ export class Renderer {
       ctx.fill();
       ctx.stroke();
       ctx.fillStyle = '#fff';
-      ctx.font = '700 14px "Black Han Sans", sans-serif';
+      ctx.font = '700 14px "Noto Sans KR", "Malgun Gothic", sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText(Math.ceil(h.respawn), x, y - 1);
     }
@@ -599,7 +600,7 @@ export class Renderer {
       ctx.stroke();
     }
     if (seen.size) {
-      ctx.font = '700 15px "Black Han Sans", sans-serif';
+      ctx.font = '700 15px "Noto Sans KR", "Malgun Gothic", sans-serif';
       ctx.textAlign = 'center';
       ctx.lineWidth = 3;
       ctx.strokeStyle = 'rgba(0,0,0,0.7)';

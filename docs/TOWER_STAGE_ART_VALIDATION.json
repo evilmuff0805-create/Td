@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-10",
+  "milestone": "All 10 towers use dedicated illustrated stage and A/B branch art, 50 combinations.",
+  "newArt": {
+    "mode": "built-in imagegen",
+    "useCase": "stylized-concept",
+    "sheets": 2,
+    "frames": 40,
+    "width": 1402,
+    "height": 1122,
+    "deliveryBytes": 1404562,
+    "promptFiles": [
+      "assets/3d/fixed/landmark-tiers-a-v1.prompt.json",
+      "assets/3d/fixed/landmark-tiers-b-v1.prompt.json"
+    ],
+    "sourceFiles": [
+      "assets/3d/fixed/source/landmark-tiers-a-v1.png",
+      "assets/3d/fixed/source/landmark-tiers-b-v1.png"
+    ]
+  },
+  "display": {
+    "height": 1.2,
+    "upgradeScaling": false,
+    "isolationPadding": 12,
+    "cutAlphaThreshold": 11,
+    "optionalSheetFallback": "Previous illustration with reinforcement markers"
+  },
+  "review": {
+    "model": "GPT Astra xhigh",
+    "finding": "Unequal row gutters would clip uniform-grid frames. Use explicit alpha-safe cuts and isolated padded textures to avoid neighbour mipmap sampling."
+  },
+  "automated": {
+    "fixedArt": 11,
+    "threeD": 41,
+    "campaign": 16,
+    "effects": 8,
+    "total": 76,
+    "assetFramesValidated": 40
+  },
+  "build": {
+    "threeD": "passed",
+    "standalone": "passed",
+    "standaloneBytes": 19038633,
+    "assets": [
+      {
+        "file": "assets/3d/fixed/landmark-tiers-a-v1.webp",
+        "bytes": 692568,
+        "embedded": true
+      },
+      {
+        "file": "assets/3d/fixed/landmark-tiers-b-v1.webp",
+        "bytes": 711994,
+        "embedded": true
+      }
+    ]
+  },
+  "browser": {
+    "comparison": {
+      "url": "http://127.0.0.1:8080/dev/3d-tower-review.html",
+      "dedicatedStageFrames": 50,
+      "displaySwitch": "passed",
+      "seasons": [
+        "summer",
+        "winter"
+      ],
+      "consoleWarnings": 0,
+      "consoleErrors": 0
+    },
+    "battle": {
+      "stage": "s25",
+      "season": "winter",
+      "tower": "bosingak",
+      "sequence": [
+        "build",
+        "upgrade 2",
+        "upgrade 3",
+        "branch A"
+      ],
+      "budgetAfter": 62,
+      "maximumBadge": "4 / 4단계, 3회 강화, 특화 A 에밀레종, 최대 단계"
+    },
+    "standalone": {
+      "stage": "s2",
+      "viewport": [
+        414,
+        896
+      ],
+      "paused": true,
+      "tower": "bosingak",
+      "level": 2,
+      "goldBefore": 250,
+      "goldAfter": 60,
+      "fixedArtStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "consoleWarnings": 0,
+      "consoleErrors": 0
+    },
+    "responsiveComparison": {
+      "iframeCSSWidth": 414,
+      "clientWidth": 399,
+      "scrollWidth": 399,
+      "horizontalOverflow": false
+    },
+    "music": "mute=1",
+    "originalUserBattle": "preserved",
+    "rewardGranted": false
+  },
+  "screenshots": [
+    "docs/screenshots/tower-stages-bosingak.png",
+    "docs/screenshots/tower-stages-seokbinggo.png",
+    "docs/screenshots/tower-stage-battle-1.png",
+    "docs/screenshots/tower-stage-battle-3.png",
+    "docs/screenshots/tower-stage-battle-max-a.png",
+    "docs/screenshots/tower-stages-release-mobile.png",
+    "docs/screenshots/tower-stages-mobile.png"
+  ]
+}

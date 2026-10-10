@@ -9,10 +9,11 @@ import { HERO_ORDER } from '../src/data/heroes.js';
 import { TOWER_ORDER } from '../src/data/towers.js';
 import { ENEMIES } from '../src/data/enemies.js';
 import { TS } from '../src/render/paint.js';
+import { preloadArt } from '../src/render/art.js';
 const q = new URLSearchParams(location.search);
 const cv = document.getElementById('c');
 const ctx = cv.getContext('2d');
-await document.fonts.ready;
+await Promise.all([document.fonts.ready, preloadArt()]);
 const t = +(q.get('t') || 0.3);
 ctx.fillStyle = '#9cc47a'; ctx.fillRect(0, 0, 1600, 1300);
 // 영웅: 2배 확대

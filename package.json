@@ -7,10 +7,25 @@
   "engines": {
     "node": ">=18"
   },
+  "devDependencies": {
+    "esbuild": "0.24.0",
+    "three": "0.186.1"
+  },
   "scripts": {
     "start": "node server/server.js",
     "test": "node tools/selftest.mjs",
     "balance": "node tools/balance.mjs",
-    "build": "node tools/build.mjs"
+    "build": "node tools/build.mjs",
+    "build:3d": "node tools/build-3d.mjs",
+    "test:3d": "node tools/test-3d.mjs",
+    "test:fixed-art": "node tools/test-fixed-art.mjs",
+    "test:effects": "node tools/test-effects.mjs",
+    "test:enemies": "node tools/test-enemies.mjs",
+    "test:campaign": "node tools/test-campaign.mjs",
+    "test:character-surfaces": "node tools/test-character-surfaces.mjs",
+    "test:release": "node tools/verify-release.mjs",
+    "test:final-battle": "node tools/verify-final-battle.mjs",
+    "test:progression": "node tools/verify-progression.mjs",
+    "test:paid-final": "node tools/verify-paid-final.mjs"
   }
 }

@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-10-09T23:44:52.870Z",
+  "assumptions": "s25 hell, seed 7919, Eulji + Gang, gunryang + bigyeok, nam bot. Solo holds Gang at the opening bend and ranged Eulji 0.8 tiles away; local uses assigned path posts. Permanent hero 10 / skill 5 / tower 30 assumed; purchase/grind not simulated. finalAdapt sells low-contribution arrow/bell/barracks towers and prioritizes seokguram A after wave 24. Commands use normal costs and authority. No state cheats. One strategy/seed is not all-stage hell balance validation.",
+  "results": [
+    {
+      "kind": "solo",
+      "finalAdapt": false,
+      "openingPosition": "opening bend",
+      "win": false,
+      "lives": 0,
+      "wave": 24,
+      "total": 24,
+      "time": 949,
+      "combos": 9,
+      "finalOrders": 0,
+      "bossMaxHp": 60800
+    },
+    {
+      "kind": "solo",
+      "finalAdapt": true,
+      "openingPosition": "opening bend",
+      "win": true,
+      "lives": 8,
+      "wave": 24,
+      "total": 24,
+      "time": 880,
+      "combos": 9,
+      "finalOrders": 67,
+      "bossMaxHp": 60800
+    },
+    {
+      "kind": "local",
+      "finalAdapt": false,
+      "openingPosition": "assigned path",
+      "win": true,
+      "lives": 7,
+      "wave": 24,
+      "total": 24,
+      "time": 962,
+      "combos": 10,
+      "finalOrders": 0,
+      "bossMaxHp": 66880.00000000001
+    },
+    {
+      "kind": "local",
+      "finalAdapt": true,
+      "openingPosition": "assigned path",
+      "win": true,
+      "lives": 7,
+      "wave": 24,
+      "total": 24,
+      "time": 847,
+      "combos": 9,
+      "finalOrders": 97,
+      "bossMaxHp": 66880.00000000001
+    }
+  ]
+}

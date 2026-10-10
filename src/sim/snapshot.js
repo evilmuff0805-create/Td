@@ -42,8 +42,8 @@ export class SnapshotEncoder {
         e.shield | 0, r1(e.dx), r1(e.dy),
       ]),
       T: sendT ? T : null,
-      td: s.towers.map((t) => [t.id, r2(t.angle), t.flash > 0 ? 1 : 0, r1(t.disabledT), t.beam, r2(t.beamPow || 0), r2(t.rangeMult || 1)]),
-      pr: s.projectiles.map((p) => [PKINDS.indexOf(p.kind), r2(p.x), r2(p.y), r2(p.a || 0), r2(p.k || 0), p.sx !== undefined ? r2(p.sx) : null, p.sy !== undefined ? r2(p.sy) : null, p.hit ? p.hit.r : 0, p.id, p.mode === 'lob' ? 1 : p.mode === 'drop' ? 2 : 0, p.crit ? 1 : 0, p.hue || '']),
+      td: s.towers.map((t) => [t.id, r2(t.angle), t.flash > 0 ? 1 : 0, r1(t.disabledT), t.beam, r2(t.beamPow || 0), r2(t.rangeMult || 1), Number.isFinite(t.dmgMult) ? r2(t.dmgMult) : null, Number.isFinite(t.asMult) ? r2(t.asMult) : null]),
+      pr: s.projectiles.map((p) => [PKINDS.indexOf(p.kind), r2(p.x), r2(p.y), r2(p.a || 0), r2(p.k || 0), p.sx !== undefined ? r2(p.sx) : null, p.sy !== undefined ? r2(p.sy) : null, p.hit ? p.hit.r : 0, p.id, p.mode === 'lob' ? 1 : p.mode === 'drop' ? 2 : 0, p.crit ? 1 : 0, p.hue || '', p.hit?.single ? 1 : 0, p.src?.kind === 'tower' ? p.src.ref?.id ?? p.src.id ?? null : null, p.target ?? null, p.src?.kind === 'hero' ? p.src.ref?.id ?? p.src.id ?? null : null, p.chained ? 1 : 0]),
       su: s.summons.map((m) => [m.id, m.kind, r2(m.x), r2(m.y), m.hp | 0, m.maxHp | 0, m.anim > 0 ? 1 : 0, m.owner]),
       z: s.zones.map((z) => [z.id, z.kind, r2(z.x), r2(z.y), z.r, r1(z.t), z.max]),
       m: s.movers.map((m) => [m.id, m.kind, r2(m.x), r2(m.y), r2(m.dx), r2(m.dy)]),
@@ -105,13 +105,14 @@ export function applySnapshot(v, snap) {
     }));
   }
   const byId = new Map(v.towers.map((t) => [t.id, t]));
-  for (const [id, angle, flash, disabledT, beam, beamPow, rangeMult] of snap.td) {
+  for (const [id, angle, flash, disabledT, beam, beamPow, rangeMult, dmgMult, asMult] of snap.td) {
     const t = byId.get(id);
     if (!t) continue;
-    Object.assign(t, { angle, flash: flash ? 0.1 : 0, disabledT, beam, beamPow, rangeMult });
+    Object.assign(t, { angle, flash: flash ? 0.1 : 0, disabledT, beam, beamPow, rangeMult, dmgMult: dmgMult ?? undefined, asMult: asMult ?? undefined });
   }
-  v.projectiles = snap.pr.map(([ki, x, y, a, k, sx, sy, r, id, mode, crit, hue]) => ({
-    kind: PKINDS[ki], x, y, a, k, sx: sx ?? undefined, sy: sy ?? undefined, hit: { r }, id, mode: mode === 1 ? 'lob' : mode === 2 ? 'drop' : 'homing', crit: !!crit, hue,
+  v.projectiles = snap.pr.map(([ki, x, y, a, k, sx, sy, r, id, mode, crit, hue, single, towerId, target, heroId, chained]) => ({
+    kind: PKINDS[ki], x, y, a, k, sx: sx ?? undefined, sy: sy ?? undefined, hit: { r, single: !!single }, id, mode: mode === 1 ? 'lob' : mode === 2 ? 'drop' : 'homing', crit: !!crit, hue,
+    ...(towerId != null ? {src:{kind:'tower',id:towerId}} : heroId != null ? {src:{kind:'hero',id:heroId}} : {}), target: target ?? undefined, chained: !!chained,
   }));
   v.summons = snap.su.map(([id, kind, x, y, hp, maxHp, anim, owner]) => ({ id, kind, x, y, hp, maxHp, anim: anim ? 0.2 : 0, owner }));
   v.zones = snap.z.map(([id, kind, x, y, r, t, max]) => ({ id, kind, x, y, r, t, max }));

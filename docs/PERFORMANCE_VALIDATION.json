@@ -1,0 +1,10 @@
+{
+  "measuredOn": "2026-10-10",
+  "method": "Native browser review page, no synthetic FPS. Same stage s12, camera, high quality, 1280x720, two heroes, no towers. Rigid NPCs are ashigaru/samurai/teppo. Initial NPC sync includes model preparation. 60fps display cap applies.",
+  "runs": [
+    {"batch": false, "npcs": 64, "drawCalls": 4716, "trianglesApprox": 2217000, "fps": 60, "frameP95Ms": 17, "initialNpcSyncMs": 884, "screenshot": "screenshots/3d-crowd-individual.jpg"},
+    {"batch": true, "npcs": 64, "drawCalls": 526, "trianglesApprox": 2217000, "fps": 60, "frameP95Ms": 17, "initialNpcSyncMs": 110, "screenshot": "screenshots/3d-crowd-batched.jpg"},
+    {"batch": true, "npcs": 128, "drawCalls": 570, "trianglesApprox": 3801000, "fps": 60, "frameP95Ms": 17, "initialNpcSyncMs": 78, "screenshot": "screenshots/3d-crowd-128.jpg"}
+  ],
+  "limits": "Single Windows PC/browser observation. Equal capped FPS is not evidence of an FPS increase. Setup timing has cache/order variance and is not steady-state frame timing. Does not establish performance on phones or other hardware. All comparison captures use valid reconstructed canvases after the development review page was corrected."
+}

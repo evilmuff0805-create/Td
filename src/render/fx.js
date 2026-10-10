@@ -820,7 +820,7 @@ export class FX {
       ctx.save();
       ctx.translate(t.x, t.y);
       ctx.scale(pop, pop);
-      ctx.font = `${t.dmg ? 400 : 700} ${t.size + 3}px "Black Han Sans", "Gowun Batang", sans-serif`;
+      ctx.font = `700 ${t.size + 3}px "Noto Sans KR", "Malgun Gothic", sans-serif`;
       ctx.textAlign = 'center';
       ctx.lineJoin = 'round';
       ctx.lineWidth = t.crit ? 5 : 3.5;

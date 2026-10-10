@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-09",
+  "assets": [
+    {
+      "id": "hakikjin",
+      "source": "hakikjin-v2.webp",
+      "icon": "hakikjin-icon-v2.webp",
+      "prompt": "Create one premium square illustrated ability icon for a Korean historical fantasy tower defense game. Subject: HAKIKJIN, a sweeping crane-wing formation of luminous cyan-blue arrows, seven polished steel arrowheads with dark feather fletching spreading outward in a broad graceful fan, with a subtle white crane-wing silhouette formed only by the light trails. Strong legible central silhouette, large chunky forms readable at 64 px, rich deep midnight-blue vignette background, icy silver edges, restrained gold highlights, dynamic diagonal depth. Style: polished stylized 3D animated adventure game key art, hand-painted materials and cinematic rim light, dimensional and elegant, matching a snowy Korean fortress at night. Full-bleed square artwork, no border, no frame, no lettering, no typography, no numbers, no UI, no watermark. Keep bright subject inside central 80 percent. This is a production game ability image, not a photograph or flat vector."
+    },
+    {
+      "id": "singijeon",
+      "source": "singijeon-v2.webp",
+      "icon": "singijeon-icon-v2.webp",
+      "prompt": "Create one premium square illustrated ability icon for a Korean historical fantasy tower defense game. Subject: SINGIJEON rocket-arrow barrage, five Korean historical wooden rocket arrows with steel spear tips and red fletching diving diagonally downward in a tight volley, each propelled by blazing golden-orange fire and short ember trails, one large foreground rocket arrow, smaller arrows behind. Strong legible silhouette, large chunky forms readable at 64 px, deep midnight-blue smoky vignette background, warm amber and red-orange flame contrasted against icy blue shadows. Style: polished stylized 3D animated adventure game key art, hand-painted materials and cinematic rim light, dimensional and elegant, matching a snowy Korean fortress at night. Full-bleed square artwork, no border, no frame, no lettering, no typography, no numbers, no UI, no watermark. Keep bright subject inside central 80 percent. This is a production game ability image, not a photograph or flat vector."
+    }
+  ],
+  "derived": [
+    "yi-portrait.webp from illustrated/heroes.webp cell 0",
+    "sungnyemun-icon.webp, hwaseong-icon.webp from illustrated/buildings.webp cells 0, 1"
+  ]
+}

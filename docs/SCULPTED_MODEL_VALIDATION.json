@@ -1,0 +1,20 @@
+{
+  "measuredOn": "2026-10-10",
+  "modelRevision": "continuous face/garments, elbow/wrist/knee rig, thick curved roofs, ashlar domes, leaf clusters",
+  "method": "Native Codex browser review page, Windows PC, stage s12/autumn, 1280x720, high quality, same camera, two heroes, no towers. Mixed ashigaru/samurai/teppo. Display cap 60fps. Geometry values read from page metrics and rounded to nearest 1000 triangles.",
+  "runs": [
+    {"batch": true, "npcs": 64, "drawCalls": 572, "trianglesApprox": 4258000, "fps": 60, "frameP95Ms": 17, "initialNpcSyncMs": 116},
+    {"batch": false, "npcs": 64, "drawCalls": 5248, "trianglesApprox": 4258000, "fps": 48, "frameP95Ms": 33, "initialNpcSyncMs": 1397, "screenshot": "screenshots/3d-sculpted-crowd-individual.jpg"},
+    {"batch": true, "npcs": 64, "drawCalls": 572, "trianglesApprox": 4258000, "fps": 60, "frameP95Ms": 17, "initialNpcSyncMs": 127, "screenshot": "screenshots/3d-sculpted-crowd-64.jpg"},
+    {"batch": true, "npcs": 128, "drawCalls": 616, "trianglesApprox": 7193000, "fps": 60, "frameP95Ms": 17, "initialNpcSyncMs": 142, "screenshot": "screenshots/3d-sculpted-crowd-128.jpg"}
+  ],
+  "regressionChecks": {"selftest": 14, "threeD": 32, "campaign": 15, "total": 61, "passed": true},
+  "nativeChecks": {
+    "singleHtml": {"stage": "s1", "wave": 2, "lives": 20, "buildUpgradeMoveSkill": true, "consoleErrors": 0, "consoleWarnings": 0},
+    "responsive": {"viewport": [414, 896], "documentWidth": 414, "goldBeforeBuild": 92, "goldAfterBuild": 22, "built": "sungnyemun", "sungnyemunLabelRects": [{"x":210.6875,"y":319.578125,"width":65,"height":46},{"x":223.640625,"y":266.1875,"width":65,"height":46}]},
+    "winterPreview": {"heroes": ["ahn","dangun"], "qualitySwitch": true, "consoleErrors": 0, "consoleWarnings": 0},
+    "audioVolumes": {"bgm": 0, "sfx": 0}
+  },
+  "review": "GPT Astra xhigh read-only review: chain-origin/source metadata and real hitscan event path corrected; follow-up found no additional defect.",
+  "limits": "Short single-PC observations, not phone benchmarks or a cross-device guarantee. Setup timings have cache/order variance. Native online flow was verified earlier; this revision adds automated projectile/event snapshot compatibility checks. Prior campaign economy runs are retained separately and were not rerun for a visual-only revision. Dedicated artist models/textures/skin rigging and phone/external-network/paid-hard-hell/human-balance validation remain."
+}

@@ -59,6 +59,7 @@ function reduction(v) {
 
 export function damage(s, e, amt, type, src) {
   if (e.hp <= 0 || amt <= 0) return 0;
+  const hpBefore=e.hp;
   const zero = s.buffs.armorZeroT > 0;
   const armor = zero ? 0 : e.armor;
   const resist = zero ? 0 : e.resist;
@@ -79,6 +80,8 @@ export function damage(s, e, amt, type, src) {
     const pl = s.players[src.p];
     if (pl) pl.stats.damage += d;
     if (src.ref && src.kind === 'tower') src.ref.dmgDone += d;
+    // Optional offline diagnostics count useful HP loss, excluding overkill.
+    if(s.damageLedger){const key=src.kind==='hero'?`hero:${src.ref?.heroId}`:src.kind==='tower'?`tower:${src.ref?.type}`:src.kind==='skill'?`skill:${src.skillId}`:src.kind;s.damageLedger[key]=(s.damageLedger[key]??0)+Math.min(hpBefore,Math.max(0,d));}
   }
   if (e.hp <= 0) killEnemy(s, e, src);
   return d;

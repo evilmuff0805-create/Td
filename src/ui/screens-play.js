@@ -13,7 +13,7 @@ import { SKILLS, SKILL_ORDER, skillDesc } from '../data/skills.js';
 import { TOWERS } from '../data/towers.js';
 import { findCombo } from '../data/combos.js';
 import { RANKS } from '../data/quests.js';
-import { stageUnlocked, diffUnlocked, heroUnlockState, skillUnlocked, playerSpec, saveProfile, rankName, heroSkin } from '../meta/profile.js';
+import { stageUnlocked, diffUnlocked, heroUnlockState, skillUnlocked, playerSpec, saveProfile, rankName, heroSkin, campaignFirstClearCoins } from '../meta/profile.js';
 import { ITEMS, ITEM_ORDER, ITEM_PER_BATTLE } from '../data/items.js';
 import { questText } from '../meta/quests.js';
 import { Net } from '../net/net.js';
@@ -63,7 +63,7 @@ function koreaMap(p, selected, onPick, chapter) {
     const g = svg('g', { class: 'stage-node', tabindex: unlocked ? 0 : -1, role: 'button', 'aria-label': `${i + 1}. ${st.name}${unlocked ? '' : ' (잠김)'}` },
       svg('title', {}, document.createTextNode(st.name)),
       svg('circle', { cx: st.region.x, cy: st.region.y, r: sel ? 12 : 9.5, fill: unlocked ? (sel ? '#b8322a' : cleared ? '#7a221c' : '#a3342b') : '#555', stroke: sel ? '#f0c75e' : '#efe4cc', 'stroke-width': sel ? 3 : 1.5 }),
-      svg('text', { x: st.region.x, y: st.region.y + 4, 'text-anchor': 'middle', fill: '#fff', 'font-size': 10.5, 'font-family': 'Black Han Sans, sans-serif' }, document.createTextNode(unlocked ? String(i + 1) : '🔒')),
+      svg('text', { x: st.region.x, y: st.region.y + 4, 'text-anchor': 'middle', fill: '#fff', 'font-size': 10.5, 'font-family': 'var(--f-bold)', 'font-weight': 700 }, document.createTextNode(unlocked ? String(i + 1) : '🔒')),
     );
     root.append(g);
     if (unlocked) {
@@ -136,7 +136,7 @@ export function campaignScreen(app, params = {}) {
       h('dt', {}, '파도'), h('dd', {}, `${st.waves.length}파 · 길 ${getMap(stageId).paths.length}갈래`),
       h('dt', {}, '적장'), h('dd', {}, sum.bosses.join(', ')),
       h('dt', {}, '출현'), h('dd', {}, sum.kinds.map((k) => ENEMIES[k].name).join(' · ')),
-      h('dt', {}, '첫 승리'), h('dd', {}, st.unlockTowers.length ? `유산 해금: ${st.unlockTowers.map((t) => TOWERS[t].name).join(', ')} · 옥 30` : '옥 30'),
+      h('dt', {}, '첫 승리'), h('dd', { id: 'first-clear-reward' }, `${st.unlockTowers.length ? `유산 해금: ${st.unlockTowers.map((t) => TOWERS[t].name).join(', ')} · ` : ''}엽전 ${fmt(campaignFirstClearCoins(stageId,diff))} · 옥 30`),
       h('dt', {}, '기록'), h('dd', {}, DIFF_ORDER.map((d) => h('span', { style: { marginRight: '10px' } }, `${DIFFICULTY[d].name} `, starStr(rec[d] || 0))))),
     h('div', { class: 'row' }, diffSeg(p, stageId, diff, (d) => app.go('campaign', { stage: stageId, diff: d })),
       h('span', { class: 'dim', style: { fontSize: '14px' } }, diff === 'normal' ? '' : `적 체력 ×${DIFFICULTY[diff].hp} · 민심 ${DIFFICULTY[diff].lives} · 보상 ×${DIFFICULTY[diff].reward}`)),
@@ -266,7 +266,7 @@ export function loadoutScreen(app, params) {
 export function coopScreen(app) {
   setBackdrop('lacquer');
   const netOk = Net.available();
-  const codeInput = h('input', { type: 'text', id: 'room-code', maxlength: 4, placeholder: '방 코드', 'aria-label': '방 코드', style: { width: '110px', textTransform: 'uppercase', fontFamily: 'var(--f-bold)', letterSpacing: '0.2em' } });
+  const codeInput = h('input', { type: 'text', id: 'room-code', maxlength: 4, placeholder: '방 코드', 'aria-label': '방 코드', style: { width: '110px', textTransform: 'uppercase', fontFamily: 'var(--f-bold)', fontWeight: 700, letterSpacing: '0.2em' } });
   const status = h('p', { class: 'dim', role: 'status' }, netOk ? '서버에 연결해 방을 만들거나, 친구의 코드로 참가하세요.' : '');
   const go = async (fn) => {
     const net = new Net();
@@ -290,7 +290,7 @@ export function coopScreen(app) {
       h('div', { class: 'panel stack' },
         h('h3', {}, '온라인 협동 (방 코드)'),
         h('p', {}, '호스트가 방을 만들고 코드를 알려 주면 친구가 참가합니다. 두 사람 모두 같은 서버 주소로 접속해야 합니다.'),
-        netOk ? null : h('p', { style: { color: '#ffb3a6' } }, '지금은 서버 없이 실행 중이라 온라인 방을 만들 수 없습니다. 터미널에서 node server/server.js 를 실행하고 표시되는 주소로 접속하세요. 로컬 협동은 지금 바로 할 수 있습니다.'),
+        netOk ? null : h('p', { style: { color: '#ffb3a6' } }, '단일 파일·오프라인 화면에서는 온라인 방을 사용할 수 없습니다. 온라인 협동은 node server/server.js 실행 후 기본 게임 주소(예: http://localhost:8080/)에서 접속하세요. 로컬 협동은 지금 바로 할 수 있습니다.'),
         h('div', { class: 'row' },
           h('button', { class: 'btn btn-blue', disabled: !netOk, onclick: () => go((n) => n.create()) }, '방 만들기'),
           codeInput,
@@ -463,7 +463,7 @@ export function resultScreen(app, params) {
         h('span', { class: 'chip' }, h('span', { class: 'coin' }, '●'), '엽전', countUp(r.coins)),
         r.jade ? h('span', { class: 'chip' }, h('span', { class: 'jade' }, '◆'), '옥', countUp(r.jade)) : null,
         h('span', { class: 'chip' }, '공적', countUp(r.xp))),
-      applied.firstClear ? h('p', { style: { color: '#ffe68c' } }, '첫 승리 보너스!') : null,
+      applied.firstClear ? h('p', { style: { color: '#ffe68c' } }, `첫 승리 포상 · 엽전 +${fmt(applied.firstClearCoins||0)} · 옥 +30 (위 보상에 포함)`) : null,
       ...applied.rankUps.map((u) => h('p', { style: { color: '#ffe68c' } }, `품계 승진: ${rankName(u.rank)}! 보상 ${plainReward(u.reward)}${u.skills.length ? ` · 새 비기 해금: ${u.skills.map((s) => SKILLS[s].name).join(', ')}` : ''}`)),
       ...applied.newTowers.map((t) => h('p', { class: 'row', style: { justifyContent: 'center', color: '#ffe68c' } }, h('img', { src: towerIcon(t), alt: '', width: 40, height: 40 }), `새 유산 해금: ${TOWERS[t].name}`)),
       applied.questDone.length ? h('div', { class: 'stack', style: { width: '100%' } }, h('b', {}, '완료한 임무 (임무 화면에서 보상 받기)'),

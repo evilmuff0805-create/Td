@@ -1,5 +1,6 @@
 // 메뉴 배경: 한지 위 수묵 산수 (타이틀) / 옻칠 바탕 위 옅은 산 능선 (그 밖의 화면)
 import { makeRng } from '../sim/rng.js';
+import { sceneArt } from '../render/art.js';
 
 let current = null;
 
@@ -24,7 +25,17 @@ export function setBackdrop(kind) {
     st.static.height = cv.height;
     const c = st.static.getContext('2d');
     c.scale(dpr, dpr);
-    if (kind === 'title') paintTitle(c, innerWidth, innerHeight);
+    const scene = sceneArt();
+    if (scene) {
+      const k = Math.max(innerWidth / scene.img.naturalWidth, innerHeight / scene.img.naturalHeight);
+      const w = scene.img.naturalWidth * k, hh = scene.img.naturalHeight * k;
+      c.drawImage(scene.img, (innerWidth - w) / 2, (innerHeight - hh) / 2, w, hh);
+      c.fillStyle = kind === 'title' ? 'rgba(7,21,35,0.32)' : 'rgba(7,21,35,0.82)';
+      c.fillRect(0, 0, innerWidth, innerHeight);
+      const shade = c.createLinearGradient(0, 0, 0, innerHeight);
+      shade.addColorStop(0, 'rgba(5,17,29,0.22)'); shade.addColorStop(0.55, 'rgba(5,17,29,0.06)'); shade.addColorStop(1, 'rgba(5,17,29,0.7)');
+      c.fillStyle = shade; c.fillRect(0, 0, innerWidth, innerHeight);
+    } else if (kind === 'title') paintTitle(c, innerWidth, innerHeight);
     else paintLacquer(c, innerWidth, innerHeight);
     st.dpr = dpr;
   };
@@ -51,9 +62,9 @@ export function setBackdrop(kind) {
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(t / 900 * p.s + p.p);
-        ctx.fillStyle = kind === 'title' ? 'rgba(214,110,130,0.7)' : 'rgba(240,199,94,0.18)';
+        ctx.fillStyle = kind === 'title' ? 'rgba(213,231,247,0.65)' : 'rgba(213,231,247,0.14)';
         ctx.beginPath();
-        ctx.ellipse(0, 0, 3.4 * p.s, 1.8 * p.s, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, 0, 1.7 * p.s, 1.3 * p.s, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }

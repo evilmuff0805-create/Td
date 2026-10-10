@@ -12,10 +12,11 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PORT = +(process.env.PORT || 8080);
+const HOST = process.env.HOST || '127.0.0.1';
 const MAX_PAYLOAD = 2 * 1024 * 1024;
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
-  '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.png': 'image/png', '.svg': 'image/svg+xml',
+  '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.md': 'text/markdown; charset=utf-8',
 };
 
@@ -223,10 +224,10 @@ function log(s) {
   console.log(`[${new Date().toLocaleTimeString('ko-KR')}] ${s}`);
 }
 
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   console.log(`\n  호국영웅전 서버 실행 중`);
   console.log(`  이 컴퓨터:        http://localhost:${PORT}`);
-  for (const list of Object.values(os.networkInterfaces())) {
+  if (HOST === '0.0.0.0' || HOST === '::') for (const list of Object.values(os.networkInterfaces())) {
     for (const a of list || []) {
       if (a.family === 'IPv4' && !a.internal) console.log(`  같은 네트워크:    http://${a.address}:${PORT}`);
     }

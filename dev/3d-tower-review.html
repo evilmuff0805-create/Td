@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>호국영웅전 · 유산 강화 외형 비교</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#132334;color:#e4edf5;font:13px 'Malgun Gothic',sans-serif}header,main,footer{max-width:1180px;margin:auto}header{padding:23px 20px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px}h1{font-size:24px;margin:3px 0 7px;color:#f2d39c;letter-spacing:-1px}header small{font-size:10px;letter-spacing:2px;color:#b5c8dc}header p{margin:0;font-size:11px;color:#b6c9d8}a{color:#efd398;text-decoration:none;border:1px solid #ab916750;padding:10px 14px;border-radius:6px;white-space:nowrap}main{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;padding:0 20px}article{position:relative;min-width:0;border:1px solid #a2bfd52e;border-radius:10px;overflow:hidden;background:linear-gradient(130deg,#263c50,#1a2c3e)}article[data-level='2']{border-color:#77b5c16b}article[data-level='3']{border-color:#d8b568a3}.model-viewport{height:197px}.card-title{position:absolute;top:13px;left:14px;z-index:2;pointer-events:none}h2{font-size:13px;margin:0 0 6px}.stage{color:#c6d8e6;font-size:11px}.max{color:#f3d286}article[data-level='2'] .stage{color:#b2e3e6}article[data-level='3'] .stage{color:#f3d286}.tier{position:absolute;top:15px;right:14px;color:#bbccdb;font-size:11px;letter-spacing:3px}article[data-level='3'] .tier{color:#edc678}.card-info{padding:9px 14px 12px;border-top:1px solid #b0c5d91c;background:#11263775;min-height:62px}.card-info b{font-size:11px;color:#e2d6ba}.card-info p{font-size:10px;color:#b5c7d6;line-height:1.6;margin:4px 0 0}footer{padding:14px 20px;color:#91aabd;font-size:10px;line-height:1.7}#review-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}.card-info{position:relative;z-index:2}header,footer{position:relative;z-index:2}@media(max-width:700px){main{grid-template-columns:1fr;max-width:470px}.model-viewport{height:240px}header{align-items:flex-start}header a{font-size:10px}h1{font-size:20px}header p{line-height:1.7}}
+  </style>
+<style>
+[hidden]{display:none!important}main{max-width:1360px;grid-template-columns:repeat(5,minmax(0,1fr))}.model-viewport{height:340px}header,footer{max-width:1360px}header label{margin-left:auto;font-size:11px;white-space:nowrap}select{font:12px 'Malgun Gothic',sans-serif;margin-left:8px;padding:9px;background:#183149;color:#e9d7b5;border:1px solid #c5aa6b70;border-radius:5px}.tier{top:57px;left:14px;font-size:9px}.card-info{min-height:99px}article[data-level='4']{border-color:#d8b568a3}article[data-level='4'] .stage,article[data-level='4'] .tier{color:#f3d286}article[data-level='3'] .stage,article[data-level='3'] .tier{color:#dce7d0}article[data-level='3']{border-color:#b9c5b775}@media(max-width:900px){main{grid-template-columns:repeat(3,1fr)}.model-viewport{height:300px}header{flex-wrap:wrap}header label{margin-left:0}}@media(max-width:600px){main{grid-template-columns:1fr;max-width:450px}.model-viewport{height:320px}.card-info{min-height:0}}
+</style>
+<style>.review-filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.review-filters label{margin-left:0}header{flex-wrap:wrap}header>div:first-child{flex:1;min-width:280px}@media(max-width:900px){.review-filters{justify-content:flex-start}header a{margin-left:auto}}</style>
+
+</head>
+<body>
+  <header><div><small>HOGUK · TOWER PROGRESSION</small><h1>유산 강화 · 외형 비교</h1><p>기본 1 → 보강 2 → 완성 3 → 서로 다른 A·B 특화 4 · 최대</p></div><div class="review-filters"><label>유산 <select id="tower-filter" aria-label="비교할 유산"></select></label><label>보기 <select id="display-filter" aria-label="표현 방식"><option value="painted">그림 전장</option><option value="model">모델 대체</option></select></label><label>계절 <select id="season-filter" aria-label="그림의 계절"></select></label></div><a href="../3d.html?mute=1">전장으로 →</a></header>
+  <main id="tower-review" aria-label="유산 10종의 단계별 전장 그림"></main>
+  <footer><span id="art-status" role="status">단계별 그림을 불러오는 중…</span><br>실제 전장의 그림·시점·그림자를 같은 배율로 확대해 표시합니다. 강화해도 표시 크기는 일정합니다. 건물 위 단계 숫자와 네 칸 표시는 전투 중에도 보이며, A·B 특화는 한 건물에 하나를 선택합니다.</footer>
+  <canvas id="review-canvas" aria-label="유산 단계와 특화 그림 50종"></canvas>
+  <script type="module" src="../assets/3d/tower-review.js"></script>
+</body>
+</html>

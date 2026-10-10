@@ -57,13 +57,13 @@ export class Session {
   }
 
   // 한 프레임 진행 후, 이번 프레임에 발생한 이벤트 목록을 돌려준다
-  update(realDt) {
+  update(realDt, { waitingForRenderer = false } = {}) {
     if (this.kind === 'guest') {
       lerpView(this.view, (performance.now() - this.snapAt) / this.snapGap);
       return this.pending.splice(0);
     }
     const s = this.state;
-    if (!s.paused && !s.result) {
+    if (!waitingForRenderer && !s.paused && !s.result) {
       this.acc += Math.min(realDt, 0.1) * s.speed;
       let n = 0;
       while (this.acc >= DT && n < 12) {
@@ -71,7 +71,7 @@ export class Session {
         this.acc -= DT;
         n++;
       }
-    } else if (s.cmds.length) step(s); // 일시정지 중에도 명령(건설 등)은 처리
+    } else if (!waitingForRenderer && s.cmds.length) step(s); // 일시정지 중에도 명령(건설 등)은 처리
     const evs = s.events.splice(0);
     if (this.kind === 'host') {
       for (const e of evs) if (e.k !== 'sfx' || this.netEvents.length < 400) this.netEvents.push(e);

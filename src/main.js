@@ -8,6 +8,7 @@ import { heroesScreen, skillsScreen, relicsScreen } from './ui/screens-codex.js'
 import { shopScreen } from './ui/screens-shop.js';
 import { Session } from './game/session.js';
 import { GameUI } from './ui/hud.js';
+import { Renderer3D } from './3d/renderer.js';
 import { audio } from './audio/audio.js';
 import { preloadArt } from './render/art.js';
 
@@ -32,6 +33,11 @@ class App {
   constructor(root) {
     this.root = root;
     this.profile = loadProfile();
+    if (new URLSearchParams(location.search).get('mute') === '1') {
+      this.profile.settings.sfx = 0;
+      this.profile.settings.bgm = 0;
+      saveProfile();
+    }
     audio.setVolumes(this.profile.settings.sfx, this.profile.settings.bgm);
     this.game = null;
     this.current = null;
@@ -86,6 +92,7 @@ class App {
       session,
       profile: this.profile,
       names: b.names,
+      rendererClass: new URLSearchParams(location.search).get('view') === '2d' || this.profile.settings.renderer === '2d' ? undefined : Renderer3D,
       onEnd: ({ result, stats, stats2 }) => {
         offs.forEach((o) => o());
         const merged = { ...stats };
@@ -112,9 +119,12 @@ const app = new App(document.getElementById('app'));
 window.__app = app;
 const fonts = document.fonts && document.fonts.load ? Promise.all([
   document.fonts.load('40px "Nanum Brush Script"'),
-  document.fonts.load('16px "Black Han Sans"'),
+  document.fonts.load('700 16px "Noto Sans KR"'),
   document.fonts.load('16px "Gowun Batang"'),
 ]).catch(() => {}) : Promise.resolve();
 // 영웅 그림 파일도 첫 화면 전에 (초상 · 전장 그림이 처음부터 보이도록)
-const ready = Promise.all([fonts, preloadArt().catch(() => {})]);
-Promise.race([ready, new Promise((r) => setTimeout(r, 2500))]).then(() => app.go('title'));
+const ready = Promise.all([
+  Promise.race([fonts, new Promise((r) => setTimeout(r, 2500))]),
+  preloadArt().catch(() => {}),
+]);
+ready.then(() => app.go('title'));

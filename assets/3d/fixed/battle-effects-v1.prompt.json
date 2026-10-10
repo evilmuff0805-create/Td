@@ -1,0 +1,21 @@
+{
+  "mode": "built-in imagegen",
+  "intent": "generate",
+  "prompt": "Use case: stylized-concept\nAsset type: transparent gameplay VFX sprite atlas for a Korean historical fantasy tower-defense game.\nPrimary request: ONE cohesive production sprite atlas, precisely FOUR columns by TWO rows of equal square cells, wide 2:1 composition. Eight isolated effects, no environment or characters. Painterly premium animated-film game art, soft volumetric brushwork and richly shaded details, calm navy shadows, warm antique gold, muted jade, cool moonlit ivory. This art will overlay an existing high-angle illustrated battlefield, so avoid neon, hard geometric rings, dense white centers, excessive bloom or lens flares.\nComposition: each effect is viewed from DIRECTLY ABOVE, not in perspective, centered inside its own square cell, contained within the central 76% with a fully transparent 12% margin on all sides. Never cross cell boundaries. No grid lines, labels, frames, backplates, checkerboard or cast shadows. Preserve actual alpha transparency, including clear empty centers and thin translucent vapor.\nExact cell order left to right:\nROW 1: (1) small circular amber-gold fire impact with a few glowing embers and softly curling dark cinnamon smoke, clear central opening; (2) circular swirling turquoise-blue water surge, layered ivory foam brushstrokes, clear central opening; (3) circular ice-frost bloom with short pale-blue crystalline petals and subtle frosty mist, clear central opening; (4) circular muted jade healing aura, delicate flowing leaf-like wisps and a few antique-gold motes, clear central opening.\nROW 2: (5) a single elegant ivory-and-gold crescent sword slash sweeping horizontally from left to right, tapered translucent brush trail; (6) circular antique-gold sacred-light halo made of flowing brush wisps and sparse ivory sparks, clear central opening, no symbols or lettering; (7) a precise 90-degree open FAN of silver-blue feathered wind trails starting at the left center and spreading to the right, low opacity with clear spaces between feathers, tips contained within circle of the cell; (8) circular Korean taegeuk-inspired swirling red and navy-blue brush aura with small gold motes, subtle shaded depth, clear central opening.\nConstraints: the eight cells must all have equal dimensions; clean reusable alpha-cut sprite edges; no text, no letters, no logos, no weapons, no objects, no UI, no ground. This is one sprite-sheet asset, not a gallery.",
+  "source": "assets/3d/fixed/source/battle-effects-v1.png",
+  "runtime": "assets/3d/fixed/battle-effects-v1.webp",
+  "layout": {
+    "columns": 4,
+    "rows": 2,
+    "cells": [
+      "fire",
+      "flood",
+      "ice",
+      "heal",
+      "slash",
+      "light",
+      "volley",
+      "combo"
+    ]
+  }
+}

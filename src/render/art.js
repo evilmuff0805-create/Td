@@ -1,106 +1,145 @@
-/* global Image, URL */
-// 그림 파일 불러오기 + 전투용 작은 그림 미리 만들기
-// 큰 원본을 매 프레임 줄이면 느리고 거칠어서, 불러올 때 한 번 반씩 줄여 두고 어두운 테두리를 둘러 둔다.
+// Decode atlases once, then prepare reusable small canvases for combat.
 import { ART } from '../data/art.js';
+import { skinDef, GOLD_LOOK } from '../data/skins.js';
 
-const SPRITE_H = 132; // 미리 줄여 둘 높이(px) — 화면에서는 약 56px로 그리므로 고해상도 화면에서도 선명
+const SPRITE_H = 176;
 const loaded = new Map();
+const variants = new Map();
+let pending;
 
-function resolve(path) {
-  if (path.startsWith('data:')) return path;
-  const base = typeof document !== 'undefined' ? document.baseURI : '';
-  return new URL(path, base).href;
+function canvas(w, h) {
+  const c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h));
+  return c;
 }
-
 function loadImage(path) {
   return new Promise((ok) => {
     const img = new Image();
-    img.onload = () => ok(img);
-    img.onerror = () => ok(null);
-    img.src = resolve(path);
+    img.onload = () => ok(img); img.onerror = () => ok(null);
+    // Module-relative root also works from dev pages and subdirectory hosting.
+    img.src = path.startsWith('data:') ? path : new URL(path, new URL('../../', import.meta.url)).href;
   });
 }
 
-function shrink(img, H) {
-  let src = img;
-  let w = img.naturalWidth || img.width;
-  let h = img.naturalHeight || img.height;
-  while (h / 2 >= H) {
-    const c = document.createElement('canvas');
-    c.width = Math.round(w / 2);
-    c.height = Math.round(h / 2);
-    const x = c.getContext('2d');
-    x.imageSmoothingQuality = 'high';
-    x.drawImage(src, 0, 0, c.width, c.height);
-    src = c;
-    w = c.width;
-    h = c.height;
+function cellImage(img, spec, cell, trim) {
+  const col = cell % spec.columns, row = Math.floor(cell / spec.columns);
+  const x = Math.round(col * img.naturalWidth / spec.columns), y = Math.round(row * img.naturalHeight / spec.rows);
+  const w = Math.round((col + 1) * img.naturalWidth / spec.columns) - x;
+  const h = Math.round((row + 1) * img.naturalHeight / spec.rows) - y;
+  const cv = canvas(w, h);
+  cv.getContext('2d').drawImage(img, x, y, w, h, 0, 0, w, h);
+  if (!trim) return cv;
+  const data = cv.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, w, h).data;
+  let x0 = w, y0 = h, x1 = 0, y1 = 0;
+  for (let yy = 0; yy < h; yy++) for (let xx = 0; xx < w; xx++) {
+    if (data[(yy * w + xx) * 4 + 3] < 32) continue;
+    x0 = Math.min(x0, xx); x1 = Math.max(x1, xx); y0 = Math.min(y0, yy); y1 = Math.max(y1, yy);
   }
-  const out = document.createElement('canvas');
-  out.height = H;
-  out.width = Math.round((w / h) * H);
-  const o = out.getContext('2d');
-  o.imageSmoothingQuality = 'high';
-  o.drawImage(src, 0, 0, out.width, out.height);
+  if (x0 > x1) return cv;
+  x0 = Math.max(0, x0 - 1); y0 = Math.max(0, y0 - 1); x1 = Math.min(w - 1, x1 + 1); y1 = Math.min(h - 1, y1 + 1);
+  const out = canvas(x1 - x0 + 1, y1 - y0 + 1);
+  out.getContext('2d').drawImage(cv, x0, y0, out.width, out.height, 0, 0, out.width, out.height);
   return out;
 }
-
-// 실루엣을 8방향으로 밀어 어두운 테두리 → 다른 유닛 · 바닥과 섞여도 윤곽이 산다
-function outlined(c, px = 2, color = 'rgba(20,12,8,0.85)') {
-  const pad = px + 1;
-  const sil = document.createElement('canvas');
-  sil.width = c.width;
-  sil.height = c.height;
-  const s = sil.getContext('2d');
-  s.drawImage(c, 0, 0);
-  s.globalCompositeOperation = 'source-in';
-  s.fillStyle = color;
-  s.fillRect(0, 0, sil.width, sil.height);
-  const out = document.createElement('canvas');
-  out.width = c.width + pad * 2;
-  out.height = c.height + pad * 2;
-  const o = out.getContext('2d');
-  for (let a = 0; a < 8; a++) {
-    const ang = (a / 8) * Math.PI * 2;
-    o.drawImage(sil, pad + Math.cos(ang) * px, pad + Math.sin(ang) * px);
-  }
-  o.drawImage(c, pad, pad);
-  return { canvas: out, pad };
+function footAnchor(img) {
+  const { width: w, height: h } = img;
+  const y0 = Math.floor(h * 0.88), data = img.getContext('2d').getImageData(0, y0, w, h - y0).data;
+  let sum = 0, n = 0;
+  for (let i = 0; i < data.length; i += 4) { if (data[i + 3] >= 80) { sum += (i / 4) % w; n++; } }
+  return n ? Math.max(0.25, Math.min(0.75, sum / n / w)) : 0.5;
 }
-
-// 앱 시작 때 한 번. 실패한 그림은 조용히 건너뛴다(기본 그림 사용).
+function prepare(img, ax = 0.5) {
+  const h = SPRITE_H, pad = 2, w = Math.round(img.width * h / img.height);
+  const small = canvas(w + pad * 2, h + pad * 2), c = small.getContext('2d');
+  c.imageSmoothingQuality = 'high';
+  c.shadowColor = 'rgba(8,18,29,0.5)'; c.shadowBlur = 1.5;
+  c.drawImage(img, pad, pad, w, h);
+  return { img, canvas: small, pad, ax, h };
+}
 export function preloadArt() {
   if (typeof document === 'undefined') return Promise.resolve();
-  const jobs = [];
-  for (const [id, a] of Object.entries(ART.heroes)) {
-    jobs.push(loadImage(a.sprite).then((img) => {
-      if (!img) return;
-      const small = shrink(img, SPRITE_H);
-      const { canvas, pad } = outlined(small);
-      loaded.set(`hero:${id}`, { img, canvas, pad, ax: a.ax ?? 0.5, h: SPRITE_H });
-    }));
-  }
-  for (const [id, a] of Object.entries(ART.portraits)) {
-    jobs.push(loadImage(a.src).then((img) => {
-      if (img) loaded.set(`portrait:${id}`, { img, face: a.face });
-    }));
-  }
-  for (const [id, src] of Object.entries(ART.backgrounds || {})) {
-    jobs.push(loadImage(src).then((img) => {
-      if (img) loaded.set(`bg:${id}`, { img });
-    }));
-  }
-  return Promise.all(jobs);
+  if (pending) return pending;
+  pending = (async () => {
+    const atlases = new Map(await Promise.all(Object.entries(ART.atlases).map(async ([id, spec]) => [id, await loadImage(spec.src)])));
+    const preparedCells = new Map();
+    for (const group of ['heroes', 'enemies', 'allies', 'towers', 'structures', 'props', 'terrain']) {
+      for (const [id, a] of Object.entries(ART[group])) {
+        const img = atlases.get(a.atlas); if (!img) continue;
+        const key = `${a.atlas}:${a.cell}`;
+        let region = preparedCells.get(key);
+        if (!region) { region = cellImage(img, ART.atlases[a.atlas], a.cell, group !== 'terrain'); preparedCells.set(key, region); }
+        const unit = ['heroes', 'enemies', 'allies'].includes(group);
+        loaded.set(`${group}:${id}`, prepare(region, a.ax ?? (unit ? footAnchor(region) : 0.5)));
+      }
+    }
+    await Promise.all([
+      ...Object.entries(ART.backgrounds).map(async ([id, path]) => { const img = await loadImage(path); if (img) loaded.set(`bg:${id}`, { img }); }),
+      loadImage(ART.scene).then((img) => { if (img) loaded.set('scene', { img }); }),
+    ]);
+  })();
+  return pending;
 }
 
-export function backgroundArt(stageId) {
-  return loaded.get(`bg:${stageId}`) || null;
+function hsl(r, g, b) {
+  r /= 255; g /= 255; b /= 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2, d = max - min;
+  if (!d) return [0, 0, l];
+  const s = d / (1 - Math.abs(2 * l - 1));
+  const hue = max === r ? ((g - b) / d + (g < b ? 6 : 0)) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  return [hue / 6, s, l];
 }
-
-export function heroArt(heroId) {
-  return loaded.get(`hero:${heroId}`) || null;
+function rgb(h, s, l) {
+  const a = s * Math.min(l, 1 - l);
+  const f = (n) => { const k = (n + h * 12) % 12; return 255 * (l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1))); };
+  return [f(0), f(8), f(4)];
 }
-
-export function portraitArt(heroId) {
-  return loaded.get(`portrait:${heroId}`) || null;
+const CLOTH_HUE = { sejong: 0.01, eulji: 0.14, gang: 0.75, gwon: 0.075, gwak: 0.01 };
+export function heroArt(id, skin = null) {
+  const base = loaded.get(`heroes:${id}`);
+  if (!base || !skin) return base || null;
+  const def = skinDef(id, skin); if (!def) return base;
+  const key = `${id}:${skin}`; if (variants.has(key)) return variants.get(key);
+  const img = canvas(base.img.width, base.img.height), ctx = img.getContext('2d', { willReadFrequently: true });
+  ctx.drawImage(base.img, 0, 0);
+  const pixels = ctx.getImageData(0, 0, img.width, img.height), color = def.gold ? GOLD_LOOK.body : def.body;
+  const target = hsl(...color.match(/[a-f\d]{2}/gi).map((p) => parseInt(p, 16)));
+  for (let y = Math.floor(img.height * 0.3); y < img.height; y++) for (let x = 0; x < img.width; x++) {
+    const i = (y * img.width + x) * 4; if (!pixels.data[i + 3]) continue;
+    const [h, s, l] = hsl(pixels.data[i], pixels.data[i + 1], pixels.data[i + 2]);
+    const d = Math.abs(h - CLOTH_HUE[id]);
+    // Yi's shaded brigandine is nearly neutral; warm bronze highlights obscure
+    // its nominal navy hue. Use its low saturation instead of a blue hue mask.
+    const match = id === 'yi' ? s < 0.38 && l < 0.6
+      : id === 'ahn' ? s < 0.27 && l < 0.6
+      : id === 'dangun' ? s < 0.28 && l > 0.42 && !(y < img.height * 0.49 && x > img.width * 0.35 && x < img.width * 0.65)
+      : s > 0.18 && Math.min(d, 1 - d) < 0.12;
+    if (!match) continue;
+    const light = Math.max(0.06, Math.min(0.94, l * 0.8 + (target[2] - 0.3) * 0.65));
+    const col = rgb(target[0], target[1] * 0.9, light);
+    for (let c = 0; c < 3; c++) pixels.data[i + c] = col[c];
+  }
+  ctx.putImageData(pixels, 0, 0);
+  const art = prepare(img, base.ax); variants.set(key, art); return art;
 }
+export function portraitArt(id, skin = null) { const art = heroArt(id, skin); return art ? { img: art.img, face: ART.faces[id] } : null; }
+export const enemyArt = (id) => loaded.get(`enemies:${id}`) || null;
+export const allyArt = (id) => loaded.get(`allies:${id}`) || null;
+export const towerArt = (id) => loaded.get(`towers:${id}`) || null;
+export const structureArt = (id) => loaded.get(`structures:${id}`) || null;
+export const propArt = (id) => loaded.get(`props:${id}`) || null;
+export const terrainArt = (id) => loaded.get(`terrain:${id}`) || null;
+export const backgroundArt = (id) => loaded.get(`bg:${id}`) || null;
+export const sceneArt = () => loaded.get('scene') || null;
+export function drawIllustration(ctx, a, x, y, height, flip = false) {
+  if (!a) return false;
+  ctx.save(); ctx.translate(x, y); ctx.scale(flip ? -1 : 1, 1);
+  if (height > SPRITE_H) {
+    const w = a.img.width * height / a.img.height;
+    ctx.drawImage(a.img, -w * a.ax, -height, w, height);
+  } else {
+    const k = height / a.h, pad = a.pad * k, w = a.canvas.width * k, h = a.canvas.height * k;
+    ctx.drawImage(a.canvas, -pad - (w - 2 * pad) * a.ax, -(h - pad), w, h);
+  }
+  ctx.restore(); return true;
+}
+export function artStatus() { return Object.fromEntries(['heroes', 'enemies', 'allies', 'towers', 'structures', 'props', 'terrain'].map((g) => [g, Object.keys(ART[g]).filter((id) => loaded.has(`${g}:${id}`)).length])); }

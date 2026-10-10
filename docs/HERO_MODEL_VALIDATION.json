@@ -1,0 +1,345 @@
+{
+  "date": "2026-10-10",
+  "scope": "Eight hero identities, native 3D gear, bow/pistol/weapon poses and foot placement. Local implementation and verification; no publication.",
+  "versions": {
+    "node": "24.19.0",
+    "three": "0.186.1",
+    "esbuild": "0.24.0"
+  },
+  "tests": {
+    "selftest": {
+      "command": "node tools/selftest.mjs",
+      "passed": 14
+    },
+    "threeDimensional": {
+      "command": "node tools/test-3d.mjs",
+      "passed": 41
+    },
+    "campaign": {
+      "command": "node tools/test-campaign.mjs",
+      "passed": 15
+    },
+    "total": 70,
+    "newChecks": [
+      "Eight distinct face geometries and body forms; immutable shared geometry templates.",
+      "Yi and Gwak, 32 states each: real wrist grip/nock attachment, arrow direction dot > 0.9999, two string endpoint errors < 1e-8, fixed shared cylinder geometry and independent cloned references.",
+      "Eight heroes, 40 moving frames each: foot sole height >= 0 and < 0.09, one grounded foot < 0.006, lift > 0.045; ankle counter-rotation and clone references.",
+      "Idempotent poses independent of previous state and call order; finite weapon matrices.",
+      "Actual hero silhouette attachment, hidden loaded arrow at release, projectile spawn from hidden muzzle, restored arrow and matching silhouette string matrices."
+    ],
+    "campaignSimulationStages": 25,
+    "previousPaidProgression138BattlesRerun": false,
+    "previousFullTwoBrowserOnlineSessionRerun": false,
+    "note": "Tests were run in this pass. The final Ahn coat color-only adjustment was built and visually checked afterwards."
+  },
+  "astraReview": {
+    "model": "GPT-6 Astra",
+    "reasoning": "xhigh",
+    "firstReview": "Confirmed grip offset, inconsistent arrow axis and detached static string. Recommended actual bone lengths, reachable IK, real anchors and fixed cylinder strings.",
+    "implemented": [
+      "Socket-origin bow grip",
+      "Actual upper/lower arm vectors and reachable two-bone IK",
+      "Wrist arrow aim toward actual grip",
+      "Actual tip/nock string endpoints",
+      "Non-uniform rig scale conversion",
+      "Hidden muzzle matrix updates"
+    ],
+    "finalReview": "No further defects found in the current execution path. Requested hidden-arrow/silhouette/projectile integration check was added and passed."
+  },
+  "browser": {
+    "environment": "Windows PC, Codex in-app browser, Three.js r186",
+    "audio": {
+      "bgm": 0,
+      "sfx": 0
+    },
+    "heroReview": {
+      "url": "http://127.0.0.1:8080/dev/3d-hero-review.html",
+      "heroCount": 8,
+      "checked": [
+        "Full body",
+        "Faces",
+        "Front",
+        "Quarter",
+        "Back",
+        "Walk and rotate",
+        "Attack release and restored loaded arrows"
+      ],
+      "finalState": "Faces, front, idle, paused",
+      "visibleHeroes": 8,
+      "trianglesIdle": 149704,
+      "trianglesAttackRelease": 180404,
+      "trianglesAttackReady": 180964,
+      "consoleErrorsAndWarnings": 0
+    },
+    "freeBattle": {
+      "url": "http://127.0.0.1:8080/3d.html?stage=s1&season=spring&mute=1",
+      "heroes": [
+        "ahn",
+        "gwak"
+      ],
+      "checked": [
+        "Right-click movement",
+        "Hero selection",
+        "Ordinary attacks",
+        "Gwak ultimate",
+        "Ahn aimed skill"
+      ],
+      "finalWave": 5,
+      "waveTotal": 12,
+      "lives": 20,
+      "maxLives": 20,
+      "gold": 509,
+      "combo": 83,
+      "ahn": {
+        "level": 2,
+        "hp": 415,
+        "maxHp": 415,
+        "skillCooldown": 14
+      },
+      "pausedAtCapture": true,
+      "fullStageClear": false,
+      "consoleErrorsAndWarnings": 0
+    },
+    "standalone": {
+      "url": "http://127.0.0.1:8080/dist/hoguk.html?mute=1",
+      "heroes": [
+        "yi",
+        "sejong"
+      ],
+      "checked": [
+        "Existing profile and formation loaded",
+        "Build Sung L1 for 70 gold",
+        "Upgrade Sung to L2 for 60 gold",
+        "Yi movement",
+        "Combat"
+      ],
+      "finalWave": 3,
+      "waveTotal": 12,
+      "lives": 20,
+      "maxLives": 20,
+      "gold": 238,
+      "tower": {
+        "kind": "sung",
+        "tier": 2,
+        "upgrades": 1
+      },
+      "paused": true,
+      "finalViewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "profileAtEntry": {
+        "coins": 2156,
+        "jade": 70
+      },
+      "permanentPurchasesMade": false,
+      "profileReset": false,
+      "consoleErrorsAndWarnings": 0
+    },
+    "mobileDisplay": {
+      "width": 414,
+      "height": 896,
+      "documentWidth": 414,
+      "horizontalOverflow": 0,
+      "blackHanButtons": 0,
+      "paintedReady": 4,
+      "towerLabel": {
+        "name": "숭례문, 2 / 4단계, 1회 강화",
+        "x": 289.15625,
+        "y": 396.765625,
+        "width": 65,
+        "height": 46
+      },
+      "actualPhysicalPhone": false,
+      "note": "Portrait viewport display check. Build and upgrade interactions were checked on the desktop viewport."
+    },
+    "crowd": {
+      "stage": "s12",
+      "season": "autumn",
+      "width": 1280,
+      "height": 720,
+      "quality": "high",
+      "instancing": true,
+      "enemyCount": 128,
+      "enemyKinds": [
+        "ashigaru",
+        "samurai",
+        "teppo"
+      ],
+      "heroes": [
+        "yi",
+        "sejong"
+      ],
+      "towerCount": 0,
+      "fps": 59,
+      "frameIntervalP95Ms": 17,
+      "drawCalls": 636,
+      "trianglesApproximate": 7705000,
+      "geometries": 312,
+      "unitSyncMs": 185,
+      "setupMs": 1791,
+      "consoleErrorsAndWarnings": 0,
+      "note": "Short local PC observation at the same default camera. Two other battles were paused and review pages static. Not a physical-phone guarantee or an FPS improvement claim."
+    }
+  },
+  "standalone": {
+    "path": "dist/hoguk.html",
+    "bytes": 14548814,
+    "sha256": "8265c6bf5cbbea4cdfeef03259b6a9bb6b1721520b469e4f71e774946aa6bb81",
+    "externalPaintedReferences": 0,
+    "externalRasterAssetReferences": 0,
+    "note": "Raster images and game code are inlined. Google Fonts remains an optional external stylesheet with CSS fallbacks."
+  },
+  "sourceArtifacts": [
+    {
+      "path": "src/3d/hero-design.js",
+      "bytes": 1481,
+      "sha256": "e07659ab77d6ea484897a51e7138f2190a27056db3ef27ba9aacf8fe55a89f2c"
+    },
+    {
+      "path": "src/3d/hero-pose.js",
+      "bytes": 6116,
+      "sha256": "26ca34035f07433519f914ec87b0218bcc610b78ee4bb81db20783b90eb8cd5a"
+    },
+    {
+      "path": "src/3d/sculpture.js",
+      "bytes": 5022,
+      "sha256": "c2867064ce18952933fcebebde905ba88bb72fb09977b499a0226844d1386cd0"
+    },
+    {
+      "path": "src/3d/character-detail.js",
+      "bytes": 9304,
+      "sha256": "042d6173d35f2f4d1addcd053e7e95984c9c133ed0ab85d74fac07244b1f7b9f"
+    },
+    {
+      "path": "src/3d/models.js",
+      "bytes": 45153,
+      "sha256": "1315ceb0505fd3efa76035b3e97b0764f223428ab7a49294821725e18f1cba10"
+    },
+    {
+      "path": "src/3d/combat-models.js",
+      "bytes": 6342,
+      "sha256": "e48c7c154b97ad11e2b442cc32e0e86387712758cefd4954551cf920561b1200"
+    },
+    {
+      "path": "src/3d/hero-review.js",
+      "bytes": 4786,
+      "sha256": "ed3474a8389a6f176b214e2805e59ff40655e24e933ad42b83c267d60ccee781"
+    },
+    {
+      "path": "dev/3d-hero-review.html",
+      "bytes": 2989,
+      "sha256": "b4309a56df94f8c900c983073d55ed4edd763e7b2e0d577dc75dfae216c9bdee"
+    },
+    {
+      "path": "tools/build-3d.mjs",
+      "bytes": 1751,
+      "sha256": "70938c6937ffa6db370d9eec67f6673763eb756b42605bce1bbf01328b6f8c2d"
+    },
+    {
+      "path": "tools/test-3d.mjs",
+      "bytes": 51305,
+      "sha256": "229a1c8c901a72638892638a71a22dbd768b2e724ecd64fd29f7082fc0ed1202"
+    }
+  ],
+  "builtArtifacts": [
+    {
+      "path": "assets/3d/app.js",
+      "bytes": 1116613,
+      "sha256": "5091d046861f04deac78e1c4234225a5cdc3fdde42101f58dc741f2791154c12"
+    },
+    {
+      "path": "assets/3d/game.js",
+      "bytes": 890928,
+      "sha256": "820925c798d01aeb7f3da2ca98c4f07dc9fa57ce31a6737b453942b90816ece3"
+    },
+    {
+      "path": "assets/3d/hero-review.js",
+      "bytes": 643500,
+      "sha256": "b621781e63cc4b3688b90d6d946af1f54a3d1ebc6fdf1a640329e77a85aad98f"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/screenshots/3d-hero-identity-before.jpg",
+      "bytes": 58975,
+      "sha256": "cf1d6dc09610eeb18554fc7b93649ece674996eb87bbc79b7f7d879d352faee1",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing",
+      "note": "Historical baseline captured before loading the new hero modules."
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-faces.jpg",
+      "bytes": 83196,
+      "sha256": "05ae5e7fb29c571a33cb7fd6572cf0717abfbdf92b7253ebbadb11f86529227f",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-body.jpg",
+      "bytes": 59670,
+      "sha256": "70f929c0292a13e5d82a615bcaa0af7229c240db733f34843054d8461b07cbc5",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-attack.jpg",
+      "bytes": 60514,
+      "sha256": "89ca3951cd9ed6b698571212aba119087c42defd6cc3e3994ca2406f27f0607e",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-walk-back.jpg",
+      "bytes": 56478,
+      "sha256": "9742ce0931b1b80b1745d9ef5516969b576a3ec36f868158f785f73b8a528cd3",
+      "width": 1265,
+      "height": 712,
+      "source": "Native browser screenshot; no image editing",
+      "note": "Movement/combat QA before the final dark Ahn coat color adjustment; geometry and motions match the final pass."
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-battle.jpg",
+      "bytes": 133515,
+      "sha256": "fe2c0c5c414ca15eeb9403f6b293eff995180c9ddd2210f0bb5e459f4680d1e6",
+      "width": 1280,
+      "height": 720,
+      "source": "Native browser screenshot; no image editing",
+      "note": "Movement/combat QA before the final dark Ahn coat color adjustment; geometry and motions match the final pass."
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-standalone.jpg",
+      "bytes": 115719,
+      "sha256": "fc656c2caface2dbb9b6430e3955b48e282dd8f44cdf15f9ffcd854967ecdf08",
+      "width": 1280,
+      "height": 720,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-mobile.jpg",
+      "bytes": 66336,
+      "sha256": "b8c09c809db670f61ed7e3e6db5325d0332ea0cd84716e86dc06a7a839c52dfd",
+      "width": 414,
+      "height": 896,
+      "source": "Native browser screenshot; no image editing"
+    },
+    {
+      "path": "docs/screenshots/3d-hero-identity-crowd-128.jpg",
+      "bytes": 149887,
+      "sha256": "2cd66bab8bba0791a90717eec806cf6633b0b0c224351c5b563e30191236ad6b",
+      "width": 1280,
+      "height": 720,
+      "source": "Native browser screenshot; no image editing"
+    }
+  ],
+  "limitations": [
+    "Code-built meshes and joints. Reference-level dedicated skin/hair materials, skinned rigs and authored animations remain additional art production.",
+    "Physical phone sustained temperature, memory and performance checks remain.",
+    "Long external-internet co-op on two separate devices remains.",
+    "Human balance review and paid progression on hard/hell difficulty remain."
+  ]
+}

@@ -7,6 +7,7 @@ import { createGame, step, queueCommand } from '../src/sim/sim.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { Renderer } from '../src/render/renderer.js';
 import { TOWERS } from '../src/data/towers.js';
+import { preloadArt } from '../src/render/art.js';
 const q = new URLSearchParams(location.search);
 const stageId = q.get('s') || 's1';
 const secs = +(q.get('t') || 60);
@@ -15,7 +16,7 @@ const s = createGame({ stageId, difficulty: 'normal', mode: q.get('m') || 'solo'
 const bots = s.players.map((_, i) => createBot(s, i, {}));
 const send = (c) => queueCommand(s, c);
 const r = new Renderer(document.getElementById('c'));
-await document.fonts.ready;
+await Promise.all([document.fonts.ready, preloadArt()]);
 r.setup(stageId);
 while (s.time < secs && !s.result) { for (const b of bots) { botThink(s, b, send); botSkills(s, b, send); } step(s); if (s.time > secs - 1.2) { r.events(s.events); r.render(s, { clock: s.time }, 1/60); } s.events.length = 0; }
 r.render(s, { clock: s.time, selTower: s.towers[2]?.id, selHeroes:[0] }, 1/60);

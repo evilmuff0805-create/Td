@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-10",
+  "branch": "claude/korean-hero-tower-defense-i8ard8",
+  "scope": "Painted gameplay effects and illustrated moving turtle/courier; approved tower scale and battle balance retained",
+  "imageGeneration": {
+    "mode": "built-in imagegen",
+    "source": {
+      "path": "assets/3d/fixed/source/battle-effects-v1.png",
+      "width": 1774,
+      "height": 887,
+      "alpha": true
+    },
+    "runtime": {
+      "path": "assets/3d/fixed/battle-effects-v1.webp",
+      "width": 1536,
+      "height": 768,
+      "alpha": true,
+      "bytes": 697136
+    },
+    "prompt": "assets/3d/fixed/battle-effects-v1.prompt.json",
+    "cells": [
+      "fire",
+      "flood",
+      "ice",
+      "heal",
+      "slash",
+      "light",
+      "volley",
+      "combo"
+    ]
+  },
+  "tests": {
+    "total": 88,
+    "suites": [
+      {
+        "command": "node tools/test-effects.mjs",
+        "passed": 8
+      },
+      {
+        "command": "node tools/test-fixed-art.mjs",
+        "passed": 9
+      },
+      {
+        "command": "node tools/test-3d.mjs",
+        "passed": 41
+      },
+      {
+        "command": "node tools/test-campaign.mjs",
+        "passed": 16
+      },
+      {
+        "command": "node tools/selftest.mjs",
+        "passed": 14
+      }
+    ]
+  },
+  "browser": {
+    "review": "http://127.0.0.1:8080/dev/3d-effect-review.html",
+    "release": "http://127.0.0.1:8080/dist/hoguk.html?mute=1",
+    "checked": [
+      "All eight samples use actual simulation events/commands",
+      "Spring healing, summer ice, autumn fire, winter skills",
+      "Moving turtle uses existing painted ally asset",
+      "Release UI: title, hub, campaign, formation, battle, Sejong cast targeting, pause/resume",
+      "Release canvas fixedArtStatus=ready and effectArtStatus=ready",
+      "No captured console warnings or errors in review/release tabs",
+      "Original user battle tabs preserved"
+    ],
+    "mobile": {
+      "width": 414,
+      "height": 896,
+      "scrollWidth": 414,
+      "allNineButtonsEnabled": true,
+      "allNineButtonsWithinViewport": true
+    },
+    "performance": "No target-device FPS benchmark asserted; paused scenes and fixtures verify display and lifecycle only"
+  },
+  "review": {
+    "model": "GPT Astra",
+    "reasoningEffort": "xhigh",
+    "fixed": [
+      "Preview and campaign dispatch mismatch",
+      "Duplicate preview combo rendering",
+      "Shot synchronization and actual Yi caster identification",
+      "Thunder/flood/heal combo impacts accidentally using fire asset"
+    ],
+    "movers": "Reviewed motion, shadows, per-instance disposal and mesh fallback; no blocking issue found",
+    "slash": "CPU and isolated browser render confirm atlas stroke; short contact stroke uses a higher draw group below health bars"
+  },
+  "builds": {
+    "three": true,
+    "singleHtml": true,
+    "path": "dist/hoguk.html",
+    "bytes": 17163524,
+    "modifiedAt": "2026-10-10T12:08:25.154Z",
+    "includesVfxAtlas": true
+  },
+  "screenshots": [
+    "docs/screenshots/painted-effects-fire.jpg",
+    "docs/screenshots/painted-effects-flood.jpg",
+    "docs/screenshots/painted-effects-ice.jpg",
+    "docs/screenshots/painted-effects-heal.jpg",
+    "docs/screenshots/painted-effects-hangul.jpg",
+    "docs/screenshots/painted-effects-slash.jpg",
+    "docs/screenshots/painted-effects-volley.jpg",
+    "docs/screenshots/painted-effects-combo.jpg",
+    "docs/screenshots/painted-effects-spring.jpg",
+    "docs/screenshots/painted-effects-summer.jpg",
+    "docs/screenshots/painted-effects-autumn.jpg",
+    "docs/screenshots/painted-effects-mobile.jpg",
+    "docs/screenshots/painted-effects-release-skill.jpg"
+  ],
+  "limitations": [
+    "Eight reusable VFX images, not individually authored art for every hero ability or combo",
+    "Existing skill icon artwork retained",
+    "Most characters still use existing static art with flips and small motion; no full roster directional animation sheets",
+    "Eight other landmarks still use existing art and reinforcement markers",
+    "Fixed high-angle 2.5D battlefield; not free-view fully modeled 3D"
+  ]
+}

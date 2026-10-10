@@ -1,5 +1,5 @@
 // 영웅 스킬 · 비기 · 합격기
-import { HEROES } from '../data/heroes.js';
+import { HEROES, YI_FAN } from '../data/heroes.js';
 import { SKILLS, skillPower } from '../data/skills.js';
 import { findCombo, COMBO_RANGE, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import {
@@ -67,14 +67,14 @@ export function castHeroSkill(s, h, x, y) {
       for (const e of s.enemies) {
         if (e.hp <= 0) continue;
         const dd = d2(h, e);
-        if (dd > 4.2 * 4.2) continue;
+        if (dd > YI_FAN.range * YI_FAN.range) continue;
         let da = Math.atan2(e.y - h.y, e.x - h.x) - ang;
         while (da > Math.PI) da -= Math.PI * 2;
         while (da < -Math.PI) da += Math.PI * 2;
-        if (Math.abs(da) <= 0.72) damage(s, e, dmg, 'phys', src);
+        if (Math.abs(da) <= YI_FAN.halfAngle) damage(s, e, dmg, 'phys', src);
       }
       h.facing = Math.cos(ang) >= 0 ? 1 : -1;
-      ev(s, 'cone', { x: h.x, y: h.y, a: ang, r: 4.2, w: 0.72 });
+      ev(s, 'cone', { x: h.x, y: h.y, a: ang, r: YI_FAN.range, w: YI_FAN.halfAngle });
       ev(s, 'sfx', { n: 'volley' });
       break;
     }
@@ -148,7 +148,7 @@ export function castHeroSkill(s, h, x, y) {
       for (let i = 0; i < 7 && near.length; i++) {
         const e = near[i % near.length];
         damage(s, e, dmg * bossMult(h, e), 'fire', src);
-        ev(s, 'shot', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y, gun: 1 });
+        ev(s, 'shot', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y, gun: 1, caster: h.id });
       }
       h.facing = p.x >= h.x ? 1 : -1;
       ev(s, 'sfx', { n: 'gunVolley' });
@@ -230,7 +230,7 @@ export function castHeroUlt(s, h, x, y) {
         applyStun(e, 1.5);
         applyVuln(e, 0.3, 6);
         damage(s, e, scaled(h, def.ult.base, def.ult.perLv) * bossMult(h, e), 'fire', src);
-        ev(s, 'snipe', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y });
+        ev(s, 'snipe', { x1: h.x, y1: h.y - 0.1, x2: e.x, y2: e.y, caster: h.id });
         h.facing = e.x >= h.x ? 1 : -1;
       }
       ev(s, 'announce', { text: '하얼빈의 총성', sub: '대한 독립 만세!', color: '#f0c75e' });
@@ -264,7 +264,7 @@ export function launchTurtle(s, pathIdx, dmg, src) {
 export function castEquipSkill(s, pl, slot, x, y) {
   const sk = SKILLS[slot.id];
   const pw = skillPower(slot.lv);
-  const src = { p: pl.idx, kind: 'skill' };
+  const src = { p: pl.idx, kind: 'skill', skillId: slot.id };
   switch (slot.id) {
     case 'singijeon':
       for (let i = 0; i < sk.n; i++) {

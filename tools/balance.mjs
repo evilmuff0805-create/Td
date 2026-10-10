@@ -8,6 +8,7 @@ import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { STAGES } from '../src/data/stages.js';
 import { TOWERS } from '../src/data/towers.js';
 import { ENEMIES } from '../src/data/enemies.js';
+import { pathToFileURL } from 'node:url';
 
 const args = process.argv.slice(2);
 const flags = Object.fromEntries(args.filter((a) => a.startsWith('--')).map((a) => {
@@ -76,7 +77,7 @@ function pad(v, n) {
   return String(v).padEnd(n);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const plan = flags.plan || 'balanced';
   const seeds = +(flags.seeds || 3);
   const meta = flags.meta ?? 'auto';

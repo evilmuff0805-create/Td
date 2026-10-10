@@ -6,6 +6,7 @@ export const HERO_ORDER = ['yi', 'sejong', 'eulji', 'gang', 'gwon', 'gwak', 'ahn
 export const HERO_XP = [0, 60, 150, 280, 450, 680, 960, 1300, 1720, 2200]; // 레벨 n 도달 누적 경험치
 export const HERO_MAX_LV = 10;
 export const HERO_META_MAX = 10;
+export const YI_FAN = Object.freeze({ range: 4.2, halfAngle: 0.72 });
 
 export const HEROES = {
   yi: {

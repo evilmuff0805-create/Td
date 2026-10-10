@@ -1,0 +1,26 @@
+// Art direction only. Health, speed, attacks and progression remain in data/enemies.js.
+const face=(jaw,length,lid=.8,age=0)=>({jaw,length,cheek:.96+(jaw-1)*.4,temple:.99,depth:1,eyes:.96,lid,nose:1.04,age});
+export const ENEMY_FORMS={
+  ashigaru:{body:[.92,.98,.93],color:'#847352',accent:'#b09a67',helmet:'jingasa',weapon:'yari',gait:7.7,stride:.14,face:face(.94,1.03),detail:'넓은 진가사 · 긴 창 · 두 손 전진'},
+  teppo:{body:[.94,1.02,.95],color:'#4e6069',accent:'#a9976e',helmet:'flat-hat',weapon:'rifle',gait:7.3,stride:.13,face:face(1.02,1.05),detail:'낮은 모자 · 화승총 · 두 손 조준'},
+  scout:{body:[.81,.96,.85],color:'#8e6650',accent:'#c0a576',helmet:'headband',weapon:'shortblade',gait:10.1,stride:.18,face:face(.87,.99,.94),detail:'머리띠 · 짧은 칼 · 가벼운 달리기'},
+  samurai:{body:[1.06,1.04,1.02],color:'#793f3d',accent:'#b49b72',helmet:'crescent',weapon:'katana',gait:7.2,stride:.13,face:face(1.08,1.05,.76),detail:'초승달 투구 · 층진 갑주 · 긴 칼'},
+  ninja:{body:[.85,.99,.86],color:'#303449',accent:'#756d83',helmet:'hood',weapon:'kunai',gait:9.6,stride:.17,face:face(.89,1.07,.73),detail:'얼굴 두건 · 쌍 단검 · 낮은 자세'},
+  onmyoji:{body:[.92,1.07,.96],color:'#c4c5b1',accent:'#89575b',helmet:'eboshi',weapon:'ritual',gait:6.5,stride:.12,face:face(.91,1.14,.7,.3),detail:'높은 관 · 부적과 지팡이 · 의식 자세'},
+  cavalry:{body:[1.02,1.02,1],color:'#514d68',accent:'#b4a27e',helmet:'horns',weapon:'naginata',gait:8.6,stride:.15,face:face(1.04,1.09,.8),detail:'뿔 투구 · 장도 · 안장과 고삐 · 대각 속보'},
+  drum:{body:[1.06,1,1.10],color:'#914d45',accent:'#b79d67',helmet:'headband',weapon:'drum',gait:7.2,stride:.13,face:face(1.12,.97,.88),detail:'붉은 띠 · 끈으로 맨 북 · 교대 타격'},
+  armored:{body:[1.22,1.04,1.16],color:'#48585a',accent:'#a59b83',helmet:'visor',weapon:'axe',gait:5.8,stride:.11,face:face(1.18,1.04,.66,.3),detail:'철제 안면갑 · 넓은 방패 · 무거운 도끼'},
+  ram:{body:[1,1,1],color:'#69513a',weapon:'ram',detail:'덧댄 지붕 · 철띠 통나무 · 전후 공성 타격'},
+  konishi:{body:[1.04,1.06,1.02],scale:1.17,color:'#783f3e',accent:'#c4aa74',helmet:'split-crescent',weapon:'katana',offhand:'fan',face:face(1.01,1.08,.77,.35),gait:6.7,stride:.12,detail:'갈라진 반달 투구 · 붉은 갑주 · 지휘 부채'},
+  kato:{body:[1.01,1.15,1],scale:1.17,color:'#45566d',accent:'#b0a58b',helmet:'tall-cone',weapon:'yari',face:face(.93,1.18,.69,.5),gait:6.1,stride:.13,detail:'긴 원뿔 투구 · 긴 창 · 앞으로 찌르기'},
+  wakizaka:{body:[1.13,1.03,1.08],scale:1.17,color:'#38616a',accent:'#bda779',helmet:'wide-crescent',weapon:'cutlass',offhand:'shield',face:face(1.13,1.02,.8,.3),gait:6.7,stride:.12,detail:'넓은 반달 투구 · 청록 갑주 · 수군 방패'},
+  ukita:{body:[1.10,1.10,1.05],scale:1.19,color:'#724b69',accent:'#c1a97c',helmet:'antlers',weapon:'katana',offhand:'fan',face:face(1.08,1.12,.82,.25),gait:6.3,stride:.12,detail:'가지뿔 투구 · 자주 갑주 · 넓은 부채'},
+  ishida:{body:[.96,1.13,.98],scale:1.19,color:'#59644b',accent:'#bfab7d',helmet:'banner',weapon:'shortblade',offhand:'fan',face:face(.90,1.16,.7,.4),gait:6.1,stride:.11,detail:'세로 관식 · 경갑 · 세 갈래 지휘 깃발'},
+  so:{body:[.95,1.05,.96],scale:1.16,color:'#5b4d6c',accent:'#b39e7e',helmet:'swept',weapon:'cutlass',face:face(.96,1.10,.84,.15),gait:7.5,stride:.15,detail:'뒤로 흐르는 관식 · 가벼운 갑주 · 굽은 칼'},
+  kuroda:{body:[1.12,1.05,1.09],scale:1.18,color:'#323d40',accent:'#ad9c79',helmet:'bowl',weapon:'yari',face:face(1.16,1.06,.72,.5),gait:6.4,stride:.12,detail:'넓은 그릇 투구 · 검은 갑주 · 철포대 지휘 창'},
+  todo:{body:[1.03,1.14,1.02],scale:1.18,color:'#535c75',accent:'#b3a486',helmet:'stacked',weapon:'naginata',face:face(.98,1.15,.78,.6),gait:6.4,stride:.12,detail:'겹친 원형 관식 · 긴 장도 · 수군 갑주'},
+  kuki:{body:[1.25,1.04,1.17],scale:1.20,color:'#3d526b',accent:'#afa88d',helmet:'iron-wings',weapon:'mace',offhand:'shield',face:face(1.21,1.01,.7,.5),gait:5.9,stride:.11,detail:'철제 날개 투구 · 두꺼운 방벽 · 철퇴'},
+  kurushima:{body:[1.03,1.08,1.01],scale:1.18,color:'#87503c',accent:'#c1a16c',helmet:'wave',weapon:'cutlass',offhand:'blade',face:face(1.05,1.11,.75,.3),gait:7.1,stride:.14,detail:'파도 관식 · 구리빛 갑주 · 양손 칼'},
+  shimazu:{body:[1.20,1.10,1.14],scale:1.23,color:'#5a476e',accent:'#c1ad84',helmet:'great-horns',weapon:'nodachi',face:face(1.19,1.12,.64,.9),gait:6.6,stride:.15,detail:'긴 쌍뿔 · 넓은 어깨 · 대도 참격'},
+  hideyoshi:{body:[1.16,1.12,1.12],scale:1.50,color:'#a58245',accent:'#e0c98e',helmet:'sunburst',weapon:'katana',offhand:'fan',face:face(1.07,1.04,.62,1),gait:5.6,stride:.10,detail:'큰 금빛 방사 관식 · 장식 갑주 · 표주박 군기'},
+};
