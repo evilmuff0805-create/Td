@@ -7,6 +7,7 @@ import { SKIN_POSE_ART } from '../src/3d/skin-pose-data.js';
 import { PAINTED_SURFACES } from '../src/3d/painted-surfaces.js';
 import { SEASON_TREE_ART } from '../src/3d/season-tree-data.js';
 import { SIGNATURE_ART } from '../src/3d/signature-data.js';
+import { TACTIC_ART } from '../src/3d/tactic-data.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
 const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART)];
@@ -34,7 +35,7 @@ assert.ok(!html.includes(SEASON_TREE_ART.path));
 const water=fs.readFileSync(new URL('../'+PAINTED_SURFACES.water,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+water),1,'Painted water must be embedded exactly once');
 assert.ok(!html.includes(PAINTED_SURFACES.water));
-const skillAtlases=[SIGNATURE_ART.path,'assets/3d/art/hero-abilities-atlas-v1.webp','assets/3d/art/skills-atlas-v1.webp'];
+const skillAtlases=[SIGNATURE_ART.path,TACTIC_ART.path,'assets/3d/art/hero-abilities-atlas-v1.webp','assets/3d/art/skills-atlas-v1.webp'];
 for(const rel of skillAtlases){const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' skill art must be embedded exactly once');assert.ok(!html.includes(rel));}
 for(const rel of ['assets/3d/art/hero-abilities-atlas-v1.png','assets/3d/art/skills-atlas-v1.png']){const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');assert.equal(count('data:image/png;base64,'+encoded),0,'Archive icon PNG must not be embedded');}
 console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0},null,2));

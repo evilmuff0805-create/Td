@@ -36,6 +36,8 @@
     "test:embedded-art": "node tools/verify-embedded-art.mjs",
     "test:effects": "node tools/test-effects.mjs",
     "test:signatures": "node tools/test-signatures.mjs",
+    "test:tactics": "node tools/test-tactics.mjs",
+    "test:tactic-assets": "node tools/tactic-assets.mjs",
     "test:signature-assets": "node tools/signature-assets.mjs",
     "test:enemies": "node tools/test-enemies.mjs",
     "test:campaign": "node tools/test-campaign.mjs",

@@ -94,7 +94,7 @@ await test('모든 영웅 기술 16개가 실제 명령·투사체·장판·이�
 }));
 
 await test('8비기·참격·합격기 실제 비교 명령과 기존 25칸 아이콘을 유지한다',()=>withCanvas(()=>{
-  assert.equal(ABILITY_SAMPLES.length,26);assert.equal(new Set(ABILITY_SAMPLES.map(s=>s.key)).size,26);
+  assert.equal(ABILITY_SAMPLES.length,36);assert.equal(new Set(ABILITY_SAMPLES.map(s=>s.key)).size,36);
   for(const sample of ABILITY_SAMPLES.filter(s=>!['heroSkill','heroUlt'].includes(s.kind))){const game=createAbilitySample(sample,WINTER_STAGE.id),world=worldFixture(game);const events=[];for(let i=0;i<Math.ceil((sample.holdAt+.1)/DT);i++){for(const e of game.events){events.push(e.k);paintBattleEvent(world,e,game);}game.events.length=0;step(game);world.projectiles(game);world.combatScenery(game,game.time,DT);world.fx.update(DT);}if(sample.kind==='skill')assert.equal(game.players[0].stats.skillsUsed,1);else assert.ok(events.includes(sample.kind==='combo'?'combo':'slash'));assert.ok(!sample.description.includes('{'));cleanWorld(world);}
   for(const hero of HERO_ORDER)for(const kind of ['heroSkill','heroUlt'])assert.ok(abilityIllustration(hero,kind,true)?.src.endsWith('.webp'));
   for(const skill of SKILL_ORDER)assert.ok(abilityIllustration(skill,'skill',true)?.src.endsWith('.webp'));assert.ok(abilityIllustration('taegeuk','combo',true));

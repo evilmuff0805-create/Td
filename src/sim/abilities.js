@@ -273,6 +273,7 @@ export function castEquipSkill(s, pl, slot, x, y) {
   const sk = SKILLS[slot.id];
   const pw = skillPower(slot.lv);
   const src = { p: pl.idx, kind: 'skill', skillId: slot.id };
+  const summonStart=s.summons.length,projectileStart=s.projectiles.length;
   switch (slot.id) {
     case 'singijeon':
       for (let i = 0; i < sk.n; i++) {
@@ -333,6 +334,15 @@ export function castEquipSkill(s, pl, slot, x, y) {
       ev(s, 'sfx', { n: 'ice' });
       break;
   }
+  // A casting emblem follows resolved locations, without using RNG or changing
+  // damage, timing or ownership. Global support skills mark their recipients.
+  let points,r=.65;
+  if(slot.id==='uibyeong')points=s.summons.slice(summonStart).map(m=>({x:m.x,y:m.y}));
+  else if(['bongsu','gunryang'].includes(slot.id))points=s.heroes.filter(h=>h.owner===pl.idx&&!h.dead).map(h=>({x:h.x,y:h.y}));
+  else if(slot.id==='donguibogam')points=s.heroes.map(h=>({x:h.x,y:h.y}));
+  else if(slot.id==='cheonja'){const shell=s.projectiles[projectileStart];points=shell?[{x:shell.x,y:shell.y}]:[];r=.5;}
+  else {points=[{x,y}];r=slot.id==='singijeon'?1:slot.id==='bigyeok'?.55:.8;}
+  if(points.length)ev(s,'abilityCue',{motif:'skill-'+slot.id,p:pl.idx,points,r});
   pl.stats.skillsUsed++;
   addResonance(s, 3);
 }

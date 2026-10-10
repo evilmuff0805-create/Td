@@ -315,7 +315,7 @@ export class WinterWorld {
       if(!obj) {
         obj=new T.Group();
         const signature=p.kind==='meteor'?'gang-ult':p.kind==='garlic'?'dangun-skill':p.kind==='hangul'?'sejong-skill':null;
-        const painted=signature?this.fx?.signatures?.plane(signature,p.kind==='meteor'?.72:p.kind==='hangul'?.6:.38,p.kind==='meteor'?.95:p.kind==='hangul'?.65:.38,.9):null;
+        const painted=(p.kind==='bomb'||p.kind==='bigshell'?this.fx?.tactics?.plane(p.kind==='bomb'?'skill-bigyeok':'skill-cheonja',p.kind==='bomb'?.5:.6,p.kind==='bomb'?.55:.55,.9):null)??(signature?this.fx?.signatures?.plane(signature,p.kind==='meteor'?.72:p.kind==='hangul'?.6:.38,p.kind==='meteor'?.95:p.kind==='hangul'?.65:.38,.9):null);
         if(painted){obj.add(painted);obj.userData.paintedProjectile=painted;}
         else if(p.kind==='arrow'||p.kind==='bolt') {
           const shaft=cylinder(obj,MAT.wood,0,0,0,.012,.38);shaft.rotation.x=Math.PI/2;
@@ -422,6 +422,7 @@ export class WinterWorld {
   draw(time,dt) {
     this.renderer.domElement.dataset.effectArtStatus=this.fx.art?.ready?'ready':this.fx.art?.failed?'fallback':this.fx.art?'loading':'off';
     this.renderer.domElement.dataset.signatureArtStatus=this.fx.signatures?.ready?'ready':this.fx.signatures?.failed?'fallback':this.fx.signatures?'loading':'off';
+    this.renderer.domElement.dataset.tacticArtStatus=this.fx.tactics?.ready?'ready':this.fx.tactics?.failed?'fallback':this.fx.tactics?'loading':'off';
     if(this.art?.ready&&!this.artEnvironmentReady){
       for(const root of [this.static,this.water,this.lampGroup]){this.scene.remove(root);this.disposeModel(root);}
       this.fires=[];this.environment();

@@ -26,7 +26,7 @@ document.getElementById('season').onchange=event=>{world.loadStage(WINTER_STAGE,
 document.getElementById('hold').onchange=()=>play();
 window.addEventListener('resize',()=>world.resize());
 window.addEventListener('pagehide',()=>world.destroy(),{once:true});
-Promise.all([world.art.promise,world.fx.art.promise,world.fx.signatures.promise]).then(()=>{
+Promise.all([world.art.promise,world.fx.art.promise,world.fx.signatures.promise,world.fx.tactics.promise]).then(()=>{
   if(world.destroyed)return;select.disabled=false;document.getElementById('replay').disabled=false;play();
 });
 function frame(now) {
@@ -35,7 +35,7 @@ function frame(now) {
     const hold=document.getElementById('hold').checked&&elapsed>=sample.holdAt;
     if(!hold){accumulator+=dt;while(accumulator>=DT){step(game);events();elapsed+=DT;accumulator-=DT;}world.fx.update(dt);}
     world.sync(game,game.time,hold?0:dt,null);for(const root of world.units.values())root.visible=document.getElementById('troops').checked;deferred.forEach(e=>world.firingLine(e));deferred.length=0;world.draw(game.time,hold?0:dt);
-    if(frames++%12===0){status.textContent=`${world.theme.name} · ${world.fx.signatures.ready?'영웅 전용 효과 적용':'공용 효과 대체'} · ${hold?'장면 고정':'재생 중'}`;canvas.dataset.sample=sample.key;canvas.dataset.sampleTime=elapsed.toFixed(2);canvas.dataset.sampleEvents=[...new Set(observed)].join(',');canvas.dataset.effectCount=world.fx.active.length;canvas.dataset.signatureTextures=world.fx.signatures.textures.size;canvas.dataset.drawCalls=world.renderer.info.render.calls;canvas.dataset.geometries=world.renderer.info.memory.geometries;canvas.dataset.textures=world.renderer.info.memory.textures;}
+    if(frames++%12===0){status.textContent=`${world.theme.name} · ${world.fx.signatures.ready&&world.fx.tactics.ready?'영웅·비기·합격기 전용 효과 적용':'공용 효과 대체'} · ${hold?'장면 고정':'재생 중'}`;canvas.dataset.sample=sample.key;canvas.dataset.sampleTime=elapsed.toFixed(2);canvas.dataset.sampleEvents=[...new Set(observed)].join(',');canvas.dataset.effectCount=world.fx.active.length;canvas.dataset.signatureTextures=world.fx.signatures.textures.size;canvas.dataset.tacticTextures=world.fx.tactics.textures.size;canvas.dataset.drawCalls=world.renderer.info.render.calls;canvas.dataset.geometries=world.renderer.info.memory.geometries;canvas.dataset.textures=world.renderer.info.memory.textures;}
   }else world.draw(0,0);
   requestAnimationFrame(frame);
 }
