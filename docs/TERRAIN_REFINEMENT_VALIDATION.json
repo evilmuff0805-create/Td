@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-11",
+  "scope": "continuous road mesh and quieter painted terrain surfaces",
+  "campaignStages": 25,
+  "additionalWinterStage": true,
+  "terrainTestsPassed": 8,
+  "regressionTestsPassed": 133,
+  "totalTestsPassed": 141,
+  "testSuites": {"selftest":14,"3d":41,"fixedArt":15,"campaign":16,"effects":8,"enemies":12,"combatArt":13,"skinArt":14,"terrain":8},
+  "newTerrainTextures": 3,
+  "terrainDeliveryBytes": 174418,
+  "serverBuildPassed": true,
+  "standaloneBuildPassed": true,
+  "standaloneBytes": 44823927,
+  "embeddedDirectionalSheetsExactlyOnce": 52,
+  "embeddedTerrainSurfacesExactlyOnce": 3,
+  "rejectedArtVersionsEmbedded": 0,
+  "astraReview": {"model":"gpt-6-astra","effort":"xhigh","mandatoryFixes":0,"stages":["design","implementation"]},
+  "preserved": ["approved eight basic hero sheets and Yi v2", "all landmark tiers height 1.2", "simulation maps, paths, build cells, economy, damage", "official user profile and rewards"],
+  "reports": ["TERRAIN_ASSET_VALIDATION.json","TERRAIN_GEOMETRY_VALIDATION.json","TERRAIN_BROWSER_VALIDATION.json"],
+  "limitations": ["Orthogonal simulation centerlines remain.","Responsive browser QA is not physical phone testing.","External-network co-op and human late-game balance are not covered by this art milestone."]
+}

@@ -5,9 +5,9 @@ import * as T from 'three';
 export const PAINTED_SURFACES={
   stone:'assets/3d/painted/granite-v2.webp',
   wood:'assets/3d/painted/timber-v1.webp',
-  road:'assets/3d/painted/road-v2.webp',
-  ground:'assets/3d/painted/ground-v3.webp',
-  'snow-ground':'assets/3d/painted/snow-ground-v2.webp',
+  road:'assets/3d/painted/road-v3.webp',
+  ground:'assets/3d/painted/ground-v4.webp',
+  'snow-ground':'assets/3d/painted/snow-ground-v3.webp',
 };
 export const PAINTED_SIZE=512;
 // GPU texture storage keeps its initial dimensions, including when loading is slow.

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-11",
+  "generation": "built-in imagegen; original PNG and full prompts preserved",
+  "processing": "Sharp resize to 512 and WebP compression only; no repainting or seam retouch",
+  "wrapping": "MirroredRepeatWrapping at runtime for terrain albedo and relief",
+  "textures": [
+    {
+      "id": "ground-v4",
+      "source": "assets/3d/painted/source/ground-v4.png",
+      "delivery": "assets/3d/painted/ground-v4.webp",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "deliveryWidth": 512,
+      "deliveryHeight": 512,
+      "bytes": 68128,
+      "opaque": true,
+      "lumaMean": 105.92,
+      "lumaStdDev": 7.263
+    },
+    {
+      "id": "snow-ground-v3",
+      "source": "assets/3d/painted/source/snow-ground-v3.png",
+      "delivery": "assets/3d/painted/snow-ground-v3.webp",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "deliveryWidth": 512,
+      "deliveryHeight": 512,
+      "bytes": 32128,
+      "opaque": true,
+      "lumaMean": 211.963,
+      "lumaStdDev": 3.841
+    },
+    {
+      "id": "road-v3",
+      "source": "assets/3d/painted/source/road-v3.png",
+      "delivery": "assets/3d/painted/road-v3.webp",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "deliveryWidth": 512,
+      "deliveryHeight": 512,
+      "bytes": 74162,
+      "opaque": true,
+      "lumaMean": 154.166,
+      "lumaStdDev": 9.174
+    }
+  ],
+  "totalDeliveryBytes": 174418
+}

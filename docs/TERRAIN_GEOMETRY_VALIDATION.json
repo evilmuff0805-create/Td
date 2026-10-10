@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-11",
+  "passedTests": 8,
+  "campaignStages": 25,
+  "additionalWinterStage": true,
+  "geometry": [
+    {
+      "stage": "s1",
+      "vertices": 1848,
+      "triangles": 3216,
+      "cells": 1608,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s6",
+      "vertices": 2050,
+      "triangles": 3570,
+      "cells": 1785,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s7",
+      "vertices": 1935,
+      "triangles": 3354,
+      "cells": 1677,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s2",
+      "vertices": 2069,
+      "triangles": 3600,
+      "cells": 1800,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s8",
+      "vertices": 2046,
+      "triangles": 3564,
+      "cells": 1782,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s9",
+      "vertices": 1814,
+      "triangles": 3130,
+      "cells": 1565,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s10",
+      "vertices": 2258,
+      "triangles": 3898,
+      "cells": 1949,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s3",
+      "vertices": 2492,
+      "triangles": 4296,
+      "cells": 2148,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s11",
+      "vertices": 2278,
+      "triangles": 3948,
+      "cells": 1974,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s12",
+      "vertices": 2322,
+      "triangles": 3988,
+      "cells": 1994,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s13",
+      "vertices": 1938,
+      "triangles": 3360,
+      "cells": 1680,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s4",
+      "vertices": 2082,
+      "triangles": 3624,
+      "cells": 1812,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s5",
+      "vertices": 2525,
+      "triangles": 4400,
+      "cells": 2200,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s14",
+      "vertices": 3133,
+      "triangles": 5412,
+      "cells": 2706,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s15",
+      "vertices": 2610,
+      "triangles": 4522,
+      "cells": 2261,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s16",
+      "vertices": 3449,
+      "triangles": 6018,
+      "cells": 3009,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s17",
+      "vertices": 2798,
+      "triangles": 4876,
+      "cells": 2438,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s18",
+      "vertices": 1532,
+      "triangles": 2664,
+      "cells": 1332,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s19",
+      "vertices": 2554,
+      "triangles": 4448,
+      "cells": 2224,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s20",
+      "vertices": 2468,
+      "triangles": 4294,
+      "cells": 2147,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s21",
+      "vertices": 2385,
+      "triangles": 4148,
+      "cells": 2074,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s22",
+      "vertices": 2629,
+      "triangles": 4556,
+      "cells": 2278,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s23",
+      "vertices": 1978,
+      "triangles": 3440,
+      "cells": 1720,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s24",
+      "vertices": 2630,
+      "triangles": 4580,
+      "cells": 2290,
+      "subdivisions": 5
+    },
+    {
+      "stage": "s25",
+      "vertices": 2857,
+      "triangles": 4994,
+      "cells": 2497,
+      "subdivisions": 5
+    },
+    {
+      "stage": "winter3d",
+      "vertices": 1214,
+      "triangles": 2108,
+      "cells": 1054,
+      "subdivisions": 5
+    }
+  ],
+  "buildingCenterAndMarginAlpha": 0,
+  "waterAndBridgeTriangles": 0,
+  "simulationMapAndPathsUnchanged": true,
+  "worldCoordinateContinuity": true,
+  "sceneryBatchPreservesSeparateTerrainLayers": true,
+  "privateResourcesDisposedAndSharedTexturesRetained": true
+}

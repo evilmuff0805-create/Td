@@ -1,0 +1,8 @@
+{
+  "generation": "built-in imagegen",
+  "version": "snow-ground-v3",
+  "reference": "D:/codex/hoguk/Td/assets/3d/painted/source/snow-ground-v2.png",
+  "generatedFile": "C:\\Users\\USER\\.codex\\generated_images\\01a1208e-1f21-7ee1-8355-345389c0c96c\\exec-d0de349f-dcbb-4512-8a1b-bb73448a26c1.png",
+  "prompt": "Edit this square top-down snow albedo into very quiet powdery flat snow for a high-quality softly painted animated fantasy strategy game. Full bleed seamless square surface, purely orthographic overhead, no scene, no objects, no footprints, no horizon, no shadows or directional lighting. Remove all broad brush ridges, diagonal strokes, mottled waves and repeating hills. Neutral pale silver/off-white snow (#cdd0d2 to #e1e2e3) with extremely restrained random isotropic fine powder grain, tiny dimples and occasional delicate soft icy flecks, subtle gray not blue contrast. The game provides blue winter lighting; do not paint blue illumination into this albedo. Surface is matte, calm, nearly uniform at zoomed-out battlefield scale. Tiny detail should reward close view without forming distinctive repeating shapes. No large bumps, cracks, sparkles, stones, hard edges, grid, artificial patterns or vignette. Match soft painterly animation aesthetic and very low contrast across all quadrants and edges, seamless tiling, no text.",
+  "transparent_background": false
+}

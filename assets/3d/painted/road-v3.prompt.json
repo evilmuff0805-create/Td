@@ -1,0 +1,8 @@
+{
+  "generation": "built-in imagegen",
+  "version": "road-v3",
+  "reference": "D:/codex/hoguk/Td/assets/3d/painted/source/road-v2.png",
+  "generatedFile": "C:\\Users\\USER\\.codex\\generated_images\\01a1208e-1f21-7ee1-8355-345389c0c96c\\exec-96a96cc1-c366-4465-ae5b-91edf3fa7baa.png",
+  "prompt": "Edit this square terrain albedo to a quiet high-quality softly painted compact earth road surface for an overhead fixed-camera Korean historical fantasy strategy game. Full-bleed seamless square TOP-DOWN texture only. 85 percent smooth weathered packed dusty earth, soft matte gray beige/sand taupe, 15 percent small irregular flush-embedded flat slate chips and fine grit; remove the many giant slabs and reduce coarse noise and contrast dramatically. No chip bigger than 3 percent canvas width. Neutral diffuse even light, no perspective, no directional lighting or cast shadows, no vignette, no roadway border or road layout painted into the texture. Sparse stones softly painted into the soil, understated varied muted warm gray colors, gently worn animated-film finish, broad calm color planes. No repeated paving pattern, cobblestone grid, long grooves, diagonals, circles, dark spots, plants or snow. The rendering supplies seasonal color and the irregular road boundary. All four edges tile subtly with no noticeable seams. The texture should remain calm at battlefield distance and refined close up, never granular muddy photo-real or vector-flat.",
+  "transparent_background": false
+}

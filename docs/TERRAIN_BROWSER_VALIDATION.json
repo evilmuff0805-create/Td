@@ -1,0 +1,401 @@
+{
+  "date": "2026-10-11",
+  "scope": "continuous road, terrain surfaces, painted seasonal review",
+  "browser": "Codex IAB WebGL2",
+  "officialProfileModified": false,
+  "checks": [
+    {
+      "name": "winter actual first wave",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "12",
+          "combatPoseExpected": "12",
+          "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "ashigaru",
+          "combatPoseLastState": "walk-left",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "2",
+          "terrainRoadTriangles": "3216",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "painted": {
+          "paintedFailed": "0",
+          "paintedPending": "0",
+          "paintedReady": "4"
+        },
+        "state": "paused",
+        "wave": "2"
+      }
+    },
+    {
+      "name": "summer river and bridges",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "15",
+          "combatPoseExpected": "15",
+          "combatPoseKinds": "teppo,scout,cavalry,samurai,ninja,drum,ashigaru,onmyoji,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "ashigaru",
+          "combatPoseLastState": "walk-left",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3898",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "painted": {
+          "paintedFailed": "0",
+          "paintedPending": "0",
+          "paintedReady": "6"
+        },
+        "season": "summer",
+        "stage": "평양성 전투"
+      }
+    },
+    {
+      "name": "actual stage s6",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "13",
+          "combatPoseExpected": "13",
+          "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "ashigaru",
+          "combatPoseLastState": "walk-left",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3570",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "painted": {
+          "paintedFailed": "0",
+          "paintedPending": "0",
+          "paintedReady": "8"
+        },
+        "season": "spring",
+        "stage": "동래성 전투",
+        "state": "ready"
+      }
+    },
+    {
+      "name": "actual stage s12",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "17",
+          "combatPoseExpected": "17",
+          "combatPoseKinds": "scout,teppo,ashigaru,onmyoji,ninja,cavalry,drum,ram,samurai,armored,kuroda,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "ashigaru",
+          "combatPoseLastState": "walk-left",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3988",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "painted": {
+          "paintedFailed": "0",
+          "paintedPending": "0",
+          "paintedReady": "10"
+        },
+        "season": "autumn",
+        "stage": "진주대첩",
+        "state": "ready"
+      }
+    },
+    {
+      "name": "actual stage s13",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "18",
+          "combatPoseExpected": "18",
+          "combatPoseKinds": "ashigaru,scout,teppo,onmyoji,cavalry,ninja,drum,samurai,armored,so,ram,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "ashigaru",
+          "combatPoseLastState": "walk-left",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "2",
+          "terrainRoadTriangles": "3360",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "painted": {
+          "paintedFailed": "0",
+          "paintedPending": "0",
+          "paintedReady": "10"
+        },
+        "season": "winter",
+        "stage": "평양성 탈환",
+        "state": "ready"
+      }
+    },
+    {
+      "name": "mobile four-season review 414x896",
+      "result": {
+        "body": {
+          "loading": "false",
+          "paintedReady": "10",
+          "renderer": "webgl2",
+          "terrain": "continuous"
+        },
+        "cards": [
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3570",
+            "season": "spring",
+            "stage": "s6"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3898",
+            "season": "summer",
+            "stage": "s10"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3988",
+            "season": "autumn",
+            "stage": "s12"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "2",
+            "roadTriangles": "3360",
+            "season": "winter",
+            "stage": "s13"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          414,
+          896
+        ]
+      }
+    },
+    {
+      "name": "winter river restart retains terrain",
+      "result": {
+        "canvas": {
+          "combatPoseActive": "true",
+          "combatPoseCount": "18",
+          "combatPoseExpected": "18",
+          "combatPoseKinds": "ashigaru,scout,teppo,onmyoji,cavalry,ninja,drum,samurai,armored,so,ram,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "ashigaru",
+          "combatPoseLastState": "walk-left",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "2",
+          "terrainRoadTriangles": "3360",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "painted": {
+          "paintedFailed": "0",
+          "paintedPending": "0",
+          "paintedReady": "10"
+        },
+        "stage": "평양성 탈환",
+        "state": "ready",
+        "wave": "0"
+      }
+    },
+    {
+      "name": "desktop review uses approved painted art",
+      "result": {
+        "body": {
+          "loading": "false",
+          "paintedReady": "10",
+          "renderer": "webgl2",
+          "terrain": "continuous"
+        },
+        "cards": [
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3570",
+            "season": "spring",
+            "stage": "s6"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3898",
+            "season": "summer",
+            "stage": "s10"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "1",
+            "roadTriangles": "3988",
+            "season": "autumn",
+            "stage": "s12"
+          },
+          {
+            "art": "painted",
+            "landmarkHeight": "1.2",
+            "roadLayers": "2",
+            "roadTriangles": "3360",
+            "season": "winter",
+            "stage": "s13"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "name": "rebuilt standalone title",
+      "title": "호국영웅전",
+      "standaloneBytes": 44823927
+    },
+    {
+      "name": "mobile battle 414x896",
+      "result": {
+        "body": {
+          "aim": "",
+          "renderer": "webgl2",
+          "season": "winter",
+          "skills": "2",
+          "state": "ready"
+        },
+        "canvas": {
+          "combatPoseCount": "18",
+          "combatPoseExpected": "18",
+          "combatPoseKinds": "ashigaru,scout,teppo,onmyoji,cavalry,ninja,drum,samurai,armored,so,ram,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseStatus": "ready",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "2",
+          "terrainRoadTriangles": "3360",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        },
+        "document": [
+          414,
+          414
+        ],
+        "overflow": false,
+        "viewport": [
+          414,
+          896
+        ]
+      }
+    }
+  ],
+  "screenshots": [
+    "screenshots/terrain-winter-battle.jpg",
+    "screenshots/terrain-summer-river.jpg",
+    "screenshots/terrain-mobile-battle.jpg",
+    "screenshots/terrain-mobile-seasons.jpg",
+    "screenshots/terrain-seasons-top.jpg",
+    "screenshots/terrain-seasons-bottom.jpg"
+  ],
+  "logs": {
+    "battle": [],
+    "seasons": [],
+    "standalone": [],
+    "mobileBattle": []
+  },
+  "limitations": [
+    "Responsive browser testing, not physical phone performance.",
+    "Standalone title boot and embedded-asset verification; no new official victory or purchase.",
+    "Road follows the original orthogonal simulation centerline; this is edge and material refinement."
+  ]
+}

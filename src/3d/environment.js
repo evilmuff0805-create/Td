@@ -5,6 +5,7 @@ import { stageSeed } from './seasons.js';
 import { surfaceNoise as noise } from './surfaces.js';
 import { foliageCluster } from './vegetation.js';
 import { paintSurface,albedoPlaceholder } from './painted-surfaces.js';
+import { roadTerrain,roadLayer,roadSample,roadCellIsDry } from './road-terrain.js';
 import { MAT,material,mesh,box,ball,cylinder,cone,between,bakeStatic,hanok,pine,rock,fence,supplies,gate,wallSegment } from './models.js';
 
 const surfaces=new Map();
@@ -21,11 +22,11 @@ function surface(theme,road=false) {
     for(let c=0;c<3;c++)data[i+c]=Math.round(T.MathUtils.clamp(channels[c]+n+(road?0:(c===1?.012:-.008)*broad),0,1)*255);data[i+3]=255;
     const h=Math.round((seam?.25:.48+fine*.09+grit)*255);relief.set([h,h,h,255],i);
   }
-  const kind=road?'road':theme.snow?'snow-ground':'ground',image=albedoPlaceholder(data,size,kind);
-  const tex=new T.DataTexture(image.data,image.width,image.height);tex.colorSpace=T.LinearSRGBColorSpace;tex.wrapS=tex.wrapT=T.RepeatWrapping;tex.magFilter=T.LinearFilter;tex.minFilter=T.LinearMipmapLinearFilter;tex.generateMipmaps=true;tex.anisotropy=4;tex.needsUpdate=true;
-  const bump=new T.DataTexture(relief,size,size);bump.wrapS=bump.wrapT=T.RepeatWrapping;bump.magFilter=T.LinearFilter;bump.minFilter=T.LinearMipmapLinearFilter;bump.generateMipmaps=true;bump.needsUpdate=true;
+  const kind=road?(theme.snow?'snow-ground':'road'):theme.snow?'snow-ground':'ground',image=albedoPlaceholder(data,size,kind);
+  const tex=new T.DataTexture(image.data,image.width,image.height);tex.colorSpace=T.LinearSRGBColorSpace;tex.wrapS=tex.wrapT=T.MirroredRepeatWrapping;tex.magFilter=T.LinearFilter;tex.minFilter=T.LinearMipmapLinearFilter;tex.generateMipmaps=true;tex.anisotropy=4;tex.needsUpdate=true;
+  const bump=new T.DataTexture(relief,size,size);bump.wrapS=bump.wrapT=T.MirroredRepeatWrapping;bump.magFilter=T.LinearFilter;bump.minFilter=T.LinearMipmapLinearFilter;bump.generateMipmaps=true;bump.needsUpdate=true;
   paintSurface(tex,kind,base);
-  const mat=new T.MeshStandardMaterial({map:tex,roughness:theme.snow?.87:.96,bumpMap:bump,bumpScale:road&&!theme.snow?.009:0,vertexColors:true});surfaces.set(key,mat);return mat;
+  const mat=new T.MeshStandardMaterial({color:road&&theme.snow?'#dce4ec':'#ffffff',map:tex,roughness:theme.snow?.87:.96,bumpMap:bump,bumpScale:road&&!theme.snow?.009:0,vertexColors:true});surfaces.set(key,mat);return mat;
 }
 
 // Snow is removable geometry. Seasonal changes never recolor shared model materials globally.
@@ -79,15 +80,20 @@ export function worldSurface(geo,x=0,z=0,scale=2) {
   for(let i=0;i<p.count;i++) {
     const xx=p.getX(i)+x,zz=p.getZ(i)+z;
     uv.setXY(i,xx/scale,zz/scale);
-    const shade=1;
-    colors.push(shade,shade,shade);
+    const broad=noise(xx*.26+17,zz*.26-9),fine=noise(xx*.8+2,zz*.8-9);
+    const shade=.90+broad*.16+(fine-.5)*.03;
+    colors.push(shade*(.99+broad*.02),shade,shade*(1.01-broad*.02));
   }
   geo.setAttribute('color',new T.Float32BufferAttribute(colors,3));return geo;
 }
 export function tileSurface(tiles,y,outside=false,scale=3.2) {
   const p=[],uv=[],indices=[];
   const height=(x,z)=>outside?-.014-.008*Math.hypot(Math.max(0,-x,x-24),Math.max(0,-z,z-14))+.005*Math.sin(x*.7+z*.5):y;
-  for(const [x,z,step=1] of tiles){const n=p.length/3;p.push(x,height(x,z),z,x,height(x,z+step),z+step,x+step,height(x+step,z+step),z+step,x+step,height(x+step,z),z);uv.push(0,0,0,0,0,0,0,0);indices.push(n,n+1,n+2,n+2,n+3,n);}
+  for(const [x,z,step=1] of tiles)for(let j=0;j<(outside?1:2);j++)for(let i=0;i<(outside?1:2);i++){
+    const d=step/(outside?1:2),xx=x+i*d,zz=z+j*d,n=p.length/3;
+    p.push(xx,height(xx,zz),zz,xx,height(xx,zz+d),zz+d,xx+d,height(xx+d,zz+d),zz+d,xx+d,height(xx+d,zz),zz);
+    uv.push(0,0,0,0,0,0,0,0);indices.push(n,n+1,n+2,n+2,n+3,n);
+  }
   const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);worldSurface(g,0,0,scale);g.computeVertexNormals();g.userData.owned3d=true;return g;
 }
 
@@ -112,7 +118,7 @@ export function buildBattlefield(stage,theme,art=null) {
   // A continuous terrain floor fills the fixed camera's frame; map boundaries
   // never become a floating rectangular board. Water stays above this floor.
   const terrainScale=theme.snow?8:12;
-  const floor=new T.PlaneGeometry(130,110);floor.rotateX(-Math.PI/2);worldSurface(floor,12,7,terrainScale);floor.userData.owned3d=true;
+  const floor=new T.PlaneGeometry(130,110,65,55);floor.rotateX(-Math.PI/2);worldSurface(floor,12,7,terrainScale);floor.userData.owned3d=true;
   const earth=mesh(root,floor,surface(theme),12,-.13,7);earth.castShadow=false;
   mesh(root,tileSurface(land,.006,false,terrainScale),surface(theme),0,0,0);
   mesh(root,tileSurface(surroundings.land,0,true,terrainScale),surface(theme),0,0,0);
@@ -128,22 +134,14 @@ export function buildBattlefield(stage,theme,art=null) {
       if(rng()<.2) {const pebble=seasonalize(rock(.22+rng()*.25,rng()*6),theme);pebble.position.set(x+.5+dx*.42,.015,z+.5+dz*.42);root.add(pebble);}
     }
   }
-  const roadMat=surface(theme,true),edgeMat=material(theme.snow?'#667e99':'#535b4c'),seen=new Set();
-  const roadPart=(x,z,w,d,mat,y)=>{
-    const geo=new T.PlaneGeometry(w,d);geo.rotateX(-Math.PI/2);worldSurface(geo,x,z);mesh(root,geo,mat,x,y,z);
-  };
-  for(const path of map.paths)for(let i=1;i<path.pts.length;i++) {
-    const a=path.pts[i-1],b=path.pts[i],len=Math.hypot(a.x-b.x,a.y-b.y),dx=(b.x-a.x)/len,dz=(b.y-a.y)/len;
-    for(let k=0;k<len;k+=.5) {
-      const x=a.x+dx*(k+.25),z=a.y+dz*(k+.25),key=`${x.toFixed(2)},${z.toFixed(2)}`;
-      if(seen.has(key))continue;seen.add(key);
-      roadPart(x,z,dx?.51:1.22,dz?.51:1.22,edgeMat,.018);roadPart(x,z,dx?.51:1.09,dz?.51:1.09,roadMat,.027);
-      if(rng()<.6)for(const side of [-1,1]) {
-        const stone=mesh(root,'rock',MAT.stone,x-dz*side*.59,.048,z+dx*side*.59,.07+rng()*.05,.03,.06+rng()*.04);stone.rotation.y=rng()*6;
-      }
-      if(theme.snow&&rng()<.5){const p=box(root,MAT.snowShade,x+dz*.17,.03,z-dx*.17,.07,.008,.13);p.rotation.y=Math.atan2(dx,dz);}
-    }
-    for(const q of [a,b]){const geo=new T.CircleGeometry(.55,24);geo.rotateX(-Math.PI/2);worldSurface(geo,q.x,q.y);mesh(root,geo,roadMat,q.x,.029,q.y);}
+  const roads=roadTerrain(stage),roadRng=makeRng(stageSeed(stage.id)+199),seen=new Set();
+  // Low, irregular pebble groups leave every adjacent building center open.
+  for(const s of roads.segments)for(let k=.2;k<s.length;k+=.7){
+    const side=roadRng()<.5?-1:1,offset=.54+roadRng()*.14,along=k+(roadRng()-.5)*.3;
+    const x=s.ax+s.dx*along-s.dz*side*offset,z=s.az+s.dz*along+s.dx*side*offset;
+    const key=Math.floor(x*2)+','+Math.floor(z*2),distance=roadSample(roads.segments,x,z).distance;
+    if(seen.has(key)||noise(x*.8+9,z*.8-4)<.55||roadRng()>.7||distance<.48||!roadCellIsDry(stage,map,Math.floor(x),Math.floor(z)))continue;
+    seen.add(key);const stone=mesh(root,'rock',MAT.stone,x,.029,z,.035+roadRng()*.035,.018,.025+roadRng()*.035);stone.rotation.y=roadRng()*6;
   }
   for(const [x,z] of bridges) {
     const horizontal=map.grid[z*map.w+x-1]===T_PATH||map.grid[z*map.w+x+1]===T_PATH;
@@ -207,5 +205,10 @@ export function buildBattlefield(stage,theme,art=null) {
     }
   }
   bakeStatic(root);root.userData.stageId=stage.id;root.userData.season=theme.id;
-  return {root,water:waterMesh,lamps:lamps.slice(0,9),plan,surroundings};
+  // Keep RGBA terrain outside scenery merging: it must draw before billboard
+  // shadows and must never inherit bakeStatic's shadow-casting flags.
+  for(const child of root.children)if(child.material===surface(theme))child.castShadow=false;
+  root.add(roadLayer(roads.road,surface(theme,true)));
+  if(theme.snow)root.add(roadLayer(roads.snow,surface(theme),'snow'));else roads.snow.dispose();
+  return {root,water:waterMesh,lamps:lamps.slice(0,9),plan,surroundings,roads:roads.metrics};
 }

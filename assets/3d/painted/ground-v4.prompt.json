@@ -1,0 +1,8 @@
+{
+  "generation": "built-in imagegen",
+  "version": "ground-v4",
+  "reference": "D:/codex/hoguk/Td/assets/3d/painted/source/ground-v3.png",
+  "generatedFile": "C:\\Users\\USER\\.codex\\generated_images\\01a1208e-1f21-7ee1-8355-345389c0c96c\\exec-1b690daa-7275-4449-a005-40871b63dc2f.png",
+  "prompt": "Edit this ground material into a much quieter seamless square top-down game albedo texture for a sophisticated painted animated historical fantasy tower defense battlefield. Absolutely orthographic flat overhead texture only, entire canvas filled, no objects, no perspective, no cast shadows, no lighting gradient or vignette. Preserve the broad subdued olive/sage and gray-brown soil family but reduce saturation and all mottling contrast. 75 percent compact soft matte earth and very short dusty moss, 25 percent sparse finely painted grass fibers. Random isotropic subtle grain distributed evenly; no directional stripes, diagonals, broad waves, circles, large clumps, high contrast spots, tile grid or obvious repeated motif. Natural understated hand-painted animated-film texture, soft broad color planes with tiny details just enough for close view. No stones larger than 1 percent canvas width, no flowers, trees or silhouettes. Even neutral diffuse albedo, no baked depth. Opposite edges visually tile seamlessly; low-frequency mean color nearly uniform, quiet center and edges. Square texture. Not a scenic illustration.",
+  "transparent_background": false
+}

@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import { HERO_POSE_ART } from '../src/3d/hero-pose-data.js';
 import { COMBAT_POSE_ART } from '../src/3d/combat-pose-data.js';
 import { SKIN_POSE_ART } from '../src/3d/skin-pose-data.js';
+import { PAINTED_SURFACES } from '../src/3d/painted-surfaces.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
 const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART)];
@@ -19,4 +20,10 @@ for(const rel of rejected){
   const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
   assert.equal(count('data:image/webp;base64,'+encoded),0,rel+' rejected art must stay out of the build');
 }
-console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0},null,2));
+const terrain=['ground','snow-ground','road'].map(kind=>PAINTED_SURFACES[kind]);
+for(const rel of terrain){
+  const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
+  assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' terrain must be embedded exactly once');
+  assert.ok(!html.includes(rel),rel+' terrain must not remain as an external request');
+}
+console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedTerrainSurfaces:terrain.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0},null,2));
