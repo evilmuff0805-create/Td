@@ -3,6 +3,11 @@ import { drawHero, drawEnemy } from '../render/draw-units.js';
 import { taegeuk, TS } from '../render/paint.js';
 import { ENEMIES } from '../data/enemies.js';
 import { heroArt, portraitArt, enemyArt, drawIllustration } from '../render/art.js';
+import { portraitBounds } from '../data/hero-menu.js';
+
+function identifyHeroCanvas(cv,heroId,skin,art,kind){
+  cv.dataset.hero=heroId;cv.dataset.skin=skin??'';cv.dataset.artSource=art?.source??'legacy';cv.dataset.heroImage=kind;
+}
 
 export function heroPortrait(heroId, size = 46, owner = 0, skin = null) {
   const cv = document.createElement('canvas');
@@ -14,16 +19,14 @@ export function heroPortrait(heroId, size = 46, owner = 0, skin = null) {
   // 그림 파일: 초상 일러스트의 얼굴을 정사각으로 잘라 쓴다 (없으면 전투용 그림의 머리 부분)
   const pa = portraitArt(heroId, skin);
   const sa = heroArt(heroId, skin);
+  identifyHeroCanvas(cv,heroId,skin,sa,'portrait');
   if (pa || sa) {
     ctx.imageSmoothingQuality = 'high';
     if (pa) {
       const W = pa.img.naturalWidth || pa.img.width;
       const H = pa.img.naturalHeight || pa.img.height;
-      const [fx, fy, fs] = pa.face;
-      const side = fs * H;
-      const sx = Math.max(0, Math.min(W - side, fx * W - side / 2));
-      const sy = Math.max(0, Math.min(H - side, fy * H - side / 2));
-      ctx.drawImage(pa.img, sx, sy, side, side, 0, 0, size, size);
+      const crop=portraitBounds(W,H,pa.face);
+      ctx.drawImage(pa.img,crop.left,crop.top,crop.width,crop.height,0,0,size,size);
     } else {
       const W = sa.img.naturalWidth || sa.img.width;
       const H = sa.img.naturalHeight || sa.img.height;
@@ -48,6 +51,7 @@ export function heroFull(heroId, size = 200, skin = null) {
   const ctx = cv.getContext('2d');
   ctx.scale(dpr, dpr);
   const art = heroArt(heroId, skin);
+  identifyHeroCanvas(cv,heroId,skin,art,'full');
   if (art) {
     // 전신 그림을 칸 높이에 맞춰, 두 발 사이를 가운데로
     const W = art.img.naturalWidth || art.img.width;

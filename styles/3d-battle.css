@@ -7,7 +7,7 @@
 .commandbar .command{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.commandbar .command b,.commandbar .command small{align-self:stretch;text-align:center}
 .commandbar .ability-art{position:relative;inset:auto;width:38px;height:38px;margin:0 auto 5px}
 .commandbar .unit-button{padding:9px;gap:7px;grid-column:auto}
-.commandbar .unit-button .portrait{width:40px;height:44px}
+.commandbar .unit-button .portrait{width:40px;height:40px}
 .commandbar .unit-button b{font-size:12px}.commandbar .unit-button small{font-size:8px}
 .commandbar #next{grid-column:auto}.commandbar .next b{font-size:17px}
 .commandbar #library .command-icon{font-size:28px;margin-bottom:5px}
@@ -24,11 +24,11 @@
 #resonance::-webkit-progress-bar{background:#6c849044}#resonance::-webkit-progress-value{background:linear-gradient(90deg,#65a7ce,#ebce88)}#resonance::-moz-progress-bar{background:linear-gradient(90deg,#65a7ce,#ebce88)}
 #hero-actions p{font-size:9px;margin:7px 0;color:#b6cfdd;line-height:1.7}
 #rally{width:100%;font-size:11px;padding:7px;border-color:#9cb9bb55;background:#34536455}
-#cast-pair{display:flex;align-items:center;gap:5px;flex-shrink:0}#cast-pair i{width:52px;height:62px;border:1px solid #dbc28a88;border-radius:7px;background-color:#162e42}
+#cast-pair{display:flex;align-items:center;gap:5px;flex-shrink:0}#cast-pair i{width:52px;height:52px;border:1px solid #dbc28a88;border-radius:7px;background-color:#162e42}
 #cast-art{width:65px;height:65px;flex-shrink:0;border-radius:7px;background-repeat:no-repeat}#selection-art,.ability-art{background-repeat:no-repeat}
 #cast-banner.combo-cast{border-color:#d4bc7b9c;max-width:min(650px,90%);background:linear-gradient(110deg,#243e52f5,#233a48ed)}
 body[data-skills='1'] .commandbar{grid-template-columns:138px repeat(5,minmax(0,1fr)) 145px}
-@media(max-width:1000px){.commandbar{grid-template-columns:126px repeat(6,minmax(0,1fr)) 126px;gap:5px;padding:8px}.commandbar .ability-art{width:33px;height:33px}.commandbar .command.skill b{font-size:10px}.commandbar .command.skill small{font-size:8px}.commandbar .next b{font-size:15px}.commandbar .unit-button .portrait{width:33px;height:39px}body[data-skills='1'] .commandbar{grid-template-columns:126px repeat(5,minmax(0,1fr)) 126px}}
+@media(max-width:1000px){.commandbar{grid-template-columns:126px repeat(6,minmax(0,1fr)) 126px;gap:5px;padding:8px}.commandbar .ability-art{width:33px;height:33px}.commandbar .command.skill b{font-size:10px}.commandbar .command.skill small{font-size:8px}.commandbar .next b{font-size:15px}.commandbar .unit-button .portrait{width:33px;height:33px}body[data-skills='1'] .commandbar{grid-template-columns:126px repeat(5,minmax(0,1fr)) 126px}}
 @media(max-width:700px){
   .commandbar,body[data-skills='1'] .commandbar{grid-template-columns:repeat(3,minmax(0,1fr));width:calc(100% - 24px);padding:7px;bottom:18px;gap:5px}
   .commandbar>button{order:2;min-height:78px!important;padding:6px!important}
@@ -42,7 +42,7 @@ body[data-skills='1'] .commandbar{grid-template-columns:138px repeat(5,minmax(0,
   .camera-tools{bottom:calc(var(--commandbar-height) + 35px);right:15px}
   #hero-actions{margin-top:8px;padding-top:8px}#hero-actions p{font-size:9px}.combo-heading b{font-size:11px}#rally{padding:6px}
   #cast-banner{top:155px;gap:10px;min-width:0;width:calc(100% - 30px);max-width:calc(100% - 30px);padding:9px 12px}#cast-banner b{font-size:18px}#cast-banner em{font-size:9px;line-height:1.6}
-  #cast-pair{gap:3px}#cast-pair i{width:35px;height:45px}#cast-art{width:53px;height:53px}
+  #cast-pair{gap:3px}#cast-pair i{width:35px;height:35px}#cast-art{width:53px;height:53px}
   body[data-skills='1'] #barrage{grid-column:span 2}
 }
 @media(max-height:650px) and (min-width:701px){#hero-actions p{margin:4px 0}#hero-actions{padding-top:7px;margin-top:7px}.selection{padding:10px 13px}.stage-caption p{display:none}}

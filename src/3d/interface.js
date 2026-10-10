@@ -9,8 +9,20 @@ import { campaignSupport } from './scenario.js';
 import { normalizeBattleSkills } from './battle-controls.js';
 import { findCombo } from '../data/combos.js';
 import { SKINS } from '../data/skins.js';
+import { MENU_HERO_ART } from '../data/hero-menu-data.js';
+import { heroMenuFrame,portraitBounds } from '../data/hero-menu.js';
+import { heroArt } from '../render/art.js';
 
-export function atlasStyle(element,category,id) {
+export function atlasStyle(element,category,id,skin=null) {
+  const frame=category==='heroes'&&heroArt(id,skin)?.source==='approved-menu-poses'?heroMenuFrame(id,skin):null;
+  if(frame){
+    const crop=portraitBounds(frame.width,frame.height,frame.face),left=frame.left+crop.left,top=frame.top+crop.top;
+    const url=MENU_HERO_ART.path.startsWith('data:')?MENU_HERO_ART.path:new URL(MENU_HERO_ART.path,new URL('../../',import.meta.url)).href;
+    element.style.backgroundImage=`url("${url}")`;
+    element.style.backgroundSize=`${MENU_HERO_ART.width/crop.width*100}% ${MENU_HERO_ART.height/crop.height*100}%`;
+    element.style.backgroundPosition=`${left/(MENU_HERO_ART.width-crop.width)*100}% ${top/(MENU_HERO_ART.height-crop.height)*100}%`;
+    element.dataset.hero=id;element.dataset.skin=frame.skinId??'';return;
+  }
   const cell=ART[category]?.[id];if(!cell){element.style.backgroundImage='none';return;}
   const atlas=ART.atlases[cell.atlas],col=cell.cell%atlas.columns,row=Math.floor(cell.cell/atlas.columns);
   element.style.backgroundImage=`url("${atlas.src}")`;element.style.backgroundSize=`${atlas.columns*100}% ${atlas.rows*100}%`;

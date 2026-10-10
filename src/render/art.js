@@ -1,6 +1,8 @@
 // Decode atlases once, then prepare reusable small canvases for combat.
 import { ART } from '../data/art.js';
 import { skinDef, GOLD_LOOK } from '../data/skins.js';
+import { MENU_HERO_ART } from '../data/hero-menu-data.js';
+import { heroMenuFrame } from '../data/hero-menu.js';
 
 const SPRITE_H = 176;
 const loaded = new Map();
@@ -60,7 +62,11 @@ export function preloadArt() {
   if (typeof document === 'undefined') return Promise.resolve();
   if (pending) return pending;
   pending = (async () => {
-    const atlases = new Map(await Promise.all(Object.entries(ART.atlases).map(async ([id, spec]) => [id, await loadImage(spec.src)])));
+    const [entries,menu] = await Promise.all([
+      Promise.all(Object.entries(ART.atlases).map(async ([id, spec]) => [id, await loadImage(spec.src)])),
+      loadImage(MENU_HERO_ART.path),
+    ]);
+    const atlases = new Map(entries);
     const preparedCells = new Map();
     for (const group of ['heroes', 'enemies', 'allies', 'towers', 'structures', 'props', 'terrain']) {
       for (const [id, a] of Object.entries(ART[group])) {
@@ -70,6 +76,14 @@ export function preloadArt() {
         if (!region) { region = cellImage(img, ART.atlases[a.atlas], a.cell, group !== 'terrain'); preparedCells.set(key, region); }
         const unit = ['heroes', 'enemies', 'allies'].includes(group);
         loaded.set(`${group}:${id}`, prepare(region, a.ax ?? (unit ? footAnchor(region) : 0.5)));
+      }
+    }
+    if(menu&&(menu.naturalWidth||menu.width)===MENU_HERO_ART.width&&(menu.naturalHeight||menu.height)===MENU_HERO_ART.height){
+      for(const frame of MENU_HERO_ART.frames){
+        const region=canvas(frame.width,frame.height);
+        region.getContext('2d').drawImage(menu,frame.left,frame.top,frame.width,frame.height,0,0,frame.width,frame.height);
+        const art={...prepare(region,frame.anchor),face:frame.face,source:'approved-menu-poses',look:frame.key};
+        loaded.set(frame.skinId?`look:${frame.heroId}:${frame.skinId}`:`heroes:${frame.heroId}`,art);
       }
     }
     await Promise.all([
@@ -98,6 +112,7 @@ export function heroArt(id, skin = null) {
   const base = loaded.get(`heroes:${id}`);
   if (!base || !skin) return base || null;
   const def = skinDef(id, skin); if (!def) return base;
+  const frame=heroMenuFrame(id,skin),approved=frame&&loaded.get(`look:${id}:${frame.skinId}`);if(approved)return approved;
   const key = `${id}:${skin}`; if (variants.has(key)) return variants.get(key);
   const img = canvas(base.img.width, base.img.height), ctx = img.getContext('2d', { willReadFrequently: true });
   ctx.drawImage(base.img, 0, 0);
@@ -119,9 +134,9 @@ export function heroArt(id, skin = null) {
     for (let c = 0; c < 3; c++) pixels.data[i + c] = col[c];
   }
   ctx.putImageData(pixels, 0, 0);
-  const art = prepare(img, base.ax); variants.set(key, art); return art;
+  const art = {...prepare(img, base.ax),face:base.face,source:'fallback-recolour',look:skin}; variants.set(key, art); return art;
 }
-export function portraitArt(id, skin = null) { const art = heroArt(id, skin); return art ? { img: art.img, face: ART.faces[id] } : null; }
+export function portraitArt(id, skin = null) { const art = heroArt(id, skin); return art ? { img: art.img, face: art.face??ART.faces[id] } : null; }
 export const enemyArt = (id) => loaded.get(`enemies:${id}`) || null;
 export const allyArt = (id) => loaded.get(`allies:${id}`) || null;
 export const towerArt = (id) => loaded.get(`towers:${id}`) || null;

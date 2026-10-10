@@ -1766,7 +1766,7 @@ export function drawHero(ctx, h, time, opts = {}) {
   }
   const [anim, frame] = animFrame(h.moving, h.anim > 0, t);
   if (gold) goldAura(ctx, x, y, time);
-  // 의복도 같은 그림의 옷 부분을 물들여 화풍을 유지한다.
+  // 승인된 기본·의상 그림을 공유하며 누락된 경우 기존 대체 표시를 사용한다.
   if (art) drawArtUnit(ctx, art, x, y, t, h.moving, h.anim > 0, (h.facing || 1) < 0);
   else blit(ctx, charSprite('h', h.skin ? `${h.heroId}:${h.skin}` : h.heroId, look, anim, frame), x, y, sc, (h.facing || 1) < 0);
   if (!opts.noBar) {

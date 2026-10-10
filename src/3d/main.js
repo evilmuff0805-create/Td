@@ -57,7 +57,7 @@ function announceSkill(kind,slot=0) {
 }
 function announceCombo(event) {
   const def=findCombo(event.a,event.b);$('cast-art').hidden=true;$('cast-pair').hidden=false;
-  [...$('cast-pair').children].forEach((el,i)=>atlasStyle(el,'heroes',i?event.b:event.a));
+  [...$('cast-pair').children].forEach((el,i)=>{const id=i?event.b:event.a;atlasStyle(el,'heroes',id,game.heroes.find(h=>h.heroId===id)?.skin);});
   $('cast-kind').textContent=`${HEROES[event.a].name} × ${HEROES[event.b].name} · 합격기`;
   $('cast-name').textContent=event.name;$('cast-description').textContent=def.desc;
   $('cast-banner').classList.add('combo-cast');$('cast-banner').hidden=false;castUntil=clock+3.6;
@@ -130,7 +130,7 @@ function updateHUD() {
   $('stage-name').textContent=stage.name;$('season-label').textContent=`${theme.english} · ${theme.name} · ${getMap(stage.id).paths.length}개 진입로`;
   $('stage-description').textContent=theme.caption;$('result-stage').textContent=stage.name;
   $('hero-name').textContent=hd.name;$('hero-health').textContent=h.dead?`회복 ${Math.ceil(h.respawn)}초`:`Lv.${h.lv} · ${Math.ceil(h.hp)} / ${Math.ceil(h.maxHp)}`;
-  $('hero-partner').textContent=game.heroes.length>1?`교대 ↔ ${HEROES[game.heroes[(activeHero+1)%game.heroes.length].heroId].name}`:hd.title;atlasStyle($('hero-portrait'),'heroes',h.heroId);
+  $('hero-partner').textContent=game.heroes.length>1?`교대 ↔ ${HEROES[game.heroes[(activeHero+1)%game.heroes.length].heroId].name}`:hd.title;atlasStyle($('hero-portrait'),'heroes',h.heroId,h.skin);
   $('hero').setAttribute('aria-label',`${hd.name}, ${$('hero-health').textContent}, ${$('hero-partner').textContent}`);
   $('hero-skill-name').textContent=hd.skill.short.replace(/\n/g,'');$('hero-ult-name').textContent=hd.ult.short;
   $('skill').title=`${hd.skill.name} · ${hd.skill.desc}`;$('ultimate').title=`${hd.ult.name} · ${hd.ult.desc}`;

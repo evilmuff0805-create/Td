@@ -1,0 +1,422 @@
+{
+  "date": "2026-10-11",
+  "method": "Lossless pixel packing of existing approved WebP front-right idle pose 0; no repainting, resizing, hue shift or new directional sheets",
+  "delivery": "assets/illustrated/hero-menu-poses-v1.webp",
+  "width": 1160,
+  "height": 2022,
+  "padding": 12,
+  "bytes": 1555936,
+  "baseHeroes": 8,
+  "skins": 16,
+  "poses": 24,
+  "sources": [
+    {
+      "key": "yi",
+      "source": "assets/3d/fixed/yi-directions-v2.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 50,
+        "top": 11,
+        "width": 247,
+        "height": 313,
+        "anchor": 0.491608,
+        "anchorY": 1,
+        "referenceHeight": 310
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "yi_white",
+      "source": "assets/3d/fixed/skins/yi_white-directions-v2.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 67,
+        "top": 68,
+        "width": 209,
+        "height": 260,
+        "anchor": 0.502999,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "yi_gold",
+      "source": "assets/3d/fixed/skins/yi_gold-directions-v2.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 79,
+        "top": 83,
+        "width": 201,
+        "height": 239,
+        "anchor": 0.5006,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "sejong",
+      "source": "assets/3d/fixed/sejong-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 87,
+        "top": 17,
+        "width": 222,
+        "height": 302,
+        "anchor": 0.502476,
+        "anchorY": 1,
+        "referenceHeight": 305
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "sejong_blue",
+      "source": "assets/3d/fixed/skins/sejong_blue-directions-v2.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 96,
+        "top": 90,
+        "width": 174,
+        "height": 238,
+        "anchor": 0.505103,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "sejong_gold",
+      "source": "assets/3d/fixed/skins/sejong_gold-directions-v2.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 103,
+        "top": 87,
+        "width": 186,
+        "height": 248,
+        "anchor": 0.512843,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "eulji",
+      "source": "assets/3d/fixed/eulji-directions-v2.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 66,
+        "top": 99,
+        "width": 152,
+        "height": 189,
+        "anchor": 0.563421,
+        "anchorY": 1,
+        "referenceHeight": 190
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "eulji_iron",
+      "source": "assets/3d/fixed/skins/eulji_iron-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 59,
+        "top": 94,
+        "width": 167,
+        "height": 208,
+        "anchor": 0.571386,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "eulji_gold",
+      "source": "assets/3d/fixed/skins/eulji_gold-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 57,
+        "top": 92,
+        "width": 171,
+        "height": 211,
+        "anchor": 0.560129,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gang",
+      "source": "assets/3d/fixed/gang-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 30,
+        "top": 32,
+        "width": 259,
+        "height": 295,
+        "anchor": 0.543238,
+        "anchorY": 1,
+        "referenceHeight": 293
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gang_crimson",
+      "source": "assets/3d/fixed/skins/gang_crimson-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 29,
+        "top": 31,
+        "width": 262,
+        "height": 297,
+        "anchor": 0.547801,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gang_gold",
+      "source": "assets/3d/fixed/skins/gang_gold-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 26,
+        "top": 30,
+        "width": 266,
+        "height": 297,
+        "anchor": 0.545031,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gwon",
+      "source": "assets/3d/fixed/gwon-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 50,
+        "top": 22,
+        "width": 242,
+        "height": 290,
+        "anchor": 0.512638,
+        "anchorY": 1,
+        "referenceHeight": 285
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gwon_hill",
+      "source": "assets/3d/fixed/skins/gwon_hill-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 76,
+        "top": 59,
+        "width": 223,
+        "height": 254,
+        "anchor": 0.534367,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gwon_gold",
+      "source": "assets/3d/fixed/skins/gwon_gold-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 68,
+        "top": 61,
+        "width": 231,
+        "height": 264,
+        "anchor": 0.524076,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gwak",
+      "source": "assets/3d/fixed/gwak-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 69,
+        "top": 45,
+        "width": 191,
+        "height": 270,
+        "anchor": 0.492593,
+        "anchorY": 1,
+        "referenceHeight": 270
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gwak_black",
+      "source": "assets/3d/fixed/skins/gwak_black-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 84,
+        "top": 74,
+        "width": 172,
+        "height": 248,
+        "anchor": 0.492582,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "gwak_gold",
+      "source": "assets/3d/fixed/skins/gwak_gold-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 68,
+        "top": 52,
+        "width": 191,
+        "height": 267,
+        "anchor": 0.493775,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "ahn",
+      "source": "assets/3d/fixed/ahn-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 68,
+        "top": 60,
+        "width": 175,
+        "height": 258,
+        "anchor": 0.52479,
+        "anchorY": 1,
+        "referenceHeight": 254.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "ahn_militia",
+      "source": "assets/3d/fixed/skins/ahn_militia-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 84,
+        "top": 77,
+        "width": 166,
+        "height": 244,
+        "anchor": 0.518786,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "ahn_gold",
+      "source": "assets/3d/fixed/skins/ahn_gold-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 77,
+        "top": 67,
+        "width": 172,
+        "height": 254,
+        "anchor": 0.523402,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "dangun",
+      "source": "assets/3d/fixed/dangun-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 65,
+        "top": 82,
+        "width": 181,
+        "height": 244,
+        "anchor": 0.527138,
+        "anchorY": 1,
+        "referenceHeight": 244
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "dangun_sky",
+      "source": "assets/3d/fixed/skins/dangun_sky-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 69,
+        "top": 89,
+        "width": 179,
+        "height": 238,
+        "anchor": 0.520614,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    },
+    {
+      "key": "dangun_gold",
+      "source": "assets/3d/fixed/skins/dangun_gold-directions-v1.webp",
+      "pose": 0,
+      "sourceBounds": {
+        "left": 67,
+        "top": 93,
+        "width": 181,
+        "height": 237,
+        "anchor": 0.517983,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      "visibleColourDifferences": 0,
+      "alphaDifferences": 0,
+      "paddingViolations": 0
+    }
+  ]
+}

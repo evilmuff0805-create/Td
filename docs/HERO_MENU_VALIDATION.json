@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-11",
+  "tests": 8,
+  "results": [
+    {
+      "name": "기본 8명·의상 16종은 승인된 원래 포즈의 크기·발 중심과 유효한 얼굴 영역을 유지한다",
+      "passed": true
+    },
+    {
+      "name": "UI 그림을 한 번만 요청하며 늦게 준비돼도 첫 화면의 준비 Promise는 끝까지 기다린다",
+      "passed": true
+    },
+    {
+      "name": "런타임 24개 그림은 시트의 정확한 범위·얼굴·발 중심을 쓰고 잘못된 영웅 의상을 거부한다",
+      "passed": true
+    },
+    {
+      "name": "선택창·의상실·HUD의 실제 캔버스는 24개 같은 그림과 정사각 얼굴·발 중심을 사용한다",
+      "passed": true
+    },
+    {
+      "name": "평면 모드의 실제 영웅 그리기는 이동·공격·반전 중에도 같은 기본/의상 그림을 사용한다",
+      "passed": true
+    },
+    {
+      "name": "자유 전장 초상화는 장착 의상을 따르고 실제 얼굴 범위만 CSS로 표시한다",
+      "passed": true
+    },
+    {
+      "name": "새 시트 누락·잘못된 크기에도 기존 8명과 기존 의상 대체 그림이 남는다",
+      "passed": true
+    },
+    {
+      "name": "잠긴 의상 미리보기와 양측 초상화는 프로필·의상 소유·출전 사양을 바꾸지 않는다",
+      "passed": true
+    }
+  ],
+  "scope": "Approved static menu/HUD/flat-mode poses, loaded identities, actual canvas draw calls, CSS crop bounds, failure fallback and unchanged profile/spec; pixel identity is verified separately by hero-menu-assets.mjs"
+}

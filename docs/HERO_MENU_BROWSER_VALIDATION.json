@@ -1,0 +1,1185 @@
+{
+  "date": "2026-10-11",
+  "origin": "http://127.0.0.1:8092",
+  "ordinary8080ProfileUntouched": true,
+  "scope": "Read-only menu previews, QA-only local coop controls, no purchases/unlocks/rewards",
+  "title": {
+    "canvases": [
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "yi",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "sejong",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "eulji",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "gang",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "gwon",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "gwak",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "ahn",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "height": 320,
+        "hero": "dangun",
+        "heroImage": "full",
+        "skin": "",
+        "width": 320
+      }
+    ],
+    "overflow": false,
+    "viewport": [
+      1280,
+      720
+    ]
+  },
+  "heroDetails": [
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "이순신",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    },
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "세종대왕",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    },
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "을지문덕",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    },
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "강감찬",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    },
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "권율",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    },
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "곽재우",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    },
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "안중근",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    },
+    {
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "portrait",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "full",
+          "skin": ""
+        }
+      ],
+      "name": "단군왕검",
+      "wallet": [
+        "●400 엽전◆20 옥"
+      ]
+    }
+  ],
+  "skinPreviews": [
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "full",
+          "skin": "yi_white"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "yi",
+          "heroImage": "full",
+          "skin": "yi_gold"
+        }
+      ],
+      "selected": "이순신",
+      "wallet": "●400 엽전◆20 옥"
+    },
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "full",
+          "skin": "sejong_blue"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "sejong",
+          "heroImage": "full",
+          "skin": "sejong_gold"
+        }
+      ],
+      "selected": "세종대왕",
+      "wallet": "●400 엽전◆20 옥"
+    },
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "full",
+          "skin": "eulji_iron"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "eulji",
+          "heroImage": "full",
+          "skin": "eulji_gold"
+        }
+      ],
+      "selected": "을지문덕",
+      "wallet": "●400 엽전◆20 옥"
+    },
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "full",
+          "skin": "gang_crimson"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gang",
+          "heroImage": "full",
+          "skin": "gang_gold"
+        }
+      ],
+      "selected": "강감찬",
+      "wallet": "●400 엽전◆20 옥"
+    },
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "full",
+          "skin": "gwon_hill"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwon",
+          "heroImage": "full",
+          "skin": "gwon_gold"
+        }
+      ],
+      "selected": "권율",
+      "wallet": "●400 엽전◆20 옥"
+    },
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "full",
+          "skin": "gwak_black"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "gwak",
+          "heroImage": "full",
+          "skin": "gwak_gold"
+        }
+      ],
+      "selected": "곽재우",
+      "wallet": "●400 엽전◆20 옥"
+    },
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "full",
+          "skin": "ahn_militia"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "ahn",
+          "heroImage": "full",
+          "skin": "ahn_gold"
+        }
+      ],
+      "selected": "안중근",
+      "wallet": "●400 엽전◆20 옥"
+    },
+    {
+      "buttons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "images": [
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "full",
+          "skin": ""
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "full",
+          "skin": "dangun_sky"
+        },
+        {
+          "artSource": "approved-menu-poses",
+          "hero": "dangun",
+          "heroImage": "full",
+          "skin": "dangun_gold"
+        }
+      ],
+      "selected": "단군왕검",
+      "wallet": "●400 엽전◆20 옥"
+    }
+  ],
+  "localLoadout": {
+    "images": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "eulji",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "gang",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "gwon",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "gwak",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "ahn",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "dangun",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "eulji",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "gang",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "gwon",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "gwak",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "ahn",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "dangun",
+        "heroImage": "portrait",
+        "skin": ""
+      }
+    ],
+    "wallet": "●400 엽전◆20 옥"
+  },
+  "standaloneLocalCoop": {
+    "battleCanvas": {
+      "combatPoseCount": "12",
+      "combatPoseExpected": "12",
+      "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseStatus": "ready",
+      "drawCalls": "153",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "fps": "28",
+      "geometries": "77",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "renderMode": "3d",
+      "sceneryCargo": "1",
+      "sceneryCrowns": "9",
+      "sceneryHouses": "3",
+      "sceneryLamps": "7",
+      "sceneryLayout": "clustered",
+      "sceneryLowTrees": "12",
+      "sceneryProps": "38",
+      "seasonTreeArtStatus": "ready",
+      "signatureArtStatus": "ready",
+      "skinPoseCount": "0",
+      "skinPoseExpected": "0",
+      "skinPoseKinds": "",
+      "skinPoseStatus": "ready",
+      "spriteMotion": "distance-contact-recovery",
+      "tacticArtStatus": "ready",
+      "terrainRoad": "continuous",
+      "terrainRoadLayers": "1",
+      "terrainRoadTriangles": "3216",
+      "terrainShore": "continuous",
+      "terrainShoreTriangles": "1944",
+      "textures": "49",
+      "triangles": "54978",
+      "waterTriangles": "7704",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    "canvases": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      }
+    ],
+    "funds": [
+      "1P 군자금156",
+      "2P 군자금86"
+    ],
+    "overflow": false,
+    "paused": true,
+    "viewport": [
+      1280,
+      720
+    ]
+  },
+  "flatLocalCoop": {
+    "canvas": {},
+    "funds": [
+      "1P 군자금156",
+      "2P 군자금156"
+    ],
+    "images": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      }
+    ],
+    "overflow": false,
+    "paused": true,
+    "viewport": [
+      1280,
+      720
+    ]
+  },
+  "freePreview": [
+    {
+      "background": true,
+      "canvas": {
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "9",
+        "sceneryHouses": "3",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "12",
+        "sceneryProps": "38",
+        "seasonTreeArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "skinPoseCount": "2",
+        "skinPoseExpected": "2",
+        "skinPoseKinds": "gwon_hill,yi_white",
+        "skinPoseStatus": "ready",
+        "spriteMotion": "distance-contact-recovery",
+        "tacticArtStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3216",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "waterTriangles": "7704",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "name": "이순신",
+      "portrait": {
+        "hero": "yi",
+        "skin": "yi_white"
+      }
+    },
+    {
+      "background": true,
+      "canvas": {
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "9",
+        "sceneryHouses": "3",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "12",
+        "sceneryProps": "38",
+        "seasonTreeArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "skinPoseCount": "2",
+        "skinPoseExpected": "2",
+        "skinPoseKinds": "gwon_hill,yi_white",
+        "skinPoseStatus": "ready",
+        "spriteMotion": "distance-contact-recovery",
+        "tacticArtStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3216",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "waterTriangles": "7704",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "name": "권율",
+      "portrait": {
+        "hero": "gwon",
+        "skin": "gwon_hill"
+      }
+    }
+  ],
+  "portraitAspectAfterFix": {
+    "combo": [
+      {
+        "height": "52px",
+        "visible": false,
+        "width": "52px"
+      },
+      {
+        "height": "52px",
+        "visible": false,
+        "width": "52px"
+      }
+    ],
+    "hud": {
+      "height": 40,
+      "width": 40
+    },
+    "viewport": [
+      1280,
+      720
+    ]
+  },
+  "astra": "Confirmed vertical CSS stretch in free preview HUD/combo faces; fixed four declared sizes to squares. No further mandatory art-tone/loader/profile defects.",
+  "logs": {
+    "menu": [],
+    "standalone": [],
+    "free": []
+  },
+  "viewport": {
+    "observed": [
+      1280,
+      720
+    ],
+    "new414pxVerification": false,
+    "note": "The prior tactic-stage viewport override did not apply. This stage does not claim a new mobile or physical-device check."
+  }
+}

@@ -38,6 +38,8 @@
     "test:signatures": "node tools/test-signatures.mjs",
     "test:tactics": "node tools/test-tactics.mjs",
     "test:tactic-assets": "node tools/tactic-assets.mjs",
+    "test:menu-art": "node tools/test-menu-art.mjs",
+    "test:menu-assets": "node tools/hero-menu-assets.mjs",
     "test:signature-assets": "node tools/signature-assets.mjs",
     "test:enemies": "node tools/test-enemies.mjs",
     "test:campaign": "node tools/test-campaign.mjs",
