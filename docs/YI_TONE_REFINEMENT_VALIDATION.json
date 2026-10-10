@@ -1,0 +1,180 @@
+{
+  "date": "2026-10-10",
+  "scope": {
+    "hero": "yi",
+    "runtimeVersion": 2,
+    "repaintedPoses": 16,
+    "totalHeroes": 8,
+    "totalPoses": 128,
+    "otherSevenAssetsUnchanged": true,
+    "otherSevenPoseLayoutsUnchanged": true,
+    "menusAndSkins": "existing static atlas",
+    "towerHeightUnchanged": 1.2
+  },
+  "generation": {
+    "mode": "built-in imagegen",
+    "useCase": "style-transfer + precise-object-edit",
+    "source": "assets/3d/fixed/source/yi-directions-v2.png",
+    "delivery": "assets/3d/fixed/yi-directions-v2.webp",
+    "finalPrompt": "assets/3d/fixed/yi-directions-v2.prompt.json",
+    "originalPreserved": true,
+    "transparentBackground": true
+  },
+  "astraReview": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "requiredFixes": 0,
+    "verdict": "Matches the other seven heroes in painted materials, lighting and compact proportions. Navy mantle, bow and quiver remain distinct from Gwon's red mantle, shield and spear in idle, attack and rear views.",
+    "optional": "Helmet and red plume still share motifs, but equipment and silhouette are sufficiently distinct."
+  },
+  "tests": [
+    {
+      "command": "node tools/test-fixed-art.mjs",
+      "passed": 15
+    },
+    {
+      "command": "node tools/hero-pose-assets.mjs",
+      "heroes": 8,
+      "poses": 128,
+      "passed": true
+    }
+  ],
+  "pixelCheck": {
+    "report": "HERO_POSE_ASSET_VALIDATION.json",
+    "foreignVisiblePixels": 0,
+    "uncoveredVisiblePixels": 0,
+    "duplicateVisiblePixels": 0,
+    "alphaDifferences": 0,
+    "yiDeliveryBytes": 499880,
+    "totalDeliveryBytes": 3065178
+  },
+  "build": {
+    "serverBundle": true,
+    "standalone": true,
+    "standaloneBytes": 22432581,
+    "poseSheetsEmbeddedExactlyOnce": 8,
+    "yiRuntimePath": "assets/3d/fixed/yi-directions-v2.webp"
+  },
+  "browserReport": "YI_TONE_BROWSER_VALIDATION.json",
+  "unchangedHeroAssets": [
+    {
+      "hero": "sejong",
+      "path": "assets/3d/fixed/sejong-directions-v1.webp",
+      "sha256": "c88a0d930f9e3358bc815ce8a42709b2e41e18d6b8cc1307bc7afa175df02e9b"
+    },
+    {
+      "hero": "sejong",
+      "path": "assets/3d/fixed/sejong-directions-v1.prompt.json",
+      "sha256": "8ec9d9e1d7f2fb80f5d031bc6268a971948fbb1abaf424af6093707cf51b1d3c"
+    },
+    {
+      "hero": "sejong",
+      "path": "assets/3d/fixed/source/sejong-directions-v1.png",
+      "sha256": "587ac066a7ddc3fe8595e7ee6cbcc6329efe9855553c2cfa62a60458e3bcc83b"
+    },
+    {
+      "hero": "eulji",
+      "path": "assets/3d/fixed/eulji-directions-v2.webp",
+      "sha256": "f81d241665977dfe5b994455c8bfe7e825af05219ebf65d2c8a99bb975ab18a0"
+    },
+    {
+      "hero": "eulji",
+      "path": "assets/3d/fixed/eulji-directions-v2.prompt.json",
+      "sha256": "7ee742dbb1ba0a80b674bbb26e80436e6562f63d1b0b462f303739147427737e"
+    },
+    {
+      "hero": "eulji",
+      "path": "assets/3d/fixed/source/eulji-directions-v2.png",
+      "sha256": "4df8120c55a29f542dded94a47679fd12653738de282c2559637a4bfb51673c8"
+    },
+    {
+      "hero": "gang",
+      "path": "assets/3d/fixed/gang-directions-v1.webp",
+      "sha256": "f0d09566679cb053bd12d7f13607745bb399251e960e138e362cfc44599c434d"
+    },
+    {
+      "hero": "gang",
+      "path": "assets/3d/fixed/gang-directions-v1.prompt.json",
+      "sha256": "73228cbd62b11f17c41827ac48f1d8d4387ecbd271db29a6bec0dd644846268a"
+    },
+    {
+      "hero": "gang",
+      "path": "assets/3d/fixed/source/gang-directions-v1.png",
+      "sha256": "1721875e089dd16a3ac2a81170e0cf0e2107fb8b626b11f0943871f0c6333a37"
+    },
+    {
+      "hero": "gwon",
+      "path": "assets/3d/fixed/gwon-directions-v1.webp",
+      "sha256": "5127778c69ca366087c44a272910f0deb08602567f875de81917b0948681407c"
+    },
+    {
+      "hero": "gwon",
+      "path": "assets/3d/fixed/gwon-directions-v1.prompt.json",
+      "sha256": "29647c7cde61848f21ff05fcc1506fc43bcec993ae3a0a2b6ab9685e296f9f86"
+    },
+    {
+      "hero": "gwon",
+      "path": "assets/3d/fixed/source/gwon-directions-v1.png",
+      "sha256": "6344bc9b949e7b00c4d8a79ac49d2217a765b36a74f2485c0472aaee4a487901"
+    },
+    {
+      "hero": "gwak",
+      "path": "assets/3d/fixed/gwak-directions-v1.webp",
+      "sha256": "6c929259afca57a6ee85aeb1c834548e80772ba62df5497fc6b4c4bc848ee7da"
+    },
+    {
+      "hero": "gwak",
+      "path": "assets/3d/fixed/gwak-directions-v1.prompt.json",
+      "sha256": "7fe2523c5b0bd1b4029b8e5fa3f51e9680438271e79e5a12430135437300ecc6"
+    },
+    {
+      "hero": "gwak",
+      "path": "assets/3d/fixed/source/gwak-directions-v1.png",
+      "sha256": "245238b4f3070c4f0d616c7626c80e4392cd4c888927844ff84ae8bf6fdacdc8"
+    },
+    {
+      "hero": "ahn",
+      "path": "assets/3d/fixed/ahn-directions-v1.webp",
+      "sha256": "79a0c5e38dde78b283ff93ef67e095ff4ad6494d67805cf353235525c50e3e7a"
+    },
+    {
+      "hero": "ahn",
+      "path": "assets/3d/fixed/ahn-directions-v1.prompt.json",
+      "sha256": "bcefea5579efeaac20daa1fe0fff9563174b5cc3c0e725bc855a91b3b07416d8"
+    },
+    {
+      "hero": "ahn",
+      "path": "assets/3d/fixed/source/ahn-directions-v1.png",
+      "sha256": "32a11a79419eebb711a17d7bcd97d36baa4aa19ae8ab868bb3bf06b81670d710"
+    },
+    {
+      "hero": "dangun",
+      "path": "assets/3d/fixed/dangun-directions-v1.webp",
+      "sha256": "bd9e1ae54ded96ed91f29eac4380eb5a795b1db6684fb9e171e0a5bb00ccf2eb"
+    },
+    {
+      "hero": "dangun",
+      "path": "assets/3d/fixed/dangun-directions-v1.prompt.json",
+      "sha256": "d4bd059414ec875176630dd71a6f55cd41579a0e80101651937f34ec36d93cb1"
+    },
+    {
+      "hero": "dangun",
+      "path": "assets/3d/fixed/source/dangun-directions-v1.png",
+      "sha256": "13d990a15c147e95a3d8559469f42e6fa7981f61b2a6b0e8bf8c6e41e54026f6"
+    }
+  ],
+  "previousRegression": {
+    "report": "HERO_DIRECTIONAL_ART_VALIDATION.json",
+    "passedCases": 94,
+    "note": "Previous hero expansion milestone, before Yi v2. The latest repaint reran the targeted 15 fixed-art cases and all 128 asset poses."
+  },
+  "screenshots": [
+    "screenshots/yi-tone-v2-all-heroes.jpg",
+    "screenshots/yi-tone-v2-pair-idle.jpg",
+    "screenshots/yi-tone-v2-pair-attack.jpg",
+    "screenshots/yi-tone-v2-pair-back.jpg",
+    "screenshots/yi-tone-v2-battle-yi-gwon.jpg",
+    "screenshots/yi-tone-v2-release-battle.jpg",
+    "screenshots/yi-tone-v2-mobile-pair.jpg"
+  ]
+}

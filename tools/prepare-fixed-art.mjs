@@ -7,6 +7,7 @@ const require=createRequire(import.meta.url);
 let sharp;try{sharp=require('sharp');}catch{sharp=require('C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');}
 const root=fileURLToPath(new URL('../',import.meta.url));
 const sources={
+  'yi-directions-v2': ['exec-37e9e91c-827d-4853-a086-8216ba531768.png','fixed',null],
   'sejong-directions-v1': ['exec-ddabb449-945f-4afe-8205-70309881e75e.png','fixed',null],
   'eulji-directions-v2': ['exec-2004277d-9822-4559-838f-12621fa649de.png','fixed',null],
   'gang-directions-v1': ['exec-3971483e-6a3b-4a92-968f-6ecd28feca35.png','fixed',null],

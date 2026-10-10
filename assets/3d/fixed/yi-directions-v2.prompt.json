@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-10",
+  "generationMode": "built-in imagegen",
+  "useCase": "style-transfer + precise-object-edit",
+  "hero": "yi",
+  "version": 2,
+  "request": "Match the other seven base heroes; distinguish Yi from Gwon.",
+  "references": [
+    "assets/3d/fixed/source/yi-directions-v1.png",
+    "assets/3d/fixed/source/gwon-directions-v1.png",
+    "assets/3d/fixed/source/gang-directions-v1.png"
+  ],
+  "referenceRoles": [
+    "edit target: old Yi identity and sixteen poses",
+    "style and proportions; distinguish Gwon's shield/spear/red cape silhouette",
+    "style and painted materials"
+  ],
+  "source": "assets/3d/fixed/source/yi-directions-v2.png",
+  "delivery": "assets/3d/fixed/yi-directions-v2.webp",
+  "transparentBackground": true,
+  "promptHistory": [
+    "Use case: style-transfer + precise-object-edit.\nAsset type: production transparent 4-column by 4-row character sprite atlas for a fixed elevated-camera tower-defense game. Exactly sixteen poses of ONE Korean hero, Admiral Yi Sun-sin.\nInput 1 is the OLD YI ATLAS to redesign. Keep his recognizable mature Korean face, mustache and short pointed beard, Korean admiral identity, navy armor, red horsehair plume, bow and back quiver, and the sixteen-pose layout. Input 2 is GWON YUL: use ONLY his soft painted material finish, compact adult cartoon proportions, camera, lighting and rendering style; he must remain a DIFFERENT character. Input 3 is GANG GAM-CHAN: second reference for the same painted animated-film art direction. Do not copy either reference hero's face, bulk, shield, spear, sword or cape colors.\n\nPrimary request: repaint and proportionally redesign Yi to look like he was made by the SAME artist as inputs 2 and 3. His old atlas is too long-bodied, photorealistic, hard-edged and covered in tiny gold studs. Replace that finish with beautiful soft painted 3D-animation character art: broad clean color masses, sculpted rounded facial planes, soft cloth folds, simplified layered navy plates, restrained aged brass edging and gentle highlights, no crunchy texture or microscopic dots. Compact adult heroic proportions about 4.5 heads tall, slightly larger expressive head and hands, lean agile upright archer build. Distinctively slimmer shoulders and waist than Gwon, but do not retain the old realistic 6-to-7-head proportions. Orthographic view from approximately 40 degrees above, consistent with the reference hero sheets. Cool soft ambient light with a gentle warm upper-left key.\n\nYi's distinct silhouette and colors: predominantly DEEP NAVY BLUE lamellar armor and knee-length split naval coat, medium slate-blue painted highlights, a narrow crimson waist sash, small muted gold wave-shaped belt medallion. A short asymmetrical NAVY commander's mantle with just a restrained red inner lining, rather than a large red cape; the navy outer mantle is clearly navy from the rear. Tapered Korean admiral's helmet with a long narrow SCARLET horsehair plume sweeping backward in one graceful arc, not Gwon's thick short red tuft. Navy cheek guards, refined brass rims, no huge shoulder plates. Curved Korean wooden bow and visible back quiver are his main readable equipment. No shield, no spear, no sword held in hand. Keep exactly this costume, face, proportions, plume and equipment in every cell.\n\nLayout: exactly four equal columns and four equal rows on an ACTUAL transparent RGBA background. Very generous fully transparent gutters. Each COMPLETE character, including plume, bow and every attack arrow, occupies at most 75% of cell height and 78% of cell width. Nothing touches a cell edge or another sprite. Consistent body size and foot baseline in each row. Preserve all feet and weapon tips.\nColumns in every row: 1 front three-quarter toward screen LOWER RIGHT; 2 back three-quarter toward UPPER RIGHT with the back clearly shown; 3 back three-quarter toward UPPER LEFT; 4 front three-quarter toward LOWER LEFT.\nRows: 1 standing ready holding bow; 2 walk with left foot forward; 3 visibly opposite walk with right foot forward; 4 firm balanced bow attack, bow held forward and arrow nocked/drawn along that column's facing direction. Keep bow-hand and draw-hand anatomically consistent. No loose airborne arrows and no glow.\nOutput ONLY the sixteen-sprite atlas, no comparison board. No other characters, text, labels, frame lines, floor, scenery, ground shadows, background color, checkerboard, dark rectangle, bloom or baked lighting effects. True alpha-zero empty background. The game supplies its own shadows.\nPriority: match the soft painterly tone of the other seven heroes while making Yi immediately distinguishable from the stocky red-caped shield-and-spear Gwon at small battlefield scale."
+  ]
+}

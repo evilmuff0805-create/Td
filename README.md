@@ -10,6 +10,8 @@
 
 [최신 그림 가이드](docs/ART.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
 
+이순신의 전장용 16포즈는 다른 영웅의 부드러운 톤에 맞춘 v2로 교체했습니다. 남색 망토·활·화살통으로 권율의 붉은 망토·창·방패와 구분합니다. [같은 크기 비교와 적용·검증](docs/YI_TONE_REFINEMENT.md)
+
 ![현재 전장의 최종 강화 건물](docs/screenshots/tower-stage-battle-max-a.png)
 
 ![유산 기본·2·3·최종 A/B 외형](docs/screenshots/tower-stages-bosingak.png)

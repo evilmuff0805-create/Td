@@ -2,7 +2,9 @@
 
 2026-10-10. 세종대왕·을지문덕·강감찬·권율·곽재우·안중근·단군왕검에 각각 16포즈, **새 그림 112개**를 추가했다. 기존 이순신과 합쳐 **기본 의복 영웅 8명 × 16 = 128포즈**를 정식 게임과 자유 전장에 연결했다. 건물은 모든 단계에서 높이 1.2칸을 유지한다.
 
-![기본 영웅의 공격 자세](screenshots/hero-poses-attack-front.jpg)
+후속 피드백으로 **이순신 16포즈를 v2로 다시 제작**했다. 비율·재질·명암을 다른 영웅에 맞추고 남색 망토·활·화살통으로 권율과 구분했다. 다른 일곱 영웅은 유지했다. 최신 미술과 검증은 [이순신 톤 수정](YI_TONE_REFINEMENT.md)에 있다.
+
+![이순신 v2를 포함한 기본 영웅 8명](screenshots/yi-tone-v2-all-heroes.jpg)
 
 ## 표현과 동작 범위
 
@@ -18,6 +20,7 @@
 
 | 영웅 | 배포 그림 | 원본 PNG | 최종 프롬프트·수정 이력 |
 |---|---|---|---|
+| 이순신 | [yi-directions-v2.webp](../assets/3d/fixed/yi-directions-v2.webp) | [원본](../assets/3d/fixed/source/yi-directions-v2.png) | [프롬프트](../assets/3d/fixed/yi-directions-v2.prompt.json) |
 | 세종대왕 | [sejong-directions-v1.webp](../assets/3d/fixed/sejong-directions-v1.webp) | [원본](../assets/3d/fixed/source/sejong-directions-v1.png) | [프롬프트](../assets/3d/fixed/sejong-directions-v1.prompt.json) |
 | 을지문덕 | [eulji-directions-v2.webp](../assets/3d/fixed/eulji-directions-v2.webp) | [원본](../assets/3d/fixed/source/eulji-directions-v2.png) | [프롬프트](../assets/3d/fixed/eulji-directions-v2.prompt.json) |
 | 강감찬 | [gang-directions-v1.webp](../assets/3d/fixed/gang-directions-v1.webp) | [원본](../assets/3d/fixed/source/gang-directions-v1.png) | [프롬프트](../assets/3d/fixed/gang-directions-v1.prompt.json) |
@@ -26,7 +29,7 @@
 | 안중근 | [ahn-directions-v1.webp](../assets/3d/fixed/ahn-directions-v1.webp) | [원본](../assets/3d/fixed/source/ahn-directions-v1.png) | [프롬프트](../assets/3d/fixed/ahn-directions-v1.prompt.json) |
 | 단군왕검 | [dangun-directions-v1.webp](../assets/3d/fixed/dangun-directions-v1.webp) | [원본](../assets/3d/fixed/source/dangun-directions-v1.png) | [프롬프트](../assets/3d/fixed/dangun-directions-v1.prompt.json) |
 
-이순신 원본·프롬프트는 기존 [고정 전장 프롬프트 기록](FIXED_BATTLE_ART_PROMPTS.json)에 있다. 을지문덕 v1은 경계 문제를 발견한 제작 이력으로 보존하며 전투에는 **v2만** 사용한다. 새 배포 WebP 7장의 합계는 **2,565,298바이트**, 이순신을 포함한 8장은 **3,094,492바이트**다. 품질 90, alphaQuality 100으로 인코딩했고 원본과 배포본의 알파 차이는 0픽셀이다.
+이순신 v1의 원본·프롬프트는 기존 [고정 전장 프롬프트 기록](FIXED_BATTLE_ART_PROMPTS.json)에 있다. 이순신 v1과 을지문덕 v1은 제작 이력으로 보존하며 현재 전투에는 각각 **v2만** 사용한다. 배포 WebP 7장의 합계는 **2,565,298바이트**, 새 이순신을 포함한 8장은 **3,065,178바이트**다. 품질 90, alphaQuality 100으로 인코딩했고 원본과 배포본의 알파 차이는 0픽셀이다.
 
 ## 경계·크기·그림자 처리
 
@@ -34,9 +37,9 @@
 
 `tools/hero-pose-assets.mjs`가 알파 연결 영역을 검사해 실제 경계를 기록한다. 여덟 시트 모두 큰 캐릭터 영역 16개이며, 알파 41 이상인 이웃 혼입·누락·중복 픽셀은 0이다. `src/3d/hero-pose-data.js`에 각 포즈의 경계를 명시하고, 런타임에서는 그림마다 **사방 12픽셀의 투명 여백**을 둔 캔버스로 분리한다. 축소 mipmap에 이웃 포즈가 들어가지 않는다.
 
-영웅별 준비 자세의 중앙 높이를 공통 배율로 삼아 망토·부채·공격 보폭 때문에 매번 몸이 커지거나 작아지는 것을 줄였다. 발 위치는 하단 24%의 알파 가중 중심으로 잡고, 넓은 공격 자세 네 곳은 Astra 검토에 따른 양발 바닥 중간 X좌표로 보정했다. 본체·투영 그림자·건물 뒤 실루엣은 포즈의 텍스처와 지오메트리를 함께 바꾼다. 일부 새 영웅 시트만 실패하면 해당 영웅은 기존 그림이나 모델로 대체하고 다른 영웅의 포즈는 유지한다.
+영웅별 준비 자세의 중앙 높이를 공통 배율로 삼아 망토·부채·공격 보폭 때문에 매번 몸이 커지거나 작아지는 것을 줄였다. 발 위치는 하단 24%의 알파 가중 중심으로 잡고, 강감찬의 넓은 공격 자세 한 곳은 Astra 검토에 따른 양발 바닥 중간 X좌표로 보정했다. 이순신 v1 전용 보정 세 곳은 v2로 교체하면서 제거했다. 본체·투영 그림자·건물 뒤 실루엣은 포즈의 텍스처와 지오메트리를 함께 바꾼다. 일부 새 영웅 시트만 실패하면 해당 영웅은 기존 그림이나 모델로 대체하고 다른 영웅의 포즈는 유지한다.
 
-## 검증 결과
+## 포즈 확장 당시 검증
 
 - 기존 검사와 새 동작 검사를 합쳐 **94개 통과**: 자체 14, 3D 41, 고정 그림 15, 정식 통합 16, 스킬 효과 8.
 - 별도 자산 검사: **8개 시트·128포즈**, 이웃 혼입·누락·중복 0, 알파 변경 0. [픽셀 검사](HERO_POSE_ASSET_VALIDATION.json).
@@ -47,7 +50,7 @@
 - 검사 탭의 콘솔 경고·오류는 0이었다. 기존 사용자 전투는 보존했고 모든 게임 검증은 `mute=1`로 진행했다. 정식 검증에서는 승패 보상을 발생시키지 않았다.
 - 서버용 번들과 단일 HTML 빌드 성공. 단일 HTML **22,471,662바이트**에 여덟 포즈 시트를 각각 한 번 포함하는지 확인했다. `file://` 직접 실행은 이번에 검증하지 않았다.
 
-전체 요약은 [HERO_DIRECTIONAL_ART_VALIDATION.json](HERO_DIRECTIONAL_ART_VALIDATION.json)에 있다.
+포즈 확장 당시 요약은 [HERO_DIRECTIONAL_ART_VALIDATION.json](HERO_DIRECTIONAL_ART_VALIDATION.json)에 있다. 이순신 v2 교체 후에는 고정 그림 15개 검사·128포즈 픽셀 검사와 두 빌드를 다시 실행했다. 비교 UI의 16가지 조합·사계절·414×896, 이순신·권율 자유 전투와 새 정식 배포본도 확인했다. 현재 단일 HTML은 **22,432,581바이트**다. [최신 검증](YI_TONE_REFINEMENT_VALIDATION.json).
 
 ```bash
 node tools/hero-pose-assets.mjs
@@ -60,6 +63,6 @@ node tools/build.mjs
 
 ## 비교 화면과 다음 작업
 
-서버 실행 후 [영웅 전장 포즈 비교](http://localhost:8080/dev/3d-hero-pose-review.html)에서 방향·동작·걷기 자세·계절을 바꿀 수 있다. 실제 전투와 같은 `FixedBattleArt.attachUnit/updateUnit`을 사용한다. 기존 관절 모델 비교 도구도 보존한다.
+서버 실행 후 [영웅 전장 포즈 비교](http://localhost:8080/dev/3d-hero-pose-review.html)에서 방향·동작·걷기 자세·계절을 바꿀 수 있다. 표시 메뉴로 영웅 8명·이순신과 권율·이순신만을 선택한다. 실제 전투와 같은 `FixedBattleArt.attachUnit/updateUnit`을 사용한다. 기존 관절 모델 비교 도구도 보존한다.
 
 다음 미술 범위는 병력·적장·의복의 방향별 그림, 더 자연스러운 보행과 공격 연결, 이동 좌표를 유지한 길 경계·지형 반복 개선이다. 현재 그림의 생성된 복식과 장비는 게임용 양식화 표현이며 정밀 역사 복원 자료로 취급하지 않는다.

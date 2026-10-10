@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-10",
+  "comparison": {
+    "selectedStates": 16,
+    "states": [
+      {
+        "motion": "idle",
+        "stride": "auto",
+        "col": 0,
+        "pose": 0
+      },
+      {
+        "motion": "idle",
+        "stride": "auto",
+        "col": 1,
+        "pose": 1
+      },
+      {
+        "motion": "idle",
+        "stride": "auto",
+        "col": 2,
+        "pose": 2
+      },
+      {
+        "motion": "idle",
+        "stride": "auto",
+        "col": 3,
+        "pose": 3
+      },
+      {
+        "motion": "walk",
+        "stride": "a",
+        "col": 0,
+        "pose": 4
+      },
+      {
+        "motion": "walk",
+        "stride": "a",
+        "col": 1,
+        "pose": 5
+      },
+      {
+        "motion": "walk",
+        "stride": "a",
+        "col": 2,
+        "pose": 6
+      },
+      {
+        "motion": "walk",
+        "stride": "a",
+        "col": 3,
+        "pose": 7
+      },
+      {
+        "motion": "walk",
+        "stride": "b",
+        "col": 0,
+        "pose": 8
+      },
+      {
+        "motion": "walk",
+        "stride": "b",
+        "col": 1,
+        "pose": 9
+      },
+      {
+        "motion": "walk",
+        "stride": "b",
+        "col": 2,
+        "pose": 10
+      },
+      {
+        "motion": "walk",
+        "stride": "b",
+        "col": 3,
+        "pose": 11
+      },
+      {
+        "motion": "attack",
+        "stride": "auto",
+        "col": 0,
+        "pose": 12
+      },
+      {
+        "motion": "attack",
+        "stride": "auto",
+        "col": 1,
+        "pose": 13
+      },
+      {
+        "motion": "attack",
+        "stride": "auto",
+        "col": 2,
+        "pose": 14
+      },
+      {
+        "motion": "attack",
+        "stride": "auto",
+        "col": 3,
+        "pose": 15
+      }
+    ],
+    "seasons": [
+      {
+        "poseStatus": "ready",
+        "season": "spring"
+      },
+      {
+        "poseStatus": "ready",
+        "season": "summer"
+      },
+      {
+        "poseStatus": "ready",
+        "season": "winter"
+      },
+      {
+        "poseStatus": "ready",
+        "season": "autumn"
+      }
+    ]
+  },
+  "freeBattle": {
+    "heroes": [
+      "yi",
+      "gwon"
+    ],
+    "stage": "s1",
+    "wave": 3,
+    "gate": 20,
+    "heroPoseStatus": "ready",
+    "heroPoseCount": 8,
+    "movementPoseObserved": "walk-left",
+    "paused": true
+  },
+  "standalone": {
+    "stage": "s2",
+    "heroes": [
+      "yi",
+      "sejong"
+    ],
+    "fixedArtStatus": "ready",
+    "heroPoseStatus": "ready",
+    "heroPoseCount": 8,
+    "pausedBeforeFirstWave": true
+  },
+  "mobile": {
+    "comparison": "yi-gwon",
+    "height": 896,
+    "poseStatus": "ready",
+    "scrollWidth": 414,
+    "width": 414
+  },
+  "console": [
+    {
+      "id": "40",
+      "logs": []
+    },
+    {
+      "id": "43",
+      "logs": []
+    },
+    {
+      "id": "44",
+      "logs": []
+    }
+  ],
+  "muted": true
+}

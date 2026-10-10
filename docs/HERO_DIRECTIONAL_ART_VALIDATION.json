@@ -143,5 +143,7 @@
     "Skins, troops and bosses do not yet use directional pose sheets.",
     "Longer attack transitions and exact artwork-specific weapon tips remain future refinement.",
     "Browser mobile viewport verification does not replace physical-device testing."
-  ]
+  ],
+  "milestone": "Base-hero pose expansion before Yi v2 repaint",
+  "latestRefinement": "YI_TONE_REFINEMENT_VALIDATION.json"
 }
