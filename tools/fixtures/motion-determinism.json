@@ -1,0 +1,83 @@
+{
+  "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+  "results": [
+    {
+      "mode": "solo",
+      "seed": 42,
+      "tick": 29590,
+      "lives": 18,
+      "result": {
+        "win": true,
+        "stars": 3,
+        "wavesCleared": 15,
+        "lives": 18
+      },
+      "stats": [
+        {
+          "kills": 306,
+          "elites": 96,
+          "bossKills": 1,
+          "heroKills": 88,
+          "builds": 31,
+          "branches": 0,
+          "skillsUsed": 26,
+          "combos": 5,
+          "earlyCalls": 0,
+          "perfectWaves": 14,
+          "tacticsBroken": 5,
+          "damage": 176159.69513688196,
+          "goldEarned": 5724,
+          "itemsUsed": 0
+        }
+      ],
+      "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721"
+    },
+    {
+      "mode": "coop",
+      "seed": 7,
+      "tick": 29082,
+      "lives": 14,
+      "result": {
+        "win": true,
+        "stars": 2,
+        "wavesCleared": 15,
+        "lives": 14
+      },
+      "stats": [
+        {
+          "kills": 158,
+          "elites": 46,
+          "bossKills": 0,
+          "heroKills": 46,
+          "builds": 19,
+          "branches": 0,
+          "skillsUsed": 23,
+          "combos": 6,
+          "earlyCalls": 0,
+          "perfectWaves": 13,
+          "tacticsBroken": 5,
+          "damage": 121024.19717372092,
+          "goldEarned": 3526,
+          "itemsUsed": 0
+        },
+        {
+          "kills": 138,
+          "elites": 48,
+          "bossKills": 1,
+          "heroKills": 70,
+          "builds": 17,
+          "branches": 0,
+          "skillsUsed": 23,
+          "combos": 6,
+          "earlyCalls": 0,
+          "perfectWaves": 13,
+          "tacticsBroken": 5,
+          "damage": 80578.307872296,
+          "goldEarned": 3526,
+          "itemsUsed": 0
+        }
+      ],
+      "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+    }
+  ]
+}

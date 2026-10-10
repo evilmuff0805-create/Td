@@ -9,9 +9,9 @@ main[data-comparison="yi-gwon"]{grid-template-columns:repeat(2,minmax(0,1fr));ma
 <label>표시<select id="comparison" aria-label="표시"><option value="all">영웅 8명</option><option value="yi-gwon">이순신 · 권율</option><option value="yi">이순신만</option></select></label>
 <label>방향<select id="direction" aria-label="방향"><option value="0">오른쪽 앞</option><option value="1">오른쪽 뒤</option><option value="2">왼쪽 뒤</option><option value="3">왼쪽 앞</option><option value="cycle">차례로 전환</option></select></label>
 <label>동작<select id="motion" aria-label="동작"><option value="idle">준비</option><option value="walk">걷기</option><option value="attack">공격</option></select></label>
-<label>걸음<select id="stride" aria-label="걸음"><option value="auto">두 자세 교대</option><option value="a">첫 자세</option><option value="b">둘째 자세</option></select></label>
+<label>걸음<select id="stride" aria-label="걸음"><option value="auto">발걸음 연결</option><option value="a">첫 자세</option><option value="b">둘째 자세</option></select></label>
 <label>계절<select id="season" aria-label="계절"><option value="winter">겨울</option><option value="spring">봄</option><option value="summer">여름</option><option value="autumn">가을</option></select></label>
 <button id="play" aria-pressed="false">동작 재생</button><a href="../3d.html?mute=1">전장으로 →</a>
 </div></header>
-<main id="pose-review"></main><footer><output id="status" aria-live="polite">그림을 불러오는 중…</output><br>걷기는 두 자세를 교대하는 방식입니다. <a href="3d-skin-pose-review.html">특수 의상 256포즈 비교 →</a> · <a href="3d-combat-pose-review.html">병력·적장 448포즈 비교 →</a> 이 화면에는 소리가 없습니다.</footer>
+<main id="pose-review"></main><footer><output id="status" aria-live="polite">그림을 불러오는 중…</output><br>재생하면 발걸음과 접지, 공격 후 복귀를 전장과 같은 방식으로 확인할 수 있습니다. 두 걸음의 원본 자세도 따로 볼 수 있습니다. <a href="3d-skin-pose-review.html">특수 의상 256포즈 비교 →</a> · <a href="3d-combat-pose-review.html">병력·적장 448포즈 비교 →</a> 이 화면에는 소리가 없습니다.</footer>
 <canvas id="pose-canvas" aria-label="영웅 8명의 방향별 전장 그림"></canvas><script type="module" src="../assets/3d/hero-pose-review.js"></script></body></html>

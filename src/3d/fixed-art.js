@@ -9,10 +9,12 @@ import { heroLookRoster,heroLooksKey } from './hero-look-roster.js';
 import { skinDef } from '../data/skins.js';
 import { SEASON_TREE_ART } from './season-tree-data.js';
 import { seasonalTreeIndex } from './seasonal-props.js';
+import { updateSpriteMotion } from './sprite-motion.js';
 
 export const FIXED_ART={yi:HERO_POSE_ART.yi.path,towers:'assets/3d/fixed/tower-tiers-v2.webp',winter:'assets/3d/fixed/winter-props-v2.webp'};
 const atlases=new Map();
 const up=new T.Vector3(0,1,0),right=new T.Vector3(1,0,0),direction=new T.Vector3(),inverse=new T.Quaternion();
+const shadowProjection=new T.Matrix4().set(1,.5,0,0,0,0,0,.042,0,-.75,1,0,0,0,0,1),shadowRotation=new T.Matrix4();
 
 // Trim within each cell, never across an adjacent pose. The lower foot centroid
 // is the common origin, so different cape silhouettes do not move a character.
@@ -180,9 +182,11 @@ export class FixedBattleArt {
     return this.materials.get(key);
   }
   projectShadow(shadow,image,root=null) {
-    const project=new T.Matrix4().set(1,.5,0,0,0,0,0,.042,0,-.75,1,0,0,0,0,1),rotation=new T.Matrix4().makeRotationFromQuaternion(this.world.camera.quaternion).scale(image.scale);
-    shadow.matrix.copy(project).multiply(rotation);
-    if(root)shadow.matrix.premultiply(new T.Matrix4().makeRotationFromQuaternion(root.quaternion.clone().invert()));
+    image.updateMatrix();
+    shadow.matrix.copy(image.matrix);
+    if(root)shadow.matrix.premultiply(shadowRotation.makeRotationFromQuaternion(root.quaternion));
+    shadow.matrix.premultiply(shadowProjection);
+    if(root)shadow.matrix.premultiply(shadowRotation.makeRotationFromQuaternion(root.quaternion.clone().invert()));
     shadow.geometry=image.geometry;shadow.material=this.imageShadowMaterial(image);shadow.matrixWorldNeedsUpdate=true;
   }
   prop(kind,height=2,variation=0) {
@@ -218,8 +222,8 @@ export class FixedBattleArt {
     image.material=image.material.clone();image.material.userData.owned3d=true;root.add(image);
     const hint=hero?new T.Mesh(image.geometry,new T.MeshBasicMaterial({map:image.material.map,color:'#7cb4e6',transparent:true,opacity:.5,alphaTest:.18,depthTest:true,depthFunc:T.GreaterDepth,depthWrite:false,toneMapped:false,side:T.DoubleSide})):null;
     if(hint){hint.material.userData.owned3d=true;hint.renderOrder=30;hint.raycast=()=>{};root.add(hint);}
-    this.shadow(root,hero?.85:.65,.5);const shadow=this.castImage(root,image);
-    root.userData.fixedImage={image,hint,height,art,kind,shadow,directional,faction:hero?'hero':ally?'ally':'enemy'};root.userData.labelHeight=height+.18;
+    const contact=this.shadow(root,hero?.85:.65,.5),shadow=this.castImage(root,image);
+    root.userData.fixedImage={image,hint,height,art,kind,contact,shadow,directional,faction:hero?'hero':ally?'ally':'enemy'};root.userData.labelHeight=height+.18;
   }
   attachTower(root,type,tier,branch) {
     if(!this.ready||root.userData.fixedImage)return;
@@ -235,16 +239,20 @@ export class FixedBattleArt {
     // A missing optional sheet still uses the previous illustration and markers.
     if(!dedicated&&tier>1){for(let i=0;i<tier-1;i++){const pennant=this.prop('jangseung',.28);pennant.position.set((i-(tier-2)/2)*.22,0,.25);root.add(pennant);}}
   }
-  updateUnit(root,entity,moving,attack,time) {
+  updateUnit(root,entity,moving,attack,time,motionInput=null) {
     const d=root.userData.fixedImage;if(!d)return;
     const {image,hint,art,height}=d;
     inverse.copy(root.quaternion).invert();image.quaternion.copy(this.world.camera.quaternion).premultiply(inverse);
     const screenRight=right.clone().applyQuaternion(this.world.camera.quaternion),screenUp=up.clone().applyQuaternion(this.world.camera.quaternion);
     direction.set(Math.sin(root.rotation.y),0,Math.cos(root.rotation.y));
     const dx=direction.dot(screenRight),dy=direction.dot(screenUp);
+    const motion=motionInput?updateSpriteMotion(d.motion,{...motionInput,kind:d.kind,attack,hp:entity.hp,
+      actionSeq:entity.actionSeq??motionInput.actionSeq,actionAt:entity.actionAt??motionInput.actionAt,
+      actionDuration:entity.actionDuration??motionInput.actionDuration,stunned:entity.stunT>0}):null;
+    if(motion){d.motion=motion.state;d.motionPhase=motion.phase;d.motionBlend=motion.blend;}
     if(root.userData.illustrationProxy)root.userData.weapons[1].position.copy(screenUp).multiplyScalar(height*.6).addScaledVector(screenRight,dx<0?-.18:.18).applyQuaternion(inverse);
     if(d.directional){
-      const col=dy>=0?(dx>=0?1:2):(dx>=0?0:3),row=attack>0?3:moving?1+Math.floor(time*5.5+(root.userData.phase??0))%2:0,index=row*4+col;
+      const col=dy>=0?(dx>=0?1:2):(dx>=0?0:3),row=motion?motion.row:attack>0?3:moving?1+Math.floor(time*5.5+(root.userData.phase??0))%2:0,index=row*4+col;
       const isolated=art.isolated?.[index],source=isolated?.canvas??art.canvas,frame=isolated?.frame??art.frames[index];
       image.geometry=this.geometry(source,frame,height);image.material.map=this.texture(source);
       image.material.color.copy(this.material(source,true).color);
@@ -253,12 +261,29 @@ export class FixedBattleArt {
       if(d.kind==='yi'){this.world.renderer.domElement.dataset.yiPose=d.pose;this.world.renderer.domElement.dataset.yiFacing=String(col);}
       if(d.faction!=='hero'){const dataset=this.world.renderer.domElement.dataset;dataset.combatPoseActive='true';dataset.combatPoseLastKind=d.kind;dataset.combatPoseLastState=d.pose;}
     }else image.scale.x=dx<0?-1:1;
-    image.position.y=moving?Math.abs(Math.sin(time*8+root.userData.phase))*.025:0;
+    image.position.set(0,motion?motion.lift:moving?Math.abs(Math.sin(time*8+(root.userData.phase??0)))*.025:0,0);
+    if(motion){
+      const sign=dx<0?-1:1;
+      image.quaternion.multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,0,1),-motion.lean*sign));
+      image.position.addScaledVector(screenRight.clone().applyQuaternion(inverse),motion.recoil*sign);
+    }
+    d.shadow.visible=true;if(d.contact)d.contact.visible=true;
     this.projectShadow(d.shadow,image,root);
     image.material.opacity=entity.stealth&&!entity.revealed?.25:1;
     if(hint){hint.geometry=image.geometry;hint.material.map=image.material.map;hint.quaternion.copy(image.quaternion);hint.position.copy(image.position);hint.scale.copy(image.scale);hint.material.color.set(entity.owner===1?'#efaa96':'#7cb4e6');hint.visible=!entity.dead;}
     if(root.userData.hp)root.userData.hp.position.copy(screenUp).multiplyScalar(height+.13).applyQuaternion(inverse);
     this.world.renderer.domElement.dataset.fixedArt='true';
+    if(motion)this.world.renderer.domElement.dataset.spriteMotion='distance-contact-recovery';
+  }
+  updateDeath(root,age,duration=1.3) {
+    const d=root.userData.fixedImage;if(!d)return;
+    const progress=T.MathUtils.clamp(age/duration,0,1),fall=1-Math.pow(1-Math.min(1,age/.3),3);
+    d.motion=null;
+    d.image.quaternion.copy(this.world.camera.quaternion).premultiply(root.quaternion.clone().invert());
+    d.image.rotateZ((root.userData.entity?.id%2?1:-1)*fall*.7);
+    d.image.position.set(0,-fall*.07,0);d.image.material.opacity=1-progress;
+    d.shadow.visible=progress<.5;if(d.contact)d.contact.visible=progress<.5;if(d.hint)d.hint.visible=false;
+    this.projectShadow(d.shadow,d.image,root);
   }
   anchor(root,pad=.12) {
     const d=root?.userData.fixedImage;if(!d)return null;

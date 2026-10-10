@@ -187,12 +187,12 @@ export class WinterWorld {
         root.userData.deathAt??=game.time;
         const age=game.time-root.userData.deathAt;
         root.userData.hp.visible=false;root.userData.rig.rotation.z=Math.min(1.45,age*4);root.visible=age<1.5;
-        if(root.userData.fixedImage){const d=root.userData.fixedImage;d.image.material.opacity=Math.max(0,1-age/1.5);d.image.position.y=-age*.18;if(d.hint)d.hint.visible=false;}
+        this.art?.updateDeath(root,age,1.5);root.userData.motionPositioned=false;
         continue;
       }
       delete root.userData.deathAt;root.visible=true;
       if(root.userData.ghostMaterials)for(const mat of root.userData.ghostMaterials)mat.opacity=e.revealed?1:.23;
-      const prev=root.position.clone();root.position.set(e.x,.035,e.y);
+      const prev=root.userData.motionPositioned?root.position.clone():new T.Vector3(e.x,.035,e.y);root.position.set(e.x,.035,e.y);root.userData.motionPositioned=true;
       const delta=root.position.clone().sub(prev);
       const move=hero?e.moving:ally?delta.lengthSq()>.00001:!e.blockedBy&&!(e.stunT>0);
       let target=null;
@@ -216,14 +216,17 @@ export class WinterWorld {
       if(hero){hp.userData.front.material.color.set(e.owner===1?'#edaa97':'#93d3c3');const ring=root.userData.ownerRing;ring.material.color.set(e.owner===1?'#ed9b87':'#8bcbed');ring.material.opacity=(selected?.kind==='hero'&&game.heroes[selected.h??0]?.id===e.id) ? .9 : .45;}
       hp.quaternion.copy(this.camera.quaternion).premultiply(root.quaternion.clone().invert());
       hp.userData.front.scale.x=.52*ratio;hp.userData.front.position.x=-.26*(1-ratio);
-      this.art?.attachUnit(root,e,hero,ally);this.art?.updateUnit(root,e,move,hero||ally?e.anim:cue?Math.max(0,cue.until-game.time):e.swing||0,poseTime);
+      this.art?.attachUnit(root,e,hero,ally);this.art?.updateUnit(root,e,move,hero||ally?e.anim:cue?Math.max(0,cue.until-game.time):e.swing||0,poseTime,
+        {x:e.x,z:e.y,targetX:e._x1,targetZ:e._y1,time:game.time,dt,frozen:dt===0||game.paused});
     }
     for(const [key,root] of this.units) if(!activeUnits.has(key)) {
       this.units.delete(key);this.pickables=this.pickables.filter((p)=>p!==root);root.userData.hp.visible=false;
       this.corpses.push({root,t:0});
     }
     for(let i=this.corpses.length-1;i>=0;i--) {
-      const c=this.corpses[i];c.t+=dt;c.root.rotation.z=Math.min(Math.PI/2,c.t*4);c.root.position.y=.03-c.t*.15;c.root.scale.multiplyScalar(Math.pow(.4,dt));
+      const c=this.corpses[i];c.t+=dt;
+      if(c.root.userData.fixedImage)this.art?.updateDeath(c.root,c.t);
+      else{c.root.rotation.z=Math.min(Math.PI/2,c.t*4);c.root.position.y=.03-c.t*.15;c.root.scale.multiplyScalar(Math.pow(.4,dt));}
       if(c.t>1.3){this.scene.remove(c.root);this.corpses.splice(i,1);this.disposeCharacter(c.root);}
     }
     this.crowd.update([...this.units.values(),...this.corpses.map(c=>c.root)]);
@@ -276,7 +279,7 @@ export class WinterWorld {
       if(!root){root=this.art?.unitProxy(mover,true)??movingModel(mover.kind);root.userData.phase=(mover.id%13)*.7;this.scene.add(root);this.scenery.set(key,root);}
       root.position.set(mover.x,.05,mover.y);root.rotation.y=Math.atan2(mover.dx,mover.dy);
       if(!root.userData.illustrationProxy)animateCharacter(root,time,true,0,dt);
-      this.art?.attachUnit(root,mover,false,true);this.art?.updateUnit(root,mover,true,0,time);
+      this.art?.attachUnit(root,mover,false,true);this.art?.updateUnit(root,mover,true,0,time,{x:mover.x,z:mover.y,time:game.time,dt,frozen:dt===0||game.paused});
     }
     for(const zone of game.zones) {
       const key=`z${zone.id}`;active.add(key);let root=this.scenery.get(key);

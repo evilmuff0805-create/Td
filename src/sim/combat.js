@@ -24,6 +24,14 @@ export function ev(s, k, o = {}) {
   s.events.push(o);
 }
 
+// Presentation metadata only: record the release already performed by the
+// simulation. Never defer damage, consume RNG, or change an attack cooldown.
+export function actionCue(s, actor, duration) {
+  actor.actionSeq = (actor.actionSeq || 0) + 1;
+  actor.actionAt = s.time;
+  actor.actionDuration = duration;
+}
+
 export const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
 export const d2 = (a, b) => (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
 

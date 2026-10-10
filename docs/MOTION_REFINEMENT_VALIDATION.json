@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-11",
+  "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+  "regressionTests": 173,
+  "motionTests": 15,
+  "deterministicCompleteBattles": 2,
+  "baselineHashesIdentical": true,
+  "approvedSpriteCount": 832,
+  "approvedArtChanged": false,
+  "buildingHeight": 1.2,
+  "localCoopPreserved": true,
+  "astraReview": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "issuesFixed": [
+      "late pause packet advanced animation clock",
+      "short dead-to-alive correction interpolated"
+    ],
+    "finalMandatoryIssues": 0
+  },
+  "browser": {
+    "testOrigin": "http://127.0.0.1:8092",
+    "officialOriginUntouched": "http://127.0.0.1:8080",
+    "checks": [
+      "hero walk/contact playback",
+      "1P right-click move",
+      "2P held Right move",
+      "2P A independent skill",
+      "1P mouse aimed skill",
+      "pause preserves cooldown and pose",
+      "2P E menu and construction"
+    ],
+    "gold": {
+      "p1Before": 156,
+      "p1After": 156,
+      "p2Before": 156,
+      "p2After": 86
+    },
+    "consoleWarnings": 0,
+    "consoleErrors": 0,
+    "screenshots": [
+      "screenshots/motion/hero-walk-contact.png",
+      "screenshots/motion/local-coop-before.png",
+      "screenshots/motion/local-coop-movement.png",
+      "screenshots/motion/local-coop-p2-build.png",
+      "screenshots/motion/local-coop-skills.png"
+    ]
+  },
+  "build": {
+    "standaloneBytes": 45627814,
+    "embeddedDirectionalSheets": 52,
+    "eachEmbeddedExactlyOnce": true
+  },
+  "limits": [
+    "existing poses connected; no newly drawn in-between animation",
+    "actual phones untested",
+    "external-network two-device test pending"
+  ]
+}

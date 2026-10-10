@@ -2,6 +2,7 @@ import * as T from 'three';
 import { HEROES,HERO_ORDER } from '../data/heroes.js';
 import { FixedBattleArt } from './fixed-art.js';
 import { SEASONS } from './seasons.js';
+import { previewMotion } from './sprite-motion.js';
 
 const byId=id=>document.getElementById(id),renderer=new T.WebGLRenderer({canvas:byId('pose-canvas'),antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=T.SRGBColorSpace;
@@ -19,7 +20,7 @@ const horizontalUp=new T.Vector3(0,1,0).applyQuaternion(camera.quaternion);horiz
 function facingYaw(col){const direction=horizontalRight.clone().multiplyScalar(col<2?1:-1).addScaledVector(horizontalUp,col===1||col===2?1:-1);return Math.atan2(direction.x,direction.z);}
 let playing=false,elapsed=0,last=0,request=0,width=0,height=0,frames=0;
 function draw(now=0){
-  if(playing&&last)elapsed+=Math.min(.05,(now-last)/1000);last=now;
+  const frameDt=playing&&last?Math.min(.05,(now-last)/1000):0;elapsed+=frameDt;last=now;
   if(width!==innerWidth||height!==innerHeight){width=innerWidth;height=innerHeight;renderer.setSize(width,height,false);}
   const motion=byId('motion').value,season=byId('season').value,dir=byId('direction').value,stride=byId('stride').value,comparison=byId('comparison').value;
   byId('pose-review').dataset.comparison=comparison;
@@ -31,8 +32,9 @@ function draw(now=0){
     card.hidden=comparison==='yi'?kind!=='yi':comparison==='yi-gwon'&&kind!=='yi'&&kind!=='gwon';
     if(card.hidden)continue;
     if(art.ready){
-      art.attachUnit(root,entity,true,false);root.rotation.y=facingYaw(col);art.updateUnit(root,entity,motion==='walk',motion==='attack'?.2:0,time);
-      const d=root.userData.fixedImage;card.dataset.pose=String(d.poseIndex);card.dataset.facing=String(d.facing);card.dataset.directional=String(d.directional);
+      art.attachUnit(root,entity,true,false);root.rotation.y=facingYaw(col);const playback=(playing||elapsed>0)&&(motion!=='walk'||stride==='auto')?previewMotion(motion,elapsed,frameDt,entity.heroId??entity.kind??entity.type):null;
+      art.updateUnit(root,entity,motion==='walk',playback?.attack??(motion==='attack'?.2:0),time,playback);
+      const d=root.userData.fixedImage;card.dataset.pose=String(d.poseIndex);card.dataset.gait=String(d?.motionPhase??0);card.dataset.facing=String(d.facing);card.dataset.directional=String(d.directional);
     }
     const r=viewport.getBoundingClientRect();if(r.width<=0||r.height<=0||r.bottom<0||r.top>height)continue;
     const half=Math.max(1.3,1.32*r.height/r.width);camera.left=-half*r.width/r.height;camera.right=half*r.width/r.height;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();

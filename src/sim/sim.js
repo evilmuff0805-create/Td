@@ -12,7 +12,7 @@ import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
 import { getMap, posAt, tileAt, nearestOnPath, T_BUILD } from './map.js';
 import { rand, randInt, makeRng } from './rng.js';
 import {
-  ev, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
+  ev, actionCue, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
   isTargetable, hurtHero, hurtSummon, releaseBlocker, releaseEnemy, findEnemy, findBlocker, recalcHero,
   addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn, addSummon,
 } from './combat.js';
@@ -123,7 +123,7 @@ export function applyCommand(s, c) {
       const h = s.heroes[c.h];
       if (!canControlHero(s, c.p, h) || h.dead || h.skillCd > 0) return;
       h.skillCd = HEROES[h.heroId].skill.cd;
-      h.anim = 0.35;
+      h.anim = 0.35; actionCue(s, h, h.anim);
       castHeroSkill(s, h, c.x, c.y);
       return;
     }
@@ -131,7 +131,7 @@ export function applyCommand(s, c) {
       const h = s.heroes[c.h];
       if (!canControlHero(s, c.p, h) || h.dead || h.ultCd > 0) return;
       h.ultCd = HEROES[h.heroId].ult.cd;
-      h.anim = 0.5;
+      h.anim = 0.5; actionCue(s, h, h.anim);
       castHeroUlt(s, h, c.x, c.y);
       return;
     }
@@ -569,7 +569,7 @@ function updateEnemies(s) {
           e.atkCd = 1;
           if (b.heroId) hurtHero(s, b, e.atk);
           else hurtSummon(s, b, e.atk * (b.tower && e.tier === 4 ? 2 : 1));
-          e.swing = 0.25;
+          e.swing = 0.25; actionCue(s, e, e.swing);
           ev(s, 'enemyStrike', { enemy: e.id, x1: e.x, y1: e.y, x2: b.x, y2: b.y });
         }
         continue;
@@ -620,7 +620,7 @@ function enemyAbilities(s, e, def) {
         o.healT = s.time;
         healed++;
       }
-      if (healed) {e.swing = .25;ev(s, 'enemyHeal', { enemy: e.id, x: e.x, y: e.y, r: def.heal.range });}
+      if (healed) {e.swing = .25;actionCue(s, e, e.swing);ev(s, 'enemyHeal', { enemy: e.id, x: e.x, y: e.y, r: def.heal.range });}
     }
   }
   if (def.shoot) {
@@ -649,7 +649,7 @@ function enemyAbilities(s, e, def) {
         const dmg = def.shoot.dmg * e.shotMult * (1 + 0.05 * (e.wave - 1));
         if (tgt.heroId) hurtHero(s, tgt, dmg);
         else hurtSummon(s, tgt, dmg);
-        e.swing = .25;
+        e.swing = .25; actionCue(s, e, e.swing);
         ev(s, 'shot', { enemy: e.id, x1: e.x, y1: e.y, x2: tgt.x, y2: tgt.y });
         e.abT = def.shoot.cd;
       } else e.abT = 0.3;
@@ -816,7 +816,7 @@ function updateHeroes(s) {
 
 function heroAttack(s, h, def, e) {
   h.cd = def.cd;
-  h.anim = 0.25;
+  h.anim = 0.25; actionCue(s, h, h.anim);
   h.facing = e.x >= h.x ? 1 : -1;
   h.atkCount++;
   const dmg = h.dmg * (h.buffs.dmgT > 0 ? 2 : 1);
@@ -909,7 +909,7 @@ function updateSummons(s) {
         const tw = m.tower ? s.towers.find((t) => t.id === m.tower) : null;
         damage(s, e, m.dmg, m.dtype || 'phys', tw ? { p: m.owner, kind: 'tower', ref: tw } : { p: m.owner, kind: 'summon' });
         m.cd = m.rate || 1;
-        m.anim = 0.2;
+        m.anim = 0.2; actionCue(s, m, m.anim);
       }
     }
     if (m.anim > 0) m.anim -= DT;

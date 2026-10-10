@@ -9,6 +9,13 @@ const PKINDS = ['arrow', 'bolt', 'orb', 'shell', 'bigshell', 'rocket', 'meteor',
 const r2 = (v) => Math.round(v * 100) / 100;
 const r1 = (v) => Math.round(v * 10) / 10;
 
+function visualPosition(previous,x,y) {
+  // Respawns/large corrections snap once instead of walking across the map.
+  const jump=previous&&Math.hypot(x-(previous._x1??previous.x),y-(previous._y1??previous.y))>1.25;
+  const sx=previous&&!jump?previous.x:x,sy=previous&&!jump?previous.y:y;
+  return {x:sx,y:sy,_x0:sx,_y0:sy,_x1:x,_y1:y};
+}
+
 function towerStatic(t) {
   return [t.id, TOWER_ORDER.indexOf(t.type), t.x, t.y, t.level, t.branch || '', t.owner, t.mode, t.synIds, t.kills, t.spent[0] | 0, t.spent[1] | 0, t.dmgDone | 0, t.syn];
 }
@@ -34,17 +41,19 @@ export class SnapshotEncoder {
         h.id, h.owner, h.heroId, r2(h.x), r2(h.y), h.hp | 0, h.maxHp | 0, h.lv, h.dead ? 1 : 0, r1(h.respawn), h.facing,
         h.moving ? 1 : 0, h.anim > 0 ? 1 : 0, r1(h.skillCd), r1(h.ultCd),
         (h.buffs.invulnT > 0 ? 1 : 0) | (h.buffs.dmgT > 0 ? 2 : 0) | (h.buffs.drT > 0 ? 4 : 0) | (h.buffs.gwakT > 0 ? 8 : 0), h.xp | 0, h.slot, h.skin || '',
+        h.actionSeq || 0, r2(h.actionAt ?? -9), h.actionDuration || 0,
       ]),
       e: s.enemies.map((e) => [
         e.id, ENEMY_IDS.indexOf(e.type), r2(e.x), r2(e.y), e.hp | 0, e.maxHp | 0,
         (e.stunT > 0 ? 1 : 0) | (e.slowT > 0 || e.auraSlow > 0.05 ? 2 : 0) | (e.vulnT > 0 ? 4 : 0) | (e.stealth ? 8 : 0) | (e.revealed ? 16 : 0) |
           (e.blockedBy ? 32 : 0) | (e.enraged ? 64 : 0) | (e.swing > 0 ? 128 : 0) | (e.iceT > 0 ? 256 : 0),
         e.shield | 0, r1(e.dx), r1(e.dy),
+        e.actionSeq || 0, r2(e.actionAt ?? -9), e.actionDuration || 0,
       ]),
       T: sendT ? T : null,
       td: s.towers.map((t) => [t.id, r2(t.angle), t.flash > 0 ? 1 : 0, r1(t.disabledT), t.beam, r2(t.beamPow || 0), r2(t.rangeMult || 1), Number.isFinite(t.dmgMult) ? r2(t.dmgMult) : null, Number.isFinite(t.asMult) ? r2(t.asMult) : null]),
       pr: s.projectiles.map((p) => [PKINDS.indexOf(p.kind), r2(p.x), r2(p.y), r2(p.a || 0), r2(p.k || 0), p.sx !== undefined ? r2(p.sx) : null, p.sy !== undefined ? r2(p.sy) : null, p.hit ? p.hit.r : 0, p.id, p.mode === 'lob' ? 1 : p.mode === 'drop' ? 2 : 0, p.crit ? 1 : 0, p.hue || '', p.hit?.single ? 1 : 0, p.src?.kind === 'tower' ? p.src.ref?.id ?? p.src.id ?? null : null, p.target ?? null, p.src?.kind === 'hero' ? p.src.ref?.id ?? p.src.id ?? null : null, p.chained ? 1 : 0]),
-      su: s.summons.map((m) => [m.id, m.kind, r2(m.x), r2(m.y), m.hp | 0, m.maxHp | 0, m.anim > 0 ? 1 : 0, m.owner]),
+      su: s.summons.map((m) => [m.id, m.kind, r2(m.x), r2(m.y), m.hp | 0, m.maxHp | 0, m.anim > 0 ? 1 : 0, m.owner, m.actionSeq || 0, r2(m.actionAt ?? -9), m.actionDuration || 0]),
       z: s.zones.map((z) => [z.id, z.kind, r2(z.x), r2(z.y), z.r, r1(z.t), z.max]),
       m: s.movers.map((m) => [m.id, m.kind, r2(m.x), r2(m.y), r2(m.dx), r2(m.dy)]),
       ev: events,
@@ -80,22 +89,24 @@ export function applySnapshot(v, snap) {
   }));
   const prevH = new Map(v.heroes.map((h) => [h.id, h]));
   v.heroes = snap.h.map((a) => {
-    const [id, owner, heroId, x, y, hp, maxHp, lv, dead, respawn, facing, moving, anim, skillCd, ultCd, bm, xp, slot, skin] = a;
+    const [id, owner, heroId, x, y, hp, maxHp, lv, dead, respawn, facing, moving, anim, skillCd, ultCd, bm, xp, slot, skin, actionSeq, actionAt, actionDuration] = a;
     const p = prevH.get(id);
     return {
-      id, owner, heroId, x: p ? p.x : x, y: p ? p.y : y, _x0: p ? p.x : x, _y0: p ? p.y : y, _x1: x, _y1: y,
+      id, owner, heroId, ...visualPosition(p?.dead&&!dead?null:p,x,y),
       hp, maxHp, lv, dead: !!dead, respawn, facing, moving: !!moving, anim: anim ? 0.2 : 0, skillCd, ultCd, xp, slot, skin: skin || null,
+      actionSeq, actionAt, actionDuration,
       buffs: { invulnT: bm & 1 ? 1 : 0, dmgT: bm & 2 ? 1 : 0, drT: bm & 4 ? 1 : 0, gwakT: bm & 8 ? 1 : 0 },
     };
   });
   const prevE = new Map(v.enemies.map((e) => [e.id, e]));
-  v.enemies = snap.e.map(([id, ti, x, y, hp, maxHp, f, shield, dx, dy]) => {
+  v.enemies = snap.e.map(([id, ti, x, y, hp, maxHp, f, shield, dx, dy, actionSeq, actionAt, actionDuration]) => {
     const p = prevE.get(id);
     const type = ENEMY_IDS[ti];
     return {
-      id, type, tier: ENEMIES[type].tier, x: p ? p.x : x, y: p ? p.y : y, _x0: p ? p.x : x, _y0: p ? p.y : y, _x1: x, _y1: y,
+      id, type, tier: ENEMIES[type].tier, ...visualPosition(p,x,y),
       hp, maxHp, stunT: f & 1 ? 1 : 0, slowT: f & 2 ? 1 : 0, auraSlow: 0, vulnT: f & 4 ? 1 : 0, stealth: !!(f & 8), revealed: !!(f & 16),
       blockedBy: f & 32 ? 1 : 0, enraged: !!(f & 64), swing: f & 128 ? 0.2 : 0, iceT: f & 256 ? 1 : 0, shield, dx, dy,
+      actionSeq, actionAt, actionDuration,
     };
   });
   if (snap.T) {
@@ -114,7 +125,12 @@ export function applySnapshot(v, snap) {
     kind: PKINDS[ki], x, y, a, k, sx: sx ?? undefined, sy: sy ?? undefined, hit: { r, single: !!single }, id, mode: mode === 1 ? 'lob' : mode === 2 ? 'drop' : 'homing', crit: !!crit, hue,
     ...(towerId != null ? {src:{kind:'tower',id:towerId}} : heroId != null ? {src:{kind:'hero',id:heroId}} : {}), target: target ?? undefined, chained: !!chained,
   }));
-  v.summons = snap.su.map(([id, kind, x, y, hp, maxHp, anim, owner]) => ({ id, kind, x, y, hp, maxHp, anim: anim ? 0.2 : 0, owner }));
+  const prevSu = new Map(v.summons.map(m => [m.id, m]));
+  v.summons = snap.su.map(([id, kind, x, y, hp, maxHp, anim, owner, actionSeq, actionAt, actionDuration]) => {
+    const p = prevSu.get(id);
+    return { id, kind, ...visualPosition(p,x,y),
+      hp, maxHp, anim: anim ? 0.2 : 0, owner, actionSeq, actionAt, actionDuration };
+  });
   v.zones = snap.z.map(([id, kind, x, y, r, t, max]) => ({ id, kind, x, y, r, t, max }));
   v.movers = snap.m.map(([id, kind, x, y, dx, dy]) => ({ id, kind, x, y, dx, dy }));
   v.result = snap.res;
@@ -128,6 +144,10 @@ export function lerpView(v, a) {
     o.y = o._y0 + (o._y1 - o._y0) * k;
   }
   for (const o of v.heroes) {
+    o.x = o._x0 + (o._x1 - o._x0) * k;
+    o.y = o._y0 + (o._y1 - o._y0) * k;
+  }
+  for (const o of v.summons) {
     o.x = o._x0 + (o._x1 - o._x0) * k;
     o.y = o._y0 + (o._y1 - o._y0) * k;
   }

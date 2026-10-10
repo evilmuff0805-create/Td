@@ -67,7 +67,8 @@ await test('실제 병력 루트 28종은 네 방향과 네 동작 448포즈·�
 });
 await test('실제 적군의 사격 예고·은신·기절·사망 정리가 포즈와 함께 유지된다',()=>{
   const {world,art}=context(),game=newWinterGame();game.heroes=[];game.towers=[];const enemy=spawnEnemy(game,'teppo',0,1);enemy.x=12;enemy.y=7;enemy.stealth=true;enemy.revealed=false;
-  world.sync(game,0,DT,null);const root=world.units.get(`e${enemy.id}`),d=root.userData.fixedImage;assert.match(d.pose,/walk/);assert.equal(d.image.material.opacity,.25);
+  world.sync(game,0,DT,null);const root=world.units.get(`e${enemy.id}`),d=root.userData.fixedImage;assert.equal(d.pose,'idle','생성 위치를 이동 거리로 세지 않음');assert.equal(d.image.material.opacity,.25);
+  const walking=new Set();for(let i=1;i<=30;i++){enemy.x+=.02;game.time=i*DT;world.sync(game,game.time,DT,null);walking.add(d.pose);}assert.ok(walking.has('walk-left')&&walking.has('walk-right')&&walking.has('idle'),'실제 거리에 맞춘 두 걸음과 접지');
   const event={k:'shot',enemy:enemy.id,x1:12,y1:7,x2:15,y2:8};world.cueEnemies([event],0);game.time=.1;world.sync(game,.1,DT,null);assert.equal(d.pose,'attack');root.updateMatrixWorld(true);
   let line;world.fx.line=(...args)=>line=args;world.firingLine(event);const muzzle=root.userData.weapons[1].getWorldPosition(new T.Vector3());assert.ok(Math.abs(line[0]-muzzle.x)<1e-8&&Math.abs(line[1]-muzzle.z)<1e-8&&Math.abs(line[7]-muzzle.y)<1e-8);
   enemy.revealed=true;enemy.stunT=3;game.time=1;world.sync(game,1,DT,null);const clock=root.userData.enemyPoseTime;assert.equal(d.pose,'idle');assert.equal(d.image.material.opacity,1);game.time=1.2;world.sync(game,1.2,DT,null);assert.equal(root.userData.enemyPoseTime,clock);
@@ -76,7 +77,8 @@ await test('실제 적군의 사격 예고·은신·기절·사망 정리가 포
 await test('실제 거북선과 전령은 이동 포즈를 사용하고 만료 때 개인 재질만 해제한다',()=>{
   const {world,art}=context(),game=newWinterGame();game.towers=[];game.heroes[0].ultCd=0;applyCommand(game,{t:'heroUlt',p:0,h:0});game.courier={sent:false,at:0,path:0};step(game);
   assert.deepEqual(new Set(game.movers.map(m=>m.kind)),new Set(['turtle','courier']));WinterWorld.prototype.combatScenery.call(world,game,game.time,DT);let privateDisposals=0,sharedDisposals=0;
-  for(const mover of game.movers){const root=world.scenery.get(`m${mover.id}`),d=root.userData.fixedImage;assert.equal(d.art,art.combatPoses.ally[mover.kind]);assert.match(d.pose,/walk/);assert.equal(root.position.x,mover.x);d.image.material.addEventListener('dispose',()=>privateDisposals++);d.image.material.map.addEventListener('dispose',()=>sharedDisposals++);}
+  for(const mover of game.movers){const root=world.scenery.get(`m${mover.id}`),d=root.userData.fixedImage;assert.equal(d.art,art.combatPoses.ally[mover.kind]);assert.equal(d.pose,'idle');assert.equal(root.position.x,mover.x);d.image.material.addEventListener('dispose',()=>privateDisposals++);d.image.material.map.addEventListener('dispose',()=>sharedDisposals++);}
+  for(let i=0;i<4;i++){step(game);WinterWorld.prototype.combatScenery.call(world,game,game.time,DT);}for(const mover of game.movers)assert.ok(world.scenery.get(`m${mover.id}`).userData.fixedImage.motionPhase>0,'실제 이동 뒤에 보행을 시작');
   for(let i=0;i<900&&game.movers.length;i++){step(game);WinterWorld.prototype.combatScenery.call(world,game,game.time,DT);}assert.equal(game.movers.length,0);assert.equal(privateDisposals,2);assert.equal(sharedDisposals,0);world.reset();art.dispose();assert.equal(sharedDisposals,2);
 });
 await test('한 병종의 방향 그림이 빠져도 다른 병종과 대체 그림은 독립적으로 동작한다',()=>{
