@@ -17,7 +17,7 @@ export class Renderer3D {
     this.frames=0;this.fpsAt=performance.now();
   }
   setup(stageId, opts = {}) {
-    this.world = new WinterWorld(this.canvas, STAGE_BY_ID[stageId]);
+    this.world = new WinterWorld(this.canvas, STAGE_BY_ID[stageId], 'auto', {heroLooks:opts.heroLooks});
     this.world.quality(opts.quality !== 'low');
     if (opts.mood === 'bright') {
       this.world.hemi.intensity = 1.9; this.world.renderer.toneMappingExposure *= 1.12;
@@ -42,8 +42,10 @@ export class Renderer3D {
     this.p2Preview.rotation.x = -Math.PI / 2; this.p2Preview.visible = false; this.world.scene.add(this.p2Preview);
   }
   events(list) { this.pending.push(...list); }
+  prepareView(view) { this.world.prepareHeroLooks(view.heroes); }
   get loading() { return this.world?.art?.loading === true; }
   render(view, ui, dt) {
+    this.prepareView(view);
     const game = battleView(view), world = this.world, selected = selectedEntity(game, ui);
     this.loadingLayer.hidden=!this.loading;
     if(this.loading){this.loadingLayer.textContent=ui.assetWaitRemote?'전장 그림을 준비하고 있습니다…\n접속한 전투 상태를 동기화하고 있습니다.':'전장 그림을 준비하고 있습니다…';this.pending.length=0;world.draw(ui.clock,dt);return;}

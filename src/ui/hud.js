@@ -63,7 +63,7 @@ export class GameUI {
     this.buildDom();
     try {
       this.renderer = new rendererClass(this.cv, { overlay: this.overlay, onTowerSelect: id => { if (!this.targeting) this.openTowerPanel(id); }, onBuild: (x,y) => { if(this.canBuildAt(x,y)){this.cancelTargeting();this.openBuildMenu(x,y);} } });
-      this.renderer.setup(session.stageId, { mood: profile.settings.mood, quality: profile.settings.quality });
+      this.renderer.setup(session.stageId, { mood: profile.settings.mood, quality: profile.settings.quality, heroLooks:session.view.heroes });
     } catch (error) {
       if (!this.is3d) throw error;
       this.renderer?.destroy?.();
@@ -293,6 +293,7 @@ export class GameUI {
     const dt = Math.min(0.1, (t - this.last) / 1000);
     this.last = t;
     this.ui.clock += dt;
+    this.renderer.prepareView?.(this.s.view);
     const waitingForRenderer = this.renderer.loading === true;
     this.ui.assetWaitRemote = this.s.kind === 'guest';
     this.bottom.inert = waitingForRenderer;

@@ -22,6 +22,8 @@
     "test:hero-art": "node tools/hero-pose-assets.mjs",
     "test:combat-art": "node tools/test-combat-art.mjs",
     "test:combat-assets": "node tools/combat-pose-assets.mjs",
+    "test:skin-art": "node tools/test-skin-art.mjs",
+    "test:skin-assets": "node tools/skin-pose-assets.mjs",
     "test:effects": "node tools/test-effects.mjs",
     "test:enemies": "node tools/test-enemies.mjs",
     "test:campaign": "node tools/test-campaign.mjs",

@@ -1,0 +1,130 @@
+[
+  {
+    "heroId": "yi",
+    "id": "yi_white",
+    "name": "백의종군",
+    "version": 2,
+    "referenceVersion": 2,
+    "costume": "Change the main padded armor coat and outer cape to warm ivory linen (#e9e6dc), with blue-gray seams and navy cape lining, restrained aged brass fasteners. Keep the long crimson helmet plume, navy helmet, bow and quiver. The pale cloth reads as humble field clothing, with supple stitched padding rather than shiny white plastic."
+  },
+  {
+    "heroId": "yi",
+    "id": "yi_gold",
+    "name": "금빛 전설",
+    "version": 2,
+    "referenceVersion": 2,
+    "costume": "Change the brigandine coat to softly brushed antique gold plates over deep navy cloth; warm ochre seams and muted bronze rivets. Keep the large navy cape with burgundy lining, long crimson plume, bow and quiver. Matte metal highlights, no glowing gold aura."
+  },
+  {
+    "heroId": "sejong",
+    "id": "sejong_blue",
+    "name": "청룡포",
+    "version": 2,
+    "referenceVersion": 1,
+    "costume": "Change the entire royal dragon robe and sleeves from red to a rich muted cobalt blue (#2d5b8a), retaining raised antique gold dragon roundels, ivory collar, jade belt and tassel. Keep black winged royal hat and blue book."
+  },
+  {
+    "heroId": "sejong",
+    "id": "sejong_gold",
+    "name": "금빛 전설",
+    "version": 2,
+    "referenceVersion": 1,
+    "costume": "Change the royal robe and sleeves to rich old-gold brocade (#caa12a) with dark ochre folds, subdued gold dragon embroidery, ivory collar and jade belt. Keep black winged royal hat and blue book; silk is satin with broad soft highlights, never neon yellow."
+  },
+  {
+    "heroId": "eulji",
+    "id": "eulji_iron",
+    "name": "고구려 철기",
+    "version": 1,
+    "referenceVersion": 2,
+    "costume": "Change the green armor and coat panels to weathered charcoal iron (#4a4f5c) with blue-gray sleeves, restrained bronze edging. Change cape to deep slate blue. Preserve white helmet plume, feather fan, dark beard, ornamented general helmet and all armor structure."
+  },
+  {
+    "heroId": "eulji",
+    "id": "eulji_gold",
+    "name": "금빛 전설",
+    "version": 1,
+    "referenceVersion": 2,
+    "costume": "Change armor and tunic to brushed antique gold and ochre with deep shadowed bronze plate seams. Retain dark teal cape, white helmet plume and ivory feather fan so silhouette remains distinct. Gold metal softly reflects, no glow."
+  },
+  {
+    "heroId": "gang",
+    "id": "gang_crimson",
+    "name": "귀주의 붉은 별",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change purple cape and purple cloth panels to deep wine-crimson (#8a2a2a), with muted vermilion sleeve folds. Keep charcoal lamellar armor, antique gold edging, abundant white hair and beard, sword and round dark shield."
+  },
+  {
+    "heroId": "gang",
+    "id": "gang_gold",
+    "name": "금빛 전설",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change main armor plates and coat trim to brushed antique gold with dark ochre shadows. Keep deep purple cape and sleeves, flowing white hair and beard, sword and dark round shield with gold boss. Distinct elderly general identity, not a uniform yellow recolor."
+  },
+  {
+    "heroId": "gwon",
+    "id": "gwon_hill",
+    "name": "행주 산성",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change red cape, robe cloth and sleeves to field olive green (#556b3a) with darker forest-green cape shadows and subdued warm brass trim. Keep steel armor, crimson helmet plume and spear tassel, the long spear and large round shield."
+  },
+  {
+    "heroId": "gwon",
+    "id": "gwon_gold",
+    "name": "금빛 전설",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change torso, skirt and shoulder armor to muted brushed antique gold plates with bronze seams. Keep large deep crimson cape, red plume and spear tassel, long spear, dark round shield and black beard. No bow or quiver."
+  },
+  {
+    "heroId": "gwak",
+    "id": "gwak_black",
+    "name": "흑의 의병",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change the red long robe and sleeves to rich ink charcoal (#2c2b33) with cool slate highlights (#3a3944) and a slightly darker sash. Keep ivory collar, black broad gat hat, wood bow, leather quiver, short dark moustache and beard. Fabric folds remain readable and soft."
+  },
+  {
+    "heroId": "gwak",
+    "id": "gwak_gold",
+    "name": "금빛 전설",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change the long red robe and sleeves to muted golden ochre brocade with brown-gold folds, retaining black sash, ivory collar, black broad gat hat, wood bow and leather quiver. Keep the cloth soft, not metallic armor."
+  },
+  {
+    "heroId": "ahn",
+    "id": "ahn_militia",
+    "name": "대한의군 군복",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change black long coat, waistcoat and trousers to restrained military olive wool (#4a5a3a), coat sleeves darker olive (#3e4c30), subtle brown leather belt, muted seams. Keep white shirt collar, dark tie, swept dark hair, neat moustache and small one-handed pistol. Keep the same lapels, coat length and silhouette; no helmet."
+  },
+  {
+    "heroId": "ahn",
+    "id": "ahn_gold",
+    "name": "금빛 전설",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change long coat and waistcoat to muted old-gold wool cloth with ochre shadows and bronze buttons, dark trousers, white shirt and dark tie. Keep swept dark hair, neat moustache, same lapelled coat shape and small one-handed pistol. No armor, no glow."
+  },
+  {
+    "heroId": "dangun",
+    "id": "dangun_sky",
+    "name": "천제의 푸른 옷",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change ivory robe and sleeves to deep sky-blue cloth (#3a6a9a) with lighter blue sleeve folds (#4a7aaa), retaining muted jade embroidered borders and bronze belt bells. Keep flowing white hair and long white beard, crown and ceremonial posture."
+  },
+  {
+    "heroId": "dangun",
+    "id": "dangun_gold",
+    "name": "금빛 전설",
+    "version": 1,
+    "referenceVersion": 1,
+    "costume": "Change main ivory robe and sleeves to muted antique golden silk with ochre shadows, retaining jade-green embroidered border panels, bronze belt bells and crown. Keep flowing white hair and beard bright ivory; do not tint hair gold."
+  }
+]

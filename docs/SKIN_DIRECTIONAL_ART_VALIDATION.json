@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-11",
+  "milestone": "16 special costumes in the approved painted fixed-camera hero style",
+  "scope": {
+    "specialCostumes": 16,
+    "newPreparedPoses": 256,
+    "basePosesUnchanged": 576,
+    "totalPreparedPoses": 832,
+    "landmarkHeightAllTiers": 1.2,
+    "heroArtBaseline": "3714d2634cd450f291578774b66e4d5229f9c1b1",
+    "basicHeroArtUnchanged": true,
+    "representation": "fixed-camera 2.5D sprites on actual Three.js terrain"
+  },
+  "generation": {
+    "mode": "built-in imagegen edits of approved basic hero sheets",
+    "finalDeliveryBytes": 5677748,
+    "sourceDirectory": "assets/3d/fixed/skins/source/",
+    "sourceAndFinalPromptIndex": "SKIN_DIRECTIONAL_ART.md",
+    "alphaPreserved": true,
+    "sharpUse": "WebP encoding and pixel analysis only",
+    "rejectedVersionsPreserved": [
+      "yi_white-directions-v1",
+      "yi_gold-directions-v1",
+      "sejong_blue-directions-v1",
+      "sejong_gold-directions-v1"
+    ],
+    "finalReplacements": [
+      "yi_white-directions-v2",
+      "yi_gold-directions-v2",
+      "sejong_blue-directions-v2",
+      "sejong_gold-directions-v2"
+    ]
+  },
+  "assetValidation": {
+    "details": "SKIN_POSE_ASSET_VALIDATION.json",
+    "newPoses": 256,
+    "foreignVisiblePixels": 0,
+    "uncoveredVisiblePixels": 0,
+    "duplicateVisiblePixels": 0,
+    "outerBorderVisiblePixels": 0,
+    "alphaDifferences": 0,
+    "isolatedPadding": 12
+  },
+  "tests": [
+    {
+      "command": "node tools/selftest.mjs",
+      "passed": 14
+    },
+    {
+      "command": "node tools/test-3d.mjs",
+      "passed": 41
+    },
+    {
+      "command": "node tools/test-fixed-art.mjs",
+      "passed": 15
+    },
+    {
+      "command": "node tools/test-campaign.mjs",
+      "passed": 16
+    },
+    {
+      "command": "node tools/test-effects.mjs",
+      "passed": 8
+    },
+    {
+      "command": "node tools/test-enemies.mjs",
+      "passed": 12
+    },
+    {
+      "command": "node tools/test-combat-art.mjs",
+      "passed": 13
+    },
+    {
+      "command": "node tools/test-skin-art.mjs",
+      "passed": 14
+    }
+  ],
+  "passedTests": 133,
+  "newRuntimeCoverage": [
+    "256 real costume root pose transitions with UV, shared scale, foot origin, ground shadows and occlusion hint",
+    "validated and value-deduplicated equipped-only roster; distinct costumes for two owners of the same hero",
+    "actual profile/playerSpec/Session and snapshot costume propagation with unchanged stats",
+    "core/combat/costume completion permutations, stable request key and Promise identity",
+    "hero and hero-corpse roots released before obsolete costume atlas; basic shared atlas retained",
+    "stale and destroyed requests, one missing costume fallback, no per-frame retries",
+    "actual GameUI first tick waits before Session update; guest snapshot receive/interpolation continues",
+    "free-battle winter early return and invalid skin mapping"
+  ],
+  "build": {
+    "serverBundles": "node tools/build-3d.mjs passed",
+    "standalone": "node tools/build.mjs passed",
+    "standaloneBytes": 44700527,
+    "embeddedDirectionalSheets": 52,
+    "eachEmbeddedExactlyOnce": true,
+    "rejectedVersionsEmbedded": 0,
+    "verification": "node tools/verify-embedded-art.mjs",
+    "generatedDistGitIgnored": true
+  },
+  "browser": {
+    "details": "SKIN_DIRECTIONAL_ART_BROWSER_VALIDATION.json",
+    "uniquePoseCombinations": 256,
+    "seasons": 4,
+    "freeBattleSkins": [
+      "yi_white",
+      "gwon_hill"
+    ],
+    "preloadedSkinCounts": [
+      2,
+      1
+    ],
+    "stageScopedActorCounts": [
+      12,
+      21
+    ],
+    "restartRetainsCostumes": true,
+    "secondStageCostume": "sejong_blue",
+    "secondStage": "s25",
+    "mobileViewport": {
+      "width": 414,
+      "height": 896,
+      "comparisonOverflow": false,
+      "freeBattleOverflow": false
+    },
+    "standaloneScope": "Rebuilt title boot; full costume battle validated through free battle and automated Session/GameUI tests.",
+    "officialVictoryOrDefeatRewardProduced": false,
+    "warningAndErrorCount": 0
+  },
+  "review": {
+    "requestedModel": "gpt-6-astra",
+    "reasoning": "xhigh",
+    "reason": "User-authorized conditional review of costume async loading and gameplay ordering",
+    "findingsAndResolution": [
+      "Prepare equipped costume roster before loading decision and Session update.",
+      "Instantiate free battle before preparing the stage costume roster.",
+      "Use stable sorted unique skin keys and preserve unchanged Promise identity.",
+      "Release all live/dead hero roots before releasing unused costume atlases; do not store the basic fallback as a costume atlas.",
+      "Guest continues snapshot reception/interpolation while local costume art loads.",
+      "Fixed test-only combatGeneration initialization; production constructor was already correct."
+    ],
+    "finalConfirmation": "No additional required fixes."
+  },
+  "limits": [
+    "Two walk poses alternate; longer walking and attack sequences remain.",
+    "Menu portraits and flat fallback retain the established older costume catalog.",
+    "Desktop responsive tests are not physical-phone thermal, memory or touch verification.",
+    "Terrain naturalization and per-skill independent effects remain separate work."
+  ]
+}

@@ -1,0 +1,2175 @@
+{
+  "date": "2026-10-11",
+  "checks": [
+    {
+      "wardrobe": "alternate",
+      "col": 0,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "0",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "0",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "0",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "0",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "0",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "0",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "0",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "0",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 0,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "4",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "4",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "4",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "4",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "4",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "4",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "4",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "4",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 0,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "8",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "8",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "8",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "8",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "8",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "8",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "8",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "8",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 0,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "12",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "12",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "12",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "12",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "12",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "12",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "12",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "12",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 1,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "1",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "1",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "1",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "1",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "1",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "1",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "1",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "1",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 1,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "5",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "5",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "5",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "5",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "5",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "5",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "5",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "5",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 1,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "9",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "9",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "9",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "9",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "9",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "9",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "9",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "9",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 1,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "13",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "13",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "13",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "13",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "13",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "13",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "13",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "13",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 2,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "2",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "2",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "2",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "2",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "2",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "2",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "2",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "2",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 2,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "6",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "6",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "6",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "6",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "6",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "6",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "6",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "6",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 2,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "10",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "10",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "10",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "10",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "10",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "10",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "10",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "10",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 2,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "14",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "14",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "14",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "14",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "14",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "14",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "14",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "14",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 3,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "3",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "3",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "3",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "3",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "3",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "3",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "3",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "3",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 3,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "7",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "7",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "7",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "7",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "7",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "7",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "7",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "7",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 3,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "11",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "11",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "11",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "11",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "11",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "11",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "11",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "11",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "alternate",
+      "col": 3,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "15",
+          "skin": "yi_white"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "15",
+          "skin": "sejong_blue"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "15",
+          "skin": "eulji_iron"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "15",
+          "skin": "gang_crimson"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "15",
+          "skin": "gwon_hill"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "15",
+          "skin": "gwak_black"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "15",
+          "skin": "ahn_militia"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "15",
+          "skin": "dangun_sky"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 0,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "0",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "0",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "0",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "0",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "0",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "0",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "0",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "0",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 0,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "4",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "4",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "4",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "4",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "4",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "4",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "4",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "4",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 0,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "8",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "8",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "8",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "8",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "8",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "8",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "8",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "8",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 0,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "yi",
+          "pose": "12",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "sejong",
+          "pose": "12",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "eulji",
+          "pose": "12",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gang",
+          "pose": "12",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwon",
+          "pose": "12",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "gwak",
+          "pose": "12",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "ahn",
+          "pose": "12",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "0",
+          "hero": "dangun",
+          "pose": "12",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 1,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "1",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "1",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "1",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "1",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "1",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "1",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "1",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "1",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 1,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "5",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "5",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "5",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "5",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "5",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "5",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "5",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "5",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 1,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "9",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "9",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "9",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "9",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "9",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "9",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "9",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "9",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 1,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "yi",
+          "pose": "13",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "sejong",
+          "pose": "13",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "eulji",
+          "pose": "13",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gang",
+          "pose": "13",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwon",
+          "pose": "13",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "gwak",
+          "pose": "13",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "ahn",
+          "pose": "13",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "1",
+          "hero": "dangun",
+          "pose": "13",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 2,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "2",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "2",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "2",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "2",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "2",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "2",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "2",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "2",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 2,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "6",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "6",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "6",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "6",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "6",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "6",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "6",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "6",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 2,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "10",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "10",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "10",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "10",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "10",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "10",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "10",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "10",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 2,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "yi",
+          "pose": "14",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "sejong",
+          "pose": "14",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "eulji",
+          "pose": "14",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gang",
+          "pose": "14",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwon",
+          "pose": "14",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "gwak",
+          "pose": "14",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "ahn",
+          "pose": "14",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "2",
+          "hero": "dangun",
+          "pose": "14",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 3,
+      "row": 0,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "3",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "3",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "3",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "3",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "3",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "3",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "3",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "3",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 3,
+      "row": 1,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "7",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "7",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "7",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "7",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "7",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "7",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "7",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "7",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 3,
+      "row": 2,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "11",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "11",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "11",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "11",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "11",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "11",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "11",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "11",
+          "skin": "dangun_gold"
+        }
+      ]
+    },
+    {
+      "wardrobe": "gold",
+      "col": 3,
+      "row": 3,
+      "cards": [
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "yi",
+          "pose": "15",
+          "skin": "yi_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "sejong",
+          "pose": "15",
+          "skin": "sejong_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "eulji",
+          "pose": "15",
+          "skin": "eulji_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gang",
+          "pose": "15",
+          "skin": "gang_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwon",
+          "pose": "15",
+          "skin": "gwon_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "gwak",
+          "pose": "15",
+          "skin": "gwak_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "ahn",
+          "pose": "15",
+          "skin": "ahn_gold"
+        },
+        {
+          "directional": "true",
+          "facing": "3",
+          "hero": "dangun",
+          "pose": "15",
+          "skin": "dangun_gold"
+        }
+      ]
+    }
+  ],
+  "seasons": [
+    {
+      "count": 3,
+      "loading": "false",
+      "season": "spring"
+    },
+    {
+      "count": 3,
+      "loading": "false",
+      "season": "summer"
+    },
+    {
+      "count": 3,
+      "loading": "false",
+      "season": "autumn"
+    },
+    {
+      "count": 3,
+      "loading": "false",
+      "season": "winter"
+    }
+  ],
+  "playing": {
+    "frames": "91",
+    "pressed": "true"
+  },
+  "mobile": {
+    "cards": [
+      {
+        "left": 12,
+        "right": 195,
+        "width": 183
+      },
+      {
+        "left": 204,
+        "right": 387,
+        "width": 183
+      },
+      {
+        "left": 12,
+        "right": 195,
+        "width": 183
+      }
+    ],
+    "height": 896,
+    "loading": "false",
+    "scrollWidth": 399,
+    "width": 414
+  },
+  "battleReady": {
+    "canvas": {
+      "combatPoseCount": "12",
+      "combatPoseExpected": "12",
+      "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseStatus": "ready",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "skinPoseCount": "2",
+      "skinPoseExpected": "2",
+      "skinPoseKinds": "gwon_hill,yi_white",
+      "skinPoseStatus": "ready",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    "state": "ready",
+    "stats": "WebGL2 · 51 FPS\n155 draw calls · 33k triangles\nGPU geometry 71 · texture 48\n전투 0.0초 · 처치 0 · 적 0\n유산 2 · 영웅 2 · s1\n출정 지원 사용 · 이순신 영구강화 0\n최근 명령: 준비"
+  },
+  "battleRunning": {
+    "canvas": {
+      "combatPoseActive": "true",
+      "combatPoseCount": "12",
+      "combatPoseExpected": "12",
+      "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseLastKind": "ashigaru",
+      "combatPoseLastState": "walk-right",
+      "combatPoseStatus": "ready",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "skinPoseCount": "2",
+      "skinPoseExpected": "2",
+      "skinPoseKinds": "gwon_hill,yi_white",
+      "skinPoseStatus": "ready",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    "state": "paused",
+    "stats": "WebGL2 · 58 FPS\n160 draw calls · 33k triangles\nGPU geometry 75 · texture 51\n전투 0.4초 · 처치 0 · 적 1\n유산 2 · 영웅 2 · s1\n출정 지원 사용 · 이순신 영구강화 0\n최근 명령: nextWave"
+  },
+  "restart": {
+    "kinds": "gwon_hill,yi_white",
+    "state": "ready",
+    "stats": "WebGL2 · 60 FPS\n155 draw calls · 33k triangles\nGPU geometry 74 · texture 51\n전투 0.0초 · 처치 0 · 적 0\n유산 2 · 영웅 2 · s1\n출정 지원 사용 · 이순신 영구강화 0\n최근 명령: 준비"
+  },
+  "selectionRetained": {
+    "one": "yi_white",
+    "two": "gwon_hill"
+  },
+  "mobileBattleChooser": {
+    "dialogWidth": 394,
+    "height": 896,
+    "scrollWidth": 414,
+    "selectedOne": "백의종군",
+    "selectedTwo": "행주 산성",
+    "width": 414
+  },
+  "stageChanged": {
+    "canvas": {
+      "combatPoseActive": "true",
+      "combatPoseCount": "21",
+      "combatPoseExpected": "21",
+      "combatPoseKinds": "scout,teppo,ashigaru,cavalry,onmyoji,samurai,ninja,konishi,ram,armored,drum,kato,ukita,shimazu,hideyoshi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseLastKind": "ashigaru",
+      "combatPoseLastState": "walk-right",
+      "combatPoseStatus": "ready",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "skinPoseCount": "1",
+      "skinPoseExpected": "1",
+      "skinPoseKinds": "sejong_blue",
+      "skinPoseStatus": "ready",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    "scrollWidth": 414,
+    "state": "ready",
+    "stats": "WebGL2 · 30 FPS\n100 draw calls · 28k triangles\nGPU geometry 56 · texture 51\n전투 0.0초 · 처치 0 · 적 0\n유산 2 · 영웅 1 · s25\n출정 지원 사용 · 세종대왕 영구강화 10\n최근 명령: 준비",
+    "width": 414
+  },
+  "logs": {
+    "review": [],
+    "battle": []
+  },
+  "standalone": {
+    "url": "http://127.0.0.1:8080/dist/hoguk.html?mute=1",
+    "title": "호국영웅전",
+    "screen": "호국영웅전\n護\n國",
+    "warningAndErrors": [],
+    "scope": "Booted the rebuilt standalone title only; costume battle loading validated in the separate free battle and actual Session/GameUI tests."
+  }
+}

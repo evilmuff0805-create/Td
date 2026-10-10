@@ -15,6 +15,7 @@ import { attachHeroSilhouette, updateHeroSilhouette } from './visibility.js';
 import { CrowdRenderer } from './crowd.js';
 import { updateMountReins } from './enemy-pose.js';
 import { FixedBattleArt } from './fixed-art.js';
+import { heroLooksKey } from './hero-look-roster.js';
 
 function texture(size, paint) {
   const c=document.createElement('canvas');c.width=c.height=size;paint(c.getContext('2d'),size);
@@ -24,7 +25,7 @@ function glowTexture() {return texture(64,(c,s)=>{const g=c.createRadialGradient
 
 export class WinterWorld {
   constructor(canvas,stage=WINTER_STAGE,season='auto',options={}) {
-    this.stage=stage;this.theme=seasonFor(stage,season);this.combatKinds=options.combatKinds;
+    this.stage=stage;this.theme=seasonFor(stage,season);this.combatKinds=options.combatKinds;this.heroLooks=options.heroLooks??[];
     this.fixedCamera=options.fixedCamera!==false;this.useIllustrations=options.illustrated!==false;
     this.allowBatchCrowd=options.batchCrowd!==false;this.batchCrowd=this.allowBatchCrowd&&!this.useIllustrations;
     this.renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
@@ -121,9 +122,22 @@ export class WinterWorld {
     this.weatherTex=tex;this.snow=new T.Points(g,new T.PointsMaterial({color:kind==='petal'?'#f0c6d3':kind==='leaf'?'#e2ad60':'#edf5ff',size:kind==='snow'?.065:.10,map:tex,transparent:true,opacity:.7,depthWrite:false}));this.scene.add(this.snow);
     this.snow.material.userData.owned3d=true;
   }
-  loadStage(stage,season='auto') {
+  prepareHeroLooks(heroes=[]) {
+    if(!this.art||this.art.heroLooksKey===heroLooksKey(heroes))return;
+    // Remove every root referencing the old costume before releasing its atlas.
+    for(const [key,root]of this.units)if(key.startsWith('h')){
+      this.scene.remove(root);this.disposeCharacter(root);this.units.delete(key);this.pickables=this.pickables.filter(p=>p!==root);
+    }
+    this.corpses=this.corpses.filter(c=>{
+      if(c.root.userData.entity?.kind!=='hero')return true;
+      this.scene.remove(c.root);this.disposeCharacter(c.root);return false;
+    });
+    this.heroLooks=heroes;this.art.prepareHeroLooks(heroes);
+  }
+  loadStage(stage,season='auto',heroes=[]) {
     this.reset();
     this.art?.prepareCombatArt(stage);
+    this.prepareHeroLooks(heroes);
     for(const object of [this.static,this.water,this.lampGroup,this.snow]) {
       this.scene.remove(object);this.disposeModel(object);
     }

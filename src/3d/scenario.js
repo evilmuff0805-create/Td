@@ -2,6 +2,7 @@
 import { STAGE_BY_ID,STAGES } from '../data/stages.js';
 import { TOWER_ORDER } from '../data/towers.js';
 import { HEROES } from '../data/heroes.js';
+import { skinDef } from '../data/skins.js';
 import { createGame, applyCommand } from '../sim/sim.js';
 import { getMap, T_BUILD } from '../sim/map.js';
 import { normalizeBattleSkills } from './battle-controls.js';
@@ -40,9 +41,9 @@ export const WINTER_STAGE = {
 // Register only in this entry point. STAGES (the 25 campaign stages) stays intact.
 STAGE_BY_ID[STAGE_ID] = WINTER_STAGE;
 
-export function newWinterGame(seed = 20261009) {
+export function newWinterGame(seed = 20261009, skins = {}) {
   const game = createGame({ stageId: STAGE_ID, difficulty: 'normal', mode: 'solo', seed,
-    courier: false, players: [{ name: '수호자', heroes: ['yi'], skills: ['singijeon'], towers: TOWER_TYPES }] });
+    courier: false, players: [{ name: '수호자', heroes: ['yi'], skills: ['singijeon'], towers: TOWER_TYPES, skins }] });
   for (const [tower, x, y] of [['sungnyemun', 8, 7], ['hwaseong', 16, 4]])
     applyCommand(game, { t: 'build', p: 0, tower, x, y });
   game.wave.timer = 60;
@@ -62,12 +63,13 @@ export function campaignSupport(stageId) {
 }
 export function newBattleGame(config={}) {
   const {stageId='s1',heroIds=['yi','gwon'],support=true,seed=20261010}=config,skills=normalizeBattleSkills(config);
-  if(stageId===STAGE_ID&&heroIds.length===1&&heroIds[0]==='yi'&&skills.length===1&&skills[0]==='singijeon')return newWinterGame(seed);
+  const skins=Object.fromEntries(Object.entries(config.skins??{}).filter(([heroId,skin])=>skinDef(heroId,skin)));
+  if(stageId===STAGE_ID&&heroIds.length===1&&heroIds[0]==='yi'&&skills.length===1&&skills[0]==='singijeon')return newWinterGame(seed,skins);
   if(!STAGE_BY_ID[stageId])throw new Error(`Unknown battlefield: ${stageId}`);
   const heroes=[...new Set(heroIds)].filter(id=>HEROES[id]).slice(0,2);if(!heroes.length)heroes.push('yi');
   const levels=support?campaignSupport(stageId):{hero:0,skill:0,tower:0};
   const lvMap=(ids,level)=>Object.fromEntries(ids.map(id=>[id,level]));
-  const game=createGame({stageId,difficulty:'normal',mode:'solo',seed,courier:false,players:[{name:'수호자',heroes,skills,towers:CAMPAIGN_TOWERS,heroLv:lvMap(heroes,levels.hero),skillLv:lvMap(skills,levels.skill),towerLv:lvMap(CAMPAIGN_TOWERS,levels.tower)}]});
+  const game=createGame({stageId,difficulty:'normal',mode:'solo',seed,courier:false,players:[{name:'수호자',heroes,skills,towers:CAMPAIGN_TOWERS,skins,heroLv:lvMap(heroes,levels.hero),skillLv:lvMap(skills,levels.skill),towerLv:lvMap(CAMPAIGN_TOWERS,levels.tower)}]});
   // Initial defenses use the stage's real starting budget, on actual valid tiles near the road.
   const map=getMap(stageId),candidates=[];
   for(let y=0;y<map.h;y++)for(let x=0;x<map.w;x++)if(canBuildAt(game,x,y)) {

@@ -1,0 +1,2905 @@
+{
+  "date": "2026-10-11",
+  "generation": "built-in imagegen edits of approved hero sheets; original PNG and alpha preserved",
+  "analysis": "alpha >=16 connected components; visible foreign/omitted/duplicate pixels checked at alpha >=41; lower 24% alpha-weighted foot baseline",
+  "units": [
+    {
+      "id": "yi_white",
+      "source": "assets/3d/fixed/skins/source/yi_white-directions-v2.png",
+      "delivery": "assets/3d/fixed/skins/yi_white-directions-v2.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 256.5,
+      "pivotXOverrides": {},
+      "bytes": 440300,
+      "frames": [
+        {
+          "left": 67,
+          "top": 68,
+          "width": 209,
+          "height": 260,
+          "anchor": 0.502999,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 385,
+          "top": 71,
+          "width": 181,
+          "height": 254,
+          "anchor": 0.465024,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 666,
+          "top": 71,
+          "width": 188,
+          "height": 254,
+          "anchor": 0.514575,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 951,
+          "top": 68,
+          "width": 200,
+          "height": 259,
+          "anchor": 0.492754,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 62,
+          "top": 363,
+          "width": 218,
+          "height": 263,
+          "anchor": 0.572412,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 380,
+          "top": 364,
+          "width": 188,
+          "height": 260,
+          "anchor": 0.472593,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 665,
+          "top": 363,
+          "width": 196,
+          "height": 263,
+          "anchor": 0.516281,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 957,
+          "top": 364,
+          "width": 204,
+          "height": 262,
+          "anchor": 0.392027,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 66,
+          "top": 655,
+          "width": 214,
+          "height": 258,
+          "anchor": 0.561478,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 380,
+          "top": 656,
+          "width": 184,
+          "height": 259,
+          "anchor": 0.475719,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 667,
+          "top": 656,
+          "width": 193,
+          "height": 261,
+          "anchor": 0.487039,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 951,
+          "top": 657,
+          "width": 211,
+          "height": 257,
+          "anchor": 0.42222,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 52,
+          "top": 946,
+          "width": 260,
+          "height": 252,
+          "anchor": 0.462826,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 377,
+          "top": 948,
+          "width": 228,
+          "height": 254,
+          "anchor": 0.393381,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 647,
+          "top": 948,
+          "width": 239,
+          "height": 248,
+          "anchor": 0.546559,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        },
+        {
+          "left": 933,
+          "top": 946,
+          "width": 256,
+          "height": 250,
+          "anchor": 0.511141,
+          "anchorY": 1,
+          "referenceHeight": 256.5
+        }
+      ],
+      "heroId": "yi",
+      "name": "백의종군"
+    },
+    {
+      "id": "yi_gold",
+      "source": "assets/3d/fixed/skins/source/yi_gold-directions-v2.png",
+      "delivery": "assets/3d/fixed/skins/yi_gold-directions-v2.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 235.5,
+      "pivotXOverrides": {},
+      "bytes": 358170,
+      "frames": [
+        {
+          "left": 79,
+          "top": 83,
+          "width": 201,
+          "height": 239,
+          "anchor": 0.5006,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 385,
+          "top": 83,
+          "width": 180,
+          "height": 232,
+          "anchor": 0.456632,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 670,
+          "top": 83,
+          "width": 184,
+          "height": 232,
+          "anchor": 0.509842,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 972,
+          "top": 83,
+          "width": 181,
+          "height": 239,
+          "anchor": 0.478022,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 82,
+          "top": 376,
+          "width": 205,
+          "height": 242,
+          "anchor": 0.564905,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 387,
+          "top": 375,
+          "width": 185,
+          "height": 244,
+          "anchor": 0.472981,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 669,
+          "top": 374,
+          "width": 190,
+          "height": 245,
+          "anchor": 0.498821,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 970,
+          "top": 374,
+          "width": 183,
+          "height": 244,
+          "anchor": 0.398078,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 79,
+          "top": 661,
+          "width": 207,
+          "height": 242,
+          "anchor": 0.585206,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 384,
+          "top": 661,
+          "width": 178,
+          "height": 244,
+          "anchor": 0.458584,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 670,
+          "top": 660,
+          "width": 185,
+          "height": 244,
+          "anchor": 0.502544,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 963,
+          "top": 661,
+          "width": 199,
+          "height": 242,
+          "anchor": 0.410266,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 58,
+          "top": 955,
+          "width": 242,
+          "height": 236,
+          "anchor": 0.45606,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 371,
+          "top": 956,
+          "width": 214,
+          "height": 241,
+          "anchor": 0.423276,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 646,
+          "top": 954,
+          "width": 228,
+          "height": 238,
+          "anchor": 0.508329,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        },
+        {
+          "left": 948,
+          "top": 957,
+          "width": 229,
+          "height": 234,
+          "anchor": 0.525121,
+          "anchorY": 1,
+          "referenceHeight": 235.5
+        }
+      ],
+      "heroId": "yi",
+      "name": "금빛 전설"
+    },
+    {
+      "id": "sejong_blue",
+      "source": "assets/3d/fixed/skins/source/sejong_blue-directions-v2.png",
+      "delivery": "assets/3d/fixed/skins/sejong_blue-directions-v2.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 238,
+      "pivotXOverrides": {},
+      "bytes": 298950,
+      "frames": [
+        {
+          "left": 96,
+          "top": 90,
+          "width": 174,
+          "height": 238,
+          "anchor": 0.505103,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 400,
+          "top": 91,
+          "width": 153,
+          "height": 237,
+          "anchor": 0.464448,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 678,
+          "top": 90,
+          "width": 149,
+          "height": 238,
+          "anchor": 0.530764,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 969,
+          "top": 88,
+          "width": 163,
+          "height": 240,
+          "anchor": 0.476784,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 87,
+          "top": 387,
+          "width": 178,
+          "height": 246,
+          "anchor": 0.521949,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 386,
+          "top": 386,
+          "width": 164,
+          "height": 253,
+          "anchor": 0.498383,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 684,
+          "top": 387,
+          "width": 164,
+          "height": 253,
+          "anchor": 0.512865,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 973,
+          "top": 386,
+          "width": 174,
+          "height": 251,
+          "anchor": 0.466586,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 76,
+          "top": 681,
+          "width": 190,
+          "height": 249,
+          "anchor": 0.548796,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 396,
+          "top": 682,
+          "width": 161,
+          "height": 249,
+          "anchor": 0.481071,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 689,
+          "top": 681,
+          "width": 160,
+          "height": 252,
+          "anchor": 0.514123,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 971,
+          "top": 680,
+          "width": 181,
+          "height": 256,
+          "anchor": 0.450948,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 93,
+          "top": 967,
+          "width": 197,
+          "height": 238,
+          "anchor": 0.411903,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 377,
+          "top": 969,
+          "width": 197,
+          "height": 241,
+          "anchor": 0.408948,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 660,
+          "top": 972,
+          "width": 206,
+          "height": 238,
+          "anchor": 0.59139,
+          "anchorY": 1,
+          "referenceHeight": 238
+        },
+        {
+          "left": 938,
+          "top": 968,
+          "width": 197,
+          "height": 236,
+          "anchor": 0.605131,
+          "anchorY": 1,
+          "referenceHeight": 238
+        }
+      ],
+      "heroId": "sejong",
+      "name": "청룡포"
+    },
+    {
+      "id": "sejong_gold",
+      "source": "assets/3d/fixed/skins/source/sejong_gold-directions-v2.png",
+      "delivery": "assets/3d/fixed/skins/sejong_gold-directions-v2.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 247,
+      "pivotXOverrides": {},
+      "bytes": 311802,
+      "frames": [
+        {
+          "left": 103,
+          "top": 87,
+          "width": 186,
+          "height": 248,
+          "anchor": 0.512843,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 404,
+          "top": 87,
+          "width": 153,
+          "height": 246,
+          "anchor": 0.467145,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 666,
+          "top": 87,
+          "width": 160,
+          "height": 245,
+          "anchor": 0.527329,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 955,
+          "top": 86,
+          "width": 167,
+          "height": 250,
+          "anchor": 0.458335,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 94,
+          "top": 386,
+          "width": 190,
+          "height": 255,
+          "anchor": 0.508472,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 398,
+          "top": 388,
+          "width": 172,
+          "height": 255,
+          "anchor": 0.497175,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 666,
+          "top": 386,
+          "width": 165,
+          "height": 259,
+          "anchor": 0.521952,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 955,
+          "top": 390,
+          "width": 178,
+          "height": 256,
+          "anchor": 0.476612,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 85,
+          "top": 688,
+          "width": 202,
+          "height": 253,
+          "anchor": 0.550913,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 398,
+          "top": 687,
+          "width": 165,
+          "height": 251,
+          "anchor": 0.500212,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 668,
+          "top": 686,
+          "width": 164,
+          "height": 255,
+          "anchor": 0.515579,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 957,
+          "top": 690,
+          "width": 187,
+          "height": 258,
+          "anchor": 0.449307,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 93,
+          "top": 978,
+          "width": 209,
+          "height": 239,
+          "anchor": 0.41347,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 384,
+          "top": 978,
+          "width": 205,
+          "height": 244,
+          "anchor": 0.418648,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 646,
+          "top": 978,
+          "width": 202,
+          "height": 244,
+          "anchor": 0.575493,
+          "anchorY": 1,
+          "referenceHeight": 247
+        },
+        {
+          "left": 930,
+          "top": 977,
+          "width": 203,
+          "height": 240,
+          "anchor": 0.598142,
+          "anchorY": 1,
+          "referenceHeight": 247
+        }
+      ],
+      "heroId": "sejong",
+      "name": "금빛 전설"
+    },
+    {
+      "id": "eulji_iron",
+      "source": "assets/3d/fixed/skins/source/eulji_iron-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/eulji_iron-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 207.5,
+      "pivotXOverrides": {},
+      "bytes": 332176,
+      "frames": [
+        {
+          "left": 59,
+          "top": 94,
+          "width": 167,
+          "height": 208,
+          "anchor": 0.571386,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 376,
+          "top": 95,
+          "width": 170,
+          "height": 207,
+          "anchor": 0.499112,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 695,
+          "top": 94,
+          "width": 165,
+          "height": 205,
+          "anchor": 0.493816,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 1011,
+          "top": 94,
+          "width": 162,
+          "height": 208,
+          "anchor": 0.447838,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 55,
+          "top": 395,
+          "width": 182,
+          "height": 231,
+          "anchor": 0.656626,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 376,
+          "top": 396,
+          "width": 182,
+          "height": 230,
+          "anchor": 0.503934,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 690,
+          "top": 394,
+          "width": 178,
+          "height": 235,
+          "anchor": 0.46906,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 1010,
+          "top": 398,
+          "width": 174,
+          "height": 230,
+          "anchor": 0.307783,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 57,
+          "top": 702,
+          "width": 180,
+          "height": 216,
+          "anchor": 0.657381,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 376,
+          "top": 702,
+          "width": 183,
+          "height": 222,
+          "anchor": 0.428624,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 686,
+          "top": 703,
+          "width": 182,
+          "height": 223,
+          "anchor": 0.531088,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 1013,
+          "top": 704,
+          "width": 170,
+          "height": 214,
+          "anchor": 0.350108,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 56,
+          "top": 996,
+          "width": 244,
+          "height": 199,
+          "anchor": 0.424997,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 371,
+          "top": 1000,
+          "width": 220,
+          "height": 205,
+          "anchor": 0.404568,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 647,
+          "top": 999,
+          "width": 221,
+          "height": 204,
+          "anchor": 0.568404,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        },
+        {
+          "left": 943,
+          "top": 992,
+          "width": 241,
+          "height": 203,
+          "anchor": 0.558682,
+          "anchorY": 1,
+          "referenceHeight": 207.5
+        }
+      ],
+      "heroId": "eulji",
+      "name": "고구려 철기"
+    },
+    {
+      "id": "eulji_gold",
+      "source": "assets/3d/fixed/skins/source/eulji_gold-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/eulji_gold-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 210.5,
+      "pivotXOverrides": {},
+      "bytes": 361310,
+      "frames": [
+        {
+          "left": 57,
+          "top": 92,
+          "width": 171,
+          "height": 211,
+          "anchor": 0.560129,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 381,
+          "top": 90,
+          "width": 174,
+          "height": 213,
+          "anchor": 0.500873,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 681,
+          "top": 91,
+          "width": 171,
+          "height": 209,
+          "anchor": 0.503765,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 1009,
+          "top": 92,
+          "width": 170,
+          "height": 210,
+          "anchor": 0.442674,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 48,
+          "top": 373,
+          "width": 184,
+          "height": 233,
+          "anchor": 0.610114,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 379,
+          "top": 373,
+          "width": 177,
+          "height": 233,
+          "anchor": 0.530131,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 681,
+          "top": 378,
+          "width": 177,
+          "height": 233,
+          "anchor": 0.48567,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 1003,
+          "top": 374,
+          "width": 182,
+          "height": 232,
+          "anchor": 0.362626,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 55,
+          "top": 688,
+          "width": 184,
+          "height": 221,
+          "anchor": 0.631223,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 376,
+          "top": 683,
+          "width": 184,
+          "height": 228,
+          "anchor": 0.422585,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 680,
+          "top": 691,
+          "width": 183,
+          "height": 228,
+          "anchor": 0.530534,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 1000,
+          "top": 686,
+          "width": 179,
+          "height": 220,
+          "anchor": 0.383177,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 53,
+          "top": 988,
+          "width": 247,
+          "height": 205,
+          "anchor": 0.419221,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 375,
+          "top": 990,
+          "width": 223,
+          "height": 210,
+          "anchor": 0.396568,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 638,
+          "top": 988,
+          "width": 226,
+          "height": 210,
+          "anchor": 0.566218,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        },
+        {
+          "left": 933,
+          "top": 988,
+          "width": 246,
+          "height": 203,
+          "anchor": 0.570058,
+          "anchorY": 1,
+          "referenceHeight": 210.5
+        }
+      ],
+      "heroId": "eulji",
+      "name": "금빛 전설"
+    },
+    {
+      "id": "gang_crimson",
+      "source": "assets/3d/fixed/skins/source/gang_crimson-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/gang_crimson-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 294,
+      "pivotXOverrides": {},
+      "bytes": 424668,
+      "frames": [
+        {
+          "left": 29,
+          "top": 31,
+          "width": 262,
+          "height": 297,
+          "anchor": 0.547801,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 344,
+          "top": 32,
+          "width": 261,
+          "height": 293,
+          "anchor": 0.494162,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 674,
+          "top": 34,
+          "width": 237,
+          "height": 292,
+          "anchor": 0.453607,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 950,
+          "top": 33,
+          "width": 265,
+          "height": 295,
+          "anchor": 0.482616,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 26,
+          "top": 340,
+          "width": 261,
+          "height": 298,
+          "anchor": 0.59419,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 353,
+          "top": 339,
+          "width": 226,
+          "height": 302,
+          "anchor": 0.57606,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 670,
+          "top": 340,
+          "width": 235,
+          "height": 302,
+          "anchor": 0.428216,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 954,
+          "top": 340,
+          "width": 259,
+          "height": 297,
+          "anchor": 0.369767,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 36,
+          "top": 655,
+          "width": 236,
+          "height": 286,
+          "anchor": 0.615482,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 343,
+          "top": 651,
+          "width": 222,
+          "height": 295,
+          "anchor": 0.537968,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 683,
+          "top": 653,
+          "width": 214,
+          "height": 295,
+          "anchor": 0.444902,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 976,
+          "top": 656,
+          "width": 229,
+          "height": 292,
+          "anchor": 0.345983,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 23,
+          "top": 961,
+          "width": 285,
+          "height": 267,
+          "anchor": 0.467391,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 334,
+          "top": 959,
+          "width": 280,
+          "height": 268,
+          "anchor": 0.454773,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 647,
+          "top": 958,
+          "width": 263,
+          "height": 271,
+          "anchor": 0.531438,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 946,
+          "top": 965,
+          "width": 270,
+          "height": 263,
+          "anchor": 0.462578,
+          "anchorY": 1,
+          "referenceHeight": 294
+        }
+      ],
+      "heroId": "gang",
+      "name": "귀주의 붉은 별"
+    },
+    {
+      "id": "gang_gold",
+      "source": "assets/3d/fixed/skins/source/gang_gold-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/gang_gold-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 294,
+      "pivotXOverrides": {},
+      "bytes": 410730,
+      "frames": [
+        {
+          "left": 26,
+          "top": 30,
+          "width": 266,
+          "height": 297,
+          "anchor": 0.545031,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 342,
+          "top": 31,
+          "width": 262,
+          "height": 292,
+          "anchor": 0.492586,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 673,
+          "top": 33,
+          "width": 240,
+          "height": 292,
+          "anchor": 0.464078,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 949,
+          "top": 32,
+          "width": 270,
+          "height": 296,
+          "anchor": 0.48249,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 27,
+          "top": 338,
+          "width": 260,
+          "height": 300,
+          "anchor": 0.588292,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 355,
+          "top": 339,
+          "width": 225,
+          "height": 302,
+          "anchor": 0.581552,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 670,
+          "top": 340,
+          "width": 235,
+          "height": 302,
+          "anchor": 0.426124,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 955,
+          "top": 339,
+          "width": 261,
+          "height": 298,
+          "anchor": 0.369495,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 36,
+          "top": 657,
+          "width": 236,
+          "height": 284,
+          "anchor": 0.616726,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 343,
+          "top": 653,
+          "width": 223,
+          "height": 293,
+          "anchor": 0.542092,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 683,
+          "top": 653,
+          "width": 214,
+          "height": 295,
+          "anchor": 0.444854,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 974,
+          "top": 655,
+          "width": 235,
+          "height": 292,
+          "anchor": 0.350274,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 24,
+          "top": 959,
+          "width": 282,
+          "height": 267,
+          "anchor": 0.471659,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 329,
+          "top": 958,
+          "width": 284,
+          "height": 269,
+          "anchor": 0.462414,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 642,
+          "top": 957,
+          "width": 272,
+          "height": 273,
+          "anchor": 0.531699,
+          "anchorY": 1,
+          "referenceHeight": 294
+        },
+        {
+          "left": 947,
+          "top": 964,
+          "width": 270,
+          "height": 261,
+          "anchor": 0.459931,
+          "anchorY": 1,
+          "referenceHeight": 294
+        }
+      ],
+      "heroId": "gang",
+      "name": "금빛 전설"
+    },
+    {
+      "id": "gwon_hill",
+      "source": "assets/3d/fixed/skins/source/gwon_hill-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/gwon_hill-directions-v1.webp",
+      "width": 1254,
+      "height": 1254,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 255,
+      "pivotXOverrides": {},
+      "bytes": 380422,
+      "frames": [
+        {
+          "left": 76,
+          "top": 59,
+          "width": 223,
+          "height": 254,
+          "anchor": 0.534367,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 392,
+          "top": 58,
+          "width": 182,
+          "height": 256,
+          "anchor": 0.515826,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 674,
+          "top": 59,
+          "width": 192,
+          "height": 252,
+          "anchor": 0.466782,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 963,
+          "top": 58,
+          "width": 220,
+          "height": 257,
+          "anchor": 0.456555,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 80,
+          "top": 347,
+          "width": 219,
+          "height": 261,
+          "anchor": 0.518259,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 388,
+          "top": 349,
+          "width": 192,
+          "height": 263,
+          "anchor": 0.493011,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 688,
+          "top": 350,
+          "width": 186,
+          "height": 261,
+          "anchor": 0.443,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 962,
+          "top": 347,
+          "width": 219,
+          "height": 262,
+          "anchor": 0.47598,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 72,
+          "top": 639,
+          "width": 223,
+          "height": 261,
+          "anchor": 0.553839,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 381,
+          "top": 640,
+          "width": 196,
+          "height": 263,
+          "anchor": 0.484528,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 685,
+          "top": 640,
+          "width": 193,
+          "height": 262,
+          "anchor": 0.491582,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 966,
+          "top": 639,
+          "width": 223,
+          "height": 263,
+          "anchor": 0.44936,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 50,
+          "top": 942,
+          "width": 274,
+          "height": 240,
+          "anchor": 0.452655,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 365,
+          "top": 941,
+          "width": 245,
+          "height": 241,
+          "anchor": 0.394156,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 647,
+          "top": 942,
+          "width": 240,
+          "height": 240,
+          "anchor": 0.568054,
+          "anchorY": 1,
+          "referenceHeight": 255
+        },
+        {
+          "left": 931,
+          "top": 943,
+          "width": 276,
+          "height": 241,
+          "anchor": 0.535279,
+          "anchorY": 1,
+          "referenceHeight": 255
+        }
+      ],
+      "heroId": "gwon",
+      "name": "행주 산성"
+    },
+    {
+      "id": "gwon_gold",
+      "source": "assets/3d/fixed/skins/source/gwon_gold-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/gwon_gold-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 263.5,
+      "pivotXOverrides": {},
+      "bytes": 383232,
+      "frames": [
+        {
+          "left": 68,
+          "top": 61,
+          "width": 231,
+          "height": 264,
+          "anchor": 0.524076,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 385,
+          "top": 62,
+          "width": 194,
+          "height": 263,
+          "anchor": 0.523322,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 655,
+          "top": 64,
+          "width": 199,
+          "height": 261,
+          "anchor": 0.461837,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 945,
+          "top": 60,
+          "width": 219,
+          "height": 267,
+          "anchor": 0.466867,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 66,
+          "top": 353,
+          "width": 228,
+          "height": 266,
+          "anchor": 0.527961,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 381,
+          "top": 357,
+          "width": 194,
+          "height": 264,
+          "anchor": 0.474564,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 670,
+          "top": 358,
+          "width": 193,
+          "height": 263,
+          "anchor": 0.470551,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 945,
+          "top": 353,
+          "width": 229,
+          "height": 268,
+          "anchor": 0.460764,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 59,
+          "top": 656,
+          "width": 232,
+          "height": 269,
+          "anchor": 0.557458,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 378,
+          "top": 662,
+          "width": 201,
+          "height": 267,
+          "anchor": 0.45728,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 661,
+          "top": 663,
+          "width": 196,
+          "height": 265,
+          "anchor": 0.525769,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 947,
+          "top": 657,
+          "width": 230,
+          "height": 270,
+          "anchor": 0.443978,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 48,
+          "top": 968,
+          "width": 282,
+          "height": 247,
+          "anchor": 0.440406,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 367,
+          "top": 971,
+          "width": 244,
+          "height": 245,
+          "anchor": 0.375811,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 633,
+          "top": 972,
+          "width": 235,
+          "height": 243,
+          "anchor": 0.580245,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        },
+        {
+          "left": 912,
+          "top": 968,
+          "width": 274,
+          "height": 245,
+          "anchor": 0.550714,
+          "anchorY": 1,
+          "referenceHeight": 263.5
+        }
+      ],
+      "heroId": "gwon",
+      "name": "금빛 전설"
+    },
+    {
+      "id": "gwak_black",
+      "source": "assets/3d/fixed/skins/source/gwak_black-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/gwak_black-directions-v1.webp",
+      "width": 1230,
+      "height": 1278,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 246.5,
+      "pivotXOverrides": {},
+      "bytes": 300644,
+      "frames": [
+        {
+          "left": 84,
+          "top": 74,
+          "width": 172,
+          "height": 248,
+          "anchor": 0.492582,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 402,
+          "top": 73,
+          "width": 148,
+          "height": 246,
+          "anchor": 0.474569,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 680,
+          "top": 74,
+          "width": 151,
+          "height": 245,
+          "anchor": 0.500797,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 972,
+          "top": 74,
+          "width": 166,
+          "height": 247,
+          "anchor": 0.486733,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 80,
+          "top": 383,
+          "width": 180,
+          "height": 250,
+          "anchor": 0.537712,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 397,
+          "top": 382,
+          "width": 165,
+          "height": 255,
+          "anchor": 0.467086,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 678,
+          "top": 383,
+          "width": 171,
+          "height": 251,
+          "anchor": 0.517215,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 973,
+          "top": 383,
+          "width": 184,
+          "height": 249,
+          "anchor": 0.399116,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 71,
+          "top": 683,
+          "width": 193,
+          "height": 254,
+          "anchor": 0.53595,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 392,
+          "top": 685,
+          "width": 176,
+          "height": 256,
+          "anchor": 0.432033,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 676,
+          "top": 688,
+          "width": 184,
+          "height": 250,
+          "anchor": 0.489655,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 971,
+          "top": 684,
+          "width": 195,
+          "height": 255,
+          "anchor": 0.452416,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 76,
+          "top": 984,
+          "width": 219,
+          "height": 240,
+          "anchor": 0.427036,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 387,
+          "top": 973,
+          "width": 190,
+          "height": 256,
+          "anchor": 0.43596,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 675,
+          "top": 977,
+          "width": 189,
+          "height": 252,
+          "anchor": 0.538061,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        },
+        {
+          "left": 947,
+          "top": 985,
+          "width": 212,
+          "height": 239,
+          "anchor": 0.550277,
+          "anchorY": 1,
+          "referenceHeight": 246.5
+        }
+      ],
+      "heroId": "gwak",
+      "name": "흑의 의병"
+    },
+    {
+      "id": "gwak_gold",
+      "source": "assets/3d/fixed/skins/source/gwak_gold-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/gwak_gold-directions-v1.webp",
+      "width": 1230,
+      "height": 1278,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 266.5,
+      "pivotXOverrides": {},
+      "bytes": 398838,
+      "frames": [
+        {
+          "left": 68,
+          "top": 52,
+          "width": 191,
+          "height": 267,
+          "anchor": 0.493775,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 387,
+          "top": 50,
+          "width": 161,
+          "height": 269,
+          "anchor": 0.459058,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 677,
+          "top": 53,
+          "width": 169,
+          "height": 265,
+          "anchor": 0.518178,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 970,
+          "top": 53,
+          "width": 177,
+          "height": 266,
+          "anchor": 0.47891,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 66,
+          "top": 365,
+          "width": 194,
+          "height": 273,
+          "anchor": 0.552925,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 373,
+          "top": 364,
+          "width": 181,
+          "height": 281,
+          "anchor": 0.469801,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 677,
+          "top": 364,
+          "width": 185,
+          "height": 277,
+          "anchor": 0.521707,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 979,
+          "top": 364,
+          "width": 196,
+          "height": 273,
+          "anchor": 0.382924,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 66,
+          "top": 676,
+          "width": 204,
+          "height": 268,
+          "anchor": 0.534367,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 375,
+          "top": 676,
+          "width": 189,
+          "height": 275,
+          "anchor": 0.426754,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 673,
+          "top": 678,
+          "width": 192,
+          "height": 266,
+          "anchor": 0.517008,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 962,
+          "top": 677,
+          "width": 204,
+          "height": 270,
+          "anchor": 0.44875,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 56,
+          "top": 973,
+          "width": 238,
+          "height": 257,
+          "anchor": 0.424246,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 368,
+          "top": 961,
+          "width": 210,
+          "height": 274,
+          "anchor": 0.436976,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 650,
+          "top": 963,
+          "width": 215,
+          "height": 277,
+          "anchor": 0.547014,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        },
+        {
+          "left": 941,
+          "top": 973,
+          "width": 231,
+          "height": 260,
+          "anchor": 0.552417,
+          "anchorY": 1,
+          "referenceHeight": 266.5
+        }
+      ],
+      "heroId": "gwak",
+      "name": "금빛 전설"
+    },
+    {
+      "id": "ahn_militia",
+      "source": "assets/3d/fixed/skins/source/ahn_militia-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/ahn_militia-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 244.5,
+      "pivotXOverrides": {},
+      "bytes": 258462,
+      "frames": [
+        {
+          "left": 84,
+          "top": 77,
+          "width": 166,
+          "height": 244,
+          "anchor": 0.518786,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 389,
+          "top": 78,
+          "width": 174,
+          "height": 243,
+          "anchor": 0.500173,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 679,
+          "top": 78,
+          "width": 172,
+          "height": 245,
+          "anchor": 0.469344,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 986,
+          "top": 76,
+          "width": 159,
+          "height": 245,
+          "anchor": 0.479465,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 77,
+          "top": 374,
+          "width": 168,
+          "height": 249,
+          "anchor": 0.527389,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 388,
+          "top": 375,
+          "width": 171,
+          "height": 256,
+          "anchor": 0.414847,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 698,
+          "top": 375,
+          "width": 157,
+          "height": 255,
+          "anchor": 0.512197,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 993,
+          "top": 373,
+          "width": 160,
+          "height": 253,
+          "anchor": 0.467324,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 80,
+          "top": 677,
+          "width": 170,
+          "height": 246,
+          "anchor": 0.510671,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 387,
+          "top": 677,
+          "width": 173,
+          "height": 253,
+          "anchor": 0.4727,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 700,
+          "top": 677,
+          "width": 156,
+          "height": 254,
+          "anchor": 0.468309,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 989,
+          "top": 676,
+          "width": 166,
+          "height": 250,
+          "anchor": 0.466436,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 73,
+          "top": 979,
+          "width": 232,
+          "height": 232,
+          "anchor": 0.437488,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 376,
+          "top": 977,
+          "width": 214,
+          "height": 233,
+          "anchor": 0.430029,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 649,
+          "top": 976,
+          "width": 209,
+          "height": 235,
+          "anchor": 0.541053,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        },
+        {
+          "left": 936,
+          "top": 976,
+          "width": 227,
+          "height": 240,
+          "anchor": 0.573105,
+          "anchorY": 1,
+          "referenceHeight": 244.5
+        }
+      ],
+      "heroId": "ahn",
+      "name": "대한의군 군복"
+    },
+    {
+      "id": "ahn_gold",
+      "source": "assets/3d/fixed/skins/source/ahn_gold-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/ahn_gold-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 250.5,
+      "pivotXOverrides": {},
+      "bytes": 286722,
+      "frames": [
+        {
+          "left": 77,
+          "top": 67,
+          "width": 172,
+          "height": 254,
+          "anchor": 0.523402,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 379,
+          "top": 71,
+          "width": 174,
+          "height": 246,
+          "anchor": 0.529271,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 689,
+          "top": 72,
+          "width": 173,
+          "height": 248,
+          "anchor": 0.464005,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 986,
+          "top": 68,
+          "width": 161,
+          "height": 253,
+          "anchor": 0.463834,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 74,
+          "top": 377,
+          "width": 167,
+          "height": 253,
+          "anchor": 0.564375,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 385,
+          "top": 378,
+          "width": 171,
+          "height": 255,
+          "anchor": 0.41694,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 698,
+          "top": 377,
+          "width": 158,
+          "height": 259,
+          "anchor": 0.513573,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 991,
+          "top": 376,
+          "width": 163,
+          "height": 255,
+          "anchor": 0.450959,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 78,
+          "top": 679,
+          "width": 169,
+          "height": 250,
+          "anchor": 0.566424,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 382,
+          "top": 680,
+          "width": 181,
+          "height": 255,
+          "anchor": 0.458653,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 693,
+          "top": 684,
+          "width": 162,
+          "height": 253,
+          "anchor": 0.479444,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 989,
+          "top": 682,
+          "width": 167,
+          "height": 248,
+          "anchor": 0.43832,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 68,
+          "top": 981,
+          "width": 233,
+          "height": 229,
+          "anchor": 0.412357,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 370,
+          "top": 981,
+          "width": 216,
+          "height": 230,
+          "anchor": 0.427795,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 647,
+          "top": 980,
+          "width": 221,
+          "height": 232,
+          "anchor": 0.55273,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        },
+        {
+          "left": 936,
+          "top": 981,
+          "width": 230,
+          "height": 234,
+          "anchor": 0.574507,
+          "anchorY": 1,
+          "referenceHeight": 250.5
+        }
+      ],
+      "heroId": "ahn",
+      "name": "금빛 전설"
+    },
+    {
+      "id": "dangun_sky",
+      "source": "assets/3d/fixed/skins/source/dangun_sky-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/dangun_sky-directions-v1.webp",
+      "width": 1231,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 236.5,
+      "pivotXOverrides": {},
+      "bytes": 367664,
+      "frames": [
+        {
+          "left": 69,
+          "top": 89,
+          "width": 179,
+          "height": 238,
+          "anchor": 0.520614,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 375,
+          "top": 92,
+          "width": 176,
+          "height": 236,
+          "anchor": 0.562855,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 679,
+          "top": 91,
+          "width": 175,
+          "height": 237,
+          "anchor": 0.423567,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 983,
+          "top": 91,
+          "width": 178,
+          "height": 236,
+          "anchor": 0.470293,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 65,
+          "top": 391,
+          "width": 180,
+          "height": 245,
+          "anchor": 0.568574,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 373,
+          "top": 389,
+          "width": 180,
+          "height": 250,
+          "anchor": 0.517191,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 682,
+          "top": 392,
+          "width": 176,
+          "height": 248,
+          "anchor": 0.466686,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 985,
+          "top": 391,
+          "width": 180,
+          "height": 244,
+          "anchor": 0.408409,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 59,
+          "top": 693,
+          "width": 181,
+          "height": 237,
+          "anchor": 0.592857,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 376,
+          "top": 689,
+          "width": 188,
+          "height": 242,
+          "anchor": 0.510405,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 676,
+          "top": 689,
+          "width": 179,
+          "height": 242,
+          "anchor": 0.46072,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 990,
+          "top": 694,
+          "width": 179,
+          "height": 235,
+          "anchor": 0.405559,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 52,
+          "top": 974,
+          "width": 232,
+          "height": 231,
+          "anchor": 0.466313,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 367,
+          "top": 975,
+          "width": 214,
+          "height": 233,
+          "anchor": 0.442921,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 654,
+          "top": 977,
+          "width": 209,
+          "height": 232,
+          "anchor": 0.535644,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        },
+        {
+          "left": 949,
+          "top": 975,
+          "width": 229,
+          "height": 230,
+          "anchor": 0.532757,
+          "anchorY": 1,
+          "referenceHeight": 236.5
+        }
+      ],
+      "heroId": "dangun",
+      "name": "천제의 푸른 옷"
+    },
+    {
+      "id": "dangun_gold",
+      "source": "assets/3d/fixed/skins/source/dangun_gold-directions-v1.png",
+      "delivery": "assets/3d/fixed/skins/dangun_gold-directions-v1.webp",
+      "width": 1232,
+      "height": 1277,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 237,
+      "pivotXOverrides": {},
+      "bytes": 363658,
+      "frames": [
+        {
+          "left": 67,
+          "top": 93,
+          "width": 181,
+          "height": 237,
+          "anchor": 0.517983,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 380,
+          "top": 95,
+          "width": 178,
+          "height": 237,
+          "anchor": 0.549466,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 687,
+          "top": 94,
+          "width": 175,
+          "height": 237,
+          "anchor": 0.425451,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 984,
+          "top": 93,
+          "width": 181,
+          "height": 237,
+          "anchor": 0.467242,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 64,
+          "top": 394,
+          "width": 174,
+          "height": 242,
+          "anchor": 0.571118,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 374,
+          "top": 394,
+          "width": 185,
+          "height": 247,
+          "anchor": 0.481896,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 683,
+          "top": 398,
+          "width": 177,
+          "height": 242,
+          "anchor": 0.474326,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 992,
+          "top": 394,
+          "width": 175,
+          "height": 242,
+          "anchor": 0.423303,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 59,
+          "top": 695,
+          "width": 180,
+          "height": 236,
+          "anchor": 0.602977,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 379,
+          "top": 694,
+          "width": 186,
+          "height": 237,
+          "anchor": 0.51462,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 673,
+          "top": 695,
+          "width": 177,
+          "height": 236,
+          "anchor": 0.474269,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 989,
+          "top": 695,
+          "width": 185,
+          "height": 235,
+          "anchor": 0.406595,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 51,
+          "top": 975,
+          "width": 228,
+          "height": 228,
+          "anchor": 0.468754,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 366,
+          "top": 976,
+          "width": 213,
+          "height": 234,
+          "anchor": 0.432484,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 654,
+          "top": 976,
+          "width": 208,
+          "height": 234,
+          "anchor": 0.546433,
+          "anchorY": 1,
+          "referenceHeight": 237
+        },
+        {
+          "left": 952,
+          "top": 976,
+          "width": 226,
+          "height": 229,
+          "anchor": 0.524766,
+          "anchorY": 1,
+          "referenceHeight": 237
+        }
+      ],
+      "heroId": "dangun",
+      "name": "금빛 전설"
+    }
+  ],
+  "totalPoses": 256,
+  "totalDeliveryBytes": 5677748
+}

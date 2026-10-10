@@ -8,6 +8,7 @@ import { seasonFor,SEASONS } from './seasons.js';
 import { campaignSupport } from './scenario.js';
 import { normalizeBattleSkills } from './battle-controls.js';
 import { findCombo } from '../data/combos.js';
+import { SKINS } from '../data/skins.js';
 
 export function atlasStyle(element,category,id) {
   const cell=ART[category]?.[id];if(!cell){element.style.backgroundImage='none';return;}
@@ -47,6 +48,10 @@ export class StageChooser {
       for(const h of HERO_ORDER)select.add(new Option(`${HEROES[h].name} · ${HEROES[h].role}`,h));
       select.onchange=()=>this.render();
     }
+    for(const [heroId,skinId]of [['hero-one','skin-one'],['hero-two','skin-two']])document.getElementById(skinId).onchange=()=>{
+      const hero=document.getElementById(heroId).value;
+      this.pending.skins={...this.pending.skins,[hero]:document.getElementById(skinId).value};this.render();
+    };
     for(const selectId of ['equip-choice','equip-two-choice']) {
       const select=document.getElementById(selectId);if(selectId==='equip-two-choice')select.add(new Option('하나만 장착',''));
       for(const id of SKILL_ORDER)select.add(new Option(SKILLS[id].name,id));select.onchange=()=>this.render();
@@ -60,16 +65,26 @@ export class StageChooser {
       if(new Set(ids).size!==ids.length){document.getElementById('loadout-note').textContent='서로 다른 두 영웅을 선택하세요.';return;}
       const skillIds=[document.getElementById('equip-choice').value,document.getElementById('equip-two-choice').value].filter(Boolean);
       if(new Set(skillIds).size!==skillIds.length)return;
-      const config={stageId:this.pending.stageId,heroIds:ids,skillIds,season:document.getElementById('season-choice').value,support:document.getElementById('support-choice').checked};
+      const skins=Object.fromEntries([['hero-one','skin-one'],['hero-two','skin-two']].map(([hero,skin])=>[document.getElementById(hero).value,document.getElementById(skin).value]).filter(([hero,skin])=>hero&&skin));
+      const config={stageId:this.pending.stageId,heroIds:ids,skillIds,skins,season:document.getElementById('season-choice').value,support:document.getElementById('support-choice').checked};
       this.dialog.close();this.onStart(config);
     };
   }
   open(config) {
     this.pending={...config};document.getElementById('hero-one').value=config.heroIds[0];document.getElementById('hero-two').value=config.heroIds[1]??'';
+    for(const id of ['skin-one','skin-two'])delete document.getElementById(id).dataset.hero;
     const skills=normalizeBattleSkills(config);document.getElementById('equip-choice').value=skills[0];document.getElementById('equip-two-choice').value=skills[1]??'';document.getElementById('season-choice').value=config.season;document.getElementById('support-choice').checked=config.support;
     this.render();this.dialog.showModal();
   }
   render() {
+    for(const [heroId,skinId]of [['hero-one','skin-one'],['hero-two','skin-two']]){
+      const hero=document.getElementById(heroId).value,select=document.getElementById(skinId);
+      if(select.dataset.hero!==hero){
+        select.replaceChildren(new Option('기본 의상',''));for(const skin of SKINS[hero]??[])select.add(new Option(skin.name,skin.id));
+        select.value=this.pending.skins?.[hero]??'';select.dataset.hero=hero;
+      }
+      select.disabled=!hero;
+    }
     const stage=STAGE_BY_ID[this.pending.stageId]??STAGES[0],theme=seasonFor(stage,document.getElementById('season-choice').value),progress=loadProgress();
     for(const b of this.dialog.querySelectorAll('.stage-card')) {
       b.setAttribute('aria-pressed',String(b.dataset.stage===stage.id));b.querySelector('em').textContent=progress[b.dataset.stage]?'★'.repeat(progress[b.dataset.stage]):'';

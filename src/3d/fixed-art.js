@@ -4,6 +4,9 @@ import { LANDMARK_STAGE_ART,landmarkFrame } from './tower-art-data.js';
 import { HERO_POSE_ART } from './hero-pose-data.js';
 import { COMBAT_POSE_ART } from './combat-pose-data.js';
 import { combatPoseRoster } from './combat-pose-roster.js';
+import { SKIN_POSE_ART } from './skin-pose-data.js';
+import { heroLookRoster,heroLooksKey } from './hero-look-roster.js';
+import { skinDef } from '../data/skins.js';
 
 export const FIXED_ART={yi:HERO_POSE_ART.yi.path,towers:'assets/3d/fixed/tower-tiers-v2.webp',winter:'assets/3d/fixed/winter-props-v2.webp'};
 const atlases=new Map();
@@ -52,6 +55,7 @@ export class FixedBattleArt {
   constructor(world) {
     this.world=world;this.ready=false;this.loading=true;this.coreLoading=true;this.failed=false;this.destroyed=false;this.textures=new Map();this.materials=new Map();this.geometries=new Map();
     this.combatPoses={enemy:{},ally:{}};this.combatGeneration=0;
+    this.skinPoses={};this.skinGeneration=0;this.heroLooksKey=null;
     world.renderer.domElement.dataset.fixedArtStatus='loading';
     const landmarks=Object.values(LANDMARK_STAGE_ART).map(layout=>atlas(layout.path,5,4,layout).catch(error=>{console.warn('Landmark stage art unavailable; keeping base illustration.',error.message);return null;}));
     const heroPoses=Promise.all(Object.entries(HERO_POSE_ART).filter(([id])=>id!=='yi').map(async([id,layout])=>[id,await atlas(layout.path,4,4,layout).catch(error=>{console.warn('Hero poses unavailable; keeping base illustration.',id,error.message);return null;})]));
@@ -64,6 +68,7 @@ export class FixedBattleArt {
       this.coreLoading=false;this.updateLoading();
     });
     this.prepareCombatArt(world.stage,world.combatKinds);
+    this.prepareHeroLooks(world.heroLooks);
     const size=64,data=new Uint8Array(size*size*4);
     for(let y=0;y<size;y++)for(let x=0;x<size;x++){const d=Math.hypot((x+.5-size/2)/(size/2),(y+.5-size/2)/(size/2)),i=(y*size+x)*4;data.set([255,255,255,Math.round(Math.pow(Math.max(0,1-d),1.5)*255)],i);}
     this.shadowTexture=new T.DataTexture(data,size,size);this.shadowTexture.needsUpdate=true;
@@ -71,7 +76,7 @@ export class FixedBattleArt {
     this.shadowMaterial.userData.fixedArt=true;
   }
   updateLoading(){
-    this.loading=!!(this.coreLoading||this.combatLoading);
+    this.loading=!!(this.coreLoading||this.combatLoading||this.skinLoading);
     if(!this.destroyed)this.world.renderer.domElement.dataset.fixedArtStatus=this.loading?'loading':this.ready?'ready':'fallback';
   }
   releasePoseAtlas(art){
@@ -100,8 +105,31 @@ export class FixedBattleArt {
       const count=results.filter(x=>x.art).length,dataset=this.world.renderer.domElement.dataset;
       Object.assign(dataset,{combatPoseStatus:count===results.length?'ready':'partial',combatPoseCount:String(count),combatPoseExpected:String(results.length),combatPoseKinds:results.map(x=>x.id).join(',')});
     }).finally(()=>{if(generation===this.combatGeneration){this.combatLoading=false;this.updateLoading();}});
-    this.promise=Promise.all([this.corePromise??Promise.resolve(),this.combatPromise]);
+    this.refreshPromise();
     return this.promise;
+  }
+  refreshPromise(){
+    // Replacing this only when a request starts preserves ready-callback identity.
+    this.promise=Promise.all([this.corePromise,this.combatPromise,this.skinPromise]);
+  }
+  prepareHeroLooks(heroes=[]){
+    const key=heroLooksKey(heroes);if(key===this.heroLooksKey)return this.promise;
+    this.heroLooksKey=key;
+    const generation=this.skinGeneration=(this.skinGeneration??0)+1,roster=heroLookRoster(heroes),wanted=new Set(roster.map(look=>look.skin));
+    this.skinPoses??={};
+    for(const [id,art]of Object.entries(this.skinPoses))if(!wanted.has(id)){this.releasePoseAtlas(art);delete this.skinPoses[id];}
+    this.skinLoading=true;this.updateLoading();
+    this.skinPromise=Promise.all(roster.map(async({skin})=>{
+      const layout=SKIN_POSE_ART[skin];
+      const art=await Promise.resolve(this.skinPoses[skin]??(layout?atlas(layout.path,4,4,layout,false):null)).catch(error=>{console.warn('Costume poses unavailable; keeping base hero poses.',skin,error.message);return null;});
+      return {skin,art};
+    })).then(results=>{
+      if(this.destroyed||generation!==this.skinGeneration)return;
+      this.skinPoses=Object.fromEntries(results.map(({skin,art})=>[skin,art]));
+      const count=results.filter(x=>x.art).length;
+      Object.assign(this.world.renderer.domElement.dataset,{skinPoseStatus:count===results.length?'ready':'partial',skinPoseCount:String(count),skinPoseExpected:String(results.length),skinPoseKinds:key});
+    }).finally(()=>{if(generation===this.skinGeneration){this.skinLoading=false;this.updateLoading();}});
+    this.refreshPromise();return this.promise;
   }
   texture(source) {
     if(!this.textures.has(source)){const tex=new T.CanvasTexture(source);tex.colorSpace=T.SRGBColorSpace;tex.anisotropy=4;tex.generateMipmaps=true;this.textures.set(source,tex);}
@@ -161,7 +189,8 @@ export class FixedBattleArt {
   hideModel(root) {for(const child of root.children)if(child!==root.userData.hp&&child!==root.userData.ownerRing)child.visible=false;}
   unitArt(entity,hero,ally) {
     const kind=hero?entity.heroId:ally?entity.kind:entity.type;
-    const poses=hero?(!entity.skin?(this.heroPoses?.[kind]??(kind==='yi'?this.yi:null)):null):this.combatPoses?.[ally?'ally':'enemy']?.[kind];
+    const costume=hero&&skinDef(kind,entity.skin)?this.skinPoses?.[entity.skin]:null;
+    const poses=hero?(costume??this.heroPoses?.[kind]??(kind==='yi'?this.yi:null)):this.combatPoses?.[ally?'ally':'enemy']?.[kind];
     return poses??(hero?heroArt(kind,entity.skin):ally?allyArt(kind):enemyArt(kind));
   }
   unitProxy(entity,ally=false) {

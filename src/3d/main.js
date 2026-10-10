@@ -103,7 +103,7 @@ function beginWave() {if(world.art?.loading){notice('전장 그림을 준비하�
 function pause(){if(!started||game.result)return;paused=!paused;updateHUD();}
 function startBattle(nextConfig=config) {
   firingEvents.length=0;world.enemyCues.clear();
-  config={...nextConfig};towerLabels.clear();world.loadStage(STAGE_BY_ID[config.stageId],config.season);game=newBattleGame(config);
+  config={...nextConfig};towerLabels.clear();game=newBattleGame(config);world.loadStage(STAGE_BY_ID[config.stageId],config.season,game.heroes);
   activeHero=0;started=false;paused=false;selected={kind:'hero',h:0};mode=null;hover=null;accumulator=0;resultShown=false;lastCommand='준비';
   if($('result-dialog').open)$('result-dialog').close();$('cast-banner').hidden=true;
   world.sync(game,0,DT,selected);world.home();updateHUD();notice(`${seasonFor(STAGE_BY_ID[config.stageId],config.season).name} · ${STAGE_BY_ID[config.stageId].name} · 출정을 준비하세요`);
@@ -240,7 +240,7 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 try {
-  game=newBattleGame(config);world=new WinterWorld(canvas,STAGE_BY_ID[config.stageId],config.season);input();world.sync(game,0,DT,selected);world.home();world.draw(0,0);document.body.dataset.renderer='webgl2';
+  game=newBattleGame(config);world=new WinterWorld(canvas,STAGE_BY_ID[config.stageId],config.season,{heroLooks:game.heroes});input();world.sync(game,0,DT,selected);world.home();world.draw(0,0);document.body.dataset.renderer='webgl2';
   whenBattleArtReady(world,game,()=>game,()=>{world.sync(game,0,0,selected);world.home();$('loading').hidden=true;last=performance.now();});
   updateHUD();last=performance.now();requestAnimationFrame(frame);
 } catch(error) {

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-11",
+  "generation": "built-in imagegen",
+  "generatedFile": "exec-0d167c39-616d-4f4e-bb45-57d300f19efb.png",
+  "reference": "assets/3d/fixed/skins/source/yi_white-directions-v1.png",
+  "prompt": "EDIT this transparent costume sheet of 백의종군 (yi). Preserve the exact same costume colors, identity, face, weapon, compact painterly animation style, camera elevation and all SIXTEEN poses. Columns: front-right, true back-right, true back-left, front-left. Rows: idle, walk A, walk B, attack. Fix the composition and spacing only. \nCRITICAL PRODUCTION FIX: Do NOT preserve the reference's tight pixel layout. Recompose the 4 by 4 grid with each COMPLETE character about 70 percent of its CURRENT reference pixel size, and one identical body scale in all sixteen cells. Keep the large canvas, shrink the actors inside their cells. In a 1280px sheet leave at least 60 fully transparent pixels between vertically neighboring actor bounding rectangles and at least 40 between horizontal neighbors. Maintain at least 25px of transparent outer border. Include the entire plume/hat, cape, weapon, arrow tip and shoes inside the inner 70 percent of each cell. No silhouette may enter any neighboring bounding rectangle. This spacing requirement takes priority over matching the reference pixel positions. The game rescales the isolated actor, so transparent breathing room will not make the character smaller in the game.\nNo floor, background, ground shadows, effects, captions or grid lines. Real transparent alpha. Exactly16 complete actors.",
+  "transparent_background": true,
+  "supersedes": "assets/3d/fixed/skins/yi_white-directions-v1.webp",
+  "reason": "v1 rejected by pixel separation inspection; preserve costume and add transparent gutters"
+}
