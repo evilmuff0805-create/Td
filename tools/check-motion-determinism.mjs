@@ -7,7 +7,9 @@ import { SnapshotEncoder } from '../src/sim/snapshot.js';
 import { TOWERS } from '../src/data/towers.js';
 
 // Recorded before adding visual action cues. Ignore only the optional cue fields,
-// so motion work must preserve every old snapshot field and combat event.
+// so presentation work must preserve every old snapshot field and combat event.
+// Later signature art adds an explicit visual-only abilityCue event. Ignore
+// only that new kind; all original events must still match the old baseline.
 const fixture=new URL('./fixtures/motion-determinism.json',import.meta.url);
 function run(mode,seed){
   const players=(mode==='solo'
@@ -19,7 +21,7 @@ function run(mode,seed){
   while(!s.result&&s.tick<60*60*20){
     for(const bot of bots){botThink(s,bot,send);botSkills(s,bot,send);}
     step(s);
-    hash.update(JSON.stringify(s.events));
+    hash.update(JSON.stringify(s.events.filter(e=>e.k!=='abilityCue')));
     if(s.tick%60===0||s.result){
       const snap=enc.encode(s,[]);
       snap.h=snap.h.map(a=>a.slice(0,19));snap.e=snap.e.map(a=>a.slice(0,10));snap.su=snap.su.map(a=>a.slice(0,8));

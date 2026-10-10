@@ -1,0 +1,26 @@
+Use case: stylized-concept.
+Asset type: one transparent sprite atlas for an existing Korean historical fixed top-view tower-defense game.
+Create a SQUARE atlas of EXACTLY SIXTEEN separate magical combat effect sprites, in a perfectly regular 4 columns x 4 rows grid. No labels, no dividers. Each sprite must remain in the middle 70% of its own equal square cell, with generous completely transparent gutters and transparent outside border. All 16 sprites fully visible. Real alpha background. Treat them as sixteen self-contained moving effect motifs, NOT sixteen illustrations with scenery or opaque square backgrounds.
+Style: premium hand-painted animated fantasy, soft modeled depth, painterly textured water/cloth/smoke/metal, restrained glow, dark navy shadows, warm parchment gold highlights, muted jade and deep vermilion. Rich but calm color, like a lovingly painted historical fantasy adventure. The ground and characters must remain readable through openings in effects. Fine bright center with soft translucent edges; no neon cyan floods, no plastic, no cheap flat glyphs, no huge bloom. Fixed isometric game camera looking down approximately 55 degrees; most swirls lie in the ground plane. No actual ground, no people, no buildings.
+Strict row-major cells:
+ROW 1:
+1) Yi Sun-sin skill: a delicate white-and-slate-blue crane made of flowing feathers and arrow trails, wings spread in a forward-facing fan opening to the right. Mostly empty transparent air between the trails.
+2) Yi ultimate: a sweeping crescent of deep blue ocean foam and a warm brass turtle-shell naval crest, a low painted naval wake. No full ship.
+3) Sejong skill: floating warm parchment-gold fragments of Korean calligraphic strokes cascading in a small graceful arc, supported by pale jade motes, no complete book.
+4) Sejong ultimate: elegant antique brass water-clock dial, minimal thin open circular ornamental arcs and a small blue water droplet at center, mostly transparent center.
+ROW 2:
+5) Eulji skill: a low curling ribbon of amber and vermilion fire with dark smoke, crescent shape open in the center, not a fireball.
+6) Eulji ultimate: a sweeping broad crest of painterly slate turquoise water with ivory foam, dynamic asymmetrical C shaped wave, no circular magic glyph.
+7) Gang Gamchan skill: one bold tapering sword-swipe crescent in warm ivory gold with restrained muted purple streaks, diagonal sweep left to right.
+8) Gang ultimate: one brilliant warm-gold star-shaped meteor with a long flowing smoky plum tail, streaking diagonally down to the right.
+ROW 3:
+9) Gwon Yul skill: a tight burst of six rugged warm gray stones with finely painted beige dust arcing downward, visible chunky rock silhouettes.
+10) Gwon ultimate: a warm brass defensive shield emblem over two short open ochre protection arcs, historical wood-and-metal feeling, no actual wall.
+11) Gwak Jaeu skill: a small fluttering deep vermilion pennant with muted jade-gray smoke curling below, a readable rally signal.
+12) Gwak ultimate: flowing dark-red silk ribbons interwoven with three ivory arrow streaks in a compact spiral, an open airy central space.
+ROW 4:
+13) Ahn Jung-geun skill: a compact antique pistol muzzle flash of warm ivory and copper, short angular star-shaped burst with subtle charcoal smoke, no gun.
+14) Ahn ultimate: thin antique brass four-notch sniper crosshair and one narrow ivory shot streak, mostly transparent, restrained smoke, no modern scope or text.
+15) Dangun skill: three small ivory garlic bulbs with softly modeled organic skins and jade herbal leaves, a delicate curling sage-green trail, no opaque background.
+16) Dangun ultimate: one branching pearl-white lightning strike with muted blue-gray cloudy wisps and tiny warm gold sacred sparks, not a glowing blue circle.
+Keep all 16 within individual cells. Preserve clean transparent gutters. No captions, numbers, watermark, user interface or inset panels.

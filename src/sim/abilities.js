@@ -24,6 +24,9 @@ import { nearestOnPath, posAt } from './map.js';
 
 const SKILL_RANGE = 5;
 
+// abilityCue is presentation only. Emit it after resolving actual summon/self
+// coordinates; it must never consume RNG, delay a cast or drive damage.
+
 function clampToHero(h, x, y, r = SKILL_RANGE) {
   const dx = x - h.x;
   const dy = y - h.y;
@@ -136,7 +139,9 @@ export function castHeroSkill(s, h, x, y) {
     case 'gwak': {
       const p = clampToHero(h, x, y);
       const mult = pw * (1 + 0.08 * (h.lv - 1));
+      const first=s.summons.length;
       placeMilitia(s, p.x, p.y, 3, { hp: 220 * mult, maxHp: 220 * mult, dmg: 15 * mult, life: 12, kind: 'militia' }, h.owner);
+      ev(s,'abilityCue',{motif:'gwak-skill',caster:h.id,p:h.owner,r:.38,points:s.summons.slice(first).map(m=>({x:m.x,y:m.y}))});
       ev(s, 'sfx', { n: 'horn' });
       break;
     }
@@ -189,6 +194,7 @@ export function castHeroUlt(s, h, x, y) {
       for (const t of s.towers) t.cd = 0;
       ev(s, 'announce', { text: '자격루', sub: '시간이 느려진다', color: '#7fd1ff' });
       ev(s, 'clock');
+      ev(s,'abilityCue',{motif:'sejong-ult',caster:h.id,p:h.owner,x:h.x,y:h.y,r:.9});
       ev(s, 'sfx', { n: 'bell' });
       break;
     }
@@ -214,11 +220,13 @@ export function castHeroUlt(s, h, x, y) {
       const np = nearestOnPath(map, p.x, p.y);
       if (np) addSummon(s, { kind: 'wall', owner: h.owner, x: np.x, y: np.y, hp: 2500 * heroPower(h), maxHp: 2500 * heroPower(h), dmg: 0, block: 99, life: 6 });
       h.buffs.drT = 6;
+      ev(s,'abilityCue',{motif:'gwon-ult',caster:h.id,p:h.owner,x:np?.x??h.x,y:np?.y??h.y,r:.65});
       ev(s, 'sfx', { n: 'build' });
       break;
     }
     case 'gwak': {
       h.buffs.gwakT = 8;
+      ev(s,'abilityCue',{motif:'gwak-ult',caster:h.id,p:h.owner,x:h.x,y:h.y,r:.85});
       ev(s, 'announce', { text: '홍의 질풍', sub: '하늘이 내린 붉은 옷의 장군', color: '#ff7b6b' });
       ev(s, 'sfx', { n: 'horn' });
       break;

@@ -2,6 +2,7 @@ import * as T from 'three';
 import { YI_FAN } from '../data/heroes.js';
 import { SKILLS } from '../data/skills.js';
 import { PaintedEffectArt } from './effect-art.js';
+import { PaintedSignatures } from './signature-art.js';
 
 const basic=(color,opacity=1)=>new T.MeshBasicMaterial({color,transparent:true,opacity,side:T.DoubleSide,depthWrite:false,blending:T.AdditiveBlending,toneMapped:false});
 export function fanGeometry(range=YI_FAN.range,halfAngle=YI_FAN.halfAngle) {
@@ -32,6 +33,7 @@ export class BattleEffects {
   constructor(scene,glow,{illustrated=false}={}) {
     this.scene=scene;this.glow=glow;this.active=[];
     this.art=illustrated?new PaintedEffectArt():null;this.art?.load();
+    this.signatures=illustrated?new PaintedSignatures():null;this.signatures?.load();
     this.fan=new T.Group();this.fan.position.y=.08;
     this.fan.add(new T.Mesh(fanGeometry(),new T.MeshBasicMaterial({color:'#339bcc',transparent:true,opacity:.23,side:T.DoubleSide,depthWrite:false,toneMapped:false})));
     this.fan.add(new T.Line(outline(YI_FAN.range,YI_FAN.halfAngle),new T.LineBasicMaterial({color:'#2589ba',transparent:true,opacity:.95,depthWrite:false,toneMapped:false})));
@@ -60,10 +62,28 @@ export class BattleEffects {
     if(this.active.length>=64){const old=this.active.shift();this.scene.remove(old.root);release(old.root);}
     this.scene.add(root);this.active.push({root,life,t:0,animate});
   }
+  signature(kind,x,z,r=.7,{angle=0,height=.085,life=.85,opacity=.65}={}) {
+    const image=this.signatures?.decal(kind,r,opacity);if(!image)return false;
+    const root=new T.Group();root.position.set(x,height,z);root.rotation.y=-angle;root.add(image);root.userData.signature=kind;
+    this.add(root,life,(_,k)=>{image.scale.setScalar(.86+k*.14);image.material.opacity=opacity*Math.min(1,(1-k)*2);});return true;
+  }
+  heroCue(e) {
+    for(const p of e.points??[{x:e.x,y:e.y}]){
+      if(!this.signature(e.motif,p.x,p.y,e.r??.7,{life:e.motif==='sejong-ult'?1.4:.95,opacity:.58}))this.spell('ring',p.x,p.y,e.r??.7);
+    }
+  }
+  dash(x1,z1,x2,z2) {
+    const distance=Math.hypot(x2-x1,z2-z1),field=this.signatures?.plane('gang-skill',distance,1.6,.62);
+    if(field&&distance>.01){
+      const root=new T.Group();root.position.set((x1+x2)/2,.13,(z1+z2)/2);root.rotation.y=-Math.atan2(z2-z1,x2-x1);field.rotation.x=-Math.PI/2;root.add(field);
+      this.add(root,.5,(_,k)=>{field.material.opacity=(1-k)*.62;});
+    }else if(field){field.geometry.dispose();field.material.dispose();}
+    this.line(x1,z1,x2,z2,'#e5cc8e',.45);
+  }
   impact(x,z,r=.8,color='#ffbd76',kind='impact') {
     const root=new T.Group();root.position.set(x,.09,z);
     const paintedKind=['build','hangul','stone','light','thunder'].includes(kind)?'light':['ice','frost'].includes(kind)?'ice':['garlic','heal'].includes(kind)?'heal':kind==='flood'?'flood':'fire';
-    const ring=this.art?.decal(paintedKind,1,.65)??new T.Mesh(new T.RingGeometry(.78,1,40),basic(color,.75));ring.rotation.x=-Math.PI/2;root.add(ring);
+    const ring=(kind==='stone'?this.signatures?.decal('gwon-skill',1,.65):null)??this.art?.decal(paintedKind,1,.65)??new T.Mesh(new T.RingGeometry(.78,1,40),basic(color,.75));ring.rotation.x=-Math.PI/2;root.add(ring);
     const painted=!!ring.userData.paintedEffect;
     const halo=new T.Sprite(new T.SpriteMaterial({map:this.glow,color,transparent:true,opacity:.9,depthWrite:false,blending:T.AdditiveBlending}));halo.position.y=.15;root.add(halo);
     const n=kind==='build'?10:14,p=new Float32Array(n*3),vel=[];
@@ -84,6 +104,12 @@ export class BattleEffects {
     const uv=new Float32Array(positions.count*2);for(let i=0;i<positions.count;i++){uv[i*2]=positions.getX(i)/range;uv[i*2+1]=.5-positions.getZ(i)/(range*2);}
     fieldGeometry.setAttribute('uv',new T.BufferAttribute(uv,2));
     const field=this.art?.mesh('volley',fieldGeometry,.56)??new T.Mesh(fieldGeometry,basic('#70caff',.28));root.add(field);
+    // The fan marks the real hit area. Keep the complete crane on its own
+    // rectangle inside it; fan UVs would clip a third of the painted wings.
+    let width=range*.38,height=width/(this.signatures?.aspect('yi-skill')??1);
+    const fit=Math.min(1,Math.max(0,range*.37*Math.tan(halfAngle)*1.8)/height);width*=fit;height*=fit;
+    const crane=width>0?this.signatures?.plane('yi-skill',width,height,.68):null;
+    if(crane){crane.rotation.x=-Math.PI/2;crane.position.set(range*.56,.018,0);root.add(crane);}
     const rim=new T.Line(outline(range,halfAngle),new T.LineBasicMaterial({color:'#bcf0ff',transparent:true,opacity:.9,depthWrite:false}));root.add(rim);
     const arrows=[];
     const arrowMaterial=(color,opacity)=>{const mat=basic(color,opacity);if(field.userData.paintedEffect)mat.blending=T.NormalBlending;mat.userData.baseOpacity=opacity;return mat;};
@@ -97,7 +123,7 @@ export class BattleEffects {
     this.add(root,.85,(t,k)=>{
       const travel=Math.min(1,t/.52)*range;
       for(const {arrow,a} of arrows){arrow.position.set(Math.cos(a)*travel,.65+Math.sin(k*Math.PI)*.24,Math.sin(a)*travel);arrow.traverse(o=>{if(o.material)o.material.opacity=Math.max(0,1-k)*o.material.userData.baseOpacity;});}
-      field.material.opacity=(1-k)*(field.userData.paintedEffect?.56:.22);rim.material.opacity=(1-k)*(field.userData.paintedEffect?.45:.8);
+      field.material.opacity=(1-k)*(crane?.32:field.userData.paintedEffect?.56:.22);if(crane)crane.material.opacity=(1-k)*.68;rim.material.opacity=(1-k)*(field.userData.paintedEffect?.45:.8);
     });
   }
   barrage(x,z) {
@@ -112,14 +138,15 @@ export class BattleEffects {
   thunder(x,z,r=.7) {
     const points=[];for(let i=0;i<=10;i++)points.push(new T.Vector3(x+(i===10?0:Math.sin(i*5.7)*.22),4.5*(1-i/10),z+(i===10?0:Math.cos(i*4.1)*.15)));
     const root=new T.Line(new T.BufferGeometry().setFromPoints(points),new T.LineBasicMaterial({color:'#d9f2ff',transparent:true,opacity:1,depthWrite:false,toneMapped:false}));
-    this.add(root,.45,(_,k)=>{root.material.opacity=(1-k)*(Math.sin(k*45)>.2?.4:1);});this.impact(x,z,r,'#a5d9fa','thunder');
+    this.add(root,.45,(_,k)=>{root.material.opacity=(1-k)*(Math.sin(k*45)>.2?.4:1);});this.signature('dangun-ult',x,z,r,{life:.48,opacity:.58});this.impact(x,z,r,'#a5d9fa','thunder');
   }
   spell(kind,x,z,r=1,angle=0) {
     const root=new T.Group();root.position.set(x,.08,z);const parts=[];
     if(kind==='slash')root.renderOrder=4;
     const color=kind==='flood'?'#93d8e8':kind==='heal'?'#9edfb4':'#f2d792';
-    for(let i=0;i<(this.art?.ready||kind==='slash'?1:3);i++) {
-      const arc=this.art?.decal(['flood','heal','slash'].includes(kind)?kind:'light',1,.65)??new T.Mesh(new T.RingGeometry(.91,1,48,1,kind==='slash'?-.8:0,kind==='slash'?1.6:Math.PI*2),basic(color,kind==='slash'?.8:.32));
+    for(let i=0;i<(this.art?.ready||this.signatures?.ready||kind==='slash'?1:3);i++) {
+      const signature=kind==='flood'?'eulji-ult':kind==='hangul'?'sejong-skill':null;
+      const arc=(signature?this.signatures?.decal(signature,1,.65):null)??this.art?.decal(['flood','heal','slash'].includes(kind)?kind:'light',1,.65)??new T.Mesh(new T.RingGeometry(.91,1,48,1,kind==='slash'?-.8:0,kind==='slash'?1.6:Math.PI*2),basic(color,kind==='slash'?.8:.32));
       // A short contact stroke crosses the victim's painted body; terrain
       // effects remain depth-tested, while the stroke stays below health bars.
       if(kind==='slash'){arc.material.depthTest=false;arc.renderOrder=4;}
@@ -170,8 +197,10 @@ export class BattleEffects {
     for(let i=this.active.length-1;i>=0;i--){const e=this.active[i];e.t+=dt;const k=Math.min(1,e.t/e.life);e.animate(e.t,k);if(k>=1){this.scene.remove(e.root);release(e.root);this.active.splice(i,1);}}
   }
   reset(){for(const e of this.active){this.scene.remove(e.root);release(e.root);}this.active=[];this.preview(null,null,null);}
+  zoneKey(kind) {return kind==='fire'&&this.signatures?.ready?'signature':this.art?.ready?'common':'fallback';}
   zone(kind,radius) {
-    const root=new T.Group(),color=kind==='ice'?'#a5cddd':'#d5a066',painted=this.art?.decal(kind==='ice'?'ice':'fire',radius,.52);
+    const root=new T.Group(),color=kind==='ice'?'#a5cddd':'#d5a066',painted=(kind==='fire'?this.signatures?.decal('eulji-skill',radius,.52):null)??this.art?.decal(kind==='ice'?'ice':'fire',radius,.52);
+    root.userData.artKey=this.zoneKey(kind);
     root.userData.paintedZone=!!painted;root.userData.zoneKind=kind;
     const disc=painted??new T.Mesh(new T.CircleGeometry(radius,48),basic(color,.14));disc.rotation.x=-Math.PI/2;disc.material.blending=T.NormalBlending;root.add(disc);root.userData.disc=disc;
     const edge=reticle(radius,color);root.add(edge);root.userData.edge=edge;
@@ -188,5 +217,5 @@ export class BattleEffects {
     root.userData.edge.traverse(o=>{if(o.material)o.material.opacity=fade*.24;});
     root.userData.motes.position.y=Math.sin(time*2)*.05;root.userData.motes.material.opacity=fade*.4;
   }
-  destroy(){this.reset();for(const root of this.previewRoots){this.scene.remove(root);release(root);}this.previewRoots=[];this.art?.dispose();}
+  destroy(){this.reset();for(const root of this.previewRoots){this.scene.remove(root);release(root);}this.previewRoots=[];this.art?.dispose();this.signatures?.dispose();}
 }

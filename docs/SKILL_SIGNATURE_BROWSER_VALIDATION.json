@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-11",
+  "origin": "http://127.0.0.1:8092",
+  "officialOriginUntouched": "http://127.0.0.1:8080",
+  "heroSamples": [
+    "이순신 · 학익진",
+    "이순신 · 거북선 출격",
+    "세종대왕 · 훈민정음",
+    "세종대왕 · 자격루",
+    "을지문덕 · 청야전술",
+    "을지문덕 · 살수대첩",
+    "강감찬 · 귀주 돌격",
+    "강감찬 · 낙성우",
+    "권율 · 투석",
+    "권율 · 행주산성",
+    "곽재우 · 의병 매복",
+    "곽재우 · 홍의 질풍",
+    "안중근 · 일곱 발의 총성",
+    "안중근 · 하얼빈 의거",
+    "단군왕검 · 마늘 던지기",
+    "단군왕검 · 천부인 번개"
+  ],
+  "equipmentAndOther": [
+    {
+      "name": "비기 · 신기전 일제사격",
+      "events": "boom",
+      "time": "0.35",
+      "art": "ready"
+    },
+    {
+      "name": "비기 · 봉수 경보",
+      "events": "announce",
+      "time": "0.35",
+      "art": "ready"
+    },
+    {
+      "name": "비기 · 의병 소집",
+      "events": "",
+      "time": "0.37",
+      "art": "ready"
+    },
+    {
+      "name": "비기 · 비격진천뢰",
+      "events": "boom",
+      "time": "2.08",
+      "art": "ready"
+    },
+    {
+      "name": "비기 · 군량 보급",
+      "events": "gold",
+      "time": "0.35",
+      "art": "ready"
+    },
+    {
+      "name": "비기 · 천자총통",
+      "events": "boom",
+      "time": "0.52",
+      "art": "ready"
+    },
+    {
+      "name": "비기 · 동의보감",
+      "events": "heal,announce",
+      "time": "0.35",
+      "art": "ready"
+    },
+    {
+      "name": "비기 · 동장군 한파",
+      "events": "",
+      "time": "0.35",
+      "art": "ready"
+    },
+    {
+      "name": "강감찬 · 기본 참격",
+      "events": "slash",
+      "time": "0.13",
+      "art": "ready"
+    },
+    {
+      "name": "이순신·세종 · 합격기",
+      "events": "announce,combo",
+      "time": "0.35",
+      "art": "ready"
+    }
+  ],
+  "seasons": [
+    "winter",
+    "spring",
+    "summer",
+    "autumn"
+  ],
+  "mobile": {
+    "height": 896,
+    "scrollWidth": 414,
+    "status": "가을 · 영웅 전용 효과 적용 · 장면 고정",
+    "width": 414
+  },
+  "warmAndRepeat": {
+    "before": {
+      "geometries": 148,
+      "textures": 130,
+      "signatureTextures": 16
+    },
+    "after": {
+      "geometries": 148,
+      "textures": 130,
+      "signatureTextures": 16
+    }
+  },
+  "holdUnchanged": true,
+  "localCoop": {
+    "origin": "isolated QA profile",
+    "hero1": "yi",
+    "hero2": "sejong",
+    "p2RightHeldMs": 700,
+    "p2Skill": "A",
+    "p1Skill": "mouse aimed hakikjin",
+    "pause": true,
+    "gold1": 156,
+    "gold2": 156,
+    "officialRewardsWritten": false
+  },
+  "standalone": {
+    "bytes": 40027971,
+    "localCoopLoaded": true,
+    "signatureArtReady": true
+  },
+  "consoleWarnings": 0,
+  "consoleErrors": 0,
+  "limits": [
+    "browser viewport emulation only, no physical phone",
+    "external-network two-device test pending",
+    "file protocol not tested"
+  ]
+}

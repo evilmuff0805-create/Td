@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-11",
+  "processing": "WebP quality 92, alphaQuality 100; original designs and PNGs preserved",
+  "sheets": [
+    {
+      "id": "hero-abilities-atlas-v1",
+      "width": 1254,
+      "height": 1254,
+      "originalBytes": 3190391,
+      "bytes": 569438,
+      "alphaDifferences": 0
+    },
+    {
+      "id": "skills-atlas-v1",
+      "width": 1254,
+      "height": 1254,
+      "originalBytes": 2940253,
+      "bytes": 498578,
+      "alphaDifferences": 0
+    }
+  ],
+  "originalBytes": 6130644,
+  "bytes": 1068016
+}

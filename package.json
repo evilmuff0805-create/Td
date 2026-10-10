@@ -34,6 +34,8 @@
     "test:motion-determinism": "node tools/check-motion-determinism.mjs",
     "test:embedded-art": "node tools/verify-embedded-art.mjs",
     "test:effects": "node tools/test-effects.mjs",
+    "test:signatures": "node tools/test-signatures.mjs",
+    "test:signature-assets": "node tools/signature-assets.mjs",
     "test:enemies": "node tools/test-enemies.mjs",
     "test:campaign": "node tools/test-campaign.mjs",
     "test:character-surfaces": "node tools/test-character-surfaces.mjs",

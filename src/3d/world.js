@@ -280,16 +280,24 @@ export class WinterWorld {
       root.position.set(mover.x,.05,mover.y);root.rotation.y=Math.atan2(mover.dx,mover.dy);
       if(!root.userData.illustrationProxy)animateCharacter(root,time,true,0,dt);
       this.art?.attachUnit(root,mover,false,true);this.art?.updateUnit(root,mover,true,0,time,{x:mover.x,z:mover.y,time:game.time,dt,frozen:dt===0||game.paused});
+      if(mover.kind==='turtle'){
+        if(!root.userData.wake){const wake=this.fx.signatures?.decal('yi-ult',.85,.28);if(wake){wake.position.set(0,.025,-.32);root.add(wake);root.userData.wake=wake;}}
+        if(root.userData.wake){root.userData.wake.visible=true;root.userData.wake.material.opacity=.24+Math.sin(time*4)*.025;}
+      }
     }
     for(const zone of game.zones) {
       const key=`z${zone.id}`;active.add(key);let root=this.scenery.get(key);
-      if(root&&root.userData.paintedZone!==!!this.fx.art?.ready){this.scene.remove(root);this.disposeModel(root);this.scenery.delete(key);root=null;}
+      if(root&&root.userData.artKey!==this.fx.zoneKey(zone.kind)){this.scene.remove(root);this.disposeModel(root);this.scenery.delete(key);root=null;}
       if(!root) {
         root=this.fx.zone(zone.kind,zone.r);root.position.set(zone.x,.075,zone.y);this.scene.add(root);this.scenery.set(key,root);
       }
       this.fx.updateZone(root,zone,time);
     }
+    const thunderTargets=new Set();
     for(const p of game.projectiles)if(p.mode==='drop'&&['bomb','meteor','hangul','thunder','bigshell'].includes(p.kind)) {
+      // Repeated heavenly strikes may follow the same victim. One warning at
+      // that location is legible; its pending projectiles still hit separately.
+      if(p.kind==='thunder'){const target=`${p.x.toFixed(2)},${p.y.toFixed(2)},${p.hit?.r??.5}`;if(thunderTargets.has(target))continue;thunderTargets.add(target);}
       const key=`p${p.id}`;active.add(key);let root=this.scenery.get(key);
       if(!root){root=impactWarning(p.hit?.single ? .8 : (p.hit?.r??.5),p.kind==='thunder'?'#acdafa':p.kind==='hangul'?'#d6dbae':'#e9ad79');this.scene.add(root);this.scenery.set(key,root);}
       root.position.set(p.x,.075,p.y);root.userData.progress.scale.setScalar(Math.max(.05,1-(p.k||0)));
@@ -299,10 +307,16 @@ export class WinterWorld {
   projectiles(game) {
     const active=new Set();
     for(const p of game.projectiles) {
+      // Lightning materialises at impact. A floating black ball during its
+      // delay misrepresents the skill; the real target warning remains below.
+      if(p.mode==='drop'&&p.kind==='thunder')continue;
       active.add(p.id);let obj=this.bullets.get(p.id);
       if(!obj) {
         obj=new T.Group();
-        if(p.kind==='arrow'||p.kind==='bolt') {
+        const signature=p.kind==='meteor'?'gang-ult':p.kind==='garlic'?'dangun-skill':p.kind==='hangul'?'sejong-skill':null;
+        const painted=signature?this.fx?.signatures?.plane(signature,p.kind==='meteor'?.72:p.kind==='hangul'?.6:.38,p.kind==='meteor'?.95:p.kind==='hangul'?.65:.38,.9):null;
+        if(painted){obj.add(painted);obj.userData.paintedProjectile=painted;}
+        else if(p.kind==='arrow'||p.kind==='bolt') {
           const shaft=cylinder(obj,MAT.wood,0,0,0,.012,.38);shaft.rotation.x=Math.PI/2;
           const tip=cone(obj,MAT.steel,0,0,.22,.028,.1);tip.rotation.x=Math.PI/2;
           box(obj,MAT.snow,0,0,-.15,.08,.018,.08);
@@ -352,6 +366,7 @@ export class WinterWorld {
       const delta=new T.Vector3(px,y,pz).sub(obj.position);
       if(obj.userData.placed&&delta.lengthSq()>.000001)obj.quaternion.setFromUnitVectors(new T.Vector3(0,0,1),delta.normalize());
       obj.position.set(px,y,pz);obj.userData.placed=true;
+      if(obj.userData.paintedProjectile)obj.userData.paintedProjectile.quaternion.copy(this.camera.quaternion).premultiply(obj.quaternion.clone().invert());
     }
     for(const [id,obj] of this.bullets) if(!active.has(id)){this.scene.remove(obj);this.disposeModel(obj);this.bullets.delete(id);}
   }
@@ -369,6 +384,11 @@ export class WinterWorld {
     const key=e.enemy!=null?`e${e.enemy}`:e.caster!=null?`h${e.caster}`:null;
     const socket=key?this.units?.get(key)?.userData.weapons?.[1]:null;
     const muzzle=socket?.userData.muzzle?socket.localToWorld(socket.userData.muzzle.clone()):null;
+    if(e.caster!=null&&(e.gun||e.k==='snipe')){
+      const angle=Math.atan2(e.y2-(muzzle?.z??e.y1),e.x2-(muzzle?.x??e.x1));
+      this.fx.signature('ahn-skill',muzzle?.x??e.x1,muzzle?.z??e.y1,.28,{height:muzzle?.y??.8,angle,life:.16,opacity:.8});
+      if(e.k==='snipe')this.fx.signature('ahn-ult',e.x2,e.y2,.65,{angle,life:.65,opacity:.65});
+    }
     this.fx.line(muzzle?.x??e.x1,muzzle?.z??e.y1,e.x2,e.y2,e.c??(e.k==='bolt'?'#b9e7ff':'#f1ca82'),e.k==='snipe'?.4:.16,e.k==='bolt',muzzle?.y??.8);
   }
   effect(x,z,r=1,color='#eac891',kind='impact') {this.fx.impact(x,z,r,color,kind);}
@@ -400,6 +420,7 @@ export class WinterWorld {
   project(x,y,z) {const p=new T.Vector3(x,y,z).project(this.camera);const c=this.renderer.domElement;return {x:(p.x*.5+.5)*c.clientWidth,y:(-.5*p.y+.5)*c.clientHeight,visible:p.z>=-1&&p.z<=1};}
   draw(time,dt) {
     this.renderer.domElement.dataset.effectArtStatus=this.fx.art?.ready?'ready':this.fx.art?.failed?'fallback':this.fx.art?'loading':'off';
+    this.renderer.domElement.dataset.signatureArtStatus=this.fx.signatures?.ready?'ready':this.fx.signatures?.failed?'fallback':this.fx.signatures?'loading':'off';
     if(this.art?.ready&&!this.artEnvironmentReady){
       for(const root of [this.static,this.water,this.lampGroup]){this.scene.remove(root);this.disposeModel(root);}
       this.fires=[];this.environment();

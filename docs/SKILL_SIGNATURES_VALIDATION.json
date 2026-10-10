@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-11",
+  "previousMilestoneCommit": "2b2ccfd687c63a2287cf90c3e4f916a52aa242d4",
+  "regressionTests": 185,
+  "signatureTests": 12,
+  "newHeroMotifs": 16,
+  "newAtlasBytes": 858154,
+  "existingIconDesigns": 25,
+  "iconsRedesigned": false,
+  "iconOriginalBytes": 6130644,
+  "iconDeliveryBytes": 1068016,
+  "alphaDifferences": 0,
+  "foreignVisiblePixels": 0,
+  "uncoveredVisiblePixels": 0,
+  "duplicateVisiblePixels": 0,
+  "outerBorderVisiblePixels": 0,
+  "deterministicCompleteBattles": 2,
+  "originalCombatHashesIdentical": true,
+  "hashComparisonExcludesOnlyNewEventKind": "abilityCue",
+  "approvedSpriteCount": 832,
+  "approvedHeroAndBuildingArtChanged": false,
+  "buildingHeight": 1.2,
+  "localCoopPreserved": true,
+  "actualThunderImpacts": 12,
+  "astraReview": {
+    "model": "gpt-6-astra",
+    "effort": "xhigh",
+    "issuesFixed": [
+      "nominal grid cropped crane beak; actual alpha component bounds now used",
+      "fan UV clipped crane wings; full rectangular motif now lies inside real fan",
+      "development subdirectory icon URL fixed"
+    ],
+    "lastReviewScope": "thunder root reuse, merged warning, no waiting black orb, hangul billboard cleanup",
+    "finalMandatoryIssues": 0
+  },
+  "browser": {
+    "report": "SKILL_SIGNATURE_BROWSER_VALIDATION.json",
+    "sampleCount": 26,
+    "seasons": 4,
+    "viewport": [414, 896],
+    "horizontalOverflow": false,
+    "consoleWarnings": 0,
+    "consoleErrors": 0,
+    "officialOriginUntouched": "http://127.0.0.1:8080"
+  },
+  "build": {
+    "standaloneBytes": 40027971,
+    "embeddedDirectionalSheets": 52,
+    "embeddedTerrainSurfaces": 3,
+    "embeddedSeasonTreeAtlases": 1,
+    "embeddedWaterSurfaces": 1,
+    "embeddedSkillAtlases": 3,
+    "eachEmbeddedExactlyOnce": true
+  },
+  "limits": [
+    "equipment and all dedicated combos do not each have newly drawn unique motifs",
+    "existing icon designs preserved and compressed, not 25 newly drawn designs",
+    "actual phones and external-network two-device tests pending",
+    "file protocol not tested"
+  ]
+}
