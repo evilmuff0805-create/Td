@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-11",
+  "local": {
+    "badges": [
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "circle": "50%",
+        "expanded": false,
+        "filled": 1,
+        "height": 20,
+        "id": "3",
+        "level": "1",
+        "total": 4,
+        "width": 41
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "circle": "50%",
+        "expanded": false,
+        "filled": 1,
+        "height": 20,
+        "id": "4",
+        "level": "1",
+        "total": 4,
+        "width": 41
+      },
+      {
+        "background": "rgba(0, 0, 0, 0)",
+        "circle": "50%",
+        "expanded": false,
+        "filled": 1,
+        "height": 20,
+        "id": "5",
+        "level": "1",
+        "total": 4,
+        "width": 41
+      }
+    ],
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n16\n2P 군자금\n86\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n−\n다음: 제 1 파도 / 12\n아시가루 ×8\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv1\n학익진\n거북선\n22\n신기전\n2\n봉수\n8\n1P 클릭 · 2P Space\n공명 0%\n출정!\n22초 뒤 자동 · 2P W\n세종대왕 Lv1\n훈민 정음\nA\n자격루\nS\n27\n봉수\nD\n8\n신기전\nF\n2"
+  },
+  "selected": {
+    "badges": [
+      {
+        "expanded": true,
+        "height": 53,
+        "id": "3",
+        "text": "숭례문\n1단계",
+        "width": 76
+      },
+      {
+        "expanded": false,
+        "height": 20,
+        "id": "4",
+        "text": "",
+        "width": 41
+      },
+      {
+        "expanded": false,
+        "height": 20,
+        "id": "5",
+        "text": "",
+        "width": 41
+      }
+    ]
+  },
+  "keyboard": {
+    "expanded": "true",
+    "focused": "숭례문, 1 / 4단계, 0회 강화"
+  },
+  "mobile": {
+    "badges": [
+      {
+        "expanded": false,
+        "height": 20,
+        "hidden": false,
+        "id": "3",
+        "width": 41
+      },
+      {
+        "expanded": false,
+        "height": 20,
+        "hidden": false,
+        "id": "4",
+        "width": 41
+      },
+      {
+        "expanded": false,
+        "height": 20,
+        "hidden": false,
+        "id": "5",
+        "width": 41
+      }
+    ],
+    "overflow": 0,
+    "viewport": [
+      414,
+      896
+    ]
+  },
+  "previewStages": [
+    {
+      "filled": 1,
+      "level": "1",
+      "panelPips": "flex"
+    },
+    {
+      "filled": 2,
+      "level": "2"
+    },
+    {
+      "filled": 3,
+      "level": "3"
+    }
+  ],
+  "previewA": {
+    "aria": "숭례문, 4 / 4단계, 3회 강화, 특화 A 편전 명궁, 최대 단계",
+    "branch": "A",
+    "color": "rgb(255, 209, 108)",
+    "filled": 4,
+    "level": "4",
+    "panelFilled": 4,
+    "panelPips": "flex"
+  },
+  "previewB": {
+    "aria": "숭례문, 4 / 4단계, 3회 강화, 특화 B 연사 궁대, 최대 단계",
+    "branch": "B",
+    "color": "rgb(138, 220, 233)",
+    "filled": 4,
+    "level": "4",
+    "panelFilled": 4,
+    "panelPips": "flex"
+  },
+  "logs": {
+    "local": [],
+    "preview": []
+  }
+}

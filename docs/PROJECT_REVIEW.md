@@ -7,7 +7,9 @@
 
 기본 전장은 **고정된 높은 시점의 2.5D 일러스트**다. 실제 3D 지면 위에 투명 캐릭터·건물 그림을 배치하고, 기존 시뮬레이션의 이동·건설·사거리·피해·협동 명령에 연결했다. 전장 25곳, 영웅 8명, 유산 10종, 왜군 22종을 같은 표현으로 사용한다.
 
-가장 최근에는 **전장을 가리던 유산 설명을 작은 반투명 단계 배지로 줄이고 스킬 발동음을 추가했다**. 평소에는 `1`·`2`·`3`·`4A`·`4B`, 선택·가리킴·키보드 초점일 때만 이름과 상세 단계를 펼친다. 성공한 기술·궁극기·장착 비기마다 짧은 소리를 전달하며 두 사람의 동시 발동을 보존한다. 임시 무음은 저장 설정을 덮어쓰지 않고 `?sound=effects`로 음악 없이 효과음만 켤 수 있다. 전체 **309개 / 23검사군**과 두 빌드·완주 SHA·Astra xhigh 수정 후 검토를 통과했다. [표시·소리·실제 검증](BATTLE_FEEDBACK.md).
+가장 최근에는 **건물 아래 네 점으로 강화 단계를 표시하도록 바꿨다**. 1·2·3단계는 해당 개수만큼 채우고 최종 A는 금색 네 점, B는 청록색 네 점으로 구분한다. 평소에는 점만 보이고 선택·가리킴·키보드 초점에서 이름과 상세를 펼친다. 표식은 건물 바닥을 따라가며 밀집한 곳에서도 기본 점을 건물 위로 올리지 않는다. 관련 **46개 / 3검사군**, 실제 로컬 2인 건설·독립 군자금·414px·A/B 강화·두 빌드를 확인했다. [표시와 정확한 검증 범위](TOWER_DOTS.md).
+
+앞선 작업에서는 **작은 숫자 배지와 스킬 발동음을 추가했다**. 성공한 기술·궁극기·장착 비기마다 짧은 소리를 전달하며 두 사람의 동시 발동을 보존한다. 임시 무음은 저장 설정을 덮어쓰지 않고 `?sound=effects`로 음악 없이 효과음만 켤 수 있다. 당시 전체 **309개 / 23검사군**과 두 빌드·완주 SHA·Astra xhigh 수정 후 검토를 통과했다. 숫자 배지는 현재 네 점으로 교체했다. [당시 표시·소리·실제 검증](BATTLE_FEEDBACK.md).
 
 앞선 작업에서는 **특수 의상 16종의 큰 흉상과 의상실 미리보기를 추가했다**. 기본 8명과 합계 24개 외형이 도감·출전 선택·의상실에서 같은 톤을 사용한다. 의상별 지연 로딩·실패 격리·늦은 응답·구매/장착·전신 모드 유지를 검사하고 좁은 화면의 영웅 이름 줄바꿈도 고쳤다. 새 16그림은 640×640 무손실 WebP 합계 4,333,550바이트다. 작은 HUD·전장 1,664자세·유산 크기·로컬 2인은 유지하며 전체 **294개 / 22검사군**, 픽셀·완주 SHA·두 빌드·Astra xhigh 최종 검토를 통과했다. [최신 원화·프롬프트·적용과 검증](SKIN_BUST_ART.md).
 
@@ -43,7 +45,7 @@
 
 최초의 순수 Canvas 2D 구현 이후 실제 3D 전투, 관절 모델, 전용 재질을 거쳐 현재의 그림 전장으로 바뀌었다. [2026-10-09 리뷰](PROJECT_REVIEW_2026-10-09.md)는 당시 기록으로 보존한다. 이전 모델 문서와 스크린샷의 '현재'·검사 수·성능 수치는 각 작업 시점의 기록이며, 최신 범위는 이 문서와 아래의 그림 전장 문서를 기준으로 한다.
 
-![작은 단계 배지의 실제 로컬 2인 전장](screenshots/battle-feedback/local-compact.png)
+![건물 아래 네 점 표시의 실제 로컬 2인 전장](screenshots/tower-dots/local-dots.png)
 
 ![특수 의상 16종 큰 메뉴 일러스트](screenshots/skin-busts/gallery-16.png)
 
@@ -83,7 +85,7 @@
 | 전투 시스템 | 비기 8종 · 보급품 4종 · 전용 합격기 10종과 기본 합격기 · 전술 예고·파훼 · 전령 이벤트 |
 | 성장 | 품계 18단계 · 엽전/옥 · 영웅/비기 영구 강화 · 유산 복원 30단계 · 장별 첫 승리 포상 |
 | 진영 | 저장·불러오기 · 영웅/유산 해금 · 상점 · 의복 16종 · 일일/주간 임무 · 7일 출석 |
-| 표시·설정 | 체력·상태·은신/탐지 · 선택·사거리·착탄 예고 · 작은 단계 배지·선택/초점 상세 · 스킬 발동음·음악 없는 효과음 프리셋 · 가벼운 품질 · 평면 모드 대체 · 음량·화면 흔들림 설정 |
+| 표시·설정 | 체력·상태·은신/탐지 · 선택·사거리·착탄 예고 · 건물 아래 네 점·선택/초점 상세 · 스킬 발동음·음악 없는 효과음 프리셋 · 가벼운 품질 · 평면 모드 대체 · 음량·화면 흔들림 설정 |
 
 온라인은 호스트가 시뮬레이션을 실행하고 게스트가 명령을 보내는 방식이다. 상대 영웅 이동과 상대 유산 철거를 검증하며, 동료 이탈 시 호스트가 인계받는다. 메뉴와 성장·보상은 실제 전투 세션에 연결돼 있다.
 
@@ -132,7 +134,7 @@ npm run build:3d
 npm run build
 ```
 
-`three@0.186.1`, `esbuild@0.24.0`를 사용한다. `npm run build:3d`는 서버용 번들을 갱신하고, `npm run build`는 엔진과 그림을 포함한 `dist/hoguk.html`을 만든다. 현재 검증한 단일 HTML은 **119,362,827바이트**이며 영웅 8장·병력 28장·의상 16장·중간 원화 52장, 총 **104방향/중간 시트**와 메뉴용 1장·기본 큰 일러스트 8장·의상 큰 일러스트 16장, 지면 3장·수목 1장·마을 소품 2장·물 1장·기술 시트 4장을 각각 한 번 포함한다. 거부된 이전 버전·보존용 아이콘 PNG·마을 소품 원본 PNG 2장·기본 흉상 원본/참조 PNG 18장·새 의상 원본/참조 PNG 32장·중간 원화 원본/참조/포장 PNG 256장은 포함하지 않는다. 선택 외형만 디코딩해도 단일 HTML에는 전체 배포 그림이 포함되므로 파일 크기는 커진다. `node_modules/`와 `dist/`는 Git 제외 생성물이며 재현 소스·원본·배포 그림·도구·서버용 번들은 저장소에 포함한다.
+`three@0.186.1`, `esbuild@0.24.0`를 사용한다. `npm run build:3d`는 서버용 번들을 갱신하고, `npm run build`는 엔진과 그림을 포함한 `dist/hoguk.html`을 만든다. 현재 검증한 단일 HTML은 **119,363,170바이트**이며 영웅 8장·병력 28장·의상 16장·중간 원화 52장, 총 **104방향/중간 시트**와 메뉴용 1장·기본 큰 일러스트 8장·의상 큰 일러스트 16장, 지면 3장·수목 1장·마을 소품 2장·물 1장·기술 시트 4장을 각각 한 번 포함한다. 거부된 이전 버전·보존용 아이콘 PNG·마을 소품 원본 PNG 2장·기본 흉상 원본/참조 PNG 18장·새 의상 원본/참조 PNG 32장·중간 원화 원본/참조/포장 PNG 256장은 포함하지 않는다. 선택 외형만 디코딩해도 단일 HTML에는 전체 배포 그림이 포함되므로 파일 크기는 커진다. `node_modules/`와 `dist/`는 Git 제외 생성물이며 재현 소스·원본·배포 그림·도구·서버용 번들은 저장소에 포함한다.
 
 단일 파일은 혼자/로컬 협동용이며 온라인 협동은 서버 기본 게임 주소에서 실행한다. 브라우저 검증은 `/dist/hoguk.html?mute=1`에서 수행했다. 브라우저 보안 정책 때문에 `file://` 직접 실행 검증은 하지 못했다. 선택 웹 글꼴을 받지 못하면 시스템 글꼴을 사용한다.
 
@@ -140,7 +142,7 @@ npm run build
 
 ## 현재 버전 검증
 
-이번 유산 표시·발동음과 기존 미술·전투 통합에 아래 23개 검사군을 실행했다.
+이번 네 점 표시 변경은 표시·발동음 15개, 정식 캠페인 16개, 고정 시점 그림 15개로 관련 **46개 / 3검사군**을 확인했다. [실행 결과](TOWER_DOTS_REGRESSION_VALIDATION.json). 아래 23개 검사군·309개는 앞선 숫자 배지/발동음 버전의 전체 검사 기록이다.
 
 | 명령 | 통과 수 |
 |---|---:|
@@ -217,7 +219,8 @@ npm run build
 |---|---|
 | 현재 프로젝트 현황 | 이 문서 `docs/PROJECT_REVIEW.md` |
 | 최신 그림 구조·제작·범위 | [ART.md](ART.md) |
-| 유산 표시·발동음·최신 검증 | [BATTLE_FEEDBACK.md](BATTLE_FEEDBACK.md) · [실행](BATTLE_FEEDBACK_RUNTIME_VALIDATION.json) · [브라우저](BATTLE_FEEDBACK_BROWSER_VALIDATION.json) · [릴리스](BATTLE_FEEDBACK_RELEASE_VALIDATION.json) |
+| 건물 아래 네 점·최신 검증 | [TOWER_DOTS.md](TOWER_DOTS.md) · [관련 검사](TOWER_DOTS_REGRESSION_VALIDATION.json) · [브라우저](TOWER_DOTS_BROWSER_VALIDATION.json) · [릴리스](TOWER_DOTS_RELEASE_VALIDATION.json) |
+| 앞선 숫자 배지·스킬 발동음 | [BATTLE_FEEDBACK.md](BATTLE_FEEDBACK.md) · [실행](BATTLE_FEEDBACK_RUNTIME_VALIDATION.json) · [브라우저](BATTLE_FEEDBACK_BROWSER_VALIDATION.json) · [릴리스](BATTLE_FEEDBACK_RELEASE_VALIDATION.json) |
 | 의상 16종 큰 일러스트·의상실·최신 검증 | [SKIN_BUST_ART.md](SKIN_BUST_ART.md) · [자산](SKIN_BUST_ASSET_VALIDATION.json) · [실행](SKIN_BUST_RUNTIME_VALIDATION.json) · [브라우저](SKIN_BUST_BROWSER_VALIDATION.json) · [릴리스](SKIN_BUST_RELEASE_VALIDATION.json) |
 | 기본 영웅 8명 큰 일러스트·도감·선택 | [HERO_BUST_ART.md](HERO_BUST_ART.md) · [자산](HERO_BUST_ASSET_VALIDATION.json) · [실행](HERO_BUST_RUNTIME_VALIDATION.json) · [브라우저](HERO_BUST_BROWSER_VALIDATION.json) · [릴리스](HERO_BUST_RELEASE_VALIDATION.json) |
 | 이동·정지·조준·pause 전환 | [MOTION_TRANSITIONS.md](MOTION_TRANSITIONS.md) · [실행 검사](MOTION_TRANSITION_RUNTIME_VALIDATION.json) · [브라우저](MOTION_TRANSITION_BROWSER_VALIDATION.json) · [릴리스](MOTION_TRANSITION_RELEASE_VALIDATION.json) |

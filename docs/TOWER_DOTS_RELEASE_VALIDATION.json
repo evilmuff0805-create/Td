@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "c6832ba18550892e6d88b7e93440e7e844ce2e9a",
+  "scope": "Four circular stage dots under building bases, filled by tier, amber A and cyan B; selected/hovered/focused details and below-base collision constraints.",
+  "regression": {
+    "tests": 46,
+    "groups": 3,
+    "passed": true,
+    "report": "TOWER_DOTS_REGRESSION_VALIDATION.json"
+  },
+  "sourceAudit": {
+    "command": "git diff --quiet HEAD -- src/sim src/game src/audio src/meta src/data assets/3d/fixed assets/3d/art assets/illustrated",
+    "exitCode": 0,
+    "artGameplaySaveCoopAudioUnchanged": true
+  },
+  "build": {
+    "serverPassed": true,
+    "standalonePassed": true,
+    "standaloneBytes": 119363170,
+    "embeddedDirectionalSheets": 104,
+    "embeddedMenuSheets": 1,
+    "embeddedHeroBusts": 8,
+    "embeddedSkinBusts": 16,
+    "skinPortraitSourcePngsEmbedded": 0,
+    "skinPortraitSourcePngsChecked": 32,
+    "portraitSourcePngsEmbedded": 0,
+    "portraitSourcePngsChecked": 18,
+    "embeddedTerrainSurfaces": 3,
+    "embeddedSeasonalPropSheets": 1,
+    "embeddedVillagePropSheets": 2,
+    "villageSourcePngsEmbedded": 0,
+    "embeddedWaterSurfaces": 1,
+    "embeddedSkillAtlases": 4,
+    "eachEmbeddedExactlyOnce": true,
+    "rejectedVersionsEmbedded": 0,
+    "inbetweenArchivePngsEmbedded": 0,
+    "inbetweenArchivePngsChecked": 256
+  },
+  "browser": {
+    "report": "TOWER_DOTS_BROWSER_VALIDATION.json",
+    "localCoopPreserved": true,
+    "allHardMuted": true,
+    "userPlaytestUntouched": true
+  },
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "remote": "https://github.com/evilmuff0805-create/Td.git",
+    "status": "awaiting commit and push"
+  }
+}

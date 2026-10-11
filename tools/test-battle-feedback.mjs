@@ -32,8 +32,8 @@ class Element {
   replaceChildren(){this.children.forEach(el=>el.parent=null);this.children=[];}
   addEventListener(k,fn){this.events.set(k,fn);}
   emit(k,e={}){this.events.get(k)?.(e);}
-  get offsetWidth(){return this.classList.contains('detail-open')?90:this.children.find(c=>c.className==='tower-badge-level')?.textContent.length>1?30:24;}
-  get offsetHeight(){return this.classList.contains('detail-open')?48:22;}
+  get offsetWidth(){return this.classList.contains('detail-open')?90:40;}
+  get offsetHeight(){return this.classList.contains('detail-open')?48:20;}
   getContext(){return canvas;}
 }
 globalThis.Node=Element;
@@ -61,33 +61,38 @@ function coop(hero='yi',skill='singijeon'){
 const cues=events=>events.filter(e=>e.k==='abilityCue'&&e.sound);
 const walk=el=>[el,...el.children.flatMap(walk)];
 
-test('단계 1·2·3·4A·4B는 작은 숫자로 표시하고 이름·강화·특화 접근성 설명을 보존',()=>{
+test('건물 아래 점 4개는 단계 1·2·3·최종 A/B를 채우고 이름·특화 접근성 설명을 보존',()=>{
   const f=fixture(5);f.game.towers.forEach((t,i)=>{t.level=Math.min(3,i+1);if(i>2)t.branch=i===3?'A':'B';});
-  f.labels.update(f.game,f.world);assert.deepEqual([...f.labels.items.values()].map(i=>i.compact.textContent),['1','2','3','4A','4B']);
-  for(const item of f.labels.items.values()){assert.equal(item.expanded,false);assert.match(item.button.getAttribute('aria-label'),/숭례문/);assert.equal(item.button.getAttribute('aria-expanded'),'false');}
+  f.world.art={anchor(){throw new Error('Stage dots must follow the base, not the roof.');}};
+  f.world.towers.set(1,{root:{position:{y:.03},userData:{labelHeight:99}}});
+  f.labels.update(f.game,f.world);assert.deepEqual([...f.labels.items.values()].map(i=>i.pips.children.filter(p=>p.classList.contains('filled')).length),[1,2,3,4,4]);
+  for(const [id,item] of f.labels.items){assert.equal(item.pips.children.length,4);assert.equal(item.expanded,false);assert.match(item.button.getAttribute('aria-label'),/숭례문/);assert.equal(item.button.getAttribute('aria-expanded'),'false');assert.ok(f.labels.positions.get(id).top>=f.game.towers[id-1].cy+2);}
+  assert.equal(f.labels.items.get(4).button.dataset.branch,'A');assert.equal(f.labels.items.get(5).button.dataset.branch,'B');
   assert.match(f.labels.items.get(4).button.getAttribute('aria-label'),/특화 A.*최대 단계/);
   assert.equal(f.labels.items.get(5).pips.children.filter(p=>p.classList.contains('filled')).length,4);
   const winter=fixture(1);winter.game.stageId='winter3d';winter.game.towers[0].level=3;winter.labels.update(winter.game,winter.world);
-  assert.equal(winter.labels.items.get(1).compact.textContent,'3');assert.equal(winter.labels.items.get(1).button.classList.contains('max-tier'),true);
+  assert.equal(winter.labels.items.get(1).pips.children.filter(p=>p.classList.contains('filled')).length,3);assert.equal(winter.labels.items.get(1).pips.children[3].classList.contains('unavailable'),true);assert.equal(winter.labels.items.get(1).button.classList.contains('max-tier'),true);
 });
 
 test('12개 밀집 배지는 모바일·데스크톱 HUD 여백에서 선택 설명까지 겹치지 않음',()=>{
   for(const [width,height,insets] of [[414,500,{}],[1280,560,{}],[414,896,{top:73,bottom:306}]]){
     const f=fixture();f.world.renderer.domElement={clientWidth:width,clientHeight:height};f.labels.getInsets=()=>insets;
-    f.labels.update(f.game,f.world);nonoverlap(f.labels,width,height,insets);
+    f.labels.update(f.game,f.world);nonoverlap(f.labels,width,height,insets);for(const t of f.game.towers)assert.ok(f.labels.positions.get(t.id).top>=t.cy+2,'밀집 배치에서도 점을 건물 위로 올리지 않음');
     const compactArea=[...f.labels.items.values()].reduce((n,i)=>n+i.width*i.height,0);assert.ok(compactArea<12*90*48*.2);
     f.labels.update(f.game,f.world,{kind:'tower',id:9});nonoverlap(f.labels,width,height,insets);
     assert.equal(f.labels.items.get(9).expanded,true);assert.equal([...f.labels.items.values()].filter(i=>i.expanded).length,1);
   }
 });
 
-test('다른 건물 선택 중에도 가리킨 배지가 제자리에서 펼쳐지고 실제 지붕 연결선을 유지',()=>{
+test('다른 건물 선택 중에도 가리킨 점은 제자리에서 펼쳐지고 실제 건물 바닥 연결선을 유지',()=>{
   const f=fixture();f.labels.update(f.game,f.world,{kind:'tower',id:1});
   const before=f.labels.positions.get(12),item=f.labels.items.get(12);item.button.emit('pointerenter');
   f.labels.update(f.game,f.world,{kind:'tower',id:1});const after=f.labels.positions.get(12);
   assert.equal(after.x,before.x);assert.equal(after.y,before.y);assert.ok(after.left<=before.left&&after.right>=before.right&&after.top<=before.top);
-  nonoverlap(f.labels,414,500);f.game.towers[11].cx+=20;f.labels.update(f.game,f.world,{kind:'tower',id:1});
-  assert.equal(f.labels.positions.get(12).x,before.x);assert.equal(item.leader.style.left,`${f.game.towers[11].cx}px`);
+  nonoverlap(f.labels,414,500);
+  // Move the building outside the expanded box so a connecting line is needed.
+  f.game.towers[11].cx=after.x<207?390:24;f.labels.update(f.game,f.world,{kind:'tower',id:1});
+  assert.equal(f.labels.positions.get(12).x,before.x);assert.equal(item.leader.hidden,false);assert.equal(item.leader.style.left,`${f.game.towers[11].cx}px`);
   item.button.emit('pointerleave');f.labels.update(f.game,f.world,{kind:'tower',id:1});assert.equal(item.expanded,false);assert.equal(item.interactionAnchor,null);
 });
 
@@ -193,5 +198,5 @@ test('설정 UI는 효과음 전용 볼륨을 표시하고 편집한 값만 저�
   audio.configure('?mute=1',.7,.35);const muted=walk(settingsScreen(app));assert.ok(muted.find(e=>e.tagName==='BUTTON'&&e.textContent===button.textContent).attributes.has('disabled'));assert.ok(muted.some(e=>e.getAttribute('href')==='?sound=effects'));
 });
 
-writeFileSync(new URL('../docs/BATTLE_FEEDBACK_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,allPassed:true,results},null,2)+'\n');
+writeFileSync(new URL('../docs/TOWER_DOTS_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,allPassed:true,results},null,2)+'\n');
 console.log(`\n전장 표시·발동음 점검 ${results.length}개 통과`);
