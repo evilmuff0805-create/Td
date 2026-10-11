@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-11",
+  "tests": 13,
+  "allPassed": true,
+  "results": [
+    {
+      "name": "기본 로스터는 유효한 영웅만 정렬·중복 제거하며 미지정 8명과 빈 목록을 구분한다",
+      "passed": true
+    },
+    {
+      "name": "실제 전장 생성자는 선택한 두 기본 시트만 요청하고 의상 두 개도 기본은 한 장이다",
+      "passed": true
+    },
+    {
+      "name": "기본·코어·병력·의상·중간 시트의 서로 다른 완료 순서에서 마지막 현재 요청까지 기다린다",
+      "passed": true
+    },
+    {
+      "name": "같은 로스터 반복은 Promise를 유지하고 교체 중 공통 기본 요청을 중복하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "전장 영웅 교체는 활성·사망 루트를 먼저 제거하고 빠진 기본·그림자·geometry를 한 번 해제한다",
+      "passed": true
+    },
+    {
+      "name": "부분 완료 뒤 로스터가 바뀌어도 이미 준비된 공통 시트를 재요청하지 않고 제외 결과는 보유하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "늦은 이전 기본 응답은 새 로스터·준비 상태·도착 콜백을 덮어쓰지 않는다",
+      "passed": true
+    },
+    {
+      "name": "기본 원화 한 장 실패는 다른 영웅과 코어를 살리고 정적 그림으로 대체하며 반복 요청하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "의상 실패는 선택 기본 원화로, 기본·의상 모두 실패는 정적 그림으로 대체하고 중간 옷을 섞지 않는다",
+      "passed": true
+    },
+    {
+      "name": "별도 전장의 기본 캔버스·텍스처는 공유하지 않고 한쪽 종료가 다른 쪽을 손상시키지 않는다",
+      "passed": true
+    },
+    {
+      "name": "종료한 소유자는 모든 map·원화 참조를 비우고 늦은 완료·재호출이 DOM과 캐시를 되살리지 않는다",
+      "passed": true
+    },
+    {
+      "name": "실제 로컬 2인 HUD는 기본 시트가 마지막일 때 시계를 막고 준비 뒤 정상 진행한다",
+      "passed": true
+    },
+    {
+      "name": "빈 게스트는 기본 원화를 요청하지 않고 첫 스냅샷의 두 명만 준비하며 수신·Promise를 유지한다",
+      "passed": true
+    }
+  ],
+  "memoryEstimate": {
+    "allEightCanvasBytes": 85067488,
+    "yiSejongCanvasBytes": 22831168,
+    "savedCanvasBytes": 62236320,
+    "reductionPercent": 73.16,
+    "unit": "bytes",
+    "basis": "RGBA canvas storage for full base sheets and isolated frames only; excludes decoder, browser overhead, fallback/menu caches and GPU."
+  }
+}

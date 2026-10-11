@@ -61,6 +61,7 @@
     "test:skin-bust-assets": "node tools/skin-bust-assets.mjs",
     "test:battle-feedback": "node tools/test-battle-feedback.mjs",
     "test:combo-impacts": "node tools/test-combo-impacts.mjs",
-    "test:combo-impact-assets": "node tools/combo-impact-assets.mjs"
+    "test:combo-impact-assets": "node tools/combo-impact-assets.mjs",
+    "test:hero-loading": "node tools/test-hero-loading.mjs"
   }
 }

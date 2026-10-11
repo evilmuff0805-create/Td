@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "2399d15255684ba7f77724d785cab3dde9743218",
+  "scope": "Battle-owned selected base hero atlases, stable loading barrier, stale request handling and CPU/GPU reference release. Artwork and gameplay unchanged.",
+  "regression": {
+    "tests": 338,
+    "groups": 25,
+    "passed": true,
+    "report": "HERO_LOADING_REGRESSION_VALIDATION.json"
+  },
+  "memoryEstimate": {
+    "allEightCanvasBytes": 85067488,
+    "yiSejongCanvasBytes": 22831168,
+    "savedCanvasBytes": 62236320,
+    "reductionPercent": 73.16,
+    "unit": "bytes",
+    "basis": "RGBA canvas storage for full base sheets and isolated frames only; excludes decoder, browser overhead, fallback/menu caches and GPU."
+  },
+  "sourceAudit": {
+    "approvedArtUnchanged": true,
+    "simulationUnchanged": true,
+    "savesInputAndCoopUnchanged": true,
+    "determinismFixtureUnchanged": true
+  },
+  "build": {
+    "serverPassed": true,
+    "standalonePassed": true,
+    "standaloneBytes": 119955783,
+    "embeddedReport": "HERO_LOADING_EMBEDDED_VALIDATION.json"
+  },
+  "browser": {
+    "report": "HERO_LOADING_BROWSER_VALIDATION.json",
+    "localCoopPreserved": true,
+    "allHardMuted": true,
+    "userPlaytestUntouched": true
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoning": "high",
+    "partialCompletionDuplicateDecodeFixed": true,
+    "sameModuleNonSharingRegressionStrengthened": true,
+    "requiredFixesRemaining": 0
+  },
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "remote": "https://github.com/evilmuff0805-create/Td.git",
+    "status": "local implementation; push pending"
+  }
+}

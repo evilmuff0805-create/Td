@@ -2,6 +2,7 @@ import * as T from 'three';
 import { preloadArt,heroArt,enemyArt,allyArt,towerArt,structureArt,propArt } from '../render/art.js';
 import { LANDMARK_STAGE_ART,landmarkFrame } from './tower-art-data.js';
 import { HERO_POSE_ART } from './hero-pose-data.js';
+import { heroPoseRoster,heroPoseKey } from './hero-pose-roster.js';
 import { COMBAT_POSE_ART } from './combat-pose-data.js';
 import { COMBAT_INBETWEEN_ART } from './combat-inbetween-data.js';
 import { combatPoseRoster } from './combat-pose-roster.js';
@@ -55,7 +56,7 @@ async function atlas(path,columns,rows,layout=null,shared=true) {
       resolve({canvas,frames,width:img.width,height:img.height,isolated:layout?frames.map(frame=>isolateFrame(canvas,frame)):null,poseAtlas:!!layout?.frames});
     },undefined,reject);
   });
-  // Combat sheets belong to one battlefield; do not retain all 28 in a global cache.
+  // Character sheets belong to one battlefield; only scenery uses this cache.
   if(!shared)return load();
   if(!atlases.has(path))atlases.set(path,load());
   return atlases.get(path);
@@ -65,22 +66,20 @@ export class FixedBattleArt {
   constructor(world) {
     this.world=world;this.ready=false;this.loading=true;this.coreLoading=true;this.failed=false;this.destroyed=false;this.textures=new Map();this.materials=new Map();this.geometries=new Map();
     this.combatPoses={enemy:{},ally:{}};this.combatInbetweens={enemy:{},ally:{}};this.combatGeneration=0;
+    this.heroPoses={};this.heroPoseKey=null;this.heroPoseGeneration=0;this.heroPoseRequests=new Map();
     this.skinPoses={};this.skinGeneration=0;this.heroLooksKey=null;
     this.inbetweenPoses={};this.inbetweenGeneration=0;this.inbetweenKey=null;
     world.renderer.domElement.dataset.fixedArtStatus='loading';
     const landmarks=Object.values(LANDMARK_STAGE_ART).map(layout=>atlas(layout.path,5,4,layout).catch(error=>{console.warn('Landmark stage art unavailable; keeping base illustration.',error.message);return null;}));
-    const heroPoses=Promise.all(Object.entries(HERO_POSE_ART).filter(([id])=>id!=='yi').map(async([id,layout])=>[id,await atlas(layout.path,4,4,layout).catch(error=>{console.warn('Hero poses unavailable; keeping base illustration.',id,error.message);return null;})]));
     const trees=atlas(SEASON_TREE_ART.path,3,2,SEASON_TREE_ART).catch(error=>{console.warn('Seasonal trees unavailable; keeping base scenery.',error.message);return null;});
     // Both small seasonal sheets form one immutable core set. loadStage reuses
     // this owner, so switching season never leaves old static meshes unprepared.
     const village=Promise.all(Object.entries(VILLAGE_PROP_ART).map(async([season,layout])=>[season,await atlas(layout.path,3,2,layout).catch(error=>{console.warn('Village props unavailable; keeping base scenery.',season,error.message);return null;})]));
-    this.corePromise=Promise.all([preloadArt(),atlas(FIXED_ART.yi,4,4,HERO_POSE_ART.yi),atlas(FIXED_ART.towers,5,2),atlas(FIXED_ART.winter,3,2),...landmarks,heroPoses,trees,village]).then(([,yi,towers,winter,a,b,poses,trees,village])=>{
-      if(this.destroyed)return;this.yi=yi;this.heroPoses={yi,...Object.fromEntries(poses)};this.towerFrames=towers;this.winter=winter;this.landmarks={a,b};this.seasonTrees=trees;this.villageProps=Object.fromEntries(village);this.ready=true;
+    this.corePromise=Promise.all([preloadArt(),atlas(FIXED_ART.towers,5,2),atlas(FIXED_ART.winter,3,2),...landmarks,trees,village]).then(([,towers,winter,a,b,trees,village])=>{
+      if(this.destroyed)return;this.towerFrames=towers;this.winter=winter;this.landmarks={a,b};this.seasonTrees=trees;this.villageProps=Object.fromEntries(village);this.ready=true;
       world.renderer.domElement.dataset.seasonTreeArtStatus=trees?'ready':'fallback';
       const villageCount=Object.values(this.villageProps).filter(Boolean).length;world.renderer.domElement.dataset.villagePropArtStatus=villageCount===2?'ready':villageCount?'partial':'fallback';
       world.renderer.domElement.dataset.landmarkArtStatus=a&&b?'ready':a||b?'partial':'fallback';
-      const poseCount=Object.values(this.heroPoses).filter(Boolean).length;
-      world.renderer.domElement.dataset.heroPoseStatus=poseCount===8?'ready':'partial';world.renderer.domElement.dataset.heroPoseCount=String(poseCount);
     }).catch(error=>{this.failed=true;console.warn('Illustrated battle assets unavailable; keeping mesh fallback.',error.message);}).finally(()=>{
       this.coreLoading=false;this.updateLoading();
     });
@@ -93,7 +92,7 @@ export class FixedBattleArt {
     this.shadowMaterial.userData.fixedArt=true;
   }
   updateLoading(){
-    this.loading=!!(this.coreLoading||this.combatLoading||this.skinLoading||this.inbetweenLoading);
+    this.loading=!!(this.coreLoading||this.combatLoading||this.heroPoseLoading||this.skinLoading||this.inbetweenLoading);
     if(!this.destroyed)this.world.renderer.domElement.dataset.fixedArtStatus=this.loading?'loading':this.ready?'ready':'fallback';
   }
   releasePoseAtlas(art){
@@ -105,6 +104,7 @@ export class FixedBattleArt {
     }
   }
   prepareCombatArt(stage,explicit=null){
+    if(this.destroyed)return this.promise;
     const generation=++this.combatGeneration,roster=combatPoseRoster(stage,explicit),requests=[];
     this.combatPoses??={enemy:{},ally:{}};
     this.combatInbetweens??={enemy:{},ally:{}};
@@ -134,9 +134,47 @@ export class FixedBattleArt {
   }
   refreshPromise(){
     // Replacing this only when a request starts preserves ready-callback identity.
-    this.promise=Promise.all([this.corePromise,this.combatPromise,this.skinPromise,this.inbetweenPromise]);
+    this.promise=Promise.all([this.corePromise,this.combatPromise,this.heroPosePromise,this.skinPromise,this.inbetweenPromise]);
   }
-  prepareHeroLooks(heroes=[]){
+  prepareHeroPoses(heroes){
+    if(this.destroyed)return this.promise;
+    const roster=heroPoseRoster(heroes),key=heroPoseKey(heroes);
+    if(key===this.heroPoseKey)return this.promise;
+    this.heroPoseKey=key;
+    const generation=this.heroPoseGeneration=(this.heroPoseGeneration??0)+1,wanted=new Set(roster);
+    this.heroPoses??={};this.heroPoseRequests??=new Map();
+    for(const [id,art]of Object.entries(this.heroPoses))if(!wanted.has(id)){this.releasePoseAtlas(art);delete this.heroPoses[id];}
+    for(const id of this.heroPoseRequests.keys())if(!wanted.has(id))this.heroPoseRequests.delete(id);
+    this.yi=this.heroPoses.yi??null;
+    this.heroPoseLoading=true;this.updateLoading();
+    const dataset=this.world.renderer.domElement.dataset;
+    Object.assign(dataset,{heroPoseStatus:'loading',heroPoseExpected:String(roster.length),heroPoseKinds:key});
+    this.heroPosePromise=Promise.all(roster.map(async id=>{
+      if(Object.hasOwn(this.heroPoses,id))return {id,art:this.heroPoses[id]};
+      let request=this.heroPoseRequests.get(id);
+      if(!request){
+        const layout=HERO_POSE_ART[id];
+        request=atlas(layout.path,4,4,layout,false).catch(error=>{console.warn('Hero poses unavailable; keeping base illustration.',id,error.message);return null;});
+        this.heroPoseRequests.set(id,request);
+      }
+      const art=await request;
+      return {id,art};
+    })).then(results=>{
+      if(this.destroyed||generation!==this.heroPoseGeneration)return;
+      this.heroPoses=Object.fromEntries(results.map(({id,art})=>[id,art]));this.yi=this.heroPoses.yi??null;
+      // Keep a completed common sheet reusable while another sheet in its
+      // batch is still loading. The bucket owns it after this batch commits.
+      for(const {id}of results)this.heroPoseRequests.delete(id);
+      const count=results.filter(x=>x.art).length,canvases=new Set();
+      for(const {art}of results)if(art){canvases.add(art.canvas);for(const frame of art.isolated??[])canvases.add(frame.canvas);}
+      const bytes=[...canvases].reduce((sum,canvas)=>sum+canvas.width*canvas.height*4,0);
+      Object.assign(dataset,{heroPoseStatus:count===results.length?'ready':'partial',heroPoseCount:String(count),heroPoseExpected:String(results.length),heroPoseKinds:key,heroPoseCanvasBytes:String(bytes)});
+    }).finally(()=>{if(generation===this.heroPoseGeneration){this.heroPoseLoading=false;this.updateLoading();}});
+    this.refreshPromise();return this.promise;
+  }
+  prepareHeroLooks(heroes){
+    if(this.destroyed)return this.promise;
+    this.prepareHeroPoses(heroes);
     this.prepareInbetweens(heroes);
     const key=heroLooksKey(heroes);if(key===this.heroLooksKey)return this.promise;
     this.heroLooksKey=key;
@@ -157,6 +195,7 @@ export class FixedBattleArt {
     this.refreshPromise();return this.promise;
   }
   prepareInbetweens(heroes=[]){
+    if(this.destroyed)return this.promise;
     const key=inbetweenLooksKey(heroes);if(key===this.inbetweenKey)return this.promise;
     this.inbetweenKey=key;
     const generation=this.inbetweenGeneration=(this.inbetweenGeneration??0)+1;
@@ -355,6 +394,11 @@ export class FixedBattleArt {
     return this.anchor(root,-d.height*.45);
   }
   dispose() {
-    this.destroyed=true;for(const t of this.textures.values())t.dispose();for(const m of this.materials.values())m.dispose();for(const g of this.geometries.values())g.dispose();this.shadowMaterial.dispose();this.shadowTexture.dispose();
+    if(this.destroyed)return;this.destroyed=true;
+    for(const t of this.textures.values())t.dispose();for(const m of this.materials.values())m.dispose();for(const g of this.geometries.values())g.dispose();this.shadowMaterial?.dispose();this.shadowTexture?.dispose();
+    this.textures.clear();this.materials.clear();this.geometries.clear();this.heroPoseRequests?.clear();
+    this.heroPoses={};this.yi=null;this.skinPoses={};this.inbetweenPoses={};this.combatPoses={enemy:{},ally:{}};this.combatInbetweens={enemy:{},ally:{}};
+    this.towerFrames=null;this.winter=null;this.landmarks={};this.seasonTrees=null;this.villageProps={};
+    this.ready=false;this.coreLoading=this.combatLoading=this.heroPoseLoading=this.skinLoading=this.inbetweenLoading=this.loading=false;
   }
 }

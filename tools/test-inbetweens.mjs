@@ -115,6 +115,7 @@ globalThis.document={createElement:()=>({width:0,height:0,getContext(){return {d
 T.ImageLoader.prototype.load=function(url,onLoad,progress,onError){pending.push({url,onLoad,onError});};
 function finish(id,fail=false){const at=pending.findIndex(p=>p.url.includes('/'+id+'-inbetweens-'));assert.ok(at>=0,'Pending supplement '+id);const [p]=pending.splice(at,1),l=HERO_INBETWEEN_ART[id];if(fail)p.onError(new Error('expected missing supplement'));else p.onLoad({width:l.width,height:l.height});}
 function finishCostume(id,fail=false){const at=pending.findIndex(p=>p.url.includes('/'+id+'-directions-'));assert.ok(at>=0,'Pending costume '+id);const [p]=pending.splice(at,1),l=SKIN_POSE_ART[id];if(fail)p.onError(new Error('expected missing costume'));else p.onLoad({width:l.width,height:l.height});}
+function finishBase(id){const at=pending.findIndex(p=>p.url.endsWith('/'+HERO_POSE_ART[id].path));assert.ok(at>=0,'Pending base '+id);const [p]=pending.splice(at,1),l=HERO_POSE_ART[id];p.onLoad({width:l.width,height:l.height});}
 try{
   await test('기본·두 의상·중복 소유자가 함께 있어도 선택한 세 중간 시트만 준비한다',async()=>{
     const {world,art}=context(false),heroes=[{heroId:'yi'},{heroId:'yi',skin:'yi_white',owner:0},{heroId:'yi',skin:'yi_white',owner:1},{heroId:'yi',skin:'yi_gold',owner:1}],all=art.prepareHeroLooks(heroes);
@@ -140,11 +141,11 @@ try{
     const {world,art}=context(false);await (async()=>{world.prepareHeroLooks([{heroId:'yi'}]);const p=art.promise;finish('yi');await p;})();
     const h={id:1,heroId:'yi',owner:0},root=world.unit(h,true);art.updateUnit(root,h,false,0,0,{...sample(),poseRow:4});world.units.set('h1',root);
     const dead=world.unit({...h,id:2},true);world.pickables=world.pickables.filter(p=>p!==dead);world.corpses.push({root:dead,t:0});const d=root.userData.fixedImage,order=[];d.image.material.addEventListener('dispose',()=>order.push('private'));d.image.material.map.addEventListener('dispose',()=>order.push('atlas'));
-    world.prepareHeroLooks([{heroId:'gwon'}]);const all=art.promise;assert.deepEqual(order,['private','atlas']);assert.equal(world.units.size,0);assert.equal(world.corpses.length,0);assert.equal(root.parent,null);assert.equal(world.pickables.length,0);finish('gwon');await all;assert.equal(art.inbetweenPoses.yi,undefined);assert.ok(art.inbetweenPoses.gwon);art.dispose();
+    world.prepareHeroLooks([{heroId:'gwon'}]);const all=art.promise;assert.deepEqual(order,['private','atlas']);assert.equal(world.units.size,0);assert.equal(world.corpses.length,0);assert.equal(root.parent,null);assert.equal(world.pickables.length,0);finish('gwon');finishBase('gwon');await all;assert.equal(art.inbetweenPoses.yi,undefined);assert.ok(art.inbetweenPoses.gwon);art.dispose();
   });
   await test('늦은 이전 완료와 전장 종료 뒤 완료는 현재 그림·DOM을 되살리지 않는다',async()=>{
-    const {world,art}=context(false),old=art.prepareHeroLooks([{heroId:'yi'}]),latest=art.prepareHeroLooks([{heroId:'gwon'}]);finish('gwon');await latest;const current=art.inbetweenPoses.gwon;finish('yi');await old;assert.equal(art.inbetweenPoses.gwon,current);assert.equal(art.inbetweenPoses.yi,undefined);assert.equal(world.renderer.domElement.dataset.heroInbetweenKinds,'gwon');
-    const all=art.prepareHeroLooks([{heroId:'sejong'}]);art.dispose();const before={...world.renderer.domElement.dataset};finish('sejong');await all;assert.deepEqual(world.renderer.domElement.dataset,before);assert.equal(art.inbetweenPoses.sejong,undefined);
+    const {world,art}=context(false),old=art.prepareHeroLooks([{heroId:'yi'}]),latest=art.prepareHeroLooks([{heroId:'gwon'}]);finish('gwon');finishBase('gwon');await latest;const current=art.inbetweenPoses.gwon;finish('yi');await old;assert.equal(art.inbetweenPoses.gwon,current);assert.equal(art.inbetweenPoses.yi,undefined);assert.equal(world.renderer.domElement.dataset.heroInbetweenKinds,'gwon');
+    const all=art.prepareHeroLooks([{heroId:'sejong'}]);art.dispose();const before={...world.renderer.domElement.dataset};finish('sejong');finishBase('sejong');await all;assert.deepEqual(world.renderer.domElement.dataset,before);assert.equal(art.inbetweenPoses.sejong,undefined);
   });
   await test('일부 중간 시트 실패는 원본 동작으로 대체하고 반복 수신 때 재요청하지 않는다',async()=>{
     const {world,art}=context(false),heroes=[{heroId:'yi'},{heroId:'sejong'}],warn=console.warn,warnings=[];console.warn=(...a)=>warnings.push(a);
