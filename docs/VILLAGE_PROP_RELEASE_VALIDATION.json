@@ -249,15 +249,18 @@
   "github": {
     "repository": "https://github.com/evilmuff0805-create/Td",
     "branch": "claude/korean-hero-tower-defense-i8ard8",
-    "implementationCommit": null,
-    "implementationRemoteMatches": false,
-    "recordPolicy": "Fill only after actual push and ls-remote verification; verify final documentation HEAD again."
+    "implementationCommit": "bba91ae68ca21b46194bc68c2a5681e60ce74aa0",
+    "implementationRemoteMatches": true,
+    "recordPolicy": "Implementation verified at this SHA; after pushing this documentation record, verify final remote HEAD again.",
+    "verificationCommand": "git ls-remote origin refs/heads/claude/korean-hero-tower-defense-i8ard8",
+    "verifiedAtUtc": "2026-10-11 06:27:12 UTC"
   },
   "sourceAudit": {
-    "approvedArtPoseMetadataAndBaselineFixtureGitDiffExitCode": null,
-    "stagedDiffCheckExcludingGeneratedNewBundleExitCode": null,
+    "approvedArtPoseMetadataAndBaselineFixtureGitDiffExitCode": 0,
+    "stagedDiffCheckExcludingGeneratedNewBundleExitCode": 0,
     "generatedBundle": "assets/3d/village-review.js",
-    "generatedShaderWhitespaceWarnings": null,
-    "allWarningLinesAlreadyPresentInExistingGameBundle": null
+    "generatedShaderWhitespaceWarnings": 21,
+    "allWarningLinesAlreadyPresentInExistingGameBundle": true,
+    "reason": "Preserve existing bundled Three.js GLSL string literals; no manual rewriting of generated shader contents"
   }
 }
