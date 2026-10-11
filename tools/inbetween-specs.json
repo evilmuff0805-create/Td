@@ -1,0 +1,601 @@
+{
+  "yi": {
+    "heroId": "yi",
+    "parts": [
+      {
+        "source": "yi-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 1,
+        "anchors": [
+          0.56,
+          0.5,
+          0.5,
+          0.44
+        ]
+      },
+      {
+        "source": "yi-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.585,
+        "anchors": [
+          0.62,
+          0.49,
+          0.51,
+          0.38
+        ]
+      },
+      {
+        "source": "yi-release-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.585,
+        "anchors": [
+          0.5,
+          0.45,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "source": "yi-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 1,
+        "anchors": [
+          0.54,
+          0.49,
+          0.51,
+          0.46
+        ]
+      }
+    ]
+  },
+  "sejong": {
+    "heroId": "sejong",
+    "parts": [
+      {
+        "source": "sejong-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 1,
+        "anchors": [
+          0.53,
+          0.43,
+          0.55,
+          0.47
+        ]
+      },
+      {
+        "source": "sejong-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.6,
+        "anchors": [
+          0.54,
+          0.42,
+          0.55,
+          0.46
+        ]
+      },
+      {
+        "source": "sejong-release-recovery-v1.png",
+        "rows": 2,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.76,
+        "anchors": [
+          0.46,
+          0.43,
+          0.5,
+          0.625
+        ]
+      },
+      {
+        "source": "sejong-release-recovery-v1.png",
+        "rows": 2,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.76,
+        "anchors": [
+          0.54,
+          0.5,
+          0.5,
+          0.46
+        ]
+      }
+    ]
+  },
+  "eulji": {
+    "heroId": "eulji",
+    "parts": [
+      {
+        "source": "eulji-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.85,
+        "anchors": [
+          0.65,
+          0.49777,
+          0.509059,
+          0.36
+        ]
+      },
+      {
+        "source": "eulji-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.4,
+        "anchors": [
+          0.63,
+          0.49777,
+          0.509059,
+          0.35
+        ]
+      },
+      {
+        "source": "eulji-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.85,
+        "anchors": [
+          0.424389,
+          0.405173,
+          0.557538,
+          0.561561
+        ]
+      },
+      {
+        "source": "eulji-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.85,
+        "anchors": [
+          0.563421,
+          0.49777,
+          0.509059,
+          0.452595
+        ]
+      }
+    ]
+  },
+  "gang": {
+    "heroId": "gang",
+    "parts": [
+      {
+        "source": "gang-pass-a-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.59,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ]
+      },
+      {
+        "source": "gang-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.59,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ]
+      },
+      {
+        "source": "gang-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 1,
+        "anchors": [
+          0.466717,
+          0.449052,
+          0.53166,
+          0.526119
+        ]
+      },
+      {
+        "source": "gang-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 1,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ]
+      }
+    ]
+  },
+  "gwon": {
+    "heroId": "gwon",
+    "parts": [
+      {
+        "source": "gwon-pass-a-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.53,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ]
+      },
+      {
+        "source": "gwon-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.5,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ]
+      },
+      {
+        "source": "gwon-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 1,
+        "anchors": [
+          0.44644,
+          0.47,
+          0.552449,
+          0.537893
+        ]
+      },
+      {
+        "source": "gwon-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 1,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ]
+      }
+    ]
+  },
+  "gwak": {
+    "heroId": "gwak",
+    "parts": [
+      {
+        "source": "gwak-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.96,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.65,
+          0.495042
+        ]
+      },
+      {
+        "source": "gwak-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.43,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.61,
+          0.495042
+        ]
+      },
+      {
+        "source": "gwak-release-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.48,
+        "anchors": [
+          0.434951,
+          0.440223,
+          0.552396,
+          0.558612
+        ]
+      },
+      {
+        "source": "gwak-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.96,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.52941,
+          0.495042
+        ]
+      }
+    ]
+  },
+  "ahn": {
+    "heroId": "ahn",
+    "parts": [
+      {
+        "source": "ahn-pass-a-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.4,
+        "anchors": [
+          0.52479,
+          0.44,
+          0.5,
+          0.473755
+        ],
+        "overrides": {
+          "0": {
+            "source": "ahn-inbetweens-v1.png",
+            "rows": 4,
+            "index": 0,
+            "scale": 0.94
+          },
+          "3": {
+            "source": "ahn-pass-a-front-left-v1.png",
+            "rows": 1,
+            "columns": 1,
+            "index": 0,
+            "scale": 0.175
+          }
+        }
+      },
+      {
+        "source": "ahn-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.4,
+        "anchors": [
+          0.52479,
+          0.46,
+          0.5,
+          0.473755
+        ]
+      },
+      {
+        "source": "ahn-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.94,
+        "anchors": [
+          0.428626,
+          0.427352,
+          0.531864,
+          0.570551
+        ]
+      },
+      {
+        "source": "ahn-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.94,
+        "anchors": [
+          0.52479,
+          0.525213,
+          0.461072,
+          0.473755
+        ]
+      }
+    ]
+  },
+  "dangun": {
+    "heroId": "dangun",
+    "parts": [
+      {
+        "source": "dangun-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.85,
+        "anchors": [
+          0.527138,
+          0.45,
+          0.54,
+          0.460881
+        ]
+      },
+      {
+        "source": "dangun-pass-b-v1.png",
+        "rows": 1,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.39,
+        "anchors": [
+          0.527138,
+          0.46,
+          0.52,
+          0.460881
+        ]
+      },
+      {
+        "source": "dangun-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.85,
+        "anchors": [
+          0.478438,
+          0.432054,
+          0.551343,
+          0.523123
+        ]
+      },
+      {
+        "source": "dangun-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.85,
+        "anchors": [
+          0.527138,
+          0.570995,
+          0.412022,
+          0.460881
+        ]
+      }
+    ]
+  }
+}

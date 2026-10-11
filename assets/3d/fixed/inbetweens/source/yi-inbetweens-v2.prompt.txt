@@ -1,0 +1,9 @@
+Use case: precise-object-edit. Input image 1 is the NEW Yi animation supplement to correct. Input image 2 is the APPROVED original Yi sheet for exact identity, scale, perspective and costume.
+Return the same transparent 4x4 / 16 full-body-figure supplement layout and same painting/lighting/soft material finish. Keep all identities, weapons, colors, plume, cape, boots and four viewing directions. No text, ground, grid or new effects.
+Two mandatory fixes:
+1. Rows 1 and 2 MUST alternate the planted leg, rather than both kicking the same leg behind. Draw actual mid-passing WALK positions, with one raised knee passing FORWARD close under the hips, not a full stride.
+For column 1 front-right and column 2 back-right: row 1 has the boot on the RIGHT side of the image planted and the other foot passing; row 2 has the boot on the LEFT side of the image clearly planted and the OTHER foot lifted/passing toward the front.
+For column 3 back-left and column 4 front-left use the matching opposite orientation: row 1 boot on LEFT planted; row 2 boot on RIGHT planted.
+Each row must show a different grounded boot at the lowest foot baseline. Keep the contact boot flat, lifted boot visibly raised. Do not copy row 1 into row 2. The coat/armor must follow the change in supporting leg.
+2. Row 3 is bow RELEASE follow-through. REMOVE EVERY ARROW from all four figures in this row. No arrow shaft, no arrowhead, no horizontal line from the cheek/hand through the bow. Drawing hand is open beside cheek, bow arm extended, bow string is straight/relaxed, no nocked arrow and no projectile.
+Keep row 4 as halfway lowered-bow recovery. Full bodies, fixed camera and same figure scale. Preserve real alpha and generous gaps between cells.

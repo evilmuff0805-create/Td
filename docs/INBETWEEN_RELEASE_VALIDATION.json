@@ -1,0 +1,199 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "657c488529459c746af7b2262bcdda93037f120a",
+  "regression": {
+    "groups": [
+      {
+        "name": "selftest",
+        "passed": 14
+      },
+      {
+        "name": "3d",
+        "passed": 41
+      },
+      {
+        "name": "fixed-art",
+        "passed": 15
+      },
+      {
+        "name": "campaign",
+        "passed": 16
+      },
+      {
+        "name": "effects",
+        "passed": 8
+      },
+      {
+        "name": "enemies",
+        "passed": 12
+      },
+      {
+        "name": "combat-art",
+        "passed": 13
+      },
+      {
+        "name": "skin-art",
+        "passed": 14
+      },
+      {
+        "name": "terrain",
+        "passed": 8
+      },
+      {
+        "name": "seasonal-props",
+        "passed": 6
+      },
+      {
+        "name": "water",
+        "passed": 11
+      },
+      {
+        "name": "sprite-motion",
+        "passed": 15
+      },
+      {
+        "name": "signatures",
+        "passed": 12
+      },
+      {
+        "name": "scenery",
+        "passed": 8
+      },
+      {
+        "name": "tactics",
+        "passed": 8
+      },
+      {
+        "name": "menu-art",
+        "passed": 8
+      },
+      {
+        "name": "inbetweens",
+        "passed": 15
+      }
+    ],
+    "total": 224,
+    "allGroupsExitedZero": true
+  },
+  "originalArt": {
+    "poses": 832,
+    "trackedAssetsAndPoseMetadataUnchanged": true
+  },
+  "newArt": {
+    "heroes": 8,
+    "poses": 128,
+    "deliveryBytes": 7810780,
+    "selectedSourceFiles": 23,
+    "allSelectedPromptsPresent": true,
+    "pixelProblems": 0
+  },
+  "runtimeReport": "INBETWEEN_RUNTIME_VALIDATION.json",
+  "browserReport": "INBETWEEN_BROWSER_VALIDATION.json",
+  "determinism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+    "unchangedResults": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "result": {
+          "win": true,
+          "stars": 3,
+          "wavesCleared": 15,
+          "lives": 18
+        },
+        "stats": [
+          {
+            "kills": 306,
+            "elites": 96,
+            "bossKills": 1,
+            "heroKills": 88,
+            "builds": 31,
+            "branches": 0,
+            "skillsUsed": 26,
+            "combos": 5,
+            "earlyCalls": 0,
+            "perfectWaves": 14,
+            "tacticsBroken": 5,
+            "damage": 176159.69513688196,
+            "goldEarned": 5724,
+            "itemsUsed": 0
+          }
+        ],
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721"
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "result": {
+          "win": true,
+          "stars": 2,
+          "wavesCleared": 15,
+          "lives": 14
+        },
+        "stats": [
+          {
+            "kills": 158,
+            "elites": 46,
+            "bossKills": 0,
+            "heroKills": 46,
+            "builds": 19,
+            "branches": 0,
+            "skillsUsed": 23,
+            "combos": 6,
+            "earlyCalls": 0,
+            "perfectWaves": 13,
+            "tacticsBroken": 5,
+            "damage": 121024.19717372092,
+            "goldEarned": 3526,
+            "itemsUsed": 0
+          },
+          {
+            "kills": 138,
+            "elites": 48,
+            "bossKills": 1,
+            "heroKills": 70,
+            "builds": 17,
+            "branches": 0,
+            "skillsUsed": 23,
+            "combos": 6,
+            "earlyCalls": 0,
+            "perfectWaves": 13,
+            "tacticsBroken": 5,
+            "damage": 80578.307872296,
+            "goldEarned": 3526,
+            "itemsUsed": 0
+          }
+        ],
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+      }
+    ]
+  },
+  "build": {
+    "commands": [
+      "node tools/build-3d.mjs",
+      "node tools/build.mjs",
+      "node tools/verify-embedded-art.mjs"
+    ],
+    "standaloneBytes": 53833851,
+    "directionalAndInbetweenSheets": 60,
+    "eachEmbeddedExactlyOnce": true,
+    "archivePngsChecked": 38,
+    "archivePngsEmbedded": 0
+  },
+  "astraReview": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "artCorrectionsApplied": true,
+    "finalRuntimeRequiredDefects": 0,
+    "additionalTwoWorldTextureOwnershipCheckPassed": true
+  },
+  "limits": [
+    "Base looks only; special costumes and troops retain previous pose cycles",
+    "Physical phone and external network testing remain separate"
+  ]
+}

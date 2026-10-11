@@ -1,0 +1,3802 @@
+{
+  "date": "2026-10-11",
+  "generation": "built-in imagegen; per-source prompts preserved beside original PNG",
+  "scope": "supplement only; approved 832 poses remain unchanged",
+  "packing": "exact crops, explicit uniform part downsampling, 24px transparent cell padding; explicit per-frame root anchors, original look referenceHeight",
+  "totalPoses": 128,
+  "totalDeliveryBytes": 7810780,
+  "looks": [
+    {
+      "id": "yi",
+      "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/yi-inbetweens-v1.webp",
+      "width": 1266,
+      "height": 1416,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 310,
+      "pivotXOverrides": {},
+      "bytes": 1233742,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 246,
+          "height": 296,
+          "anchor": 0.56,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 350,
+          "top": 24,
+          "width": 211,
+          "height": 297,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 655,
+          "top": 24,
+          "width": 214,
+          "height": 298,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 962,
+          "top": 24,
+          "width": 231,
+          "height": 298,
+          "anchor": 0.44,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 24,
+          "top": 370,
+          "width": 256,
+          "height": 301,
+          "anchor": 0.62,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 350,
+          "top": 370,
+          "width": 223,
+          "height": 303,
+          "anchor": 0.49,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 655,
+          "top": 370,
+          "width": 226,
+          "height": 305,
+          "anchor": 0.51,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 962,
+          "top": 370,
+          "width": 249,
+          "height": 302,
+          "anchor": 0.38,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 24,
+          "top": 723,
+          "width": 278,
+          "height": 313,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 350,
+          "top": 723,
+          "width": 257,
+          "height": 311,
+          "anchor": 0.45,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 655,
+          "top": 723,
+          "width": 259,
+          "height": 312,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 962,
+          "top": 723,
+          "width": 280,
+          "height": 314,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 24,
+          "top": 1085,
+          "width": 244,
+          "height": 304,
+          "anchor": 0.54,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 350,
+          "top": 1085,
+          "width": 226,
+          "height": 302,
+          "anchor": 0.49,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 655,
+          "top": 1085,
+          "width": 226,
+          "height": 302,
+          "anchor": 0.51,
+          "anchorY": 1,
+          "referenceHeight": 310
+        },
+        {
+          "left": 962,
+          "top": 1085,
+          "width": 233,
+          "height": 307,
+          "anchor": 0.46,
+          "anchorY": 1,
+          "referenceHeight": 310
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 48,
+            "top": 14,
+            "width": 246,
+            "height": 296,
+            "anchor": 0.529511,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.56,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 377,
+            "top": 14,
+            "width": 211,
+            "height": 297,
+            "anchor": 0.448787,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 660,
+            "top": 13,
+            "width": 214,
+            "height": 298,
+            "anchor": 0.508572,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 963,
+            "top": 13,
+            "width": 231,
+            "height": 298,
+            "anchor": 0.471943,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.44,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 48,
+            "top": 108,
+            "width": 438,
+            "height": 515,
+            "anchor": 0.540941,
+            "anchorY": 1,
+            "referenceHeight": 517
+          },
+          "scale": 0.585,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.62,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 617,
+            "top": 108,
+            "width": 381,
+            "height": 518,
+            "anchor": 0.5058,
+            "anchorY": 1,
+            "referenceHeight": 517
+          },
+          "scale": 0.585,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.49,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1164,
+            "top": 108,
+            "width": 386,
+            "height": 521,
+            "anchor": 0.467469,
+            "anchorY": 1,
+            "referenceHeight": 517
+          },
+          "scale": 0.585,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.51,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1691,
+            "top": 108,
+            "width": 426,
+            "height": 516,
+            "anchor": 0.439325,
+            "anchorY": 1,
+            "referenceHeight": 517
+          },
+          "scale": 0.585,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.38,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-release-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 32,
+            "top": 93,
+            "width": 476,
+            "height": 535,
+            "anchor": 0.477544,
+            "anchorY": 1,
+            "referenceHeight": 534
+          },
+          "scale": 0.585,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-release-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 592,
+            "top": 86,
+            "width": 440,
+            "height": 531,
+            "anchor": 0.436223,
+            "anchorY": 1,
+            "referenceHeight": 534
+          },
+          "scale": 0.585,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.45,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-release-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1139,
+            "top": 86,
+            "width": 443,
+            "height": 533,
+            "anchor": 0.553124,
+            "anchorY": 1,
+            "referenceHeight": 534
+          },
+          "scale": 0.585,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-release-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1660,
+            "top": 92,
+            "width": 478,
+            "height": 536,
+            "anchor": 0.513327,
+            "anchorY": 1,
+            "referenceHeight": 534
+          },
+          "scale": 0.585,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 12,
+          "sourceBounds": {
+            "left": 46,
+            "top": 915,
+            "width": 244,
+            "height": 304,
+            "anchor": 0.509773,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.54,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 13,
+          "sourceBounds": {
+            "left": 368,
+            "top": 915,
+            "width": 226,
+            "height": 302,
+            "anchor": 0.501186,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.49,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 14,
+          "sourceBounds": {
+            "left": 658,
+            "top": 916,
+            "width": 226,
+            "height": 302,
+            "anchor": 0.484256,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.51,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/yi-inbetweens-v1.png",
+          "sourceFrame": 15,
+          "sourceBounds": {
+            "left": 974,
+            "top": 915,
+            "width": 233,
+            "height": 307,
+            "anchor": 0.448631,
+            "anchorY": 1,
+            "referenceHeight": 297.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.46,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/yi-directions-v2.webp"
+    },
+    {
+      "id": "sejong",
+      "source": "assets/3d/fixed/inbetweens/source/sejong-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/sejong-inbetweens-v1.webp",
+      "width": 1232,
+      "height": 1460,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 305,
+      "pivotXOverrides": {},
+      "bytes": 1158632,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 218,
+          "height": 304,
+          "anchor": 0.53,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 338,
+          "top": 24,
+          "width": 190,
+          "height": 304,
+          "anchor": 0.43,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 644,
+          "top": 24,
+          "width": 191,
+          "height": 303,
+          "anchor": 0.55,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 944,
+          "top": 24,
+          "width": 191,
+          "height": 305,
+          "anchor": 0.47,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 24,
+          "top": 377,
+          "width": 234,
+          "height": 319,
+          "anchor": 0.54,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 338,
+          "top": 377,
+          "width": 199,
+          "height": 320,
+          "anchor": 0.42,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 644,
+          "top": 377,
+          "width": 200,
+          "height": 320,
+          "anchor": 0.55,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 944,
+          "top": 377,
+          "width": 217,
+          "height": 321,
+          "anchor": 0.46,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 24,
+          "top": 746,
+          "width": 266,
+          "height": 307,
+          "anchor": 0.46,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 338,
+          "top": 746,
+          "width": 258,
+          "height": 323,
+          "anchor": 0.43,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 644,
+          "top": 746,
+          "width": 252,
+          "height": 319,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 944,
+          "top": 746,
+          "width": 264,
+          "height": 303,
+          "anchor": 0.625,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 24,
+          "top": 1117,
+          "width": 208,
+          "height": 319,
+          "anchor": 0.54,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 338,
+          "top": 1117,
+          "width": 212,
+          "height": 318,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 644,
+          "top": 1117,
+          "width": 206,
+          "height": 317,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 305
+        },
+        {
+          "left": 944,
+          "top": 1117,
+          "width": 203,
+          "height": 316,
+          "anchor": 0.46,
+          "anchorY": 1,
+          "referenceHeight": 305
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-inbetweens-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 80,
+            "top": 14,
+            "width": 218,
+            "height": 304,
+            "anchor": 0.51328,
+            "anchorY": 1,
+            "referenceHeight": 304
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.53,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-inbetweens-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 400,
+            "top": 14,
+            "width": 190,
+            "height": 304,
+            "anchor": 0.450623,
+            "anchorY": 1,
+            "referenceHeight": 304
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.43,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-inbetweens-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 679,
+            "top": 15,
+            "width": 191,
+            "height": 303,
+            "anchor": 0.522584,
+            "anchorY": 1,
+            "referenceHeight": 304
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.55,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-inbetweens-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 993,
+            "top": 14,
+            "width": 191,
+            "height": 305,
+            "anchor": 0.45276,
+            "anchorY": 1,
+            "referenceHeight": 304
+          },
+          "scale": 1,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.47,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 117,
+            "top": 92,
+            "width": 390,
+            "height": 532,
+            "anchor": 0.489342,
+            "anchorY": 1,
+            "referenceHeight": 533.5
+          },
+          "scale": 0.6,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.54,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 671,
+            "top": 90,
+            "width": 332,
+            "height": 534,
+            "anchor": 0.487715,
+            "anchorY": 1,
+            "referenceHeight": 533.5
+          },
+          "scale": 0.6,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.42,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1158,
+            "top": 92,
+            "width": 333,
+            "height": 533,
+            "anchor": 0.500318,
+            "anchorY": 1,
+            "referenceHeight": 533.5
+          },
+          "scale": 0.6,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.55,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1679,
+            "top": 91,
+            "width": 361,
+            "height": 535,
+            "anchor": 0.500682,
+            "anchorY": 1,
+            "referenceHeight": 533.5
+          },
+          "scale": 0.6,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.46,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 46,
+            "top": 60,
+            "width": 350,
+            "height": 404,
+            "anchor": 0.395952,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.46,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 407,
+            "top": 60,
+            "width": 340,
+            "height": 425,
+            "anchor": 0.403664,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.43,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 796,
+            "top": 60,
+            "width": 331,
+            "height": 420,
+            "anchor": 0.593888,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1152,
+            "top": 65,
+            "width": 347,
+            "height": 399,
+            "anchor": 0.622652,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.625,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 4,
+          "sourceBounds": {
+            "left": 54,
+            "top": 521,
+            "width": 274,
+            "height": 420,
+            "anchor": 0.527918,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.54,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 5,
+          "sourceBounds": {
+            "left": 448,
+            "top": 521,
+            "width": 279,
+            "height": 419,
+            "anchor": 0.468211,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 6,
+          "sourceBounds": {
+            "left": 818,
+            "top": 524,
+            "width": 271,
+            "height": 417,
+            "anchor": 0.531957,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/sejong-release-recovery-v1.png",
+          "sourceFrame": 7,
+          "sourceBounds": {
+            "left": 1220,
+            "top": 525,
+            "width": 267,
+            "height": 416,
+            "anchor": 0.455589,
+            "anchorY": 1,
+            "referenceHeight": 412
+          },
+          "scale": 0.76,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.46,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/sejong-directions-v1.webp"
+    },
+    {
+      "id": "eulji",
+      "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/eulji-inbetweens-v1.webp",
+      "width": 997,
+      "height": 976,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 190,
+      "pivotXOverrides": {},
+      "bytes": 586606,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 154,
+          "height": 198,
+          "anchor": 0.65,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 277,
+          "top": 24,
+          "width": 158,
+          "height": 199,
+          "anchor": 0.49777,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 518,
+          "top": 24,
+          "width": 158,
+          "height": 201,
+          "anchor": 0.509059,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 767,
+          "top": 24,
+          "width": 156,
+          "height": 200,
+          "anchor": 0.36,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 24,
+          "top": 273,
+          "width": 165,
+          "height": 198,
+          "anchor": 0.63,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 277,
+          "top": 273,
+          "width": 159,
+          "height": 199,
+          "anchor": 0.49777,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 518,
+          "top": 273,
+          "width": 158,
+          "height": 198,
+          "anchor": 0.509059,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 767,
+          "top": 273,
+          "width": 166,
+          "height": 198,
+          "anchor": 0.35,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 24,
+          "top": 520,
+          "width": 205,
+          "height": 187,
+          "anchor": 0.424389,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 277,
+          "top": 520,
+          "width": 193,
+          "height": 191,
+          "anchor": 0.405173,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 518,
+          "top": 520,
+          "width": 201,
+          "height": 194,
+          "anchor": 0.557538,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 767,
+          "top": 520,
+          "width": 206,
+          "height": 186,
+          "anchor": 0.561561,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 24,
+          "top": 762,
+          "width": 164,
+          "height": 180,
+          "anchor": 0.563421,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 277,
+          "top": 762,
+          "width": 160,
+          "height": 184,
+          "anchor": 0.49777,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 518,
+          "top": 762,
+          "width": 168,
+          "height": 190,
+          "anchor": 0.509059,
+          "anchorY": 1,
+          "referenceHeight": 190
+        },
+        {
+          "left": 767,
+          "top": 762,
+          "width": 167,
+          "height": 179,
+          "anchor": 0.452595,
+          "anchorY": 1,
+          "referenceHeight": 190
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 52,
+            "top": 88,
+            "width": 181,
+            "height": 233,
+            "anchor": 0.594837,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.65,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 377,
+            "top": 88,
+            "width": 186,
+            "height": 234,
+            "anchor": 0.482924,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.49777,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 679,
+            "top": 88,
+            "width": 186,
+            "height": 236,
+            "anchor": 0.476117,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.509059,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 999,
+            "top": 88,
+            "width": 183,
+            "height": 235,
+            "anchor": 0.394268,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.36,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 51,
+            "top": 127,
+            "width": 412,
+            "height": 495,
+            "anchor": 0.59294,
+            "anchorY": 1,
+            "referenceHeight": 495.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.63,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 610,
+            "top": 123,
+            "width": 397,
+            "height": 498,
+            "anchor": 0.554845,
+            "anchorY": 1,
+            "referenceHeight": 495.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.49777,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1202,
+            "top": 126,
+            "width": 395,
+            "height": 496,
+            "anchor": 0.446054,
+            "anchorY": 1,
+            "referenceHeight": 495.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.509059,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1704,
+            "top": 127,
+            "width": 416,
+            "height": 495,
+            "anchor": 0.400361,
+            "anchorY": 1,
+            "referenceHeight": 495.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.35,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 8,
+          "sourceBounds": {
+            "left": 47,
+            "top": 702,
+            "width": 241,
+            "height": 220,
+            "anchor": 0.453613,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.424389,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 9,
+          "sourceBounds": {
+            "left": 366,
+            "top": 703,
+            "width": 227,
+            "height": 225,
+            "anchor": 0.381181,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.405173,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 10,
+          "sourceBounds": {
+            "left": 643,
+            "top": 702,
+            "width": 236,
+            "height": 228,
+            "anchor": 0.603525,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.557538,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 11,
+          "sourceBounds": {
+            "left": 945,
+            "top": 703,
+            "width": 242,
+            "height": 219,
+            "anchor": 0.540672,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.561561,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 12,
+          "sourceBounds": {
+            "left": 49,
+            "top": 994,
+            "width": 193,
+            "height": 212,
+            "anchor": 0.543976,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.563421,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 13,
+          "sourceBounds": {
+            "left": 372,
+            "top": 996,
+            "width": 188,
+            "height": 217,
+            "anchor": 0.505414,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.49777,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 14,
+          "sourceBounds": {
+            "left": 676,
+            "top": 996,
+            "width": 198,
+            "height": 223,
+            "anchor": 0.502295,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.509059,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/eulji-inbetweens-v1.png",
+          "sourceFrame": 15,
+          "sourceBounds": {
+            "left": 991,
+            "top": 995,
+            "width": 196,
+            "height": 211,
+            "anchor": 0.445071,
+            "anchorY": 1,
+            "referenceHeight": 234.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.452595,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/eulji-directions-v2.webp"
+    },
+    {
+      "id": "gang",
+      "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/gang-inbetweens-v1.webp",
+      "width": 1333,
+      "height": 1374,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 293,
+      "pivotXOverrides": {},
+      "bytes": 1196386,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 278,
+          "height": 291,
+          "anchor": 0.543238,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 376,
+          "top": 24,
+          "width": 275,
+          "height": 295,
+          "anchor": 0.494672,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 699,
+          "top": 24,
+          "width": 254,
+          "height": 297,
+          "anchor": 0.458745,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 1016,
+          "top": 24,
+          "width": 280,
+          "height": 290,
+          "anchor": 0.485671,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 24,
+          "top": 369,
+          "width": 276,
+          "height": 309,
+          "anchor": 0.543238,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 376,
+          "top": 369,
+          "width": 275,
+          "height": 311,
+          "anchor": 0.494672,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 699,
+          "top": 369,
+          "width": 253,
+          "height": 312,
+          "anchor": 0.458745,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 1016,
+          "top": 369,
+          "width": 293,
+          "height": 307,
+          "anchor": 0.485671,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 24,
+          "top": 729,
+          "width": 304,
+          "height": 274,
+          "anchor": 0.466717,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 376,
+          "top": 729,
+          "width": 271,
+          "height": 280,
+          "anchor": 0.449052,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 699,
+          "top": 729,
+          "width": 269,
+          "height": 273,
+          "anchor": 0.53166,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 1016,
+          "top": 729,
+          "width": 283,
+          "height": 276,
+          "anchor": 0.526119,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 24,
+          "top": 1057,
+          "width": 268,
+          "height": 289,
+          "anchor": 0.543238,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 376,
+          "top": 1057,
+          "width": 266,
+          "height": 292,
+          "anchor": 0.494672,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 699,
+          "top": 1057,
+          "width": 246,
+          "height": 293,
+          "anchor": 0.458745,
+          "anchorY": 1,
+          "referenceHeight": 293
+        },
+        {
+          "left": 1016,
+          "top": 1057,
+          "width": 240,
+          "height": 288,
+          "anchor": 0.485671,
+          "anchorY": 1,
+          "referenceHeight": 293
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-a-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 37,
+            "top": 111,
+            "width": 472,
+            "height": 494,
+            "anchor": 0.598998,
+            "anchorY": 1,
+            "referenceHeight": 497
+          },
+          "scale": 0.59,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.543238,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-a-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 577,
+            "top": 114,
+            "width": 466,
+            "height": 500,
+            "anchor": 0.534941,
+            "anchorY": 1,
+            "referenceHeight": 497
+          },
+          "scale": 0.59,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.494672,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-a-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1151,
+            "top": 114,
+            "width": 431,
+            "height": 503,
+            "anchor": 0.434114,
+            "anchorY": 1,
+            "referenceHeight": 497
+          },
+          "scale": 0.59,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.458745,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-a-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1665,
+            "top": 113,
+            "width": 474,
+            "height": 492,
+            "anchor": 0.452601,
+            "anchorY": 1,
+            "referenceHeight": 497
+          },
+          "scale": 0.59,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.485671,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 34,
+            "top": 99,
+            "width": 468,
+            "height": 524,
+            "anchor": 0.590213,
+            "anchorY": 1,
+            "referenceHeight": 525.5
+          },
+          "scale": 0.59,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.543238,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 570,
+            "top": 99,
+            "width": 466,
+            "height": 527,
+            "anchor": 0.519045,
+            "anchorY": 1,
+            "referenceHeight": 525.5
+          },
+          "scale": 0.59,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.494672,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1162,
+            "top": 106,
+            "width": 428,
+            "height": 528,
+            "anchor": 0.448236,
+            "anchorY": 1,
+            "referenceHeight": 525.5
+          },
+          "scale": 0.59,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.458745,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1642,
+            "top": 105,
+            "width": 496,
+            "height": 521,
+            "anchor": 0.428677,
+            "anchorY": 1,
+            "referenceHeight": 525.5
+          },
+          "scale": 0.59,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.485671,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 8,
+          "sourceBounds": {
+            "left": 21,
+            "top": 655,
+            "width": 304,
+            "height": 274,
+            "anchor": 0.517498,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.466717,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 9,
+          "sourceBounds": {
+            "left": 334,
+            "top": 654,
+            "width": 271,
+            "height": 280,
+            "anchor": 0.486772,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.449052,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 10,
+          "sourceBounds": {
+            "left": 646,
+            "top": 655,
+            "width": 269,
+            "height": 273,
+            "anchor": 0.513273,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.53166,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 11,
+          "sourceBounds": {
+            "left": 934,
+            "top": 653,
+            "width": 283,
+            "height": 276,
+            "anchor": 0.477598,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.526119,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 12,
+          "sourceBounds": {
+            "left": 23,
+            "top": 941,
+            "width": 268,
+            "height": 289,
+            "anchor": 0.552096,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.543238,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 13,
+          "sourceBounds": {
+            "left": 338,
+            "top": 943,
+            "width": 266,
+            "height": 292,
+            "anchor": 0.505163,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.494672,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 14,
+          "sourceBounds": {
+            "left": 676,
+            "top": 942,
+            "width": 246,
+            "height": 293,
+            "anchor": 0.438169,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.458745,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gang-inbetweens-v1.png",
+          "sourceFrame": 15,
+          "sourceBounds": {
+            "left": 977,
+            "top": 943,
+            "width": 240,
+            "height": 288,
+            "anchor": 0.42348,
+            "anchorY": 1,
+            "referenceHeight": 291.5
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.485671,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/gang-directions-v1.webp"
+    },
+    {
+      "id": "gwon",
+      "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/gwon-inbetweens-v1.webp",
+      "width": 1322,
+      "height": 1351,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 285,
+      "pivotXOverrides": {},
+      "bytes": 1261382,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 251,
+          "height": 295,
+          "anchor": 0.512638,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 380,
+          "top": 24,
+          "width": 223,
+          "height": 297,
+          "anchor": 0.509672,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 688,
+          "top": 24,
+          "width": 215,
+          "height": 290,
+          "anchor": 0.463326,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 991,
+          "top": 24,
+          "width": 245,
+          "height": 296,
+          "anchor": 0.460919,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 24,
+          "top": 369,
+          "width": 247,
+          "height": 306,
+          "anchor": 0.512638,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 380,
+          "top": 369,
+          "width": 216,
+          "height": 306,
+          "anchor": 0.509672,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 688,
+          "top": 369,
+          "width": 209,
+          "height": 299,
+          "anchor": 0.463326,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 991,
+          "top": 369,
+          "width": 238,
+          "height": 305,
+          "anchor": 0.460919,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 24,
+          "top": 723,
+          "width": 308,
+          "height": 265,
+          "anchor": 0.44644,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 380,
+          "top": 723,
+          "width": 260,
+          "height": 264,
+          "anchor": 0.47,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 688,
+          "top": 723,
+          "width": 255,
+          "height": 266,
+          "anchor": 0.552449,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 991,
+          "top": 723,
+          "width": 307,
+          "height": 268,
+          "anchor": 0.537893,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 24,
+          "top": 1039,
+          "width": 278,
+          "height": 288,
+          "anchor": 0.512638,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 380,
+          "top": 1039,
+          "width": 254,
+          "height": 278,
+          "anchor": 0.509672,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 688,
+          "top": 1039,
+          "width": 247,
+          "height": 280,
+          "anchor": 0.463326,
+          "anchorY": 1,
+          "referenceHeight": 285
+        },
+        {
+          "left": 991,
+          "top": 1039,
+          "width": 275,
+          "height": 283,
+          "anchor": 0.460919,
+          "anchorY": 1,
+          "referenceHeight": 285
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-a-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 39,
+            "top": 82,
+            "width": 473,
+            "height": 556,
+            "anchor": 0.530086,
+            "anchorY": 1,
+            "referenceHeight": 557
+          },
+          "scale": 0.53,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.512638,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-a-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 591,
+            "top": 78,
+            "width": 420,
+            "height": 560,
+            "anchor": 0.529231,
+            "anchorY": 1,
+            "referenceHeight": 557
+          },
+          "scale": 0.53,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.509672,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-a-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1158,
+            "top": 94,
+            "width": 406,
+            "height": 547,
+            "anchor": 0.473411,
+            "anchorY": 1,
+            "referenceHeight": 557
+          },
+          "scale": 0.53,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.463326,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-a-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1675,
+            "top": 85,
+            "width": 462,
+            "height": 558,
+            "anchor": 0.431535,
+            "anchorY": 1,
+            "referenceHeight": 557
+          },
+          "scale": 0.53,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.460919,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 36,
+            "top": 44,
+            "width": 493,
+            "height": 611,
+            "anchor": 0.530918,
+            "anchorY": 1,
+            "referenceHeight": 610
+          },
+          "scale": 0.5,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.512638,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 609,
+            "top": 45,
+            "width": 431,
+            "height": 611,
+            "anchor": 0.496152,
+            "anchorY": 1,
+            "referenceHeight": 610
+          },
+          "scale": 0.5,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.509672,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1151,
+            "top": 64,
+            "width": 418,
+            "height": 598,
+            "anchor": 0.47966,
+            "anchorY": 1,
+            "referenceHeight": 610
+          },
+          "scale": 0.5,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.463326,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1645,
+            "top": 44,
+            "width": 475,
+            "height": 609,
+            "anchor": 0.470202,
+            "anchorY": 1,
+            "referenceHeight": 610
+          },
+          "scale": 0.5,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.460919,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 8,
+          "sourceBounds": {
+            "left": 30,
+            "top": 648,
+            "width": 308,
+            "height": 265,
+            "anchor": 0.427642,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.44644,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 9,
+          "sourceBounds": {
+            "left": 350,
+            "top": 650,
+            "width": 260,
+            "height": 264,
+            "anchor": 0.417643,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.47,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 650,
+            "width": 255,
+            "height": 266,
+            "anchor": 0.567715,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.552449,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 11,
+          "sourceBounds": {
+            "left": 902,
+            "top": 647,
+            "width": 307,
+            "height": 268,
+            "anchor": 0.539693,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.537893,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 12,
+          "sourceBounds": {
+            "left": 31,
+            "top": 937,
+            "width": 278,
+            "height": 288,
+            "anchor": 0.517287,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.512638,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 13,
+          "sourceBounds": {
+            "left": 348,
+            "top": 948,
+            "width": 254,
+            "height": 278,
+            "anchor": 0.448192,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.509672,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 14,
+          "sourceBounds": {
+            "left": 641,
+            "top": 949,
+            "width": 247,
+            "height": 280,
+            "anchor": 0.529046,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.463326,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwon-inbetweens-v1.png",
+          "sourceFrame": 15,
+          "sourceBounds": {
+            "left": 926,
+            "top": 945,
+            "width": 275,
+            "height": 283,
+            "anchor": 0.469823,
+            "anchorY": 1,
+            "referenceHeight": 294
+          },
+          "scale": 1,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.460919,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/gwon-directions-v1.webp"
+    },
+    {
+      "id": "gwak",
+      "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/gwak-inbetweens-v1.webp",
+      "width": 1045,
+      "height": 1291,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 270,
+      "pivotXOverrides": {},
+      "bytes": 888734,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 183,
+          "height": 277,
+          "anchor": 0.492593,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 295,
+          "top": 24,
+          "width": 169,
+          "height": 279,
+          "anchor": 0.452126,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 547,
+          "top": 24,
+          "width": 165,
+          "height": 277,
+          "anchor": 0.65,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 799,
+          "top": 24,
+          "width": 167,
+          "height": 276,
+          "anchor": 0.495042,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 24,
+          "top": 351,
+          "width": 164,
+          "height": 276,
+          "anchor": 0.492593,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 295,
+          "top": 351,
+          "width": 145,
+          "height": 276,
+          "anchor": 0.452126,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 547,
+          "top": 351,
+          "width": 147,
+          "height": 277,
+          "anchor": 0.61,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 799,
+          "top": 351,
+          "width": 158,
+          "height": 276,
+          "anchor": 0.495042,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 24,
+          "top": 676,
+          "width": 223,
+          "height": 280,
+          "anchor": 0.434951,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 295,
+          "top": 676,
+          "width": 204,
+          "height": 278,
+          "anchor": 0.440223,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 547,
+          "top": 676,
+          "width": 204,
+          "height": 277,
+          "anchor": 0.552396,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 799,
+          "top": 676,
+          "width": 222,
+          "height": 279,
+          "anchor": 0.558612,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 24,
+          "top": 1004,
+          "width": 189,
+          "height": 262,
+          "anchor": 0.492593,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 295,
+          "top": 1004,
+          "width": 180,
+          "height": 263,
+          "anchor": 0.452126,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 547,
+          "top": 1004,
+          "width": 180,
+          "height": 262,
+          "anchor": 0.52941,
+          "anchorY": 1,
+          "referenceHeight": 270
+        },
+        {
+          "left": 799,
+          "top": 1004,
+          "width": 178,
+          "height": 262,
+          "anchor": 0.495042,
+          "anchorY": 1,
+          "referenceHeight": 270
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 68,
+            "top": 39,
+            "width": 191,
+            "height": 289,
+            "anchor": 0.517077,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.492593,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 385,
+            "top": 37,
+            "width": 176,
+            "height": 291,
+            "anchor": 0.463245,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.452126,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 668,
+            "top": 39,
+            "width": 172,
+            "height": 289,
+            "anchor": 0.537879,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.65,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 963,
+            "top": 41,
+            "width": 174,
+            "height": 287,
+            "anchor": 0.456086,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.495042,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 78,
+            "top": 46,
+            "width": 382,
+            "height": 642,
+            "anchor": 0.418393,
+            "anchorY": 1,
+            "referenceHeight": 643
+          },
+          "scale": 0.43,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.492593,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 608,
+            "top": 46,
+            "width": 338,
+            "height": 643,
+            "anchor": 0.444523,
+            "anchorY": 1,
+            "referenceHeight": 643
+          },
+          "scale": 0.43,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.452126,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1161,
+            "top": 46,
+            "width": 343,
+            "height": 645,
+            "anchor": 0.531434,
+            "anchorY": 1,
+            "referenceHeight": 643
+          },
+          "scale": 0.43,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.61,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1650,
+            "top": 46,
+            "width": 368,
+            "height": 643,
+            "anchor": 0.561723,
+            "anchorY": 1,
+            "referenceHeight": 643
+          },
+          "scale": 0.43,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.495042,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-release-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 46,
+            "top": 64,
+            "width": 465,
+            "height": 584,
+            "anchor": 0.431737,
+            "anchorY": 1,
+            "referenceHeight": 580.5
+          },
+          "scale": 0.48,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.434951,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-release-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 619,
+            "top": 70,
+            "width": 424,
+            "height": 579,
+            "anchor": 0.43147,
+            "anchorY": 1,
+            "referenceHeight": 580.5
+          },
+          "scale": 0.48,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.440223,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-release-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1130,
+            "top": 72,
+            "width": 424,
+            "height": 578,
+            "anchor": 0.557817,
+            "anchorY": 1,
+            "referenceHeight": 580.5
+          },
+          "scale": 0.48,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.552396,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-release-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1664,
+            "top": 66,
+            "width": 462,
+            "height": 582,
+            "anchor": 0.560129,
+            "anchorY": 1,
+            "referenceHeight": 580.5
+          },
+          "scale": 0.48,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.558612,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 12,
+          "sourceBounds": {
+            "left": 64,
+            "top": 970,
+            "width": 197,
+            "height": 273,
+            "anchor": 0.49446,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.492593,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 13,
+          "sourceBounds": {
+            "left": 381,
+            "top": 970,
+            "width": 188,
+            "height": 274,
+            "anchor": 0.480729,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.452126,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 14,
+          "sourceBounds": {
+            "left": 664,
+            "top": 971,
+            "width": 188,
+            "height": 273,
+            "anchor": 0.53713,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.52941,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/gwak-inbetweens-v1.png",
+          "sourceFrame": 15,
+          "sourceBounds": {
+            "left": 971,
+            "top": 971,
+            "width": 185,
+            "height": 273,
+            "anchor": 0.477911,
+            "anchorY": 1,
+            "referenceHeight": 289
+          },
+          "scale": 0.96,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.495042,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/gwak-directions-v1.webp"
+    },
+    {
+      "id": "ahn",
+      "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/ahn-inbetweens-v1.webp",
+      "width": 1030,
+      "height": 1236,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 254.5,
+      "pivotXOverrides": {},
+      "bytes": 685184,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 162,
+          "height": 260,
+          "anchor": 0.52479,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 284,
+          "top": 24,
+          "width": 174,
+          "height": 264,
+          "anchor": 0.44,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 544,
+          "top": 24,
+          "width": 158,
+          "height": 265,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 793,
+          "top": 24,
+          "width": 158,
+          "height": 258,
+          "anchor": 0.473755,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 24,
+          "top": 337,
+          "width": 157,
+          "height": 256,
+          "anchor": 0.52479,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 284,
+          "top": 337,
+          "width": 172,
+          "height": 255,
+          "anchor": 0.46,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 544,
+          "top": 337,
+          "width": 170,
+          "height": 257,
+          "anchor": 0.5,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 793,
+          "top": 337,
+          "width": 155,
+          "height": 255,
+          "anchor": 0.473755,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 24,
+          "top": 642,
+          "width": 212,
+          "height": 249,
+          "anchor": 0.428626,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 284,
+          "top": 642,
+          "width": 212,
+          "height": 258,
+          "anchor": 0.427352,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 544,
+          "top": 642,
+          "width": 201,
+          "height": 257,
+          "anchor": 0.531864,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 793,
+          "top": 642,
+          "width": 213,
+          "height": 250,
+          "anchor": 0.570551,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 24,
+          "top": 948,
+          "width": 168,
+          "height": 257,
+          "anchor": 0.52479,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 284,
+          "top": 948,
+          "width": 181,
+          "height": 263,
+          "anchor": 0.525213,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 544,
+          "top": 948,
+          "width": 181,
+          "height": 264,
+          "anchor": 0.461072,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        },
+        {
+          "left": 793,
+          "top": 948,
+          "width": 168,
+          "height": 255,
+          "anchor": 0.473755,
+          "anchorY": 1,
+          "referenceHeight": 254.5
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 68,
+            "top": 46,
+            "width": 172,
+            "height": 277,
+            "anchor": 0.588507,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.52479,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-pass-a-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 553,
+            "top": 35,
+            "width": 435,
+            "height": 659,
+            "anchor": 0.525999,
+            "anchorY": 1,
+            "referenceHeight": 656
+          },
+          "scale": 0.4,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.44,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-pass-a-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1169,
+            "top": 34,
+            "width": 396,
+            "height": 662,
+            "anchor": 0.394697,
+            "anchorY": 1,
+            "referenceHeight": 656
+          },
+          "scale": 0.4,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-pass-a-front-left-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 46,
+            "top": 55,
+            "width": 900,
+            "height": 1474,
+            "anchor": 0.556139,
+            "anchorY": 1,
+            "referenceHeight": 1474
+          },
+          "scale": 0.175,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.473755,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 66,
+            "top": 47,
+            "width": 393,
+            "height": 639,
+            "anchor": 0.456629,
+            "anchorY": 1,
+            "referenceHeight": 638.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.52479,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 549,
+            "top": 43,
+            "width": 430,
+            "height": 638,
+            "anchor": 0.524462,
+            "anchorY": 1,
+            "referenceHeight": 638.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.46,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1153,
+            "top": 44,
+            "width": 426,
+            "height": 643,
+            "anchor": 0.478349,
+            "anchorY": 1,
+            "referenceHeight": 638.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.5,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1686,
+            "top": 47,
+            "width": 387,
+            "height": 638,
+            "anchor": 0.470652,
+            "anchorY": 1,
+            "referenceHeight": 638.5
+          },
+          "scale": 0.4,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.473755,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 8,
+          "sourceBounds": {
+            "left": 63,
+            "top": 663,
+            "width": 226,
+            "height": 265,
+            "anchor": 0.440968,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.428626,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 9,
+          "sourceBounds": {
+            "left": 367,
+            "top": 664,
+            "width": 225,
+            "height": 274,
+            "anchor": 0.440446,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.427352,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 10,
+          "sourceBounds": {
+            "left": 657,
+            "top": 666,
+            "width": 214,
+            "height": 273,
+            "anchor": 0.500005,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.531864,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 11,
+          "sourceBounds": {
+            "left": 943,
+            "top": 664,
+            "width": 227,
+            "height": 266,
+            "anchor": 0.538013,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.570551,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 12,
+          "sourceBounds": {
+            "left": 66,
+            "top": 958,
+            "width": 179,
+            "height": 273,
+            "anchor": 0.495238,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.52479,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 13,
+          "sourceBounds": {
+            "left": 370,
+            "top": 958,
+            "width": 193,
+            "height": 280,
+            "anchor": 0.463909,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.525213,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 14,
+          "sourceBounds": {
+            "left": 674,
+            "top": 960,
+            "width": 193,
+            "height": 281,
+            "anchor": 0.510394,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.461072,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/ahn-inbetweens-v1.png",
+          "sourceFrame": 15,
+          "sourceBounds": {
+            "left": 990,
+            "top": 958,
+            "width": 179,
+            "height": 271,
+            "anchor": 0.504955,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 0.94,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.473755,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/ahn-directions-v1.webp"
+    },
+    {
+      "id": "dangun",
+      "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-packed-v1.png",
+      "delivery": "assets/3d/fixed/inbetweens/dangun-inbetweens-v1.webp",
+      "width": 1058,
+      "height": 1127,
+      "poses": 16,
+      "outerBorderVisiblePixels": 0,
+      "foreignVisiblePixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "uncoveredVisiblePixels": 0,
+      "duplicateVisiblePixels": 0,
+      "alphaDifferences": 0,
+      "referenceHeight": 244,
+      "pivotXOverrides": {},
+      "bytes": 800114,
+      "frames": [
+        {
+          "left": 24,
+          "top": 24,
+          "width": 171,
+          "height": 245,
+          "anchor": 0.527138,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 301,
+          "top": 24,
+          "width": 169,
+          "height": 241,
+          "anchor": 0.45,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 556,
+          "top": 24,
+          "width": 164,
+          "height": 242,
+          "anchor": 0.54,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 809,
+          "top": 24,
+          "width": 172,
+          "height": 245,
+          "anchor": 0.460881,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 24,
+          "top": 317,
+          "width": 182,
+          "height": 244,
+          "anchor": 0.527138,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 301,
+          "top": 317,
+          "width": 169,
+          "height": 244,
+          "anchor": 0.46,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 556,
+          "top": 317,
+          "width": 169,
+          "height": 244,
+          "anchor": 0.52,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 809,
+          "top": 317,
+          "width": 183,
+          "height": 244,
+          "anchor": 0.460881,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 24,
+          "top": 609,
+          "width": 229,
+          "height": 216,
+          "anchor": 0.478438,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 301,
+          "top": 609,
+          "width": 207,
+          "height": 218,
+          "anchor": 0.432054,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 556,
+          "top": 609,
+          "width": 205,
+          "height": 217,
+          "anchor": 0.551343,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 809,
+          "top": 609,
+          "width": 225,
+          "height": 218,
+          "anchor": 0.523123,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 24,
+          "top": 875,
+          "width": 179,
+          "height": 224,
+          "anchor": 0.527138,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 301,
+          "top": 875,
+          "width": 180,
+          "height": 228,
+          "anchor": 0.570995,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 556,
+          "top": 875,
+          "width": 176,
+          "height": 227,
+          "anchor": 0.412022,
+          "anchorY": 1,
+          "referenceHeight": 244
+        },
+        {
+          "left": 809,
+          "top": 875,
+          "width": 185,
+          "height": 225,
+          "anchor": 0.460881,
+          "anchorY": 1,
+          "referenceHeight": 244
+        }
+      ],
+      "visibleColorDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 52,
+            "top": 61,
+            "width": 201,
+            "height": 288,
+            "anchor": 0.587124,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 0,
+          "anchor": 0.527138,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 373,
+            "top": 60,
+            "width": 199,
+            "height": 284,
+            "anchor": 0.478685,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 1,
+          "anchor": 0.45,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 669,
+            "top": 58,
+            "width": 193,
+            "height": 285,
+            "anchor": 0.513059,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 2,
+          "anchor": 0.54,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 971,
+            "top": 61,
+            "width": 202,
+            "height": 288,
+            "anchor": 0.413784,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "pass-a",
+          "col": 3,
+          "anchor": 0.460881,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-pass-b-v1.png",
+          "sourceFrame": 0,
+          "sourceBounds": {
+            "left": 40,
+            "top": 48,
+            "width": 466,
+            "height": 626,
+            "anchor": 0.510615,
+            "anchorY": 1,
+            "referenceHeight": 625.5
+          },
+          "scale": 0.39,
+          "row": "pass-b",
+          "col": 0,
+          "anchor": 0.527138,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-pass-b-v1.png",
+          "sourceFrame": 1,
+          "sourceBounds": {
+            "left": 589,
+            "top": 49,
+            "width": 433,
+            "height": 625,
+            "anchor": 0.514296,
+            "anchorY": 1,
+            "referenceHeight": 625.5
+          },
+          "scale": 0.39,
+          "row": "pass-b",
+          "col": 1,
+          "anchor": 0.46,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-pass-b-v1.png",
+          "sourceFrame": 2,
+          "sourceBounds": {
+            "left": 1141,
+            "top": 49,
+            "width": 433,
+            "height": 625,
+            "anchor": 0.485777,
+            "anchorY": 1,
+            "referenceHeight": 625.5
+          },
+          "scale": 0.39,
+          "row": "pass-b",
+          "col": 2,
+          "anchor": 0.52,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-pass-b-v1.png",
+          "sourceFrame": 3,
+          "sourceBounds": {
+            "left": 1657,
+            "top": 48,
+            "width": 468,
+            "height": 626,
+            "anchor": 0.464441,
+            "anchorY": 1,
+            "referenceHeight": 625.5
+          },
+          "scale": 0.39,
+          "row": "pass-b",
+          "col": 3,
+          "anchor": 0.460881,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 8,
+          "sourceBounds": {
+            "left": 50,
+            "top": 682,
+            "width": 269,
+            "height": 254,
+            "anchor": 0.419204,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 0,
+          "anchor": 0.478438,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 9,
+          "sourceBounds": {
+            "left": 361,
+            "top": 680,
+            "width": 244,
+            "height": 256,
+            "anchor": 0.397668,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 1,
+          "anchor": 0.432054,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 10,
+          "sourceBounds": {
+            "left": 632,
+            "top": 681,
+            "width": 241,
+            "height": 255,
+            "anchor": 0.593511,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 2,
+          "anchor": 0.551343,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 11,
+          "sourceBounds": {
+            "left": 914,
+            "top": 680,
+            "width": 265,
+            "height": 257,
+            "anchor": 0.572787,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "follow-through",
+          "col": 3,
+          "anchor": 0.523123,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 12,
+          "sourceBounds": {
+            "left": 57,
+            "top": 964,
+            "width": 210,
+            "height": 264,
+            "anchor": 0.545436,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 0,
+          "anchor": 0.527138,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 13,
+          "sourceBounds": {
+            "left": 363,
+            "top": 964,
+            "width": 212,
+            "height": 268,
+            "anchor": 0.501783,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 1,
+          "anchor": 0.570995,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 14,
+          "sourceBounds": {
+            "left": 665,
+            "top": 965,
+            "width": 207,
+            "height": 267,
+            "anchor": 0.493841,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 2,
+          "anchor": 0.412022,
+          "anchorY": 1
+        },
+        {
+          "source": "assets/3d/fixed/inbetweens/source/dangun-inbetweens-v1.png",
+          "sourceFrame": 15,
+          "sourceBounds": {
+            "left": 963,
+            "top": 963,
+            "width": 218,
+            "height": 265,
+            "anchor": 0.457042,
+            "anchorY": 1,
+            "referenceHeight": 286.5
+          },
+          "scale": 0.85,
+          "row": "recover",
+          "col": 3,
+          "anchor": 0.460881,
+          "anchorY": 1
+        }
+      ],
+      "explicitAnchors": true,
+      "padding": 24,
+      "encoding": "lossless WebP; alpha and visible RGB identical to mechanically packed PNG",
+      "originalLook": "assets/3d/fixed/dangun-directions-v1.webp"
+    }
+  ]
+}

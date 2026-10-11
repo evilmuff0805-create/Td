@@ -16,6 +16,7 @@ import { CrowdRenderer } from './crowd.js';
 import { updateMountReins } from './enemy-pose.js';
 import { FixedBattleArt } from './fixed-art.js';
 import { heroLooksKey } from './hero-look-roster.js';
+import { inbetweenLooksKey } from './inbetween-roster.js';
 
 function texture(size, paint) {
   const c=document.createElement('canvas');c.width=c.height=size;paint(c.getContext('2d'),size);
@@ -126,7 +127,7 @@ export class WinterWorld {
     this.snow.material.userData.owned3d=true;
   }
   prepareHeroLooks(heroes=[]) {
-    if(!this.art||this.art.heroLooksKey===heroLooksKey(heroes))return;
+    if(!this.art||this.art.heroLooksKey===heroLooksKey(heroes)&&this.art.inbetweenKey===inbetweenLooksKey(heroes))return;
     // Remove every root referencing the old costume before releasing its atlas.
     for(const [key,root]of this.units)if(key.startsWith('h')){
       this.scene.remove(root);this.disposeCharacter(root);this.units.delete(key);this.pickables=this.pickables.filter(p=>p!==root);

@@ -9,9 +9,10 @@ import { SEASON_TREE_ART } from '../src/3d/season-tree-data.js';
 import { SIGNATURE_ART } from '../src/3d/signature-data.js';
 import { TACTIC_ART } from '../src/3d/tactic-data.js';
 import { MENU_HERO_ART } from '../src/data/hero-menu-data.js';
+import { HERO_INBETWEEN_ART } from '../src/3d/inbetween-data.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
-const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART)];
+const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART)];
 const count = needle => { let n=0,at=0; while((at=html.indexOf(needle,at))!==-1){n++;at+=needle.length;} return n; };
 assert.equal(new Set(sheets.map(s=>s.path)).size,sheets.length);
 for(const sheet of sheets){
@@ -24,6 +25,21 @@ for(const rel of rejected){
   const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
   assert.equal(count('data:image/webp;base64,'+encoded),0,rel+' rejected art must stay out of the build');
 }
+// Originals, rejected variants, reference crops and mechanical packing sources
+// are production records. Only the eight selected delivery WebPs are shipped.
+let inbetweenArchivePngs=0;
+function checkSourceArchive(directory){
+  for(const entry of fs.readdirSync(directory,{withFileTypes:true})){
+    const file=new URL(entry.name+(entry.isDirectory()?'/':''),directory);
+    if(entry.isDirectory())checkSourceArchive(file);
+    else if(entry.name.endsWith('.png')){
+      const encoded=fs.readFileSync(file).toString('base64');
+      assert.equal(count('data:image/png;base64,'+encoded),0,entry.name+' source art must stay out of the build');
+      inbetweenArchivePngs++;
+    }
+  }
+}
+checkSourceArchive(new URL('../assets/3d/fixed/inbetweens/source/',import.meta.url));
 const terrain=['ground','snow-ground','road'].map(kind=>PAINTED_SURFACES[kind]);
 for(const rel of terrain){
   const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
@@ -42,4 +58,4 @@ for(const rel of ['assets/3d/art/hero-abilities-atlas-v1.png','assets/3d/art/ski
 const menu=fs.readFileSync(new URL('../'+MENU_HERO_ART.path,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+menu),1,'Approved UI poses must be embedded exactly once');
 assert.ok(!html.includes(MENU_HERO_ART.path));
-console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0},null,2));
+console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:inbetweenArchivePngs},null,2));

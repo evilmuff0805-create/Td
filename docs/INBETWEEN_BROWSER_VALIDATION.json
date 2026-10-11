@@ -1,0 +1,2699 @@
+{
+  "date": "2026-10-11",
+  "origin": "http://127.0.0.1:8092",
+  "ordinary8080ProfileUntouched": true,
+  "scope": "QA-only browser controls; no purchases/unlocks/battle rewards; stopped in first wave",
+  "review": {
+    "selectedHeroes": 8,
+    "originalPoses": 128,
+    "newPoses": 128,
+    "domStates": [
+      {
+        "facing": 0,
+        "row": 0,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "0",
+            "poseName": "idle",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 0,
+        "row": 1,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "4",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 0,
+        "row": 4,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "16",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 0,
+        "row": 2,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "8",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 0,
+        "row": 5,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "20",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 0,
+        "row": 3,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "12",
+            "poseName": "attack",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 0,
+        "row": 6,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "24",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 0,
+        "row": 7,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "0",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "28",
+            "poseName": "recover",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 0,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "1",
+            "poseName": "idle",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 1,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "5",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 4,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "17",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 2,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "9",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 5,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "21",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 3,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "13",
+            "poseName": "attack",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 6,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "25",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 1,
+        "row": 7,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "1",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "29",
+            "poseName": "recover",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 0,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "2",
+            "poseName": "idle",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 1,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "6",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 4,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "18",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 2,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "10",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 5,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "22",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 3,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "14",
+            "poseName": "attack",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 6,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "26",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 2,
+        "row": 7,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "2",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "30",
+            "poseName": "recover",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 0,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "3",
+            "poseName": "idle",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 1,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "7",
+            "poseName": "walk-left",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 4,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "19",
+            "poseName": "pass-a",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 2,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "11",
+            "poseName": "walk-right",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 5,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "23",
+            "poseName": "pass-b",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 3,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "15",
+            "poseName": "attack",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 6,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "27",
+            "poseName": "follow-through",
+            "supplemented": "true"
+          }
+        ]
+      },
+      {
+        "facing": 3,
+        "row": 7,
+        "cards": [
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "yi",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "sejong",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "eulji",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gang",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwon",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "gwak",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "ahn",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          },
+          {
+            "directional": "true",
+            "facing": "3",
+            "gait": "0",
+            "hero": "dangun",
+            "pose": "31",
+            "poseName": "recover",
+            "supplemented": "true"
+          }
+        ]
+      }
+    ],
+    "domPoseChecks": 256,
+    "mismatches": 0,
+    "walkRowsObserved": [
+      2,
+      5,
+      1,
+      4
+    ],
+    "attackRowsObserved": [
+      7,
+      0,
+      3,
+      6
+    ],
+    "pauseIdentical": true,
+    "seasons": [
+      {
+        "comparison": "all",
+        "facing": "3",
+        "frames": "67",
+        "geometries": "265",
+        "heroCount": "8",
+        "inbetweenCount": "8",
+        "inbetweenStatus": "ready",
+        "motion": "attack",
+        "playing": "false",
+        "poseStatus": "ready",
+        "season": "spring",
+        "textures": "257"
+      },
+      {
+        "comparison": "all",
+        "facing": "3",
+        "frames": "68",
+        "geometries": "265",
+        "heroCount": "8",
+        "inbetweenCount": "8",
+        "inbetweenStatus": "ready",
+        "motion": "attack",
+        "playing": "false",
+        "poseStatus": "ready",
+        "season": "summer",
+        "textures": "257"
+      },
+      {
+        "comparison": "all",
+        "facing": "3",
+        "frames": "69",
+        "geometries": "265",
+        "heroCount": "8",
+        "inbetweenCount": "8",
+        "inbetweenStatus": "ready",
+        "motion": "attack",
+        "playing": "false",
+        "poseStatus": "ready",
+        "season": "autumn",
+        "textures": "257"
+      },
+      {
+        "comparison": "all",
+        "facing": "3",
+        "frames": "70",
+        "geometries": "265",
+        "heroCount": "8",
+        "inbetweenCount": "8",
+        "inbetweenStatus": "ready",
+        "motion": "attack",
+        "playing": "false",
+        "poseStatus": "ready",
+        "season": "winter",
+        "textures": "257"
+      }
+    ],
+    "final": {
+      "comparison": "all",
+      "facing": "0",
+      "frames": "1622",
+      "geometries": "265",
+      "heroCount": "8",
+      "inbetweenCount": "8",
+      "inbetweenStatus": "ready",
+      "motion": "walk",
+      "playing": "false",
+      "poseStatus": "ready",
+      "season": "winter",
+      "textures": "257"
+    }
+  },
+  "standaloneLocalCoop": {
+    "loadedSupplements": 2,
+    "heroKinds": [
+      "sejong",
+      "yi"
+    ],
+    "p1MouseMove": true,
+    "p2ArrowMove": true,
+    "p1HakikjinCooldownObserved": 14,
+    "p2HunminCooldownObserved": 16,
+    "p2KeyboardBuild": "Sungnyemun, 70",
+    "p1Gold": 156,
+    "p2Gold": 86,
+    "actualWalkPoses": [
+      "pass-b",
+      "walk-left",
+      "pass-a",
+      "walk-right"
+    ],
+    "actualSkillPoses": [
+      "recover",
+      "pass-a",
+      "walk-right",
+      "pass-b"
+    ],
+    "final": {
+      "canvas": {
+        "combatPoseActive": "true",
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseLastKind": "ashigaru",
+        "combatPoseLastState": "walk-right",
+        "combatPoseStatus": "ready",
+        "drawCalls": "159",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "fps": "60",
+        "geometries": "100",
+        "heroInbetweenActive": "false",
+        "heroInbetweenCount": "2",
+        "heroInbetweenExpected": "2",
+        "heroInbetweenKinds": "sejong,yi",
+        "heroInbetweenLookKey": "sejong,yi",
+        "heroInbetweenStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "renderMode": "3d",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "9",
+        "sceneryHouses": "3",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "12",
+        "sceneryProps": "38",
+        "seasonTreeArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "spriteMotion": "distance-contact-recovery",
+        "tacticArtStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3216",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "textures": "70",
+        "triangles": "54884",
+        "waterTriangles": "7704",
+        "yiFacing": "2",
+        "yiPose": "walk-left"
+      },
+      "snapshot": "- generic: 부산진 전투\n- generic: 보통\n- generic \"민심 (0이 되면 패배)\":\n  - generic: ♥\n  - generic: 민심\n  - generic: 20/20\n- generic: 파도\n- generic: 1/12\n- generic \"군자금 (유산 건설·강화에 쓰는 전투 자금)\":\n  - generic: 1P 군자금\n  - generic: \"156\"\n- generic \"군자금 (유산 건설·강화에 쓰는 전투 자금)\":\n  - generic: 2P 군자금\n  - generic: \"86\"\n- group \"배속\":\n  - button \"×1\" [pressed]\n  - button \"×2\"\n  - button \"×3\"\n- button \"계속\" [active]\n- button \"메뉴\"\n- generic \"전장\"\n- generic \"전장 시점\":\n  - generic: 봄 · 부산진 전투\n  - button \"건설 터\"\n  - button \"기본 시점\"\n  - button \"영웅 집결\"\n- button \"숭례문, 1 / 4단계, 0회 강화\":\n  - generic: 숭례문\n  - generic: 1단계\n- generic: 일시정지\n- generic: 건설과 강화는 멈춘 상태에서도 할 수 있습니다\n- button \"이순신 Lv1\" [pressed]:\n  - generic: 이순신 Lv1\n- button \"이순신 기술 · 학익진\":\n  - generic: 학익진\n  - generic: \"11\"\n- button \"이순신 궁극기 · 거북선 출격\":\n  - generic: 거북선\n  - generic: \"19\"\n- button \"비기 · 신기전 일제사격\":\n  - generic: 신기전\n- button \"비기 · 봉수 경보\":\n  - generic: 봉수\n  - generic: \"4\"\n- button \"1P 클릭 · 2P Space\" [disabled]:\n  - generic: 1P 클릭 · 2P Space\n- generic: 공명 8%\n- button \"진격 중 적 2\" [disabled]:\n  - generic: 진격 중\n  - generic: 적 2\n- button \"세종대왕 Lv1\":\n  - generic: 세종대왕 Lv1\n- button \"세종대왕 기술 · 훈민정음\":\n  - generic: 훈민 정음\n  - generic: A\n  - generic: \"13\"\n- button \"세종대왕 궁극기 · 자격루\":\n  - generic: 자격루\n  - generic: S\n  - generic: \"24\"\n- button \"비기 · 봉수 경보\":\n  - generic: 봉수\n  - generic: D\n  - generic: \"4\"\n- button \"비기 · 신기전 일제사격\":\n  - generic: 신기전\n  - generic: F\n- status",
+      "viewport": {
+        "height": 720,
+        "scrollWidth": 1280,
+        "width": 1280
+      }
+    }
+  },
+  "responsive": {
+    "requested": [
+      414,
+      896
+    ],
+    "actualGame": [
+      414,
+      896
+    ],
+    "gameOverflow": false,
+    "reviewNotResizedThisAttempt": true,
+    "defaultRestored": true,
+    "physicalPhoneTested": false
+  },
+  "console": {
+    "review": [],
+    "coop": []
+  }
+}
