@@ -11,6 +11,7 @@ import { TACTIC_ART } from '../src/3d/tactic-data.js';
 import { MENU_HERO_ART } from '../src/data/hero-menu-data.js';
 import { HERO_INBETWEEN_ART } from '../src/3d/inbetween-data.js';
 import { COMBAT_INBETWEEN_ART } from '../src/3d/combat-inbetween-data.js';
+import { VILLAGE_PROP_ART } from '../src/3d/village-prop-data.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
 const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(COMBAT_INBETWEEN_ART)];
@@ -51,6 +52,15 @@ for(const rel of terrain){
 const trees=fs.readFileSync(new URL('../'+SEASON_TREE_ART.path,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+trees),1,'Seasonal trees must be embedded exactly once');
 assert.ok(!html.includes(SEASON_TREE_ART.path));
+for(const {path:rel}of Object.values(VILLAGE_PROP_ART)){
+  const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
+  assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' village props must be embedded exactly once');
+  assert.ok(!html.includes(rel));
+}
+for(const name of ['village-props-v1','village-props-winter-v1']){
+  const rel='assets/3d/fixed/source/'+name+'.png',encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
+  assert.equal(count('data:image/png;base64,'+encoded),0,rel+' source record must not ship');
+}
 const water=fs.readFileSync(new URL('../'+PAINTED_SURFACES.water,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+water),1,'Painted water must be embedded exactly once');
 assert.ok(!html.includes(PAINTED_SURFACES.water));
@@ -60,4 +70,4 @@ for(const rel of ['assets/3d/art/hero-abilities-atlas-v1.png','assets/3d/art/ski
 const menu=fs.readFileSync(new URL('../'+MENU_HERO_ART.path,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+menu),1,'Approved UI poses must be embedded exactly once');
 assert.ok(!html.includes(MENU_HERO_ART.path));
-console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:inbetweenArchivePngs},null,2));
+console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedVillagePropSheets:2,villageSourcePngsEmbedded:0,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:inbetweenArchivePngs},null,2));

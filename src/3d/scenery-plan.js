@@ -19,6 +19,21 @@ function components(cells) {
   }return groups;
 }
 
+// Thin the depth of a blocked boundary band, never its gameplay cells. A run
+// records each original marker once; disconnected parts of a row stay separate.
+function barrierRuns(cells){
+  const runs=[];
+  for(const group of components(cells)){
+    const width=Math.max(...group.map(d=>d.x))-Math.min(...group.map(d=>d.x))+1,height=Math.max(...group.map(d=>d.y))-Math.min(...group.map(d=>d.y))+1,vertical=height>=width,lines=new Map();
+    for(const d of group){const along=vertical?d.y:d.x;if(!lines.has(along))lines.set(along,[]);lines.get(along).push(d);}
+    for(const [,line]of [...lines].sort((a,b)=>a[0]-b[0])){
+      line.sort((a,b)=>vertical?a.x-b.x:a.y-b.y);let run=[];
+      for(const d of line){const previous=run.at(-1);if(previous&&(vertical?d.x-previous.x:d.y-previous.y)>1){runs.push({cells:run,family:group[0]});run=[];}run.push(d);}
+      if(run.length)runs.push({cells:run,family:group[0]});
+    }
+  }return runs;
+}
+
 export function sceneryPlan(stage,theme) {
   const map=getMap(stage.id),segments=roadSegments(map),seed=stageSeed(stage.id),items=[],supplies=[],lamps=[],base={x:map.base.x+.5,z:map.base.y+.5};
   const protectedCenters=[],wet=[];
@@ -57,7 +72,7 @@ export function sceneryPlan(stage,theme) {
     const cargo=group.flatMap(q=>[[.18,.18],[.82,.18],[.18,.82],[.82,.82]].map(([dx,dz])=>({x:q.x+dx,z:q.y+dz})))
       .filter(p=>safe(p.x,p.z,.12,1.65)&&distance(p,house)>house.radius+.15)
       .sort((a,b)=>distance(a,{x:house.x+.5,z:house.z+.65})-distance(b,{x:house.x+.5,z:house.z+.65}))[0];
-    if(cargo)supplies.push({key:'cargo:'+house.key,kind:'supplies',...cargo,height:.36,radius:.12,role:'cargo',variation:0});
+    if(cargo)supplies.push({key:'cargo:'+house.key,kind:'villageCargo',...cargo,height:.36,radius:.12,role:'cargo',variation:random(seed,d.x,d.y,13)});
     const entry=group.flatMap(q=>[[.18,.82],[.82,.82],[.18,.18],[.82,.18]].map(([dx,dz])=>({x:q.x+dx,z:q.y+dz})))
       .filter(p=>safe(p.x,p.z,.10,1.65)&&roadDistance(p.x,p.z)>=.72&&distance(p,house)>house.radius+.10&&(!cargo||distance(p,cargo)>.30))
       .sort((a,b)=>distance(a,{x:house.x-.55,z:house.z+.7})-distance(b,{x:house.x-.55,z:house.z+.7}))[0];
@@ -85,7 +100,31 @@ export function sceneryPlan(stage,theme) {
   for(const d of map.decor){
     if(d.ch==='R')add(d,theme.snow?'snowRock':'rock',.45+random(seed,d.x,d.y,10)*.25,.28,'stone',random(seed,d.x,d.y,11));
     else if(d.ch==='J')add(d,'jangseung',.75+random(seed,d.x,d.y,10)*.15,.17,'waymark');
-    else if(d.ch==='K')items.push({key:`K:${d.x},${d.y}`,kind:'wall',x:d.x+.5,z:d.y+.5,height:1,radius:.30,role:'wall',variation:0,cells:[[d.x,d.y]]});
+  }
+
+  function availableRadius(p,maximum){
+    return Math.min(maximum,centerDistance(p.x,p.z)-.31,roadDistance(p.x,p.z)-.60,wetDistance(p.x,p.z)-.05,
+      ...items.filter(q=>q.role!=='wall').map(q=>distance(p,q)-q.radius-.06),...supplies.map(q=>distance(p,q)-q.radius-.06),...lamps.map(q=>Math.hypot(p.x-q[0],p.z-q[1])-.18));
+  }
+  let omittedBarrierCells=0;
+  for(const {cells,family}of barrierRuns(map.decor.filter(d=>d.ch==='K'))){
+    const kind=random(seed,family.x,family.y,45)<.35?'villageFence':'fieldWall';
+    function place(group){
+      const center={x:group.reduce((n,d)=>n+d.x+.5,0)/group.length,z:group.reduce((n,d)=>n+d.y+.5,0)/group.length},radius=availableRadius(center,.62);
+      if(radius<.14||!safe(center.x,center.z,radius)){
+        if(group.length>1){for(const d of group)place([d]);}else omittedBarrierCells++;
+        return;
+      }
+      const d=group[0];items.push({key:`K:${d.x},${d.y}`,kind,...center,height:quantize(.56+random(seed,d.x,d.y,46)*.08),radius,role:'wall',variation:random(seed,d.x,d.y,47),cells:group.map(q=>[q.x,q.y])});
+    }place(cells);
+  }
+  // A small yard fence is optional. Keep it clear of the whole house, cargo,
+  // existing props, previous fences and the already chosen doorway lamps.
+  for(const house of items.filter(p=>p.role==='house')){
+    const radius=.16,candidates=house.cells.flatMap(([x,z])=>[[.04,.04],[.96,.04],[.04,.96],[.96,.96]].map(([dx,dz])=>({x:x+dx,z:z+dz})));
+    const site=candidates.filter(p=>safe(p.x,p.z,radius,1.65)&&items.every(q=>distance(p,q)>=radius+q.radius+.07)&&supplies.every(q=>distance(p,q)>=radius+q.radius+.07)&&lamps.every(q=>Math.hypot(p.x-q[0],p.z-q[1])>=radius+.18))
+      .sort((a,b)=>distance(a,{x:house.x+.55,z:house.z+.7})-distance(b,{x:house.x+.55,z:house.z+.7}))[0];
+    if(site)items.push({key:'yard:'+house.key,kind:'villageFence',...site,height:.32,radius,role:'yard',variation:house.variation,cells:[]});
   }
 
   // Two entry lamps and at most three roadside lamps. Search actual path
@@ -112,5 +151,5 @@ export function sceneryPlan(stage,theme) {
       candidates.push([x,z,.58,false]);
     }if(candidates[0])lamps.push(candidates[0]);
   }
-  return {items,supplies,lamps:lamps.slice(0,9),base,metrics:{props:items.length,crowns:items.filter(p=>p.role==='crown').length,understory:items.filter(p=>p.role==='understory').length,houses:items.filter(p=>p.role==='house').length,cargo:supplies.length}};
+  return {items,supplies,lamps:lamps.slice(0,9),base,metrics:{props:items.length,crowns:items.filter(p=>p.role==='crown').length,understory:items.filter(p=>p.role==='understory').length,houses:items.filter(p=>p.role==='house').length,cargo:supplies.length,barriers:items.filter(p=>p.role==='wall').length,barrierCells:map.decor.filter(d=>d.ch==='K').length,omittedBarrierCells,yardFences:items.filter(p=>p.role==='yard').length}};
 }

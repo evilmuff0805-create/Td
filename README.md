@@ -4,7 +4,9 @@
 
 현재 기본 전장은 **고정 시점의 2.5D 일러스트**입니다. 투명 캐릭터·건물 그림을 실제 3D 지면에 배치해 전투·성장·저장·협동에 연결했습니다. 영웅 8명, 유산 10종, 왜군 22종과 사계절의 전장 25곳을 사용합니다.
 
-최신 작업은 **이동→디딤→정지 전환과 방향·조준 안정화**입니다. 일시정지 중 늦은 조준 정보가 그림·반동·그림자·발사 원점을 바꾸는 문제와 60Hz 전투/120Hz 화면의 반복 위치 깜빡임을 수정했습니다. 승인된 1,664자세와 로컬 2인을 유지하며 262개 검사를 통과했습니다. [정확한 범위·실제 비교·검증](docs/MOTION_TRANSITIONS.md)
+최신 작업은 **목책·돌담·옹기·보급짐과 겨울 외형 12개**입니다. 기존 경계 장식 248칸을 122개 그림으로 정리하고 안전한 한옥 주변에 작은 목책을 더했습니다. 길·건설 자리·승인된 캐릭터와 로컬 2인은 유지하며 전체 **272개 / 20검사군**을 통과했습니다. [새 원화·실제 배치·검증](docs/VILLAGE_SCENERY.md)
+
+앞선 작업은 **이동→디딤→정지 전환과 방향·조준 안정화**입니다. 일시정지 중 늦은 조준 정보가 그림·반동·그림자·발사 원점을 바꾸는 문제와 60Hz 전투/120Hz 화면의 반복 위치 깜빡임을 수정했습니다. 승인된 1,664자세와 로컬 2인을 유지하며 262개 검사를 통과했습니다. [정확한 범위·실제 비교·검증](docs/MOTION_TRANSITIONS.md)
 
 적군·적장·아군과 이동체 28종에 **중간 동작 원화 448장**을 추가했습니다. 병력도 네 박자 이동과 공격 후·복귀를 사용합니다. 기존 영웅·의상·병력 1,216장은 유지하며, 병력은 총 896자세·전체 전장 준비 그림은 **1,664장**입니다. 전령·거북선은 이동 자세만 실제 전투에 사용합니다. 로컬 2인 조작·소유·군자금과 전투 규칙을 유지합니다. [새 병력 원화·정확한 적용 범위·검증](docs/COMBAT_INBETWEENS.md)
 
@@ -12,9 +14,11 @@
 
 현재 구현·검증·남은 작업과 GitHub 반영 기준은 [프로젝트 리뷰](docs/PROJECT_REVIEW.md)에 기록합니다. 상위 작업 폴더의 `호국영웅전_PROJECT_REVIEW.md`도 함께 갱신합니다. 완료한 작업 단위마다 같은 브랜치에 커밋·푸시하고 원격 반영을 확인합니다.
 
-[최신 그림 가이드](docs/ART.md) · [동작 전환·조준·최신 검증](docs/MOTION_TRANSITIONS.md) · [병력 중간 원화·검증](docs/COMBAT_INBETWEENS.md) · [전체 영웅 외형 중간 동작·최신 검증](docs/SKIN_INBETWEENS.md) · [메뉴·HUD·의상 톤 연결](docs/HERO_MENU_ART.md) · [비기·합격기 전용 그림·최신 검증](docs/TACTIC_ART.md) · [주변 소품 배치·최신 검증](docs/SCENERY_LAYOUT.md) · [영웅 16기술·최신 검증](docs/SKILL_SIGNATURES.md) · [보행·공격 복귀·로컬 협동 검증](docs/MOTION_REFINEMENT.md) · [새 물가·그림 수면·최신 검증](docs/WATER_REFINEMENT.md) · [계절 수목·최신 검증](docs/SEASONAL_SCENERY.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [공용 스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
+[최신 그림 가이드](docs/ART.md) · [목책·돌담·마을 짐·최신 검증](docs/VILLAGE_SCENERY.md) · [동작 전환·조준·최신 검증](docs/MOTION_TRANSITIONS.md) · [병력 중간 원화·검증](docs/COMBAT_INBETWEENS.md) · [전체 영웅 외형 중간 동작·최신 검증](docs/SKIN_INBETWEENS.md) · [메뉴·HUD·의상 톤 연결](docs/HERO_MENU_ART.md) · [비기·합격기 전용 그림·최신 검증](docs/TACTIC_ART.md) · [주변 소품 배치·최신 검증](docs/SCENERY_LAYOUT.md) · [영웅 16기술·최신 검증](docs/SKILL_SIGNATURES.md) · [보행·공격 복귀·로컬 협동 검증](docs/MOTION_REFINEMENT.md) · [새 물가·그림 수면·최신 검증](docs/WATER_REFINEMENT.md) · [계절 수목·최신 검증](docs/SEASONAL_SCENERY.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [공용 스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
 
 이순신의 전장용 16포즈는 다른 영웅의 부드러운 톤에 맞춘 v2로 교체했습니다. 남색 망토·활·화살통으로 권율의 붉은 망토·창·방패와 구분합니다. [같은 크기 비교와 적용·검증](docs/YI_TONE_REFINEMENT.md)
+
+![새 목책·돌담·옹기·보급짐](docs/screenshots/village-props/props-temperate.png)
 
 ![새 계절 수목과 봄 전투](docs/screenshots/season-trees-spring-battle.jpg)
 
@@ -26,7 +30,7 @@
 
 ![유산 기본·2·3·최종 A/B 외형](docs/screenshots/tower-stages-bosingak.png)
 
-기본 영웅 8명은 **256포즈**, 특수 의상 16종은 **512포즈**, 병력·적장·아군과 이동체 28종은 **896포즈**, 전체 전장 준비 그림은 **1,664개**입니다. 모든 외형에 네 박자 이동을 연결했습니다. 적군 공격은 기존 길막 교전·사격 때만 표시하며 성문 도착 시 바로 사라지는 규칙은 유지합니다. [영웅 비교](http://localhost:8080/dev/3d-hero-pose-review.html?mute=1) · [병력 896자세 비교](http://localhost:8080/dev/3d-combat-pose-review.html?mute=1) · [24외형 768자세 비교](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1). 자동 검사 **262개**, 변경 전 솔로/협동 완주 비교, 승인된 1,664자세 불변, 브라우저 5시퀀스·23지점×6대표·사계절·414×896·최신 단일 HTML 로컬 2인 양측 기술/집결 이동/일시정지·두 빌드를 확인했습니다. 단일 HTML은 **107,974,162바이트**이며 방향/중간 시트 104장·메뉴 1장·지면 3장·수목 1장·물 1장·기술 시트 4장을 각각 한 번 포함합니다. [검증 결과와 적용 한계](docs/MOTION_TRANSITIONS.md)
+기본 영웅 8명은 **256포즈**, 특수 의상 16종은 **512포즈**, 병력·적장·아군과 이동체 28종은 **896포즈**, 전체 전장 준비 그림은 **1,664개**입니다. 모든 외형에 네 박자 이동을 연결했습니다. 적군 공격은 기존 길막 교전·사격 때만 표시하며 성문 도착 시 바로 사라지는 규칙은 유지합니다. [영웅 비교](http://localhost:8080/dev/3d-hero-pose-review.html?mute=1) · [병력 896자세 비교](http://localhost:8080/dev/3d-combat-pose-review.html?mute=1) · [24외형 768자세 비교](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1). 자동 검사 **272개 / 20검사군**, 변경 전 솔로/협동 완주 비교, 승인된 1,664자세 불변, 새 소품의 사계절·414×896·반복 전환, 최신 단일 HTML 로컬 2인의 양측 기술·2P E키 건설·개별 군자금과 두 빌드를 확인했습니다. 단일 HTML은 **110,553,522바이트**이며 방향/중간 시트 104장·메뉴 1장·지면 3장·수목 1장·새 소품 2장·물 1장·기술 시트 4장을 각각 한 번 포함합니다. [검증 결과와 적용 한계](docs/VILLAGE_SCENERY.md)
 
 영웅 기술·궁극기 16개에 각각 다른 그림 모티프를 연결했습니다. 실제 학익진 범위, 거북선 항적, 자격루, 낙성우·마늘 투사체, 의병·목책의 생성 위치와 번개 착탄을 사용합니다. 기존 기술 아이콘 디자인은 유지하고 두 시트를 WebP로 압축해 배포 용량을 줄였습니다. 비기 8개·전용/일반 합격기 11개·참격에도 별도 그림을 연결했습니다. [실제 명령으로 기술 36개 비교](http://localhost:8080/dev/3d-effect-review.html?mute=1)에서 사계절·정지·병력 표시를 바꿀 수 있습니다.
 

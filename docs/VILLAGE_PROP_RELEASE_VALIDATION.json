@@ -1,0 +1,263 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "ad0cab706276b5d7e456a57472f8c6c67827633c",
+  "scope": "Twelve illustrated village prop forms, thinner repeated K boundary bands, small optional yard fences; combat, local co-op, all approved poses and landmark sizes preserved",
+  "regression": {
+    "groups": [
+      {
+        "name": "selftest",
+        "passed": 14
+      },
+      {
+        "name": "3d",
+        "passed": 41
+      },
+      {
+        "name": "fixed-art",
+        "passed": 15
+      },
+      {
+        "name": "campaign",
+        "passed": 16
+      },
+      {
+        "name": "effects",
+        "passed": 8
+      },
+      {
+        "name": "enemies",
+        "passed": 12
+      },
+      {
+        "name": "combat-art",
+        "passed": 13
+      },
+      {
+        "name": "skin-art",
+        "passed": 14
+      },
+      {
+        "name": "terrain",
+        "passed": 8
+      },
+      {
+        "name": "seasonal-props",
+        "passed": 6
+      },
+      {
+        "name": "water",
+        "passed": 11
+      },
+      {
+        "name": "sprite-motion",
+        "passed": 15
+      },
+      {
+        "name": "signatures",
+        "passed": 12
+      },
+      {
+        "name": "scenery",
+        "passed": 8
+      },
+      {
+        "name": "tactics",
+        "passed": 8
+      },
+      {
+        "name": "menu-art",
+        "passed": 8
+      },
+      {
+        "name": "inbetweens",
+        "passed": 19
+      },
+      {
+        "name": "combat-inbetweens",
+        "passed": 20
+      },
+      {
+        "name": "motion-transitions",
+        "passed": 14
+      },
+      {
+        "name": "village-props",
+        "passed": 10
+      }
+    ],
+    "total": 272,
+    "allGroupsExitedZero": true
+  },
+  "art": {
+    "preparedCharacterPoses": 1664,
+    "newCharacterPoses": 0,
+    "newSceneryForms": 12,
+    "newScenerySheets": 2,
+    "newSceneryDeliveryBytes": 1931296,
+    "approvedExistingArtAndPoseMetadataUnchanged": true,
+    "pixelReport": "VILLAGE_PROP_ASSET_VALIDATION.json",
+    "visibleRGBDifferences": 0,
+    "alphaDifferences": 0,
+    "foreignVisiblePixels": 0,
+    "uncoveredVisiblePixels": 0,
+    "duplicateVisiblePixels": 0,
+    "outerBorderVisiblePixels": 0,
+    "coreLoading": "Both optional seasonal sheets loaded with core; immutable canvas cache persists; used per-owner GPU resources released at owner disposal"
+  },
+  "runtime": {
+    "report": "VILLAGE_PROP_RUNTIME_VALIDATION.json",
+    "newTests": 10,
+    "campaignBarrierCells": 248,
+    "campaignBoundaryImages": 122,
+    "campaignYardFences": 13,
+    "campaignCargo": 7,
+    "omittedBarrierCells": 0,
+    "allActualNewPropBillboardCornersProtected": true,
+    "oldTreesFullCanopyCoverageClaimed": false,
+    "stageReusesOwnerAndRebuildsSeason": true,
+    "localCoopPreserved": true,
+    "enemyMarchAndGateLeakRulesUnchanged": true
+  },
+  "determinism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "exitCode": 0,
+    "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721"
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+      }
+    ],
+    "baselineRewritten": false,
+    "canonicalization": "Unchanged from preceding motion milestone; no additional field exclusions introduced by village scenery."
+  },
+  "build": {
+    "server": "node tools/build-3d.mjs",
+    "standalone": "node tools/build.mjs",
+    "bothExitedZero": true,
+    "embeddedArtVerification": {
+      "command": "node tools/verify-embedded-art.mjs",
+      "exitCode": 0,
+      "standaloneBytes": 110553522,
+      "embeddedDirectionalSheets": 104,
+      "embeddedMenuSheets": 1,
+      "embeddedTerrainSurfaces": 3,
+      "embeddedSeasonalPropSheets": 1,
+      "embeddedVillagePropSheets": 2,
+      "villageSourcePngsEmbedded": 0,
+      "embeddedWaterSurfaces": 1,
+      "embeddedSkillAtlases": 4,
+      "eachEmbeddedExactlyOnce": true,
+      "rejectedVersionsEmbedded": 0,
+      "inbetweenArchivePngsEmbedded": 0,
+      "inbetweenArchivePngsChecked": 256
+    }
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "status": "Approved; no mandatory defects in final code, 12 art forms and rendered screenshots; independently reran all ten new tests and existing layout/pixel checks",
+    "designFindingsAddressed": [
+      "loadStage reuses one owner: both small sheets prepared as core instead of only initial season",
+      "Cap full camera-oriented XZ rectangle, including height and legacy anchor; scale both shadows",
+      "Explicit wall/supplies fallback for all new kinds",
+      "Reject unsafe final sites; split irregular boundary bands; clear house/cargo/lamp/previous fence footprints"
+    ],
+    "filesEditedByReviewer": false
+  },
+  "browser": {
+    "report": "VILLAGE_PROP_BROWSER_VALIDATION.json",
+    "newForms": 12,
+    "seasons": 4,
+    "repeatedWarmSnowSwitches": 8,
+    "galleryGpuCounts": {
+      "textures": 13,
+      "geometries": 19
+    },
+    "countsAreGalleryOnly": true,
+    "mobile": {
+      "viewport": [
+        414,
+        896
+      ],
+      "scrollWidth": 399,
+      "noHorizontalOverflow": true,
+      "restored": true
+    },
+    "actualSameStageWinterSummer": true,
+    "latestStandaloneLocalCoop": {
+      "pair": [
+        "yi",
+        "sejong"
+      ],
+      "p1TargetedSkill": true,
+      "p2ActualAKey": true,
+      "p2ActualEKeyBuild": "sungnyemun level1 cost70",
+      "goldBefore": [
+        156,
+        156
+      ],
+      "goldAfter": [
+        156,
+        86
+      ],
+      "rallyCommandIssued": true,
+      "individualArrowMovementThisBrowserRun": false,
+      "individualInputsCoveredBySessionTests": true,
+      "paused": true,
+      "lives": [
+        20,
+        20
+      ],
+      "wave": "1/12",
+      "noFinalResultUnlockPurchaseOrReward": true
+    },
+    "warningCount": 0,
+    "errorCount": 0,
+    "fileProtocolTested": false,
+    "actualDevicePerformanceTested": false,
+    "externalNetworkTwoDeviceTested": false
+  },
+  "screenshots": [
+    "screenshots/village-props/props-temperate.png",
+    "screenshots/village-props/props-winter.png",
+    "screenshots/village-props/props-mobile.png",
+    "screenshots/village-props/seasons-before.png",
+    "screenshots/village-props/seasons-after.png",
+    "screenshots/village-props/battle-winter.png",
+    "screenshots/village-props/battle-summer.png",
+    "screenshots/village-props/local-coop-battle.png"
+  ],
+  "remaining": [
+    "Larger portraits and longer continuous character cycles",
+    "Free curve maps and further environmental art",
+    "Actual device memory, thermal, touch and performance checks",
+    "External network two-device co-op validation",
+    "Standalone asset size optimization",
+    "Human late-campaign difficulty and progression balance"
+  ],
+  "github": {
+    "repository": "https://github.com/evilmuff0805-create/Td",
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "implementationCommit": null,
+    "implementationRemoteMatches": false,
+    "recordPolicy": "Fill only after actual push and ls-remote verification; verify final documentation HEAD again."
+  },
+  "sourceAudit": {
+    "approvedArtPoseMetadataAndBaselineFixtureGitDiffExitCode": null,
+    "stagedDiffCheckExcludingGeneratedNewBundleExitCode": null,
+    "generatedBundle": "assets/3d/village-review.js",
+    "generatedShaderWhitespaceWarnings": null,
+    "allWarningLinesAlreadyPresentInExistingGameBundle": null
+  }
+}

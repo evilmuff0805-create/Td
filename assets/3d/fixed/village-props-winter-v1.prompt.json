@@ -1,0 +1,10 @@
+{
+  "id": "village-props-winter-v1",
+  "created": "2026-10-11",
+  "tool": "built-in imagegen",
+  "useCase": "lighting-weather",
+  "reference": "assets/3d/fixed/source/village-props-v1.png",
+  "generatedSource": "C:/Users/USER/.codex/generated_images/01a1208e-1f21-7ee1-8355-345389c0c96c/exec-8d558c5d-2be8-430c-a659-6449d8aa874c.png",
+  "transparent_background": true,
+  "prompt": "Use case: lighting-weather.\nEdit target: the attached NEW village-props-v1 six-prop transparent atlas. Create a NEW sibling WINTER version, leaving the original file untouched.\nChange ONLY seasonal dressing: add thin soft patches of settled blue-white snow on upward-facing fence rails, post tops, stone wall tops, jar lids and crate tops. Snow is light and patchy; preserve most visible wood grain, stone shapes, brown glazed jar bodies and muted linen. Remove tiny green moss saturation where covered. Same gentle upper-left lighting, same high elevated isometric 45-degree camera, same softly sculpted hand-painted animated-feature-film quality, calm slate shadows, no blue color wash.\nKEEP exactly the same 3-column 2-row layout, six subjects in the same cells and order: two rustic rail fence shapes, two short low fieldstone walls, Korean onggi jar group, and crate/rolled-cloth supply pile. Preserve each object's silhouette, anatomy/architecture, geometry, proportions, framing, rotation, resting foot contact and visual scale; snow may slightly extend the top contour only. Maintain at least 40px transparent margins and large empty gutters. Nothing touches another cell or any sheet border. Objects are solid and fully opaque inside, with smooth antialiased edges, on genuinely transparent alpha background everywhere outside them.\nNO new subjects, NO icicles, NO Christmas motifs, NO falling snowflakes, NO labels, NO grids, NO text, NO logos, NO watermark, NO glow or halo, NO cast ground shadow or ground slabs. Do not alter composition or repaint the entire atlas. Only six coherent isolated cutouts, winter dressing version, 1536x1024."
+}

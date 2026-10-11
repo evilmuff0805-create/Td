@@ -1,0 +1,620 @@
+{
+  "date": "2026-10-11",
+  "reviewGallery": {
+    "summer": {
+      "body": {
+        "geometries": "13",
+        "loading": "false",
+        "propCount": "6",
+        "season": "summer",
+        "textures": "7",
+        "visible": "6"
+      },
+      "cards": [
+        {
+          "atlasSeason": "temperate",
+          "frame": "0",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "1",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "2",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "3",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "4",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "5",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        }
+      ]
+    },
+    "spring": {
+      "body": {
+        "geometries": "13",
+        "loading": "false",
+        "propCount": "6",
+        "season": "spring",
+        "textures": "7",
+        "visible": "6"
+      },
+      "cards": [
+        {
+          "atlasSeason": "temperate",
+          "frame": "0",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "1",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "2",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "3",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "4",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "5",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        }
+      ]
+    },
+    "autumn": {
+      "body": {
+        "geometries": "13",
+        "loading": "false",
+        "propCount": "6",
+        "season": "autumn",
+        "textures": "7",
+        "visible": "6"
+      },
+      "cards": [
+        {
+          "atlasSeason": "temperate",
+          "frame": "0",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "1",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "2",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "3",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "4",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "temperate",
+          "frame": "5",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        }
+      ]
+    },
+    "winter": {
+      "body": {
+        "geometries": "19",
+        "loading": "false",
+        "propCount": "6",
+        "season": "winter",
+        "textures": "13",
+        "visible": "6"
+      },
+      "cards": [
+        {
+          "atlasSeason": "winter",
+          "frame": "0",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "winter",
+          "frame": "1",
+          "height": "0.9",
+          "kind": "villageFence",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "winter",
+          "frame": "2",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "winter",
+          "frame": "3",
+          "height": "0.9",
+          "kind": "fieldWall",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "winter",
+          "frame": "4",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        },
+        {
+          "atlasSeason": "winter",
+          "frame": "5",
+          "height": "0.9",
+          "kind": "villageCargo",
+          "ready": "true"
+        }
+      ]
+    }
+  },
+  "repeatedSeasonSwitches": [
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "summer",
+      "textures": "13",
+      "visible": "6"
+    },
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "winter",
+      "textures": "13",
+      "visible": "6"
+    },
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "summer",
+      "textures": "13",
+      "visible": "6"
+    },
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "winter",
+      "textures": "13",
+      "visible": "6"
+    },
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "summer",
+      "textures": "13",
+      "visible": "6"
+    },
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "winter",
+      "textures": "13",
+      "visible": "6"
+    },
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "summer",
+      "textures": "13",
+      "visible": "6"
+    },
+    {
+      "geometries": "19",
+      "loading": "false",
+      "propCount": "6",
+      "season": "winter",
+      "textures": "13",
+      "visible": "6"
+    }
+  ],
+  "mobile": {
+    "viewport": [
+      414,
+      896
+    ],
+    "scrollWidth": 399,
+    "noHorizontalOverflow": true,
+    "restored": true
+  },
+  "seasonFields": {
+    "body": {
+      "loading": "false",
+      "paintedReady": "14",
+      "renderer": "webgl2",
+      "terrain": "continuous"
+    },
+    "cards": [
+      {
+        "art": "painted",
+        "landmarkHeight": "1.2",
+        "roadLayers": "1",
+        "roadTriangles": "3570",
+        "sceneryBarrierCells": "42",
+        "sceneryBarriers": "14",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "12",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "6",
+        "sceneryYardFences": "1",
+        "season": "spring",
+        "seasonTreeArt": "ready",
+        "shoreTriangles": "0",
+        "stage": "s6",
+        "villagePropArt": "ready",
+        "villagePropSeason": "temperate"
+      },
+      {
+        "art": "painted",
+        "landmarkHeight": "1.2",
+        "roadLayers": "1",
+        "roadTriangles": "3898",
+        "sceneryBarrierCells": "28",
+        "sceneryBarriers": "14",
+        "sceneryCargo": "0",
+        "sceneryCrowns": "19",
+        "sceneryLamps": "5",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "9",
+        "sceneryYardFences": "1",
+        "season": "summer",
+        "seasonTreeArt": "ready",
+        "shoreTriangles": "4516",
+        "stage": "s10",
+        "villagePropArt": "ready",
+        "villagePropSeason": "temperate"
+      },
+      {
+        "art": "painted",
+        "landmarkHeight": "1.2",
+        "roadLayers": "1",
+        "roadTriangles": "3988",
+        "sceneryBarrierCells": "28",
+        "sceneryBarriers": "14",
+        "sceneryCargo": "0",
+        "sceneryCrowns": "16",
+        "sceneryLamps": "4",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "17",
+        "sceneryYardFences": "0",
+        "season": "autumn",
+        "seasonTreeArt": "ready",
+        "shoreTriangles": "4290",
+        "stage": "s12",
+        "villagePropArt": "ready",
+        "villagePropSeason": "temperate"
+      },
+      {
+        "art": "painted",
+        "landmarkHeight": "1.2",
+        "roadLayers": "2",
+        "roadTriangles": "3360",
+        "sceneryBarrierCells": "0",
+        "sceneryBarriers": "0",
+        "sceneryCargo": "0",
+        "sceneryCrowns": "13",
+        "sceneryLamps": "5",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "11",
+        "sceneryYardFences": "0",
+        "season": "winter",
+        "seasonTreeArt": "ready",
+        "shoreTriangles": "3010",
+        "stage": "s13",
+        "villagePropArt": "ready",
+        "villagePropSeason": "winter"
+      }
+    ]
+  },
+  "actualStageSwitches": [
+    {
+      "combatInbetweenCount": "13",
+      "combatInbetweenExpected": "13",
+      "combatInbetweenKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+      "combatInbetweenStatus": "ready",
+      "combatPoseCount": "13",
+      "combatPoseExpected": "13",
+      "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+      "combatPoseStatus": "ready",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "heroInbetweenActive": "false",
+      "heroInbetweenCount": "2",
+      "heroInbetweenExpected": "2",
+      "heroInbetweenKinds": "gwon,yi",
+      "heroInbetweenLookKey": "gwon,yi",
+      "heroInbetweenStatus": "ready",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "sceneryBarrierCells": "42",
+      "sceneryBarriers": "14",
+      "sceneryCargo": "1",
+      "sceneryCrowns": "12",
+      "sceneryHouses": "2",
+      "sceneryLamps": "7",
+      "sceneryLayout": "clustered",
+      "sceneryLowTrees": "6",
+      "sceneryProps": "54",
+      "sceneryYardFences": "1",
+      "seasonTreeArtStatus": "ready",
+      "signatureArtStatus": "ready",
+      "skinPoseCount": "0",
+      "skinPoseExpected": "0",
+      "skinPoseKinds": "",
+      "skinPoseStatus": "ready",
+      "spriteMotion": "distance-contact-recovery",
+      "tacticArtStatus": "ready",
+      "terrainRoad": "continuous",
+      "terrainRoadLayers": "2",
+      "terrainRoadTriangles": "3570",
+      "terrainShore": "continuous",
+      "terrainShoreTriangles": "0",
+      "villagePropArtStatus": "ready",
+      "villagePropSeason": "winter",
+      "waterTriangles": "0",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    {
+      "combatInbetweenCount": "13",
+      "combatInbetweenExpected": "13",
+      "combatInbetweenKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+      "combatInbetweenStatus": "ready",
+      "combatPoseCount": "13",
+      "combatPoseExpected": "13",
+      "combatPoseKinds": "scout,ashigaru,teppo,samurai,so,ninja,cavalry,militia,guard,elite,monk,courier,turtle",
+      "combatPoseStatus": "ready",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "heroInbetweenActive": "false",
+      "heroInbetweenCount": "2",
+      "heroInbetweenExpected": "2",
+      "heroInbetweenKinds": "gwon,yi",
+      "heroInbetweenLookKey": "gwon,yi",
+      "heroInbetweenStatus": "ready",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "sceneryBarrierCells": "42",
+      "sceneryBarriers": "14",
+      "sceneryCargo": "1",
+      "sceneryCrowns": "12",
+      "sceneryHouses": "2",
+      "sceneryLamps": "7",
+      "sceneryLayout": "clustered",
+      "sceneryLowTrees": "6",
+      "sceneryProps": "54",
+      "sceneryYardFences": "1",
+      "seasonTreeArtStatus": "ready",
+      "signatureArtStatus": "ready",
+      "skinPoseCount": "0",
+      "skinPoseExpected": "0",
+      "skinPoseKinds": "",
+      "skinPoseStatus": "ready",
+      "spriteMotion": "distance-contact-recovery",
+      "tacticArtStatus": "ready",
+      "terrainRoad": "continuous",
+      "terrainRoadLayers": "1",
+      "terrainRoadTriangles": "3570",
+      "terrainShore": "continuous",
+      "terrainShoreTriangles": "0",
+      "villagePropArtStatus": "ready",
+      "villagePropSeason": "temperate",
+      "waterTriangles": "0",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    }
+  ],
+  "standaloneLocalCoop": {
+    "canvas": {
+      "combatInbetweenActive": "false",
+      "combatInbetweenCount": "12",
+      "combatInbetweenExpected": "12",
+      "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatInbetweenStatus": "ready",
+      "combatPoseActive": "true",
+      "combatPoseCount": "12",
+      "combatPoseExpected": "12",
+      "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseLastKind": "ashigaru",
+      "combatPoseLastState": "walk-left",
+      "combatPoseStatus": "ready",
+      "drawCalls": "268",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "fps": "59",
+      "geometries": "143",
+      "heroInbetweenActive": "true",
+      "heroInbetweenCount": "2",
+      "heroInbetweenExpected": "2",
+      "heroInbetweenKinds": "sejong,yi",
+      "heroInbetweenLookKey": "sejong,yi",
+      "heroInbetweenStatus": "ready",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "renderMode": "3d",
+      "sceneryBarrierCells": "0",
+      "sceneryBarriers": "0",
+      "sceneryCargo": "1",
+      "sceneryCrowns": "9",
+      "sceneryHouses": "3",
+      "sceneryLamps": "7",
+      "sceneryLayout": "clustered",
+      "sceneryLowTrees": "12",
+      "sceneryProps": "40",
+      "sceneryYardFences": "2",
+      "seasonTreeArtStatus": "ready",
+      "signatureArtStatus": "ready",
+      "skinPoseCount": "0",
+      "skinPoseExpected": "0",
+      "skinPoseKinds": "",
+      "skinPoseStatus": "ready",
+      "spriteMotion": "distance-contact-recovery",
+      "tacticArtStatus": "ready",
+      "terrainRoad": "continuous",
+      "terrainRoadLayers": "1",
+      "terrainRoadTriangles": "3216",
+      "terrainShore": "continuous",
+      "terrainShoreTriangles": "1944",
+      "textures": "69",
+      "triangles": "55524",
+      "villagePropArtStatus": "ready",
+      "villagePropSeason": "temperate",
+      "waterTriangles": "7704",
+      "yiFacing": "3",
+      "yiPose": "pass-b"
+    },
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n156\n2P 군자금\n86\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n숭례문\n1단계\n−\n다음: 제 2 파도 / 12\n아시가루 ×10\n척후병 ×4\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n60\n선두\n철거\n+49\n숭례문\n1단계 · 2P\n피해 12 · 속도 0.85s · 사거리 3.0 · 처치 0\n이순신 Lv1\n학익진\n14\n거북선\n신기전\n봉수\n1P 클릭 · 2P Space\n공명 10%\n다음 파도\n10초 뒤 자동 · +19냥\n세종대왕 Lv1\n훈민 정음\nA\n자격루\nS\n봉수\nD\n신기전\nF"
+  },
+  "localCoopObserved": {
+    "pair": [
+      "yi",
+      "sejong"
+    ],
+    "p1TargetedSkill": true,
+    "p2ActualAKey": true,
+    "p2ActualEKeyBuild": "sungnyemun level1 cost70",
+    "goldBefore": [
+      156,
+      156
+    ],
+    "goldAfter": [
+      156,
+      86
+    ],
+    "rallyCommandIssued": true,
+    "individualArrowMovementThisBrowserRun": false,
+    "individualInputsCoveredBySessionTests": true,
+    "paused": true,
+    "lives": [
+      20,
+      20
+    ],
+    "wave": "1/12",
+    "noFinalResultUnlockPurchaseOrReward": true
+  },
+  "logs": [
+    {
+      "tab": "81",
+      "url": "http://127.0.0.1:8092/dev/3d-village-review.html?mute=1",
+      "logs": []
+    },
+    {
+      "tab": "80",
+      "url": "http://127.0.0.1:8092/dev/3d-season-review.html?mute=1",
+      "logs": []
+    },
+    {
+      "tab": "82",
+      "url": "http://127.0.0.1:8092/3d.html?mute=1&stage=s6&season=summer",
+      "logs": []
+    },
+    {
+      "tab": "83",
+      "url": "http://127.0.0.1:8092/dist/hoguk.html?mute=1",
+      "logs": []
+    }
+  ],
+  "limitations": {
+    "galleryPropsEnlargedForInspection": true,
+    "actualBattleUsesFootprintCaps": true,
+    "fileProtocolTested": false,
+    "actualMobileDevicePerformanceTested": false,
+    "externalNetworkTwoDeviceTested": false
+  },
+  "screenshots": [
+    "props-temperate.png",
+    "props-winter.png",
+    "props-mobile.png",
+    "seasons-before.png",
+    "seasons-after.png",
+    "battle-winter.png",
+    "battle-summer.png",
+    "local-coop-battle.png"
+  ]
+}

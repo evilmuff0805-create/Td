@@ -30,6 +30,8 @@
     "test:terrain-assets": "node tools/terrain-assets.mjs",
     "test:seasonal-props": "node tools/test-seasonal-props.mjs",
     "test:scenery": "node tools/test-scenery.mjs",
+    "test:village-props": "node tools/test-village-props.mjs",
+    "test:village-prop-assets": "node tools/village-prop-assets.mjs",
     "test:seasonal-prop-assets": "node tools/season-tree-assets.mjs",
     "test:water": "node tools/test-water.mjs",
     "test:water-assets": "node tools/water-assets.mjs",

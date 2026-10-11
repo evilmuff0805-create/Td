@@ -159,7 +159,7 @@ export function buildBattlefield(stage,theme,art=null) {
   const dressing=art?sceneryPlan(stage,theme):null;
   if(dressing){
     for(const p of [...dressing.items,...dressing.supplies]){
-      const prop=art.prop(p.kind,p.height,p.variation);prop.position.set(p.x,0,p.z);prop.userData.scenery=p;root.add(prop);
+      const prop=art.prop(p.kind,p.height,p.variation,p.radius);prop.position.set(p.x,0,p.z);prop.userData.scenery=p;root.add(prop);
     }
     lamps.push(...dressing.lamps);
   }
