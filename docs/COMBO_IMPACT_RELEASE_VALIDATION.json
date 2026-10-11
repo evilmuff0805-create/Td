@@ -43,6 +43,9 @@
   "github": {
     "branch": "claude/korean-hero-tower-defense-i8ard8",
     "remote": "https://github.com/evilmuff0805-create/Td.git",
-    "status": "local implementation; push pending"
+    "status": "implementation verified on remote",
+    "implementationCommit": "fd740362ae590938a6dcd1f1a6ae1671b03c67e5",
+    "verifiedRemoteCommit": "fd740362ae590938a6dcd1f1a6ae1671b03c67e5",
+    "verifiedAtUtc": "2026-10-11 10:03:09 UTC"
   }
 }

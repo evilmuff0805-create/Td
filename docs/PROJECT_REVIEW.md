@@ -290,6 +290,8 @@ npm run build
 
 건물 아래 네 점·단계별 채움·최종 A/B 색 구분·관련 검사 46개와 실제 로컬 2인 검증은 [`ff9ff45`](https://github.com/evilmuff0805-create/Td/commit/ff9ff4537683235f7dfb4ba1967e717c62358338)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 18:09:27 KST에 확인했다. 네 점 화면·서버 번들·검증 기록을 포함하며 상위 프로젝트 기록도 갱신했다. [표시와 검증](TOWER_DOTS.md) · [릴리스 JSON](TOWER_DOTS_RELEASE_VALIDATION.json).
 
+합격기 11종의 실제 대상·지연 착탄·충격파 8프레임과 325개 / 24검사군·로컬 2인·사계절·414px·자원 해제 검증은 [`fd74036`](https://github.com/evilmuff0805-create/Td/commit/fd740362ae590938a6dcd1f1a6ae1671b03c67e5)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 10:03:09 UTC에 확인했다. 내장 imagegen 원본·프롬프트·무손실 WebP·두 빌드·검수 화면·상위 프로젝트 기록을 포함한다. [정확한 범위](COMBO_IMPACTS.md) · [릴리스 JSON](COMBO_IMPACT_RELEASE_VALIDATION.json).
+
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
 1. 구현 범위·합의한 방향·검증 결과·남은 작업을 이 문서와 해당 상세 문서에 갱신한다.
