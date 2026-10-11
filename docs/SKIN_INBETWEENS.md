@@ -80,3 +80,5 @@ node tools/verify-embedded-art.mjs
 ```
 
 서버 실행 후 [전체 영웅 외형 768자세 비교](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1)에서 영웅·의상·방향·보행·공격 단계를 선택할 수 있다. 다음 원화 범위는 병력 중간 동작이며, 실제 기기 메모리와 배포 용량 최적화도 별도 확인이 필요하다.
+
+구현과 검증 자료는 [`e6f72db`](https://github.com/evilmuff0805-create/Td/commit/e6f72dba28d04ace759676b98c84c881234eb49b)로 기존 브랜치에 푸시했고, `git ls-remote`로 원격 SHA 일치를 확인했다. 상위 프로젝트 리뷰도 같은 내용으로 갱신했다.

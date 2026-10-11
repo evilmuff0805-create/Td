@@ -222,7 +222,7 @@ npm run build
 
 기본 영웅 중간 원화 128장·네 박자 보행·공격 복귀·정지/로딩 보완과 검증 기록은 `71500dd`로 푸시했다. `git ls-remote`로 원격 브랜치와 로컬 구현 커밋 `71500dd613a7b5a3c104db0c664c33e5fedb2847`의 일치를 확인했다. 정확한 범위와 남은 원화 작업은 [중간 동작 기록](HERO_INBETWEENS.md)에 보존한다.
 
-이번 특수 의상 중간 원화 256장·전체 영웅 외형 768자세와 228개 검사는 [상세 기록](SKIN_INBETWEENS.md)에 정리했다. 구현 커밋과 원격 일치는 푸시 후 이 문서와 [릴리스 JSON](SKIN_INBETWEEN_RELEASE_VALIDATION.json)에 기록한다.
+특수 의상 중간 원화 256장·전체 영웅 외형 768자세와 228개 검사는 `e6f72db`로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋 `e6f72dba28d04ace759676b98c84c881234eb49b`의 일치를 확인했다. [상세 기록](SKIN_INBETWEENS.md) · [릴리스 JSON](SKIN_INBETWEEN_RELEASE_VALIDATION.json).
 
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 

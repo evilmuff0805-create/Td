@@ -209,5 +209,11 @@
     "Costume battle browser QA used free battle; standalone local2 browser QA used base looks. Costume-specific local2 independence is covered by actual Session/runtime tests.",
     "Standalone DOM inspection exceeds browser-tool native-pipe size limit; screenshot-backed native controls verified local2.",
     "Physical devices and external networks remain separate."
-  ]
+  ],
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "implementationCommit": "e6f72dba28d04ace759676b98c84c881234eb49b",
+    "remoteShaMatchedImplementation": true,
+    "verifiedWith": "git ls-remote --exit-code origin refs/heads/claude/korean-hero-tower-defense-i8ard8"
+  }
 }
