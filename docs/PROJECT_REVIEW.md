@@ -283,6 +283,8 @@ npm run build
 
 작은 유산 단계 배지·선택/초점 상세·성공한 스킬 발동음·효과음 전용 프리셋과 309개 / 23검사군·로컬 2인 유지 기록은 [`62b69b2`](https://github.com/evilmuff0805-create/Td/commit/62b69b2e8aaeb91ff8689180c85360565ae2908a)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋의 일치를 2026-10-11 08:49:08 UTC에 확인했다. 검증·서버 번들·실제 화면과 상위 프로젝트 기록을 포함하며 사용자 Chrome의 진행 중인 플레이는 건드리지 않았다. Astra xhigh가 찾은 선택 패널 단계 막대와 온라인 종료 이벤트 중복을 수정하고 최종 검토를 통과했다. [표시·소리와 검증](BATTLE_FEEDBACK.md) · [릴리스 JSON](BATTLE_FEEDBACK_RELEASE_VALIDATION.json).
 
+건물 아래 네 점·단계별 채움·최종 A/B 색 구분·관련 검사 46개와 실제 로컬 2인 검증은 [`ff9ff45`](https://github.com/evilmuff0805-create/Td/commit/ff9ff4537683235f7dfb4ba1967e717c62358338)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 18:09:27 KST에 확인했다. 네 점 화면·서버 번들·검증 기록을 포함하며 상위 프로젝트 기록도 갱신했다. [표시와 검증](TOWER_DOTS.md) · [릴리스 JSON](TOWER_DOTS_RELEASE_VALIDATION.json).
+
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
 1. 구현 범위·합의한 방향·검증 결과·남은 작업을 이 문서와 해당 상세 문서에 갱신한다.
