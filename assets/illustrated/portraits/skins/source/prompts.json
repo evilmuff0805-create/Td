@@ -1,0 +1,214 @@
+{
+  "method": "Built-in imagegen; no external API/CLI",
+  "date": "2026-10-11",
+  "records": [
+    {
+      "heroId": "yi",
+      "id": "yi_white",
+      "name": "백의종군",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to yi_white (백의종군). Costume specification: Baegui Jonggun: ivory and warm off-white layered armor/robe, white shoulder armor with fine navy stitching and antique brass edging, soft WHITE cloak with navy inner lining. Keep navy helmet, red plume and belt, bow and quiver. This is white cloth/armor, not naked skin or a new helmet. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../yi-bust-v1.webp",
+        "references/yi_white-approved-idle.png"
+      ],
+      "output": "yi_white-bust-v1.png"
+    },
+    {
+      "heroId": "yi",
+      "id": "yi_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to yi_gold (금빛 전설). Costume specification: Golden Legend: restrained antique GOLD lamellar armor and gold helmet, dark navy collar/sleeves, NAVY cloak with a small red lining, red plume and belt. Gold is brushed aged metal with deep warm shadows, not bright yellow plastic. Keep bow and quiver. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../yi-bust-v1.webp",
+        "references/yi_gold-approved-idle.png"
+      ],
+      "output": "yi_gold-bust-v1.png"
+    },
+    {
+      "heroId": "sejong",
+      "id": "sejong_blue",
+      "name": "청룡포",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to sejong_blue (청룡포). Costume specification: Blue Royal Robe: rich royal BLUE silk gonryongpo with subdued antique-gold dragon medallion and shoulder embroidery, white inner collar, jade belt tassel. Keep BLACK ikseongwan cap and small open navy book. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../sejong-bust-v1.webp",
+        "references/sejong_blue-approved-idle.png"
+      ],
+      "output": "sejong_blue-bust-v1.png"
+    },
+    {
+      "heroId": "sejong",
+      "id": "sejong_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to sejong_gold (금빛 전설). Costume specification: Golden Legend: warm antique GOLD silk gonryongpo, a slightly brighter gold dragon medallion and subtle woven embroidery, white inner collar and jade belt tassel. Keep BLACK ikseongwan cap and small open navy book. The robe is soft gold fabric, not rigid metal. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../sejong-bust-v1.webp",
+        "references/sejong_gold-approved-idle.png"
+      ],
+      "output": "sejong_gold-bust-v1.png"
+    },
+    {
+      "heroId": "eulji",
+      "id": "eulji_iron",
+      "name": "고구려 철기",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to eulji_iron (고구려 철기). Costume specification: Goguryeo Iron Cavalry: charcoal and slate-grey iron lamellar armor with restrained brass edging, blue-black cloak, dark slate sleeves, ivory collar. Keep iron helmet and large WHITE plume, white feather fan and small sheathed sword. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../eulji-bust-v1.webp",
+        "references/eulji_iron-approved-idle.png"
+      ],
+      "output": "eulji_iron-bust-v1.png"
+    },
+    {
+      "heroId": "eulji",
+      "id": "eulji_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to eulji_gold (금빛 전설). Costume specification: Golden Legend: aged GOLD lamellar armor and golden helmet, deep green cloak and dark green sleeves, ivory collar. Keep large WHITE plume, white feather fan and small sheathed sword. Preserve cool shadows in gold metal. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../eulji-bust-v1.webp",
+        "references/eulji_gold-approved-idle.png"
+      ],
+      "output": "eulji_gold-bust-v1.png"
+    },
+    {
+      "heroId": "gang",
+      "id": "gang_crimson",
+      "name": "귀주의 붉은 별",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to gang_crimson (귀주의 붉은 별). Costume specification: Red Star of Gwiju: deep crimson RED cloak and red tabard/lower robe over dark steel-grey lamellar armor with antique brass trims. Keep elder white hair and full white beard, crown-like grey helmet with gold decoration, short sword and round bronze shield. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../gang-bust-v2.webp",
+        "references/gang_crimson-approved-idle.png"
+      ],
+      "output": "gang_crimson-bust-v1.png"
+    },
+    {
+      "heroId": "gang",
+      "id": "gang_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to gang_gold (금빛 전설). Costume specification: Golden Legend: restrained antique GOLD lamellar armor and gold helmet, rich PURPLE cloak and purple tabard with ivory edging. Keep elder white hair and full white beard, short sword and round bronze-gold shield. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../gang-bust-v2.webp",
+        "references/gang_gold-approved-idle.png"
+      ],
+      "output": "gang_gold-bust-v1.png"
+    },
+    {
+      "heroId": "gwon",
+      "id": "gwon_hill",
+      "name": "행주 산성",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to gwon_hill (행주 산성). Costume specification: Haengju Mountain Fortress: muted field OLIVE GREEN cloak and tabard, charcoal-grey armor with antique brass trims, navy-grey helmet, red plume and spear tassel, round bronze shield. Keep spear held upright at left and shield at right; no bow. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../gwon-bust-v2.webp",
+        "references/gwon_hill-approved-idle.png"
+      ],
+      "output": "gwon_hill-bust-v1.png"
+    },
+    {
+      "heroId": "gwon",
+      "id": "gwon_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to gwon_gold (금빛 전설). Costume specification: Golden Legend: antique GOLD armor and gold helmet, RED cloak and red tabard, red plume and spear tassel. Keep upright spear at left and round bronze-gold shield at right; no bow. Avoid oversaturated yellow. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../gwon-bust-v2.webp",
+        "references/gwon_gold-approved-idle.png"
+      ],
+      "output": "gwon_gold-bust-v1.png"
+    },
+    {
+      "heroId": "gwak",
+      "id": "gwak_black",
+      "name": "흑의 의병",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to gwak_black (흑의 의병). Costume specification: Black-clad Righteous Army: rich CHARCOAL BLACK hanbok robe with subtle slate highlights, black belt and black gat. Keep white inner collar, warm wooden bow and quiver, black moustache and short goatee. Show readable fabric volume even in black cloth. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../gwak-bust-v1.webp",
+        "references/gwak_black-approved-idle.png"
+      ],
+      "output": "gwak_black-bust-v1.png"
+    },
+    {
+      "heroId": "gwak",
+      "id": "gwak_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to gwak_gold (금빛 전설). Costume specification: Golden Legend: warm ochre-GOLD silk hanbok robe, BLACK belt and black gat, white inner collar. Keep wooden bow and quiver, black moustache and short goatee. The robe is fine fabric with modest sheen, not metallic skin or armor. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../gwak-bust-v1.webp",
+        "references/gwak_gold-approved-idle.png"
+      ],
+      "output": "gwak_gold-bust-v1.png"
+    },
+    {
+      "heroId": "ahn",
+      "id": "ahn_militia",
+      "name": "대한의군 군복",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to ahn_militia (대한의군 군복). Costume specification: Korean Righteous Army Uniform: subdued OLIVE GREEN wool long coat and matching waistcoat, white shirt and black necktie, dark leather belt. Keep short neatly parted black hair, small neat black moustache, one small period revolver pointed safely downward at lower left. No hat or armor. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../ahn-bust-v1.webp",
+        "references/ahn_militia-approved-idle.png"
+      ],
+      "output": "ahn_militia-bust-v1.png"
+    },
+    {
+      "heroId": "ahn",
+      "id": "ahn_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to ahn_gold (금빛 전설). Costume specification: Golden Legend: antique ochre-GOLD wool long coat and matching waistcoat, white shirt and black necktie, dark leather belt. Fine cloth with warm tan-gold highlights, not metallic armor. Keep short neatly parted black hair, small neat black moustache and one small period revolver downward at lower left. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../ahn-bust-v1.webp",
+        "references/ahn_gold-approved-idle.png"
+      ],
+      "output": "ahn_gold-bust-v1.png"
+    },
+    {
+      "heroId": "dangun",
+      "id": "dangun_sky",
+      "name": "천제의 푸른 옷",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to dangun_sky (천제의 푸른 옷). Costume specification: Heavenly Blue Robe: clear medium SKY BLUE flowing robe with muted JADE GREEN lapels and cuffs and green inner sash. Keep long white hair, flowing white beard, antler-like gold crown with green jewel, gold belt and bronze ritual bell. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../dangun-bust-v1.webp",
+        "references/dangun_sky-approved-idle.png"
+      ],
+      "output": "dangun_sky-bust-v1.png"
+    },
+    {
+      "heroId": "dangun",
+      "id": "dangun_gold",
+      "name": "금빛 전설",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent half-body costume portrait for the Korean tower-defense game Hoguk. Input image 1 is the EDIT TARGET: the finished basic hero bust. Preserve exactly its Korean face, apparent age, hairstyle/beard, gaze, expressive stylized proportions, pose, hands, equipment, broad color planes and premium painted animated-adventure rendering. Input image 2 is the APPROVED IN-GAME COSTUME reference: use its clothing palette and equipment details, not its small full-body scale. Change only the outfit to dangun_gold (금빛 전설). Costume specification: Golden Legend: soft warm antique GOLD flowing robe with JADE GREEN lapels and cuffs and green inner sash. Keep long white hair, flowing white beard, antler-like gold crown with green jewel, gold belt and bronze ritual bell. The robe is fabric with restrained gold weave, not shiny plastic. Match image 1's beautiful modeled volume, softly painted skin, fine cloth folds and brushed antique metal. Natural warm human skin, normal hair and eyes in every gold outfit. Soft warm key light upper left, cool navy ambient shadows and subtle pale blue rim; medium contrast, readable dark clothing, no crushed blacks. Framing: one centered square portrait from belt upwards, three-quarter face to viewer's right, no legs. Keep the ENTIRE helmet/crown/hair/plume, shoulders, hands and visible weapons INSIDE canvas with at least 8% genuinely transparent safety margin on ALL four sides; if needed uniformly pull the entire composition back slightly. No silhouette clipped by image edges. For sword/shield heroes keep both full visible weapon portions within margins. Actual transparent alpha outside character, no scene, floor, shadow, frame, gradient background, letters, logo, watermark, duplicates or swatches. Do not change character identity, invent equipment, turn skin gold, introduce heavy outlines, photorealism, gritty microtexture or glossy plastic.",
+      "references": [
+        "../../dangun-bust-v1.webp",
+        "references/dangun_gold-approved-idle.png"
+      ],
+      "output": "dangun_gold-bust-v1.png"
+    }
+  ]
+}

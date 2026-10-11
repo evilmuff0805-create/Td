@@ -13,6 +13,7 @@ import { HERO_INBETWEEN_ART } from '../src/3d/inbetween-data.js';
 import { COMBAT_INBETWEEN_ART } from '../src/3d/combat-inbetween-data.js';
 import { VILLAGE_PROP_ART } from '../src/3d/village-prop-data.js';
 import { HERO_BUST_ART } from '../src/data/hero-bust-data.js';
+import { SKIN_BUST_ART } from '../src/data/skin-bust-data.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
 const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(COMBAT_INBETWEEN_ART)];
@@ -47,6 +48,9 @@ checkSourceArchive(new URL('../assets/3d/fixed/combat-inbetweens/source/',import
 const archiveCountBeforePortraits = inbetweenArchivePngs;
 checkSourceArchive(new URL('../assets/illustrated/portraits/source/',import.meta.url));
 const portraitArchivePngs = inbetweenArchivePngs - archiveCountBeforePortraits;
+const archiveCountBeforeSkinPortraits = inbetweenArchivePngs;
+checkSourceArchive(new URL('../assets/illustrated/portraits/skins/source/',import.meta.url));
+const skinPortraitArchivePngs = inbetweenArchivePngs - archiveCountBeforeSkinPortraits;
 const terrain=['ground','snow-ground','road'].map(kind=>PAINTED_SURFACES[kind]);
 for(const rel of terrain){
   const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
@@ -74,9 +78,9 @@ for(const rel of ['assets/3d/art/hero-abilities-atlas-v1.png','assets/3d/art/ski
 const menu=fs.readFileSync(new URL('../'+MENU_HERO_ART.path,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+menu),1,'Approved UI poses must be embedded exactly once');
 assert.ok(!html.includes(MENU_HERO_ART.path));
-for(const {path:rel} of Object.values(HERO_BUST_ART)) {
+for(const {path:rel} of [...Object.values(HERO_BUST_ART), ...Object.values(SKIN_BUST_ART)]) {
   const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
   assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' portrait must be embedded exactly once');
   assert.ok(!html.includes(rel));
 }
-console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedHeroBusts:8,portraitSourcePngsEmbedded:0,portraitSourcePngsChecked:portraitArchivePngs,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedVillagePropSheets:2,villageSourcePngsEmbedded:0,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:archiveCountBeforePortraits},null,2));
+console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedHeroBusts:8,embeddedSkinBusts:16,skinPortraitSourcePngsEmbedded:0,skinPortraitSourcePngsChecked:skinPortraitArchivePngs,portraitSourcePngsEmbedded:0,portraitSourcePngsChecked:portraitArchivePngs,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedVillagePropSheets:2,villageSourcePngsEmbedded:0,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:archiveCountBeforePortraits},null,2));

@@ -54,7 +54,7 @@ try {
     assert.deepEqual(Object.keys(HERO_BUST_ART),HERO_ORDER); assert.equal(new Set(Object.values(HERO_BUST_ART).map(s=>s.path)).size,8);
     assert.equal(requests.length,0);
     for(const id of ['missing','toString','__proto__'])assert.equal(await busts.loadHeroBust(id),null);
-    assert.equal(await busts.loadHeroBust('yi','yi_gold'),null); assert.equal(requests.length,0);
+    assert.equal(requests.length,0);
   });
   await test('같은 영웅의 동시 요청은 1회이고 그림이 준비될 때까지 캐시가 빈 상태를 유지한다',async()=>{
     const first=busts.loadHeroBust('yi'); assert.equal(first,busts.loadHeroBust('yi')); assert.equal(bustRequests().length,1); assert.equal(busts.heroBustArt('yi'),null);
@@ -84,13 +84,16 @@ try {
     release('gang'); await drain(); assert.equal(cv.ctx.calls.length,1); assert.equal(cv.isConnected,false); assert.equal(body.children.length,n);
     const revisit=heroBust('gang',304); assert.equal(revisit.dataset.bustState,'ready'); assert.equal(bustRequests().filter(u=>u.includes('/gang-')).length,1);
   });
-  await test('16개 유효 의상은 그 의상의 상반신을 표시하며 기본 흉상 요청을 추가하지 않는다',()=>{
+  await test('16개 유효 의상은 자신의 상반신 대체 그림에서 전용 원화로 바뀌며 기본 흉상을 요청하지 않는다',async()=>{
     const n=bustRequests().length;
     for(const id of HERO_ORDER)for(const skin of SKINS[id]){
       const cv=heroBust(id,200,skin.id),look=art.heroArt(id,skin.id);
+      body.append(cv);
       assert.equal(cv.dataset.skin,skin.id);assert.equal(cv.dataset.bustState,'fallback');assert.equal(cv.ctx.calls[0][0],look.img);assert.equal(cv.ctx.calls[0][4],Math.ceil(look.img.height*.72));assert.equal(busts.heroBustArt(id,skin.id),null);
+      release(skin.id);await drain();
+      assert.equal(cv.dataset.bustState,'ready');assert.equal(cv.dataset.artSource,'hero-skin-bust-v1');assert.equal(cv.ctx.calls.at(-1)[0],busts.heroBustArt(id,skin.id).img);
     }
-    assert.equal(bustRequests().length,n);
+    assert.equal(bustRequests().length,n+16);
   });
   await test('다른 영웅·잘못된 의상 ID는 기본 외형으로 안전하게 돌아간다',()=>{
     for(const skin of ['gwon_gold','missing']){const cv=heroBust('yi',160,skin);assert.equal(cv.dataset.skin,'');assert.equal(cv.ctx.calls[0][0],busts.heroBustArt('yi').img);}
@@ -125,14 +128,14 @@ try {
     assert.equal(app.battle.kind,'local');assert.equal(app.battle.stageId,'s1');assert.deepEqual(app.battle.specs,[playerSpec(profile,['yi'],profile.loadout.coop.skills,'1P'),playerSpec(profile,['sejong'],profile.loadout.p2.skills,'2P',{noItems:true})]);
     assert.equal(JSON.stringify(profile),before);
   });
-  await test('도감 장착 의상은 원래 준비 그림을 쓰고 그림 전환은 소유·재화·전투 사양을 바꾸지 않는다',()=>{
+  await test('도감 장착 의상은 전용 원화를 쓰고 그림 전환은 소유·재화·전투 사양을 바꾸지 않는다',()=>{
     profile.skins.owned.push('yi_white');profile.skins.eq.yi='yi_white';const before=JSON.stringify(profile),screen=heroesScreen(app,{id:'yi'});
     const equipped=all(screen,e=>e.dataset.heroImage==='bust'&&e.dataset.hero==='yi');assert.equal(equipped.length,2);
-    for(const cv of equipped){assert.equal(cv.dataset.skin,'yi_white');assert.equal(cv.ctx.calls[0][0],art.heroArt('yi','yi_white').img);}
+    for(const cv of equipped){assert.equal(cv.dataset.skin,'yi_white');assert.equal(cv.ctx.calls[0][0],busts.heroBustArt('yi','yi_white').img);}
     all(screen,e=>e.tagName==='button'&&e.textContent==='전신')[0].events.click();assert.equal(JSON.stringify(profile),before);
   });
 } finally {
   for(const [key,value]of Object.entries(saved))if(value===undefined)delete globalThis[key];else globalThis[key]=value;
 }
-await fs.writeFile(new URL('../docs/HERO_BUST_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,results,scope:'Menu-only lazy images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume fallback, actual codex and local two-player setup DOM/specs'},null,2)+'\n');
+await fs.writeFile(new URL('../docs/HERO_BUST_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,results,scope:'Menu-only lazy base/costume images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume busts/fallback, actual codex and local two-player setup DOM/specs'},null,2)+'\n');
 console.log(`\n영웅 흉상 검사 ${results.length}개 통과`);

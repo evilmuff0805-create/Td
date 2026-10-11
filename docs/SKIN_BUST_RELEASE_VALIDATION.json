@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "36b86e92d35538aa661c0c5beee63cd771dbfd19",
+  "scope": "Sixteen costume menu busts, wardrobe illustration/full toggle and mobile hero-name wrapping; battle poses and local co-op preserved",
+  "art": {
+    "report": "SKIN_BUST_ASSET_VALIDATION.json",
+    "method": "Built-in imagegen; no external API/CLI",
+    "newBusts": 16,
+    "bytes": 4333550,
+    "totalWithBaseBusts": 24,
+    "totalBustBytes": 6600984,
+    "normalizedSize": [
+      640,
+      640
+    ],
+    "transparentPadding": 32,
+    "sourceEdgeOpaquePixels": 0,
+    "alphaErrors": 0,
+    "visibleRgbErrors": 0,
+    "sourcePngs": 16,
+    "exactReferencePngs": 16,
+    "approvedBattlePosesPreserved": 1664,
+    "prompts": "../assets/illustrated/portraits/skins/source/prompts.json"
+  },
+  "regression": {
+    "report": "SKIN_BUST_REGRESSION_VALIDATION.json",
+    "groups": 22,
+    "tests": 294,
+    "allPassed": true,
+    "newTests": 10,
+    "postMobileFixTests": 22
+  },
+  "determinism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "passed": true,
+    "fixture": "../tools/fixtures/motion-determinism.json",
+    "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+    "fixtureUnchanged": true,
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721",
+        "matched": true
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b",
+        "matched": true
+      }
+    ]
+  },
+  "build": {
+    "serverCommand": "node tools/build-3d.mjs",
+    "standaloneCommand": "node tools/build.mjs",
+    "serverPassed": true,
+    "standalonePassed": true,
+    "report": "SKIN_BUST_EMBEDDED_VALIDATION.json",
+    "standaloneBytes": 119359835,
+    "embeddedDirectionalSheets": 104,
+    "embeddedMenuSheets": 1,
+    "embeddedHeroBusts": 8,
+    "embeddedSkinBusts": 16,
+    "skinPortraitSourcePngsEmbedded": 0,
+    "skinPortraitSourcePngsChecked": 32,
+    "portraitSourcePngsEmbedded": 0,
+    "portraitSourcePngsChecked": 18,
+    "embeddedTerrainSurfaces": 3,
+    "embeddedSeasonalPropSheets": 1,
+    "embeddedVillagePropSheets": 2,
+    "villageSourcePngsEmbedded": 0,
+    "embeddedWaterSurfaces": 1,
+    "embeddedSkillAtlases": 4,
+    "eachEmbeddedExactlyOnce": true,
+    "rejectedVersionsEmbedded": 0,
+    "inbetweenArchivePngsEmbedded": 0,
+    "inbetweenArchivePngsChecked": 256
+  },
+  "browser": {
+    "report": "SKIN_BUST_BROWSER_VALIDATION.json",
+    "muted": true,
+    "galleryLooks": 24,
+    "wardrobeHeroes": 8,
+    "fullModeHeroChange": true,
+    "mobileViewport": [
+      414,
+      896
+    ],
+    "mobileHorizontalOverflow": false,
+    "mobileHeroNamesWrapped": true,
+    "localSetupBusts": 16,
+    "reciprocalTakenHeroesDisabled": 2,
+    "p2EKeyConstruction": true,
+    "goldBefore": [
+      156,
+      156
+    ],
+    "goldAfter": [
+      156,
+      86
+    ],
+    "lives": "20/20",
+    "paused": true,
+    "warnings": 0,
+    "errors": 0,
+    "screenshots": [
+      "screenshots/skin-busts/gallery-16.png",
+      "screenshots/skin-busts/gallery-24.png",
+      "screenshots/skin-busts/shop-yi-desktop.png",
+      "screenshots/skin-busts/shop-gwon-desktop.png",
+      "screenshots/skin-busts/shop-mobile.png",
+      "screenshots/skin-busts/local-setup.png",
+      "screenshots/skin-busts/local-battle.png"
+    ],
+    "limits": "Actual browser: 24-look gallery/full toggle; 8 wardrobe heroes; full-mode hero switch; 414x896 wardrobe; base Yi/Sejong local setup and P2 E construction. Equipped costume co-op and purchase/equip are automated DOM tests, not browser purchases. No real device/remote online/human campaign balance claim."
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "task": "/root/hero_bust_review",
+    "role": "Read-only independent review",
+    "finalRequiredChanges": 0,
+    "includes": "16 source/delivery assets; 24-look real gallery; loader/tests; Yi/Gwon wardrobe; post-fix 414x896 wardrobe",
+    "localCoopBrowserQAReviewedBy": "Parent agent"
+  },
+  "sourceAudit": {
+    "gitDiffCheckPassed": true,
+    "immutableCombatAndPosePathsPassed": true,
+    "immutablePaths": [
+      "src/sim",
+      "src/game",
+      "src/meta",
+      "src/data/heroes.js",
+      "src/data/enemies.js",
+      "src/data/skins.js",
+      "assets/3d/fixed",
+      "src/3d/hero-pose-data.js",
+      "src/3d/skin-pose-data.js",
+      "src/3d/combat-pose-data.js",
+      "src/3d/inbetween-data.js",
+      "src/3d/combat-inbetween-data.js",
+      "src/data/hero-menu-data.js",
+      "src/data/hero-bust-data.js",
+      "assets/illustrated/portraits/source",
+      "tools/fixtures/motion-determinism.json"
+    ]
+  },
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "remote": "https://github.com/evilmuff0805-create/Td.git",
+    "status": "pending push"
+  }
+}

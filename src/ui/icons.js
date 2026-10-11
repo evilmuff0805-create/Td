@@ -98,8 +98,8 @@ export function heroBust(heroId, size = 200, skin = null) {
   };
   const ready = heroBustArt(heroId, validSkin);
   paint(ready ?? heroArt(heroId, validSkin), !ready);
-  if (!ready && !validSkin) {
-    loadHeroBust(heroId).then((art) => {
+  if (!ready) {
+    loadHeroBust(heroId, validSkin).then((art) => {
       // Screen changes replace canvases. A late request never appends old UI or
       // repaints a canvas removed by the full-body toggle.
       if (art && cv.isConnected) paint(art);

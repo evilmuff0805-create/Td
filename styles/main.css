@@ -616,6 +616,12 @@ p {
   right: -6px;
   bottom: -2px;
 }
+.skin-heroes {
+  flex-wrap: wrap;
+}
+.skin-heroes button {
+  white-space: nowrap;
+}
 .skin-grid {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
@@ -624,13 +630,15 @@ p {
   text-align: center;
 }
 .skin-card .skin-pic {
-  width: 170px;
-  height: 170px;
+  width: min(100%, 224px);
+  height: auto;
+  aspect-ratio: 1;
   border-radius: 8px;
-  background: radial-gradient(circle at 50% 35%, #f3e6c8, #cbb68d 70%);
+  border: 1px solid rgba(209, 175, 110, 0.28);
+  background: radial-gradient(ellipse at 32% 26%, #354654, #192b3c 60%, #101d2a);
 }
 .skin-card.legend .skin-pic {
-  background: radial-gradient(circle at 50% 35%, #fff4cc, #d9a300 80%);
+  border-color: rgba(225, 187, 101, 0.58);
 }
 .skin-card.on {
   border-color: #7fe0b0;

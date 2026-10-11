@@ -1,0 +1,980 @@
+{
+  "date": "2026-10-11",
+  "origin": "http://127.0.0.1:8092",
+  "mute": true,
+  "gallery16": {
+    "looks": [
+      {
+        "hero": "yi",
+        "skin": "yi_white",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "yi",
+        "skin": "yi_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "sejong",
+        "skin": "sejong_blue",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "sejong",
+        "skin": "sejong_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "eulji",
+        "skin": "eulji_iron",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "eulji",
+        "skin": "eulji_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gang",
+        "skin": "gang_crimson",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gang",
+        "skin": "gang_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwon",
+        "skin": "gwon_hill",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwon",
+        "skin": "gwon_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwak",
+        "skin": "gwak_black",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwak",
+        "skin": "gwak_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "ahn",
+        "skin": "ahn_militia",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "ahn",
+        "skin": "ahn_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "dangun",
+        "skin": "dangun_sky",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "dangun",
+        "skin": "dangun_gold",
+        "source": "hero-skin-bust-v1",
+        "state": "ready"
+      }
+    ],
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  "gallery24": {
+    "base": 8,
+    "count": 24,
+    "ready": 24,
+    "skins": 16
+  },
+  "full24": [
+    {
+      "hero": "yi",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "yi",
+      "kind": "full",
+      "skin": "yi_white",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "yi",
+      "kind": "full",
+      "skin": "yi_gold",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "sejong",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "sejong",
+      "kind": "full",
+      "skin": "sejong_blue",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "sejong",
+      "kind": "full",
+      "skin": "sejong_gold",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "eulji",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "eulji",
+      "kind": "full",
+      "skin": "eulji_iron",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "eulji",
+      "kind": "full",
+      "skin": "eulji_gold",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gang",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gang",
+      "kind": "full",
+      "skin": "gang_crimson",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gang",
+      "kind": "full",
+      "skin": "gang_gold",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gwon",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gwon",
+      "kind": "full",
+      "skin": "gwon_hill",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gwon",
+      "kind": "full",
+      "skin": "gwon_gold",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gwak",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gwak",
+      "kind": "full",
+      "skin": "gwak_black",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "gwak",
+      "kind": "full",
+      "skin": "gwak_gold",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "ahn",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "ahn",
+      "kind": "full",
+      "skin": "ahn_militia",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "ahn",
+      "kind": "full",
+      "skin": "ahn_gold",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "dangun",
+      "kind": "full",
+      "skin": "",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "dangun",
+      "kind": "full",
+      "skin": "dangun_sky",
+      "source": "approved-menu-poses"
+    },
+    {
+      "hero": "dangun",
+      "kind": "full",
+      "skin": "dangun_gold",
+      "source": "approved-menu-poses"
+    }
+  ],
+  "shopHeroes": [
+    {
+      "name": "이순신",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "yi",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "yi",
+          "heroImage": "bust",
+          "skin": "yi_white"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "yi",
+          "heroImage": "bust",
+          "skin": "yi_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "name": "세종대왕",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "sejong",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "sejong",
+          "heroImage": "bust",
+          "skin": "sejong_blue"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "sejong",
+          "heroImage": "bust",
+          "skin": "sejong_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "name": "을지문덕",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "eulji",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "eulji",
+          "heroImage": "bust",
+          "skin": "eulji_iron"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "eulji",
+          "heroImage": "bust",
+          "skin": "eulji_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "name": "강감찬",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "gang",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "gang",
+          "heroImage": "bust",
+          "skin": "gang_crimson"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "gang",
+          "heroImage": "bust",
+          "skin": "gang_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "name": "권율",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "gwon",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "gwon",
+          "heroImage": "bust",
+          "skin": "gwon_hill"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "gwon",
+          "heroImage": "bust",
+          "skin": "gwon_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "name": "곽재우",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "gwak",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "gwak",
+          "heroImage": "bust",
+          "skin": "gwak_black"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "gwak",
+          "heroImage": "bust",
+          "skin": "gwak_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "name": "안중근",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "ahn",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "ahn",
+          "heroImage": "bust",
+          "skin": "ahn_militia"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "ahn",
+          "heroImage": "bust",
+          "skin": "ahn_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "name": "단군왕검",
+      "buyButtons": [
+        {
+          "disabled": true,
+          "text": "구입 ◆60"
+        },
+        {
+          "disabled": true,
+          "text": "구입 ◆150"
+        }
+      ],
+      "cards": [
+        {
+          "artSource": "hero-bust-v1",
+          "bustState": "ready",
+          "hero": "dangun",
+          "heroImage": "bust",
+          "skin": ""
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "dangun",
+          "heroImage": "bust",
+          "skin": "dangun_sky"
+        },
+        {
+          "artSource": "hero-skin-bust-v1",
+          "bustState": "ready",
+          "hero": "dangun",
+          "heroImage": "bust",
+          "skin": "dangun_gold"
+        }
+      ],
+      "header": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n",
+      "scrollWidth": 1280,
+      "width": 1280
+    }
+  ],
+  "shopFullDangun": {
+    "cards": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "dangun",
+        "heroImage": "full",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "dangun",
+        "heroImage": "full",
+        "skin": "dangun_sky"
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "dangun",
+        "heroImage": "full",
+        "skin": "dangun_gold"
+      }
+    ],
+    "mode": [
+      {
+        "pressed": "false",
+        "text": "이순신"
+      },
+      {
+        "pressed": "false",
+        "text": "세종대왕"
+      },
+      {
+        "pressed": "false",
+        "text": "을지문덕"
+      },
+      {
+        "pressed": "false",
+        "text": "강감찬"
+      },
+      {
+        "pressed": "false",
+        "text": "권율"
+      },
+      {
+        "pressed": "false",
+        "text": "곽재우"
+      },
+      {
+        "pressed": "false",
+        "text": "안중근"
+      },
+      {
+        "pressed": "true",
+        "text": "단군왕검"
+      },
+      {
+        "pressed": "false",
+        "text": "일러스트"
+      },
+      {
+        "pressed": "true",
+        "text": "전신"
+      }
+    ]
+  },
+  "shopFullAfterHeroChange": {
+    "cards": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "full",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "full",
+        "skin": "sejong_blue"
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "full",
+        "skin": "sejong_gold"
+      }
+    ],
+    "text": "← 진영\n옥 상점\n●\n400\n엽전\n◆\n20\n옥\n◆\n옥은 임무·출석·첫 승리로 모읍니다\n보급품은 전투를 돕고, 의복은 영웅의 모습을 바꿉니다. 능력치를 사는 곳은 아닙니다.\n보급소\n의상실\n이순신\n세종대왕\n을지문덕\n강감찬\n권율\n곽재우\n안중근\n단군왕검\n일러스트\n전신\n기본 복장\n처음 모습 그대"
+  },
+  "mobileShop": {
+    "cards": [
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "height": 158.5,
+        "hero": "sejong",
+        "heroImage": "bust",
+        "skin": "",
+        "width": 158.5
+      },
+      {
+        "artSource": "hero-skin-bust-v1",
+        "bustState": "ready",
+        "height": 158.5,
+        "hero": "sejong",
+        "heroImage": "bust",
+        "skin": "sejong_blue",
+        "width": 158.5
+      },
+      {
+        "artSource": "hero-skin-bust-v1",
+        "bustState": "ready",
+        "height": 158.5,
+        "hero": "sejong",
+        "heroImage": "bust",
+        "skin": "sejong_gold",
+        "width": 158.5
+      }
+    ],
+    "controls": [
+      "일러스트",
+      "전신"
+    ],
+    "height": 896,
+    "names": [
+      {
+        "height": 38,
+        "text": "이순신",
+        "whiteSpace": "nowrap",
+        "width": 72.171875
+      },
+      {
+        "height": 38,
+        "text": "세종대왕",
+        "whiteSpace": "nowrap",
+        "width": 86.890625
+      },
+      {
+        "height": 38,
+        "text": "을지문덕",
+        "whiteSpace": "nowrap",
+        "width": 86.890625
+      },
+      {
+        "height": 38,
+        "text": "강감찬",
+        "whiteSpace": "nowrap",
+        "width": 72.171875
+      },
+      {
+        "height": 38,
+        "text": "권율",
+        "whiteSpace": "nowrap",
+        "width": 57.453125
+      },
+      {
+        "height": 38,
+        "text": "곽재우",
+        "whiteSpace": "nowrap",
+        "width": 72.171875
+      },
+      {
+        "height": 38,
+        "text": "안중근",
+        "whiteSpace": "nowrap",
+        "width": 72.171875
+      },
+      {
+        "height": 38,
+        "text": "단군왕검",
+        "whiteSpace": "nowrap",
+        "width": 86.890625
+      }
+    ],
+    "scrollWidth": 414,
+    "width": 414
+  },
+  "localSetup": {
+    "buttons": [
+      "← 진영",
+      "보통",
+      "어려움",
+      "지옥",
+      "함께 출전!",
+      "옥 상점 ◆",
+      "이순신 충무공\n원거리 · 지휘 · 강화 0",
+      "세종대왕 성군\n동료가 선택함",
+      "을지문덕 살수의 명장\n🔒 잠김",
+      "강감찬 귀주의 별\n🔒 잠김",
+      "권율 행주의 방패\n🔒 잠김",
+      "곽재우 홍의장군\n🔒 잠김",
+      "안중근 대한의군 참모중장\n🔒 잠김",
+      "단군왕검 고조선의 시조\n🔒 잠김",
+      "D\n신기전 일제사격\n재사용 28초 · 강화 0\n지정 위치 반경 1.6칸에 신기전 12발을 퍼붓는다. 발당 화기 피해 32.",
+      "F\n봉수 경보\n재사용 45초 · 강화 0\n봉화를 올려 10초간 모든 은신 적을 발각하고, 모든 적이 받는 피해 +20%.",
+      "의병 소집\n🔒 정9품",
+      "비격진천뢰\n🔒 종8품",
+      "군량 보급\n🔒 정8품",
+      "천자총통\n🔒 종7품",
+      "동의보감\n🔒 정7품",
+      "동장군 한파\n🔒 종6품",
+      "이순신 충무공\n동료가 선택함",
+      "세종대왕 성군\n지원 · 통제 · 강화 0",
+      "을지문덕 살수의 명장\n🔒 잠김",
+      "강감찬 귀주의 별\n🔒 잠김",
+      "권율 행주의 방패\n🔒 잠김",
+      "곽재우 홍의장군\n🔒 잠김",
+      "안중근 대한의군 참모중장\n🔒 잠김",
+      "단군왕검 고조선의 시조\n🔒 잠김",
+      "F\n신기전 일제사격\n재사용 28초 · 강화 0\n지정 위치 반경 1.6칸에 신기전 12발을 퍼붓는다. 발당 화기 피해 32.",
+      "D\n봉수 경보\n재사용 45초 · 강화 0\n봉화를 올려 10초간 모든 은신 적을 발각하고, 모든 적이 받는 피해 +20%.",
+      "의병 소집\n🔒 정9품",
+      "비격진천뢰\n🔒 종8품",
+      "군량 보급\n🔒 정8품",
+      "천자총통\n🔒 종7품",
+      "동의보감\n🔒 정7품",
+      "동장군 한파\n🔒 종6품"
+    ],
+    "cards": [
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "yi",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "sejong",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "eulji",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "gang",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "gwon",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "gwak",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "ahn",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "dangun",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "yi",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "sejong",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "eulji",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "gang",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "gwon",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "gwak",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "ahn",
+        "heroImage": "bust",
+        "skin": ""
+      },
+      {
+        "artSource": "hero-bust-v1",
+        "bustState": "ready",
+        "hero": "dangun",
+        "heroImage": "bust",
+        "skin": ""
+      }
+    ],
+    "disabled": [
+      "어려움",
+      "지옥",
+      "세종대왕 성군\n동료가 선택함",
+      "이순신 충무공\n동료가 선택함"
+    ],
+    "text": "← 진영\n로컬 협동\n●\n400\n엽전\n◆\n20\n옥\n전장\n부산진 전투 (12파)\n보통\n어려움\n지옥\n함께 출전!\n합격기 · 전용 조합\n성군과 성웅\n10초간 모든 유산 공격력 +60%, 공격 속도 +20%. 모든 길에 거북선 출격.\n보급품\n가진 보급품이 없습니다\n1P가 아래 보급 버튼으로 씁니다 · 종류별 2개까지\n옥 상점 ◆\n1P (마우스만)\n이순신 충무공\n원거리 · 지휘 · 강화 0\n세종대왕 성군\n동료가 선택함\n을지문덕 살수의 명장\n🔒 잠김\n강감찬 귀주의 별\n🔒 잠김\n권율 행주의 방패\n🔒 잠김\n곽재우 홍의장군\n🔒 잠김\n안중근 대한의군 참모중장\n🔒 잠김\n단군왕검 고조선의 시조\n🔒 잠김\n비기\nD\n신기전 일제사격\n재사용 28초 · 강화 0\n지정 위치 반경 1.6칸에 신기전 12발을 퍼붓는다. 발당 화기 피해 32.\nF\n봉수 경보\n재사용 45초 · 강화 0\n봉화를 올려 10초간 모든 은신 적을 발각하고, 모든 적이 받는 피해 +20%.\n의병 소집\n🔒 정9품\n비격진천뢰\n🔒 종8품\n군량 보급\n🔒 정8품\n천자총통\n🔒 종7품\n동의보감\n🔒 정7품\n동장군 한파\n🔒 종6품\n2P (키보드: 방향키 + ASDF)\n이순신 충무공\n동료가 선택함\n세종대왕 성군\n지원 · 통제 · 강화 0\n을지문덕 살수의 명장\n🔒 잠김\n강감찬 귀주의 별\n🔒 잠김\n권율 행주의 방패\n🔒 잠김\n곽재우 홍의장군\n🔒 잠김\n안중근 대한의군 참모중장\n🔒 잠김\n단군왕검 고조선의 시조\n🔒 잠김\n비기\nF\n신기전 일제사격\n재사용 28초 · 강화 0\n지정 위치 반경 1.6칸에 신기전 12발을 퍼붓는다. 발당 화기 피해 32.\nD\n봉수 경보\n재사용 45초 · 강화 0\n봉화를 올려 10초간 모든 은신 적을 발각하고, 모든 적이 받는 피해 +20%.\n의병 소집\n🔒 정9품\n비격진천뢰\n🔒 종8품\n군량 보급\n🔒 정8품\n천자총통\n🔒 종7품\n동의보감\n🔒 정7품\n동장군 한파\n🔒 종6품"
+  },
+  "localBefore": {
+    "portraits": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      }
+    ],
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n156\n2P 군자금\n156\n×1\n×2\n×3\n일시정지\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n−\n다음: 제 1 파도 / 12\n아시가루 ×8\n빈 터(풀밭)를 클릭해 유산을 세우세요. 적이 지나갈 길 가까이가 좋습니다. 처음엔 값싼 숭례문을 추천합니다.\n알겠소\n이순신 Lv1\n학익진\n"
+  },
+  "localAfter": {
+    "portraits": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      }
+    ],
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n156\n2P 군자금\n86\n×1\n×2\n×3\n일시정지\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n숭례문\n1단계\n−\n다음: 제 1 파도 / 12\n아시가루 ×8\n이순신 Lv1\n학익진\n거북선\n12\n신기전\n봉수\n1P 클릭 · 2P Space\n공명 0%\n출정!\n12초 뒤 자동 · 2P W\n세종대왕 Lv1\n훈민 정음\nA\n자격루\nS\n17\n봉수\nD\n신기전\nF",
+    "towerLabels": [
+      {
+        "label": "숭례문, 1 / 4단계, 0회 강화",
+        "text": "숭례문\n1단계"
+      }
+    ]
+  },
+  "localBattle": {
+    "paused": true,
+    "portraits": [
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "yi",
+        "heroImage": "portrait",
+        "skin": ""
+      },
+      {
+        "artSource": "approved-menu-poses",
+        "hero": "sejong",
+        "heroImage": "portrait",
+        "skin": ""
+      }
+    ],
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n156\n2P 군자금\n86\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n숭례문\n1단계\n−\n다음: 제 2 파도 / 12\n아시가루 ×10\n척후병 ×4\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv1\n학익진\n거북선\n신기전\n봉수\n1P 클릭 · 2P Space\n공명 2%\n다음 파도\n8초 뒤 자동 · +15냥\n세종대왕 Lv1\n훈민 정음\nA\n자격루\nS\n봉수\nD\n신기전\nF"
+  },
+  "logs": [],
+  "limits": "Actual browser: 24-look gallery/full toggle; 8 wardrobe heroes; full-mode hero switch; 414x896 wardrobe; base Yi/Sejong local setup and P2 E construction. Equipped costume co-op and purchase/equip are automated DOM tests, not browser purchases. No real device/remote online/human campaign balance claim.",
+  "screenshots": [
+    "screenshots/skin-busts/gallery-16.png",
+    "screenshots/skin-busts/gallery-24.png",
+    "screenshots/skin-busts/shop-yi-desktop.png",
+    "screenshots/skin-busts/shop-gwon-desktop.png",
+    "screenshots/skin-busts/shop-mobile.png",
+    "screenshots/skin-busts/local-setup.png",
+    "screenshots/skin-busts/local-battle.png"
+  ]
+}

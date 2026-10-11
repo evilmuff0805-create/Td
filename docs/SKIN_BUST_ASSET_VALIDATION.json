@@ -1,0 +1,496 @@
+{
+  "date": "2026-10-11",
+  "method": "Built-in imagegen; no external API/CLI",
+  "portraits": 16,
+  "complete": true,
+  "bytes": 4333550,
+  "normalizedSize": [
+    640,
+    640
+  ],
+  "transparentPadding": 32,
+  "resizeOnly": true,
+  "alphaAndVisibleRgbExact": true,
+  "results": [
+    {
+      "id": "yi_white",
+      "heroId": "yi",
+      "source": "yi_white-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 19,
+        "width": 1190,
+        "height": 1235
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "69add056859207cfdbf1b23d35f4b3008bd21d946fa34c03e334ed495ff33bcd",
+      "delivery": "assets/illustrated/portraits/skins/yi_white-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 281606,
+      "sha256": "5d12d3ede31439a0ec3a26204c6e4db018fa4b228e486be88c6775b614a113f7",
+      "visibleBounds": [
+        78,
+        52,
+        596,
+        579
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "yi_gold",
+      "heroId": "yi",
+      "source": "yi_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 31,
+        "top": 54,
+        "width": 1162,
+        "height": 1137
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "7144c6efb1474cf42d44746c690864431ca12c13b314650bbbda6a19149754b1",
+      "delivery": "assets/illustrated/portraits/skins/yi_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 319312,
+      "sha256": "bca55b6a37de8e54a7616b01a1fa3ae6d95d7e4378b316e3f54f86598da9d067",
+      "visibleBounds": [
+        53,
+        38,
+        607,
+        601
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "sejong_blue",
+      "heroId": "sejong",
+      "source": "sejong_blue-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 63,
+        "width": 1189,
+        "height": 1147
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "95ab328a8894c40fab997fdc91e8b51ee11c1220f7de9bdc756b50795dbfcbde",
+      "delivery": "assets/illustrated/portraits/skins/sejong_blue-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 276368,
+      "sha256": "423cbafbb685a715ac159f919257bef04e5b9474f7cd701a9895e1a3e94f01a9",
+      "visibleBounds": [
+        44,
+        42,
+        607,
+        597
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "sejong_gold",
+      "heroId": "sejong",
+      "source": "sejong_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 62,
+        "width": 1190,
+        "height": 1145
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "dc40e13334d5e777eb437df223a488e44f915504b8fed61b635baa1e94cdf719",
+      "delivery": "assets/illustrated/portraits/skins/sejong_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 276760,
+      "sha256": "11c208fa33e71434f56a5adacdf3bc84b2fe740bd186ee22d9b3d6cbd760f9d5",
+      "visibleBounds": [
+        67,
+        43,
+        607,
+        596
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "eulji_iron",
+      "heroId": "eulji",
+      "source": "eulji_iron-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 62,
+        "width": 1228,
+        "height": 1168
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "dddf92f510f8d60aab777dbf4bac36bd863553d72b70550ca6e5131701a11fce",
+      "delivery": "assets/illustrated/portraits/skins/eulji_iron-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 253236,
+      "sha256": "190e10946f8cc342d8cffc7878aacdbd2ed20db31ce99b6d61123e74ae5244ee",
+      "visibleBounds": [
+        32,
+        46,
+        586,
+        593
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "eulji_gold",
+      "heroId": "eulji",
+      "source": "eulji_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 23,
+        "top": 19,
+        "width": 1163,
+        "height": 1217
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "8c4a1dc2af5956ee3a9d437b8ca7fbb8a32b5fcc41128d57738820308f2481e9",
+      "delivery": "assets/illustrated/portraits/skins/eulji_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 264840,
+      "sha256": "f981dc3c9642383ddaa1c1fb9f88b8f7279e215187c1822eafbefa3d4f05c137",
+      "visibleBounds": [
+        45,
+        46,
+        594,
+        604
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gang_crimson",
+      "heroId": "gang",
+      "source": "gang_crimson-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 64,
+        "top": 55,
+        "width": 1146,
+        "height": 1106
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "9186cca67378d3c3633f6bbfe70851820de51f377679151fd5653b640ad411f5",
+      "delivery": "assets/illustrated/portraits/skins/gang_crimson-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 318968,
+      "sha256": "0f222d51b637272bc72605d4fa7c11d0e0d8d7a664aa04ecfbe2c0e4bbf1ec6c",
+      "visibleBounds": [
+        32,
+        56,
+        607,
+        597
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gang_gold",
+      "heroId": "gang",
+      "source": "gang_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 15,
+        "width": 1224,
+        "height": 1185
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "bb039cf1612e970946f3ffedda0259538749b2f0311cbc5cfb45988da6e593ff",
+      "delivery": "assets/illustrated/portraits/skins/gang_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 283074,
+      "sha256": "217185ecfe39cfa5eb6613d9060a647ac0a237ffb2d7cb230f352e751dc6ead4",
+      "visibleBounds": [
+        54,
+        79,
+        606,
+        579
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gwon_hill",
+      "heroId": "gwon",
+      "source": "gwon_hill-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 0,
+        "width": 1226,
+        "height": 1209
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "7d3c3c752e11eb813813a4b098d167ec758f5bb60aa08ef5597857ede3c82baa",
+      "delivery": "assets/illustrated/portraits/skins/gwon_hill-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 290988,
+      "sha256": "e1ce7f85ba3a8937f41fd0c6037ef128c54b2a655b100c77cc8867769deb4a2a",
+      "visibleBounds": [
+        32,
+        36,
+        594,
+        603
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gwon_gold",
+      "heroId": "gwon",
+      "source": "gwon_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 25,
+        "width": 1244,
+        "height": 1229
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "cdf54ff96cf8befaee26a545e1dabcd5f0014b7e627d809e2e907b9067f64785",
+      "delivery": "assets/illustrated/portraits/skins/gwon_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 329986,
+      "sha256": "6f8b73574f2e83fa7a41065550b7a0e9d6e53265d79e68c53713f2e28ec52aee",
+      "visibleBounds": [
+        32,
+        41,
+        607,
+        603
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gwak_black",
+      "heroId": "gwak",
+      "source": "gwak_black-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 59,
+        "width": 1240,
+        "height": 1139
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "38c9f692560e91c17bb5dbed9e8a66662cfa2acd62f3a6edca7e83dd88a28d16",
+      "delivery": "assets/illustrated/portraits/skins/gwak_black-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 222838,
+      "sha256": "ea3570a8067d50d5d4dac240169796b063c5c043b26aa06a98fa84b5d3db082f",
+      "visibleBounds": [
+        59,
+        56,
+        591,
+        578
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gwak_gold",
+      "heroId": "gwak",
+      "source": "gwak_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 51,
+        "top": 9,
+        "width": 1185,
+        "height": 1245
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "307235dca11ff5d71928a2b3542bb004d77955384000516972519b0b667ae10b",
+      "delivery": "assets/illustrated/portraits/skins/gwak_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 238106,
+      "sha256": "fea06e9bbf7b741990df0b4c5ebcf7f3854d9d2efe12b8a95d80ba7a06dd81ea",
+      "visibleBounds": [
+        74,
+        52,
+        575,
+        573
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "ahn_militia",
+      "heroId": "ahn",
+      "source": "ahn_militia-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 11,
+        "width": 1250,
+        "height": 1243
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "9ee2aa07679f169171084d7e37a1d8c277939e7ccc6301eecee46060d2138471",
+      "delivery": "assets/illustrated/portraits/skins/ahn_militia-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 191400,
+      "sha256": "6e0550a966e1910d7680cdc8b5b56674c7e6fddf11268de4c361f8a8d94238cf",
+      "visibleBounds": [
+        98,
+        33,
+        575,
+        576
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "ahn_gold",
+      "heroId": "ahn",
+      "source": "ahn_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 21,
+        "width": 1240,
+        "height": 1209
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "949b8214f50d251fd2a2d315e183532f1722fb8c64aa5c687ca4925ca45c8fe2",
+      "delivery": "assets/illustrated/portraits/skins/ahn_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 218420,
+      "sha256": "a3c3f1e386a26c0d8b3965e8282c2db2f46a01acc3f60bfc5ee29f545553dd30",
+      "visibleBounds": [
+        32,
+        39,
+        596,
+        600
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "dangun_sky",
+      "heroId": "dangun",
+      "source": "dangun_sky-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 62,
+        "width": 1236,
+        "height": 1192
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "3360863d3de92cc36fce6e4bc0dd5810ea160764a44a32a91e3eaaedb905f37d",
+      "delivery": "assets/illustrated/portraits/skins/dangun_sky-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 272440,
+      "sha256": "44ec203a2f35a3cefa2140ee5edb9af1b221b6e4a3693cfa7d05683c80911d54",
+      "visibleBounds": [
+        66,
+        42,
+        587,
+        566
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "dangun_gold",
+      "heroId": "dangun",
+      "source": "dangun_gold-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 57,
+        "top": 57,
+        "width": 1177,
+        "height": 1197
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "8507dd066878437c9c0b6a225864c2c5323cc150b96021d81949bb37146de0a1",
+      "delivery": "assets/illustrated/portraits/skins/dangun_gold-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 295208,
+      "sha256": "a61de73962de06b6355f5335f934831c2564bea3e66392f6b72949e5e0c480b6",
+      "visibleBounds": [
+        37,
+        32,
+        600,
+        571
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    }
+  ]
+}

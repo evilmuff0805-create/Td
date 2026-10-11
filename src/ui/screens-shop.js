@@ -2,7 +2,7 @@
 import { h, toast, fmt } from './dom.js';
 import { setBackdrop } from './backdrop.js';
 import { topbar } from './screens-menu.js';
-import { heroFull } from './icons.js';
+import { heroBust, heroFull } from './icons.js';
 import { HEROES, HERO_ORDER } from '../data/heroes.js';
 import { ITEMS, ITEM_ORDER, ITEM_PER_BATTLE, ITEM_BUNDLE } from '../data/items.js';
 import { SKINS } from '../data/skins.js';
@@ -16,8 +16,8 @@ export function shopScreen(app, params = {}) {
   const tab = params.tab || 'items';
   const tabs = [['items', '보급소'], ['skins', '의상실']];
   const tabBar = h('div', { class: 'tabs', role: 'tablist' }, tabs.map(([k, label]) =>
-    h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => app.go('shop', { tab: k, hero: params.hero }) }, label)));
-  const body = tab === 'items' ? itemsTab(app) : skinsTab(app, params.hero);
+    h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => app.go('shop', { tab: k, hero: params.hero, art: params.art }) }, label)));
+  const body = tab === 'items' ? itemsTab(app) : skinsTab(app, params.hero, params.art);
   return h('div', { class: 'screen' }, topbar(app, '옥 상점'),
     h('div', { class: 'content stack' },
       h('div', { class: 'panel shop-banner' },
@@ -55,33 +55,38 @@ function itemsTab(app) {
     })));
 }
 
-function skinsTab(app, heroSel) {
+function skinsTab(app, heroSel, artMode) {
   const p = app.profile;
   const sel = heroSel || HERO_ORDER[0];
-  const heroTabs = h('div', { class: 'seg', role: 'group', 'aria-label': '영웅' }, HERO_ORDER.map((id) =>
-    h('button', { 'aria-pressed': String(id === sel), onclick: () => app.go('shop', { tab: 'skins', hero: id }) }, HEROES[id].name)));
+  const full = artMode === 'full';
+  const navigate = (hero = sel, art = full ? 'full' : 'bust') => app.go('shop', { tab: 'skins', hero, art });
+  const heroTabs = h('div', { class: 'seg skin-heroes', role: 'group', 'aria-label': '영웅' }, HERO_ORDER.map((id) =>
+    h('button', { 'aria-pressed': String(id === sel), onclick: () => navigate(id) }, HEROES[id].name)));
   const cur = heroSkin(p, sel);
   const locked = !heroUnlockState(p, sel).unlocked;
   const options = [{ id: null, name: '기본 복장', desc: '처음 모습 그대로.', price: 0 }, ...SKINS[sel]];
   return h('div', { class: 'stack' },
     heroTabs,
+    h('div', { class: 'row hero-art-switch', role: 'group', 'aria-label': '의상 그림 보기' },
+      h('button', { class: 'btn btn-small', 'aria-pressed': String(!full), onclick: () => navigate(sel, 'bust') }, '일러스트'),
+      h('button', { class: 'btn btn-small', 'aria-pressed': String(full), onclick: () => navigate(sel, 'full') }, '전신')),
     locked ? h('p', { style: { color: '#ffb3a6' } }, `${HEROES[sel].name}은(는) 아직 잠겨 있습니다. 의복은 미리 사 둘 수 있습니다.`) : null,
     h('div', { class: 'grid-cards skin-grid' }, options.map((sk) => {
       const owned = !sk.id || ownsSkin(p, sk.id);
       const on = (cur || null) === sk.id;
-      const pic = heroFull(sel, 170, sk.id);
+      const pic = full ? heroFull(sel, 224, sk.id) : heroBust(sel, 224, sk.id);
       pic.className = 'skin-pic';
       const act = on
         ? h('span', { class: 'chip on' }, '입는 중')
         : owned
-          ? h('button', { class: 'btn btn-small', onclick: () => { equipSkin(p, sel, sk.id); audio.play('ui'); app.go('shop', { tab: 'skins', hero: sel }); } }, '입기')
+          ? h('button', { class: 'btn btn-small', onclick: () => { equipSkin(p, sel, sk.id); audio.play('ui'); navigate(); } }, '입기')
           : h('button', {
             class: `btn btn-small ${sk.gold ? 'btn-gold' : 'btn-seal'}`, disabled: p.jade < sk.price,
             onclick: () => {
               if (buySkin(p, sel, sk.id)) {
                 audio.play('win');
                 toast(`${HEROES[sel].name} · ${sk.name}!`);
-                app.go('shop', { tab: 'skins', hero: sel });
+                navigate();
               }
             },
           }, '구입 ', jade(sk.price));

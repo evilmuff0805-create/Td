@@ -27,7 +27,7 @@
       "passed": true
     },
     {
-      "name": "16개 유효 의상은 그 의상의 상반신을 표시하며 기본 흉상 요청을 추가하지 않는다",
+      "name": "16개 유효 의상은 자신의 상반신 대체 그림에서 전용 원화로 바뀌며 기본 흉상을 요청하지 않는다",
       "passed": true
     },
     {
@@ -47,9 +47,9 @@
       "passed": true
     },
     {
-      "name": "도감 장착 의상은 원래 준비 그림을 쓰고 그림 전환은 소유·재화·전투 사양을 바꾸지 않는다",
+      "name": "도감 장착 의상은 전용 원화를 쓰고 그림 전환은 소유·재화·전투 사양을 바꾸지 않는다",
       "passed": true
     }
   ],
-  "scope": "Menu-only lazy images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume fallback, actual codex and local two-player setup DOM/specs"
+  "scope": "Menu-only lazy base/costume images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume busts/fallback, actual codex and local two-player setup DOM/specs"
 }
