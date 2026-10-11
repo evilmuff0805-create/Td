@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import { FrameMetrics } from '../src/3d/frame-metrics.js';
+import { GameUI } from '../src/ui/hud.js';
+import { audio } from '../src/audio/audio.js';
+import fs from 'node:fs';
+
+let count=0;const test=async(name,fn)=>{await fn();count++;console.log('✔ '+name);};
+await test('60Hz,120Hz and low frame rate measure independently of game speed',()=>{for(const fps of [20,60,120]){const metrics=new FrameMetrics();metrics.add(0);let measured;for(let i=1;i<=fps+1;i++)measured=metrics.add(i*1000/fps)??measured;assert.equal(measured.fps,fps);assert.ok(Math.abs(+measured.frameP95-1000/fps)<.1);}});
+await test('long frames are represented by tail and worst metrics',()=>{const m=new FrameMetrics();m.add(0);let now=0,out;for(let i=0;i<60;i++){now+=i%10===0?100:16;out=m.add(now)??out;}assert.equal(+out.frameP95,100);assert.equal(+out.frameWorst,100);assert.equal(+out.frameP50,16);});
+await test('hidden/background and resumed measurement do not pollute active FPS',()=>{const m=new FrameMetrics();m.add(0);m.add(16);m.add(5000,false);assert.equal(m.add(9000),null);let out;for(let i=1;i<=61;i++)out=m.add(9000+i*1000/60)??out;assert.equal(out.fps,60);assert.ok(+out.frameWorst<17);});
+await test('foreground freezes over two seconds remain in worst frame, and hidden without RAF explicitly resets',()=>{const m=new FrameMetrics();m.add(0);m.add(16);const stalled=m.add(2516);assert.equal(+stalled.frameWorst,2500);m.reset();assert.equal(m.add(8000),null);let out;for(let i=1;i<=61;i++)out=m.add(8000+i*1000/60)??out;assert.equal(out.fps,60);});
+const saved=Object.fromEntries(['window','document','requestAnimationFrame','cancelAnimationFrame','setTimeout','clearTimeout'].map(k=>[k,globalThis[k]])),oldInit=audio.init;
+class Target{constructor(){this.handlers=new Map();}addEventListener(k,fn){this.handlers.set(k,fn);}removeEventListener(k,fn){if(this.handlers.get(k)===fn)this.handlers.delete(k);}fire(k,e={}){this.handlers.get(k)?.(e);}}
+const doc=new Target(),win=new Target(),timers=new Map();let timerId=0;
+globalThis.window=win;globalThis.document=doc;globalThis.requestAnimationFrame=()=>1;globalThis.cancelAnimationFrame=()=>{};globalThis.setTimeout=fn=>{timers.set(++timerId,fn);return timerId;};globalThis.clearTimeout=id=>timers.delete(id);audio.init=()=>{};
+function context(){const cv=new Target(),moves=[],clicks=[],ui=Object.assign(Object.create(GameUI.prototype),{cv,is3d:true,p2keys:new Set(['ArrowRight']),ui:{},renderer:{pick:()=>({x:3,y:4}),destroy(){}},s:{destroy(){}},canBuildAt:()=>true,leftClick:p=>clicks.push(p),moveHeroTo:(x,y)=>moves.push([x,y])});ui.bindInput();return{ui,cv,moves,clicks};}
+const touch=(id=1)=>({pointerId:id,pointerType:'touch',clientX:10,clientY:10,button:0});
+try{
+  await test('app blur cancels a pending touch move and releases P2 movement keys',()=>{const {ui,cv,moves,clicks}=context();cv.fire('pointerdown',touch());assert.equal(timers.size,1);win.fire('blur');assert.equal(timers.size,0);assert.equal(ui.p2keys.size,0);cv.fire('pointerup',touch());assert.equal(moves.length,0);assert.equal(clicks.length,0);ui.destroy();});
+  await test('hidden page cancels input; a visible change does not release current input',()=>{const {ui,cv}=context();cv.fire('pointerdown',touch());doc.hidden=false;doc.fire('visibilitychange');assert.equal(timers.size,1);doc.hidden=true;doc.fire('visibilitychange');assert.equal(timers.size,0);assert.equal(ui.p2keys.size,0);ui.destroy();});
+  await test('two-finger camera gestures do not trigger long-press or building clicks',()=>{const {ui,cv,moves,clicks}=context();cv.fire('pointerdown',touch(1));cv.fire('pointerdown',touch(2));assert.equal(timers.size,0);cv.fire('pointerup',touch(1));cv.fire('pointerup',touch(2));assert.equal(moves.length,0);assert.equal(clicks.length,0);ui.destroy();});
+  await test('single stationary long-press moves exactly once and does not also click',()=>{const {ui,cv,moves,clicks}=context();cv.fire('pointerdown',touch());const pending=[...timers.values()];timers.clear();pending.forEach(fn=>fn());cv.fire('pointerup',touch());assert.deepEqual(moves,[[3,4]]);assert.equal(clicks.length,0);ui.destroy();});
+  await test('destroy removes blur and visibility listeners and clears touch timer',()=>{const {ui,cv}=context();cv.fire('pointerdown',touch());ui.destroy();assert.equal(timers.size,0);assert.equal(win.handlers.has('blur'),false);assert.equal(doc.handlers.has('visibilitychange'),false);});
+  await test('flat-renderer pointer cancellation also cannot click after blur',()=>{const {ui,cv,clicks}=context();ui.is3d=false;cv.getBoundingClientRect=()=>({left:0,top:0,width:960,height:560});cv.fire('pointerdown',touch());win.fire('blur');cv.fire('pointerup',touch());assert.equal(clicks.length,0);ui.destroy();});
+}finally{audio.init=oldInit;for(const [key,value]of Object.entries(saved)){if(value===undefined)delete globalThis[key];else globalThis[key]=value;}}
+fs.writeFileSync(new URL('../docs/DEVICE_READINESS_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({tests:count,passed:true,scope:'Frame-time sampling and real HUD input handlers with synthetic pointer events; not physical touchscreen or thermal validation.'},null,2)+'\n');

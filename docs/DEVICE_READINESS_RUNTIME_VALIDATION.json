@@ -1,0 +1,5 @@
+{
+  "tests": 10,
+  "passed": true,
+  "scope": "Frame-time sampling and real HUD input handlers with synthetic pointer events; not physical touchscreen or thermal validation."
+}

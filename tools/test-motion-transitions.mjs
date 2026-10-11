@@ -145,10 +145,13 @@ test('이전 cone 패킷은 시전자가 한 명일 때만 보완하고 적 사�
   world.cueHeroes([{k:'shot',enemy:9,x1:4,y1:4,x2:8,y2:8}],{heroes:[a,b],time:0});assert.equal(world.heroCues.size,0);art.dispose();
 });
 test('정식 렌더러는 조준 수집→본체 배치→효과 순서를 지켜 발사 프레임의 그림이 틀어지지 않는다',()=>{
-  const order=[],world={prepareHeroLooks(){},art:{loading:false},cueEnemies(){order.push('enemyAim');},cueHeroes(){order.push('heroAim');},sync(){order.push('sync');},fx:{preview(){},update(){}},buildPreview(){},draw(){order.push('draw');},renderer:{info:{memory:{},render:{}}}};
-  const renderer=Object.assign(Object.create(Renderer3D.prototype),{world,canvas:{dataset:{},clientWidth:800,clientHeight:600},loadingLayer:{},pending:[{k:'cone'}],effect(){order.push('effect');},p2:{},p2Preview:{},labels:{update(){}},buildLayer:{},damage(){},statusMarkers(){},frames:0,fpsAt:performance.now()});
+  const previous=globalThis.document;globalThis.document={hidden:false,addEventListener(){},removeEventListener(){}};
+  try{
+  const order=[],world={prepareHeroLooks(){},art:{loading:false},cueEnemies(){order.push('enemyAim');},cueHeroes(){order.push('heroAim');},sync(){order.push('sync');},fx:{preview(){},update(){}},buildPreview(){},draw(){order.push('draw');},renderer:{getPixelRatio:()=>1,info:{memory:{},render:{}}}};
+  const renderer=Object.assign(new Renderer3D({dataset:{},clientWidth:800,clientHeight:600}),{world,loadingLayer:{},pending:[{k:'cone'}],effect(){order.push('effect');},p2:{},p2Preview:{},labels:{update(){}},buildLayer:{},damage(){},statusMarkers(){}});
   renderer.render({heroes:[],enemies:[],summons:[],towers:[],time:1,speed:1,paused:false},{clock:1,selHeroes:[]},DT);
   assert.deepEqual(order,['enemyAim','heroAim','sync','effect','draw']);assert.equal(renderer.pending.length,0);
+  }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 });
 
 await fs.writeFile(new URL('../docs/MOTION_TRANSITION_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',passed:results.length,scope:'display transitions, paused world transforms, aimed first frame, same-hero local co-op and legacy event fallback; no combat rule changes',tests:results},null,2)+'\n');

@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-11",
+  "allPassed": true,
+  "tests": 8,
+  "results": [
+    {
+      "name": "1–10 building choices include hover expansion, shortcut and price without overlap",
+      "passed": true
+    },
+    {
+      "name": "414px portrait keeps ten circular choices visible at corners and center",
+      "passed": true
+    },
+    {
+      "name": "narrow landscape changes to a complete nonoverlapping row layout",
+      "passed": true
+    },
+    {
+      "name": "specialization, target and sell buttons respect their actual asymmetric angles",
+      "passed": true
+    },
+    {
+      "name": "duplicate future angles and very small screens use scrolling instead of overlapping",
+      "passed": true
+    },
+    {
+      "name": "real Ring renders all ten commands using the computed grid positions and occupied area",
+      "passed": true
+    },
+    {
+      "name": "gold changes preserve manual grid scrolling and the focused command",
+      "passed": true
+    },
+    {
+      "name": "P2 active choice scrolls into view after attachment, including the flat renderer",
+      "passed": true
+    }
+  ],
+  "maximumChoices": 10,
+  "minimumButtonPixels": 46,
+  "includesEnlargedIconAndPrice": true
+}

@@ -124,7 +124,7 @@ test('3D 오른쪽 회전·두 손가락 확대·취소·화면 종료가 영웅
   globalThis.window={addEventListener(){}};globalThis.document={addEventListener(){}};audio.ctx={state:'running'};
   globalThis.setTimeout=fn=>{timers.set(++seq,fn);return seq;};globalThis.clearTimeout=id=>timers.delete(id);
   try {
-    const ui={is3d:true,cv:{addEventListener:(k,f)=>handlers.set(k,f)},renderer:{pick:()=>({x:5,y:5})},ui:{},canBuildAt:()=>true,moveHeroTo:()=>moves++,leftClick:()=>clicks++,keyDown(){},p2keys:new Set()};
+    const ui={s:{networkWaiting:false},is3d:true,cv:{addEventListener:(k,f)=>handlers.set(k,f)},renderer:{pick:()=>({x:5,y:5})},ui:{},canBuildAt:()=>true,moveHeroTo:()=>moves++,leftClick:()=>clicks++,keyDown(){},p2keys:new Set()};
     GameUI.prototype.bindInput.call(ui);
     const send=(k,id,x=10,y=10,button=0)=>handlers.get(k)({pointerId:id,pointerType:'touch',clientX:x,clientY:y,button,preventDefault(){}});
     send('pointerdown',1);send('pointerdown',2);send('pointermove',1,30,30);send('pointercancel',2);

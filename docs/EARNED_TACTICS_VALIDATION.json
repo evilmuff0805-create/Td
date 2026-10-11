@@ -1,0 +1,644 @@
+{
+  "generatedAt": "2026-10-11T13:35:53.011Z",
+  "source": "DIFFICULTY_PROGRESSION_VALIDATION.json",
+  "sourceSha256": "86d812c9344137c76df507a3824947c23748f591c003c0a383ecacd29eb82dd8",
+  "sourceGeneratedAt": "2026-10-11T13:25:26.816Z",
+  "scope": "Frozen first failed hell-stage checkpoints from the genuine earned-profile report. Reconstructed for diagnostic replay only; no purchases, item use, rewards, unlock claims, combat-stat changes or browser saves. Five tactics at three seeds; variation includes losses and does not certify human balance.",
+  "baseSeedChecks": 5,
+  "baseSeedChecksPassed": true,
+  "results": [
+    {
+      "kind": "solo",
+      "stage": "s21",
+      "plan": "fresh",
+      "placement": "gate",
+      "upgradePolicy": "cannon",
+      "branch": "A",
+      "seed": 7919,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 86208,
+        "jade": 2465,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 8,
+      "wave": 20,
+      "time": 710,
+      "branches": 10,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 2
+    },
+    {
+      "kind": "solo",
+      "stage": "s21",
+      "plan": "fresh",
+      "placement": "gate",
+      "upgradePolicy": "cannon",
+      "branch": "A",
+      "seed": 7920,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 86208,
+        "jade": 2465,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "time": 335,
+      "branches": 2,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 10
+    },
+    {
+      "kind": "solo",
+      "stage": "s21",
+      "plan": "fresh",
+      "placement": "gate",
+      "upgradePolicy": "cannon",
+      "branch": "A",
+      "seed": 7921,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 86208,
+        "jade": 2465,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 6,
+      "wave": 20,
+      "time": 707,
+      "branches": 10,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 4
+    },
+    {
+      "kind": "local",
+      "stage": "s21",
+      "plan": "fresh",
+      "placement": "gate",
+      "upgradePolicy": "focus",
+      "branch": "A",
+      "seed": 7919,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 45783,
+        "jade": 2465,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 10,
+      "wave": 20,
+      "time": 733,
+      "branches": 12,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 0
+    },
+    {
+      "kind": "local",
+      "stage": "s21",
+      "plan": "fresh",
+      "placement": "gate",
+      "upgradePolicy": "focus",
+      "branch": "A",
+      "seed": 7920,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 45783,
+        "jade": 2465,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": false,
+      "lives": 0,
+      "wave": 12,
+      "time": 399,
+      "branches": 4,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 10
+    },
+    {
+      "kind": "local",
+      "stage": "s21",
+      "plan": "fresh",
+      "placement": "gate",
+      "upgradePolicy": "focus",
+      "branch": "A",
+      "seed": 7921,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 45783,
+        "jade": 2465,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": false,
+      "lives": 0,
+      "wave": 11,
+      "time": 335,
+      "branches": 2,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 10
+    },
+    {
+      "kind": "solo",
+      "stage": "s24",
+      "plan": "ice",
+      "placement": "gate",
+      "upgradePolicy": "cannon",
+      "buildPlacement": "exit",
+      "branch": "A",
+      "seed": 7919,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 131247,
+        "jade": 2555,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 8,
+      "wave": 22,
+      "time": 815,
+      "branches": 13,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 2
+    },
+    {
+      "kind": "solo",
+      "stage": "s24",
+      "plan": "ice",
+      "placement": "gate",
+      "upgradePolicy": "cannon",
+      "buildPlacement": "exit",
+      "branch": "A",
+      "seed": 7920,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 131247,
+        "jade": 2555,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": false,
+      "lives": 0,
+      "wave": 8,
+      "time": 226,
+      "branches": 1,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 10
+    },
+    {
+      "kind": "solo",
+      "stage": "s24",
+      "plan": "ice",
+      "placement": "gate",
+      "upgradePolicy": "cannon",
+      "buildPlacement": "exit",
+      "branch": "A",
+      "seed": 7921,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 131247,
+        "jade": 2555,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 2,
+      "wave": 22,
+      "time": 816,
+      "branches": 13,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 8
+    },
+    {
+      "kind": "solo",
+      "stage": "s25",
+      "plan": "nam",
+      "placement": "final-entry",
+      "upgradePolicy": "cannon",
+      "branch": "A",
+      "seed": 7919,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 156642,
+        "jade": 2585,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 9,
+      "wave": 24,
+      "time": 811,
+      "branches": 16,
+      "finalOrders": 47,
+      "heroDeaths": 0,
+      "leakedLives": 1
+    },
+    {
+      "kind": "solo",
+      "stage": "s25",
+      "plan": "nam",
+      "placement": "final-entry",
+      "upgradePolicy": "cannon",
+      "branch": "A",
+      "seed": 7920,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 156642,
+        "jade": 2585,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 3,
+      "wave": 24,
+      "time": 812,
+      "branches": 16,
+      "finalOrders": 47,
+      "heroDeaths": 0,
+      "leakedLives": 7
+    },
+    {
+      "kind": "solo",
+      "stage": "s25",
+      "plan": "nam",
+      "placement": "final-entry",
+      "upgradePolicy": "cannon",
+      "branch": "A",
+      "seed": 7921,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 156642,
+        "jade": 2585,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 7,
+      "wave": 24,
+      "time": 812,
+      "branches": 16,
+      "finalOrders": 47,
+      "heroDeaths": 0,
+      "leakedLives": 3
+    },
+    {
+      "kind": "local",
+      "stage": "s25",
+      "plan": "nam",
+      "placement": "rally",
+      "upgradePolicy": "focus",
+      "branch": "A",
+      "seed": 7919,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 98659,
+        "jade": 2585,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 7,
+      "wave": 24,
+      "time": 821,
+      "branches": 14,
+      "finalOrders": 55,
+      "heroDeaths": 0,
+      "leakedLives": 3
+    },
+    {
+      "kind": "local",
+      "stage": "s25",
+      "plan": "nam",
+      "placement": "rally",
+      "upgradePolicy": "focus",
+      "branch": "A",
+      "seed": 7920,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 98659,
+        "jade": 2585,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": true,
+      "lives": 1,
+      "wave": 24,
+      "time": 829,
+      "branches": 13,
+      "finalOrders": 55,
+      "heroDeaths": 0,
+      "leakedLives": 9
+    },
+    {
+      "kind": "local",
+      "stage": "s25",
+      "plan": "nam",
+      "placement": "rally",
+      "upgradePolicy": "focus",
+      "branch": "A",
+      "seed": 7921,
+      "checkpointAttempt": 1,
+      "fixed": {
+        "coins": 98659,
+        "jade": 2585,
+        "heroes": {
+          "yi": 10,
+          "sejong": 10
+        },
+        "skills": {
+          "singijeon": 5,
+          "bongsu": 5
+        },
+        "towers": {
+          "sungnyemun": 30,
+          "hwaseong": 30,
+          "bosingak": 30,
+          "cheomseong": 30,
+          "haeinsa": 30,
+          "seokguram": 30,
+          "namhansan": 30,
+          "gyeongbok": 30,
+          "seokbinggo": 30,
+          "bulguksa": 30
+        }
+      },
+      "win": false,
+      "lives": 0,
+      "wave": 5,
+      "time": 153,
+      "branches": 0,
+      "finalOrders": 0,
+      "heroDeaths": 0,
+      "leakedLives": 11
+    }
+  ]
+}

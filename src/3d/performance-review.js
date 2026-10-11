@@ -10,7 +10,7 @@ let world,game,frames=0,last=performance.now(),lastFrame=last,samples=[],spawnMs
 async function start(){
   const ticket=++generation;running=false;
   const all=document.getElementById('roster').value==='all',enemyKinds=all?Object.keys(ENEMIES):['ashigaru','samurai','teppo'];
-  const options={illustrated:document.getElementById('art').value==='fixed',batchCrowd:document.getElementById('batch').value==='on',high:document.getElementById('quality').value==='high',count:+document.getElementById('count').value,combatKinds:all?{enemy:enemyKinds,ally:['militia','guard','elite','monk','courier','turtle']}:undefined};
+  const options={illustrated:document.getElementById('art').value==='fixed',batchCrowd:document.getElementById('batch').value==='on',high:document.getElementById('quality').value==='high',count:+document.getElementById('count').value,heroLooks:[{heroId:'yi'},{heroId:'sejong'}],combatKinds:all?{enemy:enemyKinds,ally:['militia','guard','elite','monk','courier','turtle']}:undefined};
   if(world){world.destroy();const fresh=canvas.cloneNode(false);for(const key of Object.keys(fresh.dataset))delete fresh.dataset[key];canvas.replaceWith(fresh);canvas=fresh;world=null;}
   metrics.textContent='전장 그림 준비 중…';setupBegan=performance.now();document.getElementById('batch').disabled=options.illustrated;
   const localWorld=world=new WinterWorld(canvas,STAGE_BY_ID.s12,'autumn',options);localWorld.quality(options.high);

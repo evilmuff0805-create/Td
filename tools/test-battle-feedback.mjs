@@ -48,10 +48,9 @@ function fixture(count=12){
   const selected=[],container=new Element('div'),labels=new TowerLabels(container,id=>selected.push(id));
   return {game,world,labels,container,selected};
 }
-function nonoverlap(labels,width,height,insets={}){
-  const rects=[...labels.positions.values()].filter(Boolean);assert.equal(rects.length,labels.items.size);
-  for(let i=0;i<rects.length;i++){const a=rects[i];assert.ok(a.left>=(insets.left??6)&&a.right<=width-(insets.right??6)&&a.top>=(insets.top??6)&&a.bottom<=height-(insets.bottom??6));
-    for(const b of rects.slice(i+1))assert.ok(a.right+5.9<=b.left||b.right+5.9<=a.left||a.bottom+5.9<=b.top||b.bottom+5.9<=a.top);}
+function anchored(f){
+  for(const t of f.game.towers){const at=f.labels.positions.get(t.id);if(!at)continue;assert.equal(at.x,t.cx);assert.equal(at.y,t.cy+22);assert.equal(at.top,t.cy+2);}
+  assert.ok(!walk(f.container).some(el=>el.className==='tower-label-leader'),'No displaced marker leaders');
 }
 const spec=(hero='yi',skill='singijeon')=>({heroes:[hero],skills:[skill],towers:['sungnyemun']});
 function coop(hero='yi',skill='singijeon'){
@@ -74,32 +73,30 @@ test('건물 아래 점 4개는 단계 1·2·3·최종 A/B를 채우고 이름·
   assert.equal(winter.labels.items.get(1).pips.children.filter(p=>p.classList.contains('filled')).length,3);assert.equal(winter.labels.items.get(1).pips.children[3].classList.contains('unavailable'),true);assert.equal(winter.labels.items.get(1).button.classList.contains('max-tier'),true);
 });
 
-test('12개 밀집 배지는 모바일·데스크톱 HUD 여백에서 선택 설명까지 겹치지 않음',()=>{
+test('12개 밀집 건물도 모바일·데스크톱에서 단계 점을 각 건물 바로 아래에 고정',()=>{
   for(const [width,height,insets] of [[414,500,{}],[1280,560,{}],[414,896,{top:73,bottom:306}]]){
     const f=fixture();f.world.renderer.domElement={clientWidth:width,clientHeight:height};f.labels.getInsets=()=>insets;
-    f.labels.update(f.game,f.world);nonoverlap(f.labels,width,height,insets);for(const t of f.game.towers)assert.ok(f.labels.positions.get(t.id).top>=t.cy+2,'밀집 배치에서도 점을 건물 위로 올리지 않음');
+    f.labels.update(f.game,f.world);anchored(f);
     const compactArea=[...f.labels.items.values()].reduce((n,i)=>n+i.width*i.height,0);assert.ok(compactArea<12*90*48*.2);
-    f.labels.update(f.game,f.world,{kind:'tower',id:9});nonoverlap(f.labels,width,height,insets);
+    const before=structuredClone([...f.labels.positions]);f.labels.update(f.game,f.world,{kind:'tower',id:9});anchored(f);assert.deepEqual([...f.labels.positions],before);
     assert.equal(f.labels.items.get(9).expanded,true);assert.equal([...f.labels.items.values()].filter(i=>i.expanded).length,1);
   }
 });
 
-test('다른 건물 선택 중에도 가리킨 점은 제자리에서 펼쳐지고 실제 건물 바닥 연결선을 유지',()=>{
+test('이름 설명을 열거나 건물이 이동해도 점은 건물 바로 아래를 따라가며 연결선이 없음',()=>{
   const f=fixture();f.labels.update(f.game,f.world,{kind:'tower',id:1});
   const before=f.labels.positions.get(12),item=f.labels.items.get(12);item.button.emit('pointerenter');
   f.labels.update(f.game,f.world,{kind:'tower',id:1});const after=f.labels.positions.get(12);
-  assert.equal(after.x,before.x);assert.equal(after.y,before.y);assert.ok(after.left<=before.left&&after.right>=before.right&&after.top<=before.top);
-  nonoverlap(f.labels,414,500);
-  // Move the building outside the expanded box so a connecting line is needed.
-  f.game.towers[11].cx=after.x<207?390:24;f.labels.update(f.game,f.world,{kind:'tower',id:1});
-  assert.equal(f.labels.positions.get(12).x,before.x);assert.equal(item.leader.hidden,false);assert.equal(item.leader.style.left,`${f.game.towers[11].cx}px`);
-  item.button.emit('pointerleave');f.labels.update(f.game,f.world,{kind:'tower',id:1});assert.equal(item.expanded,false);assert.equal(item.interactionAnchor,null);
+  assert.deepEqual(after,before);anchored(f);
+  f.game.towers[11].cx=375;f.labels.update(f.game,f.world,{kind:'tower',id:1});
+  assert.equal(f.labels.positions.get(12).x,375);anchored(f);assert.equal(item.leader,undefined);
+  item.button.emit('pointerleave');f.labels.update(f.game,f.world,{kind:'tower',id:1});assert.equal(item.expanded,false);
 });
 
 test('키보드 초점·화면 크기 변경·조준 종료가 단계 설명과 클릭 대상을 보존',()=>{
   const f=fixture();f.labels.update(f.game,f.world);const item=f.labels.items.get(7);item.button.emit('focus');f.labels.update(f.game,f.world);
   assert.equal(item.expanded,true);assert.equal(item.button.getAttribute('aria-pressed'),'false');
-  f.world.renderer.domElement.clientWidth=360;f.labels.update(f.game,f.world);nonoverlap(f.labels,360,500);
+  f.world.renderer.domElement.clientWidth=360;f.labels.update(f.game,f.world);anchored(f);
   f.labels.update(f.game,f.world,{kind:'tower',id:7},{kind:'skill'});assert.equal(item.expanded,false);assert.equal(item.button.tabIndex,-1);
   f.labels.update(f.game,f.world,{kind:'tower',id:7});assert.equal(item.expanded,true);assert.equal(item.button.tabIndex,0);
   item.button.emit('blur');item.button.emit('click');assert.deepEqual(f.selected,[7]);
@@ -109,7 +106,7 @@ test('키보드 초점·화면 크기 변경·조준 종료가 단계 설명과 
 test('화면 밖·철거·승패·종료는 유령 배지나 선택 상태를 남기지 않음',()=>{
   const f=fixture(2);f.labels.update(f.game,f.world);f.game.result={win:true};f.game.towers[1].cx=-50;f.labels.update(f.game,f.world);
   assert.equal(f.labels.items.get(1).button.disabled,true);assert.equal(f.labels.items.get(2).button.hidden,true);
-  f.game.towers.pop();f.labels.update(f.game,f.world);assert.equal(f.labels.items.size,1);assert.equal(f.container.children.length,2);
+  f.game.towers.pop();f.labels.update(f.game,f.world);assert.equal(f.labels.items.size,1);assert.equal(f.container.children.length,1);
   f.labels.clear();assert.equal(f.container.children.length,0);assert.equal(f.labels.positions,null);assert.equal(f.labels.layoutKey,null);
   f.game.result=null;f.labels.update(f.game,f.world);assert.equal(f.labels.items.get(1).button.getAttribute('aria-pressed'),'false');
 });
@@ -184,8 +181,8 @@ test('온라인 전투 종료에 실은 마지막 발동음을 다음 정기 스
   const host=new Session({kind:'host',stageId:'s1',difficulty:'normal',seed:7,specs:[spec('yi'),spec('sejong')],net});
   host.setPaused(true);host.state.heroes[0].skillCd=0;host.lastSnap=performance.now()+1e6;
   host.send({t:'heroSkill',p:0,h:0,x:5,y:5});assert.equal(cues(host.update(DT)).length,1);assert.equal(cues(host.netEvents).length,1);
-  host.state.result={win:true};host.announceEnd();assert.equal(cues(packets.find(p=>p.t==='snap').s.ev).length,1);
-  assert.equal(host.netEvents.length,0);host.lastSnap=-1e9;host.update(DT);assert.equal(cues(packets.filter(p=>p.t==='snap').at(-1).s.ev).length,0);host.destroy();
+  host.state.result={win:true};host.announceEnd();assert.equal(cues(packets.find(p=>p.t==='finish').s.ev).length,1);
+  assert.equal(host.netEvents.length,0);host.terminalCached=true;host.lastSnap=-1e9;host.update(DT);assert.equal(cues(packets.filter(p=>p.t==='snap').at(-1).s.ev).length,0);host.destroy();
 });
 
 test('설정 UI는 효과음 전용 볼륨을 표시하고 편집한 값만 저장하며 음악 끄기 버튼을 제공',()=>{

@@ -8,6 +8,7 @@ import { STAGE_BY_ID, parseWave } from '../data/stages.js';
 import { mapOf, d2 } from './combat.js';
 import { T_BUILD } from './map.js';
 import { autoAim, comboStatus } from './abilities.js';
+import { metaCost } from '../data/quests.js';
 
 const PLANS = {
   balanced: ['sungnyemun', 'sungnyemun', 'hwaseong', 'bosingak', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'seokguram', 'gyeongbok', 'hwaseong', 'U', 'U', 'sungnyemun', 'cheomseong', 'U', 'U', 'U', 'bosingak', 'seokguram', 'U', 'U', 'U', 'U'],
@@ -41,7 +42,11 @@ export function createBot(s, p, opts = {}) {
     }
   }
   spots.sort((a, b) => b.score - a.score);
-  return { p, plan, step: 0, spots, think: 0, useSkills: opts.skills !== false, branchPref: opts.branch || 'alt', posted: false };
+  if(opts.buildPlacement==='exit'||opts.buildAnchor){
+    const gate=opts.buildAnchor??map.samples.at(-1),distance=spot=>(spot.x+.5-gate.x)**2+(spot.y+.5-gate.y)**2;
+    spots.sort((a,b)=>distance(a)-distance(b));
+  }
+  return { p, plan, step: 0, spots, think: 0, useSkills: opts.skills !== false, branchPref: opts.branch || 'alt', posted: false, economyAware:!!opts.economyAware,upgradePolicy:opts.upgradePolicy||'cheap',staggerBongsu:!!opts.staggerBongsu };
 }
 
 // 탐지 유산이 닿지 않는 경로 (협동이면 자기 담당 경로만)
@@ -88,6 +93,7 @@ export function botThink(s, bot, send) {
   if (bot.think > 0) return;
   bot.think = 0.4;
   const pl = s.players[bot.p];
+  const price=id=>bot.economyAware?metaCost(TOWERS[id].levels[0].cost,pl.towerLv[id]||0):TOWERS[id].levels[0].cost;
   const w = s.wave;
   // 첫 파도 시작
   if (w.n === 0 && bot.p === 0) send({ t: 'nextWave', p: bot.p });
@@ -110,7 +116,7 @@ export function botThink(s, bot, send) {
   if ((upcoming.has('ninja') || s.enemies.some((e) => e.stealth)) && pl.towers.includes('cheomseong')) {
     const blind = uncoveredPath(s, bot);
     if (blind >= 0) {
-      if (pl.gold < TOWERS.cheomseong.levels[0].cost) return;
+      if (pl.gold < price('cheomseong')) return;
       const sp = freeSpot(s, bot, 'star', blind);
       if (sp) send({ t: 'build', p: bot.p, x: sp.x, y: sp.y, tower: 'cheomseong' });
       return;
@@ -120,8 +126,8 @@ export function botThink(s, bot, send) {
   const heavy = upcoming.has('armored') || upcoming.has('ram');
   const antiArmor = s.towers.filter((t) => t.owner === bot.p && ['seokguram', 'cheomseong', 'hwaseong'].includes(t.type)).length;
   if (heavy && antiArmor < 2 + Math.floor(s.wave.n / 6)) {
-    const pick = pl.towers.includes('seokguram') && pl.gold >= TOWERS.seokguram.levels[0].cost ? 'seokguram' : 'cheomseong';
-    if (pl.gold < TOWERS[pick].levels[0].cost) return;
+    const pick = pl.towers.includes('seokguram') && pl.gold >= price('seokguram') ? 'seokguram' : 'cheomseong';
+    if (pl.gold < price(pick)) return;
     const sp = freeSpot(s, bot, TOWERS[pick].kind);
     if (sp) send({ t: 'build', p: bot.p, x: sp.x, y: sp.y, tower: pick });
     return;
@@ -135,9 +141,9 @@ export function botThink(s, bot, send) {
         bot.step++;
         continue;
       }
-      mine.sort((a, b) => cost(a) - cost(b));
+      mine.sort((a, b) => (bot.upgradePolicy==='cannon'?(Number(b.type==='hwaseong')-Number(a.type==='hwaseong')||b.level-a.level):bot.upgradePolicy==='focus'?b.level-a.level:0)||cost(a,bot)-cost(b,bot));
       const t = mine[0];
-      const c = cost(t);
+      const c = cost(t,bot);
       if (pl.gold < c) return;
       const branch = bot.branchPref === 'alt' ? (t.id % 2 ? 'A' : 'B') : bot.branchPref;
       send({ t: 'upgrade', p: bot.p, id: t.id, branch });
@@ -149,7 +155,7 @@ export function botThink(s, bot, send) {
       bot.step++;
       continue;
     }
-    const c = TOWERS[action].levels[0].cost;
+    const c = price(action);
     if (pl.gold < c) return;
     const sp = freeSpot(s, bot, TOWERS[action].kind);
     if (!sp) {
@@ -172,10 +178,11 @@ function upcomingTypes(s) {
   return set;
 }
 
-function cost(t) {
+function cost(t,bot) {
   const def = TOWERS[t.type];
-  if (t.level < def.levels.length) return def.levels[t.level].cost;
-  return Math.min(def.branches.A.cost, def.branches.B.cost);
+  const branch=bot?.branchPref==='alt'?(t.id%2?'A':'B'):bot?.branchPref;
+  const base=t.level<def.levels.length?def.levels[t.level].cost:bot?.economyAware?def.branches[branch].cost:Math.min(def.branches.A.cost,def.branches.B.cost);
+  return bot?.economyAware?metaCost(base,t.metaLv):base;
 }
 
 export function botSkills(s, bot, send) {
@@ -195,6 +202,7 @@ export function botSkills(s, bot, send) {
   });
   pl.skills.forEach((sl, i) => {
     if (sl.cd > 0) return;
+    if(bot.staggerBongsu&&sl.id==='bongsu'&&(s.buffs.vulnT>0||s.cmds.some(c=>c.t==='skill'&&s.players[c.p]?.skills[c.slot]?.id==='bongsu')))return;
     const sk = SKILLS[sl.id];
     const anchor = s.heroes.find((h) => h.owner === bot.p && !h.dead) || s.heroes[0];
     const aim = boss && sk.target === 'point' ? { x: boss.x, y: boss.y, score: 99 } : autoAim(s, { x: anchor.x, y: anchor.y }, 30, 1.6);

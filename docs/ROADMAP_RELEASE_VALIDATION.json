@@ -1,0 +1,150 @@
+{
+  "generatedAt": "2026-10-11T13:52:55.753710+00:00",
+  "parentCommit": "22ecb3a7befa0235ab92b3246472d2132a8acb76",
+  "scope": "Requested roadmap1-5 implementation and bounded verification, build-menu overlap fix, tower-base fixed dots without leader lines; local2P preserved.",
+  "regression": {
+    "tests": 395,
+    "groups": 29,
+    "allPassed": true,
+    "report": "ROADMAP_REGRESSION_VALIDATION.json"
+  },
+  "determinism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "passed": true,
+    "completedBattles": 2,
+    "originalFixturesUnchanged": true,
+    "soloSnapshotSha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721",
+    "coopSnapshotSha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+  },
+  "build": {
+    "standalone": {
+      "path": "dist/hoguk.html",
+      "bytes": 121854634,
+      "sha256": "114b7338cfdc83806ca04488fc0974dcd653a535361c3dd96a8231d8ff02d36e",
+      "embeddedArtCheckPassed": true,
+      "newElementAtlases": 3,
+      "newAtlasesEmbeddedExactlyOnce": true,
+      "sourcePngsEmbedded": 0
+    },
+    "web": {
+      "tests": 14,
+      "passed": true,
+      "entryBytes": 1002,
+      "scriptBytes": 1391131,
+      "scriptGzipBytes": 398666,
+      "artFiles": 163,
+      "artByteIdentical": true,
+      "repeatBodyBytes": 0
+    },
+    "zip": {
+      "passed": true,
+      "archive": "dist/hoguk-web.zip",
+      "archiveBytes": 91874287,
+      "archiveSha256": "0098211649cce1804bf98414852cc538020ad8ec67a9732aba370ce7f2c68a85",
+      "manifestSha256": "5a347e54453b251f7d387d120623d8698c959577a4780046bf3f4f631cfa8468",
+      "filesIncludingManifest": 189,
+      "manifestFiles": 188,
+      "manifestFileBytes": 93756562,
+      "allFileHashesAndZipBytesMatch": true,
+      "artFiles": 163,
+      "artIsByteIdentical": true,
+      "sourceAndDevFilesExcluded": true
+    }
+  },
+  "paidProgression": {
+    "report": "DIFFICULTY_PROGRESSION_VALIDATION.json",
+    "allPassed": true,
+    "runs": [
+      {
+        "kind": "solo",
+        "seed": 1,
+        "cleared": 75,
+        "battles": 693,
+        "retries": 618,
+        "simulatedMinutes": 2991
+      },
+      {
+        "kind": "local",
+        "seed": 1,
+        "cleared": 75,
+        "battles": 478,
+        "retries": 403,
+        "simulatedMinutes": 2142
+      }
+    ],
+    "doesNotCertifyHumanBalance": true
+  },
+  "art": {
+    "mode": "Built-in image_gen.imagegen",
+    "exactPrompts": "COMBO_ELEMENT_PROMPTS.json",
+    "sourcePixelsUnchanged": true,
+    "losslessWebp": true,
+    "newAtlases": [
+      {
+        "family": "fire",
+        "source": "assets/3d/fixed/source/combo-fire-v1.png",
+        "path": "assets/3d/fixed/combo-fire-v1.webp",
+        "bytes": 433404,
+        "frames": 8
+      },
+      {
+        "family": "flood",
+        "source": "assets/3d/fixed/source/combo-flood-v1.png",
+        "path": "assets/3d/fixed/combo-flood-v1.webp",
+        "bytes": 488450,
+        "frames": 8
+      },
+      {
+        "family": "heal",
+        "source": "assets/3d/fixed/source/combo-heal-v1.png",
+        "path": "assets/3d/fixed/combo-heal-v1.webp",
+        "bytes": 492970,
+        "frames": 8
+      }
+    ]
+  },
+  "browser": {
+    "local2P": "BUILD_DOTS_BROWSER_VALIDATION.json",
+    "menuContainerSizes": "BUILD_LAYOUT_BROWSER_VALIDATION.json",
+    "comboArt": "COMBO_ELEMENT_BROWSER_VALIDATION.json",
+    "userChromeAnd8092PlayTabNotReloaded": true
+  },
+  "review": {
+    "reviewer": "GPT-6 Astra high",
+    "passed": true,
+    "blockingFindings": 0,
+    "resolved": [
+      "Separate3D CSS matches main fixed-dot style",
+      "Reconnect test pumps frames until latest sync ACK",
+      "Finish ACK documentation includes permanent-close and connected timeout exceptions"
+    ]
+  },
+  "limitations": [
+    "No physical-phone RAM/heat/long-touch certification",
+    "No external-WAN two-device or production-host latency certification",
+    "No server-restart/tab-reload resume or permanent-host migration",
+    "Earned progression needed1021 losses; human balance and other hero strategies remain",
+    "Three8-frame effect families; no new long character cycles or11independent long combo atlases"
+  ],
+  "reportSha256": {
+    "ROADMAP_REGRESSION_VALIDATION.json": "ee0aeb42487448280fbfcc4115644f2976a98adb302f1c43e9c5521d14b8d825",
+    "WEB_RELEASE_VALIDATION.json": "d7e41a22f29ee28998fa239aa7e65445f650b197c8f1149026a74410e2ed685e",
+    "ZIP_PACKAGE_VALIDATION.json": "17b98cb0408efb5cfcad1d91928b27d502a8ea7640fc29e430583b41c733de3c",
+    "NETWORK_RECOVERY_VALIDATION.json": "b6a3150fca9c0c41afdb21f9574f5b3ed4390346e149481eb9db3a8b695b1ab3",
+    "BUILD_LAYOUT_RUNTIME_VALIDATION.json": "4f5f95368f64d253b1b2695562247e49bce60c98cacc8f9f40acf5e8260f8dbe",
+    "BUILD_LAYOUT_BROWSER_VALIDATION.json": "6ddd8f9759e5c26ff323d3df80ed59814be21249f0cefc3c81f03c5b22f58901",
+    "BUILD_DOTS_BROWSER_VALIDATION.json": "910ee858f48a5b2dc31adbcc29d7948a4b7454d43e1e45f684e53494c1a4a367",
+    "DEVICE_READINESS_RUNTIME_VALIDATION.json": "93d35cf51e93dfffca92c12e5107ba7d302d6d99da3062cbc363c96841c2e54c",
+    "DEVICE_BROWSER_CENSUS.json": "1a07043b9b21ea12153a0fcc6edcf09980b5185c6f818d102c5134a9f5106ed5",
+    "DIFFICULTY_PROGRESSION_VALIDATION.json": "86d812c9344137c76df507a3824947c23748f591c003c0a383ecacd29eb82dd8",
+    "EARNED_TACTICS_VALIDATION.json": "b91bc2dfb5b4bc3d3515619caa23d0f51ebd1c6a0ea345e5346a65e09a71ff3f",
+    "COMBO_ELEMENT_ASSET_VALIDATION.json": "609bd2dc0887b47a173a3b5b9d819d35af667cc5bf15e475e30b2cf8e818f699",
+    "COMBO_ELEMENT_BROWSER_VALIDATION.json": "de79596579b6324c2c5a4fa056656d12c4483b383bd36399e7ca50a20d0b9292",
+    "COMBO_ELEMENT_PROMPTS.json": "4dd4bdab235a6179cb263999e1131f053880f0927fd73d04deb0c8c69ae816a6"
+  },
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "implementationCommit": null,
+    "remoteVerified": false
+  }
+}

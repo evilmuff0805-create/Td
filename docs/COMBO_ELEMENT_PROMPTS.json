@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-11",
+  "notes": "Exact submitted generation prompts. Delivery is lossless WebP encoding; source pixels were not repainted or resized.",
+  "records": [
+    {
+      "family": "fire",
+      "tool": "image_gen.imagegen",
+      "executionId": "b1e18764-19ff-47a3-ae22-8246097b9389",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Production transparent animation sprite sheet for a polished Korean historical tower-defense game. Create exactly EIGHT different consecutive animation frames of warm copper and antique-gold cannon blast. Fiery curled petals and short sparks, expanding broken ember ring then sparse tiny fading embers. Refined dimensional painterly animated-film rendering. Layout EXACTLY FOUR EQUAL COLUMNS by TWO EQUAL ROWS, wide 2:1 image, square individual cells. Read frames left-to-right across top row then bottom row. SAME centered pivot in every cell. Frames1 through8: tiny seed, growth, expansion, largest impact, outward fragments, dissipation, very sparse fragments, final tiny wisps. Each frame occupies AT MOST HALF the width and half the height of its cell, even at its maximum radius. The other half of each cell is completely transparent empty space, no ambient wash, no backdrop and no drop shadow. Big clear transparent gutters are essential: no glow or particles within the outer25% of any cell. All effects round in the source viewed from straight above, game projects onto its 3D ground plane. Delicate readable painted effects rather than flat neon rings. No labels, words, numbers, lines, grid outlines, checkerboard paint, characters or environment. Actual alpha transparency. Isolated crisp edges with soft shading confined inside each shape. Do not add any color wash behind the effects.",
+      "source": "assets/3d/fixed/source/combo-fire-v1.png",
+      "delivery": "assets/3d/fixed/combo-fire-v1.webp"
+    },
+    {
+      "family": "flood",
+      "tool": "image_gen.imagegen",
+      "executionId": "4b19c9a8-600b-4191-ab7b-d6c37561c39a",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Production transparent animation sprite sheet for a polished Korean historical tower-defense game. Create exactly EIGHT different consecutive animation frames of ice-blue and teal flood splash. Sculpted curling foamy water crest, expanding broken wave ring, then isolated droplets and gentle fading ripples. Refined dimensional painterly animated-film rendering. Layout EXACTLY FOUR EQUAL COLUMNS by TWO EQUAL ROWS, wide 2:1 image, square individual cells. Read frames left-to-right across top row then bottom row. SAME centered pivot in every cell. Frames1 through8: tiny seed, growth, expansion, largest impact, outward fragments, dissipation, very sparse fragments, final tiny wisps. Each frame occupies AT MOST HALF the width and half the height of its cell, even at its maximum radius. The other half of each cell is completely transparent empty space, no ambient wash, no backdrop and no drop shadow. Big clear transparent gutters are essential: no glow or particles within the outer25% of any cell. All effects round in the source viewed from straight above, game projects onto its 3D ground plane. Delicate readable painted effects rather than flat neon rings. No labels, words, numbers, lines, grid outlines, checkerboard paint, characters or environment. Actual alpha transparency. Isolated crisp edges with soft shading confined inside each shape. Do not add any color wash behind the effects.",
+      "source": "assets/3d/fixed/source/combo-flood-v1.png",
+      "delivery": "assets/3d/fixed/combo-flood-v1.webp"
+    },
+    {
+      "family": "heal",
+      "tool": "image_gen.imagegen",
+      "executionId": "04e8bfe1-03a8-436f-b65d-5cd9d187e496",
+      "transparent_background": true,
+      "prompt": "Use case: stylized-concept. Production transparent animation sprite sheet for a polished Korean historical tower-defense game. Create exactly EIGHT different consecutive animation frames of jade and antique-gold healing lotus. A small light seed unfurls dimensional jade lotus petals, a gentle floating leaf halo opens, then just a few fading leaves and gold motes. Refined dimensional painterly animated-film rendering. Layout EXACTLY FOUR EQUAL COLUMNS by TWO EQUAL ROWS, wide 2:1 image, square individual cells. Read frames left-to-right across top row then bottom row. SAME centered pivot in every cell. Frames1 through8: tiny seed, growth, expansion, largest impact, outward fragments, dissipation, very sparse fragments, final tiny wisps. Each frame occupies AT MOST HALF the width and half the height of its cell, even at its maximum radius. The other half of each cell is completely transparent empty space, no ambient wash, no backdrop and no drop shadow. Big clear transparent gutters are essential: no glow or particles within the outer25% of any cell. All effects round in the source viewed from straight above, game projects onto its 3D ground plane. Delicate readable painted effects rather than flat neon rings. No labels, words, numbers, lines, grid outlines, checkerboard paint, characters or environment. Actual alpha transparency. Isolated crisp edges with soft shading confined inside each shape. Do not add any color wash behind the effects.",
+      "source": "assets/3d/fixed/source/combo-heal-v1.png",
+      "delivery": "assets/3d/fixed/combo-heal-v1.webp"
+    }
+  ]
+}

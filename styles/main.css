@@ -964,20 +964,20 @@ p {
 .game-3d .battle-camera { z-index:4; }
 .game-3d .battle-camera button[aria-pressed='true'] { border-color:#e8d7a6; background:#45635cf0; }
 .game-3d .battle-tower-labels, .game-3d .battle-damage, .game-3d .battle-status { position:absolute; inset:0; pointer-events:none !important; overflow:hidden; }
-.game-3d .tower-badge { position:absolute; transform:translate(-50%,-100%); display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:40px; min-height:20px; box-sizing:border-box; gap:2px; pointer-events:auto; color:#e5eeee; background:transparent; border:1px solid transparent; border-radius:5px; padding:4px 3px; font-size:11px; text-shadow:0 1px 2px #04121b; box-shadow:none; white-space:nowrap; --tier-color:#f1d398; }
+.game-3d .tower-badge { position:absolute; transform:translate(-50%,-100%); display:flex; align-items:center; justify-content:center; width:40px; height:20px; min-width:40px; box-sizing:border-box; pointer-events:auto; color:#e5eeee; background:transparent; border:1px solid transparent; border-radius:5px; padding:4px 3px; font-size:11px; text-shadow:0 1px 2px #04121b; box-shadow:none; white-space:nowrap; --tier-color:#f1d398; }
 .game-3d .tower-badge-name, .game-3d .tower-badge-detail { display:none; }
 .game-3d .tower-badge-name { font-size:10px; opacity:.85; }
 .game-3d .tower-badge-detail { font-size:11px; font-weight:700; }
-.game-3d .tower-badge.detail-open { min-width:76px; padding:5px 8px; background:#102b3ae6; border-color:#a6bcbeaa; box-shadow:0 1px 4px #04121b55; }
+.game-3d .tower-badge-info { display:none; position:absolute; bottom:100%; transform:translateX(-50%); box-sizing:border-box; padding:5px 8px; background:#102b3ae6; border:1px solid #a6bcbeaa; border-radius:5px; box-shadow:0 1px 4px #04121b55; pointer-events:none; white-space:normal; text-align:center; }
+.game-3d .tower-badge.detail-open .tower-badge-info { display:block; }
 .game-3d .tower-badge.detail-open .tower-badge-name, .game-3d .tower-badge.detail-open .tower-badge-detail { display:block; }
 .game-3d .tower-badge.detail-open .tier-pips { display:flex; }
-.game-3d .tower-label-leader { position:absolute; height:1px; background:#d8dbc2b3; transform-origin:0 50%; pointer-events:none; }
 .game-3d .tower-badge b { font-size:11px; font-weight:700; }
 .game-3d .tower-badge[aria-pressed='true'] { outline:2px solid #a9e4d5; outline-offset:2px; }
 .game-3d .tower-badge.max-tier { color:#ffe6a3; --tier-color:#ffd16c; }
 .game-3d .tower-badge[data-branch='B'] { color:#b9edf4; --tier-color:#8adce9; }
-.game-3d .tower-badge.max-tier.detail-open { border-color:#f2cf7e; background:linear-gradient(135deg,#584526e6,#192c39e6); }
-.game-3d .tower-badge[data-branch='B'].detail-open { border-color:#8adce9; background:#153a49e6; }
+.game-3d .tower-badge.max-tier.detail-open .tower-badge-info { border-color:#f2cf7e; background:linear-gradient(135deg,#584526e6,#192c39e6); }
+.game-3d .tower-badge[data-branch='B'].detail-open .tower-badge-info { border-color:#8adce9; background:#153a49e6; }
 .game-3d .tier-pips { display:flex; gap:3px; }
 .game-3d .tier-pips i { width:10px; height:3px; border-radius:1px; background:#b8c7cb30; }
 .game-3d .tier-pips i.filled { background:#e4c58c; }
@@ -1439,6 +1439,12 @@ p {
   width: 0;
   height: 0;
 }
+.ring.grid { transform:translate(-50%,-50%); overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; border-radius:8px; background:#10202bcc; pointer-events:auto; }
+.ringwrap.kbd .ring.grid { pointer-events:none; }
+.ring.grid .ring-halo { display:none; }
+.ring.grid.fresh .rbtn { animation:none; }
+.ring.grid + .rtip { overflow:auto; pointer-events:auto; overscroll-behavior:contain; }
+.ringwrap.kbd .rtip { pointer-events:none; }
 .ring-halo {
   position: absolute;
   left: 0;
@@ -1576,6 +1582,7 @@ p {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
   font-size: 14px;
   line-height: 1.45;
+  overflow:hidden;
 }
 .ringwrap.p1 .rtip {
   border-color: rgba(255, 110, 90, 0.65);
@@ -2458,3 +2465,4 @@ div.side-tile:hover {
   height: 41px;
 }
 .game-3d .battle-loading{position:absolute;inset:0;z-index:60;display:grid;place-content:center;text-align:center;white-space:pre-line;line-height:1.9;padding:24px;background:#142333ed;color:#e9ddc4;font-size:15px;pointer-events:auto}.game-3d .battle-loading[hidden]{display:none}
+.battle-network{position:absolute;z-index:70;top:16px;left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);padding:12px 18px;border:1px solid #c4a56788;border-radius:8px;background:#112735eb;color:#f0dfb8;text-align:center;font:700 14px var(--f-bold);pointer-events:none}.battle-network[hidden]{display:none}

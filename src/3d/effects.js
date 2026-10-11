@@ -93,7 +93,7 @@ export class BattleEffects {
       root.userData.comboImpact=event.combo;root.userData.family=style.family;root.userData.phase=event.phase;
       const base=this.art?.decal(style.family,radius,.42)??new T.Mesh(new T.RingGeometry(radius*.76,radius,40),basic(style.color,.42));
       base.rotation.x=-Math.PI/2;base.material.blending=T.NormalBlending;root.add(base);
-      const crest=style.support?null:this.comboArt?.decal(radius,style.color,.38);
+      const crest=style.support&&style.family!=='heal'?null:this.comboArt?.decal(radius,style.color,.38,style.family);
       if(crest){crest.position.y=.016;root.add(crest);}
       const motif=this.tactics?.decal('combo-'+event.combo,radius*.64,.40);
       if(motif){motif.position.y=.028;root.add(motif);}

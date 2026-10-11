@@ -1,5 +1,7 @@
 # 일러스트 그림 가이드
 
+최신 합격기 원화는 불꽃·물결·치유 각8프레임을 추가했다. [원본·배포 파일·정확한 imagegen 프롬프트·검증](COMBO_ELEMENTS.md)을 참고한다. 캐릭터의 승인된1,664자세는 유지한다.
+
 정식 게임은 현재 고정 시점의 2.5D 일러스트 전장을 기본으로 사용합니다. 최신 적용 범위는 아래 날짜별 기록과 마지막 특수 의상 큰 일러스트 항목에 있습니다. 기본 영웅 256장·특수 의상 512장·병력 896장을 합한 전장용 준비 그림은 1,664장이고 별도 큰 메뉴 그림은 기본 8명·의상 16종, 총 24개입니다. 앞부분과 각 날짜의 수치·남은 작업은 당시 기록이며, 최신 메뉴 원화는 [SKIN_BUST_ART.md](SKIN_BUST_ART.md), 기본 흉상은 [HERO_BUST_ART.md](HERO_BUST_ART.md), 주변 원화는 [VILLAGE_SCENERY.md](VILLAGE_SCENERY.md), 동작은 [MOTION_TRANSITIONS.md](MOTION_TRANSITIONS.md)를 기준으로 합니다. 초기 모델 통합은 [3D_FULL_GAME.md](3D_FULL_GAME.md)에 보존합니다.
 
 ## 3D 모델과 기술 그림

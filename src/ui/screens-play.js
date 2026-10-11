@@ -364,6 +364,9 @@ export function lobbyScreen(app, params) {
       net.on('cfg', (m) => { L.stageId = m.stageId; L.difficulty = m.difficulty; rerender(); }),
       net.on('peer-joined', () => { toast('동료가 들어왔습니다'); audio.play('ping'); sendMe(); sendCfg(); rerender(); }),
       net.on('peer-left', () => { toast('동료가 나갔습니다'); L.peer = null; rerender(); }),
+      net.on('reconnecting',()=>rerender()),net.on('peer-reconnecting',()=>rerender()),
+      net.on('reconnected',()=>{sendMe();sendCfg();rerender();}),
+      net.on('peer-restored',()=>{sendMe();sendCfg();rerender();}),
       net.on('close', () => { if (!L.started) { toast('서버와 연결이 끊겼습니다'); cleanup(); app.go('coop'); } }),
       net.on('start', (m) => { L.started = true; cleanup(false); app.startBattle({ kind: 'guest', stageId: m.stageId, difficulty: m.difficulty, net, names: m.names }); }),
     ];
@@ -376,7 +379,7 @@ export function lobbyScreen(app, params) {
   };
   const peerHero = L.peer && L.peer.hero;
   const clash = peerHero && peerHero === L.me.hero;
-  const canStart = host && L.peer && L.peer.ready && L.me.skills.length === 2 && !clash;
+  const canStart = host && L.peer && L.peer.ready && L.me.skills.length === 2 && !clash&&!net.reconnecting&&!net.peerReconnecting;
   const peerBox = L.peer
     ? h('div', { class: 'stack' },
       h('div', { class: 'row' }, heroPortrait(L.peer.hero, 64, host ? 1 : 0), h('div', { class: 'stack', style: { gap: '2px' } },
@@ -403,8 +406,8 @@ export function lobbyScreen(app, params) {
             const specs = [playerSpec(p, [L.me.hero], L.me.skills, p.name), L.peer.spec];
             p.loadout.coop = { hero: L.me.hero, skills: L.me.skills };
             saveProfile();
+            if(net.send({ t: 'start', seed, stageId: L.stageId, difficulty: L.difficulty, names: [p.name, L.peer.name] })===false){toast('연결을 확인한 뒤 다시 출전해 주세요.');return;}
             L.started = true;
-            net.send({ t: 'start', seed, stageId: L.stageId, difficulty: L.difficulty, names: [p.name, L.peer.name] });
             cleanup(false);
             app.startBattle({ kind: 'host', stageId: L.stageId, difficulty: L.difficulty, specs, seed, net, names: [p.name, L.peer.name] });
           },
@@ -416,6 +419,7 @@ export function lobbyScreen(app, params) {
       clash ? h('p', { style: { color: '#ffb3a6' } }, '두 사람이 같은 영웅을 고를 수 없습니다. 다른 영웅을 고르세요.') : null,
       comboPreview(host ? L.me.hero : peerHero, host ? peerHero : L.me.hero),
       h('div', { class: 'lobby' },
+        net.reconnecting||net.peerReconnecting?h('p',{role:'status'},net.reconnecting?'서버에 다시 연결하고 있습니다…':'동료가 다시 연결하고 있습니다…'):null,
         h('div', { class: 'panel stack', style: { borderColor: host ? '#6fa8ff' : '#ff8a7a' } },
           h('h3', {}, `나 (${host ? '호스트 · 청' : '참가자 · 홍'})`),
           heroPicker(app, [L.me.hero], 1, (n) => { L.me.hero = n[0] || L.me.hero; L.me.ready = false; sendMe(); rerender(); }, peerHero ? [peerHero] : []),

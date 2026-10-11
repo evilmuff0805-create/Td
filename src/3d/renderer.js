@@ -7,6 +7,7 @@ import { STAGE_BY_ID } from '../data/stages.js';
 import { getMap, T_BUILD } from '../sim/map.js';
 import { combatStatus } from './combat-status.js';
 import { paintBattleEvent } from './battle-events.js';
+import { FrameMetrics } from './frame-metrics.js';
 
 // The full game owns commands, rewards, audio and networking. This adapter only paints.
 export class Renderer3D {
@@ -14,7 +15,9 @@ export class Renderer3D {
   constructor(canvas, { overlay, onTowerSelect, onBuild } = {}) {
     this.canvas = canvas; this.overlay = overlay; this.onTowerSelect = onTowerSelect; this.onBuild=onBuild;
     this.fx = { showDamage: true, shakeLevel: 1 }; this.pending = []; this.health = new Map(); this.numbers = [];
-    this.frames=0;this.fpsAt=performance.now();
+    this.frameMetrics=new FrameMetrics();this.loadBegan=performance.now();
+    this.onMetricVisibility=()=>this.frameMetrics.reset();
+    document.addEventListener('visibilitychange',this.onMetricVisibility);
   }
   setup(stageId, opts = {}) {
     this.world = new WinterWorld(this.canvas, STAGE_BY_ID[stageId], 'auto', {heroLooks:opts.heroLooks});
@@ -49,6 +52,7 @@ export class Renderer3D {
     const game = battleView(view), world = this.world, selected = selectedEntity(game, ui);
     this.loadingLayer.hidden=!this.loading;
     if(this.loading){this.loadingLayer.textContent=ui.assetWaitRemote?'전장 그림을 준비하고 있습니다…\n접속한 전투 상태를 동기화하고 있습니다.':'전장 그림을 준비하고 있습니다…';this.pending.length=0;world.draw(ui.clock,dt);return;}
+    this.canvas.dataset.assetReadyMs??=String(Math.round(performance.now()-this.loadBegan));
     world.cueEnemies(this.pending,game.time);
     world.cueHeroes(this.pending,game);
     world.sync(game, game.time, view.paused ? 0 : dt * view.speed, selected);
@@ -80,9 +84,11 @@ export class Renderer3D {
     this.canvas.dataset.renderMode = '3d';
     this.canvas.dataset.geometries = world.renderer.info.memory.geometries;
     this.canvas.dataset.textures = world.renderer.info.memory.textures;
-    this.frames++;
     const now=performance.now();
-    if(now-this.fpsAt>=1000){this.canvas.dataset.fps=Math.round(this.frames*1000/(now-this.fpsAt));this.frames=0;this.fpsAt=now;}
+    const measured=this.frameMetrics.add(now,!document.hidden);
+    if(measured){for(const [key,value]of Object.entries(measured))this.canvas.dataset[key]=String(value);}
+    this.canvas.dataset.quality=world.highQuality===false?'low':'high';
+    this.canvas.dataset.pixelRatio=String(world.renderer.getPixelRatio());
     this.canvas.dataset.drawCalls=world.renderer.info.render.calls;
     this.canvas.dataset.triangles=world.renderer.info.render.triangles;
   }
@@ -125,6 +131,7 @@ export class Renderer3D {
   resize() { this.world?.resize(); }
   destroy() {
     if(this.destroyed)return; this.destroyed=true;
+    document.removeEventListener('visibilitychange',this.onMetricVisibility);
     this.labels?.clear(); this.labelLayer?.remove(); this.damageLayer?.remove();this.buildLayer?.remove();this.sites=[];
     this.statusLayer?.remove();this.statuses?.clear();this.loadingLayer?.remove();
     for(const o of [this.p2,this.p2Preview]) if(o){o.geometry.dispose();o.material.dispose();this.world?.scene.remove(o);}

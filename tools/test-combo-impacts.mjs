@@ -12,6 +12,7 @@ import { Session } from '../src/game/session.js';
 import { BattleEffects } from '../src/3d/effects.js';
 import { ComboImpactArt,COMBO_IMPACT_STYLES } from '../src/3d/combo-impact-art.js';
 import { COMBO_IMPACT_PIVOTS } from '../src/3d/combo-impact-data.js';
+import { COMBO_ELEMENTS } from '../src/3d/combo-element-data.js';
 import { PaintedEffectArt } from '../src/3d/effect-art.js';
 import { PaintedSignatures } from '../src/3d/signature-art.js';
 import { TACTIC_ART } from '../src/3d/tactic-data.js';
@@ -125,8 +126,30 @@ await test('지원 대상이 많아도 두 영웅을 먼저 표시하고 누락�
 
 await test('늦게 끝난 로딩·실패·여러 전장은 공유 픽셀과 전장별 GPU 소유를 지킨다',async()=>{
   const previous=globalThis.document,images=[];globalThis.document={createElementNS:()=>{const listeners=new Map(),image={width:1774,height:887,addEventListener:(k,fn)=>listeners.set(k,fn),removeEventListener(){},set src(url){this.url=url;},listeners};images.push(image);return image;}};
-  try{const a=new ComboImpactArt(),b=new ComboImpactArt(),pa=a.load(),pb=b.load();assert.equal(images.length,1);a.dispose();images[0].listeners.get('load').call(images[0]);assert.deepEqual(await Promise.all([pa,pb]),[false,true]);assert.equal(a.texture,null);let disposed=0;b.texture.addEventListener('dispose',()=>disposed++);b.dispose();b.dispose();assert.equal(disposed,1);
-    const {ComboImpactArt:Missing}=await import('../src/3d/combo-impact-art.js?failure'),missing=new Missing(),pending=missing.load();images.at(-1).listeners.get('error').call(images.at(-1),new Error('fixture'));assert.equal(await pending,false);assert.equal(missing.failed,true);missing.dispose();
+  try{const a=new ComboImpactArt(),b=new ComboImpactArt(),pa=a.load(),pb=b.load();assert.equal(images.length,4);a.dispose();for(const image of images)image.listeners.get('load').call(image);assert.deepEqual(await Promise.all([pa,pb]),[false,true]);assert.equal(a.texture,null);assert.equal(a.elements.size,0);let disposed=0;for(const texture of [b.texture,...b.elements.values()])texture.addEventListener('dispose',()=>disposed++);b.dispose();b.dispose();assert.equal(disposed,4);
+    const {ComboImpactArt:Missing}=await import('../src/3d/combo-impact-art.js?failure'),missing=new Missing(),start=images.length,pending=missing.load();for(const image of images.slice(start))image.listeners.get('error').call(image,new Error('fixture'));assert.equal(await pending,false);assert.equal(missing.failed,true);missing.dispose();
+  }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
+});
+
+await test('물·불·회복 각각 8프레임은 원본 색과 전용 피벗을 쓰며 동시 효과 UV를 공유하지 않는다',()=>{
+  const art=readyImpact();for(const family of Object.keys(COMBO_ELEMENTS))art.elements.set(family,new T.Texture({width:1774,height:887}));
+  const meshes=Object.keys(COMBO_ELEMENTS).map(family=>art.decal(1,'#ff0000',.5,family)),initial=meshes.map(m=>m.geometry.attributes.uv.array.slice());
+  for(const [n,mesh]of meshes.entries()){
+    const family=Object.keys(COMBO_ELEMENTS)[n];assert.equal(mesh.userData.impactFamily,family);assert.equal(mesh.material.color.getHex(),0xffffff);
+    for(let i=0;i<8;i++){art.frame(mesh,i);const pivot=COMBO_ELEMENTS[family].pivots[i];assert.ok(Math.abs(mesh.position.x-(.5-pivot.x)*2.8)<1e-6);assert.ok(Math.abs(mesh.position.z-(.5-pivot.y)*2.8)<1e-6);}
+    for(let j=n+1;j<meshes.length;j++)assert.deepEqual(meshes[j].geometry.attributes.uv.array,initial[j]);assert.deepEqual(mesh.material.map.offset.toArray(),[0,0]);
+  }
+  assert.equal(new Set(meshes.map(m=>m.material.map)).size,3);for(const m of meshes){m.geometry.dispose();m.material.dispose();}art.dispose();
+});
+
+await test('회복 연꽃은 실제 회복 영웅 발밑 두 곳에만 재생하며 적에게 표시하지 않는다',()=>withCanvas(()=>{
+  const game=gameFor(['dangun','sejong']),enemyPoints=points(game.enemies);fire(game);const {fx}=fixture();fx.comboArt.elements.set('heal',new T.Texture({width:1774,height:887}));fx.heroCue(cues(game)[0]);
+  const roots=fx.active.filter(e=>e.root.userData.comboImpact);assert.equal(roots.length,2);assert.deepEqual(roots.map(e=>({x:e.root.position.x,y:e.root.position.z})),points(game.heroes));assert.ok(roots.every(e=>e.root.children.some(c=>c.userData.impactFamily==='heal')));assert.ok(roots.every(e=>!enemyPoints.some(p=>p.x===e.root.position.x&&p.y===e.root.position.z)));fx.destroy();
+}));
+
+await test('물 원화만 실패해도 물은 공용으로 대체하고 불·회복·빛과 전장 종료를 보존한다',async()=>{
+  const previous=globalThis.document,images=[];globalThis.document={createElementNS:()=>{const listeners=new Map(),image={width:1774,height:887,addEventListener:(k,fn)=>listeners.set(k,fn),removeEventListener(){},set src(url){this.url=url;},listeners};images.push(image);return image;}};
+  try{const {ComboImpactArt:Partial}=await import('../src/3d/combo-impact-art.js?partial'),art=new Partial(),pending=art.load();for(const image of images)image.listeners.get(image.url.includes('combo-flood')?'error':'load').call(image,new Error('fixture'));assert.equal(await pending,true);assert.deepEqual(art.missingFamilies,['flood']);const water=art.decal(1,'#a4deee',.5,'flood'),fire=art.decal(1,'#ff0000',.5,'fire');assert.equal(water.material.map,art.texture);assert.equal(water.userData.impactFamily,'light');assert.equal(fire.userData.impactFamily,'fire');for(const m of [water,fire]){m.geometry.dispose();m.material.dispose();}art.dispose();assert.equal(art.decal(1,'#fff',.5,'fire'),null);
   }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 });
 

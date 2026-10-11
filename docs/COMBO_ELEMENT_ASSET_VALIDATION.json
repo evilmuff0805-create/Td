@@ -1,0 +1,282 @@
+{
+  "date": "2026-10-11",
+  "lossless": true,
+  "results": [
+    {
+      "family": "fire",
+      "source": "assets/3d/fixed/source/combo-fire-v1.png",
+      "path": "assets/3d/fixed/combo-fire-v1.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 433404,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "visiblePixels": 3257,
+          "minimumTransparentGutter": 176,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.52027
+          }
+        },
+        {
+          "frame": 1,
+          "visiblePixels": 9648,
+          "minimumTransparentGutter": 149,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.502257,
+            "y": 0.518018
+          }
+        },
+        {
+          "frame": 2,
+          "visiblePixels": 25188,
+          "minimumTransparentGutter": 111,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.498874,
+            "y": 0.521396
+          }
+        },
+        {
+          "frame": 3,
+          "visiblePixels": 57603,
+          "minimumTransparentGutter": 67,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.506772,
+            "y": 0.511261
+          }
+        },
+        {
+          "frame": 4,
+          "visiblePixels": 38331,
+          "minimumTransparentGutter": 58,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.538288,
+            "y": 0.484199
+          }
+        },
+        {
+          "frame": 5,
+          "visiblePixels": 12789,
+          "minimumTransparentGutter": 88,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.509029,
+            "y": 0.497743
+          }
+        },
+        {
+          "frame": 6,
+          "visiblePixels": 3579,
+          "minimumTransparentGutter": 115,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.496622,
+            "y": 0.506772
+          }
+        },
+        {
+          "frame": 7,
+          "visiblePixels": 644,
+          "minimumTransparentGutter": 146,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.529345,
+            "y": 0.480813
+          }
+        }
+      ]
+    },
+    {
+      "family": "flood",
+      "source": "assets/3d/fixed/source/combo-flood-v1.png",
+      "path": "assets/3d/fixed/combo-flood-v1.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 488450,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "visiblePixels": 2528,
+          "minimumTransparentGutter": 170,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.497748,
+            "y": 0.546171
+          }
+        },
+        {
+          "frame": 1,
+          "visiblePixels": 7594,
+          "minimumTransparentGutter": 141,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.506772,
+            "y": 0.574324
+          }
+        },
+        {
+          "frame": 2,
+          "visiblePixels": 20737,
+          "minimumTransparentGutter": 102,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.493243,
+            "y": 0.560811
+          }
+        },
+        {
+          "frame": 3,
+          "visiblePixels": 56724,
+          "minimumTransparentGutter": 44,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.495485,
+            "y": 0.532658
+          }
+        },
+        {
+          "frame": 4,
+          "visiblePixels": 35544,
+          "minimumTransparentGutter": 56,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.505631,
+            "y": 0.541761
+          }
+        },
+        {
+          "frame": 5,
+          "visiblePixels": 26210,
+          "minimumTransparentGutter": 80,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.498871,
+            "y": 0.560948
+          }
+        },
+        {
+          "frame": 6,
+          "visiblePixels": 5567,
+          "minimumTransparentGutter": 106,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.513514,
+            "y": 0.527088
+          }
+        },
+        {
+          "frame": 7,
+          "visiblePixels": 1494,
+          "minimumTransparentGutter": 162,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.486456,
+            "y": 0.536117
+          }
+        }
+      ]
+    },
+    {
+      "family": "heal",
+      "source": "assets/3d/fixed/source/combo-heal-v1.png",
+      "path": "assets/3d/fixed/combo-heal-v1.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 492970,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "visiblePixels": 5314,
+          "minimumTransparentGutter": 147,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.54955
+          }
+        },
+        {
+          "frame": 1,
+          "visiblePixels": 12497,
+          "minimumTransparentGutter": 129,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.493228,
+            "y": 0.541667
+          }
+        },
+        {
+          "frame": 2,
+          "visiblePixels": 30652,
+          "minimumTransparentGutter": 86,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.488739,
+            "y": 0.551802
+          }
+        },
+        {
+          "frame": 3,
+          "visiblePixels": 50025,
+          "minimumTransparentGutter": 59,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.506772,
+            "y": 0.540541
+          }
+        },
+        {
+          "frame": 4,
+          "visiblePixels": 28029,
+          "minimumTransparentGutter": 89,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.502252,
+            "y": 0.484199
+          }
+        },
+        {
+          "frame": 5,
+          "visiblePixels": 12554,
+          "minimumTransparentGutter": 113,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.512415,
+            "y": 0.521445
+          }
+        },
+        {
+          "frame": 6,
+          "visiblePixels": 2385,
+          "minimumTransparentGutter": 146,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.523649,
+            "y": 0.521445
+          }
+        },
+        {
+          "frame": 7,
+          "visiblePixels": 1809,
+          "minimumTransparentGutter": 163,
+          "boundaryPixels": 0,
+          "pivot": {
+            "x": 0.51693,
+            "y": 0.524831
+          }
+        }
+      ]
+    }
+  ]
+}

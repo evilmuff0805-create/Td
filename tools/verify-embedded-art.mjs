@@ -15,6 +15,7 @@ import { VILLAGE_PROP_ART } from '../src/3d/village-prop-data.js';
 import { HERO_BUST_ART } from '../src/data/hero-bust-data.js';
 import { SKIN_BUST_ART } from '../src/data/skin-bust-data.js';
 import { COMBO_IMPACT_ATLAS } from '../src/3d/combo-impact-art.js';
+import { COMBO_ELEMENTS } from '../src/3d/combo-element-data.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
 const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(COMBAT_INBETWEEN_ART)];
@@ -78,6 +79,12 @@ for(const rel of skillAtlases){const encoded=fs.readFileSync(new URL('../'+rel,i
 const impactEncoded=fs.readFileSync(new URL('../'+COMBO_IMPACT_ATLAS,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+impactEncoded),1,'Combo impact animation must be embedded exactly once');assert.ok(!html.includes(COMBO_IMPACT_ATLAS));
 for(const version of [1,2,3]){const rel='assets/3d/fixed/source/combo-impact-flipbook-v'+version+'.png',encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');assert.equal(count('data:image/png;base64,'+encoded),0,'Combo source and rejected variants must not ship');}
+for(const [family,{path:rel}]of Object.entries(COMBO_ELEMENTS)){
+  const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
+  assert.equal(count('data:image/webp;base64,'+encoded),1,`${family} flipbook must be embedded exactly once`);assert.ok(!html.includes(rel));
+  const original=fs.readFileSync(new URL(`../assets/3d/fixed/source/combo-${family}-v1.png`,import.meta.url)).toString('base64');
+  assert.equal(count('data:image/png;base64,'+original),0,`${family} source archive must not ship`);
+}
 for(const rel of ['assets/3d/art/hero-abilities-atlas-v1.png','assets/3d/art/skills-atlas-v1.png']){const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');assert.equal(count('data:image/png;base64,'+encoded),0,'Archive icon PNG must not be embedded');}
 const menu=fs.readFileSync(new URL('../'+MENU_HERO_ART.path,import.meta.url)).toString('base64');
 assert.equal(count('data:image/webp;base64,'+menu),1,'Approved UI poses must be embedded exactly once');
@@ -87,4 +94,4 @@ for(const {path:rel} of [...Object.values(HERO_BUST_ART), ...Object.values(SKIN_
   assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' portrait must be embedded exactly once');
   assert.ok(!html.includes(rel));
 }
-console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedHeroBusts:8,embeddedSkinBusts:16,skinPortraitSourcePngsEmbedded:0,skinPortraitSourcePngsChecked:skinPortraitArchivePngs,portraitSourcePngsEmbedded:0,portraitSourcePngsChecked:portraitArchivePngs,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedVillagePropSheets:2,villageSourcePngsEmbedded:0,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,embeddedComboImpactAtlases:1,comboImpactSourcePngsEmbedded:0,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:archiveCountBeforePortraits},null,2));
+console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedHeroBusts:8,embeddedSkinBusts:16,skinPortraitSourcePngsEmbedded:0,skinPortraitSourcePngsChecked:skinPortraitArchivePngs,portraitSourcePngsEmbedded:0,portraitSourcePngsChecked:portraitArchivePngs,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedVillagePropSheets:2,villageSourcePngsEmbedded:0,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,embeddedComboImpactAtlases:1,embeddedComboElementAtlases:Object.keys(COMBO_ELEMENTS).length,comboImpactSourcePngsEmbedded:0,comboElementSourcePngsEmbedded:0,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:archiveCountBeforePortraits},null,2));

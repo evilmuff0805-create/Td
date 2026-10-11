@@ -161,12 +161,14 @@ test('빙결된 북병은 북 타격을 멈추고 해제 후 재개하며 기존
   world.sync(s,s.time,DT,null);assert.notDeepEqual(pose(),before);assert.equal(root.userData.hips.position.y,.65,'음수 타이머에서도 보행 재개');world.reset();
 });
 test('첫 스폰 프레임과 게스트의 사격도 신호→자세→실제 포구 효과 순서이며 인스턴스 중복 없음',()=>{
+  const previous=globalThis.document;globalThis.document={hidden:false,addEventListener(){},removeEventListener(){}};
+  try{
   for(const guest of [false,true]) {
     const host=quietGame(['yi']),h=host.heroes[0],e=spawnEnemy(host,'teppo',0,1,1);h.cd=100;e.x=h.x+.2;e.y=h.y+.2;e.blockedBy=h.id;e.atkCd=100;e.abT=0;
     host.events.length=0;step(host);const shot=host.events.find(x=>x.k==='shot');assert.ok(shot);
     const packet=transfer(host,[shot]),s=guest?packet.view:host,events=guest?packet.events:[shot];
     const world=testWorld();
-    const lines=[];world.fx.line=(...args)=>lines.push(args);world.draw=()=>{};world.renderer={info:{render:{calls:0,triangles:0},memory:{geometries:0,textures:0}}};
+    const lines=[];world.fx.line=(...args)=>lines.push(args);world.draw=()=>{};world.renderer={getPixelRatio:()=>1,info:{render:{calls:0,triangles:0},memory:{geometries:0,textures:0}}};
     const renderer=new Renderer3D({dataset:{}},{});Object.assign(renderer,{world,labels:{update(){}},loadingLayer:{hidden:true,textContent:''},buildLayer:{hidden:true},sites:[],p2:new T.Group(),p2Preview:new T.Group()});renderer.damage=()=>{};renderer.statusMarkers=()=>{};
     renderer.events(events);renderer.render(s,{clock:0},DT);assert.equal(lines.length,1);const root=world.units.get(`e${e.id}`),socket=root.userData.weapons[1],muzzle=socket.localToWorld(socket.userData.muzzle.clone());
     assert.ok(Math.abs(root.rotation.y-Math.atan2(shot.x2-shot.x1,shot.y2-shot.y1))<1e-8);assert.ok(new T.Vector3(lines[0][0],lines[0][7],lines[0][1]).distanceTo(muzzle)<1e-8);
@@ -175,5 +177,6 @@ test('첫 스폰 프레임과 게스트의 사격도 신호→자세→실제 �
     world.cueEnemies([{k:'enemyHeal',enemy:e.id,x:e.x,y:e.y}],s.time);renderer.effect({k:'enemyHeal',enemy:e.id,x:e.x,y:e.y,r:2},s);assert.ok(world.fx.active.length>0);
     world.reset();assert.equal(world.enemyCues.size,0);assert.equal(world.crowd.buckets.size,0);
   }
+  }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 });
 console.log(`\n적군 점검 ${passed}개 통과`);

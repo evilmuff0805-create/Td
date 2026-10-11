@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-11",
+  "origin": "http://127.0.0.1:8098",
+  "scope": "Packaged web build, actual local 2P battle; normal 1P click and 2P E key each built one tower.",
+  "data": {
+    "art": {
+      "assetReadyMs": "3933",
+      "combatInbetweenCount": "12",
+      "combatInbetweenExpected": "12",
+      "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatInbetweenStatus": "ready",
+      "combatPoseCount": "12",
+      "combatPoseExpected": "12",
+      "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseStatus": "ready",
+      "drawCalls": "170",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "fps": "60",
+      "frameP50": "16.8",
+      "frameP95": "19.1",
+      "frameSamples": "60",
+      "frameWorst": "20.3",
+      "geometries": "81",
+      "heroInbetweenActive": "false",
+      "heroInbetweenCount": "2",
+      "heroInbetweenExpected": "2",
+      "heroInbetweenKinds": "sejong,yi",
+      "heroInbetweenLookKey": "sejong,yi",
+      "heroInbetweenStatus": "ready",
+      "heroPoseCanvasBytes": "22831168",
+      "heroPoseCount": "2",
+      "heroPoseExpected": "2",
+      "heroPoseKinds": "sejong,yi",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "pixelRatio": "1",
+      "quality": "high",
+      "renderMode": "3d",
+      "sceneryBarrierCells": "0",
+      "sceneryBarriers": "0",
+      "sceneryCargo": "1",
+      "sceneryCrowns": "9",
+      "sceneryHouses": "3",
+      "sceneryLamps": "7",
+      "sceneryLayout": "clustered",
+      "sceneryLowTrees": "12",
+      "sceneryProps": "40",
+      "sceneryYardFences": "2",
+      "seasonTreeArtStatus": "ready",
+      "signatureArtStatus": "ready",
+      "skinPoseCount": "0",
+      "skinPoseExpected": "0",
+      "skinPoseKinds": "",
+      "skinPoseStatus": "ready",
+      "spriteMotion": "distance-contact-recovery",
+      "tacticArtStatus": "ready",
+      "terrainRoad": "continuous",
+      "terrainRoadLayers": "1",
+      "terrainRoadTriangles": "3216",
+      "terrainShore": "continuous",
+      "terrainShoreTriangles": "1944",
+      "textures": "39",
+      "triangles": "55122",
+      "villagePropArtStatus": "ready",
+      "villagePropSeason": "temperate",
+      "waterTriangles": "7704",
+      "yiFacing": "3",
+      "yiPose": "idle"
+    },
+    "badges": [
+      {
+        "dots": [
+          "filled",
+          "",
+          "",
+          ""
+        ],
+        "hidden": false,
+        "label": "숭례문, 1 / 4단계, 0회 강화",
+        "rect": {
+          "height": 20,
+          "width": 40,
+          "x": 543.9375,
+          "y": 231.84375
+        }
+      },
+      {
+        "dots": [
+          "filled",
+          "",
+          "",
+          ""
+        ],
+        "hidden": false,
+        "label": "숭례문, 1 / 4단계, 0회 강화",
+        "rect": {
+          "height": 20,
+          "width": 40,
+          "x": 624.09375,
+          "y": 348.65625
+        }
+      }
+    ],
+    "gold": [
+      "1P 군자금86",
+      "2P 군자금86"
+    ],
+    "leaders": 0,
+    "viewport": {
+      "height": 720,
+      "width": 1280
+    }
+  },
+  "console": []
+}

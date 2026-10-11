@@ -130,6 +130,7 @@ export class GameUI {
     this.xray = h('canvas', { class: 'xray', 'aria-hidden': 'true' });
     this.xctx = this.xray.getContext('2d');
     this.area = h('div', { class: 'stage-area' }, this.cv, this.overlay, this.xray);
+    this.networkBanner=h('div',{class:'battle-network',role:'status',hidden:true});this.area.append(this.networkBanner);
     const tip = h('div', { class: 'rotate-tip' }, '화면을 가로로 돌리면 전장이 더 크게 보입니다');
     // 하단
     this.bottom = h('div', { class: 'hud-bottom' });
@@ -292,11 +293,15 @@ export class GameUI {
     if (this.destroyed) return;
     const dt = Math.min(0.1, (t - this.last) / 1000);
     this.last = t;
-    this.ui.clock += dt;
+    if(!this.s.networkWaiting)this.ui.clock += dt;
     this.renderer.prepareView?.(this.s.view);
     const waitingForRenderer = this.renderer.loading === true;
     this.ui.assetWaitRemote = this.s.kind === 'guest';
-    this.bottom.inert = waitingForRenderer;
+    const waitingForNetwork=this.s.networkWaiting;
+    this.bottom.inert = waitingForRenderer||waitingForNetwork;
+    if(this.networkBanner){this.networkBanner.hidden=!waitingForNetwork;this.networkBanner.textContent=waitingForNetwork?this.s.networkMessage:'';}
+    if(this.overlay)this.overlay.inert=waitingForNetwork;
+    if(waitingForNetwork)this.cancelPress?.();
     if (this.local && !waitingForRenderer) this.p2Tick(t);
     const evs = this.s.update(dt, { waitingForRenderer });
     this.handleEvents(evs);
@@ -308,7 +313,7 @@ export class GameUI {
       const h2 = v.heroes.find((x) => x.owner === 1);
       this.ui.p2cursor = h2 && !h2.dead ? this.p2Tile(h2) : null;
     }
-    this.renderer.render(v, this.ui, dt);
+    this.renderer.render(v, this.ui, waitingForNetwork?0:dt);
     if (this.is3d) this.repositionRings();
     this.drawXray(v);
     this.updateHud(dt);
@@ -327,7 +332,8 @@ export class GameUI {
     audio.play(this.s.view.result.win ? 'win' : 'lose');
     const wait = () => {
       if (this.destroyed) return;
-      if (this.s.kind === 'guest' && !this.s.endInfo && performance.now() - start < 4000) {
+      const terminalPending=this.s.kind==='host'?!this.s.terminalCached:this.s.kind==='guest'?!this.s.endInfo:false;
+      if (terminalPending&&(this.s.networkWaiting||(this.s.net?.connected&&performance.now()-start<35000))) {
         this.finishTimer = setTimeout(wait, 200);
         return;
       }
@@ -344,6 +350,8 @@ export class GameUI {
     this.cancelPress?.();
     cancelAnimationFrame(this.raf);
     window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('blur', this.onInputBlur);
+    document.removeEventListener('visibilitychange', this.onInputVisibility);
     document.removeEventListener('keydown', this.onKeyDown);
     document.removeEventListener('keyup', this.onKeyUp);
     this.s.destroy();
@@ -448,7 +456,14 @@ export class GameUI {
     let down = null, dragged = false, multiTouch = false;
     const pointers = new Set();
     this.cancelPress = () => { clearTimeout(pressTimer); pressTimer=null; down=null; pointers.clear(); multiTouch=false; };
+    // Losing focus may swallow keyup/pointerup. Do not keep a local player's
+    // movement key or a touch long-press alive after switching apps.
+    this.onInputBlur=()=>{this.p2keys.clear();this.cancelPress();};
+    this.onInputVisibility=()=>{if(document.hidden)this.onInputBlur();};
+    window.addEventListener('blur',this.onInputBlur);
+    document.addEventListener('visibilitychange',this.onInputVisibility);
     this.cv.addEventListener('pointerdown', (e) => {
+      if(this.s.networkWaiting)return;
       audio.init();
       clearTimeout(pressTimer); pressTimer=null; pointers.add(e.pointerId);
       if(pointers.size>1){multiTouch=true;dragged=true;down=null;return;}
@@ -467,11 +482,12 @@ export class GameUI {
       }
     });
     this.cv.addEventListener('pointerup', (e) => {
+      if(this.s.networkWaiting){this.cancelPress();return;}
       clearTimeout(pressTimer);
       pointers.delete(e.pointerId);
       if(multiTouch){if(!pointers.size)multiTouch=false;down=null;return;}
       const wasDown=!!down; down=null;
-      if (this.is3d && (!wasDown || dragged)) return;
+      if (!wasDown || (this.is3d && dragged)) return;
       if (this.is3d && e.button === 2) {
         const p=pos(e); if (!p) return;
         if(this.targeting) this.cancelTargeting();
@@ -556,7 +572,7 @@ export class GameUI {
   }
 
   keyDown(e) {
-    if (this.renderer?.loading && e.code !== 'Escape') return;
+    if ((this.renderer?.loading||this.s.networkWaiting) && e.code !== 'Escape') return;
     if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
     if (document.querySelector('.modal-back')) return;
     audio.init();

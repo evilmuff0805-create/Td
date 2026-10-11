@@ -73,7 +73,9 @@ class App {
     document.body.append(wipe);
     setTimeout(() => wipe.remove(), 1400);
     audio.play('wave');
+    let peerEnded=false;
     const onPeerLeft = () => {
+      if(peerEnded)return;peerEnded=true;
       if (b.kind === 'host') {
         session.send({ t: 'leave', p: 1 });
         toast('동료가 떠났습니다. 동료의 영웅과 유산을 넘겨받습니다.', 3000);

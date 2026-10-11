@@ -17,6 +17,7 @@
     "balance": "node tools/balance.mjs",
     "build": "node tools/build.mjs",
     "build:3d": "node tools/build-3d.mjs",
+    "build:web": "node tools/build-web.mjs",
     "test:3d": "node tools/test-3d.mjs",
     "test:fixed-art": "node tools/test-fixed-art.mjs",
     "test:hero-art": "node tools/hero-pose-assets.mjs",
@@ -62,6 +63,13 @@
     "test:battle-feedback": "node tools/test-battle-feedback.mjs",
     "test:combo-impacts": "node tools/test-combo-impacts.mjs",
     "test:combo-impact-assets": "node tools/combo-impact-assets.mjs",
-    "test:hero-loading": "node tools/test-hero-loading.mjs"
+    "test:hero-loading": "node tools/test-hero-loading.mjs",
+    "test:build-layout": "node tools/test-build-layout.mjs",
+    "test:device-readiness": "node tools/test-device-readiness.mjs",
+    "test:network-recovery": "node tools/test-network-recovery.mjs",
+    "test:web-release": "node tools/test-web-release.mjs",
+    "test:roadmap": "node tools/test-roadmap-regression.mjs",
+    "test:earned-tactics": "node tools/check-earned-tactics.mjs",
+    "test:combo-elements": "node tools/combo-element-assets.mjs"
   }
 }
