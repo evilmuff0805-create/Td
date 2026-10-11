@@ -195,5 +195,11 @@
   "limits": [
     "Base looks only; special costumes and troops retain previous pose cycles",
     "Physical phone and external network testing remain separate"
-  ]
+  ],
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "implementationCommit": "71500dd613a7b5a3c104db0c664c33e5fedb2847",
+    "remoteShaMatchedImplementation": true,
+    "verifiedWith": "git ls-remote --exit-code origin refs/heads/claude/korean-hero-tower-defense-i8ard8"
+  }
 }

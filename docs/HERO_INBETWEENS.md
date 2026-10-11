@@ -77,3 +77,5 @@ node tools/verify-embedded-art.mjs
 ```
 
 서버 실행 후 [8영웅 256자세 비교](http://localhost:8080/dev/3d-hero-pose-review.html?mute=1)에서 방향·걸음·타격 단계와 재생을 선택할 수 있다. 특수 의상·병력의 추가 중간 원화, 더 긴 동작 주기, 새 흉상은 후속 미술 범위로 남긴다.
+
+구현과 검증 자료는 [`71500dd`](https://github.com/evilmuff0805-create/Td/commit/71500dd613a7b5a3c104db0c664c33e5fedb2847)로 기존 작업 브랜치에 푸시했고, `git ls-remote`로 실제 원격 SHA 일치를 확인했다. 상위 프로젝트 리뷰도 같은 내용으로 갱신했다.
