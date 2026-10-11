@@ -11,8 +11,6 @@ export function paintBattleEvent(world,e,game,{deferShot}={}) {
   } else if(['build','upgrade','levelUp'].includes(e.k))world.effect(e.x,e.y,.7,'#c9c698','build');
   else if(e.k==='cone') {
     world.fx.volley(e.x,e.y,e.a,e.r,e.w);
-    const caster=game.heroes.find(h=>h.heroId==='yi'&&Math.hypot(h.x-e.x,h.y-e.y)<.6);
-    if(caster)world.faceHero(e.a,game.time,caster.id);
   } else if(['shot','snipe','bolt'].includes(e.k)) {
     if(deferShot)deferShot(e);else world.firingLine(e);
   } else if(e.k==='slash')world.fx.spell('slash',e.x,e.y,.72,e.f===-1?Math.PI:0);

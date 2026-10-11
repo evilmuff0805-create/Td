@@ -21,7 +21,9 @@ function run(mode,seed){
   while(!s.result&&s.tick<60*60*20){
     for(const bot of bots){botThink(s,bot,send);botSkills(s,bot,send);}
     step(s);
-    hash.update(JSON.stringify(s.events.filter(e=>e.k!=='abilityCue')));
+    // cone.caster now identifies the visual aim for identical heroes in co-op.
+    // Strip only this optional display ID; every original event field still hashes.
+    hash.update(JSON.stringify(s.events.filter(e=>e.k!=='abilityCue').map(e=>{if(e.k!=='cone')return e;const {caster,...original}=e;return original;})));
     if(s.tick%60===0||s.result){
       const snap=enc.encode(s,[]);
       snap.h=snap.h.map(a=>a.slice(0,19));snap.e=snap.e.map(a=>a.slice(0,10));snap.su=snap.su.map(a=>a.slice(0,8));

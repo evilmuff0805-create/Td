@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-11",
+  "passed": 14,
+  "scope": "display transitions, paused world transforms, aimed first frame, same-hero local co-op and legacy event fallback; no combat rule changes",
+  "tests": [
+    {
+      "name": "영웅·병력의 중간 걸음 A·B는 다음 디딤을 거쳐 준비 자세로 끝나며 위치·거리 위상을 바꾸지 않는다",
+      "passed": true
+    },
+    {
+      "name": "20·60·120fps와 오래 멈춘 게스트 서버 시각에서도 발 정리는 120ms 뒤 첫 프레임까지 끝난다",
+      "passed": true
+    },
+    {
+      "name": "발 정리 도중 공격은 즉시 실제 타격 자세를 표시하고 이동 재개도 지연되지 않는다",
+      "passed": true
+    },
+    {
+      "name": "60Hz 전투와 120Hz 화면의 반복 위치에서도 병력·거북선·충차가 준비 자세로 깜빡이지 않는다",
+      "passed": true
+    },
+    {
+      "name": "발 정리 도중 일시정지와 늦은 위치·공격 패킷은 자세를 유지하고 재개 때만 적용한다",
+      "passed": true
+    },
+    {
+      "name": "기절·텔레포트·되감기는 발 정리 상태를 취소하며 기절은 거리 위상을 보존한다",
+      "passed": true
+    },
+    {
+      "name": "8도 방향 경계에서는 그림을 유지하고 실제 회전은 네 방향 모두 전환한다",
+      "passed": true
+    },
+    {
+      "name": "새 공격의 정확한 조준은 경계를 즉시 넘고 같은 조준 신호는 반복해서 방향을 흔들지 않는다",
+      "passed": true
+    },
+    {
+      "name": "실제 월드의 pause 중 늦은 적 조준도 원화·기울기·반동·그림자·총구를 함께 고정한다",
+      "passed": true
+    },
+    {
+      "name": "실제 고정 카메라의 기울기와 관계없이 방향 경계 폭을 유지한다",
+      "passed": true
+    },
+    {
+      "name": "정지한 원화 검사기의 수동 방향도 타격 그림·기울기·반동·총구 부호를 함께 바꾼다",
+      "passed": true
+    },
+    {
+      "name": "겹쳐 선 동일 이순신 로컬 2인의 실제 기술과 스냅샷은 각 시전자만 즉시 조준한다",
+      "passed": true
+    },
+    {
+      "name": "이전 cone 패킷은 시전자가 한 명일 때만 보완하고 적 사격을 영웅 조준으로 혼동하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "정식 렌더러는 조준 수집→본체 배치→효과 순서를 지켜 발사 프레임의 그림이 틀어지지 않는다",
+      "passed": true
+    }
+  ]
+}

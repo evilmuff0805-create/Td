@@ -34,6 +34,7 @@
     "test:water": "node tools/test-water.mjs",
     "test:water-assets": "node tools/water-assets.mjs",
     "test:motion": "node tools/test-sprite-motion.mjs",
+    "test:motion-transitions": "node tools/test-motion-transitions.mjs",
     "test:inbetweens": "node tools/test-inbetweens.mjs",
     "test:inbetween-assets": "node tools/inbetween-assets.mjs",
     "test:motion-determinism": "node tools/check-motion-determinism.mjs",

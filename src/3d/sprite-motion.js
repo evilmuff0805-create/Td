@@ -4,6 +4,18 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const finite=(n,fallback)=>Number.isFinite(n)?n:fallback;
 const smooth=t=>t*t*(3-2*t);
 const stepLength=kind=>kind==='cavalry'||kind==='courier'?.52:kind==='ram'?.48:kind==='turtle'?.6:.32;
+const walkRows=[1,4,2,5],stopDuration=.12;
+
+function facingFor(previous,x,y,immediate){
+  const length=Math.hypot(x,y);
+  if(!Number.isFinite(length)||length<1e-8)return previous??0;
+  x/=length;y/=length;
+  if(previous===undefined||immediate)return y>=0?(x>=0?1:2):(x>=0?0:3);
+  // An eight-degree dead band prevents packet/turn jitter at a view boundary.
+  // A real aimed action bypasses it, so a shot still faces its actual target.
+  const margin=Math.sin(Math.PI*8/180),right=previous<2?x>=-margin:x>margin,back=previous===1||previous===2?y>=-margin:y>margin;
+  return back?(right?1:2):(right?0:3);
+}
 
 export function updateSpriteMotion(previous,input){
   const x=finite(input.x,0),z=finite(input.z,0),time=finite(input.time,0),dt=clamp(finite(input.dt,0),0,.15);
@@ -24,7 +36,8 @@ export function updateSpriteMotion(previous,input){
   // exact displayed pose until playback resumes, then resynchronise above.
   s.wasFrozen=!!input.frozen||dt===0;
   const distance=!reset&&!jump&&!input.stunned&&!input.frozen&&dt>0?Math.hypot(x-s.x,z-s.z):0;
-  if(jump||s.frozenJump){s.phase=0;s.blend=0;s.frozenJump=false;}
+  const snapped=jump||s.frozenJump;
+  if(snapped){s.phase=0;s.blend=0;s.stop=null;s.moving=false;s.frozenJump=false;}
   if(distance>0.00001)s.phase=(s.phase+distance/(2*stepLength(input.kind)))%1;
   if(input.stunned)s.blend=0;
   else if(!input.frozen&&dt>0)s.blend+=(Number(distance>.00001)-s.blend)*(1-Math.exp(-dt*18));
@@ -39,14 +52,24 @@ export function updateSpriteMotion(previous,input){
   const age=Math.max(0,s.clock-s.actionStart),attacking=age<s.duration+.09&&!input.stunned;
   const recovery=attacking?1-smooth(clamp(age/(s.duration+.09),0,1)):0;
   const hitAge=s.clock-s.hitAt,hit=hitAge>=0&&hitAge<.18?Math.sin(Math.PI*hitAge/.18):0;
+  const moving=distance>.00001,grounded=input.kind==='turtle'||input.kind==='ram';
+  if(moving||attacking||input.stunned||snapped)s.stop=null;
+  else if(s.moving&&input.inbetweens&&!grounded&&walkRows.includes(s.visual?.row)){
+    s.stop={elapsed:0,row:s.visual.row,landing:s.visual.row===4?2:s.visual.row===5?1:s.visual.row,lift:Math.abs(Math.sin(s.phase*Math.PI*2))*.009*s.blend,blend:s.blend};
+  }else if(s.stop)s.stop.elapsed+=dt;
+  s.moving=moving;
+  const stopAge=s.stop?.elapsed??stopDuration,settling=stopAge<stopDuration;
+  const walkEnergy=settling?s.stop.blend*(1-smooth(clamp(stopAge/stopDuration,0,1))):moving||!input.inbetweens?s.blend:0;
   // Supplemented actors have actual passing/follow-through/recovery artwork.
   // Unsupported or failed looks retain the approved four-row animation.
   const beat=s.phase%1,walkRow=beat<.30?1:beat<.5?0:beat<.80?2:0;
-  const row=input.inbetweens?(attacking?(age<s.duration*.28?3:age<s.duration*.70?6:7):s.blend>.16?[1,4,2,5][Math.min(3,Math.floor(beat*4))]:0):attacking&&age<s.duration*.72?3:s.blend>.16?walkRow:0;
-  const grounded=input.kind==='turtle'||input.kind==='ram';
-  const visual={row,phase:s.phase,blend:s.blend,attacking,hit,
-    lift:grounded?0:Math.abs(Math.sin(beat*Math.PI*2))*.009*s.blend-hit*.008,
-    lean:grounded?0:.022*s.blend-.045*recovery-.055*hit,
+  const row=input.inbetweens?(attacking?(age<s.duration*.28?3:age<s.duration*.70?6:7):settling?(stopAge<.04?s.stop.row:s.stop.landing):(moving||grounded)&&s.blend>.16?walkRows[Math.min(3,Math.floor(beat*4))]:0):attacking&&age<s.duration*.72?3:s.blend>.16?walkRow:0;
+  const newAim=input.aimKey!=null&&input.aimKey!==s.aimKey;
+  const facing=facingFor(input.stunned?undefined:s.visual?.facing,input.facingX,input.facingY,reset||snapped||newAction||newAim);
+  s.aimKey=input.aimKey;
+  const visual={row,phase:s.phase,blend:s.blend,attacking,hit,facing,sign:facing<2?1:-1,settling,
+    lift:grounded?0:(settling?s.stop.lift*(1-smooth(clamp(stopAge/stopDuration,0,1))):Math.abs(Math.sin(beat*Math.PI*2))*.009*walkEnergy)-hit*.008,
+    lean:grounded?0:.022*walkEnergy-.045*recovery-.055*hit,
     recoil:grounded?0:-.018*recovery-.022*hit};
   s.visual=visual;return {...visual,state:s};
 }

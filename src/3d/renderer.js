@@ -50,6 +50,7 @@ export class Renderer3D {
     this.loadingLayer.hidden=!this.loading;
     if(this.loading){this.loadingLayer.textContent=ui.assetWaitRemote?'전장 그림을 준비하고 있습니다…\n접속한 전투 상태를 동기화하고 있습니다.':'전장 그림을 준비하고 있습니다…';this.pending.length=0;world.draw(ui.clock,dt);return;}
     world.cueEnemies(this.pending,game.time);
+    world.cueHeroes(this.pending,game);
     world.sync(game, game.time, view.paused ? 0 : dt * view.speed, selected);
     for (const e of this.pending) this.effect(e, game);
     this.pending.length = 0;

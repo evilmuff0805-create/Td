@@ -1,0 +1,219 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "5a8252b408036f2665f81725155c2e802fbeaced",
+  "scope": "Display-only foot settling, direction hysteresis, aimed first frame, paused sprite transforms; all approved art preserved",
+  "regression": {
+    "groups": [
+      {
+        "name": "selftest",
+        "passed": 14
+      },
+      {
+        "name": "3d",
+        "passed": 41
+      },
+      {
+        "name": "fixed-art",
+        "passed": 15
+      },
+      {
+        "name": "campaign",
+        "passed": 16
+      },
+      {
+        "name": "effects",
+        "passed": 8
+      },
+      {
+        "name": "enemies",
+        "passed": 12
+      },
+      {
+        "name": "combat-art",
+        "passed": 13
+      },
+      {
+        "name": "skin-art",
+        "passed": 14
+      },
+      {
+        "name": "terrain",
+        "passed": 8
+      },
+      {
+        "name": "seasonal-props",
+        "passed": 6
+      },
+      {
+        "name": "water",
+        "passed": 11
+      },
+      {
+        "name": "sprite-motion",
+        "passed": 15
+      },
+      {
+        "name": "signatures",
+        "passed": 12
+      },
+      {
+        "name": "scenery",
+        "passed": 8
+      },
+      {
+        "name": "tactics",
+        "passed": 8
+      },
+      {
+        "name": "menu-art",
+        "passed": 8
+      },
+      {
+        "name": "inbetweens",
+        "passed": 19
+      },
+      {
+        "name": "combat-inbetweens",
+        "passed": 20
+      },
+      {
+        "name": "motion-transitions",
+        "passed": 14
+      }
+    ],
+    "total": 262,
+    "allGroupsExitedZero": true,
+    "finalReviewFixAffectedGroupsRechecked": [
+      "sprite-motion",
+      "fixed-art",
+      "inbetweens",
+      "combat-inbetweens",
+      "motion-transitions"
+    ]
+  },
+  "art": {
+    "preparedPoses": 1664,
+    "newPoses": 0,
+    "approvedArtAndPoseMetadataUnchanged": true,
+    "baselineFixtureUnchanged": true
+  },
+  "runtime": {
+    "report": "MOTION_TRANSITION_RUNTIME_VALIDATION.json",
+    "newTests": 14,
+    "localCoopPreserved": true,
+    "enemyMarchDoesNotCreateAttacks": true,
+    "gateArrivalImmediatelyLeaks": true,
+    "courierAndTurtleUseOnlyMovement": true,
+    "combatTimingsAndDamageUnchanged": true,
+    "sameYiPairIsConstructedSessionDefenseTestNotSelectableNormalUI": true
+  },
+  "determinism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "exitCode": 0,
+    "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721"
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+      }
+    ],
+    "baselineRewritten": false,
+    "canonicalization": "Existing optional visual action snapshot fields and abilityCue event remain excluded; additionally omit only new optional cone.caster. All original fields still hash. Caster identity separately tested with actual local Session and snapshot."
+  },
+  "build": {
+    "server": "node tools/build-3d.mjs",
+    "standalone": "node tools/build.mjs",
+    "bothExitedZero": true,
+    "embeddedArtVerification": {
+      "command": "node tools/verify-embedded-art.mjs",
+      "exitCode": 0,
+      "standaloneBytes": 107974162,
+      "embeddedDirectionalSheets": 104,
+      "embeddedMenuSheets": 1,
+      "embeddedTerrainSurfaces": 3,
+      "embeddedSeasonalPropSheets": 1,
+      "embeddedWaterSurfaces": 1,
+      "embeddedSkillAtlases": 4,
+      "eachEmbeddedExactlyOnce": true,
+      "rejectedVersionsEmbedded": 0,
+      "inbetweenArchivePngsEmbedded": 0,
+      "inbetweenArchivePngsChecked": 256
+    }
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "status": "Approved after corrections; independently reran all 14 transition tests",
+    "correctedFindings": [
+      "Grounded turtle/ram idle blinking on repeated simulation positions",
+      "Manual pose inspector final facing and transform sign mismatch"
+    ],
+    "originalDefectsCorrected": [
+      "Pause changed orientation/recoil/muzzle on late aiming information",
+      "Cone effects rotated root after sprite synchronization"
+    ]
+  },
+  "browser": {
+    "report": "MOTION_TRANSITION_BROWSER_VALIDATION.json",
+    "scenarios": 5,
+    "landmarks": 23,
+    "representatives": 6,
+    "allPassed": true,
+    "seasons": 4,
+    "reviewViewport": "414x896; scrollWidth399; no horizontal overflow; restored",
+    "latestStandaloneLocalCoop": "Normal Yi/Sejong pair; P1 targeted cone; actual P2 A key; joint rally movement; paused wave4/12",
+    "lives": [
+      8,
+      20
+    ],
+    "gold": [
+      268,
+      268
+    ],
+    "individualArrowMovementThisBrowserRun": false,
+    "individualInputsCoveredBySessionTests": true,
+    "warnings": 0,
+    "errors": 0,
+    "noFinalResultUnlockPurchaseOrReward": true,
+    "fileProtocolTested": false,
+    "actual120HzDeviceMeasured": false,
+    "actualDevicePerformanceTested": false,
+    "externalNetworkTwoDeviceTested": false
+  },
+  "screenshots": [
+    "screenshots/motion-transitions/foot-settle-desktop.png",
+    "screenshots/motion-transitions/combat-recovery-troops.png",
+    "screenshots/motion-transitions/paused-mobile.png",
+    "screenshots/motion-transitions/local-coop-battle.png"
+  ],
+  "remaining": [
+    "Longer continuous artwork cycles and minor equipment/cloth consistency",
+    "New scenery variants and larger portraits",
+    "Actual device memory, thermal, touch and performance checks",
+    "External network two-device co-op validation",
+    "Standalone asset size optimization"
+  ],
+  "github": {
+    "repository": "https://github.com/evilmuff0805-create/Td",
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "status": "Pending implementation commit and remote verification"
+  },
+  "sourceAudit": {
+    "approvedArtPoseMetadataAndBaselineFixtureGitDiffExitCode": 0,
+    "stagedDiffCheckExcludingGeneratedNewBundleExitCode": 0,
+    "generatedBundle": "assets/3d/motion-review.js",
+    "generatedShaderWhitespaceWarnings": 21,
+    "allWarningLinesAlreadyPresentInExistingGameBundle": true,
+    "reason": "Preserve bundled Three.js GLSL string literals; no manual rewriting of generated shader contents"
+  }
+}

@@ -1,0 +1,2036 @@
+{
+  "date": "2026-10-11",
+  "url": "http://127.0.0.1:8092/dev/3d-motion-review.html?mute=1",
+  "cases": [
+    {
+      "scenario": "stop",
+      "landmark": "이동",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.08173076923076944",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.9375000000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.1000",
+        "frames": "4",
+        "geometries": "19",
+        "loading": "false",
+        "phase": "이동",
+        "playing": "false",
+        "scenario": "stop",
+        "textures": "13",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stop",
+      "landmark": "멈추는 순간",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.3437500000000003",
+          "pose": "16",
+          "poseName": "pass-a",
+          "settling": "true",
+          "sign": "1",
+          "text": "첫 중간 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.3437500000000003",
+          "pose": "16",
+          "poseName": "pass-a",
+          "settling": "true",
+          "sign": "1",
+          "text": "첫 중간 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.3437500000000003",
+          "pose": "16",
+          "poseName": "pass-a",
+          "settling": "true",
+          "sign": "1",
+          "text": "첫 중간 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.3437500000000003",
+          "pose": "16",
+          "poseName": "pass-a",
+          "settling": "true",
+          "sign": "1",
+          "text": "첫 중간 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.4423076923076923",
+          "pose": "16",
+          "poseName": "pass-a",
+          "settling": "true",
+          "sign": "1",
+          "text": "첫 중간 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.2500000000000003",
+          "pose": "16",
+          "poseName": "pass-a",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 중간 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.3600",
+        "frames": "5",
+        "geometries": "25",
+        "loading": "false",
+        "phase": "멈춤 · 발 정리",
+        "playing": "false",
+        "scenario": "stop",
+        "textures": "19",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stop",
+      "landmark": "발 정리",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.3437500000000003",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "true",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.3437500000000003",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "true",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.3437500000000003",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "true",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.3437500000000003",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "true",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.4423076923076923",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "true",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞 · 발 정리"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.2500000000000003",
+          "pose": "16",
+          "poseName": "pass-a",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 중간 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.4300",
+        "frames": "6",
+        "geometries": "30",
+        "loading": "false",
+        "phase": "멈춤 · 발 정리",
+        "playing": "false",
+        "scenario": "stop",
+        "textures": "24",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stop",
+      "landmark": "준비",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.3437500000000003",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.3437500000000003",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.3437500000000003",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.3437500000000003",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.4423076923076923",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.2500000000000003",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.6000",
+        "frames": "7",
+        "geometries": "30",
+        "loading": "false",
+        "phase": "준비",
+        "playing": "false",
+        "scenario": "stop",
+        "textures": "24",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stop",
+      "landmark": "재이동",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.9296874999999902",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.9296874999999902",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.9296874999999902",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.9296874999999902",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.802884615384609",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.5624999999999947",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "2.6000",
+        "frames": "8",
+        "geometries": "32",
+        "loading": "false",
+        "phase": "재이동",
+        "playing": "false",
+        "scenario": "stop",
+        "textures": "26",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "combat",
+      "landmark": "이동",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.08173076923076944",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.9375000000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.1000",
+        "frames": "10",
+        "geometries": "32",
+        "loading": "false",
+        "phase": "이동",
+        "playing": "false",
+        "scenario": "combat",
+        "textures": "26",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "combat",
+      "landmark": "타격",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.2265625000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.2265625000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.2265625000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.2265625000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.3701923076923077",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.1875000000000003",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.3100",
+        "frames": "11",
+        "geometries": "38",
+        "loading": "false",
+        "phase": "교전 · 타격과 복귀",
+        "playing": "false",
+        "scenario": "combat",
+        "textures": "32",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "combat",
+      "landmark": "공격 후",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.2265625000000004",
+          "pose": "24",
+          "poseName": "follow-through",
+          "settling": "false",
+          "sign": "1",
+          "text": "공격 후 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.2265625000000004",
+          "pose": "24",
+          "poseName": "follow-through",
+          "settling": "false",
+          "sign": "1",
+          "text": "공격 후 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.2265625000000004",
+          "pose": "24",
+          "poseName": "follow-through",
+          "settling": "false",
+          "sign": "1",
+          "text": "공격 후 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.2265625000000004",
+          "pose": "24",
+          "poseName": "follow-through",
+          "settling": "false",
+          "sign": "1",
+          "text": "공격 후 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.3701923076923077",
+          "pose": "24",
+          "poseName": "follow-through",
+          "settling": "false",
+          "sign": "1",
+          "text": "공격 후 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.1875000000000003",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.4100",
+        "frames": "12",
+        "geometries": "43",
+        "loading": "false",
+        "phase": "교전 · 타격과 복귀",
+        "playing": "false",
+        "scenario": "combat",
+        "textures": "37",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "combat",
+      "landmark": "복귀",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.2265625000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.2265625000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.2265625000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.2265625000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.3701923076923077",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.1875000000000003",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.5200",
+        "frames": "13",
+        "geometries": "48",
+        "loading": "false",
+        "phase": "교전 · 타격과 복귀",
+        "playing": "false",
+        "scenario": "combat",
+        "textures": "42",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "combat",
+      "landmark": "재이동",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.9296874999999931",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.9296874999999931",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.9296874999999931",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.9296874999999931",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.8028846153846106",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.5624999999999962",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "2.3000",
+        "frames": "14",
+        "geometries": "48",
+        "loading": "false",
+        "phase": "이동",
+        "playing": "false",
+        "scenario": "combat",
+        "textures": "42",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "turn",
+      "landmark": "오른쪽 경계",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.615384615384615",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.5333333333333332",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "0.8000",
+        "frames": "16",
+        "geometries": "52",
+        "loading": "false",
+        "phase": "경계 ±2.3° 흔들림",
+        "playing": "false",
+        "scenario": "turn",
+        "textures": "46",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "turn",
+      "landmark": "왼쪽으로 회전",
+      "actors": [
+        {
+          "facing": "3",
+          "kind": "yi",
+          "phase": "0.6249999999999974",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "sejong",
+          "phase": "0.6249999999999974",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "guard",
+          "phase": "0.6249999999999974",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "ashigaru",
+          "phase": "0.6249999999999974",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "cavalry",
+          "phase": "0.6153846153846118",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "turtle",
+          "phase": "0.39999999999999736",
+          "pose": "19",
+          "poseName": "pass-a",
+          "settling": "false",
+          "sign": "-1",
+          "text": "첫 중간 · 왼쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "2.1000",
+        "frames": "17",
+        "geometries": "58",
+        "loading": "false",
+        "phase": "왼쪽으로 실제 회전",
+        "playing": "false",
+        "scenario": "turn",
+        "textures": "52",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "turn",
+      "landmark": "왼쪽 경계",
+      "actors": [
+        {
+          "facing": "3",
+          "kind": "yi",
+          "phase": "0.6249999999999949",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "sejong",
+          "phase": "0.6249999999999949",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "guard",
+          "phase": "0.6249999999999949",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "ashigaru",
+          "phase": "0.6249999999999949",
+          "pose": "11",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "cavalry",
+          "phase": "0.23076923076922443",
+          "pose": "7",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "-1",
+          "text": "첫 디딤 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "turtle",
+          "phase": "0.9333333333333282",
+          "pose": "23",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "-1",
+          "text": "둘째 중간 · 왼쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "2.9000",
+        "frames": "18",
+        "geometries": "60",
+        "loading": "false",
+        "phase": "왼쪽 경계 흔들림",
+        "playing": "false",
+        "scenario": "turn",
+        "textures": "54",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "turn",
+      "landmark": "오른쪽으로 회전",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.7499999999999918",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.7499999999999918",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.7499999999999918",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.7499999999999918",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.9230769230769132",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.5333333333333263",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "3.8000",
+        "frames": "19",
+        "geometries": "60",
+        "loading": "false",
+        "phase": "오른쪽으로 실제 회전",
+        "playing": "false",
+        "scenario": "turn",
+        "textures": "54",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "pause",
+      "landmark": "첫 공격",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.8750000000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.8750000000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.8750000000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.8750000000000004",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.15384615384615416",
+          "pose": "12",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "1",
+          "text": "타격 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "8.881784197001252e-16",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "0.8300",
+        "frames": "21",
+        "geometries": "60",
+        "loading": "false",
+        "phase": "공격과 복귀",
+        "playing": "false",
+        "scenario": "pause",
+        "textures": "54",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "pause",
+      "landmark": "일시정지",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.15384615384615416",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "8.881784197001252e-16",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.1000",
+        "frames": "22",
+        "geometries": "60",
+        "loading": "false",
+        "phase": "일시정지 · 표시 유지",
+        "playing": "false",
+        "scenario": "pause",
+        "textures": "54",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "pause",
+      "landmark": "늦은 공격 도착",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.8750000000000004",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.15384615384615416",
+          "pose": "28",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "1",
+          "text": "복귀 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "8.881784197001252e-16",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.5000",
+        "frames": "23",
+        "geometries": "60",
+        "loading": "false",
+        "phase": "일시정지 · 반대 방향 공격 정보 도착",
+        "playing": "false",
+        "scenario": "pause",
+        "textures": "54",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "pause",
+      "landmark": "재개·새 공격",
+      "actors": [
+        {
+          "facing": "3",
+          "kind": "yi",
+          "phase": "0.8750000000000004",
+          "pose": "15",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "-1",
+          "text": "타격 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "sejong",
+          "phase": "0.8750000000000004",
+          "pose": "15",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "-1",
+          "text": "타격 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "guard",
+          "phase": "0.8750000000000004",
+          "pose": "15",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "-1",
+          "text": "타격 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "ashigaru",
+          "phase": "0.8750000000000004",
+          "pose": "15",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "-1",
+          "text": "타격 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "cavalry",
+          "phase": "0.15384615384615416",
+          "pose": "15",
+          "poseName": "attack",
+          "settling": "false",
+          "sign": "-1",
+          "text": "타격 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "turtle",
+          "phase": "8.881784197001252e-16",
+          "pose": "3",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "-1",
+          "text": "준비 · 왼쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "2.0200",
+        "frames": "24",
+        "geometries": "66",
+        "loading": "false",
+        "phase": "공격과 복귀",
+        "playing": "false",
+        "scenario": "pause",
+        "textures": "60",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "pause",
+      "landmark": "복귀",
+      "actors": [
+        {
+          "facing": "3",
+          "kind": "yi",
+          "phase": "0.8750000000000004",
+          "pose": "31",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "-1",
+          "text": "복귀 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "sejong",
+          "phase": "0.8750000000000004",
+          "pose": "31",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "-1",
+          "text": "복귀 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "guard",
+          "phase": "0.8750000000000004",
+          "pose": "31",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "-1",
+          "text": "복귀 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "ashigaru",
+          "phase": "0.8750000000000004",
+          "pose": "31",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "-1",
+          "text": "복귀 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "cavalry",
+          "phase": "0.15384615384615416",
+          "pose": "31",
+          "poseName": "recover",
+          "settling": "false",
+          "sign": "-1",
+          "text": "복귀 · 왼쪽 앞"
+        },
+        {
+          "facing": "3",
+          "kind": "turtle",
+          "phase": "8.881784197001252e-16",
+          "pose": "3",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "-1",
+          "text": "준비 · 왼쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "2.2400",
+        "frames": "25",
+        "geometries": "71",
+        "loading": "false",
+        "phase": "공격과 복귀",
+        "playing": "false",
+        "scenario": "pause",
+        "textures": "65",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stun",
+      "landmark": "이동",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.7578125000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.08173076923076944",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.9375000000000004",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.1000",
+        "frames": "27",
+        "geometries": "71",
+        "loading": "false",
+        "phase": "이동",
+        "playing": "false",
+        "scenario": "stun",
+        "textures": "65",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stun",
+      "landmark": "기절",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.421875",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.421875",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.421875",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.421875",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.4903846153846152",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.2916666666666668",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "1.8000",
+        "frames": "28",
+        "geometries": "71",
+        "loading": "false",
+        "phase": "기절 · 보행 중단",
+        "playing": "false",
+        "scenario": "stun",
+        "textures": "65",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stun",
+      "landmark": "재이동",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.12499999999999013",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.12499999999999013",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.12499999999999013",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.12499999999999013",
+          "pose": "4",
+          "poseName": "walk-left",
+          "settling": "false",
+          "sign": "1",
+          "text": "첫 디딤 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.9230769230769167",
+          "pose": "20",
+          "poseName": "pass-b",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 중간 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.6666666666666614",
+          "pose": "8",
+          "poseName": "walk-right",
+          "settling": "false",
+          "sign": "1",
+          "text": "둘째 디딤 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "2.5000",
+        "frames": "29",
+        "geometries": "71",
+        "loading": "false",
+        "phase": "기절 후 재이동",
+        "playing": "false",
+        "scenario": "stun",
+        "textures": "65",
+        "visible": "6"
+      },
+      "overflow": false
+    },
+    {
+      "scenario": "stun",
+      "landmark": "준비",
+      "actors": [
+        {
+          "facing": "0",
+          "kind": "yi",
+          "phase": "0.7031249999999826",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "sejong",
+          "phase": "0.7031249999999826",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "guard",
+          "phase": "0.7031249999999826",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "ashigaru",
+          "phase": "0.7031249999999826",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "cavalry",
+          "phase": "0.509615384615373",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        },
+        {
+          "facing": "0",
+          "kind": "turtle",
+          "phase": "0.0416666666666569",
+          "pose": "0",
+          "poseName": "idle",
+          "settling": "false",
+          "sign": "1",
+          "text": "준비 · 오른쪽 앞"
+        }
+      ],
+      "body": {
+        "actorCount": "6",
+        "elapsed": "3.9000",
+        "frames": "30",
+        "geometries": "71",
+        "loading": "false",
+        "phase": "준비",
+        "playing": "false",
+        "scenario": "stun",
+        "textures": "65",
+        "visible": "6"
+      },
+      "overflow": false
+    }
+  ],
+  "playStart": {
+    "body": {
+      "actorCount": "6",
+      "elapsed": "1.6466",
+      "frames": "46",
+      "geometries": "71",
+      "loading": "false",
+      "phase": "준비",
+      "playing": "true",
+      "scenario": "stop",
+      "textures": "65",
+      "visible": "6"
+    },
+    "time": "1.65 / 4.80초"
+  },
+  "playLater": {
+    "body": {
+      "actorCount": "6",
+      "elapsed": "1.5801",
+      "frames": "2058",
+      "geometries": "71",
+      "loading": "false",
+      "phase": "준비",
+      "playing": "true",
+      "scenario": "stop",
+      "textures": "65",
+      "visible": "6"
+    },
+    "time": "1.58 / 4.80초"
+  },
+  "playPause": {
+    "advanced": true,
+    "pausedA": {
+      "frames": "2063",
+      "time": "1.65 / 4.80초"
+    },
+    "pausedB": {
+      "frames": "2064",
+      "season": "spring",
+      "time": "1.65 / 4.80초"
+    },
+    "held": true
+  },
+  "seasons": [
+    {
+      "actors": 6,
+      "overflow": false,
+      "selected": "spring"
+    },
+    {
+      "actors": 6,
+      "overflow": false,
+      "selected": "summer"
+    },
+    {
+      "actors": 6,
+      "overflow": false,
+      "selected": "autumn"
+    },
+    {
+      "actors": 6,
+      "overflow": false,
+      "selected": "winter"
+    }
+  ],
+  "mobile": {
+    "actors": [
+      {
+        "facing": "0",
+        "kind": "yi",
+        "phase": "0.8750000000000004",
+        "pose": "28",
+        "poseName": "recover",
+        "settling": "false",
+        "sign": "1",
+        "text": "복귀 · 오른쪽 앞"
+      },
+      {
+        "facing": "0",
+        "kind": "sejong",
+        "phase": "0.8750000000000004",
+        "pose": "28",
+        "poseName": "recover",
+        "settling": "false",
+        "sign": "1",
+        "text": "복귀 · 오른쪽 앞"
+      },
+      {
+        "facing": "0",
+        "kind": "guard",
+        "phase": "0.8750000000000004",
+        "pose": "28",
+        "poseName": "recover",
+        "settling": "false",
+        "sign": "1",
+        "text": "복귀 · 오른쪽 앞"
+      },
+      {
+        "facing": "0",
+        "kind": "ashigaru",
+        "phase": "0.8750000000000004",
+        "pose": "28",
+        "poseName": "recover",
+        "settling": "false",
+        "sign": "1",
+        "text": "복귀 · 오른쪽 앞"
+      },
+      {
+        "facing": "0",
+        "kind": "cavalry",
+        "phase": "0.15384615384615416",
+        "pose": "28",
+        "poseName": "recover",
+        "settling": "false",
+        "sign": "1",
+        "text": "복귀 · 오른쪽 앞"
+      },
+      {
+        "facing": "0",
+        "kind": "turtle",
+        "phase": "8.881784197001252e-16",
+        "pose": "0",
+        "poseName": "idle",
+        "settling": "false",
+        "sign": "1",
+        "text": "준비 · 오른쪽 앞"
+      }
+    ],
+    "body": {
+      "actorCount": "6",
+      "elapsed": "1.5000",
+      "frames": "2084",
+      "geometries": "71",
+      "loading": "false",
+      "phase": "일시정지 · 반대 방향 공격 정보 도착",
+      "playing": "false",
+      "scenario": "pause",
+      "textures": "65",
+      "visible": "4"
+    },
+    "height": 896,
+    "overflow": false,
+    "scrollWidth": 399,
+    "width": 414
+  },
+  "standalone": {
+    "url": "http://127.0.0.1:8092/dist/hoguk.html?mute=1",
+    "p2Before": "훈민 정음\nA",
+    "p2After": "훈민 정음\nA\n16",
+    "canvas": {
+      "combatInbetweenActive": "false",
+      "combatInbetweenCount": "12",
+      "combatInbetweenExpected": "12",
+      "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatInbetweenStatus": "ready",
+      "combatPoseActive": "true",
+      "combatPoseCount": "12",
+      "combatPoseExpected": "12",
+      "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+      "combatPoseLastKind": "ashigaru",
+      "combatPoseLastState": "walk-left",
+      "combatPoseStatus": "ready",
+      "drawCalls": "334",
+      "effectArtStatus": "ready",
+      "engine": "three.js r186",
+      "fixedArt": "true",
+      "fixedArtStatus": "ready",
+      "fps": "60",
+      "geometries": "211",
+      "heroInbetweenActive": "false",
+      "heroInbetweenCount": "2",
+      "heroInbetweenExpected": "2",
+      "heroInbetweenKinds": "sejong,yi",
+      "heroInbetweenLookKey": "sejong,yi",
+      "heroInbetweenStatus": "ready",
+      "heroPoseCount": "8",
+      "heroPoseStatus": "ready",
+      "landmarkArtStatus": "ready",
+      "renderMode": "3d",
+      "sceneryCargo": "1",
+      "sceneryCrowns": "9",
+      "sceneryHouses": "3",
+      "sceneryLamps": "7",
+      "sceneryLayout": "clustered",
+      "sceneryLowTrees": "12",
+      "sceneryProps": "38",
+      "seasonTreeArtStatus": "ready",
+      "signatureArtStatus": "ready",
+      "skinPoseCount": "0",
+      "skinPoseExpected": "0",
+      "skinPoseKinds": "",
+      "skinPoseStatus": "ready",
+      "spriteMotion": "distance-contact-recovery",
+      "tacticArtStatus": "ready",
+      "terrainRoad": "continuous",
+      "terrainRoadLayers": "1",
+      "terrainRoadTriangles": "3216",
+      "terrainShore": "continuous",
+      "terrainShoreTriangles": "1944",
+      "textures": "125",
+      "triangles": "55820",
+      "waterTriangles": "7704",
+      "yiFacing": "3",
+      "yiPose": "walk-left"
+    },
+    "text": "부산진 전투\n보통\n♥\n민심\n8/20\n파도\n4/12\n1P 군자금\n268\n2P 군자금\n268\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv2\n학익진\n14\n거북선\n신기전\n봉수\n1P 클릭 · 2P Space\n공명 46%\n진격 중\n적 23\n세종대왕 Lv2\n훈민 정음\nA\n16\n자격루\nS\n봉수\nD\n신기전\nF",
+    "scope": "Latest embedded build; normal local Yi/Sejong pair, P1 targeted cone cast, P2 A cast, joint rally movement and pause. No final result screen entered."
+  },
+  "logs": {
+    "review": [],
+    "standalone": []
+  },
+  "validationPassed": true
+}

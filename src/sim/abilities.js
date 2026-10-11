@@ -77,7 +77,7 @@ export function castHeroSkill(s, h, x, y) {
         if (Math.abs(da) <= YI_FAN.halfAngle) damage(s, e, dmg, 'phys', src);
       }
       h.facing = Math.cos(ang) >= 0 ? 1 : -1;
-      ev(s, 'cone', { x: h.x, y: h.y, a: ang, r: YI_FAN.range, w: YI_FAN.halfAngle });
+      ev(s, 'cone', { x: h.x, y: h.y, a: ang, r: YI_FAN.range, w: YI_FAN.halfAngle, caster: h.id });
       ev(s, 'sfx', { n: 'volley' });
       break;
     }

@@ -35,7 +35,7 @@ export class WinterWorld {
     this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=T.PCFShadowMap;
     this.scene=new T.Scene();this.scene.background=new T.Color(this.theme.sky);this.scene.fog=new T.Fog(this.theme.fog,48,95);
     this.crowd=new CrowdRenderer(this.scene);
-    this.unitTemplates=new Map();this.enemyCues=new Map();
+    this.unitTemplates=new Map();this.enemyCues=new Map();this.heroCues=new Map();
     this.camera=new T.OrthographicCamera(-20,20,12,-12,.1,150);
     this.controls=new OrbitControls(this.camera,canvas);this.controls.enableDamping=true;this.controls.dampingFactor=.09;
     this.controls.minZoom=.72;this.controls.maxZoom=3.1;this.controls.minPolarAngle=.4;this.controls.maxPolarAngle=1.2;
@@ -181,6 +181,7 @@ export class WinterWorld {
     if(this.art?.loading){this.range.visible=false;return;}
     if(this.art?.failed)this.batchCrowd=this.allowBatchCrowd;
     if(this.enemyCues)for(const [id,cue]of this.enemyCues)if(cue.until<=game.time)this.enemyCues.delete(id);
+    if(this.heroCues)for(const [id,cue]of this.heroCues)if(cue.until<=game.time)this.heroCues.delete(id);
     const activeUnits=new Set();
     for(const [hero,ally,list] of [[true,false,game.heroes],[false,false,game.enemies],[false,true,game.summons]]) for(const e of list) {
       const key=`${hero?'h':ally?'s':'e'}${e.id}`;activeUnits.add(key);let root=this.units.get(key);
@@ -199,8 +200,8 @@ export class WinterWorld {
       const move=hero?e.moving:ally?delta.lengthSq()>.00001:!e.blockedBy&&!(e.stunT>0);
       let target=null;
       if(hero||ally){let distance=Infinity;for(const enemy of game.enemies){const d=(enemy.x-e.x)**2+(enemy.y-e.y)**2;if(enemy.hp>0&&d<distance){distance=d;target=enemy;}}}
-      const cue=!hero&&!ally?this.enemyCues?.get(e.id):null;
-      const angle=cue?.angle??(root.userData.castUntil>game.time?root.userData.castDirection:move&&delta.lengthSq()>.00001?Math.atan2(delta.x,delta.z):target&&Math.hypot(target.x-e.x,target.y-e.y)<4?Math.atan2(target.x-e.x,target.y-e.y):root.rotation.y);
+      const cue=hero?this.heroCues?.get(e.id):!ally?this.enemyCues?.get(e.id):null;
+      const angle=cue?.angle??(move&&delta.lengthSq()>.00001?Math.atan2(delta.x,delta.z):target&&Math.hypot(target.x-e.x,target.y-e.y)<4?Math.atan2(target.x-e.x,target.y-e.y):root.rotation.y);
       if(cue?.angle!=null)root.rotation.y=angle;
       else root.rotation.y+=Math.atan2(Math.sin(angle-root.rotation.y),Math.cos(angle-root.rotation.y))*Math.min(1,dt*12);
       let poseTime=time;
@@ -219,7 +220,7 @@ export class WinterWorld {
       hp.quaternion.copy(this.camera.quaternion).premultiply(root.quaternion.clone().invert());
       hp.userData.front.scale.x=.52*ratio;hp.userData.front.position.x=-.26*(1-ratio);
       this.art?.attachUnit(root,e,hero,ally);this.art?.updateUnit(root,e,move,hero||ally?e.anim:cue?Math.max(0,cue.until-game.time):e.swing||0,poseTime,
-        {x:e.x,z:e.y,targetX:e._x1,targetZ:e._y1,time:game.time,dt,frozen:dt===0||game.paused});
+        {x:e.x,z:e.y,targetX:e._x1,targetZ:e._y1,time:game.time,dt,frozen:dt===0||game.paused,aimKey:cue?.angle!=null?cue:null});
     }
     for(const [key,root] of this.units) if(!activeUnits.has(key)) {
       this.units.delete(key);this.pickables=this.pickables.filter((p)=>p!==root);root.userData.hp.visible=false;
@@ -382,6 +383,18 @@ export class WinterWorld {
       this.enemyCues.set(e.enemy,{until:time+.25,angle:aimed?Math.atan2(e.x2-e.x1,e.y2-e.y1):null,priority});
     }
   }
+  cueHeroes(events,game) {
+    for(const e of events){
+      if(e.k==='cone'&&Number.isFinite(e.a)){
+        const candidates=e.caster!=null?game.heroes.filter(h=>h.id===e.caster):game.heroes.filter(h=>h.heroId==='yi'&&Math.hypot(h.x-e.x,h.y-e.y)<.6);
+        // Old packets without an ID may be ambiguous when both players use Yi.
+        // Keep their displayed aim rather than rotating the other player's hero.
+        if(candidates.length===1)this.faceHero(e.a,game.time,candidates[0].id);
+      }else if(e.caster!=null&&['shot','snipe','bolt'].includes(e.k)&&[e.x1,e.y1,e.x2,e.y2].every(Number.isFinite)){
+        if(game.heroes.some(h=>h.id===e.caster))this.faceHero(Math.atan2(e.y2-e.y1,e.x2-e.x1),game.time,e.caster);
+      }
+    }
+  }
   firingLine(e) {
     const key=e.enemy!=null?`e${e.enemy}`:e.caster!=null?`h${e.caster}`:null;
     const socket=key?this.units?.get(key)?.userData.weapons?.[1]:null;
@@ -394,7 +407,11 @@ export class WinterWorld {
     this.fx.line(muzzle?.x??e.x1,muzzle?.z??e.y1,e.x2,e.y2,e.c??(e.k==='bolt'?'#b9e7ff':'#f1ca82'),e.k==='snipe'?.4:.16,e.k==='bolt',muzzle?.y??.8);
   }
   effect(x,z,r=1,color='#eac891',kind='impact') {this.fx.impact(x,z,r,color,kind);}
-  faceHero(angle,time,id) {const root=[...this.units.values()].find(o=>o.userData.hero&&(id===undefined||o.userData.entity.id===id));if(root){root.userData.castDirection=Math.PI/2-angle;root.userData.castUntil=time+.6;root.rotation.y=root.userData.castDirection;}}
+  faceHero(angle,time,id) {
+    id??=[...this.units.values()].find(o=>o.userData.hero)?.userData.entity.id;
+    if(id==null||!Number.isFinite(angle))return;
+    this.heroCues??=new Map();this.heroCues.set(id,{angle:Math.PI/2-angle,until:time+.6});
+  }
   aim(x,y) {
     const rect=this.renderer.domElement.getBoundingClientRect();this.pointer.set((x-rect.left)/rect.width*2-1,-(y-rect.top)/rect.height*2+1);
     this.raycaster.setFromCamera(this.pointer,this.camera);
@@ -441,6 +458,7 @@ export class WinterWorld {
   }
   reset() {
     this.enemyCues?.clear();
+    this.heroCues?.clear();
     for(const obj of [...this.units.values(),...this.corpses.map((c)=>c.root)]){this.scene.remove(obj);this.disposeCharacter(obj);}
     for(const t of this.towers.values()){this.scene.remove(t.root);this.disposeModel(t.root);}
     for(const obj of this.bullets.values()){this.scene.remove(obj);this.disposeModel(obj);}

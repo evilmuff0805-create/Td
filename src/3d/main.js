@@ -64,6 +64,7 @@ function announceCombo(event) {
 }
 function events() {
   world.cueEnemies(game.events,game.time);
+  world.cueHeroes(game.events,game);
   for(const e of game.events) {
     if(e.k==='sfx')audio.play(e.n);
     else if(e.k==='toast')notice(e.text);

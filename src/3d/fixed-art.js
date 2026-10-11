@@ -17,6 +17,7 @@ import { inbetweenLookRoster,inbetweenLooksKey } from './inbetween-roster.js';
 export const FIXED_ART={yi:HERO_POSE_ART.yi.path,towers:'assets/3d/fixed/tower-tiers-v2.webp',winter:'assets/3d/fixed/winter-props-v2.webp'};
 const atlases=new Map();
 const up=new T.Vector3(0,1,0),right=new T.Vector3(1,0,0),direction=new T.Vector3(),inverse=new T.Quaternion();
+const groundRight=new T.Vector3(),groundUp=new T.Vector3();
 const shadowProjection=new T.Matrix4().set(1,.5,0,0,0,0,0,.042,0,-.75,1,0,0,0,0,1),shadowRotation=new T.Matrix4();
 
 // Trim within each cell, never across an adjacent pose. The lower foot centroid
@@ -290,13 +291,15 @@ export class FixedBattleArt {
     const screenRight=right.clone().applyQuaternion(this.world.camera.quaternion),screenUp=up.clone().applyQuaternion(this.world.camera.quaternion);
     direction.set(Math.sin(root.rotation.y),0,Math.cos(root.rotation.y));
     const dx=direction.dot(screenRight),dy=direction.dot(screenUp);
-    const motion=motionInput?updateSpriteMotion(d.motion,{...motionInput,kind:d.kind,attack,hp:entity.hp,inbetweens:!!inbetweens,
+    groundRight.copy(screenRight).setY(0).normalize();groundUp.copy(screenUp).setY(0).normalize();
+    const motion=motionInput?updateSpriteMotion(d.motion,{...motionInput,kind:d.kind,attack,hp:entity.hp,inbetweens:!!inbetweens,facingX:direction.dot(groundRight),facingY:direction.dot(groundUp),
       actionSeq:entity.actionSeq??motionInput.actionSeq,actionAt:entity.actionAt??motionInput.actionAt,
       actionDuration:entity.actionDuration??motionInput.actionDuration,stunned:entity.stunT>0}):null;
     if(motion){d.motion=motion.state;d.motionPhase=motion.phase;d.motionBlend=motion.blend;}
-    if(root.userData.illustrationProxy)root.userData.weapons[1].position.copy(screenUp).multiplyScalar(height*.6).addScaledVector(screenRight,dx<0?-.18:.18).applyQuaternion(inverse);
+    const facing=Number.isInteger(motionInput?.poseRow)||!motion?dy>=0?(dx>=0?1:2):(dx>=0?0:3):motion.facing,sign=facing<2?1:-1;
+    if(root.userData.illustrationProxy)root.userData.weapons[1].position.copy(screenUp).multiplyScalar(height*.6).addScaledVector(screenRight,sign*.18).applyQuaternion(inverse);
     if(d.directional){
-      const col=dy>=0?(dx>=0?1:2):(dx>=0?0:3),requestedRow=Number.isInteger(motionInput?.poseRow)?motionInput.poseRow:motion?motion.row:attack>0?3:moving?1+Math.floor(time*5.5+(root.userData.phase??0))%2:0;
+      const col=facing,requestedRow=Number.isInteger(motionInput?.poseRow)?motionInput.poseRow:motion?motion.row:attack>0?3:moving?1+Math.floor(time*5.5+(root.userData.phase??0))%2:0;
       // poseRow is used by the art inspector only. A missing/mismatched sheet
       // always resolves to an original pose, never another costume's pixels.
       const row=requestedRow>=4&&requestedRow<=7&&inbetweens?requestedRow:requestedRow>=0&&requestedRow<=3?requestedRow:0,index=row*4+col;
@@ -309,10 +312,9 @@ export class FixedBattleArt {
       if(d.faction==='hero')this.world.renderer.domElement.dataset.heroInbetweenActive=String(row>=4);
       if(d.kind==='yi'){this.world.renderer.domElement.dataset.yiPose=d.pose;this.world.renderer.domElement.dataset.yiFacing=String(col);}
       if(d.faction!=='hero'){const dataset=this.world.renderer.domElement.dataset;dataset.combatPoseActive='true';dataset.combatPoseLastKind=d.kind;dataset.combatPoseLastState=d.pose;dataset.combatInbetweenActive=String(row>=4);}
-    }else image.scale.x=dx<0?-1:1;
+    }else image.scale.x=sign;
     image.position.set(0,motion?motion.lift:moving?Math.abs(Math.sin(time*8+(root.userData.phase??0)))*.025:0,0);
     if(motion){
-      const sign=dx<0?-1:1;
       image.quaternion.multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,0,1),-motion.lean*sign));
       image.position.addScaledVector(screenRight.clone().applyQuaternion(inverse),motion.recoil*sign);
     }
