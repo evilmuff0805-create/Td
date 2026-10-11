@@ -32,9 +32,9 @@ function yawFor(camera,col){const r=new T.Vector3(1,0,0).applyQuaternion(camera.
 const sample=(extra={})=>({kind:'yi',x:8,z:5,time:0,dt:DT,hp:100,attack:0,inbetweens:true,...extra});
 const visual=({state,...out})=>out;
 
-await test('기본 영웅 8명에 새 128자세만 덧붙이고 기존 기준 높이와 의상 정체성을 보존한다',()=>{
-  assert.deepEqual(Object.keys(HERO_INBETWEEN_ART).sort(),HERO_ORDER.slice().sort());
-  for(const [id,l]of Object.entries(HERO_INBETWEEN_ART)){assert.equal(l.heroId,id);assert.equal(l.skin,null);assert.equal(l.frames.length,16);assert.deepEqual(l.roles,['pass-a','pass-b','follow-through','recover']);assert.ok(l.frames.every(f=>f.referenceHeight===HERO_POSE_ART[id].frames[0].referenceHeight&&f.anchor>0&&f.anchor<1&&f.anchorY>0));}
+await test('기본 8명·특수 의상 16종의 새 384자세가 기존 기준 높이와 의상 정체성을 보존한다',()=>{
+  assert.deepEqual(Object.keys(HERO_INBETWEEN_ART).sort(),[...HERO_ORDER,...Object.keys(SKIN_POSE_ART)].sort());
+  for(const [id,l]of Object.entries(HERO_INBETWEEN_ART)){const original=l.skin?SKIN_POSE_ART[l.skin]:HERO_POSE_ART[l.heroId];assert.equal(id,l.skin??l.heroId);assert.ok(HERO_ORDER.includes(l.heroId));assert.equal(l.frames.length,16);assert.deepEqual(l.roles,['pass-a','pass-b','follow-through','recover']);assert.ok(l.frames.every(f=>f.referenceHeight===original.frames[0].referenceHeight&&f.anchor>0&&f.anchor<1&&f.anchorY>0));}
 });
 await test('기본 영웅도 로딩 키에 포함하며 소유자·스냅샷 순서와 중복에 영향받지 않는다',()=>{
   const heroes=[{heroId:'yi'},{heroId:'yi',owner:1},{heroId:'sejong',skin:'invalid'},{heroId:'yi',skin:'yi_gold'},{heroId:'invalid'}];
@@ -42,13 +42,13 @@ await test('기본 영웅도 로딩 키에 포함하며 소유자·스냅샷 순
   assert.equal(inbetweenLooksKey(heroes),inbetweenLooksKey(heroes.slice().reverse().map(h=>({...h}))));
   assert.notEqual(inbetweenLooksKey([{heroId:'yi'}]),inbetweenLooksKey([{heroId:'gwon'}]));
 });
-await test('실제 8영웅 루트의 256자세가 방향·배율·본체·가림·그림자를 함께 바꾼다',()=>{
+await test('실제 24개 영웅 외형의 768자세가 방향·배율·본체·가림·그림자를 함께 바꾼다',()=>{
   const {world,art}=context(),visited=new Set();
-  for(const id of HERO_ORDER){
-    const h={id:1,heroId:id,hp:100,owner:0},root=world.unit(h,true),d=root.userData.fixedImage;
+  for(const [id,look]of Object.entries(HERO_INBETWEEN_ART)){
+    const h={id:1,heroId:look.heroId,skin:look.skin,hp:100,owner:0},root=world.unit(h,true),d=root.userData.fixedImage;
     for(let col=0;col<4;col++)for(let row=0;row<8;row++){
       root.rotation.y=yawFor(world.camera,col);art.updateUnit(root,h,false,0,0,{...sample(),poseRow:row});
-      const atlas=row>=4?art.inbetweenPoses[id]:art.heroPoses[id],f=atlas.isolated[(row%4)*4+col].frame;
+      const atlas=row>=4?art.inbetweenPoses[id]:look.skin?art.skinPoses[look.skin]:art.heroPoses[look.heroId],f=atlas.isolated[(row%4)*4+col].frame;
       assert.equal(d.poseIndex,row*4+col);visited.add(id+':'+d.poseIndex);assert.equal(d.image.material.map.image,atlas.isolated[(row%4)*4+col].canvas);
       assert.equal(d.hint.material.map,d.image.material.map);assert.equal(d.shadow.material.map,d.image.material.map);assert.equal(d.shadow.geometry,d.image.geometry);assert.equal(d.hint.geometry,d.image.geometry);
       d.image.geometry.computeBoundingBox();const b=d.image.geometry.boundingBox,scale=d.height/f.referenceHeight;
@@ -56,7 +56,7 @@ await test('실제 8영웅 루트의 256자세가 방향·배율·본체·가림
       assert.ok(root.quaternion.clone().multiply(d.image.quaternion).angleTo(world.camera.quaternion)<1e-6);
       const ground=new T.Vector3(0,1,0).applyMatrix4(d.shadow.matrix).applyQuaternion(root.quaternion);assert.ok(Math.abs(ground.y-.042)<1e-6);
     }world.disposeCharacter(root);
-  }assert.equal(visited.size,256);art.dispose();
+  }assert.equal(visited.size,768);art.dispose();
 });
 await test('새 보행 네 박자는 이동 거리로 연결되고 20·60·120fps에서 같은 위상을 가진다',()=>{
   const phases=[];
@@ -78,17 +78,32 @@ await test('정지 중 늦은 공격·피격·기절·위치 패킷도 표시 �
   assert.equal(a.state.seq,undefined);assert.equal(a.state.hp,100);
   a=updateSpriteMotion(a.state,sample({x:12,time:.5,actionSeq:1,actionAt:.5,hp:90}));assert.equal(a.row,3);assert.equal(a.phase,0);
 });
-await test('원화 없는 특수 의상·누락 시트는 타 의상 원화로 바뀌지 않는다',()=>{
+await test('중간 시트가 누락된 특수 의상은 기본·다른 의상의 중간 원화로 바뀌지 않는다',()=>{
   const {world,art}=context(),h={heroId:'yi',skin:'yi_gold',hp:100};
+  art.inbetweenPoses.yi_gold=null;
   const root=world.unit(h,true),d=root.userData.fixedImage;art.updateUnit(root,h,false,0,0,{...sample(),poseRow:4});assert.equal(d.art,art.skinPoses.yi_gold);assert.equal(d.inbetweens,null);assert.equal(Math.floor(d.poseIndex/4),0);
   assert.equal(art.unitInbetweens({heroId:'yi'},art.heroPoses.gwon),null);art.inbetweenPoses.yi=null;assert.equal(art.unitInbetweens({heroId:'yi'},art.heroPoses.yi),null);world.disposeCharacter(root);art.dispose();
 });
-await test('로컬 1P·2P 실제 입력과 같은 영웅의 두 동작 상태가 독립적이다',()=>{
-  const session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi']},{heroes:['yi']}]});
+await test('의상 원본이 실패하고 의상 중간 원화만 성공해도 옷이 섞이지 않는다',()=>{
+  const {world,art}=context(false),h={heroId:'yi',skin:'yi_gold',hp:100};
+  art.skinPoses.yi_gold=null;art.inbetweenPoses.yi_gold=mockAtlas(HERO_INBETWEEN_ART.yi_gold);
+  const root=world.unit(h,true),d=root.userData.fixedImage;
+  for(const row of [4,5,6,7]){art.updateUnit(root,h,false,0,0,{...sample(),poseRow:row});assert.equal(d.art,art.heroPoses.yi);assert.equal(d.inbetweens,null);assert.equal(Math.floor(d.poseIndex/4),0);assert.equal(d.image.material.map.image,art.heroPoses.yi.isolated[d.facing].canvas);}
+  world.disposeCharacter(root);art.dispose();
+});
+await test('같은 영웅의 흰 의상 1P·금빛 의상 2P는 중간 동작과 재질을 독립적으로 유지한다',()=>{
+  const {world,art}=context(),a={heroId:'yi',skin:'yi_white',owner:0,hp:100,actionSeq:1,actionAt:0,actionDuration:.25},b={heroId:'yi',skin:'yi_gold',owner:1,hp:100},ra=world.unit(a,true),rb=world.unit(b,true);
+  art.updateUnit(ra,a,false,0,0,sample());art.updateUnit(rb,b,false,0,0,sample());art.updateUnit(ra,a,false,0,.12,sample({time:.12}));art.updateUnit(rb,b,true,0,.12,sample({x:8.4,time:.12}));
+  const da=ra.userData.fixedImage,db=rb.userData.fixedImage;assert.equal(da.pose,'follow-through');assert.notEqual(db.pose,'follow-through');assert.equal(da.inbetweens,art.inbetweenPoses.yi_white);assert.equal(db.inbetweens,art.inbetweenPoses.yi_gold);assert.notEqual(da.motion,db.motion);assert.notEqual(da.image.material,db.image.material);assert.equal(da.image.material.map.image,art.inbetweenPoses.yi_white.isolated[8+da.facing].canvas);
+  art.updateUnit(rb,b,false,0,.13,{...sample({time:.13}),poseRow:5});assert.equal(db.image.material.map.image,art.inbetweenPoses.yi_gold.isolated[4+db.facing].canvas);assert.equal(da.pose,'follow-through');
+  let released=0;db.image.material.map.addEventListener('dispose',()=>released++);world.disposeCharacter(ra);assert.equal(released,0);world.disposeCharacter(rb);art.dispose();assert.equal(released,1);
+});
+await test('서로 다른 의상도 로컬 1P·2P 실제 입력과 스냅샷·두 동작 상태가 독립적이다',()=>{
+  const session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi'],skins:{yi:'yi_white'}},{heroes:['yi'],skins:{yi:'yi_gold'}}]});
   const ui=Object.assign(Object.create(GameUI.prototype),{s:session,p2keys:new Set(),lastP2Move:0,p2moving:false}),[a,b]=session.view.heroes,ax=a.x,bx=b.x;
-  session.send({t:'move',p:0,h:0,x:ax-1,y:a.y});ui.p2Key({code:'ArrowRight'});for(let i=1;i<=30;i++){ui.p2Tick(i*1000/60);session.update(DT);}assert.ok(a.x<ax&&b.x>bx);
+  assert.equal(a.skin,'yi_white');assert.equal(b.skin,'yi_gold');session.send({t:'move',p:0,h:0,x:ax-1,y:a.y});ui.p2Key({code:'ArrowRight'});for(let i=1;i<=30;i++){ui.p2Tick(i*1000/60);session.update(DT);}assert.ok(a.x<ax&&b.x>bx);
   ui.p2keys.clear();ui.p2Tick(600);b.skillCd=0;ui.p2Key({code:'KeyA'});session.update(DT);assert.ok(b.skillCd>0);
-  const packet=JSON.parse(JSON.stringify(new SnapshotEncoder().encode(session.state,[]))),view=emptyView({stageId:'s1',difficulty:'normal'});applySnapshot(view,packet);assert.equal(view.heroes[0].owner,0);assert.equal(view.heroes[1].owner,1);assert.equal(view.heroes[1].actionSeq,b.actionSeq);
+  const packet=JSON.parse(JSON.stringify(new SnapshotEncoder().encode(session.state,[]))),view=emptyView({stageId:'s1',difficulty:'normal'});applySnapshot(view,packet);assert.equal(view.heroes[0].owner,0);assert.equal(view.heroes[1].owner,1);assert.equal(view.heroes[0].skin,'yi_white');assert.equal(view.heroes[1].skin,'yi_gold');assert.equal(view.heroes[1].actionSeq,b.actionSeq);
   const {world,art}=context(),ha={heroId:'yi',owner:0,hp:100,actionSeq:1,actionAt:0,actionDuration:.25},hb={heroId:'yi',owner:1,hp:100},ra=world.unit(ha,true),rb=world.unit(hb,true);
   art.updateUnit(ra,ha,false,0,0,sample());art.updateUnit(rb,hb,false,0,0,sample());art.updateUnit(ra,ha,false,0,.12,sample({time:.12}));art.updateUnit(rb,hb,false,0,.12,sample({time:.12}));
   const da=ra.userData.fixedImage,db=rb.userData.fixedImage;assert.equal(da.pose,'follow-through');assert.equal(db.pose,'idle');assert.notEqual(da.motion,db.motion);assert.notEqual(da.image.material,db.image.material);assert.equal(db.hint.material.color.getHexString(),'efaa96');
@@ -99,7 +114,20 @@ const oldDocument=globalThis.document,oldLoad=T.ImageLoader.prototype.load,pendi
 globalThis.document={createElement:()=>({width:0,height:0,getContext(){return {drawImage(){},getImageData(){readbacks++;throw new Error('No alpha readback is needed for explicit frame layouts');}};}})};
 T.ImageLoader.prototype.load=function(url,onLoad,progress,onError){pending.push({url,onLoad,onError});};
 function finish(id,fail=false){const at=pending.findIndex(p=>p.url.includes('/'+id+'-inbetweens-'));assert.ok(at>=0,'Pending supplement '+id);const [p]=pending.splice(at,1),l=HERO_INBETWEEN_ART[id];if(fail)p.onError(new Error('expected missing supplement'));else p.onLoad({width:l.width,height:l.height});}
+function finishCostume(id,fail=false){const at=pending.findIndex(p=>p.url.includes('/'+id+'-directions-'));assert.ok(at>=0,'Pending costume '+id);const [p]=pending.splice(at,1),l=SKIN_POSE_ART[id];if(fail)p.onError(new Error('expected missing costume'));else p.onLoad({width:l.width,height:l.height});}
 try{
+  await test('기본·두 의상·중복 소유자가 함께 있어도 선택한 세 중간 시트만 준비한다',async()=>{
+    const {world,art}=context(false),heroes=[{heroId:'yi'},{heroId:'yi',skin:'yi_white',owner:0},{heroId:'yi',skin:'yi_white',owner:1},{heroId:'yi',skin:'yi_gold',owner:1}],all=art.prepareHeroLooks(heroes);
+    assert.equal(pending.length,5);assert.equal(pending.filter(p=>p.url.includes('-inbetweens-')).length,3);assert.ok(pending.every(p=>p.url.includes('/yi-')||p.url.includes('/yi_white-')||p.url.includes('/yi_gold-')));
+    for(let i=0;i<20;i++)assert.equal(art.prepareHeroLooks(heroes.slice().reverse().map(h=>({...h}))),all);
+    finish('yi');finishCostume('yi_gold');finish('yi_white');finishCostume('yi_white');await Promise.resolve();assert.equal(art.loading,true);finish('yi_gold');await all;assert.equal(art.loading,false);assert.equal(world.renderer.domElement.dataset.heroInbetweenCount,'3');assert.equal(world.renderer.domElement.dataset.skinPoseCount,'2');art.dispose();
+  });
+  await test('특수 의상 중간 시트만 실패하면 기존 의상 보행으로 복귀하고 반복 재요청하지 않는다',async()=>{
+    const {world,art}=context(false),heroes=[{heroId:'yi',skin:'yi_white'},{heroId:'yi',skin:'yi_gold'}],warn=console.warn,warnings=[];console.warn=(...a)=>warnings.push(a);
+    try{const all=art.prepareHeroLooks(heroes);finishCostume('yi_white');finishCostume('yi_gold');finish('yi_white',true);finish('yi_gold');await all;assert.equal(art.prepareHeroLooks(heroes.map(h=>({...h}))),all);}finally{console.warn=warn;}
+    assert.equal(warnings.length,1);assert.equal(art.loading,false);assert.equal(art.inbetweenPoses.yi_white,null);assert.ok(art.inbetweenPoses.yi_gold);assert.equal(world.renderer.domElement.dataset.heroInbetweenStatus,'partial');
+    const root=world.unit(heroes[0],true),d=root.userData.fixedImage;art.updateUnit(root,heroes[0],true,0,0,sample());assert.equal(d.art,art.skinPoses.yi_white);assert.equal(d.inbetweens,null);assert.ok([0,1,2].includes(Math.floor(d.poseIndex/4)));world.disposeCharacter(root);art.dispose();
+  });
   await test('기본 영웅 중복·반복 스냅샷은 선택한 시트와 준비 Promise를 재요청하지 않는다',async()=>{
     const {art}=context(false),heroes=[{heroId:'yi'},{heroId:'yi',owner:1},{heroId:'sejong'}],all=art.prepareHeroLooks(heroes);assert.equal(pending.length,2);
     for(let i=0;i<20;i++)assert.equal(art.prepareHeroLooks(heroes.slice().reverse().map(h=>({...h}))),all);finish('yi');assert.equal(art.loading,true);finish('sejong');await all;assert.equal(art.loading,false);assert.equal(art.prepareHeroLooks(heroes),all);art.dispose();
@@ -135,5 +163,5 @@ try{
   });
 }finally{T.ImageLoader.prototype.load=oldLoad;if(oldDocument===undefined)delete globalThis.document;else globalThis.document=oldDocument;}
 assert.equal(pending.length,0);assert.equal(readbacks,0);
-await fs.writeFile(new URL('../docs/INBETWEEN_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',passed:results.length,baseHeroes:8,newPoses:128,totalBasePoses:256,scope:'display-only supplement; unsupported costumes and troops retain approved poses',alphaReadbacks:readbacks,tests:results},null,2)+'\n');
+await fs.writeFile(new URL('../docs/INBETWEEN_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',passed:results.length,baseHeroes:8,specialCostumes:16,newPoses:384,totalHeroLookPoses:768,scope:'display-only supplements for all 24 hero looks; troops retain their approved 448 poses',alphaReadbacks:readbacks,tests:results},null,2)+'\n');
 console.log('\n중간 원화 동작 '+results.length+'개 검증 통과');

@@ -1271,5 +1271,2549 @@ export const HERO_INBETWEEN_ART = {
         "referenceHeight": 244
       }
     ]
+  },
+  "yi_white": {
+    "heroId": "yi",
+    "skin": "yi_white",
+    "path": "assets/3d/fixed/inbetweens/yi_white-inbetweens-v1.webp",
+    "width": 1089,
+    "height": 1205,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 204,
+        "height": 246,
+        "anchor": 0.56,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 304,
+        "top": 24,
+        "width": 173,
+        "height": 245,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 569,
+        "top": 24,
+        "width": 178,
+        "height": 248,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 831,
+        "top": 24,
+        "width": 193,
+        "height": 247,
+        "anchor": 0.44,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 24,
+        "top": 320,
+        "width": 209,
+        "height": 248,
+        "anchor": 0.62,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 304,
+        "top": 320,
+        "width": 183,
+        "height": 249,
+        "anchor": 0.49,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 569,
+        "top": 320,
+        "width": 187,
+        "height": 251,
+        "anchor": 0.51,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 831,
+        "top": 320,
+        "width": 206,
+        "height": 249,
+        "anchor": 0.38,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 24,
+        "top": 619,
+        "width": 232,
+        "height": 259,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 304,
+        "top": 619,
+        "width": 217,
+        "height": 256,
+        "anchor": 0.45,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 569,
+        "top": 619,
+        "width": 214,
+        "height": 258,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 831,
+        "top": 619,
+        "width": 234,
+        "height": 258,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 24,
+        "top": 926,
+        "width": 202,
+        "height": 253,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 304,
+        "top": 926,
+        "width": 187,
+        "height": 251,
+        "anchor": 0.49,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 569,
+        "top": 926,
+        "width": 187,
+        "height": 251,
+        "anchor": 0.51,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      },
+      {
+        "left": 831,
+        "top": 926,
+        "width": 195,
+        "height": 255,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 256.5
+      }
+    ]
+  },
+  "yi_gold": {
+    "heroId": "yi",
+    "skin": "yi_gold",
+    "path": "assets/3d/fixed/inbetweens/yi_gold-inbetweens-v1.webp",
+    "width": 1021,
+    "height": 1124,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 188,
+        "height": 227,
+        "anchor": 0.56,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 289,
+        "top": 24,
+        "width": 165,
+        "height": 228,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 534,
+        "top": 24,
+        "width": 169,
+        "height": 228,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 779,
+        "top": 24,
+        "width": 182,
+        "height": 226,
+        "anchor": 0.44,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 24,
+        "top": 300,
+        "width": 194,
+        "height": 227,
+        "anchor": 0.62,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 289,
+        "top": 300,
+        "width": 170,
+        "height": 229,
+        "anchor": 0.49,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 534,
+        "top": 300,
+        "width": 175,
+        "height": 231,
+        "anchor": 0.51,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 779,
+        "top": 300,
+        "width": 189,
+        "height": 229,
+        "anchor": 0.38,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 24,
+        "top": 579,
+        "width": 217,
+        "height": 239,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 289,
+        "top": 579,
+        "width": 197,
+        "height": 238,
+        "anchor": 0.45,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 534,
+        "top": 579,
+        "width": 197,
+        "height": 238,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 779,
+        "top": 579,
+        "width": 218,
+        "height": 240,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 24,
+        "top": 867,
+        "width": 187,
+        "height": 231,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 289,
+        "top": 867,
+        "width": 171,
+        "height": 229,
+        "anchor": 0.49,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 534,
+        "top": 867,
+        "width": 173,
+        "height": 230,
+        "anchor": 0.51,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      },
+      {
+        "left": 779,
+        "top": 867,
+        "width": 181,
+        "height": 233,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 235.5
+      }
+    ]
+  },
+  "sejong_blue": {
+    "heroId": "sejong",
+    "skin": "sejong_blue",
+    "path": "assets/3d/fixed/inbetweens/sejong_blue-inbetweens-v1.webp",
+    "width": 1025,
+    "height": 1181,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 170,
+        "height": 237,
+        "anchor": 0.53,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 287,
+        "top": 24,
+        "width": 154,
+        "height": 237,
+        "anchor": 0.43,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 543,
+        "top": 24,
+        "width": 152,
+        "height": 238,
+        "anchor": 0.55,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 791,
+        "top": 24,
+        "width": 157,
+        "height": 239,
+        "anchor": 0.47,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 24,
+        "top": 311,
+        "width": 183,
+        "height": 249,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 287,
+        "top": 311,
+        "width": 162,
+        "height": 249,
+        "anchor": 0.42,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 543,
+        "top": 311,
+        "width": 159,
+        "height": 249,
+        "anchor": 0.55,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 791,
+        "top": 311,
+        "width": 175,
+        "height": 250,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 24,
+        "top": 609,
+        "width": 215,
+        "height": 240,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 287,
+        "top": 609,
+        "width": 208,
+        "height": 252,
+        "anchor": 0.43,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 543,
+        "top": 609,
+        "width": 200,
+        "height": 250,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 791,
+        "top": 609,
+        "width": 210,
+        "height": 238,
+        "anchor": 0.625,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 24,
+        "top": 909,
+        "width": 165,
+        "height": 245,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 287,
+        "top": 909,
+        "width": 166,
+        "height": 248,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 543,
+        "top": 909,
+        "width": 169,
+        "height": 248,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 238
+      },
+      {
+        "left": 791,
+        "top": 909,
+        "width": 165,
+        "height": 246,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 238
+      }
+    ]
+  },
+  "sejong_gold": {
+    "heroId": "sejong",
+    "skin": "sejong_gold",
+    "path": "assets/3d/fixed/inbetweens/sejong_gold-inbetweens-v1.webp",
+    "width": 1029,
+    "height": 1215,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 181,
+        "height": 247,
+        "anchor": 0.53,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 288,
+        "top": 24,
+        "width": 156,
+        "height": 247,
+        "anchor": 0.43,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 542,
+        "top": 24,
+        "width": 155,
+        "height": 247,
+        "anchor": 0.55,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 793,
+        "top": 24,
+        "width": 159,
+        "height": 247,
+        "anchor": 0.47,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 24,
+        "top": 319,
+        "width": 188,
+        "height": 261,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 288,
+        "top": 319,
+        "width": 162,
+        "height": 261,
+        "anchor": 0.42,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 542,
+        "top": 319,
+        "width": 161,
+        "height": 261,
+        "anchor": 0.55,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 793,
+        "top": 319,
+        "width": 178,
+        "height": 265,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 24,
+        "top": 632,
+        "width": 216,
+        "height": 248,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 288,
+        "top": 632,
+        "width": 206,
+        "height": 258,
+        "anchor": 0.43,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 542,
+        "top": 632,
+        "width": 203,
+        "height": 257,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 793,
+        "top": 632,
+        "width": 212,
+        "height": 243,
+        "anchor": 0.625,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 24,
+        "top": 938,
+        "width": 163,
+        "height": 250,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 288,
+        "top": 938,
+        "width": 175,
+        "height": 253,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 542,
+        "top": 938,
+        "width": 170,
+        "height": 252,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 247
+      },
+      {
+        "left": 793,
+        "top": 938,
+        "width": 167,
+        "height": 251,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 247
+      }
+    ]
+  },
+  "eulji_iron": {
+    "heroId": "eulji",
+    "skin": "eulji_iron",
+    "path": "assets/3d/fixed/inbetweens/eulji_iron-inbetweens-v1.webp",
+    "width": 1095,
+    "height": 1048,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 171,
+        "height": 215,
+        "anchor": 0.65,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 302,
+        "top": 24,
+        "width": 178,
+        "height": 215,
+        "anchor": 0.49777,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 570,
+        "top": 24,
+        "width": 182,
+        "height": 218,
+        "anchor": 0.509059,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 841,
+        "top": 24,
+        "width": 174,
+        "height": 216,
+        "anchor": 0.36,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 24,
+        "top": 290,
+        "width": 186,
+        "height": 216,
+        "anchor": 0.63,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 302,
+        "top": 290,
+        "width": 181,
+        "height": 219,
+        "anchor": 0.49777,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 570,
+        "top": 290,
+        "width": 178,
+        "height": 217,
+        "anchor": 0.509059,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 841,
+        "top": 290,
+        "width": 188,
+        "height": 215,
+        "anchor": 0.35,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 24,
+        "top": 557,
+        "width": 230,
+        "height": 205,
+        "anchor": 0.424389,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 302,
+        "top": 557,
+        "width": 220,
+        "height": 206,
+        "anchor": 0.405173,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 570,
+        "top": 557,
+        "width": 223,
+        "height": 209,
+        "anchor": 0.557538,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 841,
+        "top": 557,
+        "width": 230,
+        "height": 204,
+        "anchor": 0.561561,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 24,
+        "top": 814,
+        "width": 183,
+        "height": 201,
+        "anchor": 0.563421,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 302,
+        "top": 814,
+        "width": 182,
+        "height": 201,
+        "anchor": 0.49777,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 570,
+        "top": 814,
+        "width": 189,
+        "height": 210,
+        "anchor": 0.509059,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      },
+      {
+        "left": 841,
+        "top": 814,
+        "width": 183,
+        "height": 200,
+        "anchor": 0.452595,
+        "anchorY": 1,
+        "referenceHeight": 207.5
+      }
+    ]
+  },
+  "eulji_gold": {
+    "heroId": "eulji",
+    "skin": "eulji_gold",
+    "path": "assets/3d/fixed/inbetweens/eulji_gold-inbetweens-v1.webp",
+    "width": 1097,
+    "height": 1062,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 173,
+        "height": 217,
+        "anchor": 0.65,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 301,
+        "top": 24,
+        "width": 181,
+        "height": 216,
+        "anchor": 0.49777,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 570,
+        "top": 24,
+        "width": 177,
+        "height": 219,
+        "anchor": 0.509059,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 841,
+        "top": 24,
+        "width": 177,
+        "height": 216,
+        "anchor": 0.36,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 24,
+        "top": 291,
+        "width": 191,
+        "height": 220,
+        "anchor": 0.63,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 301,
+        "top": 291,
+        "width": 185,
+        "height": 219,
+        "anchor": 0.49777,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 570,
+        "top": 291,
+        "width": 184,
+        "height": 220,
+        "anchor": 0.509059,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 841,
+        "top": 291,
+        "width": 191,
+        "height": 221,
+        "anchor": 0.35,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 24,
+        "top": 560,
+        "width": 229,
+        "height": 207,
+        "anchor": 0.424389,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 301,
+        "top": 560,
+        "width": 221,
+        "height": 209,
+        "anchor": 0.405173,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 570,
+        "top": 560,
+        "width": 223,
+        "height": 213,
+        "anchor": 0.557538,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 841,
+        "top": 560,
+        "width": 232,
+        "height": 206,
+        "anchor": 0.561561,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 24,
+        "top": 821,
+        "width": 187,
+        "height": 208,
+        "anchor": 0.563421,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 301,
+        "top": 821,
+        "width": 184,
+        "height": 214,
+        "anchor": 0.49777,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 570,
+        "top": 821,
+        "width": 192,
+        "height": 217,
+        "anchor": 0.509059,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      },
+      {
+        "left": 841,
+        "top": 821,
+        "width": 188,
+        "height": 207,
+        "anchor": 0.452595,
+        "anchorY": 1,
+        "referenceHeight": 210.5
+      }
+    ]
+  },
+  "gang_crimson": {
+    "heroId": "gang",
+    "skin": "gang_crimson",
+    "path": "assets/3d/fixed/inbetweens/gang_crimson-inbetweens-v1.webp",
+    "width": 1381,
+    "height": 1374,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 287,
+        "height": 296,
+        "anchor": 0.543238,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 383,
+        "top": 24,
+        "width": 283,
+        "height": 295,
+        "anchor": 0.494672,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 720,
+        "top": 24,
+        "width": 263,
+        "height": 298,
+        "anchor": 0.458745,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1052,
+        "top": 24,
+        "width": 302,
+        "height": 295,
+        "anchor": 0.485671,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 24,
+        "top": 370,
+        "width": 288,
+        "height": 309,
+        "anchor": 0.543238,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 383,
+        "top": 370,
+        "width": 288,
+        "height": 308,
+        "anchor": 0.494672,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 720,
+        "top": 370,
+        "width": 264,
+        "height": 309,
+        "anchor": 0.458745,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1052,
+        "top": 370,
+        "width": 305,
+        "height": 308,
+        "anchor": 0.485671,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 24,
+        "top": 727,
+        "width": 311,
+        "height": 272,
+        "anchor": 0.466717,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 383,
+        "top": 727,
+        "width": 289,
+        "height": 279,
+        "anchor": 0.449052,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 720,
+        "top": 727,
+        "width": 284,
+        "height": 274,
+        "anchor": 0.53166,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1052,
+        "top": 727,
+        "width": 298,
+        "height": 277,
+        "anchor": 0.526119,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 24,
+        "top": 1054,
+        "width": 280,
+        "height": 293,
+        "anchor": 0.543238,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 383,
+        "top": 1054,
+        "width": 280,
+        "height": 295,
+        "anchor": 0.494672,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 720,
+        "top": 1054,
+        "width": 261,
+        "height": 296,
+        "anchor": 0.458745,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1052,
+        "top": 1054,
+        "width": 260,
+        "height": 292,
+        "anchor": 0.485671,
+        "anchorY": 1,
+        "referenceHeight": 294
+      }
+    ]
+  },
+  "gang_gold": {
+    "heroId": "gang",
+    "skin": "gang_gold",
+    "path": "assets/3d/fixed/inbetweens/gang_gold-inbetweens-v1.webp",
+    "width": 1340,
+    "height": 1378,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 279,
+        "height": 292,
+        "anchor": 0.543238,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 376,
+        "top": 24,
+        "width": 279,
+        "height": 293,
+        "anchor": 0.494672,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 704,
+        "top": 24,
+        "width": 253,
+        "height": 295,
+        "anchor": 0.458745,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1024,
+        "top": 24,
+        "width": 290,
+        "height": 293,
+        "anchor": 0.485671,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 24,
+        "top": 367,
+        "width": 282,
+        "height": 307,
+        "anchor": 0.543238,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 376,
+        "top": 367,
+        "width": 280,
+        "height": 309,
+        "anchor": 0.494672,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 704,
+        "top": 367,
+        "width": 256,
+        "height": 311,
+        "anchor": 0.458745,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1024,
+        "top": 367,
+        "width": 292,
+        "height": 308,
+        "anchor": 0.485671,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 24,
+        "top": 726,
+        "width": 304,
+        "height": 274,
+        "anchor": 0.466717,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 376,
+        "top": 726,
+        "width": 276,
+        "height": 281,
+        "anchor": 0.449052,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 704,
+        "top": 726,
+        "width": 272,
+        "height": 273,
+        "anchor": 0.53166,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1024,
+        "top": 726,
+        "width": 289,
+        "height": 277,
+        "anchor": 0.526119,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 24,
+        "top": 1055,
+        "width": 273,
+        "height": 293,
+        "anchor": 0.543238,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 376,
+        "top": 1055,
+        "width": 271,
+        "height": 293,
+        "anchor": 0.494672,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 704,
+        "top": 1055,
+        "width": 251,
+        "height": 299,
+        "anchor": 0.458745,
+        "anchorY": 1,
+        "referenceHeight": 294
+      },
+      {
+        "left": 1024,
+        "top": 1055,
+        "width": 257,
+        "height": 293,
+        "anchor": 0.485671,
+        "anchorY": 1,
+        "referenceHeight": 294
+      }
+    ]
+  },
+  "gwon_hill": {
+    "heroId": "gwon",
+    "skin": "gwon_hill",
+    "path": "assets/3d/fixed/inbetweens/gwon_hill-inbetweens-v1.webp",
+    "width": 1218,
+    "height": 1227,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 226,
+        "height": 266,
+        "anchor": 0.512638,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 349,
+        "top": 24,
+        "width": 202,
+        "height": 266,
+        "anchor": 0.509672,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 637,
+        "top": 24,
+        "width": 194,
+        "height": 260,
+        "anchor": 0.463326,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 917,
+        "top": 24,
+        "width": 222,
+        "height": 265,
+        "anchor": 0.460919,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 24,
+        "top": 338,
+        "width": 223,
+        "height": 274,
+        "anchor": 0.512638,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 349,
+        "top": 338,
+        "width": 200,
+        "height": 274,
+        "anchor": 0.509672,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 637,
+        "top": 338,
+        "width": 193,
+        "height": 268,
+        "anchor": 0.463326,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 917,
+        "top": 338,
+        "width": 218,
+        "height": 274,
+        "anchor": 0.460919,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 24,
+        "top": 660,
+        "width": 277,
+        "height": 240,
+        "anchor": 0.44644,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 349,
+        "top": 660,
+        "width": 240,
+        "height": 236,
+        "anchor": 0.47,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 637,
+        "top": 660,
+        "width": 232,
+        "height": 237,
+        "anchor": 0.552449,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 917,
+        "top": 660,
+        "width": 277,
+        "height": 240,
+        "anchor": 0.537893,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 24,
+        "top": 948,
+        "width": 250,
+        "height": 255,
+        "anchor": 0.512638,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 349,
+        "top": 948,
+        "width": 238,
+        "height": 246,
+        "anchor": 0.509672,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 637,
+        "top": 948,
+        "width": 224,
+        "height": 245,
+        "anchor": 0.463326,
+        "anchorY": 1,
+        "referenceHeight": 255
+      },
+      {
+        "left": 917,
+        "top": 948,
+        "width": 251,
+        "height": 251,
+        "anchor": 0.460919,
+        "anchorY": 1,
+        "referenceHeight": 255
+      }
+    ]
+  },
+  "gwon_gold": {
+    "heroId": "gwon",
+    "skin": "gwon_gold",
+    "path": "assets/3d/fixed/inbetweens/gwon_gold-inbetweens-v1.webp",
+    "width": 1260,
+    "height": 1260,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 237,
+        "height": 275,
+        "anchor": 0.512638,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 360,
+        "top": 24,
+        "width": 207,
+        "height": 275,
+        "anchor": 0.509672,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 656,
+        "top": 24,
+        "width": 201,
+        "height": 270,
+        "anchor": 0.463326,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 949,
+        "top": 24,
+        "width": 233,
+        "height": 274,
+        "anchor": 0.460919,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 24,
+        "top": 347,
+        "width": 234,
+        "height": 283,
+        "anchor": 0.512638,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 360,
+        "top": 347,
+        "width": 207,
+        "height": 278,
+        "anchor": 0.509672,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 656,
+        "top": 347,
+        "width": 203,
+        "height": 277,
+        "anchor": 0.463326,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 949,
+        "top": 347,
+        "width": 231,
+        "height": 281,
+        "anchor": 0.460919,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 24,
+        "top": 678,
+        "width": 288,
+        "height": 245,
+        "anchor": 0.44644,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 360,
+        "top": 678,
+        "width": 248,
+        "height": 243,
+        "anchor": 0.47,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 656,
+        "top": 678,
+        "width": 245,
+        "height": 246,
+        "anchor": 0.552449,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 949,
+        "top": 678,
+        "width": 287,
+        "height": 248,
+        "anchor": 0.537893,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 24,
+        "top": 974,
+        "width": 261,
+        "height": 262,
+        "anchor": 0.512638,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 360,
+        "top": 974,
+        "width": 238,
+        "height": 259,
+        "anchor": 0.509672,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 656,
+        "top": 974,
+        "width": 235,
+        "height": 258,
+        "anchor": 0.463326,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      },
+      {
+        "left": 949,
+        "top": 974,
+        "width": 261,
+        "height": 259,
+        "anchor": 0.460919,
+        "anchorY": 1,
+        "referenceHeight": 263.5
+      }
+    ]
+  },
+  "gwak_black": {
+    "heroId": "gwak",
+    "skin": "gwak_black",
+    "path": "assets/3d/fixed/inbetweens/gwak_black-inbetweens-v1.webp",
+    "width": 974,
+    "height": 1195,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 165,
+        "height": 253,
+        "anchor": 0.492593,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 277,
+        "top": 24,
+        "width": 153,
+        "height": 254,
+        "anchor": 0.452126,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 515,
+        "top": 24,
+        "width": 153,
+        "height": 254,
+        "anchor": 0.65,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 750,
+        "top": 24,
+        "width": 153,
+        "height": 253,
+        "anchor": 0.495042,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 24,
+        "top": 326,
+        "width": 156,
+        "height": 256,
+        "anchor": 0.492593,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 277,
+        "top": 326,
+        "width": 141,
+        "height": 256,
+        "anchor": 0.452126,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 515,
+        "top": 326,
+        "width": 142,
+        "height": 256,
+        "anchor": 0.61,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 750,
+        "top": 326,
+        "width": 152,
+        "height": 255,
+        "anchor": 0.495042,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 24,
+        "top": 630,
+        "width": 205,
+        "height": 253,
+        "anchor": 0.434951,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 277,
+        "top": 630,
+        "width": 190,
+        "height": 252,
+        "anchor": 0.440223,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 515,
+        "top": 630,
+        "width": 187,
+        "height": 252,
+        "anchor": 0.552396,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 750,
+        "top": 630,
+        "width": 200,
+        "height": 257,
+        "anchor": 0.558612,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 24,
+        "top": 935,
+        "width": 169,
+        "height": 233,
+        "anchor": 0.492593,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 277,
+        "top": 935,
+        "width": 164,
+        "height": 235,
+        "anchor": 0.452126,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 515,
+        "top": 935,
+        "width": 166,
+        "height": 236,
+        "anchor": 0.52941,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      },
+      {
+        "left": 750,
+        "top": 935,
+        "width": 159,
+        "height": 236,
+        "anchor": 0.495042,
+        "anchorY": 1,
+        "referenceHeight": 246.5
+      }
+    ]
+  },
+  "gwak_gold": {
+    "heroId": "gwak",
+    "skin": "gwak_gold",
+    "path": "assets/3d/fixed/inbetweens/gwak_gold-inbetweens-v1.webp",
+    "width": 1040,
+    "height": 1280,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 179,
+        "height": 273,
+        "anchor": 0.492593,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 294,
+        "top": 24,
+        "width": 163,
+        "height": 276,
+        "anchor": 0.452126,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 546,
+        "top": 24,
+        "width": 163,
+        "height": 274,
+        "anchor": 0.65,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 796,
+        "top": 24,
+        "width": 165,
+        "height": 273,
+        "anchor": 0.495042,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 24,
+        "top": 348,
+        "width": 163,
+        "height": 275,
+        "anchor": 0.492593,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 294,
+        "top": 348,
+        "width": 149,
+        "height": 274,
+        "anchor": 0.452126,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 546,
+        "top": 348,
+        "width": 150,
+        "height": 277,
+        "anchor": 0.61,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 796,
+        "top": 348,
+        "width": 160,
+        "height": 274,
+        "anchor": 0.495042,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 24,
+        "top": 673,
+        "width": 222,
+        "height": 275,
+        "anchor": 0.434951,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 294,
+        "top": 673,
+        "width": 204,
+        "height": 274,
+        "anchor": 0.440223,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 546,
+        "top": 673,
+        "width": 202,
+        "height": 272,
+        "anchor": 0.552396,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 796,
+        "top": 673,
+        "width": 220,
+        "height": 277,
+        "anchor": 0.558612,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 24,
+        "top": 998,
+        "width": 184,
+        "height": 258,
+        "anchor": 0.492593,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 294,
+        "top": 998,
+        "width": 178,
+        "height": 257,
+        "anchor": 0.452126,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 546,
+        "top": 998,
+        "width": 176,
+        "height": 256,
+        "anchor": 0.52941,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      },
+      {
+        "left": 796,
+        "top": 998,
+        "width": 176,
+        "height": 256,
+        "anchor": 0.495042,
+        "anchorY": 1,
+        "referenceHeight": 266.5
+      }
+    ]
+  },
+  "ahn_militia": {
+    "heroId": "ahn",
+    "skin": "ahn_militia",
+    "path": "assets/3d/fixed/inbetweens/ahn_militia-inbetweens-v1.webp",
+    "width": 988,
+    "height": 1198,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 156,
+        "height": 250,
+        "anchor": 0.52479,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 274,
+        "top": 24,
+        "width": 171,
+        "height": 253,
+        "anchor": 0.44,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 526,
+        "top": 24,
+        "width": 153,
+        "height": 254,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 766,
+        "top": 24,
+        "width": 154,
+        "height": 248,
+        "anchor": 0.473755,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 24,
+        "top": 326,
+        "width": 153,
+        "height": 247,
+        "anchor": 0.52479,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 274,
+        "top": 326,
+        "width": 170,
+        "height": 244,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 526,
+        "top": 326,
+        "width": 166,
+        "height": 248,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 766,
+        "top": 326,
+        "width": 151,
+        "height": 247,
+        "anchor": 0.473755,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 24,
+        "top": 622,
+        "width": 202,
+        "height": 238,
+        "anchor": 0.428626,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 274,
+        "top": 622,
+        "width": 204,
+        "height": 248,
+        "anchor": 0.427352,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 526,
+        "top": 622,
+        "width": 192,
+        "height": 246,
+        "anchor": 0.531864,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 766,
+        "top": 622,
+        "width": 198,
+        "height": 239,
+        "anchor": 0.570551,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 24,
+        "top": 918,
+        "width": 162,
+        "height": 247,
+        "anchor": 0.52479,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 274,
+        "top": 918,
+        "width": 178,
+        "height": 254,
+        "anchor": 0.525213,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 526,
+        "top": 918,
+        "width": 179,
+        "height": 256,
+        "anchor": 0.461072,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      },
+      {
+        "left": 766,
+        "top": 918,
+        "width": 169,
+        "height": 245,
+        "anchor": 0.473755,
+        "anchorY": 1,
+        "referenceHeight": 244.5
+      }
+    ]
+  },
+  "ahn_gold": {
+    "heroId": "ahn",
+    "skin": "ahn_gold",
+    "path": "assets/3d/fixed/inbetweens/ahn_gold-inbetweens-v1.webp",
+    "width": 1022,
+    "height": 1221,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 159,
+        "height": 256,
+        "anchor": 0.52479,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 283,
+        "top": 24,
+        "width": 175,
+        "height": 260,
+        "anchor": 0.44,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 540,
+        "top": 24,
+        "width": 156,
+        "height": 259,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 789,
+        "top": 24,
+        "width": 155,
+        "height": 256,
+        "anchor": 0.473755,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 24,
+        "top": 332,
+        "width": 157,
+        "height": 254,
+        "anchor": 0.52479,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 283,
+        "top": 332,
+        "width": 175,
+        "height": 253,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 540,
+        "top": 332,
+        "width": 167,
+        "height": 253,
+        "anchor": 0.5,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 789,
+        "top": 332,
+        "width": 155,
+        "height": 253,
+        "anchor": 0.473755,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 24,
+        "top": 634,
+        "width": 211,
+        "height": 245,
+        "anchor": 0.428626,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 283,
+        "top": 634,
+        "width": 209,
+        "height": 254,
+        "anchor": 0.427352,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 540,
+        "top": 634,
+        "width": 201,
+        "height": 254,
+        "anchor": 0.531864,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 789,
+        "top": 634,
+        "width": 209,
+        "height": 246,
+        "anchor": 0.570551,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 24,
+        "top": 936,
+        "width": 169,
+        "height": 253,
+        "anchor": 0.52479,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 283,
+        "top": 936,
+        "width": 180,
+        "height": 261,
+        "anchor": 0.525213,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 540,
+        "top": 936,
+        "width": 179,
+        "height": 260,
+        "anchor": 0.461072,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      },
+      {
+        "left": 789,
+        "top": 936,
+        "width": 168,
+        "height": 251,
+        "anchor": 0.473755,
+        "anchorY": 1,
+        "referenceHeight": 250.5
+      }
+    ]
+  },
+  "dangun_sky": {
+    "heroId": "dangun",
+    "skin": "dangun_sky",
+    "path": "assets/3d/fixed/inbetweens/dangun_sky-inbetweens-v1.webp",
+    "width": 1068,
+    "height": 1104,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 163,
+        "height": 232,
+        "anchor": 0.527138,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 299,
+        "top": 24,
+        "width": 164,
+        "height": 226,
+        "anchor": 0.45,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 559,
+        "top": 24,
+        "width": 166,
+        "height": 230,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 817,
+        "top": 24,
+        "width": 167,
+        "height": 232,
+        "anchor": 0.460881,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 24,
+        "top": 304,
+        "width": 175,
+        "height": 237,
+        "anchor": 0.527138,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 299,
+        "top": 304,
+        "width": 167,
+        "height": 235,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 559,
+        "top": 304,
+        "width": 167,
+        "height": 234,
+        "anchor": 0.52,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 817,
+        "top": 304,
+        "width": 175,
+        "height": 236,
+        "anchor": 0.460881,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 24,
+        "top": 589,
+        "width": 227,
+        "height": 209,
+        "anchor": 0.478438,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 299,
+        "top": 589,
+        "width": 212,
+        "height": 214,
+        "anchor": 0.432054,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 559,
+        "top": 589,
+        "width": 210,
+        "height": 216,
+        "anchor": 0.551343,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 817,
+        "top": 589,
+        "width": 227,
+        "height": 211,
+        "anchor": 0.523123,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 24,
+        "top": 853,
+        "width": 173,
+        "height": 219,
+        "anchor": 0.527138,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 299,
+        "top": 853,
+        "width": 181,
+        "height": 227,
+        "anchor": 0.570995,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 559,
+        "top": 853,
+        "width": 181,
+        "height": 226,
+        "anchor": 0.412022,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      },
+      {
+        "left": 817,
+        "top": 853,
+        "width": 179,
+        "height": 222,
+        "anchor": 0.460881,
+        "anchorY": 1,
+        "referenceHeight": 236.5
+      }
+    ]
+  },
+  "dangun_gold": {
+    "heroId": "dangun",
+    "skin": "dangun_gold",
+    "path": "assets/3d/fixed/inbetweens/dangun_gold-inbetweens-v1.webp",
+    "width": 1075,
+    "height": 1105,
+    "roles": [
+      "pass-a",
+      "pass-b",
+      "follow-through",
+      "recover"
+    ],
+    "frames": [
+      {
+        "left": 24,
+        "top": 24,
+        "width": 167,
+        "height": 234,
+        "anchor": 0.527138,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 301,
+        "top": 24,
+        "width": 165,
+        "height": 232,
+        "anchor": 0.45,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 561,
+        "top": 24,
+        "width": 167,
+        "height": 232,
+        "anchor": 0.54,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 821,
+        "top": 24,
+        "width": 173,
+        "height": 234,
+        "anchor": 0.460881,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 24,
+        "top": 306,
+        "width": 179,
+        "height": 236,
+        "anchor": 0.527138,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 301,
+        "top": 306,
+        "width": 171,
+        "height": 236,
+        "anchor": 0.46,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 561,
+        "top": 306,
+        "width": 169,
+        "height": 236,
+        "anchor": 0.52,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 821,
+        "top": 306,
+        "width": 180,
+        "height": 236,
+        "anchor": 0.460881,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 24,
+        "top": 590,
+        "width": 229,
+        "height": 211,
+        "anchor": 0.478438,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 301,
+        "top": 590,
+        "width": 212,
+        "height": 217,
+        "anchor": 0.432054,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 561,
+        "top": 590,
+        "width": 212,
+        "height": 217,
+        "anchor": 0.551343,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 821,
+        "top": 590,
+        "width": 230,
+        "height": 213,
+        "anchor": 0.523123,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 24,
+        "top": 855,
+        "width": 186,
+        "height": 218,
+        "anchor": 0.527138,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 301,
+        "top": 855,
+        "width": 191,
+        "height": 226,
+        "anchor": 0.570995,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 561,
+        "top": 855,
+        "width": 181,
+        "height": 226,
+        "anchor": 0.412022,
+        "anchorY": 1,
+        "referenceHeight": 237
+      },
+      {
+        "left": 821,
+        "top": 855,
+        "width": 190,
+        "height": 221,
+        "anchor": 0.460881,
+        "anchorY": 1,
+        "referenceHeight": 237
+      }
+    ]
   }
 };

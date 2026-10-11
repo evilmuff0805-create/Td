@@ -1,14 +1,15 @@
 {
   "date": "2026-10-11",
-  "passed": 15,
+  "passed": 19,
   "baseHeroes": 8,
-  "newPoses": 128,
-  "totalBasePoses": 256,
-  "scope": "display-only supplement; unsupported costumes and troops retain approved poses",
+  "specialCostumes": 16,
+  "newPoses": 384,
+  "totalHeroLookPoses": 768,
+  "scope": "display-only supplements for all 24 hero looks; troops retain their approved 448 poses",
   "alphaReadbacks": 0,
   "tests": [
     {
-      "name": "기본 영웅 8명에 새 128자세만 덧붙이고 기존 기준 높이와 의상 정체성을 보존한다",
+      "name": "기본 8명·특수 의상 16종의 새 384자세가 기존 기준 높이와 의상 정체성을 보존한다",
       "passed": true
     },
     {
@@ -16,7 +17,7 @@
       "passed": true
     },
     {
-      "name": "실제 8영웅 루트의 256자세가 방향·배율·본체·가림·그림자를 함께 바꾼다",
+      "name": "실제 24개 영웅 외형의 768자세가 방향·배율·본체·가림·그림자를 함께 바꾼다",
       "passed": true
     },
     {
@@ -32,11 +33,27 @@
       "passed": true
     },
     {
-      "name": "원화 없는 특수 의상·누락 시트는 타 의상 원화로 바뀌지 않는다",
+      "name": "중간 시트가 누락된 특수 의상은 기본·다른 의상의 중간 원화로 바뀌지 않는다",
       "passed": true
     },
     {
-      "name": "로컬 1P·2P 실제 입력과 같은 영웅의 두 동작 상태가 독립적이다",
+      "name": "의상 원본이 실패하고 의상 중간 원화만 성공해도 옷이 섞이지 않는다",
+      "passed": true
+    },
+    {
+      "name": "같은 영웅의 흰 의상 1P·금빛 의상 2P는 중간 동작과 재질을 독립적으로 유지한다",
+      "passed": true
+    },
+    {
+      "name": "서로 다른 의상도 로컬 1P·2P 실제 입력과 스냅샷·두 동작 상태가 독립적이다",
+      "passed": true
+    },
+    {
+      "name": "기본·두 의상·중복 소유자가 함께 있어도 선택한 세 중간 시트만 준비한다",
+      "passed": true
+    },
+    {
+      "name": "특수 의상 중간 시트만 실패하면 기존 의상 보행으로 복귀하고 반복 재요청하지 않는다",
       "passed": true
     },
     {

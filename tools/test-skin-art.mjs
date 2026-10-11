@@ -3,6 +3,7 @@ import * as T from 'three';
 import { SKINS } from '../src/data/skins.js';
 import { HERO_POSE_ART } from '../src/3d/hero-pose-data.js';
 import { SKIN_POSE_ART } from '../src/3d/skin-pose-data.js';
+import { HERO_INBETWEEN_ART } from '../src/3d/inbetween-data.js';
 import { heroLookRoster,heroLooksKey } from '../src/3d/hero-look-roster.js';
 import { FixedBattleArt } from '../src/3d/fixed-art.js';
 import { WinterWorld } from '../src/3d/world.js';
@@ -22,7 +23,7 @@ function context(){
   const world=Object.assign(Object.create(WinterWorld.prototype),{camera,theme:{id:'winter',...SEASONS.winter},renderer:{domElement:{dataset:{}}},scene:new T.Scene(),units:new Map(),unitTemplates:new Map(),towers:new Map(),bullets:new Map(),scenery:new Map(),fx:{reset(){}},placement:new T.Group(),marker:new T.Group(),corpses:[],pickables:[],enemyCues:new Map(),range:new T.Group(),batchCrowd:false,projectiles(){},combatScenery(){}});
   world.crowd=new CrowdRenderer(world.scene);
   const art=Object.assign(Object.create(FixedBattleArt.prototype),{world,ready:true,coreLoading:false,combatLoading:false,skinLoading:false,heroLooksKey:'',skinGeneration:0,corePromise:Promise.resolve(),combatPromise:Promise.resolve(),skinPromise:Promise.resolve(),textures:new Map(),materials:new Map(),geometries:new Map(),heroPoses:Object.fromEntries(Object.entries(HERO_POSE_ART).map(([id,layout])=>[id,mockAtlas(layout)])),skinPoses:Object.fromEntries(Object.entries(SKIN_POSE_ART).map(([id,layout])=>[id,mockAtlas(layout)]))});
-  art.combatGeneration=0;art.yi=art.heroPoses.yi;art.shadowTexture=new T.DataTexture(new Uint8Array([255,255,255,255]),1,1);art.shadowMaterial=new T.MeshBasicMaterial({map:art.shadowTexture});world.art=art;art.updateLoading();art.refreshPromise();return {world,art};
+  art.combatGeneration=0;art.inbetweenPoses={};art.inbetweenKey='';art.inbetweenGeneration=0;art.inbetweenLoading=false;art.inbetweenPromise=Promise.resolve();art.yi=art.heroPoses.yi;art.shadowTexture=new T.DataTexture(new Uint8Array([255,255,255,255]),1,1);art.shadowMaterial=new T.MeshBasicMaterial({map:art.shadowTexture});world.art=art;art.updateLoading();art.refreshPromise();return {world,art};
 }
 const right=new T.Vector3(1,0,0),up=new T.Vector3(0,1,0);
 function yawFor(camera,col){const r=right.clone().applyQuaternion(camera.quaternion),u=up.clone().applyQuaternion(camera.quaternion);r.y=u.y=0;r.normalize();u.normalize();const d=r.multiplyScalar(col<2?1:-1).addScaledVector(u,col===1||col===2?1:-1);return Math.atan2(d.x,d.z);}
@@ -83,20 +84,23 @@ await test('누락되거나 잘못된 의상은 구형 정적 그림 대신 해�
 const oldDocument=globalThis.document,oldLoad=T.ImageLoader.prototype.load,pending=[];let readbacks=0;
 globalThis.document={createElement:()=>({width:0,height:0,getContext(){return {drawImage(){},getImageData:()=>{readbacks++;return {data:new Uint8Array(this.width*this.height*4)};}};}})};
 T.ImageLoader.prototype.load=function(url,onLoad,progress,onError){pending.push({url,onLoad,onError});};
-function finish(id,fail=false){const index=pending.findIndex(p=>p.url.includes('/'+id+'-directions-'));assert.ok(index>=0,'Pending '+id);const [p]=pending.splice(index,1);if(fail)p.onError(new Error('expected missing costume'));else p.onLoad({width:64,height:64});}
+function finishOriginal(id,fail=false){const index=pending.findIndex(p=>p.url.includes('/'+id+'-directions-'));assert.ok(index>=0,'Pending '+id);const [p]=pending.splice(index,1);if(fail)p.onError(new Error('expected missing costume'));else p.onLoad({width:64,height:64});}
+function finishSupplement(id){const index=pending.findIndex(p=>p.url.includes('/'+id+'-inbetweens-'));assert.ok(index>=0,'Pending supplement '+id);const [p]=pending.splice(index,1),layout=HERO_INBETWEEN_ART[id];p.onLoad({width:layout.width,height:layout.height});}
+function finish(id,fail=false){finishOriginal(id,fail);if(pending.some(p=>p.url.includes('/'+id+'-inbetweens-')))finishSupplement(id);}
+const permutations=values=>values.length?values.flatMap((v,i)=>permutations(values.filter((_,j)=>j!==i)).map(rest=>[v,...rest])):[[]];
 try{
-  await test('의상·코어·병력의 완료 순서 여섯 가지 모두 마지막 그림까지 전투를 기다린다',async()=>{
-    for(const order of [[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]]){
+  await test('의상 원본·중간 그림·코어·병력의 완료 순서 24가지 모두 마지막 그림까지 기다린다',async()=>{
+    for(const order of permutations([0,1,2,3])){
       const {art}=context();art.skinPoses={};art.combatPoses={enemy:{},ally:{}};let core;art.coreLoading=true;art.corePromise=new Promise(resolve=>core=resolve).then(()=>{art.coreLoading=false;art.updateLoading();});
       art.prepareCombatArt(null,{enemy:['ashigaru'],ally:[]});art.prepareHeroLooks([{heroId:'yi',skin:'yi_gold'}]);const all=art.promise;
-      const complete=[core,()=>finish('ashigaru'),()=>finish('yi_gold')];
-      for(const [i,next]of order.entries()){complete[next]();await Promise.resolve();await Promise.resolve();if(i<2)assert.equal(art.loading,true);}
+      const complete=[core,()=>finishOriginal('ashigaru'),()=>finishOriginal('yi_gold'),()=>finishSupplement('yi_gold')];
+      for(const [i,next]of order.entries()){complete[next]();await Promise.resolve();await Promise.resolve();if(i<3)assert.equal(art.loading,true);}
       await all;assert.equal(art.loading,false);art.dispose();
     }
   });
   await test('반복 스냅샷과 같은 의상 중복은 요청·준비 Promise를 다시 만들지 않는다',async()=>{
     const {art}=context();art.skinPoses={};const heroes=[{heroId:'yi',skin:'yi_white'},{heroId:'yi',skin:'yi_white'}],all=art.prepareHeroLooks(heroes);
-    assert.equal(pending.length,1);for(let i=0;i<20;i++)assert.equal(art.prepareHeroLooks(heroes.map(h=>({...h}))),all);
+    assert.equal(pending.length,2);for(let i=0;i<20;i++)assert.equal(art.prepareHeroLooks(heroes.map(h=>({...h}))),all);
     finish('yi_white');await all;assert.equal(art.prepareHeroLooks(heroes),all);assert.equal(pending.length,0);art.dispose();
   });
   await test('의상 변경은 활성·사망 영웅 루트를 먼저 정리하고 전용 GPU 자원만 해제한다',async()=>{
@@ -123,13 +127,13 @@ try{
     const renderer={world,prepareView:Renderer3D.prototype.prepareView,get loading(){return art.loading;},events(){},render(){}};
     const ui=Object.assign(Object.create(GameUI.prototype),{s:session,renderer,ui:{clock:0},bottom:{},last:0,solo:true,local:false,selHero:0,hintTimer:100,handleEvents(){},drawXray(){},updateHud(){}});
     const raf=globalThis.requestAnimationFrame;globalThis.requestAnimationFrame=()=>1;
-    try{ui.frame(100);assert.equal(session.state.time,0);assert.equal(ui.bottom.inert,true);assert.equal(pending.length,1);const all=art.promise;ui.frame(200);assert.equal(art.promise,all);finish('yi_gold');await all;ui.frame(300);assert.ok(session.state.time>0);assert.equal(ui.bottom.inert,false);}finally{globalThis.requestAnimationFrame=raf;session.destroy();art.dispose();}
+    try{ui.frame(100);assert.equal(session.state.time,0);assert.equal(ui.bottom.inert,true);assert.equal(pending.length,2);const all=art.promise;ui.frame(200);assert.equal(art.promise,all);finishOriginal('yi_gold');await Promise.resolve();ui.frame(250);assert.equal(session.state.time,0);assert.equal(ui.bottom.inert,true);finishSupplement('yi_gold');await all;ui.frame(300);assert.ok(session.state.time>0);assert.equal(ui.bottom.inert,false);}finally{globalThis.requestAnimationFrame=raf;session.destroy();art.dispose();}
   });
   await test('늦은 게스트 의상은 수신·보간을 유지하며 다음 스냅샷에서 같은 그림을 재사용한다',async()=>{
     const handlers=new Map(),net={on(k,fn){handlers.set(k,fn);return()=>handlers.delete(k);},send(){}},guest=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net}),{world,art}=context();art.skinPoses={};
     const renderer={world,prepareView:Renderer3D.prototype.prepareView};renderer.prepareView(guest.view);assert.equal(pending.length,0);
     const state=newBattleGame({heroIds:['yi','gwon'],skins:{yi:'yi_white',gwon:'gwon_hill'},support:false}),encode=()=>new SnapshotEncoder().encode(state,[{k:'toast',text:'동기화'}]);
-    handlers.get('snap')({s:encode()});renderer.prepareView(guest.view);const all=art.promise;assert.equal(pending.length,2);assert.equal(guest.update(.1,{waitingForRenderer:true})[0].text,'동기화');
+    handlers.get('snap')({s:encode()});renderer.prepareView(guest.view);const all=art.promise;assert.equal(pending.length,4);assert.equal(guest.update(.1,{waitingForRenderer:true})[0].text,'동기화');
     state.time=3;handlers.get('snap')({s:encode()});renderer.prepareView(guest.view);assert.equal(art.promise,all);assert.equal(guest.view.time,3);finish('yi_white');finish('gwon_hill');await all;assert.equal(art.loading,false);assert.equal(world.renderer.domElement.dataset.skinPoseCount,'2');guest.destroy();art.dispose();
   });
 }finally{T.ImageLoader.prototype.load=oldLoad;if(oldDocument===undefined)delete globalThis.document;else globalThis.document=oldDocument;}

@@ -597,5 +597,1573 @@
         ]
       }
     ]
+  },
+  "yi_white": {
+    "heroId": "yi",
+    "skin": "yi_white",
+    "parts": [
+      {
+        "source": "skins/yi_white-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.875021,
+        "anchors": [
+          0.56,
+          0.5,
+          0.5,
+          0.44
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/yi_white-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.875021,
+        "anchors": [
+          0.62,
+          0.49,
+          0.51,
+          0.38
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/yi_white-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.875021,
+        "anchors": [
+          0.5,
+          0.45,
+          0.5,
+          0.5
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/yi_white-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.875021,
+        "anchors": [
+          0.54,
+          0.49,
+          0.51,
+          0.46
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "yi_gold": {
+    "heroId": "yi",
+    "skin": "yi_gold",
+    "parts": [
+      {
+        "source": "skins/yi_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.803194,
+        "anchors": [
+          0.56,
+          0.5,
+          0.5,
+          0.44
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/yi_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.803194,
+        "anchors": [
+          0.62,
+          0.49,
+          0.51,
+          0.38
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/yi_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.803194,
+        "anchors": [
+          0.5,
+          0.45,
+          0.5,
+          0.5
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/yi_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.803194,
+        "anchors": [
+          0.54,
+          0.49,
+          0.51,
+          0.46
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "sejong_blue": {
+    "heroId": "sejong",
+    "skin": "sejong_blue",
+    "parts": [
+      {
+        "source": "skins/sejong_blue-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.811713,
+        "anchors": [
+          0.53,
+          0.43,
+          0.55,
+          0.47
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/sejong_blue-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.811713,
+        "anchors": [
+          0.54,
+          0.42,
+          0.55,
+          0.46
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/sejong_blue-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.811713,
+        "anchors": [
+          0.46,
+          0.43,
+          0.5,
+          0.625
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/sejong_blue-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.811713,
+        "anchors": [
+          0.54,
+          0.5,
+          0.5,
+          0.46
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "sejong_gold": {
+    "heroId": "sejong",
+    "skin": "sejong_gold",
+    "parts": [
+      {
+        "source": "skins/sejong_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.827437,
+        "anchors": [
+          0.53,
+          0.43,
+          0.55,
+          0.47
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/sejong_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.827437,
+        "anchors": [
+          0.54,
+          0.42,
+          0.55,
+          0.46
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/sejong_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.827437,
+        "anchors": [
+          0.46,
+          0.43,
+          0.5,
+          0.625
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/sejong_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.827437,
+        "anchors": [
+          0.54,
+          0.5,
+          0.5,
+          0.46
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "eulji_iron": {
+    "heroId": "eulji",
+    "skin": "eulji_iron",
+    "parts": [
+      {
+        "source": "skins/eulji_iron-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.817969,
+        "anchors": [
+          0.65,
+          0.49777,
+          0.509059,
+          0.36
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/eulji_iron-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.817969,
+        "anchors": [
+          0.63,
+          0.49777,
+          0.509059,
+          0.35
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/eulji_iron-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.817969,
+        "anchors": [
+          0.424389,
+          0.405173,
+          0.557538,
+          0.561561
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/eulji_iron-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.817969,
+        "anchors": [
+          0.563421,
+          0.49777,
+          0.509059,
+          0.452595
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "eulji_gold": {
+    "heroId": "eulji",
+    "skin": "eulji_gold",
+    "parts": [
+      {
+        "source": "skins/eulji_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.821559,
+        "anchors": [
+          0.65,
+          0.49777,
+          0.509059,
+          0.36
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/eulji_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.821559,
+        "anchors": [
+          0.63,
+          0.49777,
+          0.509059,
+          0.35
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/eulji_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.821559,
+        "anchors": [
+          0.424389,
+          0.405173,
+          0.557538,
+          0.561561
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/eulji_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.821559,
+        "anchors": [
+          0.563421,
+          0.49777,
+          0.509059,
+          0.452595
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "gang_crimson": {
+    "heroId": "gang",
+    "skin": "gang_crimson",
+    "parts": [
+      {
+        "source": "skins/gang_crimson-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 1.053318,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gang_crimson-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 1.053318,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gang_crimson-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 1.053318,
+        "anchors": [
+          0.466717,
+          0.449052,
+          0.53166,
+          0.526119
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gang_crimson-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 1.053318,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "gang_gold": {
+    "heroId": "gang",
+    "skin": "gang_gold",
+    "parts": [
+      {
+        "source": "skins/gang_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 1.067091,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gang_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 1.067091,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gang_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 1.067091,
+        "anchors": [
+          0.466717,
+          0.449052,
+          0.53166,
+          0.526119
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gang_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 1.067091,
+        "anchors": [
+          0.543238,
+          0.494672,
+          0.458745,
+          0.485671
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "gwon_hill": {
+    "heroId": "gwon",
+    "skin": "gwon_hill",
+    "parts": [
+      {
+        "source": "skins/gwon_hill-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.950555,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwon_hill-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.950555,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwon_hill-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.950555,
+        "anchors": [
+          0.44644,
+          0.47,
+          0.552449,
+          0.537893
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwon_hill-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.950555,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "gwon_gold": {
+    "heroId": "gwon",
+    "skin": "gwon_gold",
+    "parts": [
+      {
+        "source": "skins/gwon_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.979596,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwon_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.979596,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwon_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.979596,
+        "anchors": [
+          0.44644,
+          0.47,
+          0.552449,
+          0.537893
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwon_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.979596,
+        "anchors": [
+          0.512638,
+          0.509672,
+          0.463326,
+          0.460919
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "gwak_black": {
+    "heroId": "gwak",
+    "skin": "gwak_black",
+    "parts": [
+      {
+        "source": "skins/gwak_black-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.812169,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.65,
+          0.495042
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwak_black-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.812169,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.61,
+          0.495042
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwak_black-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.812169,
+        "anchors": [
+          0.434951,
+          0.440223,
+          0.552396,
+          0.558612
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwak_black-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.812169,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.52941,
+          0.495042
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "gwak_gold": {
+    "heroId": "gwak",
+    "skin": "gwak_gold",
+    "parts": [
+      {
+        "source": "skins/gwak_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.883729,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.65,
+          0.495042
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwak_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.883729,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.61,
+          0.495042
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwak_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.883729,
+        "anchors": [
+          0.434951,
+          0.440223,
+          0.552396,
+          0.558612
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/gwak_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.883729,
+        "anchors": [
+          0.492593,
+          0.452126,
+          0.52941,
+          0.495042
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "ahn_militia": {
+    "heroId": "ahn",
+    "skin": "ahn_militia",
+    "parts": [
+      {
+        "source": "skins/ahn_militia-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.851761,
+        "anchors": [
+          0.52479,
+          0.44,
+          0.5,
+          0.473755
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/ahn_militia-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.851761,
+        "anchors": [
+          0.52479,
+          0.46,
+          0.5,
+          0.473755
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/ahn_militia-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.851761,
+        "anchors": [
+          0.428626,
+          0.427352,
+          0.531864,
+          0.570551
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/ahn_militia-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.851761,
+        "anchors": [
+          0.52479,
+          0.525213,
+          0.461072,
+          0.473755
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "ahn_gold": {
+    "heroId": "ahn",
+    "skin": "ahn_gold",
+    "parts": [
+      {
+        "source": "skins/ahn_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.869066,
+        "anchors": [
+          0.52479,
+          0.44,
+          0.5,
+          0.473755
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/ahn_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.869066,
+        "anchors": [
+          0.52479,
+          0.46,
+          0.5,
+          0.473755
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/ahn_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.869066,
+        "anchors": [
+          0.428626,
+          0.427352,
+          0.531864,
+          0.570551
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/ahn_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.869066,
+        "anchors": [
+          0.52479,
+          0.525213,
+          0.461072,
+          0.473755
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "dangun_sky": {
+    "heroId": "dangun",
+    "skin": "dangun_sky",
+    "parts": [
+      {
+        "source": "skins/dangun_sky-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.851536,
+        "anchors": [
+          0.527138,
+          0.45,
+          0.54,
+          0.460881
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/dangun_sky-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.851536,
+        "anchors": [
+          0.527138,
+          0.46,
+          0.52,
+          0.460881
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/dangun_sky-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.851536,
+        "anchors": [
+          0.478438,
+          0.432054,
+          0.551343,
+          0.523123
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/dangun_sky-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.851536,
+        "anchors": [
+          0.527138,
+          0.570995,
+          0.412022,
+          0.460881
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "dangun_gold": {
+    "heroId": "dangun",
+    "skin": "dangun_gold",
+    "parts": [
+      {
+        "source": "skins/dangun_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scale": 0.835536,
+        "anchors": [
+          0.527138,
+          0.45,
+          0.54,
+          0.460881
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/dangun_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "scale": 0.835536,
+        "anchors": [
+          0.527138,
+          0.46,
+          0.52,
+          0.460881
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/dangun_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "scale": 0.835536,
+        "anchors": [
+          0.478438,
+          0.432054,
+          0.551343,
+          0.523123
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "source": "skins/dangun_gold-inbetweens-v1.png",
+        "rows": 4,
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ],
+        "scale": 0.835536,
+        "anchors": [
+          0.527138,
+          0.570995,
+          0.412022,
+          0.460881
+        ],
+        "anchorY": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ]
   }
 }
