@@ -230,6 +230,8 @@ npm run build
 
 특수 의상 중간 원화 256장·전체 영웅 외형 768자세와 228개 검사는 `e6f72db`로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋 `e6f72dba28d04ace759676b98c84c881234eb49b`의 일치를 확인했다. [상세 기록](SKIN_INBETWEENS.md) · [릴리스 JSON](SKIN_INBETWEEN_RELEASE_VALIDATION.json).
 
+적군·아군 병력 중간 원화 448장·총 896자세·전체 준비 그림 1,664장과 248개 검사·로컬 2인 유지 기록은 [`1e83d12`](https://github.com/evilmuff0805-create/Td/commit/1e83d120c99ef0e7327dd68ce284ed3c8b33a59c)로 커밋·푸시했다. `git ls-remote`로 원격 브랜치와 구현 커밋 `1e83d120c99ef0e7327dd68ce284ed3c8b33a59c`의 일치를 확인했다. 일반 진군·성문 즉시 누출 규칙은 유지하고 공격 자세는 기존 길막 교전·사격·지원 신호에서만 표시한다. 내장 imagegen 원본·프롬프트·검증·서버 번들을 포함하고 상위 프로젝트 기록도 갱신했다. [병력 작업 기록](COMBAT_INBETWEENS.md) · [릴리스 JSON](COMBAT_INBETWEEN_RELEASE_VALIDATION.json).
+
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
 1. 구현 범위·합의한 방향·검증 결과·남은 작업을 이 문서와 해당 상세 문서에 갱신한다.

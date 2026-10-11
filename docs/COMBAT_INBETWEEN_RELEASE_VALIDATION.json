@@ -216,5 +216,14 @@
     "Actual device memory, thermal and performance checks",
     "External network two-device coop checks",
     "Standalone asset size optimization"
-  ]
+  ],
+  "github": {
+    "repository": "https://github.com/evilmuff0805-create/Td",
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "implementationCommit": "1e83d120c99ef0e7327dd68ce284ed3c8b33a59c",
+    "implementationRemoteMatches": true,
+    "verificationCommand": "git ls-remote origin refs/heads/claude/korean-hero-tower-defense-i8ard8",
+    "verifiedAtUtc": "2026-10-11 04:29:00 UTC",
+    "recordCommit": "subsequent documentation commit; verify remote again after pushing"
+  }
 }
