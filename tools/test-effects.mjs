@@ -82,8 +82,8 @@ await test('실제 불·한파 장판은 폭발 상한과 무관하게 유지되
 
 await test('번개·살수 합격기·치유 합격기의 착탄을 화염 그림으로 바꾸지 않는다',()=>{
   const {fx}=fixture();fx.thunder(3,5);assert.equal(fx.active.at(-1).root.children[0].userData.paintedEffect,'light');fx.reset();
-  const game={heroes:[{x:3,y:5},{x:4,y:5}],enemies:[{x:5,y:5}]};fx.combo({x:3,y:5,id:'eulji_gang'},game);assert.equal(fx.active.at(-1).root.children[0].userData.paintedEffect,'flood');fx.reset();
-  fx.combo({x:3,y:5,id:'dangun_sejong'},game);assert.equal(fx.active.at(-1).root.children[0].userData.paintedEffect,'heal');fx.destroy();
+  const heroes=[{x:3,y:5},{x:4,y:5}];fx.heroCue({combo:'eulji_gang',phase:'cast',heroes,points:[{x:5,y:5}]});assert.equal(fx.active.at(-1).root.children[0].userData.paintedEffect,'flood');fx.reset();
+  fx.heroCue({combo:'dangun_sejong',phase:'cast',heroes,points:[]});assert.equal(fx.active.at(-1).root.children[0].userData.paintedEffect,'heal');assert.equal(fx.active.filter(e=>e.root.userData.comboImpact).length,2);fx.destroy();
 });
 
 await test('정식 게임과 미리보기의 실제 기술 이벤트가 같은 효과·발사 순서·시전자에 연결된다',()=>{

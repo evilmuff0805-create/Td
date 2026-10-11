@@ -12,7 +12,7 @@ import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
 import { getMap, posAt, tileAt, nearestOnPath, T_BUILD } from './map.js';
 import { rand, randInt, makeRng } from './rng.js';
 import {
-  ev, actionCue, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
+  ev, comboCue, actionCue, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
   isTargetable, hurtHero, hurtSummon, releaseBlocker, releaseEnemy, findEnemy, findBlocker, recalcHero,
   addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn, addSummon,
 } from './combat.js';
@@ -1314,6 +1314,7 @@ function explode(s, p) {
     aoe(s, p.tx, p.ty, h.r, h.dmg, h.type, p.src, { stun: h.stun || 0, slow: h.slow || 0, slowDur: h.slowDur || 0 });
   }
   ev(s, 'boom', { x: p.tx, y: p.ty, r: h.r, kind: p.kind });
+  if (p.src?.kind === 'combo' && p.src.visualCombo) comboCue(s, p.src.visualCombo, [{ x: p.tx, y: p.ty }], { phase: 'impact', r: h.r });
 }
 
 // ───────────────────────── 장판, 이동체 ─────────────────────────

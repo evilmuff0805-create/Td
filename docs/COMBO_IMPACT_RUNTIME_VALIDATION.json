@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-11",
+  "passedTests": 16,
+  "results": [
+    {
+      "name": "11조합·역순 조합은 양측 호흡이 맞아야 정확히 한 번 발동한다",
+      "passed": true
+    },
+    {
+      "name": "즉시 피해·갑옷 해제는 처치 전 실제 대상 좌표를 복사한다",
+      "passed": true
+    },
+    {
+      "name": "사망 후 새로 생긴 적은 이미 발동한 합격기 대상에 섞이지 않는다",
+      "passed": true
+    },
+    {
+      "name": "지원·의병·회복은 적이나 아직 0,0인 거북선 대신 실제 아군 좌표를 쓴다",
+      "passed": true
+    },
+    {
+      "name": "시전 때 적이 없으면 공격 착탄은 없고 지원받는 영웅은 계속 표시한다",
+      "passed": true
+    },
+    {
+      "name": "유성의 고정 좌표와 추적 포탄의 최종 좌표는 기존 궤적 그대로 착탄 시점에 기록한다",
+      "passed": true
+    },
+    {
+      "name": "낙하 전 표적이 사라져도 기존 광역 폭발과 그 위치의 연출을 유지한다",
+      "passed": true
+    },
+    {
+      "name": "표시 24곳 상한은 피해 80명 전원과 첫·마지막 대상 좌표를 보존한다",
+      "passed": true
+    },
+    {
+      "name": "JSON 게스트 전달은 착탄 좌표를 보존하고 새 스냅샷 없이 재생하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "11개 착탄은 전용 문양·물/불/빛/회복 그림을 쓰고 이동한 적을 다시 읽지 않는다",
+      "passed": true
+    },
+    {
+      "name": "8프레임 UV와 피벗 보정은 효과마다 독립적이며 공유 텍스처를 움직이지 않는다",
+      "passed": true
+    },
+    {
+      "name": "일시정지·작은 시간 간격·연속 재생은 같은 프레임과 잔광을 유지한다",
+      "passed": true
+    },
+    {
+      "name": "층을 묶은 효과는 64뿌리 상한·24대상 상한·종료 시 개별 자원 1회 해제를 지킨다",
+      "passed": true
+    },
+    {
+      "name": "지원 대상이 많아도 두 영웅을 먼저 표시하고 누락된 그림은 기본 효과로 대체한다",
+      "passed": true
+    },
+    {
+      "name": "늦게 끝난 로딩·실패·여러 전장은 공유 픽셀과 전장별 GPU 소유를 지킨다",
+      "passed": true
+    },
+    {
+      "name": "변경 전 코드와 11조합 전체의 피해·재화·소환·투사체·난수·이벤트가 3초간 완전히 같다",
+      "passed": true
+    }
+  ],
+  "combos": 11,
+  "reversePairs": 11,
+  "localCoopPreserved": true,
+  "maximumTargetsPerCue": 24,
+  "maximumEffectRoots": 64,
+  "animationFrames": 8,
+  "baselineCommit": "d817e52c22c66b1495eaa2b344b4320765469b8f",
+  "allComboCombatComparisonTicks": 180,
+  "jsonGuestEventsOnce": true,
+  "sharedTextureOffsetUnchanged": true,
+  "lateLoadingAndFallback": true
+}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "d817e52c22c66b1495eaa2b344b4320765469b8f",
+  "scope": "11 combo motifs with immutable actual target coordinates, delayed landing events, 8-frame lossless shockwave and small family impacts; gameplay unchanged.",
+  "regression": {
+    "tests": 325,
+    "groups": 24,
+    "passed": true,
+    "report": "COMBO_IMPACT_REGRESSION_VALIDATION.json"
+  },
+  "assets": {
+    "frames": 8,
+    "deliveryBytes": 439244,
+    "minimumTransparentGutter": 51,
+    "boundaryPixels": 0,
+    "alphaDifferences": 0,
+    "visibleRgbDifferences": 0
+  },
+  "determinism": {
+    "fixtureUnchanged": true,
+    "solo42": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721",
+    "coop7": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b",
+    "all11Combos180TicksOriginalStateAndEventsEqual": true
+  },
+  "build": {
+    "serverPassed": true,
+    "standalonePassed": true,
+    "standaloneBytes": 119953437,
+    "embeddedReport": "COMBO_IMPACT_EMBEDDED_VALIDATION.json"
+  },
+  "browser": {
+    "report": "COMBO_IMPACT_BROWSER_VALIDATION.json",
+    "localCoopPreserved": true,
+    "allHardMuted": true,
+    "userPlaytestUntouched": true
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoning": "xhigh",
+    "requiredRuntimeFixesRemaining": 0,
+    "actualWebGLVisualCheckedSeparately": true
+  },
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "remote": "https://github.com/evilmuff0805-create/Td.git",
+    "status": "local implementation; push pending"
+  }
+}

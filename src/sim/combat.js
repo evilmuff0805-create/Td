@@ -24,6 +24,17 @@ export function ev(s, k, o = {}) {
   s.events.push(o);
 }
 
+// Copy presentation coordinates at the moment of the effect. Sampling bounds
+// rendering only; it must never change the actual combat target list.
+export function comboCue(s, combo, points, { phase = 'cast', heroes = [], r } = {}) {
+  const count = Math.min(24, points.length);
+  const copied = Array.from({ length: count }, (_, i) => {
+    const p = points[count === 1 ? 0 : Math.floor(i * (points.length - 1) / (count - 1))];
+    return { x: p.x, y: p.y };
+  });
+  ev(s, 'abilityCue', { combo, phase, points: copied, heroes: heroes.map(h => ({ x: h.x, y: h.y })), ...(r === undefined ? {} : { r }) });
+}
+
 // Presentation metadata only: record the release already performed by the
 // simulation. Never defer damage, consume RNG, or change an attack cooldown.
 export function actionCue(s, actor, duration) {

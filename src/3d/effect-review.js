@@ -12,6 +12,7 @@ let game,sample=ABILITY_SAMPLES.find(s=>s.key==='eulji-heroUlt'),elapsed=0,accum
 const deferred=[],observed=[];
 function play(key=sample.key) {
   sample=ABILITY_SAMPLES.find(s=>s.key===key)??sample;world.reset();deferred.length=0;observed.length=0;
+  canvas.dataset.holding='false';
   game=createAbilitySample(sample,WINTER_STAGE.id);select.value=sample.key;
   status.textContent=`${sample.name} · 재생 중`;
   document.getElementById('ability-name').textContent=sample.name;document.getElementById('ability-description').textContent=sample.description??'';
@@ -24,18 +25,20 @@ select.onchange=()=>play(select.value);
 document.getElementById('replay').onclick=()=>play();
 document.getElementById('season').onchange=event=>{world.loadStage(WINTER_STAGE,event.target.value);play();};
 document.getElementById('hold').onchange=()=>play();
+document.getElementById('moment').onchange=()=>play();
 window.addEventListener('resize',()=>world.resize());
 window.addEventListener('pagehide',()=>world.destroy(),{once:true});
-Promise.all([world.art.promise,world.fx.art.promise,world.fx.signatures.promise,world.fx.tactics.promise]).then(()=>{
+Promise.all([world.art.promise,world.fx.art.promise,world.fx.signatures.promise,world.fx.tactics.promise,world.fx.comboArt.promise]).then(()=>{
   if(world.destroyed)return;select.disabled=false;document.getElementById('replay').disabled=false;play();
 });
 function frame(now) {
   const dt=Math.min(.05,(now-last)/1000);last=now;
   if(game){
-    const hold=document.getElementById('hold').checked&&elapsed>=sample.holdAt;
-    if(!hold){accumulator+=dt;while(accumulator>=DT){step(game);events();elapsed+=DT;accumulator-=DT;}world.fx.update(dt);}
+    const moment=document.getElementById('moment').value,holdAt=moment==='auto'?sample.holdAt:Number(moment);
+    const hold=document.getElementById('hold').checked&&elapsed+1e-9>=holdAt;
+    if(!hold){accumulator+=dt;while(accumulator>=DT&&(!document.getElementById('hold').checked||elapsed+1e-9<holdAt)){step(game);events();elapsed+=DT;accumulator-=DT;world.fx.update(DT);}}
     world.sync(game,game.time,hold?0:dt,null);for(const root of world.units.values())root.visible=document.getElementById('troops').checked;deferred.forEach(e=>world.firingLine(e));deferred.length=0;world.draw(game.time,hold?0:dt);
-    if(frames++%12===0){status.textContent=`${world.theme.name} · ${world.fx.signatures.ready&&world.fx.tactics.ready?'영웅·비기·합격기 전용 효과 적용':'공용 효과 대체'} · ${hold?'장면 고정':'재생 중'}`;canvas.dataset.sample=sample.key;canvas.dataset.sampleTime=elapsed.toFixed(2);canvas.dataset.sampleEvents=[...new Set(observed)].join(',');canvas.dataset.effectCount=world.fx.active.length;canvas.dataset.signatureTextures=world.fx.signatures.textures.size;canvas.dataset.tacticTextures=world.fx.tactics.textures.size;canvas.dataset.drawCalls=world.renderer.info.render.calls;canvas.dataset.geometries=world.renderer.info.memory.geometries;canvas.dataset.textures=world.renderer.info.memory.textures;}
+    if(frames++%12===0){status.textContent=`${world.theme.name} · ${world.fx.signatures.ready&&world.fx.tactics.ready?'영웅·비기·합격기 전용 효과 적용':'공용 효과 대체'} · ${hold?'장면 고정':'재생 중'}`;canvas.dataset.holding=String(hold);canvas.dataset.sample=sample.key;canvas.dataset.sampleTime=elapsed.toFixed(2);canvas.dataset.sampleEvents=[...new Set(observed)].join(',');canvas.dataset.effectCount=world.fx.active.length;canvas.dataset.signatureTextures=world.fx.signatures.textures.size;canvas.dataset.tacticTextures=world.fx.tactics.textures.size;canvas.dataset.drawCalls=world.renderer.info.render.calls;canvas.dataset.geometries=world.renderer.info.memory.geometries;canvas.dataset.textures=world.renderer.info.memory.textures;canvas.dataset.impactArt=world.fx.comboArt.ready?'ready':world.fx.comboArt.failed?'fallback':'loading';canvas.dataset.comboImpacts=world.fx.active.filter(e=>e.root.userData.comboImpact).length;canvas.dataset.impactFrames=world.fx.active.filter(e=>e.root.userData.frame!==undefined).map(e=>e.root.userData.frame).join(',');}
   }else world.draw(0,0);
   requestAnimationFrame(frame);
 }

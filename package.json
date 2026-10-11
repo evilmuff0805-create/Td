@@ -59,6 +59,8 @@
     "test:paid-final": "node tools/verify-paid-final.mjs",
     "test:skin-busts": "node tools/test-skin-busts.mjs",
     "test:skin-bust-assets": "node tools/skin-bust-assets.mjs",
-    "test:battle-feedback": "node tools/test-battle-feedback.mjs"
+    "test:battle-feedback": "node tools/test-battle-feedback.mjs",
+    "test:combo-impacts": "node tools/test-combo-impacts.mjs",
+    "test:combo-impact-assets": "node tools/combo-impact-assets.mjs"
   }
 }

@@ -1,0 +1,428 @@
+{
+  "date": "2026-10-11",
+  "reviewUrl": "http://127.0.0.1:8092/dev/3d-effect-review.html?mute=1",
+  "commandSamples": [
+    {
+      "art": "ready",
+      "effects": "6",
+      "events": "announce,abilityCue,combo",
+      "frames": "",
+      "geometries": "92",
+      "impacts": "4",
+      "name": "합격기 · 성군과 성웅",
+      "sample": "combo",
+      "season": "winter",
+      "textures": "60",
+      "time": "0.35"
+    },
+    {
+      "art": "ready",
+      "effects": "6",
+      "events": "abilityCue,combo",
+      "frames": "2,2,2,2",
+      "geometries": "109",
+      "impacts": "4",
+      "name": "합격기 · 살수낙성",
+      "sample": "combo-eulji_gang",
+      "season": "winter",
+      "textures": "69",
+      "time": "0.25"
+    },
+    {
+      "art": "ready",
+      "effects": "10",
+      "events": "abilityCue,combo",
+      "frames": "",
+      "geometries": "125",
+      "impacts": "8",
+      "name": "합격기 · 의병 궐기",
+      "sample": "combo-gwak_gwon",
+      "season": "winter",
+      "textures": "78",
+      "time": "0.25"
+    },
+    {
+      "art": "ready",
+      "effects": "6",
+      "events": "abilityCue,combo",
+      "frames": "2,2,2,2",
+      "geometries": "120",
+      "impacts": "4",
+      "name": "합격기 · 수륙병진",
+      "sample": "combo-gwon_yi",
+      "season": "winter",
+      "textures": "82",
+      "time": "0.25"
+    },
+    {
+      "art": "ready",
+      "effects": "6",
+      "events": "abilityCue,combo",
+      "frames": "1,1,1,1",
+      "geometries": "117",
+      "impacts": "4",
+      "name": "합격기 · 문무겸전",
+      "sample": "combo-eulji_sejong",
+      "season": "winter",
+      "textures": "84",
+      "time": "0.25"
+    },
+    {
+      "art": "ready",
+      "effects": "7",
+      "events": "abilityCue,combo,boom",
+      "frames": "2,1,0",
+      "geometries": "135",
+      "impacts": "3",
+      "name": "합격기 · 불멸의 대첩",
+      "sample": "combo-gang_yi",
+      "season": "winter",
+      "textures": "88",
+      "time": "0.65"
+    },
+    {
+      "art": "ready",
+      "effects": "6",
+      "events": "announce,abilityCue,combo",
+      "frames": "2,2,2,2",
+      "geometries": "126",
+      "impacts": "4",
+      "name": "합격기 · 대한 독립 만세",
+      "sample": "combo-ahn_sejong",
+      "season": "winter",
+      "textures": "92",
+      "time": "0.25"
+    },
+    {
+      "art": "ready",
+      "effects": "18",
+      "events": "boom,abilityCue,combo",
+      "frames": "2,2,2,2",
+      "geometries": "145",
+      "impacts": "4",
+      "name": "합격기 · 고조선의 후예",
+      "sample": "combo-dangun_eulji",
+      "season": "winter",
+      "textures": "97",
+      "time": "0.25"
+    },
+    {
+      "art": "ready",
+      "effects": "7",
+      "events": "abilityCue,combo,boom",
+      "frames": "2,1,0",
+      "geometries": "141",
+      "impacts": "3",
+      "name": "합격기 · 필사즉생의 총성",
+      "sample": "combo-ahn_yi",
+      "season": "winter",
+      "textures": "99",
+      "time": "0.65"
+    },
+    {
+      "art": "ready",
+      "effects": "6",
+      "events": "heal,abilityCue,combo",
+      "frames": "",
+      "geometries": "127",
+      "impacts": "2",
+      "name": "합격기 · 홍익의 나라",
+      "sample": "combo-dangun_sejong",
+      "season": "winter",
+      "textures": "100",
+      "time": "0.25"
+    },
+    {
+      "art": "ready",
+      "effects": "6",
+      "events": "abilityCue,combo",
+      "frames": "2,2,2,2",
+      "geometries": "129",
+      "impacts": "4",
+      "name": "합격기 · 호국 합격",
+      "sample": "combo-generic",
+      "season": "winter",
+      "textures": "101",
+      "time": "0.25"
+    }
+  ],
+  "seasonSamples": [
+    {
+      "frames": "2,2,2,2",
+      "impacts": "4",
+      "season": "winter",
+      "status": "겨울 · 영웅·비기·합격기 전용 효과 적용 · 장면 고정",
+      "time": "0.25"
+    },
+    {
+      "frames": "2,2,2,2",
+      "impacts": "4",
+      "season": "summer",
+      "status": "여름 · 영웅·비기·합격기 전용 효과 적용 · 장면 고정",
+      "time": "0.25"
+    },
+    {
+      "frames": "2,2,2,2",
+      "impacts": "4",
+      "season": "autumn",
+      "status": "가을 · 영웅·비기·합격기 전용 효과 적용 · 장면 고정",
+      "time": "0.25"
+    },
+    {
+      "frames": "",
+      "impacts": "2",
+      "season": "spring",
+      "status": "봄 · 영웅·비기·합격기 전용 효과 적용 · 장면 고정",
+      "time": "0.25"
+    }
+  ],
+  "delayedLandingSamples": [
+    {
+      "effects": "2",
+      "frames": "",
+      "geometries": "155",
+      "impacts": "0",
+      "sample": "combo-gang_yi",
+      "textures": "128",
+      "time": "0.10"
+    },
+    {
+      "effects": "7",
+      "frames": "2,1,0",
+      "geometries": "143",
+      "impacts": "3",
+      "sample": "combo-gang_yi",
+      "textures": "128",
+      "time": "0.65"
+    },
+    {
+      "effects": "0",
+      "frames": "",
+      "geometries": "108",
+      "impacts": "0",
+      "sample": "combo-gang_yi",
+      "textures": "128",
+      "time": "3.00"
+    },
+    {
+      "effects": "2",
+      "frames": "",
+      "geometries": "152",
+      "impacts": "0",
+      "sample": "combo-ahn_yi",
+      "textures": "128",
+      "time": "0.10"
+    },
+    {
+      "effects": "7",
+      "frames": "2,1,0",
+      "geometries": "143",
+      "impacts": "3",
+      "sample": "combo-ahn_yi",
+      "textures": "128",
+      "time": "0.65"
+    },
+    {
+      "effects": "0",
+      "frames": "",
+      "geometries": "108",
+      "impacts": "0",
+      "sample": "combo-ahn_yi",
+      "textures": "128",
+      "time": "3.00"
+    }
+  ],
+  "replaySamples": [
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    },
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    },
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    },
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    },
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    },
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    },
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    },
+    {
+      "effects": "6",
+      "frames": "2,2,2,2",
+      "geometries": "131",
+      "textures": "128",
+      "time": "0.25"
+    }
+  ],
+  "mobile": {
+    "canvas": {
+      "bottom": 896,
+      "height": 896,
+      "left": 0,
+      "right": 414,
+      "top": 0,
+      "width": 414,
+      "x": 0,
+      "y": 0
+    },
+    "frames": "2,1,0",
+    "height": 896,
+    "impacts": "3",
+    "nav": {
+      "bottom": 886,
+      "height": 97,
+      "left": 10,
+      "right": 404,
+      "top": 789,
+      "width": 394,
+      "x": 10,
+      "y": 789
+    },
+    "overflow": 0,
+    "time": "0.65",
+    "width": 414
+  },
+  "console": [],
+  "localCoop": {
+    "url": "http://127.0.0.1:8092/dist/hoguk.html?mute=1",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "initialGold": [
+      156,
+      156
+    ],
+    "afterP1Build": [
+      86,
+      156
+    ],
+    "afterP2EBuild": [
+      86,
+      86
+    ],
+    "p1MouseBuild": true,
+    "p2EBuild": true,
+    "p2ArrowInput": true,
+    "p1AimedSkill": true,
+    "p2ASkill": true,
+    "pausedAfterCheck": true,
+    "evidence": {
+      "art": {
+        "combatInbetweenActive": "true",
+        "combatInbetweenCount": "12",
+        "combatInbetweenExpected": "12",
+        "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatInbetweenStatus": "ready",
+        "combatPoseActive": "true",
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseLastKind": "ashigaru",
+        "combatPoseLastState": "pass-a",
+        "combatPoseStatus": "ready",
+        "drawCalls": "238",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "fps": "60",
+        "geometries": "128",
+        "heroInbetweenActive": "false",
+        "heroInbetweenCount": "2",
+        "heroInbetweenExpected": "2",
+        "heroInbetweenKinds": "sejong,yi",
+        "heroInbetweenLookKey": "sejong,yi",
+        "heroInbetweenStatus": "ready",
+        "heroPoseCount": "8",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "renderMode": "3d",
+        "sceneryBarrierCells": "0",
+        "sceneryBarriers": "0",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "9",
+        "sceneryHouses": "3",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "12",
+        "sceneryProps": "40",
+        "sceneryYardFences": "2",
+        "seasonTreeArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "spriteMotion": "distance-contact-recovery",
+        "tacticArtStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3216",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "textures": "59",
+        "triangles": "55464",
+        "villagePropArtStatus": "ready",
+        "villagePropSeason": "temperate",
+        "waterTriangles": "7704",
+        "yiFacing": "3",
+        "yiPose": "recover"
+      },
+      "hud": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n86\n2P 군자금\n86\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv1\n학익진\n14\n거북선\n신기전\n봉수\n1P 클릭 · 2P Space\n공명 8%\n진격 중\n적 1\n세종대왕 Lv1\n훈민 정음\nA\n15\n자격루\nS\n5\n봉수\nD\n신기전\nF",
+      "towers": [
+        {
+          "branch": "",
+          "label": "숭례문, 1 / 4단계, 0회 강화",
+          "level": "1",
+          "towerId": "3"
+        },
+        {
+          "branch": "",
+          "label": "숭례문, 1 / 4단계, 0회 강화",
+          "level": "1",
+          "towerId": "4"
+        }
+      ]
+    },
+    "screenshot": "screenshots/combo-impacts/local-coop.png"
+  },
+  "userPlaytestUntouched": true,
+  "allHardMuted": true
+}

@@ -1,0 +1,35 @@
+{
+  "tool": "builtin imagegen",
+  "date": "2026-10-11",
+  "variants": [
+    {
+      "tool": "built-in image_gen.imagegen",
+      "generations": [
+        {
+          "file": "combo-impact-flipbook-v1.png",
+          "prompt": "Use case: stylized-concept. Asset type: ONE game VFX sprite animation atlas, eight sequential temporal frames of the SAME ground impact, for a fixed high top-down Korean historical fantasy tower-defense battlefield. Create a polished painterly animated-film-quality magic shockwave with softly sculpted ivory/silver dust ribbons, small warm pale-gold sparks, a cool blue-grey inner shadow, and delicate feathered edges. It should feel like a physical burst of air and illuminated dust expanding across the ground, not a logo, icon, UI ring or bright neon disk. Camera: straight overhead orthographic view of the ground so the images can be laid flat on a 3D terrain; no horizon. Entire image must have a REAL TRANSPARENT ALPHA background, including the spaces inside the burst. No floor, no ground tile, no background rectangle, no captions, no grid lines. Layout: EXACTLY 4 equal columns by 2 equal rows, eight equal square cells; preferred canvas 1536 x 768. Read frames left to right, top row then bottom row. Every frame is perfectly centered at the same local cell center, same camera, same resolution and overall scale; only the effect evolves over time. Keep all content strictly within each cell with at least 12 percent transparent gutter on all four sides; no frame touches another cell. Frame 1: tiny sharp contact flash with a little curled dust. Frame 2: small expanding dusty arc. Frame 3: fuller shockwave with asymmetric soft folds. Frame 4: widest luminous crest, intricate painterly ripples. Frame 5: light starts dissipating into dusty ribbons. Frame 6: separated fading wisps and tiny drifting specks. Frame 7: only thin pale curled wisps, clearly dimmer. Frame 8: a few very faint fading specks and wisps, mostly transparent. Keep center mostly transparent from frame 3 onward so the soldier beneath remains readable. Use nuanced translucent silver-white and low-saturation neutral dust, suitable for tinting subtly to water blue, amber fire, celestial violet, or restorative jade in-game. Avoid opaque smoke clouds, hard geometric circles, thick outlines, excessive glare, explosions that fill the screen, symbols, characters, weapons, buildings, text, checkerboard backgrounds, duplicated frozen frames. This is a production raster game effect sheet, not a concept art illustration of a sheet.",
+          "selected": false,
+          "reason": "Several peak frames touch the cell and sheet boundaries."
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "source": "assets/3d/fixed/source/combo-impact-flipbook-v2.png",
+      "referencedSource": "assets/3d/fixed/source/combo-impact-flipbook-v1.png",
+      "prompt": "Edit this transparent eight-frame ground-impact sprite atlas. Keep the polished painterly silver-white dust, pale-gold sparks, transparent alpha, straight overhead camera, and the same single shockwave effect. Correct the layout rigorously: EXACTLY four columns by two rows of equal square cells. Every effect must be centered at the exact center of its own cell. Shrink ALL frames enough that even the largest frame has at least 18 percent clear transparent margin on all four sides INSIDE its own cell. Absolutely no effect may touch or cross a cell border or the outer image border. No image content between cells. In particular, the fourth top-row frame must be completely visible, centered well inside its cell, and no larger than the third frame's allocated area. Make the temporal progression more consistent: frame 1 small contact spark, frame 2 small rising dust wave, frame 3 growing crest, frame 4 largest crest, frame 5 same-radius thinner dissipating ribbons, frame 6 translucent thin wisps with much less opacity and detail, frame 7 very sparse faint wisps with at least 85 percent transparent area, frame 8 only a few faint leftover tiny specks with at least 95 percent transparent area. Frames 5, 6, 7, 8 must progressively fade rather than repeating a solid ring. Keep centers transparent from frame 3 onward. All frames have the SAME fixed cell size, same effect origin, consistent art scale and camera. Canvas ratio exactly 2:1 (four square cells by two square cells). A real alpha background; no floor, checkerboard, text, labels, border or grid. Do not introduce new objects or change the style. This will be used as an actual in-game animation with UV sampling; clean separation is essential.",
+      "transparentBackground": true,
+      "selected": false,
+      "reason": "Peak ring still reaches a row boundary; replaced with wider gutters."
+    },
+    {
+      "id": "v3",
+      "source": "assets/3d/fixed/source/combo-impact-flipbook-v3.png",
+      "referencedSource": "assets/3d/fixed/source/combo-impact-flipbook-v2.png",
+      "prompt": "Revise this transparent 8-frame impact sprite sheet for a real game. The current rings are MUCH too large for their cells and the fourth ring touches the horizontal split. Shrink EVERY effect to HALF its present diameter. Put each effect at its own cell center, not below the center. Exactly four columns by two rows in a 2:1 canvas. All eight cells must have wide empty transparent gutters: each ring or wisp stays within the CENTRAL HALF of its cell. Absolutely zero visible pixels near any cell boundary or the canvas boundary. Preserve the existing painterly silver dust with pale gold flecks and fully transparent background. Animation reads left to right, top row then bottom row: small contact, rising ring, expanding ring, peak ring, thinner ring, thin pale wisps, only four faint wisps, almost invisible specks. Make the last two cells very sparse, truly translucent and mostly empty. No new objects, floor, grid, text, shadows, checkerboard, or background. This is a technical sprite-sheet correction: prioritize big transparent margins and consistent CENTER positions over filling the image.",
+      "transparentBackground": true,
+      "selected": true,
+      "reason": "Separated eight-frame progression with clear transparent gutters; final fade is controlled by the renderer."
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-11",
+  "source": "assets/3d/fixed/source/combo-impact-flipbook-v3.png",
+  "delivery": "assets/3d/fixed/combo-impact-flipbook-v3.webp",
+  "width": 1774,
+  "height": 887,
+  "frames": [
+    {
+      "frame": 0,
+      "cell": {
+        "left": 0,
+        "top": 0,
+        "width": 444,
+        "height": 444
+      },
+      "visibleBounds": {
+        "left": 175,
+        "top": 215,
+        "width": 113,
+        "height": 112
+      },
+      "visiblePixels": 9685,
+      "minimumTransparentGutter": 117,
+      "boundaryPixels": 0
+    },
+    {
+      "frame": 1,
+      "cell": {
+        "left": 444,
+        "top": 0,
+        "width": 443,
+        "height": 444
+      },
+      "visibleBounds": {
+        "left": 593,
+        "top": 187,
+        "width": 156,
+        "height": 164
+      },
+      "visiblePixels": 19330,
+      "minimumTransparentGutter": 93,
+      "boundaryPixels": 0
+    },
+    {
+      "frame": 2,
+      "cell": {
+        "left": 887,
+        "top": 0,
+        "width": 444,
+        "height": 444
+      },
+      "visibleBounds": {
+        "left": 996,
+        "top": 158,
+        "width": 224,
+        "height": 222
+      },
+      "visiblePixels": 34417,
+      "minimumTransparentGutter": 64,
+      "boundaryPixels": 0
+    },
+    {
+      "frame": 3,
+      "cell": {
+        "left": 1331,
+        "top": 0,
+        "width": 443,
+        "height": 444
+      },
+      "visibleBounds": {
+        "left": 1421,
+        "top": 135,
+        "width": 258,
+        "height": 258
+      },
+      "visiblePixels": 45167,
+      "minimumTransparentGutter": 51,
+      "boundaryPixels": 0
+    },
+    {
+      "frame": 4,
+      "cell": {
+        "left": 0,
+        "top": 444,
+        "width": 444,
+        "height": 443
+      },
+      "visibleBounds": {
+        "left": 119,
+        "top": 561,
+        "width": 226,
+        "height": 223
+      },
+      "visiblePixels": 32218,
+      "minimumTransparentGutter": 99,
+      "boundaryPixels": 0
+    },
+    {
+      "frame": 5,
+      "cell": {
+        "left": 444,
+        "top": 444,
+        "width": 443,
+        "height": 443
+      },
+      "visibleBounds": {
+        "left": 564,
+        "top": 573,
+        "width": 215,
+        "height": 217
+      },
+      "visiblePixels": 26034,
+      "minimumTransparentGutter": 97,
+      "boundaryPixels": 0
+    },
+    {
+      "frame": 6,
+      "cell": {
+        "left": 887,
+        "top": 444,
+        "width": 444,
+        "height": 443
+      },
+      "visibleBounds": {
+        "left": 1016,
+        "top": 588,
+        "width": 179,
+        "height": 198
+      },
+      "visiblePixels": 14495,
+      "minimumTransparentGutter": 101,
+      "boundaryPixels": 0
+    },
+    {
+      "frame": 7,
+      "cell": {
+        "left": 1331,
+        "top": 444,
+        "width": 443,
+        "height": 443
+      },
+      "visibleBounds": {
+        "left": 1485,
+        "top": 607,
+        "width": 158,
+        "height": 167
+      },
+      "visiblePixels": 6759,
+      "minimumTransparentGutter": 113,
+      "boundaryPixels": 0
+    }
+  ],
+  "alphaDifferences": 0,
+  "visibleRgbDifferences": 0,
+  "lossless": true,
+  "bytes": 439244
+}

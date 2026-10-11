@@ -3,7 +3,7 @@ import { HEROES, YI_FAN } from '../data/heroes.js';
 import { SKILLS, skillPower } from '../data/skills.js';
 import { findCombo, COMBO_RANGE, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import {
-  ev, d2, clamp, mapOf, aoe, damage, applySlow, applyStun, applyVuln, addSummon, drop, randomPointIn,
+  ev, comboCue, d2, clamp, mapOf, aoe, damage, applySlow, applyStun, applyVuln, addSummon, drop, randomPointIn,
   addGold, heroPower, isTargetable, addResonance, releaseBlocker,
 } from './combat.js';
 
@@ -381,9 +381,11 @@ export function fireCombo(s) {
   s.resonance.gauge = 0;
   s.resonance.press = [-99, -99];
   for (const pl of s.players) pl.stats.combos++;
-  const src = { p: 0, kind: 'combo' };
+  const src = { p: 0, kind: 'combo', visualCombo: combo.id };
   const lvSum = a.lv + b.lv;
   const alive = () => s.enemies.filter((e) => e.hp > 0);
+  const cueHeroes = [a, b].map(h => ({ x: h.x, y: h.y }));
+  let cueTargets = alive().map(e => ({ x: e.x, y: e.y }));
   switch (combo.id) {
     case 'yi_sejong': {
       s.buffs.dmgT = 10;
@@ -392,6 +394,7 @@ export function fireCombo(s) {
       s.buffs.as = Math.max(s.buffs.as, 0.2);
       const map = mapOf(s);
       map.paths.forEach((_, i) => launchTurtle(s, i, 260 + lvSum * 15, src));
+      cueTargets = s.towers.map(t => ({ x: t.cx, y: t.cy }));
       break;
     }
     case 'eulji_gang':
@@ -402,6 +405,7 @@ export function fireCombo(s) {
       break;
     case 'gwak_gwon': {
       const map = mapOf(s);
+      const firstSummon = s.summons.length;
       map.paths.forEach((p) => {
         for (const f of [0.45, 0.7]) {
           const q = posAt(p, p.total * f);
@@ -413,6 +417,7 @@ export function fireCombo(s) {
         h.buffs.dmgT = 8;
       }
       for (const e of alive()) applySlow(e, 0.4, 6);
+      cueTargets = s.summons.slice(firstSummon).map(q => ({ x: q.x, y: q.y }));
       break;
     }
     case 'gwon_yi':
@@ -426,6 +431,7 @@ export function fireCombo(s) {
       for (const pl of s.players) addGold(pl, 150);
       break;
     case 'gang_yi': {
+      cueTargets = []; // The delayed projectile records its actual landing.
       const targets = alive().sort((x, y) => y.hp - x.hp).slice(0, 12);
       targets.forEach((e, i) => drop(s, 'meteor', e.x, e.y, 0.4 + i * 0.1, { r: 0.6, dmg: 500 + lvSum * 15, type: 'holy', follow: e.id }, src));
       break;
@@ -447,11 +453,13 @@ export function fireCombo(s) {
       });
       break;
     case 'ahn_yi': {
+      cueTargets = [];
       const targets = alive().sort((x, y) => (y.tier === 4) - (x.tier === 4) || y.hp - x.hp).slice(0, 6);
       targets.forEach((e, i) => drop(s, 'bigshell', e.x, e.y, 0.4 + i * 0.12, { r: 0.6, dmg: 700 + lvSum * 15, type: 'fire', single: e.id }, src, { sx: e.x - 8, sy: e.y - 4, follow: e.id }));
       break;
     }
     case 'dangun_sejong':
+      cueTargets = [];
       for (const h of s.heroes) {
         if (h.dead) {
           h.dead = false;
@@ -473,6 +481,7 @@ export function fireCombo(s) {
       for (const pl of s.players) addGold(pl, 60);
     }
   }
+  comboCue(s, combo.id, cueTargets, { heroes: cueHeroes });
   ev(s, 'combo', { id: combo.id, name: combo.name, a: a.heroId, b: b.heroId, x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 });
   ev(s, 'sfx', { n: 'combo' });
 }

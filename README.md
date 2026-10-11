@@ -4,7 +4,9 @@
 
 현재 기본 전장은 **고정 시점의 2.5D 일러스트**입니다. 투명 캐릭터·건물 그림을 실제 3D 지면에 배치해 전투·성장·저장·협동에 연결했습니다. 영웅 8명, 유산 10종, 왜군 22종과 사계절의 전장 25곳을 사용합니다.
 
-최신 작업은 **건물 아래 네 점으로 강화 단계를 표시하는 것**입니다. 1·2·3단계는 그 수만큼 점을 채우고 최종 A는 금색 네 점, B는 청록색 네 점을 표시합니다. 평소에는 점만 보이고 선택·가리킴·키보드 초점에서 이름과 상세가 펼쳐집니다. 관련 **46개 / 3검사군**, 실제 로컬 2인 건설·모바일 크기·A/B 강화와 두 빌드를 확인했습니다. [네 점 표시와 검증](docs/TOWER_DOTS.md)
+최신 작업은 **합격기 11종의 실제 대상·착탄 효과**입니다. 새 충격파 8프레임과 기존 조합별 문양을 물결·화염·빛·치유에 연결했습니다. 지원은 아군에, 지연 공격은 실제 폭발 위치에 표시하며 전장을 가리지 않게 짧고 옅게 사라집니다. 전체 **325개 / 24검사군**, 실제 로컬 2인·사계절·414px·반복 자원 수와 두 빌드를 확인했습니다. [효과와 정확한 검증](docs/COMBO_IMPACTS.md)
+
+앞선 작업은 **건물 아래 네 점으로 강화 단계를 표시하는 것**입니다. 1·2·3단계는 그 수만큼 점을 채우고 최종 A는 금색 네 점, B는 청록색 네 점을 표시합니다. 평소에는 점만 보이고 선택·가리킴·키보드 초점에서 이름과 상세가 펼쳐집니다. 관련 **46개 / 3검사군**, 실제 로컬 2인 건설·모바일 크기·A/B 강화와 두 빌드를 확인했습니다. [네 점 표시와 검증](docs/TOWER_DOTS.md)
 
 앞선 작업은 **작은 숫자 배지와 스킬 발동음**입니다. 성공한 기술·궁극기·비기마다 짧은 소리가 나며, [효과음 전용 주소](http://localhost:8080/?sound=effects)로 배경음 없이 플레이할 수 있습니다. 당시 전체 **309개 / 23검사군**·완주 SHA·두 빌드·Astra xhigh 최종 검토를 통과했습니다. 숫자 배지는 현재 네 점으로 교체했습니다. [당시 표시·소리와 검증](docs/BATTLE_FEEDBACK.md)
 
@@ -20,9 +22,11 @@
 
 현재 구현·검증·남은 작업과 GitHub 반영 기준은 [프로젝트 리뷰](docs/PROJECT_REVIEW.md)에 기록합니다. 상위 작업 폴더의 `호국영웅전_PROJECT_REVIEW.md`도 함께 갱신합니다. 완료한 작업 단위마다 같은 브랜치에 커밋·푸시하고 원격 반영을 확인합니다.
 
-[건물 아래 네 점·최신 검증](docs/TOWER_DOTS.md) · [스킬 발동음](docs/BATTLE_FEEDBACK.md) · [최신 그림 가이드](docs/ART.md) · [의상 16종 큰 일러스트·최신 검증](docs/SKIN_BUST_ART.md) · [영웅 8명 큰 일러스트·최신 검증](docs/HERO_BUST_ART.md) · [목책·돌담·마을 짐·최신 검증](docs/VILLAGE_SCENERY.md) · [동작 전환·조준·최신 검증](docs/MOTION_TRANSITIONS.md) · [병력 중간 원화·검증](docs/COMBAT_INBETWEENS.md) · [전체 영웅 외형 중간 동작·최신 검증](docs/SKIN_INBETWEENS.md) · [메뉴·HUD·의상 톤 연결](docs/HERO_MENU_ART.md) · [비기·합격기 전용 그림·최신 검증](docs/TACTIC_ART.md) · [주변 소품 배치·최신 검증](docs/SCENERY_LAYOUT.md) · [영웅 16기술·최신 검증](docs/SKILL_SIGNATURES.md) · [보행·공격 복귀·로컬 협동 검증](docs/MOTION_REFINEMENT.md) · [새 물가·그림 수면·최신 검증](docs/WATER_REFINEMENT.md) · [계절 수목·최신 검증](docs/SEASONAL_SCENERY.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [공용 스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
+[합격기 11종 착탄·최신 검증](docs/COMBO_IMPACTS.md) · [건물 아래 네 점·검증](docs/TOWER_DOTS.md) · [스킬 발동음](docs/BATTLE_FEEDBACK.md) · [최신 그림 가이드](docs/ART.md) · [의상 16종 큰 일러스트·최신 검증](docs/SKIN_BUST_ART.md) · [영웅 8명 큰 일러스트·최신 검증](docs/HERO_BUST_ART.md) · [목책·돌담·마을 짐·최신 검증](docs/VILLAGE_SCENERY.md) · [동작 전환·조준·최신 검증](docs/MOTION_TRANSITIONS.md) · [병력 중간 원화·검증](docs/COMBAT_INBETWEENS.md) · [전체 영웅 외형 중간 동작·최신 검증](docs/SKIN_INBETWEENS.md) · [메뉴·HUD·의상 톤 연결](docs/HERO_MENU_ART.md) · [비기·합격기 전용 그림·최신 검증](docs/TACTIC_ART.md) · [주변 소품 배치·최신 검증](docs/SCENERY_LAYOUT.md) · [영웅 16기술·최신 검증](docs/SKILL_SIGNATURES.md) · [보행·공격 복귀·로컬 협동 검증](docs/MOTION_REFINEMENT.md) · [새 물가·그림 수면·최신 검증](docs/WATER_REFINEMENT.md) · [계절 수목·최신 검증](docs/SEASONAL_SCENERY.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [공용 스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
 
 이순신의 전장용 16포즈는 다른 영웅의 부드러운 톤에 맞춘 v2로 교체했습니다. 남색 망토·활·화살통으로 권율의 붉은 망토·창·방패와 구분합니다. [같은 크기 비교와 적용·검증](docs/YI_TONE_REFINEMENT.md)
+
+![합격기 물결의 실제 전장 효과](docs/screenshots/combo-impacts/flood-winter.png)
 
 ![건물 아래 네 점 표시의 실제 로컬 2인 전장](docs/screenshots/tower-dots/local-dots.png)
 
@@ -42,7 +46,7 @@
 
 ![유산 기본·2·3·최종 A/B 외형](docs/screenshots/tower-stages-bosingak.png)
 
-기본 영웅 8명은 **256포즈**, 특수 의상 16종은 **512포즈**, 병력·적장·아군과 이동체 28종은 **896포즈**, 전체 전장 준비 그림은 **1,664개**입니다. 모든 외형에 네 박자 이동을 연결했습니다. 적군은 성문 도착 시 바로 사라집니다. 앞선 전체 검사 **309개 / 23검사군**, 변경 전 솔로/협동 완주 SHA와 승인된 1,664자세 불변, 두 빌드를 확인했습니다. 이번 네 점 표시와 관련 검사 46개·로컬2인·A/B 강화·414px 확인은 [최신 검증](docs/TOWER_DOTS.md)에 기록합니다. 앞선 단일 HTML에서 의상실 8명·24그림·전신 모드 영웅 교대·414×896·로컬 2인 선택·첫 진군·2P E키 건설과 개별 군자금을 검수했습니다. 앞선 도감·사계절·양측 기술 검수는 각 작업 기록에 보존합니다. 단일 HTML은 **119,363,170바이트**이며 방향/중간 시트 104장·메뉴 1장·기본 흉상 8장·의상 흉상 16장·지면 3장·수목 1장·마을 소품 2장·물 1장·기술 시트 4장을 각각 한 번 포함합니다. 기본 흉상 원본/참조 PNG 18장·의상 원본/참조 PNG 32장과 중간 원화 PNG 256장은 포함하지 않습니다. [검증 결과와 적용 한계](docs/SKIN_BUST_ART.md)
+기본 영웅 8명은 **256포즈**, 특수 의상 16종은 **512포즈**, 병력·적장·아군과 이동체 28종은 **896포즈**, 전체 전장 준비 그림은 **1,664개**입니다. 모든 외형에 네 박자 이동을 연결했습니다. 적군은 성문 도착 시 바로 사라집니다. 최신 전체 검사 **325개 / 24검사군**, 변경 전 솔로/협동 완주 SHA와 승인된 1,664자세 불변, 두 빌드를 확인했습니다. 최신 합격기 11종·실제 착탄·사계절·로컬 2인·414px 검증은 [합격기 기록](docs/COMBO_IMPACTS.md)에, 앞선 네 점 표시·A/B 강화 검증은 [표시 기록](docs/TOWER_DOTS.md)에 보존합니다. 앞선 단일 HTML에서 의상실 8명·24그림·전신 모드 영웅 교대·414×896·로컬 2인 선택·첫 진군·2P E키 건설과 개별 군자금을 검수했습니다. 앞선 도감·사계절·양측 기술 검수는 각 작업 기록에 보존합니다. 단일 HTML은 **119,953,437바이트**이며 방향/중간 시트 104장·메뉴 1장·기본 흉상 8장·의상 흉상 16장·지면 3장·수목 1장·마을 소품 2장·물 1장·기술 시트 4장·합격기 충격파 1장을 각각 한 번 포함합니다. 기본 흉상 원본/참조 PNG 18장·의상 원본/참조 PNG 32장과 중간 원화 PNG 256장·충격파 원본 PNG 3장은 포함하지 않습니다. [검증 결과와 적용 한계](docs/SKIN_BUST_ART.md)
 
 영웅 기술·궁극기 16개에 각각 다른 그림 모티프를 연결했습니다. 실제 학익진 범위, 거북선 항적, 자격루, 낙성우·마늘 투사체, 의병·목책의 생성 위치와 번개 착탄을 사용합니다. 기존 기술 아이콘 디자인은 유지하고 두 시트를 WebP로 압축해 배포 용량을 줄였습니다. 비기 8개·전용/일반 합격기 11개·참격에도 별도 그림을 연결했습니다. [실제 명령으로 기술 36개 비교](http://localhost:8080/dev/3d-effect-review.html?mute=1)에서 사계절·정지·병력 표시를 바꿀 수 있습니다.
 

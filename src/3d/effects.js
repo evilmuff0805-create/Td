@@ -4,6 +4,7 @@ import { SKILLS } from '../data/skills.js';
 import { PaintedEffectArt } from './effect-art.js';
 import { PaintedSignatures } from './signature-art.js';
 import { TACTIC_ART } from './tactic-data.js';
+import { ComboImpactArt,COMBO_IMPACT_STYLES,COMBO_IMPACT_FRAMES } from './combo-impact-art.js';
 
 const basic=(color,opacity=1)=>new T.MeshBasicMaterial({color,transparent:true,opacity,side:T.DoubleSide,depthWrite:false,blending:T.AdditiveBlending,toneMapped:false});
 export function fanGeometry(range=YI_FAN.range,halfAngle=YI_FAN.halfAngle) {
@@ -36,6 +37,7 @@ export class BattleEffects {
     this.art=illustrated?new PaintedEffectArt():null;this.art?.load();
     this.signatures=illustrated?new PaintedSignatures():null;this.signatures?.load();
     this.tactics=illustrated?new PaintedSignatures(TACTIC_ART):null;this.tactics?.load();
+    this.comboArt=illustrated?new ComboImpactArt():null;this.comboArt?.load();
     this.fan=new T.Group();this.fan.position.y=.08;
     this.fan.add(new T.Mesh(fanGeometry(),new T.MeshBasicMaterial({color:'#339bcc',transparent:true,opacity:.23,side:T.DoubleSide,depthWrite:false,toneMapped:false})));
     this.fan.add(new T.Line(outline(YI_FAN.range,YI_FAN.halfAngle),new T.LineBasicMaterial({color:'#2589ba',transparent:true,opacity:.95,depthWrite:false,toneMapped:false})));
@@ -65,15 +67,49 @@ export class BattleEffects {
     this.scene.add(root);this.active.push({root,life,t:0,animate});
   }
   signature(kind,x,z,r=.7,{angle=0,height=.085,life=.85,opacity=.65}={}) {
-    const source=kind.startsWith('skill-')?this.tactics:this.signatures;
+    const source=typeof kind==='string'&&kind.startsWith('skill-')?this.tactics:this.signatures;
     const image=source?.decal(kind,r,opacity);if(!image)return false;
     image.scale.setScalar(.86);
     const root=new T.Group();root.position.set(x,height,z);root.rotation.y=-angle;root.add(image);root.userData.signature=kind;
     this.add(root,life,(_,k)=>{image.scale.setScalar(.86+k*.14);image.material.opacity=opacity*Math.min(1,(1-k)*2);});return true;
   }
   heroCue(e) {
+    if(e.combo){this.comboCue(e);return;}
     for(const p of e.points??[{x:e.x,y:e.y}]){
       if(!this.signature(e.motif,p.x,p.y,e.r??.7,{life:e.motif==='sejong-ult'?1.4:.95,opacity:.58}))this.spell('ring',p.x,p.y,e.r??.7);
+    }
+  }
+  comboCue(event) {
+    const style=COMBO_IMPACT_STYLES[event.combo];if(!style)return;
+    const heroes=event.heroes??[];
+    if(event.phase==='cast'&&heroes.length===2)this.line(heroes[0].x,heroes[0].y,heroes[1].x,heroes[1].y,style.color,.55,true);
+    const points=style.support?[...heroes,...(event.points??[])]:event.points??[],seen=new Set();
+    let count=0;
+    for(const p of points){
+      if(!Number.isFinite(p.x)||!Number.isFinite(p.y))continue;
+      const key=p.x+','+p.y;if(seen.has(key))continue;seen.add(key);
+      if(count++>=24)break;
+      const radius=event.r??style.radius,root=new T.Group();root.position.set(p.x,.12,p.y);
+      root.userData.comboImpact=event.combo;root.userData.family=style.family;root.userData.phase=event.phase;
+      const base=this.art?.decal(style.family,radius,.42)??new T.Mesh(new T.RingGeometry(radius*.76,radius,40),basic(style.color,.42));
+      base.rotation.x=-Math.PI/2;base.material.blending=T.NormalBlending;root.add(base);
+      const crest=style.support?null:this.comboArt?.decal(radius,style.color,.38);
+      if(crest){crest.position.y=.016;root.add(crest);}
+      const motif=this.tactics?.decal('combo-'+event.combo,radius*.64,.40);
+      if(motif){motif.position.y=.028;root.add(motif);}
+      const spray=style.support?null:new T.BufferGeometry(),particles=new Float32Array(27);
+      let sparks=null;
+      if(spray){spray.setAttribute('position',new T.BufferAttribute(particles,3));sparks=new T.Points(spray,new T.PointsMaterial({map:this.glow,color:style.color,size:style.family==='flood'?.10:.075,transparent:true,opacity:.7,depthWrite:false,blending:T.NormalBlending,toneMapped:false}));root.add(sparks);}
+      const halo=!style.support&&this.glow?new T.Sprite(new T.SpriteMaterial({map:this.glow,color:style.color,transparent:true,opacity:.18,depthWrite:false,blending:T.AdditiveBlending,toneMapped:false})):null;
+      if(halo){halo.position.y=.24;root.add(halo);}
+      const animate=(t,k)=>{
+        base.scale.setScalar(.75+k*.50);base.material.opacity=Math.min(1,(1-k)*1.8)*.58;
+        if(crest){this.comboArt.frame(crest,Math.floor(k*COMBO_IMPACT_FRAMES+1e-8));crest.material.opacity=Math.pow(1-k,.7)*.58;root.userData.frame=crest.userData.impactFrame;}
+        if(motif){motif.scale.setScalar(.8+k*.2);motif.material.opacity=Math.max(0,1-k*1.5)*.40;}
+        if(sparks){for(let i=0;i<9;i++){const angle=i*2.399,spread=radius*(.16+k*(.5+i%3*.12));particles[i*3]=Math.cos(angle)*spread;particles[i*3+2]=Math.sin(angle)*spread;particles[i*3+1]=Math.max(.025,(.6+i%4*.18)*Math.sin(k*Math.PI)*(style.family==='flood'?.8:1));}spray.attributes.position.needsUpdate=true;sparks.material.opacity=(1-k)*.7;}
+        if(halo){halo.scale.setScalar(radius*(.8+Math.sin(k*Math.PI)*.4));halo.material.opacity=Math.pow(1-k,2)*.18;}
+      };
+      animate(0,0);this.add(root,style.life,animate);
     }
   }
   dash(x1,z1,x2,z2) {
@@ -183,7 +219,7 @@ export class BattleEffects {
       }
     });
   }
-  combo(event,game) {
+  combo(event) {
     const root=new T.Group();root.position.set(event.x,.1,event.y);
     const painted=this.tactics?.decal('combo-'+event.id,.85,.7)??this.art?.decal('combo',.95,.7);if(painted)root.add(painted);
     const shape=new T.Shape(),r=.72;shape.absarc(0,0,r,0,Math.PI,false);shape.absarc(-r/2,0,r/2,Math.PI,0,true);shape.absarc(r/2,0,r/2,Math.PI,Math.PI*2,false);shape.closePath();
@@ -191,11 +227,8 @@ export class BattleEffects {
       const part=new T.Mesh(new T.ShapeGeometry(shape,24),basic(color,.7));part.rotation.x=-Math.PI/2;part.rotation.z=i*Math.PI;root.add(part);
     }
     const rim=reticle(1.18,'#eacb8b');root.add(rim);
-    this.add(root,1.7,(_,k)=>{root.scale.setScalar(.6+k*.9);root.rotation.y=k*.65;root.traverse(o=>{if(o.material)o.material.opacity=(1-k)*(painted?.6:.75);});});
-    const [a,b]=game.heroes;this.line(a.x,a.y,b.x,b.y,'#ecdc9b',.7,true);
-    for(const h of game.heroes)this.impact(h.x,h.y,.75,event.id==='dangun_sejong'?'#a1dfad':'#e7d99e',event.id==='dangun_sejong'?'heal':'build');
-    if(['gwon_yi','eulji_gang','ahn_sejong','generic'].includes(event.id))for(const e of game.enemies.slice(0,20))
-      this.impact(e.x,e.y,.7,event.id==='eulji_gang'?'#91d6ec':event.id==='gwon_yi'?'#f0ba78':'#d6d6fa',event.id==='eulji_gang'?'flood':event.id==='gwon_yi'?'fire':'light');
+    const animate=(_,k)=>{root.scale.setScalar(.6+k*.25);root.rotation.y=k*.18;root.traverse(o=>{if(o.material)o.material.opacity=(1-k)*(painted?.45:.6);});};
+    animate(0,0);this.add(root,1.2,animate);
   }
   update(dt) {
     for(let i=this.active.length-1;i>=0;i--){const e=this.active[i];e.t+=dt;const k=Math.min(1,e.t/e.life);e.animate(e.t,k);if(k>=1){this.scene.remove(e.root);release(e.root);this.active.splice(i,1);}}
@@ -221,5 +254,5 @@ export class BattleEffects {
     root.userData.edge.traverse(o=>{if(o.material)o.material.opacity=fade*.24;});
     root.userData.motes.position.y=Math.sin(time*2)*.05;root.userData.motes.material.opacity=fade*.4;
   }
-  destroy(){this.reset();for(const root of this.previewRoots){this.scene.remove(root);release(root);}this.previewRoots=[];this.art?.dispose();this.signatures?.dispose();this.tactics?.dispose();}
+  destroy(){this.reset();for(const root of this.previewRoots){this.scene.remove(root);release(root);}this.previewRoots=[];this.art?.dispose();this.signatures?.dispose();this.tactics?.dispose();this.comboArt?.dispose();}
 }

@@ -1,0 +1,23 @@
+{
+  "standaloneBytes": 119953437,
+  "embeddedDirectionalSheets": 104,
+  "embeddedMenuSheets": 1,
+  "embeddedHeroBusts": 8,
+  "embeddedSkinBusts": 16,
+  "skinPortraitSourcePngsEmbedded": 0,
+  "skinPortraitSourcePngsChecked": 32,
+  "portraitSourcePngsEmbedded": 0,
+  "portraitSourcePngsChecked": 18,
+  "embeddedTerrainSurfaces": 3,
+  "embeddedSeasonalPropSheets": 1,
+  "embeddedVillagePropSheets": 2,
+  "villageSourcePngsEmbedded": 0,
+  "embeddedWaterSurfaces": 1,
+  "embeddedSkillAtlases": 4,
+  "embeddedComboImpactAtlases": 1,
+  "comboImpactSourcePngsEmbedded": 0,
+  "eachEmbeddedExactlyOnce": true,
+  "rejectedVersionsEmbedded": 0,
+  "inbetweenArchivePngsEmbedded": 0,
+  "inbetweenArchivePngsChecked": 256
+}
