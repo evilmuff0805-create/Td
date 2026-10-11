@@ -144,7 +144,9 @@
   },
   "github": {
     "branch": "claude/korean-hero-tower-defense-i8ard8",
-    "implementationCommit": null,
-    "remoteVerified": false
+    "implementationCommit": "041bba523d2669b75d57a19957ad88ce17b83db4",
+    "remoteCommit": "041bba523d2669b75d57a19957ad88ce17b83db4",
+    "remoteVerified": true,
+    "verifiedAt": "2026-10-11T13:54:40.887135+00:00"
   }
 }

@@ -145,7 +145,7 @@ npm run build
 
 `three@0.186.1`, `esbuild@0.24.0`를 사용한다. `npm run build:3d`는 서버용 번들을 갱신하고, `npm run build`는 엔진과 그림을 포함한 `dist/hoguk.html`을 만든다. 현재 검증한 단일 HTML은 **121,854,634바이트**이며 영웅 8장·병력 28장·의상 16장·중간 원화 52장, 총 **104방향/중간 시트**와 메뉴용 1장·기본 큰 일러스트 8장·의상 큰 일러스트 16장, 지면 3장·수목 1장·마을 소품 2장·물 1장·기술 시트 4장·합격기 충격파 1장·새 계열3장을 각각 한 번 포함한다. 거부된 이전 버전·보존용 아이콘 PNG·마을 소품 원본 PNG 2장·기본 흉상 원본/참조 PNG 18장·새 의상 원본/참조 PNG 32장·중간 원화 원본/참조/포장 PNG 256장·충격파 원본 PNG 3장·새 계열 원본 PNG 3장은 포함하지 않는다. 선택 외형만 디코딩해도 단일 HTML에는 전체 배포 그림이 포함되므로 파일 크기는 커진다. `npm run build:web`은 원화 외부 파일·gzip·캐시를 쓰는 `dist/web/`을 만들고 `python tools/package-web.py`는 배포 ZIP을 만든다. [정확한 크기·실행](ROADMAP_RELEASE.md). `node_modules/`와 `dist/`는 Git 제외 생성물이며 재현 소스·원본·배포 그림·도구·서버용 번들은 저장소에 포함한다.
 
-단일 파일은 혼자/로컬 협동용이며 온라인 협동은 서버 기본 게임 주소에서 실행한다. 브라우저 검증은 `/dist/hoguk.html?mute=1`에서 수행했다. 브라우저 보안 정책 때문에 `file://` 직접 실행 검증은 하지 못했다. 선택 웹 글꼴을 받지 못하면 시스템 글꼴을 사용한다.
+단일 파일은 혼자/로컬 협동용이며 온라인 협동은 서버 기본 게임 주소에서 실행한다. 앞선 단일 파일 브라우저 검증은 `/dist/hoguk.html?mute=1`에서 수행했고, 이번 로컬 2인 건설·고정 점 검증은 별도8098서버의 실제 `dist/web` 패키지에서 수행했다. 브라우저 보안 정책 때문에 `file://` 직접 실행 검증은 하지 못했다. 선택 웹 글꼴을 받지 못하면 시스템 글꼴을 사용한다.
 
 주요 비교 도구: [24개 외형 큰 일러스트](http://localhost:8080/dev/hero-bust-review.html?set=all&mute=1) · [영웅 8명 큰 일러스트](http://localhost:8080/dev/hero-bust-review.html?mute=1) · [마을 소품 확대](http://localhost:8080/dev/3d-village-review.html?mute=1) · [이동·정지·공격 전환](http://localhost:8080/dev/3d-motion-review.html?mute=1) · [사계절 풍경](http://localhost:8080/dev/3d-season-review.html?mute=1) · [전체 영웅 외형 768자세](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1) · [기본 영웅 256포즈](http://localhost:8080/dev/3d-hero-pose-review.html?mute=1) · [병력 896자세](http://localhost:8080/dev/3d-combat-pose-review.html?mute=1) · [강화 외형 50개](http://localhost:8080/dev/3d-tower-review.html?mute=1) · [사계절 스킬 효과](http://localhost:8080/dev/3d-effect-review.html?mute=1) · [밀집 병력 28종](http://localhost:8080/dev/3d-performance-review.html?mute=1) · [자유 전장](http://localhost:8080/3d.html?mute=1). 자유 전장은 미술·전투 비교용 지원 설정을 제공하며 정식 캠페인 보상과 구분한다.
 
@@ -309,6 +309,8 @@ npm run build
 합격기 11종의 실제 대상·지연 착탄·충격파 8프레임과 325개 / 24검사군·로컬 2인·사계절·414px·자원 해제 검증은 [`fd74036`](https://github.com/evilmuff0805-create/Td/commit/fd740362ae590938a6dcd1f1a6ae1671b03c67e5)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 10:03:09 UTC에 확인했다. 내장 imagegen 원본·프롬프트·무손실 WebP·두 빌드·검수 화면·상위 프로젝트 기록을 포함한다. [정확한 범위](COMBO_IMPACTS.md) · [릴리스 JSON](COMBO_IMPACT_RELEASE_VALIDATION.json).
 
 선택 영웅 기본 시트 준비·공통 원화 재사용·교체/종료 메모리 정리와 338개 / 25검사군·실제 로컬 2인·의상/영웅 교대·414px·Astra 하이 검토 기록은 [`e3678a0`](https://github.com/evilmuff0805-create/Td/commit/e3678a0a5b03c6ba9e70c4dc465dce46bab89795)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 10:21:40 UTC에 확인했다. 원화 화질과 전투는 유지하며 기본 원화 캔버스 저장량 계산·두 빌드·검수 화면·상위 프로젝트 기록을 포함한다. [정확한 범위](HERO_LOADING.md) · [릴리스 JSON](HERO_LOADING_RELEASE_VALIDATION.json).
+
+웹 배포·재접속 복구·입력과 성능 계측·획득 재화 성장 검사·불꽃/물결/치유 원화와 건설 메뉴 겹침·고정 점 수정은 [`041bba5`](https://github.com/evilmuff0805-create/Td/commit/041bba523d2669b75d57a19957ad88ce17b83db4)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 13:54:40 UTC에 확인했다. 395개/29검사군·기존 완주 SHA·웹 ZIP 해시·원본과 정확한 프롬프트·실제 로컬 2인 화면·Astra 하이 검토를 기록하고 상위 프로젝트 문서도 갱신했다. 실제 휴대폰·외부 WAN·사람의 후반 밸런스·더 긴 캐릭터 동작은 남은 범위로 구분한다. [정확한 완료 범위](ROADMAP_RELEASE.md) · [릴리스 JSON](ROADMAP_RELEASE_VALIDATION.json).
 
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
