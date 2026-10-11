@@ -68,6 +68,8 @@ node tools/check-motion-determinism.mjs
 - [실제 브라우저와 로컬 협동](SKIN_BUST_BROWSER_VALIDATION.json)
 - [빌드·변경 보존·검토·GitHub 반영](SKIN_BUST_RELEASE_VALIDATION.json)
 
+구현은 [d664277](https://github.com/evilmuff0805-create/Td/commit/d664277980212cffcc3451b871aa28d576b56fcf)로 같은 브랜치에 푸시하고 실제 원격 SHA 일치를 확인했다. 상세 시각은 릴리스 JSON에 보존한다.
+
 ![수정 후 414px 의상실](screenshots/skin-busts/shop-mobile.png)
 
 ![로컬 2인 준비](screenshots/skin-busts/local-setup.png)

@@ -268,6 +268,8 @@ npm run build
 
 기본 영웅 8명 큰 일러스트·도감/출전 선택·전신 전환과 284개 / 21검사군·로컬 2인 유지 기록은 [`e54297c`](https://github.com/evilmuff0805-create/Td/commit/e54297cb922de480d23ba991b5652fa04ed1d016)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋 `e54297cb922de480d23ba991b5652fa04ed1d016`의 일치를 2026-10-11 07:19:39 UTC에 확인했다. 내장 imagegen 원본 10장·정확한 참조 8장·전체 프롬프트·배포 그림 8장·검수 화면·검증 도구와 서버 번들을 포함했다. 상위 프로젝트 기록도 갱신했다. [원화와 적용 범위](HERO_BUST_ART.md) · [릴리스 JSON](HERO_BUST_RELEASE_VALIDATION.json).
 
+특수 의상 16종 큰 일러스트·의상실 미리보기·모바일 이름 줄바꿈과 294개 / 22검사군·로컬 2인 유지 기록은 [`d664277`](https://github.com/evilmuff0805-create/Td/commit/d664277980212cffcc3451b871aa28d576b56fcf)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋의 일치를 2026-10-11 08:15:07 UTC에 확인했다. 내장 imagegen 원본 16장·정확한 의상 참조 16장·전체 프롬프트·무손실 WebP·서버 번들·검수 화면·검증과 상위 프로젝트 기록을 포함했다. [원화와 적용 범위](SKIN_BUST_ART.md) · [릴리스 JSON](SKIN_BUST_RELEASE_VALIDATION.json).
+
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
 1. 구현 범위·합의한 방향·검증 결과·남은 작업을 이 문서와 해당 상세 문서에 갱신한다.
