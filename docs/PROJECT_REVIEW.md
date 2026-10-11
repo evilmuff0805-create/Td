@@ -262,6 +262,8 @@ npm run build
 
 마을 소품 12원화·K 경계 반복 축소·실제 그림 여백·272개 / 20검사군과 로컬 2인 유지 기록은 [`bba91ae`](https://github.com/evilmuff0805-create/Td/commit/bba91ae68ca21b46194bc68c2a5681e60ce74aa0)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋 `bba91ae68ca21b46194bc68c2a5681e60ce74aa0`의 일치를 2026-10-11 06:27:12 UTC에 확인했다. 원본·정확한 프롬프트·무손실 WebP·재현 도구·서버 번들·검수 화면과 상위 프로젝트 기록을 포함했다. [원화와 검증](VILLAGE_SCENERY.md) · [릴리스 JSON](VILLAGE_PROP_RELEASE_VALIDATION.json).
 
+기본 영웅 8명 큰 일러스트·도감/출전 선택·전신 전환과 284개 / 21검사군·로컬 2인 유지 기록은 [`e54297c`](https://github.com/evilmuff0805-create/Td/commit/e54297cb922de480d23ba991b5652fa04ed1d016)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋 `e54297cb922de480d23ba991b5652fa04ed1d016`의 일치를 2026-10-11 07:19:39 UTC에 확인했다. 내장 imagegen 원본 10장·정확한 참조 8장·전체 프롬프트·배포 그림 8장·검수 화면·검증 도구와 서버 번들을 포함했다. 상위 프로젝트 기록도 갱신했다. [원화와 적용 범위](HERO_BUST_ART.md) · [릴리스 JSON](HERO_BUST_RELEASE_VALIDATION.json).
+
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
 1. 구현 범위·합의한 방향·검증 결과·남은 작업을 이 문서와 해당 상세 문서에 갱신한다.

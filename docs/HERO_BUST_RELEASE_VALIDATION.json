@@ -138,6 +138,11 @@
   },
   "github": {
     "branch": "claude/korean-hero-tower-defense-i8ard8",
-    "status": "pending"
+    "implementationCommit": "e54297cb922de480d23ba991b5652fa04ed1d016",
+    "status": "pushed_and_verified",
+    "remoteCommit": "e54297cb922de480d23ba991b5652fa04ed1d016",
+    "remoteMatches": true,
+    "verifiedAt": "2026-10-11 07:19:39 UTC",
+    "verificationCommand": "git ls-remote origin refs/heads/claude/korean-hero-tower-defense-i8ard8"
   }
 }
