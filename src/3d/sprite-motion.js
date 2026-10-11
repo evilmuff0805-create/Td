@@ -39,7 +39,7 @@ export function updateSpriteMotion(previous,input){
   const age=Math.max(0,s.clock-s.actionStart),attacking=age<s.duration+.09&&!input.stunned;
   const recovery=attacking?1-smooth(clamp(age/(s.duration+.09),0,1)):0;
   const hitAge=s.clock-s.hitAt,hit=hitAge>=0&&hitAge<.18?Math.sin(Math.PI*hitAge/.18):0;
-  // Supplemented heroes have actual passing/follow-through/recovery artwork.
+  // Supplemented actors have actual passing/follow-through/recovery artwork.
   // Unsupported or failed looks retain the approved four-row animation.
   const beat=s.phase%1,walkRow=beat<.30?1:beat<.5?0:beat<.80?2:0;
   const row=input.inbetweens?(attacking?(age<s.duration*.28?3:age<s.duration*.70?6:7):s.blend>.16?[1,4,2,5][Math.min(3,Math.floor(beat*4))]:0):attacking&&age<s.duration*.72?3:s.blend>.16?walkRow:0;

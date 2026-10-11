@@ -7,7 +7,7 @@ import { previewMotion } from './sprite-motion.js';
 
 const byId=id=>document.getElementById(id),renderer=new T.WebGLRenderer({canvas:byId('pose-canvas'),antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=T.SRGBColorSpace;
-const camera=new T.OrthographicCamera(-1,1,1,-1,.1,100);camera.position.set(17,26,26);camera.lookAt(0,.75,0);camera.updateMatrixWorld();
+const camera=new T.OrthographicCamera(-1,1,1,-1,.1,100);camera.position.set(17,26,26);camera.lookAt(0,1.1,0);camera.updateMatrixWorld();
 const allEnemies=Object.keys(ENEMIES),groups={troops:allEnemies.filter(id=>!ENEMIES[id].boss),'boss-a':allEnemies.filter(id=>ENEMIES[id].boss).slice(0,6),'boss-b':allEnemies.filter(id=>ENEMIES[id].boss).slice(6),allies:['militia','guard','elite','monk','courier','turtle']};
 const allyNames={militia:'의병',guard:'수비병',elite:'정예 수비병',monk:'승병',courier:'전령',turtle:'거북선'};
 const descriptions={militia:'흰 두건과 저고리 · 긴 창',guard:'남색 갑주 · 붉은 띠 · 창',elite:'붉은 갑주 · 술 장식 · 장병기와 방패',monk:'회색 장삼 · 목염주 · 목봉',courier:'푸른 저고리 · 붉은 전령 깃발 · 갈색 말',turtle:'목재 선체 · 철갑 지붕 · 용머리'};
@@ -34,7 +34,7 @@ function populate(){
 function draw(now=0){
   const frameDt=playing&&last?Math.min(.05,(now-last)/1000):0;elapsed+=frameDt;last=now;
   if(width!==innerWidth||height!==innerHeight){width=innerWidth;height=innerHeight;renderer.setSize(width,height,false);}
-  const motion=byId('motion').value,season=byId('season').value,dir=byId('direction').value,stride=byId('stride').value,focus=byId('actor').value,group=byId('group').value;
+  const motion=byId('motion').value,season=byId('season').value,dir=byId('direction').value,stride=byId('stride').value,attackPhase=byId('attack-phase').value,focus=byId('actor').value,group=byId('group').value;
   byId('pose-review').dataset.focus=focus==='all'?'group':'single';world.theme={id:season,...SEASONS[season]};
   const col=dir==='cycle'?Math.floor(elapsed/1.5)%4:Number(dir),time=motion==='walk'&&stride!=='auto'?(stride==='a'?0:1/5.5):elapsed;
   // Apply visibility before measuring any cards, so the first frame has the new grid.
@@ -44,22 +44,25 @@ function draw(now=0){
   for(const {root,card,viewport,entity,ally}of cards){
     if(card.hidden)continue;
     if(art.ready&&!art.loading){
-      art.attachUnit(root,entity,false,ally);root.rotation.y=facingYaw(col);const playback=(playing||elapsed>0)&&(motion!=='walk'||stride==='auto')?previewMotion(motion,elapsed,frameDt,entity.heroId??entity.kind??entity.type):null;
+      art.attachUnit(root,entity,false,ally);root.rotation.y=facingYaw(col);
+      const kind=entity.kind??entity.type,forced=motion==='walk'?({a:1,b:2,pa:4,pb:5})[stride]:motion==='attack'?({release:3,follow:6,recover:7})[attackPhase]:undefined;
+      const playback=forced!==undefined?{...previewMotion(motion,elapsed,frameDt,kind),poseRow:forced}:(playing||elapsed>0)?previewMotion(motion,elapsed,frameDt,kind):null;
       art.updateUnit(root,entity,motion==='walk',playback?.attack??(motion==='attack'?.2:0),time,playback);
-      const d=root.userData.fixedImage;card.dataset.pose=String(d?.poseIndex??'static');card.dataset.gait=String(d?.motionPhase??0);card.dataset.facing=String(d?.facing??'static');card.dataset.directional=String(!!d?.directional);
+      const d=root.userData.fixedImage;card.dataset.pose=String(d?.poseIndex??'static');card.dataset.poseName=d?.pose??'static';card.dataset.supplemented=String(!!d?.inbetweens);card.dataset.gait=String(d?.motionPhase??0);card.dataset.facing=String(d?.facing??'static');card.dataset.directional=String(!!d?.directional);
     }
     const r=viewport.getBoundingClientRect();if(r.width<=0||r.height<=0||r.bottom<0||r.top>height)continue;
-    const half=Math.max(1.2,1.35*r.height/r.width);camera.left=-half*r.width/r.height;camera.right=half*r.width/r.height;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();
+    const half=Math.max(1.45,1.5*r.height/r.width);camera.left=-half*r.width/r.height;camera.right=half*r.width/r.height;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();
     renderer.setViewport(r.left,height-r.bottom,r.width,r.height);renderer.setScissor(r.left,height-r.bottom,r.width,r.height);scene.add(root);renderer.render(scene,camera);scene.remove(root);visible++;
   }
-  Object.assign(document.body.dataset,{frames:String(++frames),motion,playing:String(playing),totalActors:String(Object.keys(COMBAT_POSE_ART.enemy).length+Object.keys(COMBAT_POSE_ART.ally).length),actorCount:String(cards.length),group,focus,facing:String(col),season,poseStatus:renderer.domElement.dataset.combatPoseStatus??'loading',loading:String(art.loading),textures:String(renderer.info.memory.textures),geometries:String(renderer.info.memory.geometries)});
+  Object.assign(document.body.dataset,{frames:String(++frames),motion,playing:String(playing),totalActors:String(Object.keys(COMBAT_POSE_ART.enemy).length+Object.keys(COMBAT_POSE_ART.ally).length),actorCount:String(cards.length),group,focus,facing:String(col),season,poseStatus:renderer.domElement.dataset.combatPoseStatus??'loading',inbetweenStatus:renderer.domElement.dataset.combatInbetweenStatus??'loading',inbetweenCount:renderer.domElement.dataset.combatInbetweenCount??'0',loading:String(art.loading),textures:String(renderer.info.memory.textures),geometries:String(renderer.info.memory.geometries)});
   byId('stride').disabled=motion!=='walk';
-  byId('status').value=art.loading?'병력 그림을 불러오는 중…':art.ready?`${visible}종 표시 중 · 이 병력 ${renderer.domElement.dataset.combatPoseCount}/${cards.length}종 준비 · ${playing?'동작 재생 중':'정지 화면'}`:'그림을 불러오지 못했습니다. 전장에서 대체 모델로 플레이할 수 있습니다.';
+  byId('attack-phase').disabled=motion!=='attack';
+  byId('status').value=art.loading?'병력 그림을 불러오는 중…':art.ready?`${visible}종 표시 중 · 기본 ${renderer.domElement.dataset.combatPoseCount}/${cards.length}종 · 중간 ${renderer.domElement.dataset.combatInbetweenCount}/${cards.length}종 · ${playing?'동작 재생 중':'정지 화면'}`:'그림을 불러오지 못했습니다. 전장에서 대체 모델로 플레이할 수 있습니다.';
   if(playing)request=requestAnimationFrame(draw);
 }
 function refresh(){if(!playing)draw();}
 byId('group').addEventListener('change',()=>{const ticket=++generation;clearCards();populate();elapsed=last=0;art.prepareCombatArt(null,roster(byId('group').value)).then(()=>{if(ticket===generation)refresh();});refresh();});
-for(const id of ['actor','direction','motion','stride','season'])byId(id).addEventListener('change',()=>{elapsed=last=0;refresh();});
+for(const id of ['actor','direction','motion','stride','attack-phase','season'])byId(id).addEventListener('change',()=>{elapsed=last=0;refresh();});
 byId('play').onclick=()=>{playing=!playing;byId('play').textContent=playing?'동작 멈춤':'동작 재생';byId('play').setAttribute('aria-pressed',String(playing));last=0;if(playing)request=requestAnimationFrame(draw);else{cancelAnimationFrame(request);draw();}};
 addEventListener('resize',refresh);addEventListener('scroll',refresh,{passive:true});
 addEventListener('pagehide',event=>{if(event.persisted)return;generation++;cancelAnimationFrame(request);clearCards();art.dispose();ground.geometry.dispose();ground.material.dispose();renderer.dispose();});

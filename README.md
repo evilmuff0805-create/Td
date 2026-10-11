@@ -4,13 +4,13 @@
 
 현재 기본 전장은 **고정 시점의 2.5D 일러스트**입니다. 투명 캐릭터·건물 그림을 실제 3D 지면에 배치해 전투·성장·저장·협동에 연결했습니다. 영웅 8명, 유산 10종, 왜군 22종과 사계절의 전장 25곳을 사용합니다.
 
-기본 영웅 8종과 특수 의상 16종에 **중간 원화 384장**을 연결했습니다. 이번에는 특수 의상용 256장을 추가해 모든 영웅 외형이 네 박자 발걸음과 발사·타격 후·복귀를 사용합니다. 승인된 기존 832장과 로컬 2인 조작은 유지하며, 영웅 외형은 총 768자세·전체 전장용 준비 그림은 1,216장입니다. [새 의상 원화·정확한 적용 범위·검증](docs/SKIN_INBETWEENS.md)
+적군·적장·아군과 이동체 28종에 **중간 동작 원화 448장**을 추가했습니다. 병력도 네 박자 이동과 공격 후·복귀를 사용합니다. 기존 영웅·의상·병력 1,216장은 유지하며, 병력은 총 896자세·전체 전장 준비 그림은 **1,664장**입니다. 전령·거북선은 이동 자세만 실제 전투에 사용합니다. 로컬 2인 조작·소유·군자금과 전투 규칙을 유지합니다. [새 병력 원화·정확한 적용 범위·검증](docs/COMBAT_INBETWEENS.md)
 
 유산은 **기본·2·3단계·최종 A/B 전용 외형 50개**를 사용하며, 모든 단계에서 높이 **1.2칸의 작은 크기**를 유지합니다. 강화는 장식·깃발·등불·주요 장비로 구분합니다. 화염·물결·서리·치유·참격·빛·학익진·합격기에는 그림 효과를 적용했고, 출격 거북선·전령도 같은 화풍으로 표시합니다.
 
 현재 구현·검증·남은 작업과 GitHub 반영 기준은 [프로젝트 리뷰](docs/PROJECT_REVIEW.md)에 기록합니다. 상위 작업 폴더의 `호국영웅전_PROJECT_REVIEW.md`도 함께 갱신합니다. 완료한 작업 단위마다 같은 브랜치에 커밋·푸시하고 원격 반영을 확인합니다.
 
-[최신 그림 가이드](docs/ART.md) · [전체 영웅 외형 중간 동작·최신 검증](docs/SKIN_INBETWEENS.md) · [메뉴·HUD·의상 톤 연결](docs/HERO_MENU_ART.md) · [비기·합격기 전용 그림·최신 검증](docs/TACTIC_ART.md) · [주변 소품 배치·최신 검증](docs/SCENERY_LAYOUT.md) · [영웅 16기술·최신 검증](docs/SKILL_SIGNATURES.md) · [보행·공격 복귀·로컬 협동 검증](docs/MOTION_REFINEMENT.md) · [새 물가·그림 수면·최신 검증](docs/WATER_REFINEMENT.md) · [계절 수목·최신 검증](docs/SEASONAL_SCENERY.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [공용 스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
+[최신 그림 가이드](docs/ART.md) · [병력 중간 원화·최신 검증](docs/COMBAT_INBETWEENS.md) · [전체 영웅 외형 중간 동작·최신 검증](docs/SKIN_INBETWEENS.md) · [메뉴·HUD·의상 톤 연결](docs/HERO_MENU_ART.md) · [비기·합격기 전용 그림·최신 검증](docs/TACTIC_ART.md) · [주변 소품 배치·최신 검증](docs/SCENERY_LAYOUT.md) · [영웅 16기술·최신 검증](docs/SKILL_SIGNATURES.md) · [보행·공격 복귀·로컬 협동 검증](docs/MOTION_REFINEMENT.md) · [새 물가·그림 수면·최신 검증](docs/WATER_REFINEMENT.md) · [계절 수목·최신 검증](docs/SEASONAL_SCENERY.md) · [연속 도로·새 지면 검증](docs/TERRAIN_REFINEMENT.md) · [영웅 128포즈·검증](docs/HERO_DIRECTIONAL_ART.md) · [병력 448포즈·검증](docs/COMBAT_DIRECTIONAL_ART.md) · [의상 256포즈·검증](docs/SKIN_DIRECTIONAL_ART.md) · [유산 강화 그림·검증](docs/TOWER_STAGE_ART.md) · [공용 스킬 그림·검증](docs/PAINTED_EFFECTS.md) · [음소거 게임 실행](http://localhost:8080/?mute=1)
 
 이순신의 전장용 16포즈는 다른 영웅의 부드러운 톤에 맞춘 v2로 교체했습니다. 남색 망토·활·화살통으로 권율의 붉은 망토·창·방패와 구분합니다. [같은 크기 비교와 적용·검증](docs/YI_TONE_REFINEMENT.md)
 
@@ -24,11 +24,11 @@
 
 ![유산 기본·2·3·최종 A/B 외형](docs/screenshots/tower-stages-bosingak.png)
 
-기본 영웅 8명은 기존 128장과 중간 128장, 총 **256포즈**, 특수 의상 16종은 기존 256장과 새 중간 256장, 총 **512포즈**를 사용합니다. 병력·적장·아군과 이동체 28종은 **448포즈**를 유지해 전체 전장 준비 그림은 **1,216개**입니다. 병력은 기존 두 걸음과 공격을 사용하며 전령·거북선의 마지막 네 자세는 예비 전투 준비 그림입니다. [영웅 비교](http://localhost:8080/dev/3d-hero-pose-review.html?mute=1) · [병력 비교](http://localhost:8080/dev/3d-combat-pose-review.html?mute=1) · [24외형 768자세 비교](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1). 최신 자동 검사 **228개**, 추가 원화 384장 픽셀 검사, 브라우저 768자세 전환·실제 의상 전투·단일 HTML 로컬 2인 이동/기술/2P 건설, 검수 화면 414×896 표시와 두 빌드를 통과했습니다. 단일 HTML은 **73,505,915바이트**이며 방향/중간 시트 76장·메뉴용 1장·지면 3장·수목 1장·물 그림 1장·기술 시트 4장을 각각 한 번 포함합니다. [검증 결과와 정확한 범위](docs/SKIN_INBETWEENS.md)
+기본 영웅 8명은 **256포즈**, 특수 의상 16종은 **512포즈**, 병력·적장·아군과 이동체 28종은 **896포즈**, 전체 전장 준비 그림은 **1,664개**입니다. 모든 외형에 네 박자 이동을 연결했습니다. 적군 공격은 기존 길막 교전·사격 때만 표시하며 성문 도착 시 바로 사라지는 규칙은 유지합니다. [영웅 비교](http://localhost:8080/dev/3d-hero-pose-review.html?mute=1) · [병력 896자세 비교](http://localhost:8080/dev/3d-combat-pose-review.html?mute=1) · [24외형 768자세 비교](http://localhost:8080/dev/3d-skin-pose-review.html?mute=1). 자동 검사 **248개**, 추가 병력 448장 픽셀 검사·기존 1,216장 불변, 브라우저 896자세·사계절·414×896·최신 단일 HTML의 로컬 2인 이동/기술과 첫 파도 진군·두 빌드를 확인했습니다. 단일 HTML은 **107,972,590바이트**이며 방향/중간 시트 104장·메뉴 1장·지면 3장·수목 1장·물 1장·기술 시트 4장을 각각 한 번 포함합니다. [검증 결과와 적용 한계](docs/COMBAT_INBETWEENS.md)
 
 영웅 기술·궁극기 16개에 각각 다른 그림 모티프를 연결했습니다. 실제 학익진 범위, 거북선 항적, 자격루, 낙성우·마늘 투사체, 의병·목책의 생성 위치와 번개 착탄을 사용합니다. 기존 기술 아이콘 디자인은 유지하고 두 시트를 WebP로 압축해 배포 용량을 줄였습니다. 비기 8개·전용/일반 합격기 11개·참격에도 별도 그림을 연결했습니다. [실제 명령으로 기술 36개 비교](http://localhost:8080/dev/3d-effect-review.html?mute=1)에서 사계절·정지·병력 표시를 바꿀 수 있습니다.
 
-길은 연속 메시와 자연스러운 가장자리로 교체했고 풀·흙·눈·다져진 길 재질의 반복을 줄였습니다. 물·다리·건설 자리는 유지합니다. [실제 사계절 비교](http://localhost:8080/dev/3d-season-review.html?mute=1)에서 확인할 수 있습니다. 봄 꽃나무·여름 활엽수·가을 단풍 두 종류씩 총 6개도 실제 전장에 연결했습니다. 모바일 영웅 이름표의 화면 넘침도 수정했습니다. 강과 바다에는 낮고 투명하게 끝나는 연속 물가와 차분한 그림 수면을 연결했고, 외곽 물도 화면 밖까지 연장했습니다. 발걸음은 실제 이동 거리를 따르며 기본·특수 의상의 모든 영웅 외형은 네 박자, 병력은 기존 두 걸음과 접지를 사용합니다. 공격 복귀·피격·사망과 로컬 2인 조작·전투 수치는 유지합니다. 숲의 높낮이·한옥 주변 짐·등불 배치도 다듬었습니다. 타이틀·도감·의상실·출전 선택·HUD·평면 모드의 영웅도 같은 승인된 기본/의상 그림을 사용합니다. 병력의 추가 중간 원화, 더 큰 흉상 원화·자유 곡선 지도와 실제 기기별 검증은 남아 있습니다. 이전 관절 모델·재질 개발 이력은 [정식 3D 통합](docs/3D_FULL_GAME.md), [전체 개선](docs/POLISH_RELEASE.md), [조형](docs/SCULPTED_MODELS.md), [지형 재질](docs/PAINTED_ENVIRONMENTS.md), [영웅](docs/HERO_MODELS_AND_MOTION.md), [적군](docs/ENEMY_MODELS_AND_MOTION.md), [캐릭터 재질](docs/CHARACTER_SURFACES.md)에 보존합니다. 해당 문서의 화면·검사 수·성능 수치는 각 작업 당시의 기록입니다.
+길은 연속 메시와 자연스러운 가장자리로 교체했고 풀·흙·눈·다져진 길 재질의 반복을 줄였습니다. 물·다리·건설 자리는 유지합니다. [실제 사계절 비교](http://localhost:8080/dev/3d-season-review.html?mute=1)에서 확인할 수 있습니다. 봄 꽃나무·여름 활엽수·가을 단풍 두 종류씩 총 6개도 실제 전장에 연결했습니다. 모바일 영웅 이름표의 화면 넘침도 수정했습니다. 강과 바다에는 낮고 투명하게 끝나는 연속 물가와 차분한 그림 수면을 연결했고, 외곽 물도 화면 밖까지 연장했습니다. 발걸음은 실제 이동 거리를 따르며 영웅·의상·병력 모두 네 박자 보행과 접지를 사용합니다. 공격 복귀·피격·사망과 로컬 2인 조작·전투 수치는 유지합니다. 숲의 높낮이·한옥 주변 짐·등불 배치도 다듬었습니다. 타이틀·도감·의상실·출전 선택·HUD·평면 모드의 영웅도 같은 승인된 기본/의상 그림을 사용합니다. 더 긴 동작 주기·큰 흉상 원화·자유 곡선 지도와 실제 기기별 검증은 남아 있습니다. 이전 관절 모델·재질 개발 이력은 [정식 3D 통합](docs/3D_FULL_GAME.md), [전체 개선](docs/POLISH_RELEASE.md), [조형](docs/SCULPTED_MODELS.md), [지형 재질](docs/PAINTED_ENVIRONMENTS.md), [영웅](docs/HERO_MODELS_AND_MOTION.md), [적군](docs/ENEMY_MODELS_AND_MOTION.md), [캐릭터 재질](docs/CHARACTER_SURFACES.md)에 보존합니다. 해당 문서의 화면·검사 수·성능 수치는 각 작업 당시의 기록입니다.
 
 별도의 [자유 전장](http://localhost:8080/3d.html?mute=1)은 해금·지원 수치를 바꾸는 미술/전투 비교용입니다. 이 화면의 F·G·C 조작과 별 기록은 정식 캠페인과 구분됩니다. [미리보기 조작](docs/3D_CAMPAIGN.md)
 
@@ -150,6 +150,8 @@ npm run test:inbetweens              # 중간 384포즈·영웅 외형 768자세
 npm run test:inbetween-assets        # 원화 선택·포장 재현·중간 그림 경계·색·알파 검사
 npm run test:combat-art              # 병력 448포즈·전장 로딩·실제 이벤트·자원 정리 13개
 npm run test:combat-assets           # 병력 28시트의 혼입·누락·중복·외곽·알파 검사
+npm run test:combat-inbetweens       # 병력 896자세·협동·이동체·로딩·수명 검사 20개
+npm run test:combat-inbetween-assets # 새 병력 448자세의 선택·포장·색·알파 재현 검사
 npm run test:effects                 # 스킬 그림·실제 이벤트·장판·자원 수명 검증 8개
 npm run test:scenery                 # 26지도×사계절 소품 발 범위·등불·실제 조립·협동 검사 8개
 npm run test:menu-art

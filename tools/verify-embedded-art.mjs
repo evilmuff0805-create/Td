@@ -10,9 +10,10 @@ import { SIGNATURE_ART } from '../src/3d/signature-data.js';
 import { TACTIC_ART } from '../src/3d/tactic-data.js';
 import { MENU_HERO_ART } from '../src/data/hero-menu-data.js';
 import { HERO_INBETWEEN_ART } from '../src/3d/inbetween-data.js';
+import { COMBAT_INBETWEEN_ART } from '../src/3d/combat-inbetween-data.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
-const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART)];
+const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(COMBAT_INBETWEEN_ART)];
 const count = needle => { let n=0,at=0; while((at=html.indexOf(needle,at))!==-1){n++;at+=needle.length;} return n; };
 assert.equal(new Set(sheets.map(s=>s.path)).size,sheets.length);
 for(const sheet of sheets){
@@ -26,7 +27,7 @@ for(const rel of rejected){
   assert.equal(count('data:image/webp;base64,'+encoded),0,rel+' rejected art must stay out of the build');
 }
 // Originals, rejected variants, reference crops and mechanical packing sources
-// are production records. Only the eight selected delivery WebPs are shipped.
+// are production records. Only selected delivery WebPs are shipped.
 let inbetweenArchivePngs=0;
 function checkSourceArchive(directory){
   for(const entry of fs.readdirSync(directory,{withFileTypes:true})){
@@ -40,6 +41,7 @@ function checkSourceArchive(directory){
   }
 }
 checkSourceArchive(new URL('../assets/3d/fixed/inbetweens/source/',import.meta.url));
+checkSourceArchive(new URL('../assets/3d/fixed/combat-inbetweens/source/',import.meta.url));
 const terrain=['ground','snow-ground','road'].map(kind=>PAINTED_SURFACES[kind]);
 for(const rel of terrain){
   const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');

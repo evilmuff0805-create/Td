@@ -1,0 +1,387 @@
+[
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/monk-inbetweens-v3.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/monk-v3-c1-reference.png",
+    "bounds": {
+      "left": 164,
+      "top": 25,
+      "width": 389,
+      "height": 594
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/monk-inbetweens-v3.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/monk-v3-c2-reference.png",
+    "bounds": {
+      "left": 684,
+      "top": 39,
+      "width": 397,
+      "height": 590
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/monk-inbetweens-v3.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/monk-v3-c3-reference.png",
+    "bounds": {
+      "left": 190,
+      "top": 657,
+      "width": 381,
+      "height": 575
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/courier-inbetweens-v3.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/courier-v3-c1-reference.png",
+    "bounds": {
+      "left": 102,
+      "top": 42,
+      "width": 482,
+      "height": 573
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/courier-inbetweens-v3.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/courier-v3-c4-reference.png",
+    "bounds": {
+      "left": 692,
+      "top": 646,
+      "width": 490,
+      "height": 568
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/cavalry-inbetweens-v4.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/cavalry-v4-c1-reference.png",
+    "bounds": {
+      "left": 250,
+      "top": 16,
+      "width": 488,
+      "height": 482
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/cavalry-inbetweens-v4.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/cavalry-v4-c4-reference.png",
+    "bounds": {
+      "left": 801,
+      "top": 527,
+      "width": 480,
+      "height": 473
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/wakizaka-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/wakizaka-approved-attack-c3-reference.png",
+    "bounds": {
+      "left": 643,
+      "top": 961,
+      "width": 256,
+      "height": 259
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/kuroda-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/kuroda-v2-i1-reference.png",
+    "bounds": {
+      "left": 746,
+      "top": 33,
+      "width": 279,
+      "height": 566
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/kuroda-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/kuroda-v2-i2-reference.png",
+    "bounds": {
+      "left": 202,
+      "top": 646,
+      "width": 279,
+      "height": 550
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/so-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/so-v2-i4-reference.png",
+    "bounds": {
+      "left": 46,
+      "top": 537,
+      "width": 269,
+      "height": 416
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/so-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/so-v2-i7-reference.png",
+    "bounds": {
+      "left": 1221,
+      "top": 537,
+      "width": 268,
+      "height": 420
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/ukita-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-v1-i9-reference.png",
+    "bounds": {
+      "left": 360,
+      "top": 659,
+      "width": 258,
+      "height": 282
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/ukita-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-v1-i10-reference.png",
+    "bounds": {
+      "left": 635,
+      "top": 654,
+      "width": 256,
+      "height": 288
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/ukita-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-v2-i0-reference.png",
+    "bounds": {
+      "left": 118,
+      "top": 70,
+      "width": 371,
+      "height": 534
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/ukita-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-v2-i1-reference.png",
+    "bounds": {
+      "left": 729,
+      "top": 71,
+      "width": 345,
+      "height": 536
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/ukita-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-v2-i2-reference.png",
+    "bounds": {
+      "left": 142,
+      "top": 674,
+      "width": 349,
+      "height": 532
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/ukita-inbetweens-v2.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-v2-i3-reference.png",
+    "bounds": {
+      "left": 722,
+      "top": 674,
+      "width": 372,
+      "height": 531
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-inbetweens-v5.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-v5-i3-reference.png",
+    "bounds": {
+      "left": 786,
+      "top": 584,
+      "width": 426,
+      "height": 528
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/shimazu-directions-v2.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/shimazu-approved-i4-reference.png",
+    "bounds": {
+      "left": 88,
+      "top": 372,
+      "width": 205,
+      "height": 242
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/shimazu-directions-v2.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/shimazu-approved-i5-reference.png",
+    "bounds": {
+      "left": 387,
+      "top": 370,
+      "width": 166,
+      "height": 238
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/shimazu-directions-v2.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/shimazu-approved-i6-reference.png",
+    "bounds": {
+      "left": 652,
+      "top": 368,
+      "width": 197,
+      "height": 245
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/shimazu-directions-v2.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/shimazu-approved-i7-reference.png",
+    "bounds": {
+      "left": 980,
+      "top": 373,
+      "width": 164,
+      "height": 242
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/ukita-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-approved-i5-reference.png",
+    "bounds": {
+      "left": 375,
+      "top": 339,
+      "width": 208,
+      "height": 299
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/ukita-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-approved-i6-reference.png",
+    "bounds": {
+      "left": 670,
+      "top": 342,
+      "width": 184,
+      "height": 297
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/ukita-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-approved-i13-reference.png",
+    "bounds": {
+      "left": 348,
+      "top": 967,
+      "width": 266,
+      "height": 270
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/ukita-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/ukita-approved-i14-reference.png",
+    "bounds": {
+      "left": 643,
+      "top": 967,
+      "width": 262,
+      "height": 268
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/hideyoshi-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-approved-i7-reference.png",
+    "bounds": {
+      "left": 939,
+      "top": 330,
+      "width": 257,
+      "height": 299
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/hideyoshi-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-approved-i13-reference.png",
+    "bounds": {
+      "left": 336,
+      "top": 950,
+      "width": 265,
+      "height": 271
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/hideyoshi-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-approved-i14-reference.png",
+    "bounds": {
+      "left": 631,
+      "top": 949,
+      "width": 275,
+      "height": 277
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/wakizaka-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/wakizaka-approved-i6-reference.png",
+    "bounds": {
+      "left": 657,
+      "top": 343,
+      "width": 224,
+      "height": 290
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/armored-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/armored-approved-i7-reference.png",
+    "bounds": {
+      "left": 985,
+      "top": 385,
+      "width": 200,
+      "height": 233
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/militia-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/militia-approved-i7-reference.png",
+    "bounds": {
+      "left": 941,
+      "top": 392,
+      "width": 238,
+      "height": 221
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/units/guard-directions-v1.webp",
+    "output": "assets/3d/fixed/combat-inbetweens/source/guard-approved-i7-reference.png",
+    "bounds": {
+      "left": 1009,
+      "top": 361,
+      "width": 128,
+      "height": 278
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-row-0-from-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-v1-a4-reference.png",
+    "bounds": {
+      "left": 823,
+      "top": 16,
+      "width": 257,
+      "height": 305
+    },
+    "transform": "exact rectangle; unchanged RGBA"
+  }
+]

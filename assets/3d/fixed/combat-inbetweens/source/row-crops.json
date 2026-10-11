@@ -1,0 +1,219 @@
+[
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/cavalry-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/cavalry-row-0-from-v1.png",
+    "bounds": [
+      {
+        "left": 39,
+        "top": 43,
+        "width": 287,
+        "height": 278
+      },
+      {
+        "left": 346,
+        "top": 44,
+        "width": 269,
+        "height": 277
+      },
+      {
+        "left": 650,
+        "top": 46,
+        "width": 263,
+        "height": 278
+      },
+      {
+        "left": 934,
+        "top": 46,
+        "width": 283,
+        "height": 277
+      }
+    ],
+    "transform": "four exact rectangular crops, translation only; original visible RGBA unchanged, no masking"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/cavalry-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/cavalry-row-1-from-v1.png",
+    "bounds": [
+      {
+        "left": 34,
+        "top": 352,
+        "width": 296,
+        "height": 273
+      },
+      {
+        "left": 345,
+        "top": 355,
+        "width": 272,
+        "height": 275
+      },
+      {
+        "left": 650,
+        "top": 355,
+        "width": 261,
+        "height": 279
+      },
+      {
+        "left": 927,
+        "top": 355,
+        "width": 296,
+        "height": 274
+      }
+    ],
+    "transform": "four exact rectangular crops, translation only; original visible RGBA unchanged, no masking"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/cavalry-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/cavalry-row-3-from-v1.png",
+    "bounds": [
+      {
+        "left": 39,
+        "top": 943,
+        "width": 290,
+        "height": 267
+      },
+      {
+        "left": 346,
+        "top": 932,
+        "width": 264,
+        "height": 282
+      },
+      {
+        "left": 658,
+        "top": 940,
+        "width": 257,
+        "height": 274
+      },
+      {
+        "left": 933,
+        "top": 946,
+        "width": 287,
+        "height": 266
+      }
+    ],
+    "transform": "four exact rectangular crops, translation only; original visible RGBA unchanged, no masking"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/militia-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/militia-row-0-from-v1.png",
+    "bounds": [
+      {
+        "left": 56,
+        "top": 84,
+        "width": 275,
+        "height": 237
+      },
+      {
+        "left": 423,
+        "top": 80,
+        "width": 184,
+        "height": 241
+      },
+      {
+        "left": 668,
+        "top": 82,
+        "width": 187,
+        "height": 239
+      },
+      {
+        "left": 925,
+        "top": 89,
+        "width": 269,
+        "height": 232
+      }
+    ],
+    "transform": "four exact rectangular crops, translation only; original visible RGBA unchanged, no masking"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/militia-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/militia-row-1-from-v1.png",
+    "bounds": [
+      {
+        "left": 57,
+        "top": 397,
+        "width": 268,
+        "height": 237
+      },
+      {
+        "left": 425,
+        "top": 384,
+        "width": 185,
+        "height": 247
+      },
+      {
+        "left": 655,
+        "top": 384,
+        "width": 192,
+        "height": 247
+      },
+      {
+        "left": 938,
+        "top": 399,
+        "width": 264,
+        "height": 235
+      }
+    ],
+    "transform": "four exact rectangular crops, translation only; original visible RGBA unchanged, no masking"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/militia-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/militia-row-3-from-v1.png",
+    "bounds": [
+      {
+        "left": 65,
+        "top": 994,
+        "width": 280,
+        "height": 201
+      },
+      {
+        "left": 404,
+        "top": 972,
+        "width": 207,
+        "height": 235
+      },
+      {
+        "left": 645,
+        "top": 975,
+        "width": 209,
+        "height": 232
+      },
+      {
+        "left": 909,
+        "top": 994,
+        "width": 280,
+        "height": 201
+      }
+    ],
+    "transform": "four exact rectangular crops, translation only; original visible RGBA unchanged, no masking"
+  },
+  {
+    "source": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-inbetweens-v1.png",
+    "output": "assets/3d/fixed/combat-inbetweens/source/hideyoshi-row-0-from-v1.png",
+    "bounds": [
+      {
+        "left": 46,
+        "top": 11,
+        "width": 250,
+        "height": 305
+      },
+      {
+        "left": 356,
+        "top": 12,
+        "width": 230,
+        "height": 300
+      },
+      {
+        "left": 647,
+        "top": 11,
+        "width": 231,
+        "height": 299
+      },
+      {
+        "left": 939,
+        "top": 11,
+        "width": 257,
+        "height": 305
+      }
+    ],
+    "transform": "four exact rectangular crops, translation only; original visible RGBA unchanged, no masking"
+  }
+]

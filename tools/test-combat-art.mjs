@@ -109,7 +109,7 @@ const originalDocument=globalThis.document,originalLoad=T.ImageLoader.prototype.
 let pixelReadbacks=0;
 globalThis.document={createElement:()=>({width:0,height:0,getContext(){return {drawImage(){},getImageData:()=>{pixelReadbacks++;return {data:new Uint8Array(this.width*this.height*4)};}};}})};
 T.ImageLoader.prototype.load=function(url,onLoad,progress,onError){pending.push({url,onLoad,onError});};
-const finish=(id,fail=false)=>{const index=pending.findIndex(p=>p.url.includes('/'+id+'-directions-'));assert.ok(index>=0,'Pending '+id);const [p]=pending.splice(index,1);if(fail)p.onError(new Error('expected missing image'));else p.onLoad({width:64,height:64});};
+const finish=(id,fail=false)=>{const index=pending.findIndex(p=>p.url.includes('/'+id+'-directions-'));assert.ok(index>=0,'Pending '+id);const [p]=pending.splice(index,1);if(fail)p.onError(new Error('expected missing image'));else p.onLoad({width:64,height:64});const extra=pending.findIndex(p=>p.url.includes('/'+id+'-inbetweens-'));if(extra>=0)pending.splice(extra,1)[0].onLoad({width:64,height:64});};
 try{
   await test('코어 그림과 병력 그림 중 어느 쪽이 먼저 끝나도 둘 다 완료될 때까지 기다린다',async()=>{
     for(const combatFirst of [true,false]){
@@ -120,7 +120,7 @@ try{
     }
   });
   await test('전장 변경은 공유 병종을 유지하고 빠진 병종의 GPU 자원을 정확히 해제한다',async()=>{
-    const {world,art}=context();art.combatPoses={enemy:{},ally:{}};const first=art.prepareCombatArt(null,{enemy:['ashigaru','teppo'],ally:[]});assert.equal(art.loading,true);assert.equal(pending.length,2);finish('ashigaru');finish('teppo');await first;assert.equal(art.loading,false);
+    const {world,art}=context();art.combatPoses={enemy:{},ally:{}};const first=art.prepareCombatArt(null,{enemy:['ashigaru','teppo'],ally:[]});assert.equal(art.loading,true);assert.equal(pending.length,4);finish('ashigaru');finish('teppo');await first;assert.equal(art.loading,false);
     const entity={id:1,type:'ashigaru'},root=world.unit(entity,false),d=root.userData.fixedImage;art.updateUnit(root,entity,false,0,0);const canvas=d.image.material.map.image;let texture=0,geometry=0,privateMaterial=0;d.image.material.map.addEventListener('dispose',()=>texture++);d.image.geometry.addEventListener('dispose',()=>geometry++);d.image.material.addEventListener('dispose',()=>privateMaterial++);
     const retained=art.combatPoses.enemy.teppo;world.disposeCharacter(root);assert.equal(privateMaterial,1);assert.equal(texture,0);
     await art.prepareCombatArt(null,{enemy:['teppo'],ally:[]});assert.equal(pending.length,0);assert.equal(art.combatPoses.enemy.teppo,retained);assert.equal(texture,1);assert.equal(geometry,1);assert.equal(art.textures.has(canvas),false);assert.equal(world.renderer.domElement.dataset.combatPoseCount,'1');art.dispose();assert.equal(texture,1);

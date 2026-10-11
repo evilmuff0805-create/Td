@@ -93,7 +93,7 @@ try{
     for(const order of permutations([0,1,2,3])){
       const {art}=context();art.skinPoses={};art.combatPoses={enemy:{},ally:{}};let core;art.coreLoading=true;art.corePromise=new Promise(resolve=>core=resolve).then(()=>{art.coreLoading=false;art.updateLoading();});
       art.prepareCombatArt(null,{enemy:['ashigaru'],ally:[]});art.prepareHeroLooks([{heroId:'yi',skin:'yi_gold'}]);const all=art.promise;
-      const complete=[core,()=>finishOriginal('ashigaru'),()=>finishOriginal('yi_gold'),()=>finishSupplement('yi_gold')];
+      const complete=[core,()=>{finishOriginal('ashigaru');const index=pending.findIndex(p=>p.url.includes('/ashigaru-inbetweens-'));assert.ok(index>=0);pending.splice(index,1)[0].onLoad({width:64,height:64});},()=>finishOriginal('yi_gold'),()=>finishSupplement('yi_gold')];
       for(const [i,next]of order.entries()){complete[next]();await Promise.resolve();await Promise.resolve();if(i<3)assert.equal(art.loading,true);}
       await all;assert.equal(art.loading,false);art.dispose();
     }

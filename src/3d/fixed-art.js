@@ -3,6 +3,7 @@ import { preloadArt,heroArt,enemyArt,allyArt,towerArt,structureArt,propArt } fro
 import { LANDMARK_STAGE_ART,landmarkFrame } from './tower-art-data.js';
 import { HERO_POSE_ART } from './hero-pose-data.js';
 import { COMBAT_POSE_ART } from './combat-pose-data.js';
+import { COMBAT_INBETWEEN_ART } from './combat-inbetween-data.js';
 import { combatPoseRoster } from './combat-pose-roster.js';
 import { SKIN_POSE_ART } from './skin-pose-data.js';
 import { heroLookRoster,heroLooksKey } from './hero-look-roster.js';
@@ -60,7 +61,7 @@ async function atlas(path,columns,rows,layout=null,shared=true) {
 export class FixedBattleArt {
   constructor(world) {
     this.world=world;this.ready=false;this.loading=true;this.coreLoading=true;this.failed=false;this.destroyed=false;this.textures=new Map();this.materials=new Map();this.geometries=new Map();
-    this.combatPoses={enemy:{},ally:{}};this.combatGeneration=0;
+    this.combatPoses={enemy:{},ally:{}};this.combatInbetweens={enemy:{},ally:{}};this.combatGeneration=0;
     this.skinPoses={};this.skinGeneration=0;this.heroLooksKey=null;
     this.inbetweenPoses={};this.inbetweenGeneration=0;this.inbetweenKey=null;
     world.renderer.domElement.dataset.fixedArtStatus='loading';
@@ -99,20 +100,27 @@ export class FixedBattleArt {
   prepareCombatArt(stage,explicit=null){
     const generation=++this.combatGeneration,roster=combatPoseRoster(stage,explicit),requests=[];
     this.combatPoses??={enemy:{},ally:{}};
+    this.combatInbetweens??={enemy:{},ally:{}};
     for(const side of ['enemy','ally']){
       const wanted=new Set(roster[side]);
-      for(const [id,art]of Object.entries(this.combatPoses[side]))if(!wanted.has(id)){this.releasePoseAtlas(art);delete this.combatPoses[side][id];}
+      for(const bucket of [this.combatPoses[side],this.combatInbetweens[side]])for(const [id,art]of Object.entries(bucket))if(!wanted.has(id)){this.releasePoseAtlas(art);delete bucket[id];}
       for(const id of wanted){
         const layout=COMBAT_POSE_ART[side][id],existing=this.combatPoses[side][id];
-        requests.push(Promise.resolve(existing??(layout?atlas(layout.path,4,4,layout,false):null)).catch(error=>{console.warn('Combat poses unavailable; keeping static illustration.',id,error.message);return null;}).then(art=>({side,id,art})));
+        const supplement=COMBAT_INBETWEEN_ART[id],previous=this.combatInbetweens[side][id];
+        const original=Promise.resolve(existing!==undefined?existing:layout?atlas(layout.path,4,4,layout,false):null).catch(error=>{console.warn('Combat poses unavailable; keeping static illustration.',id,error.message);return null;});
+        const extra=Promise.resolve(previous!==undefined?previous:supplement?.side===side?atlas(supplement.path,4,4,supplement,false):null).catch(error=>{console.warn('Combat in-betweens unavailable; keeping original poses.',id,error.message);return null;});
+        requests.push(Promise.all([original,extra]).then(([art,inbetweens])=>({side,id,art,inbetweens})));
       }
     }
     this.combatLoading=true;this.updateLoading();
     this.combatPromise=Promise.all(requests).then(results=>{
       if(this.destroyed||generation!==this.combatGeneration)return;
-      this.combatPoses={enemy:{},ally:{}};for(const {side,id,art}of results)this.combatPoses[side][id]=art;
+      this.combatPoses={enemy:{},ally:{}};this.combatInbetweens={enemy:{},ally:{}};
+      for(const {side,id,art,inbetweens}of results){this.combatPoses[side][id]=art;this.combatInbetweens[side][id]=inbetweens;}
       const count=results.filter(x=>x.art).length,dataset=this.world.renderer.domElement.dataset;
       Object.assign(dataset,{combatPoseStatus:count===results.length?'ready':'partial',combatPoseCount:String(count),combatPoseExpected:String(results.length),combatPoseKinds:results.map(x=>x.id).join(',')});
+      const expected=results.filter(x=>COMBAT_INBETWEEN_ART[x.id]?.side===x.side),extraCount=expected.filter(x=>x.inbetweens).length;
+      Object.assign(dataset,{combatInbetweenStatus:extraCount===expected.length?'ready':'partial',combatInbetweenCount:String(extraCount),combatInbetweenExpected:String(expected.length),combatInbetweenKinds:expected.map(x=>x.id).join(',')});
     }).finally(()=>{if(generation===this.combatGeneration){this.combatLoading=false;this.updateLoading();}});
     this.refreshPromise();
     return this.promise;
@@ -227,7 +235,11 @@ export class FixedBattleArt {
     const poses=hero?(costume??this.heroPoses?.[kind]??(kind==='yi'?this.yi:null)):this.combatPoses?.[ally?'ally':'enemy']?.[kind];
     return poses??(hero?heroArt(kind,entity.skin):ally?allyArt(kind):enemyArt(kind));
   }
-  unitInbetweens(entity,art){
+  unitInbetweens(entity,art,faction='hero'){
+    if(faction!=='hero'){
+      const kind=faction==='ally'?entity.kind:entity.type,layout=COMBAT_INBETWEEN_ART[kind];
+      return art?.poseAtlas&&art===this.combatPoses?.[faction]?.[kind]&&layout?.side===faction?this.combatInbetweens?.[faction]?.[kind]??null:null;
+    }
     const kind=entity.heroId;if(!kind||!art?.poseAtlas)return null;
     const costume=skinDef(kind,entity.skin)?this.skinPoses?.[entity.skin]:null;
     const key=costume&&art===costume?entity.skin:art===this.heroPoses?.[kind]?kind:null;
@@ -272,7 +284,7 @@ export class FixedBattleArt {
   updateUnit(root,entity,moving,attack,time,motionInput=null) {
     const d=root.userData.fixedImage;if(!d)return;
     const {image,hint,art,height}=d;
-    const inbetweens=d.faction==='hero'?this.unitInbetweens(entity,art):null;
+    const inbetweens=this.unitInbetweens(entity,art,d.faction);
     d.inbetweens=inbetweens;
     inverse.copy(root.quaternion).invert();image.quaternion.copy(this.world.camera.quaternion).premultiply(inverse);
     const screenRight=right.clone().applyQuaternion(this.world.camera.quaternion),screenUp=up.clone().applyQuaternion(this.world.camera.quaternion);
@@ -296,7 +308,7 @@ export class FixedBattleArt {
       d.pose=['idle','walk-left','walk-right','attack','pass-a','pass-b','follow-through','recover'][row];d.facing=col;d.poseIndex=index;
       if(d.faction==='hero')this.world.renderer.domElement.dataset.heroInbetweenActive=String(row>=4);
       if(d.kind==='yi'){this.world.renderer.domElement.dataset.yiPose=d.pose;this.world.renderer.domElement.dataset.yiFacing=String(col);}
-      if(d.faction!=='hero'){const dataset=this.world.renderer.domElement.dataset;dataset.combatPoseActive='true';dataset.combatPoseLastKind=d.kind;dataset.combatPoseLastState=d.pose;}
+      if(d.faction!=='hero'){const dataset=this.world.renderer.domElement.dataset;dataset.combatPoseActive='true';dataset.combatPoseLastKind=d.kind;dataset.combatPoseLastState=d.pose;dataset.combatInbetweenActive=String(row>=4);}
     }else image.scale.x=dx<0?-1:1;
     image.position.set(0,motion?motion.lift:moving?Math.abs(Math.sin(time*8+(root.userData.phase??0)))*.025:0,0);
     if(motion){
