@@ -125,6 +125,7 @@ export function applyCommand(s, c) {
       h.skillCd = HEROES[h.heroId].skill.cd;
       h.anim = 0.35; actionCue(s, h, h.anim);
       castHeroSkill(s, h, c.x, c.y);
+      ev(s, 'abilityCue', { sound: 'heroSkill', p: pl.idx, caster: h.id, points: [] });
       return;
     }
     case 'heroUlt': {
@@ -133,6 +134,7 @@ export function applyCommand(s, c) {
       h.ultCd = HEROES[h.heroId].ult.cd;
       h.anim = 0.5; actionCue(s, h, h.anim);
       castHeroUlt(s, h, c.x, c.y);
+      ev(s, 'abilityCue', { sound: 'heroUlt', p: pl.idx, caster: h.id, points: [] });
       return;
     }
     case 'skill': {
@@ -140,6 +142,7 @@ export function applyCommand(s, c) {
       if (!slot || slot.cd > 0) return;
       slot.cd = slot.max;
       castEquipSkill(s, pl, slot, c.x, c.y);
+      ev(s, 'abilityCue', { sound: 'skill', p: pl.idx, slot: c.slot, points: [] });
       return;
     }
     case 'combo': return pressCombo(s, c.p);

@@ -217,10 +217,10 @@ export function settingsScreen(app) {
   const s = p.settings;
   const slider = (id, label, key) => {
     const input = h('input', {
-      type: 'range', id, min: 0, max: 1, step: 0.05, value: s[key],
+      type: 'range', id, min: 0, max: 1, step: 0.05, value: key === 'sfx' ? audio.requestedSfx : audio.requestedBgm,
       oninput: (e) => {
         s[key] = +e.target.value;
-        audio.setVolumes(s.sfx, s.bgm);
+        audio.setVolumes(key === 'sfx' ? s.sfx : audio.requestedSfx, key === 'bgm' ? s.bgm : audio.requestedBgm);
         saveProfile();
       },
       onchange: () => audio.play('ui'),
@@ -253,6 +253,15 @@ export function settingsScreen(app) {
           }, '저장'))),
         slider('sfx', '효과음', 'sfx'),
         slider('bgm', '배경음 (국악풍)', 'bgm'),
+        h('button', { class: 'btn btn-small', disabled: audio.muted, onclick: () => {
+          s.sfx = audio.requestedSfx > 0 ? audio.requestedSfx : 0.7;
+          s.bgm = 0;
+          audio.setVolumes(s.sfx, s.bgm);
+          saveProfile();
+          app.go('settings');
+        } }, '배경음 끄고 효과음 켜기'),
+        audio.muted ? h('p', { class: 'sub' }, '현재 게임이 임시 무음으로 열려 있습니다. ',
+          h('a', { href: '?sound=effects' }, '효과음만 켜서 다시 열기')) : null,
         check('dmg', '피해 숫자 표시', 'dmgNumbers'),
         choice('화면 흔들림 (합격기 · 적장 처치 때만)', 'shakeLv', [[0, '끔'], [1, '약하게'], [2, '보통']]),
         choice('전장 분위기', 'mood', [['cinema', '영화풍'], ['bright', '밝은 낮']]),

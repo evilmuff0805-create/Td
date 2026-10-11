@@ -3,8 +3,10 @@ export function layoutTowerLabels(entries,width,height,insets={}) {
   const placed=[],result=new Map(),gap=6,left=insets.left??6,right=width-(insets.right??6),top=insets.top??6,bottom=height-(insets.bottom??6);
   const clamp=(n,lo,hi)=>Math.max(lo,Math.min(hi,n));
   const overlap=(a,b)=>a.left<b.right+gap&&a.right+gap>b.left&&a.top<b.bottom+gap&&a.bottom+gap>b.top;
-  // Keep the selected building at its anchor; move neighbouring labels instead.
-  const ordered=[...entries].sort((a,b)=>Number(!!b.selected)-Number(!!a.selected)||a.id-b.id);
+  // Keep the pointer target fixed while details grow, then keyboard focus and
+  // selection. Move neighbouring labels instead of moving a button from under a cursor.
+  const priority=e=>e.priority??Number(!!e.selected);
+  const ordered=[...entries].sort((a,b)=>priority(b)-priority(a)||a.id-b.id);
   for(const e of ordered) {
     const w=Math.min(e.width,right-left),h=e.height;
     if(w<=0||h>bottom-top){result.set(e.id,null);continue;}

@@ -33,12 +33,7 @@ class App {
   constructor(root) {
     this.root = root;
     this.profile = loadProfile();
-    if (new URLSearchParams(location.search).get('mute') === '1') {
-      this.profile.settings.sfx = 0;
-      this.profile.settings.bgm = 0;
-      saveProfile();
-    }
-    audio.setVolumes(this.profile.settings.sfx, this.profile.settings.bgm);
+    audio.configure(location.search, this.profile.settings.sfx, this.profile.settings.bgm);
     this.game = null;
     this.current = null;
     document.addEventListener('pointerdown', () => audio.init(), { once: true });

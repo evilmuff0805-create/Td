@@ -29,7 +29,7 @@ let world,game,chooser,openLibrary,started=false,paused=false,activeHero=0,selec
 const firingEvents=[];
 let last=performance.now(),accumulator=0,clock=0,uiClock=0,frames=0,fps=0,noticeUntil=0,castUntil=0,lastCommand='준비',resultShown=false;
 const towerLabels=new TowerLabels($('tower-labels'),id=>{if(!mode&&!game.result)selection({kind:'tower',id});},{insets:({height})=>({top:document.querySelector('.topbar').offsetHeight+8,bottom:height-document.querySelector('.commandbar').offsetTop+8})});
-audio.setVolumes(new URLSearchParams(location.search).get('mute')==='1'?0:Math.min(.25,loadProfile().settings.sfx),0);
+audio.configure(location.search,Math.min(.25,loadProfile().settings.sfx),0);
 const hero=()=>game.heroes[activeHero],heroDef=()=>HEROES[hero().heroId],skillDef=(slot=mode?.slot??0)=>SKILLS[equippedAbility(game,slot)?.id];
 const modalOpen=()=>!!document.querySelector('dialog[open]');
 const cost=(type,base=TOWERS[type].levels[0].cost)=>metaCost(base,game.players[0].towerLv[type]||0);
@@ -67,6 +67,7 @@ function events() {
   world.cueHeroes(game.events,game);
   for(const e of game.events) {
     if(e.k==='sfx')audio.play(e.n);
+    else if(e.k==='abilityCue'&&e.sound)audio.playActivation(e.sound);
     else if(e.k==='toast')notice(e.text);
     else if(e.k==='announce')notice(`${e.text}${e.sub?` · ${e.sub}`:''}`);
     else if(e.k==='boss')notice(`적장 출현 · ${ENEMIES[e.type].name}`);

@@ -106,6 +106,7 @@ export class Session {
   announceEnd() {
     if (this.kind === 'host' && this.net) {
       this.net.send({ t: 'snap', s: this.encoder.encode(this.state, this.netEvents) });
+      this.netEvents = [];
       this.net.send({ t: 'end', result: this.state.result, stats: this.state.players.map((p) => p.stats) });
     }
   }

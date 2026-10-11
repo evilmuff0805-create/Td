@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "820b7b822e0930afb306a3f746821ddfb850e083",
+  "scope": "Compact semi-transparent tower-stage badges with measured selection/hover/focus details; accepted-cast SFX; runtime-only mute and SFX-only preset; final online event queue drain.",
+  "regression": {
+    "report": "BATTLE_FEEDBACK_REGRESSION_VALIDATION.json",
+    "tests": 309,
+    "groups": 23,
+    "allPassed": true,
+    "newTests": 15,
+    "postReviewRecheckedTests": 45
+  },
+  "determinism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "passed": true,
+    "fixture": "../tools/fixtures/motion-determinism.json",
+    "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+    "fixtureUnchanged": true,
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721",
+        "matched": true
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b",
+        "matched": true
+      }
+    ]
+  },
+  "build": {
+    "serverPassed": true,
+    "standalonePassed": true,
+    "report": "BATTLE_FEEDBACK_EMBEDDED_VALIDATION.json",
+    "standaloneBytes": 119362827,
+    "embeddedDirectionalSheets": 104,
+    "embeddedMenuSheets": 1,
+    "embeddedHeroBusts": 8,
+    "embeddedSkinBusts": 16,
+    "skinPortraitSourcePngsEmbedded": 0,
+    "skinPortraitSourcePngsChecked": 32,
+    "portraitSourcePngsEmbedded": 0,
+    "portraitSourcePngsChecked": 18,
+    "embeddedTerrainSurfaces": 3,
+    "embeddedSeasonalPropSheets": 1,
+    "embeddedVillagePropSheets": 2,
+    "villageSourcePngsEmbedded": 0,
+    "embeddedWaterSurfaces": 1,
+    "embeddedSkillAtlases": 4,
+    "eachEmbeddedExactlyOnce": true,
+    "rejectedVersionsEmbedded": 0,
+    "inbetweenArchivePngsEmbedded": 0,
+    "inbetweenArchivePngsChecked": 256
+  },
+  "browser": {
+    "report": "BATTLE_FEEDBACK_BROWSER_VALIDATION.json",
+    "localCoopPreserved": true,
+    "allHardMuted": true,
+    "userPlaytestUntouched": true
+  },
+  "sourceAudit": {
+    "report": "BATTLE_FEEDBACK_SOURCE_VALIDATION.json",
+    "approvedArtAndDataUnchanged": true
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "task": "/root/hero_bust_review",
+    "role": "Read-only independent code review and Node reproduction",
+    "resolved": [
+      "Preview tier-pip CSS scope",
+      "Final online snapshot replay"
+    ],
+    "finalRequiredChanges": 0
+  },
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "remote": "https://github.com/evilmuff0805-create/Td.git",
+    "status": "pending commit and push"
+  }
+}

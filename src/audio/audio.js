@@ -6,6 +6,9 @@ class GameAudio {
     this.ctx = null;
     this.sfxVol = 0.7;
     this.bgmVol = 0.35;
+    this.requestedSfx = this.sfxVol;
+    this.requestedBgm = this.bgmVol;
+    this.muted = false;
     this.last = {};
     this.bgmKind = null;
     this.bgmTimer = null;
@@ -35,11 +38,32 @@ class GameAudio {
     if (this.pendingBgm) this.startBgm(this.pendingBgm);
   }
 
+  configure(search, sfx = 0.7, bgm = 0.35) {
+    const query = new URLSearchParams(search);
+    this.muted = query.get('mute') === '1';
+    const effectsOnly = query.get('sound') === 'effects';
+    // URL presets affect this tab only. Never overwrite the saved preference.
+    this.setVolumes(effectsOnly && !(sfx > 0) ? 0.7 : sfx, effectsOnly ? 0 : bgm);
+  }
+
   setVolumes(sfx, bgm) {
-    this.sfxVol = sfx;
-    this.bgmVol = bgm;
-    if (this.sfx) this.sfx.gain.value = sfx;
-    if (this.bgm) this.bgm.gain.value = bgm;
+    const volume = v => Number.isFinite(v) ? Math.max(0, Math.min(1, v)) : 0;
+    this.requestedSfx = volume(sfx);
+    this.requestedBgm = volume(bgm);
+    this.sfxVol = this.muted ? 0 : this.requestedSfx;
+    this.bgmVol = this.muted ? 0 : this.requestedBgm;
+    if (this.sfx) this.sfx.gain.value = this.sfxVol;
+    if (this.bgm) this.bgm.gain.value = this.bgmVol;
+  }
+
+  // One short cue for each accepted cast. Keep this separate from the shared
+  // combat-sound throttle, so simultaneous co-op casts both remain audible.
+  playActivation(kind) {
+    if (!this.ctx || this.sfxVol <= 0 || !['heroSkill', 'heroUlt', 'skill'].includes(kind)) return;
+    const ultimate = kind === 'heroUlt', freq = ultimate ? 220 : kind === 'skill' ? 550 : 440;
+    this.noise(ultimate ? 0.18 : 0.1, { vol: 0.065, type: 'highpass', freq: 1800, sweep: 1.6, out: this.sfx });
+    this.tone(freq, ultimate ? 0.3 : 0.18, { type: 'triangle', vol: 0.12, slide: 1.5, out: this.sfx });
+    this.tone(freq * 2, 0.14, { vol: 0.06, t: 0.055, out: this.sfx });
   }
 
   // ───── 기본 음원 ─────

@@ -1,0 +1,27 @@
+{
+  "baseline": "820b7b822e0930afb306a3f746821ddfb850e083",
+  "unchanged": [
+    "src/sim/abilities.js",
+    "src/sim/combat.js",
+    "src/sim/map.js",
+    "src/sim/rng.js",
+    "src/sim/snapshot.js",
+    "src/meta",
+    "src/data",
+    "assets/3d/fixed",
+    "assets/illustrated",
+    "src/3d/hero-pose-data.js",
+    "src/3d/skin-pose-data.js",
+    "src/3d/combat-pose-data.js",
+    "src/3d/inbetween-data.js",
+    "src/3d/combat-inbetween-data.js",
+    "tools/fixtures/motion-determinism.json",
+    "tools/check-motion-determinism.mjs"
+  ],
+  "allUnchanged": true,
+  "simChange": "Three presentation-only abilityCue events appended after accepted casts. No RNG/combat/stat/price/cooldown changes.",
+  "sessionChange": "Clear final snapshot event queue after sending, preventing replay on the following update.",
+  "determinismCommand": "node tools/check-motion-determinism.mjs",
+  "determinismPassed": true,
+  "fixtureUnchanged": true
+}

@@ -1325,6 +1325,9 @@ export class GameUI {
     const v = this.s.view;
     for (const e of evs) {
       switch (e.k) {
+        case 'abilityCue':
+          if (e.sound) audio.playActivation(e.sound);
+          break;
         case 'sfx':
           audio.play(e.n);
           break;

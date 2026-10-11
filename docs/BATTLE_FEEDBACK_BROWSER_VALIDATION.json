@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-11",
+  "agentTabIds": [
+    86,
+    87,
+    88
+  ],
+  "userTab85Untouched": true,
+  "userExternalChromeUntouched": true,
+  "hardMutedThroughout": true,
+  "desktop": [
+    1280,
+    720
+  ],
+  "mobile": [
+    414,
+    896
+  ],
+  "local": {
+    "heroes": [
+      "yi",
+      "sejong"
+    ],
+    "onePlayerMouseBuilds": 2,
+    "twoPlayerEKeyBuilds": 1,
+    "goldBefore": [
+      156,
+      156
+    ],
+    "goldAfter": [
+      16,
+      86
+    ],
+    "lives": [
+      20,
+      20
+    ],
+    "paused": true,
+    "compactBadges": 3,
+    "compactCssPixels": [
+      24,
+      22
+    ],
+    "compactBackground": "rgba(16,43,58,0.6)",
+    "selectedCssPixels": [
+      76,
+      50
+    ],
+    "selectedExpanded": 1,
+    "keyboardFocusedTowerId": "4",
+    "selectedTowerId": "3",
+    "keyboardAndSelectionBothExpand": true,
+    "aiming": {
+      "detailsExpanded": 0,
+      "tabIndex": -1,
+      "pointerEvents": "none",
+      "opacity": 0.35
+    },
+    "skills": {
+      "onePlayerMouse": "yi heroSkill",
+      "twoPlayerAKey": "sejong heroSkill",
+      "displayedCooldowns": [
+        14,
+        16
+      ]
+    },
+    "mobileHorizontalOverflow": false
+  },
+  "preview": {
+    "stage": "s25",
+    "season": "winter",
+    "actualUpgradeSequence": [
+      "1",
+      "2",
+      "3",
+      "4A"
+    ],
+    "maxBadge": "4A",
+    "compactCssPixels": [
+      24,
+      22
+    ],
+    "mobileCompactCssPixels": [
+      24,
+      22
+    ],
+    "selectionPanelPipsDisplay": "flex",
+    "selectionPanelFilledPips": 4,
+    "mobileHorizontalOverflow": false
+  },
+  "latestBuildSoundPreset": {
+    "query": "?mute=1&sound=effects",
+    "displayedSfx": 0.7,
+    "displayedBgm": 0,
+    "hardMuteNoticeVisible": true,
+    "presetButtonDisabled": true,
+    "unmuteLink": "?sound=effects"
+  },
+  "console": {
+    "localWarnings": 0,
+    "localErrors": 0,
+    "previewWarnings": 0,
+    "previewErrors": 0,
+    "latestBuildWarnings": 0,
+    "latestBuildErrors": 0
+  },
+  "screenshots": [
+    "screenshots/battle-feedback/local-compact.png",
+    "screenshots/battle-feedback/local-mobile.png",
+    "screenshots/battle-feedback/local-selected.png",
+    "screenshots/battle-feedback/preview-max-compact.png",
+    "screenshots/battle-feedback/preview-max-selected.png",
+    "screenshots/battle-feedback/preview-mobile.png",
+    "screenshots/battle-feedback/settings-effects-muted.png",
+    "screenshots/battle-feedback/settings-muted.png"
+  ],
+  "limits": "No audible listening. WebAudio channel/scheduling is covered by automated fake-node integration; browser UI is hard-muted. No real mobile device, remote online, or browser B specialization claim. Existing user playtest session untouched."
+}

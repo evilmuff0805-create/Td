@@ -964,13 +964,20 @@ p {
 .game-3d .battle-camera { z-index:4; }
 .game-3d .battle-camera button[aria-pressed='true'] { border-color:#e8d7a6; background:#45635cf0; }
 .game-3d .battle-tower-labels, .game-3d .battle-damage, .game-3d .battle-status { position:absolute; inset:0; pointer-events:none !important; overflow:hidden; }
-.game-3d .tower-badge { position:absolute; transform:translate(-50%,-100%); display:flex; flex-direction:column; align-items:center; gap:2px; pointer-events:auto; color:#d9e6e8; background:#102b3aeb; border:1px solid #8c9e9e; border-radius:5px; padding:4px 7px; font-size:11px; box-shadow:0 3px 10px #04121b80; white-space:nowrap; }
-.game-3d .tower-badge-name { font-size:9px; opacity:.8; }
+.game-3d .tower-badge { position:absolute; transform:translate(-50%,-100%); display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:24px; min-height:22px; box-sizing:border-box; gap:2px; pointer-events:auto; color:#e5eeee; background:#102b3a99; border:1px solid #a6bcbeaa; border-radius:5px; padding:2px 5px; font-size:11px; text-shadow:0 1px 2px #04121b; box-shadow:0 1px 4px #04121b55; white-space:nowrap; }
+.game-3d .tower-badge-name, .game-3d .tower-badge-detail, .game-3d .tower-badge .tier-pips { display:none; }
+.game-3d .tower-badge-name { font-size:10px; opacity:.85; }
+.game-3d .tower-badge-detail { font-size:11px; font-weight:700; }
+.game-3d .tower-badge.detail-open { min-width:76px; padding:5px 8px; background:#102b3ae6; }
+.game-3d .tower-badge.detail-open .tower-badge-level { display:none; }
+.game-3d .tower-badge.detail-open .tower-badge-name, .game-3d .tower-badge.detail-open .tower-badge-detail { display:block; }
+.game-3d .tower-badge.detail-open .tier-pips { display:flex; }
 .game-3d .tower-label-leader { position:absolute; height:1px; background:#d8dbc2b3; transform-origin:0 50%; pointer-events:none; }
 .game-3d .tower-badge b { font-size:11px; font-weight:700; }
 .game-3d .tower-badge[aria-pressed='true'] { outline:2px solid #a9e4d5; outline-offset:2px; }
-.game-3d .tower-badge[data-level='3'] { border-color:#b8c9b3; background:#173241ef; }
-.game-3d .tower-badge.max-tier { border-color:#f2cf7e; color:#ffe6a3; background:linear-gradient(135deg,#584526f5,#192c39f5); box-shadow:0 0 15px #eec05c38; }
+.game-3d .tower-badge[data-level='3'] { border-color:#b8c9b3; }
+.game-3d .tower-badge.max-tier { border-color:#f2cf7e; color:#ffe6a3; background:#3b3424a6; }
+.game-3d .tower-badge.max-tier.detail-open { background:linear-gradient(135deg,#584526e6,#192c39e6); }
 .game-3d .tier-pips { display:flex; gap:3px; }
 .game-3d .tier-pips i { width:10px; height:3px; border-radius:1px; background:#b8c7cb30; }
 .game-3d .tier-pips i.filled { background:#e4c58c; }
