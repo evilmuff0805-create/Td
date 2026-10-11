@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-11",
+  "tests": 12,
+  "results": [
+    {
+      "name": "8명 전용 경로는 서로 다르며 메뉴 모듈을 읽는 것만으로 이미지를 요청하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "같은 영웅의 동시 요청은 1회이고 그림이 준비될 때까지 캐시가 빈 상태를 유지한다",
+      "passed": true
+    },
+    {
+      "name": "기존 전장/메뉴 준비 함수는 새 흉상을 디코딩하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "준비된 원화는 640 정사각 전체를 표시하고 작은 HUD·전신은 기존 그림을 계속 쓴다",
+      "passed": true
+    },
+    {
+      "name": "늦게 준비되는 원화는 해당 캔버스만 바꾸고 같은 영웅 카드 두 개는 요청을 공유한다",
+      "passed": true
+    },
+    {
+      "name": "화면을 떠난 뒤 로딩이 끝나도 제거된 캔버스를 다시 칠하거나 화면에 삽입하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "16개 유효 의상은 그 의상의 상반신을 표시하며 기본 흉상 요청을 추가하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "다른 영웅·잘못된 의상 ID는 기본 외형으로 안전하게 돌아간다",
+      "passed": true
+    },
+    {
+      "name": "누락·잘못된 크기의 원화는 null로 끝나고 실패한 요청도 반복하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "실제 영웅 도감 8카드와 상세가 흉상을 쓰고 전신 전환은 영웅·프로필을 보존한다",
+      "passed": true
+    },
+    {
+      "name": "로컬 2인 실제 선택창은 양측 16흉상·서로 선택 금지·원래 두 출전 사양을 유지한다",
+      "passed": true
+    },
+    {
+      "name": "도감 장착 의상은 원래 준비 그림을 쓰고 그림 전환은 소유·재화·전투 사양을 바꾸지 않는다",
+      "passed": true
+    }
+  ],
+  "scope": "Menu-only lazy images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume fallback, actual codex and local two-player setup DOM/specs"
+}

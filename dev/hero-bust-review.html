@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>호국영웅전 · 영웅 일러스트</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #eee5d3; background: #0e1b28; font: 16px/1.5 'Malgun Gothic', sans-serif; }
+    header { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; padding: 20px 26px 12px; }
+    h1 { margin: 0; font-size: 23px; color: #ead09a; }
+    p { margin: 4px 0; color: #acbccc; font-size: 14px; }
+    #controls { display: flex; gap: 8px; margin-left: auto; }
+    button { color: #d9e2ed; background: #25384c; border: 1px solid #52657a; border-radius: 5px; padding: 9px 16px; font: inherit; cursor: pointer; }
+    button[aria-pressed='true'] { color: #f7dfaa; border-color: #cfa66b; background: #344458; }
+    #portraits { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; padding: 6px 26px 24px; }
+    article { border: 1px solid #5f5a4c; border-radius: 10px; overflow: hidden; background: #182a3c; }
+    .picture { aspect-ratio: 1; background: radial-gradient(ellipse at 32% 26%,#354654,#192b3c 60%,#101d2a); }
+    canvas { display: block; width: 100%; height: 100%; }
+    .caption { display: flex; justify-content: space-between; padding: 9px 12px; background: #142332; }
+    .caption b { color: #eed49d; }
+    .caption span { color: #aebdcc; font-size: 13px; }
+    @media (max-width:760px) { #portraits { grid-template-columns:repeat(2,minmax(0,1fr)); padding:6px 14px 20px; } header { padding:14px; } }
+  </style>
+</head>
+<body>
+  <header><div><h1>호국영웅전 · 영웅 일러스트</h1><p>기본 복장 8명 · 남색 그림자와 따뜻한 빛</p></div><div id="controls"></div></header>
+  <main id="portraits" aria-label="영웅 일러스트 모음"></main>
+  <script type="module" src="../assets/3d/hero-bust-review.js"></script>
+</body>
+</html>

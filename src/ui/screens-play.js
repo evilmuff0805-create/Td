@@ -2,7 +2,7 @@
 import { h, clear, toast, modal, fmt, starStr } from './dom.js';
 import { setBackdrop } from './backdrop.js';
 import { topbar, rewardText, plainReward } from './screens-menu.js';
-import { heroPortrait } from './icons.js';
+import { heroPortrait, heroBust } from './icons.js';
 import { towerIcon } from '../render/draw-towers.js';
 import { renderMapBackground } from '../render/draw-map.js';
 import { getMap } from '../sim/map.js';
@@ -171,7 +171,7 @@ function heroPicker(app, selected, max, onChange, taken = []) {
         onChange(next);
       },
     },
-    h('div', { class: 'pic' }, heroPortrait(id, 90, 0, heroSkin(p, id))),
+    h('div', { class: 'pic hero-bust-stage' }, heroBust(id, 180, heroSkin(p, id))),
     idx >= 0 && max > 1 ? h('span', { class: 'sel-no' }, idx + 1) : null,
     h('span', { class: 'nm' }, def.name, h('span', { class: 'dim', style: { fontSize: '14px' } }, ` ${def.title}`)),
     h('span', { class: 'sub' }, isTaken ? '동료가 선택함' : st.unlocked ? `${def.role} · 강화 ${p.heroes[id].lv}` : '🔒 잠김'));

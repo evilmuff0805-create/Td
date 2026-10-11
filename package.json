@@ -47,6 +47,8 @@
     "test:tactic-assets": "node tools/tactic-assets.mjs",
     "test:menu-art": "node tools/test-menu-art.mjs",
     "test:menu-assets": "node tools/hero-menu-assets.mjs",
+    "test:hero-busts": "node tools/test-hero-busts.mjs",
+    "test:hero-bust-assets": "node tools/hero-bust-assets.mjs",
     "test:signature-assets": "node tools/signature-assets.mjs",
     "test:enemies": "node tools/test-enemies.mjs",
     "test:campaign": "node tools/test-campaign.mjs",

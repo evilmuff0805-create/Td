@@ -2,7 +2,7 @@
 import { h, toast, fmt } from './dom.js';
 import { setBackdrop } from './backdrop.js';
 import { topbar } from './screens-menu.js';
-import { heroPortrait, heroFull } from './icons.js';
+import { heroBust, heroFull } from './icons.js';
 import { towerIcon } from '../render/draw-towers.js';
 import { HEROES, HERO_ORDER, heroMetaCost, HERO_META_MAX } from '../data/heroes.js';
 import { SKILLS, SKILL_ORDER, skillDesc, skillMetaCost, SKILL_META_MAX, skillCdMult } from '../data/skills.js';
@@ -40,7 +40,7 @@ export function heroesScreen(app, params = {}) {
   const list = h('div', { class: 'grid-cards', style: { gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))' } }, HERO_ORDER.map((id) => {
     const u = heroUnlockState(p, id).unlocked;
     return h('button', { class: `card${u ? '' : ' locked'}`, 'aria-pressed': String(id === sel), onclick: () => app.go('heroes', { id }) },
-      h('div', { class: 'pic' }, heroPortrait(id, 80, 0, heroSkin(p, id))), h('span', { class: 'nm' }, HEROES[id].name), h('span', { class: 'sub' }, u ? `강화 ${p.heroes[id].lv}/${HERO_META_MAX}` : '🔒'));
+      h('div', { class: 'pic hero-bust-stage' }, heroBust(id, 160, heroSkin(p, id))), h('span', { class: 'nm' }, HEROES[id].name), h('span', { class: 'sub' }, u ? `강화 ${p.heroes[id].lv}/${HERO_META_MAX}` : '🔒'));
   }));
   const action = !st.unlocked
     ? h('div', { class: 'stack' },
@@ -60,11 +60,16 @@ export function heroesScreen(app, params = {}) {
         onclick: () => { if (upgradeHero(p, sel)) { audio.play('upgrade'); app.go('heroes', { id: sel }); } },
       }, `강화 · 엽전 ${fmt(cost)}`) : h('span', { class: 'chip' }, '최고 단계'),
       h('span', { class: 'dim', style: { fontSize: '14px' } }, '단계당 체력·공격·기술 +4%'));
-  const pic = heroFull(sel, 200, heroSkin(p, sel));
-  pic.className = 'pic';
+  const full = params.art === 'full';
+  const pic = full ? heroFull(sel, 304, heroSkin(p, sel)) : heroBust(sel, 304, heroSkin(p, sel));
   const sk = skinDef(sel, heroSkin(p, sel));
-  const detail = h('div', { class: 'panel detail' },
-    pic,
+  const detail = h('div', { class: 'panel detail hero-detail' },
+    h('div', { class: 'hero-art-panel' },
+      h('div', { class: 'pic hero-bust-stage' }, pic),
+      h('div', { class: 'row hero-art-switch', role: 'group', 'aria-label': '영웅 그림 보기' },
+        h('button', { class: 'btn btn-small', 'aria-pressed': String(!full), onclick: () => app.go('heroes', { id: sel, art: 'bust' }) }, '일러스트'),
+        h('button', { class: 'btn btn-small', 'aria-pressed': String(full), onclick: () => app.go('heroes', { id: sel, art: 'full' }) }, '전신')),
+      h('span', { class: 'dim hero-art-caption' }, sk?.name ?? '기본 복장')),
     h('div', { class: 'stack' },
       h('div', { class: 'row' }, h('h2', {}, def.name), h('span', { class: 'chip' }, `${def.era} · ${def.title}`), h('span', { class: 'chip' }, def.role)),
       h('p', { class: 'quote' }, def.quote),

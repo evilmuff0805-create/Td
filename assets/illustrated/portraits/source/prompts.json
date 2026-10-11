@@ -1,0 +1,113 @@
+{
+  "method": "Built-in imagegen; no external API/CLI",
+  "date": "2026-10-11",
+  "records": [
+    {
+      "id": "yi",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent Korean tower-defense hero codex bust, Yi Sun-sin. Reference image 1 is the approved in-game character identity, costume, color palette and soft sculpted animated illustration style; reference only. Create ONE high-resolution polished half-body portrait of EXACTLY this character from belt upwards, with complete helmet/plume, shoulders, upper arms and a small visible portion of his curved bow at lower right and quiver behind shoulder. Keep the same middle-aged Korean face, expressive thick brows, neat pointed black beard, navy blue lamellar armor with restrained antique brass trim, cream armor edging, red helmet plume, and NAVY cloak with a small red lining. Face turned slightly to viewer's right, calm courageous alert expression. Bigger readable eyes and broad beautiful painted color shapes like a premium animated adventure game. Match the approved stylized proportions and smooth modeled volume; improve fabric folds, soft skin bounce light and brushed metal without becoming a photoreal actor or gritty figurine. Lighting: cool navy ambient shadows, soft warm key light from upper left, subtle pale blue rim; medium contrast, no black crushed shadows, no shiny plastic or busy microtexture. Composition: square 1024x1024, centered bust with head at x=52% y=30%, silhouette including plume fully INSIDE canvas with at least 7% clear transparent margin, torso to belt at y=92%, no legs. Everything outside the character is genuinely transparent alpha. No scenery, floor, drop shadow, portrait frame, circle, gradient backdrop, letters, logo, watermark, duplicate character or color swatches. Do not add a spear or shield or large red cloak: this must remain visually distinct from Gwon Yul.",
+      "references": [
+        "references/yi-approved-idle.png"
+      ],
+      "output": "yi-bust-v1.png"
+    },
+    {
+      "id": "sejong",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent half-body hero codex portrait for a Korean tower-defense game. Input image 1 is this specific character's APPROVED identity, clothes, proportions and equipment; keep these. Input image 2 is a finished Yi Sun-sin bust and is ONLY the exact style, painted detail, lighting and production-quality reference, not this hero's costume. Create ONE polished half-body portrait of Sejong the Great: EXACT approved plump warm Korean king face, black moustache and neat black goatee, black tall folded ikseongwan scholar-king cap (not a military helmet), vermilion red royal robe with rich but restrained antique gold dragon medallion and shoulder embroidery, white inner collar, jade belt tassel. Holding a small open navy book near chest. Gentle intelligent dignified expression. No armor or weapons. Style: match image 2's premium animated adventure illustration, broad readable color planes, warm expressive Korean face, softly sculpted volume, painterly fabric and brushed antique metal, restrained detail; no photorealism, heavy black outlines, shiny plastic or grit. Lighting: soft warm key upper left, cool navy ambient and pale blue rim. Compose a square transparent portrait centered from belt upwards, face three-quarter to viewer's right, full cap/plume/hair and shoulder silhouette INSIDE image with 7% transparent safety margin on every side. Bottom ends naturally at waist, no legs. Actual transparent alpha outside silhouette; no backdrop, scene, floor, shadow, frame, text, logo, watermark, duplicates or swatches. Each hero is a distinct person and must not inherit Yi's face or clothes.",
+      "references": [
+        "references/sejong-approved-idle.png",
+        "yi-bust-v1.png"
+      ],
+      "output": "sejong-bust-v1.png"
+    },
+    {
+      "id": "eulji",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent half-body hero codex portrait for a Korean tower-defense game. Input image 1 is this specific character's APPROVED identity, clothes, proportions and equipment; keep these. Input image 2 is a finished Yi Sun-sin bust and is ONLY the exact style, painted detail, lighting and production-quality reference, not this hero's costume. Create ONE polished half-body portrait of Eulji Mundeok: EXACT approved middle-aged Korean strategist, narrow serious face, short dark beard and moustache, green bronze-trimmed helmet with ONE tall soft white feather plume, jade green lamellar armor with antique bronze edges and dark green cloak. Holding an ivory-white feather strategy fan across his chest with one hand. Calm calculating intelligent expression. Keep the white fan large and clearly legible, green armor and white plume distinctive. No royal robe, crown, bow or shield. Style: match image 2's premium animated adventure illustration, broad readable color planes, warm expressive Korean face, softly sculpted volume, painterly fabric and brushed antique metal, restrained detail; no photorealism, heavy black outlines, shiny plastic or grit. Lighting: soft warm key upper left, cool navy ambient and pale blue rim. Compose a square transparent portrait centered from belt upwards, face three-quarter to viewer's right. IMPORTANT fit the COMPLETE cap/plume/hair, both shoulders and all equipment silhouettes within x=10%..90%,y=10%..90% with EMPTY transparent margins on ALL sides. Bottom ends naturally at waist, no legs. Actual transparent alpha outside silhouette; no backdrop, scene, floor, shadow, frame, text, logo, watermark, duplicates or swatches. Each hero is a distinct person and must not inherit Yi's face or clothes.",
+      "references": [
+        "references/eulji-approved-idle.png",
+        "yi-bust-v1.png"
+      ],
+      "output": "eulji-bust-v1.png"
+    },
+    {
+      "id": "gang",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent half-body hero codex portrait for a Korean tower-defense game. Input image 1 is this specific character's APPROVED identity, clothes, proportions and equipment; keep these. Input image 2 is a finished Yi Sun-sin bust and is ONLY the exact style, painted detail, lighting and production-quality reference, not this hero's costume. Create ONE polished half-body portrait of Gang Gam-chan: EXACT approved elderly Korean general with long flowing silver-white hair, thick white moustache and full white beard, stern wise furrowed face, dark metal helmet with the approved upright antique-gold crest, PURPLE cloak and layered purple-grey lamellar armor with old gold trim. A short sword angled across the lower left and a partly visible round dark shield at lower right. Distinct elderly white-bearded commander, clearly older than Yi and Gwon. No red cloak or spear. Style: match image 2's premium animated adventure illustration, broad readable color planes, warm expressive Korean face, softly sculpted volume, painterly fabric and brushed antique metal, restrained detail; no photorealism, heavy black outlines, shiny plastic or grit. Lighting: soft warm key upper left, cool navy ambient and pale blue rim. Compose a square transparent portrait centered from belt upwards, face three-quarter to viewer's right. IMPORTANT fit the COMPLETE cap/plume/hair, both shoulders and all equipment silhouettes within x=10%..90%,y=10%..90% with EMPTY transparent margins on ALL sides. Bottom ends naturally at waist, no legs. Actual transparent alpha outside silhouette; no backdrop, scene, floor, shadow, frame, text, logo, watermark, duplicates or swatches. Each hero is a distinct person and must not inherit Yi's face or clothes.",
+      "references": [
+        "references/gang-approved-idle.png",
+        "yi-bust-v1.png"
+      ],
+      "output": "gang-bust-v1.png"
+    },
+    {
+      "id": "gwon",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent half-body hero codex portrait for a Korean tower-defense game. Input image 1 is this specific character's APPROVED identity, clothes, proportions and equipment; keep these. Input image 2 is a finished Yi Sun-sin bust and is ONLY the exact style, painted detail, lighting and production-quality reference, not this hero's costume. Create ONE polished half-body portrait of Gwon Yul: EXACT approved broad stocky middle-aged Korean commander face, bushy short black beard and moustache, dark metal Korean helmet with red plume, weathered grey-bronze lamellar armor with muted bronze shoulder rims, scarlet red cape and red cloth sash. A straight spear with red tassel standing at left edge inside canvas, round dark wood shield with bronze boss partly at lower right. Resolute protective expression. No bow or quiver and no navy cape: remain distinct from Yi Sun-sin. Style: match image 2's premium animated adventure illustration, broad readable color planes, warm expressive Korean face, softly sculpted volume, painterly fabric and brushed antique metal, restrained detail; no photorealism, heavy black outlines, shiny plastic or grit. Lighting: soft warm key upper left, cool navy ambient and pale blue rim. Compose a square transparent portrait centered from belt upwards, face three-quarter to viewer's right, full cap/plume/hair and shoulder silhouette INSIDE image with 7% transparent safety margin on every side. Bottom ends naturally at waist, no legs. Actual transparent alpha outside silhouette; no backdrop, scene, floor, shadow, frame, text, logo, watermark, duplicates or swatches. Each hero is a distinct person and must not inherit Yi's face or clothes.",
+      "references": [
+        "references/gwon-approved-idle.png",
+        "yi-bust-v1.png"
+      ],
+      "output": "gwon-bust-v1.png"
+    },
+    {
+      "id": "gwak",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent half-body hero codex portrait for a Korean tower-defense game. Input image 1 is this specific character's APPROVED identity, clothes, proportions and equipment; keep these. Input image 2 is a finished Yi Sun-sin bust and is ONLY the exact style, painted detail, lighting and production-quality reference, not this hero's costume. Create ONE polished half-body portrait of Gwak Jae-u: EXACT approved agile middle-aged Korean archer, slim angular face, neat short black moustache and pointed short goatee, black traditional Korean GAT hat with clearly wide round brim and tall straight crown, vivid but elegant vermilion RED robe with plain black crossover collar, dark belt and dark leather forearm guards. Holding a Korean curved wooden bow partly visible low at viewer right, brown quiver behind shoulder. Spirited confident determined expression. No metal armor, helmet, royal dragons or modern clothes. Style: match image 2's premium animated adventure illustration, broad readable color planes, warm expressive Korean face, softly sculpted volume, painterly fabric and restrained detail; no photorealism, heavy black outlines, shiny plastic or grit. Lighting: soft warm key upper left, cool navy ambient and pale blue rim. Compose a square transparent portrait centered from belt upwards, face three-quarter to viewer's right. IMPORTANT fit the COMPLETE hat/hair, both shoulders and all equipment silhouettes within x=10%..90%,y=10%..90% with EMPTY transparent margins on ALL sides. Bottom ends naturally at waist, no legs. Actual transparent alpha outside silhouette; no backdrop, scene, floor, shadow, frame, text, logo, watermark, duplicates or swatches. Each hero is a distinct person and must not inherit Yi's face or clothes.",
+      "references": [
+        "references/gwak-approved-idle.png",
+        "yi-bust-v1.png"
+      ],
+      "output": "gwak-bust-v1.png"
+    },
+    {
+      "id": "ahn",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent half-body hero codex portrait for a Korean tower-defense game. Input image 1 is this specific character's APPROVED identity, clothes, proportions and equipment; keep these. Input image 2 is a finished Yi Sun-sin bust and is ONLY the exact style, painted detail, lighting and production-quality reference, not this hero's costume. Create ONE polished half-body portrait of Ahn Jung-geun: EXACT approved young adult Korean independence officer, natural swept parted BLACK hair without hat, recognizable small tidy black moustache and clean-shaven cheeks and chin, white shirt, black tie, dark charcoal waistcoat and well-cut charcoal early-20th-century overcoat. Calm resolute youthful face, less bulky than armored commanders. Small antique dark revolver held lowered safely, only partly visible at lower viewer left. No beard, armor, hat, Korean robe or fantasy ornament. Style: match image 2's premium animated adventure illustration, broad readable color planes, warm expressive Korean face, softly sculpted volume, painterly fabric and restrained detail; no photorealism, heavy black outlines, shiny plastic or grit. Lighting: soft warm key upper left, cool navy ambient and pale blue rim. Compose a square transparent portrait centered from belt upwards, face three-quarter to viewer's right. IMPORTANT fit the COMPLETE hat/hair, both shoulders and all equipment silhouettes within x=10%..90%,y=10%..90% with EMPTY transparent margins on ALL sides. Bottom ends naturally at waist, no legs. Actual transparent alpha outside silhouette; no backdrop, scene, floor, shadow, frame, text, logo, watermark, duplicates or swatches. Each hero is a distinct person and must not inherit Yi's face or clothes.",
+      "references": [
+        "references/ahn-approved-idle.png",
+        "yi-bust-v1.png"
+      ],
+      "output": "ahn-bust-v1.png"
+    },
+    {
+      "id": "dangun",
+      "method": "builtin image_gen.imagegen",
+      "intent": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: transparent half-body hero codex portrait for a Korean tower-defense game. Input image 1 is the specific APPROVED character identity/costume. Input image 2 is Yi's finished bust ONLY for painting style/lighting/detail. Create ONE polished bust of Dangun Wanggeom: same wise elderly Korean face, long flowing SILVER-WHITE hair and very long white beard and moustache, the approved antique gold branched leaf crown with a small green jewel, warm IVORY-WHITE robe with muted celadon green patterned lapels, pale green inner sleeve trims and antique gold belt. A small antique brass ritual bell hanging from his hand near lower right. Serene powerful benevolent expression, softer than stern Gang Gam-chan, no armor or military helmet, no sword. Match reference 2's premium animated adventure illustration, expressive face, softly sculpted volume, beautiful broad painted color planes, tasteful fabric embroidery, restrained antique metal detail. Soft warm key upper left, cool navy ambient and pale blue rim, no photorealism, plastic, gritty noise or heavy outlines. Half-body from belt up, three-quarter to viewer right, square composition; complete crown, hair, both sleeves and bell fully INSIDE x=10%..90%, y=10%..90%, EMPTY genuinely transparent margin on all sides. End naturally at waist, no legs. Actual transparent alpha outside silhouette, no backdrop, scene, floor, shadow, frame, text, logos, watermark or duplicates. Dangun must remain a distinct person and not inherit Yi's costume or face.",
+      "references": [
+        "references/dangun-approved-idle.png",
+        "yi-bust-v1.png"
+      ],
+      "output": "dangun-bust-v1.png"
+    },
+    {
+      "id": "gwon-v2",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Edit target: image 1, Gwon Yul half-body portrait. Change ONLY the framing: pull the camera back and gently extend/reconstruct the full round wooden shield curve and the complete left cape silhouette so EVERY visible object fits in the image, with a wide EMPTY transparent border (about 10% of image) on all four sides. Keep the exact same broad middle-aged Korean face, short dark beard, helmet/red plume, red cloak, grey-bronze armor, straight spear with red tassel, round dark wooden bronze-rim shield, warm lighting, brushwork and colors. Keep a HALF-BODY bust ending naturally at belt; no legs, no new objects. Shield should be a complete readable round form within the image and cape edge should curl naturally within the border. Keep spear tip inside. Square transparent image with actual alpha outside character, no backdrop, floor, frame, text or shadow.",
+      "references": [
+        "gwon-bust-v1.png"
+      ],
+      "output": "gwon-bust-v2.png"
+    },
+    {
+      "id": "gang-v2",
+      "method": "builtin image_gen.imagegen",
+      "intent": "edit",
+      "prompt": "Use case: identity-preserve. Edit target image 1 is the approved Gang Gam-chan half-body portrait. Correct ONLY composition and the clipped shield. Pull the camera back so the character is SMALLER inside a transparent square, all hair/cape/sword and the ENTIRE round shield silhouette fit inside the image. The shield at right MUST have a fully curved right outline with a clearly empty transparent gap of at least 10% image width between the shield and the right image edge. Reconstruct its missing outer dark wood curve and antique bronze rim; do not cut it off. Leave similarly generous empty transparent space around cape at left and gold helmet crest on top. Keep his EXACT elderly Korean face, flowing silver-white beard/hair, purple cloak, grey-purple lamellar armor, gold crested helmet, sword, painted lighting, material, colors and expression unchanged. Half-body ends naturally below belt; do not add legs. Genuine transparent alpha background, no scene, frame, floor, shadow, text, watermark or extra objects. The final silhouette must be complete, never touching the canvas border.",
+      "references": [
+        "gang-bust-v1.png"
+      ],
+      "output": "gang-bust-v2.png"
+    }
+  ]
+}

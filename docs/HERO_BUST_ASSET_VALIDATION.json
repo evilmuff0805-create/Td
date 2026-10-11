@@ -1,0 +1,247 @@
+{
+  "date": "2026-10-11",
+  "method": "Built-in imagegen; no external API/CLI",
+  "portraits": 8,
+  "bytes": 2267434,
+  "normalizedSize": [
+    640,
+    640
+  ],
+  "transparentPadding": 32,
+  "resizeOnly": true,
+  "alphaAndVisibleRgbExact": true,
+  "results": [
+    {
+      "id": "yi",
+      "source": "yi-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 13,
+        "width": 1238,
+        "height": 1241
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "714926f01b0d399861ef8d4f11f7adbf30f50ca3ad7c4c3a86298640d2f4cd29",
+      "delivery": "assets/illustrated/portraits/yi-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 309084,
+      "sha256": "372da9a1b3184e9b9f993bd3a9e301c623b3031cfef2fd4aeb6b9383ec78aa9a",
+      "visibleBounds": [
+        32,
+        32,
+        606,
+        607
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "sejong",
+      "source": "sejong-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 8,
+        "width": 1221,
+        "height": 1232
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "72ae179fdc313c667af75689627e978f0c966e40714d482f6695849663308cee",
+      "delivery": "assets/illustrated/portraits/sejong-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 289206,
+      "sha256": "87684278db1cf91f7e5580021c238e1ab327ed4e716ca4a1a98e688d0ce57e28",
+      "visibleBounds": [
+        44,
+        32,
+        604,
+        607
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "eulji",
+      "source": "eulji-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 0,
+        "width": 1238,
+        "height": 1254
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "1edf1c9b4e71156723a32c9e204262842379cff141a1afe36eb4a6891a35706f",
+      "delivery": "assets/illustrated/portraits/eulji-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 285890,
+      "sha256": "5424738b991202a5c2fff4435c5bf9c3d17f388dd8cc16b3610f31fa714d05b1",
+      "visibleBounds": [
+        35,
+        32,
+        603,
+        607
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gang",
+      "source": "gang-bust-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 25,
+        "top": 44,
+        "width": 1187,
+        "height": 1210
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "9356587a57d9fb694ea8b937ffd82a0c28c12d7f4b38c10480a8ad32b7bf50b5",
+      "delivery": "assets/illustrated/portraits/gang-bust-v2.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 268024,
+      "sha256": "25b09337ee8e2d71108a801c3a60505231bb9c7536ad4953bf9fbf5b8b38dab7",
+      "visibleBounds": [
+        68,
+        34,
+        597,
+        566
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gwon",
+      "source": "gwon-bust-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 0,
+        "width": 1232,
+        "height": 1224
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "913eca0e0556b89baeb0de35199b596b33c327d1c12920f967a113a6145c96bc",
+      "delivery": "assets/illustrated/portraits/gwon-bust-v2.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 323908,
+      "sha256": "c319a1cea30e6cef341b39fecfe12948ac58e2b18b4fb7b348a8ffffb0b70722",
+      "visibleBounds": [
+        55,
+        43,
+        606,
+        605
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "gwak",
+      "source": "gwak-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 31,
+        "width": 1212,
+        "height": 1207
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "3ab34f6c34ff5d7d7c4744fad6e9a4b38c260775453d2ee7c1678ef2963cd19d",
+      "delivery": "assets/illustrated/portraits/gwak-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 268514,
+      "sha256": "e44843266f077168d38166f6fb09b2d359f2773d7e3b53db52ba1da3973856ef",
+      "visibleBounds": [
+        32,
+        34,
+        607,
+        605
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "ahn",
+      "source": "ahn-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 4,
+        "width": 1213,
+        "height": 1250
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "b39bfaaa3cda0b0cb5b081a9b231e99640a239fa83956a4efe84d0dadc70e763",
+      "delivery": "assets/illustrated/portraits/ahn-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 209070,
+      "sha256": "b0d08c264b78c66be9428db358e9a1c0e129feea34c29468413b130364a241a8",
+      "visibleBounds": [
+        82,
+        45,
+        592,
+        598
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    },
+    {
+      "id": "dangun",
+      "source": "dangun-bust-v1.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceCrop": {
+        "left": 0,
+        "top": 14,
+        "width": 1238,
+        "height": 1240
+      },
+      "sourceEdgeOpaquePixels": 0,
+      "sourceSha256": "a2492e90684aad7d252e279d3ea8485a76c78dc56c9073f201ea5727407529c2",
+      "delivery": "assets/illustrated/portraits/dangun-bust-v1.webp",
+      "width": 640,
+      "height": 640,
+      "bytes": 313738,
+      "sha256": "4b8e3064f95ab5890ebb9a5640386f7b104693e0fec20767b31b55fb1c2f0dc0",
+      "visibleBounds": [
+        53,
+        32,
+        606,
+        602
+      ],
+      "alphaErrors": 0,
+      "visibleRgbErrors": 0,
+      "borderPixels": 0,
+      "referencePixelsExact": true
+    }
+  ]
+}

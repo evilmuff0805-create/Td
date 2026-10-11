@@ -1,0 +1,350 @@
+{
+  "date": "2026-10-11",
+  "origin": "http://127.0.0.1:8092",
+  "mute": true,
+  "desktopHeroes": [
+    {
+      "height": 304,
+      "hero": "yi",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    },
+    {
+      "height": 304,
+      "hero": "sejong",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    },
+    {
+      "height": 304,
+      "hero": "eulji",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    },
+    {
+      "height": 304,
+      "hero": "gang",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    },
+    {
+      "height": 304.0000305175781,
+      "hero": "gwon",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    },
+    {
+      "height": 303.9999694824219,
+      "hero": "gwak",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    },
+    {
+      "height": 304,
+      "hero": "ahn",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    },
+    {
+      "height": 304,
+      "hero": "dangun",
+      "kind": "bust",
+      "scrollWidth": 1280,
+      "source": "hero-bust-v1",
+      "state": "ready",
+      "viewport": 1280,
+      "width": 304
+    }
+  ],
+  "mobileBust": {
+    "artRect": {
+      "height": 304,
+      "width": 304,
+      "x": 48.5,
+      "y": 649.3882446289062
+    },
+    "buttons": [
+      {
+        "pressed": "true",
+        "text": "일러스트"
+      },
+      {
+        "pressed": "false",
+        "text": "전신"
+      }
+    ],
+    "height": 896,
+    "hero": "yi",
+    "kind": "bust",
+    "scrollWidth": 414,
+    "source": "hero-bust-v1",
+    "width": 414
+  },
+  "mobileFull": {
+    "hero": "yi",
+    "kind": "full",
+    "scrollWidth": 414,
+    "source": "approved-menu-poses",
+    "width": 414
+  },
+  "localSetup": {
+    "busts": [
+      {
+        "hero": "yi",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "sejong",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "eulji",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gang",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwon",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwak",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "ahn",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "dangun",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "yi",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "sejong",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "eulji",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gang",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwon",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "gwak",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "ahn",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      },
+      {
+        "hero": "dangun",
+        "skin": "",
+        "source": "hero-bust-v1",
+        "state": "ready"
+      }
+    ],
+    "disabledHeroes": [
+      "세종대왕 성군\n동료가 선택함",
+      "이순신 충무공\n동료가 선택함"
+    ],
+    "scrollWidth": 1280,
+    "start": "함께 출전!",
+    "text": "← 진영\n로컬 협동\n●\n400\n엽전\n◆\n20\n옥\n전장\n부산진 전투 (12파)\n보통\n어려움\n지옥\n함께 출전!\n합격기 · 전용 조합\n성군과 성웅\n10초간 모든 유산 공격력 +60%, 공격 속도 +20%. 모든 길에 거북선 출격.\n보급품\n가진 보급품이 없습니다\n1P가 아래 보급 버튼으로 씁니다 · 종류별 2개까지\n옥 상점 ◆\n1P (마우스만)\n이순신 충무공\n원거리 · 지휘 · 강화 0\n세종대왕 성군\n동료가 선택함\n을지문덕 살수의 명장\n🔒 잠김\n강감찬 귀주의 별\n🔒 잠김\n권율 행주의 방패\n🔒 잠김\n곽재우 홍의장군\n🔒 잠김\n안중근 대한의군 참모중장\n🔒 잠김\n단군왕검 고조선의 시조\n🔒 잠김\n비기\nD\n신기전 일제사격\n재사용 28초 · 강화 0\n지정 위치 반경 1.6칸에 신기전 12발을 퍼붓는다. 발당 화기 피해 32.\nF\n봉수 경보\n재사용 45초 · 강화 0\n봉화를 올려 10초간 모든 은신 적을 발각하고, 모든 적이 받는 피해 +20%.\n의병 소집\n🔒 정9품\n비격진천뢰\n🔒 종8품\n군량 보급\n🔒 정8품\n천자총통\n🔒 종7품\n동의보감\n🔒 정7품\n동장군 한파\n🔒 종6품\n2P (키보드: 방향키 + ASDF)\n이순신 충무공\n동료가 선택함\n세종대왕 성군\n지원 · 통제 · 강화 0\n을지문덕 살수의 명장\n🔒 잠김\n강감찬 귀주의 별\n🔒 잠김\n권율 행주의 방패\n🔒 잠김\n곽재우 홍의장군\n🔒 잠김\n안중근 대한의군 참모중장\n🔒 잠김\n단군왕검 고조선의 시조\n🔒 잠김\n비기\nF\n신기전 일제사격\n재사용 28초 · 강화 0\n지정 위치 반경 1.6칸에 신기전 12발을 퍼붓는다. 발당 화기 피해 32.\nD\n봉수 경보\n재사용 45초 · 강화 0\n봉화를 올려 10초간 모든 은신 적을 발각하고, 모든 적이 받는 피해 +20%.\n의병 소집\n🔒 정9품\n비격진천뢰\n🔒 종8품\n군량 보급\n🔒 정8품\n천자총통\n🔒 종7품\n동의보감\n🔒 정7품\n동장군 한파\n🔒 종6품",
+    "width": 1280
+  },
+  "localBattle": {
+    "buttons": [
+      "×1",
+      "×2",
+      "×3",
+      "계속",
+      "메뉴",
+      "건설 터",
+      "기본 시점",
+      "영웅 집결",
+      "숭례문\n1단계",
+      "이순신 Lv1",
+      "학익진",
+      "거북선",
+      "신기전",
+      "봉수",
+      "1P 클릭 · 2P Space",
+      "진격 중\n적 3",
+      "세종대왕 Lv1",
+      "훈민 정음\nA",
+      "자격루\nS\n2",
+      "봉수\nD"
+    ],
+    "portraits": [
+      {
+        "hero": "yi",
+        "kind": "portrait",
+        "source": "approved-menu-poses"
+      },
+      {
+        "hero": "sejong",
+        "kind": "portrait",
+        "source": "approved-menu-poses"
+      }
+    ],
+    "renderCanvases": [
+      {
+        "className": "",
+        "dataset": {
+          "combatInbetweenActive": "true",
+          "combatInbetweenCount": "12",
+          "combatInbetweenExpected": "12",
+          "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatInbetweenStatus": "ready",
+          "combatPoseActive": "true",
+          "combatPoseCount": "12",
+          "combatPoseExpected": "12",
+          "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+          "combatPoseLastKind": "ashigaru",
+          "combatPoseLastState": "pass-b",
+          "combatPoseStatus": "ready",
+          "drawCalls": "176",
+          "effectArtStatus": "ready",
+          "engine": "three.js r186",
+          "fixedArt": "true",
+          "fixedArtStatus": "ready",
+          "fps": "60",
+          "geometries": "85",
+          "heroInbetweenActive": "false",
+          "heroInbetweenCount": "2",
+          "heroInbetweenExpected": "2",
+          "heroInbetweenKinds": "sejong,yi",
+          "heroInbetweenLookKey": "sejong,yi",
+          "heroInbetweenStatus": "ready",
+          "heroPoseCount": "8",
+          "heroPoseStatus": "ready",
+          "landmarkArtStatus": "ready",
+          "renderMode": "3d",
+          "sceneryBarrierCells": "0",
+          "sceneryBarriers": "0",
+          "sceneryCargo": "1",
+          "sceneryCrowns": "9",
+          "sceneryHouses": "3",
+          "sceneryLamps": "7",
+          "sceneryLayout": "clustered",
+          "sceneryLowTrees": "12",
+          "sceneryProps": "40",
+          "sceneryYardFences": "2",
+          "seasonTreeArtStatus": "ready",
+          "signatureArtStatus": "ready",
+          "skinPoseCount": "0",
+          "skinPoseExpected": "0",
+          "skinPoseKinds": "",
+          "skinPoseStatus": "ready",
+          "spriteMotion": "distance-contact-recovery",
+          "tacticArtStatus": "ready",
+          "terrainRoad": "continuous",
+          "terrainRoadLayers": "1",
+          "terrainRoadTriangles": "3216",
+          "terrainShore": "continuous",
+          "terrainShoreTriangles": "1944",
+          "textures": "51",
+          "triangles": "55028",
+          "villagePropArtStatus": "ready",
+          "villagePropSeason": "temperate",
+          "waterTriangles": "7704",
+          "yiFacing": "3",
+          "yiPose": "idle"
+        }
+      },
+      {
+        "className": "xray",
+        "dataset": {}
+      },
+      {
+        "className": "",
+        "dataset": {}
+      }
+    ],
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n156\n2P 군자금\n86\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n숭례문\n1단계\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv1\n학익진\n거북선\n신기전\n봉수\n1P 클릭 · 2P Space\n공명 0%\n진격 중\n적 3\n세종대왕 Lv1\n훈민 정음\nA\n자격루\nS\n2\n봉수\nD\n신기전\nF"
+  },
+  "logs": {
+    "gallery": [],
+    "game": []
+  },
+  "screenshots": [
+    "screenshots/hero-busts/gallery.png",
+    "screenshots/hero-busts/codex-yi-desktop.png",
+    "screenshots/hero-busts/codex-gwon-desktop.png",
+    "screenshots/hero-busts/codex-mobile.png",
+    "screenshots/hero-busts/local-setup.png",
+    "screenshots/hero-busts/local-battle.png"
+  ],
+  "scope": "Desktop 8 hero codex selections, full-body toggle, 414x896 responsive codex, two-player setup 16 busts/taken heroes, latest standalone local battle and P2 E-key construction 156/156 to 156/86; hardware and remote online tests excluded"
+}

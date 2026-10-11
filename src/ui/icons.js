@@ -4,6 +4,9 @@ import { taegeuk, TS } from '../render/paint.js';
 import { ENEMIES } from '../data/enemies.js';
 import { heroArt, portraitArt, enemyArt, drawIllustration } from '../render/art.js';
 import { portraitBounds } from '../data/hero-menu.js';
+import { heroBustArt, loadHeroBust } from '../render/hero-busts.js';
+import { HEROES } from '../data/heroes.js';
+import { skinDef } from '../data/skins.js';
 
 function identifyHeroCanvas(cv,heroId,skin,art,kind){
   cv.dataset.hero=heroId;cv.dataset.skin=skin??'';cv.dataset.artSource=art?.source??'legacy';cv.dataset.heroImage=kind;
@@ -65,6 +68,43 @@ export function heroFull(heroId, size = 200, skin = null) {
   drawHero(ctx, { heroId, skin, id: 0, owner: 0, facing: 1, moving: false, anim: 0, hp: 1, maxHp: 1, lv: 1, buffs: {} }, 0.3, {
     x: size / 2, y: size * 0.95, scale: size / 44, portrait: true, noBar: true,
   });
+  return cv;
+}
+
+// Large menu illustration only. Small HUD portraits and full battle poses stay
+// on their approved source; an equipped costume must never show base clothing.
+export function heroBust(heroId, size = 200, skin = null) {
+  const cv = document.createElement('canvas');
+  const validSkin = skinDef(heroId, skin)?.id ?? null;
+  cv.width = cv.height = size * 2;
+  cv.className = 'hero-bust';
+  cv.setAttribute('role', 'img');
+  cv.setAttribute('aria-label', `${HEROES[heroId]?.name ?? heroId} · ${skinDef(heroId, validSkin)?.name ?? '기본 복장'}`);
+  const ctx = cv.getContext('2d');
+  ctx.scale(2, 2);
+  const paint = (art, fallback = false) => {
+    if (!art) return;
+    const W = art.img.naturalWidth || art.img.width;
+    const H = art.img.naturalHeight || art.img.height;
+    // Preserve the actual equipped outfit in the upper-body fallback. This is
+    // distinct from the square face crop used by the battle HUD.
+    const cropH = fallback ? Math.ceil(H * 0.72) : H;
+    const scale = size / Math.max(W, cropH);
+    ctx.clearRect(0, 0, size, size);
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(art.img, 0, 0, W, cropH, (size - W * scale) / 2, (size - cropH * scale) / 2, W * scale, cropH * scale);
+    identifyHeroCanvas(cv, heroId, validSkin, art, 'bust');
+    cv.dataset.bustState = fallback ? 'fallback' : 'ready';
+  };
+  const ready = heroBustArt(heroId, validSkin);
+  paint(ready ?? heroArt(heroId, validSkin), !ready);
+  if (!ready && !validSkin) {
+    loadHeroBust(heroId).then((art) => {
+      // Screen changes replace canvases. A late request never appends old UI or
+      // repaints a canvas removed by the full-body toggle.
+      if (art && cv.isConnected) paint(art);
+    });
+  }
   return cv;
 }
 

@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-11",
+  "parentCommit": "5ea7d59bf9f63fdc62c1e0a39edc01b1cc4c8889",
+  "scope": "Eight base-hero menu busts in codex and hero selection; battle sprites and local co-op preserved",
+  "art": {
+    "report": "HERO_BUST_ASSET_VALIDATION.json",
+    "method": "Built-in imagegen; no external API/CLI",
+    "newBusts": 8,
+    "bytes": 2267434,
+    "normalizedSize": [
+      640,
+      640
+    ],
+    "transparentPadding": 32,
+    "sourceEdgeOpaquePixels": 0,
+    "alphaErrors": 0,
+    "visibleRgbErrors": 0,
+    "sourcePngs": 10,
+    "exactReferencePngs": 8,
+    "specialCostumeNewBusts": 0,
+    "approvedBattlePosesPreserved": 1664,
+    "prompts": "../assets/illustrated/portraits/source/prompts.json"
+  },
+  "regression": {
+    "report": "HERO_BUST_REGRESSION_VALIDATION.json",
+    "groups": 21,
+    "tests": 284,
+    "allPassed": true,
+    "newTests": 12
+  },
+  "determinism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "passed": true,
+    "fixture": "../tools/fixtures/motion-determinism.json",
+    "baselineCommit": "2a4da15d02bd82632de82ae854eaa0a10574f71c",
+    "fixtureUnchanged": true,
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721",
+        "matched": true
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b",
+        "matched": true
+      }
+    ]
+  },
+  "build": {
+    "serverCommand": "node tools/build-3d.mjs",
+    "standaloneCommand": "node tools/build.mjs",
+    "serverPassed": true,
+    "standalonePassed": true,
+    "standaloneBytes": 113580049,
+    "embeddedVerifier": "node tools/verify-embedded-art.mjs",
+    "embeddedVerifierPassed": true,
+    "eachExactlyOnce": {
+      "directionalAndInbetweenSheets": 104,
+      "menuSheet": 1,
+      "newBustImages": 8,
+      "terrainSheets": 3,
+      "seasonalTreeSheet": 1,
+      "villagePropSheets": 2,
+      "waterSheet": 1,
+      "skillSheets": 4
+    },
+    "excludedPortraitPngs": 18,
+    "excludedInbetweenPngs": 256
+  },
+  "browser": {
+    "report": "HERO_BUST_BROWSER_VALIDATION.json",
+    "muted": true,
+    "desktopHeroes": 8,
+    "fullBodyToggle": true,
+    "mobileViewport": [
+      414,
+      896
+    ],
+    "mobileHorizontalOverflow": false,
+    "localSetupBusts": 16,
+    "reciprocalTakenHeroesDisabled": 2,
+    "firstWavePaused": true,
+    "lives": "20/20",
+    "p2EKeyConstruction": true,
+    "goldBefore": [
+      156,
+      156
+    ],
+    "goldAfter": [
+      156,
+      86
+    ],
+    "warnings": 0,
+    "errors": 0,
+    "screenshots": [
+      "screenshots/hero-busts/gallery.png",
+      "screenshots/hero-busts/codex-yi-desktop.png",
+      "screenshots/hero-busts/codex-gwon-desktop.png",
+      "screenshots/hero-busts/codex-mobile.png",
+      "screenshots/hero-busts/local-setup.png",
+      "screenshots/hero-busts/local-battle.png"
+    ],
+    "limits": "Individual movement/all skill re-demonstration, real devices, remote online and campaign balance were not newly tested in this milestone."
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "xhigh",
+    "task": "/root/hero_bust_review",
+    "role": "Read-only independent review",
+    "sourceShieldClippingCorrected": "gang-bust-v1.png replaced by newly generated gang-bust-v2.png",
+    "finalRequiredChanges": 0,
+    "acceptedNote": "Gang portrait is visually smaller because its sword/shield silhouette is wider."
+  },
+  "sourceAudit": {
+    "gitDiffCheckPassed": true,
+    "immutableCombatAndPosePathsPassed": true,
+    "immutablePaths": [
+      "src/sim",
+      "src/game",
+      "src/meta",
+      "src/data/heroes.js",
+      "src/data/enemies.js",
+      "assets/3d/fixed",
+      "src/3d/hero-pose-data.js",
+      "src/3d/skin-pose-data.js",
+      "src/3d/combat-pose-data.js",
+      "src/3d/inbetween-data.js",
+      "src/3d/combat-inbetween-data.js",
+      "tools/fixtures/motion-determinism.json"
+    ]
+  },
+  "github": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "status": "pending"
+  }
+}

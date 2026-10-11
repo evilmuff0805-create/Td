@@ -765,6 +765,26 @@ p {
   border-radius: 8px;
   background: radial-gradient(circle at 50% 35%, #f3e6c8, #cbb68d 70%);
 }
+.hero-detail {
+  grid-template-columns: minmax(220px, 304px) minmax(0, 1fr);
+  align-items: start;
+}
+.hero-art-panel { display: grid; gap: 10px; min-width: 0; }
+.card .pic.hero-bust-stage, .hero-detail .pic.hero-bust-stage {
+  background: radial-gradient(ellipse at 32% 26%, #354654, #192b3c 60%, #101d2a);
+  border: 1px solid rgba(209, 175, 110, 0.28);
+  overflow: hidden;
+}
+.hero-art-panel canvas { display: block; width: 100%; height: 100%; }
+.hero-art-switch { justify-content: center; }
+.hero-art-switch [aria-pressed='true'] { color: var(--gold-hi); border-color: var(--gold-hi); }
+.hero-art-caption { text-align: center; font-size: 14px; }
+.hero-detail .stack { min-width: 0; }
+@media (max-width: 860px) {
+  .hero-detail.detail { grid-template-columns: 1fr; }
+  .hero-detail .hero-art-panel { width: min(100%, 304px); justify-self: center; }
+  .hero-detail .pic.hero-bust-stage { max-width: none; }
+}
 .kv {
   display: grid;
   grid-template-columns: auto 1fr;
