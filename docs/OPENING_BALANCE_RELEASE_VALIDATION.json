@@ -282,7 +282,13 @@
     "finalFunctionalBlockersFound": false,
     "releaseLinkIssue": "Resolved by saving this release record."
   },
-  "github": null,
+  "github": {
+    "repository": "https://github.com/evilmuff0805-create/Td",
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "implementationCommit": "7b0769f6553d3a09a9d8887d23c7444fd9495adf",
+    "remoteHead": "7b0769f6553d3a09a9d8887d23c7444fd9495adf",
+    "verifiedAt": "2026-10-12T13:17:00.074306+00:00"
+  },
   "remaining": [
     "Solo hell s17 and later retry burden across seeds/hero combinations and human play",
     "Longer character/clothing-consistent animation and combo-specific art",

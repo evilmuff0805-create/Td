@@ -237,7 +237,8 @@ npm run build
 | 목적 | 위치 |
 |---|---|
 | 현재 프로젝트 현황 | 이 문서 `docs/PROJECT_REVIEW.md` |
-| 최신 배포·입력·온라인 복구·검증 | [ROADMAP_RELEASE.md](ROADMAP_RELEASE.md) · [전체395개 검사](ROADMAP_REGRESSION_VALIDATION.json) |
+| 최신 지옥 초반·출전 안내·성장 진단·검증 | [OPENING_BALANCE.md](OPENING_BALANCE.md) · [전체411개 검사](OPENING_REGRESSION_VALIDATION.json) |
+| 배포·입력·온라인 복구 구현 | [ROADMAP_RELEASE.md](ROADMAP_RELEASE.md) |
 | 건설 메뉴 겹침·선 없는 건물 아래 점 | [BUILD_MENU_LAYOUT.md](BUILD_MENU_LAYOUT.md) · [실제 전장](BUILD_DOTS_BROWSER_VALIDATION.json) |
 | 불꽃·물결·치유 각8프레임과 프롬프트 | [COMBO_ELEMENTS.md](COMBO_ELEMENTS.md) · [정확한 프롬프트](COMBO_ELEMENT_PROMPTS.json) |
 | 어려움·지옥 획득 재화 성장과 전술 | [DIFFICULTY_PROGRESSION.md](DIFFICULTY_PROGRESSION.md) · [실제 경로](DIFFICULTY_PROGRESSION_VALIDATION.json) · [고정 상태 재현](EARNED_TACTICS_VALIDATION.json) |
@@ -315,6 +316,8 @@ npm run build
 선택 영웅 기본 시트 준비·공통 원화 재사용·교체/종료 메모리 정리와 338개 / 25검사군·실제 로컬 2인·의상/영웅 교대·414px·Astra 하이 검토 기록은 [`e3678a0`](https://github.com/evilmuff0805-create/Td/commit/e3678a0a5b03c6ba9e70c4dc465dce46bab89795)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 10:21:40 UTC에 확인했다. 원화 화질과 전투는 유지하며 기본 원화 캔버스 저장량 계산·두 빌드·검수 화면·상위 프로젝트 기록을 포함한다. [정확한 범위](HERO_LOADING.md) · [릴리스 JSON](HERO_LOADING_RELEASE_VALIDATION.json).
 
 웹 배포·재접속 복구·입력과 성능 계측·획득 재화 성장 검사·불꽃/물결/치유 원화와 건설 메뉴 겹침·고정 점 수정은 [`041bba5`](https://github.com/evilmuff0805-create/Td/commit/041bba523d2669b75d57a19957ad88ce17b83db4)로 커밋·푸시했다. 실제 원격 브랜치와 구현 커밋 일치를 2026-10-11 13:54:40 UTC에 확인했다. 395개/29검사군·기존 완주 SHA·웹 ZIP 해시·원본과 정확한 프롬프트·실제 로컬 2인 화면·Astra 하이 검토를 기록하고 상위 프로젝트 문서도 갱신했다. 실제 휴대폰·외부 WAN·사람의 후반 밸런스·더 긴 캐릭터 동작은 남은 범위로 구분한다. [정확한 완료 범위](ROADMAP_RELEASE.md) · [릴리스 JSON](ROADMAP_RELEASE_VALIDATION.json).
+
+지옥 초반 일반 병력 체력 조정·출전 전 군자금/협동 배율/대응 안내와 411개/30검사군·실제 로컬 2인 지갑 검증은 [`7b0769f`](https://github.com/evilmuff0805-create/Td/commit/7b0769f6553d3a09a9d8887d23c7444fd9495adf)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋의 일치를 2026-10-12T13:17:00.074306+00:00에 확인했다. 228개 비교 진단과 새 유료 성장 경로 171전투도 기록했다. 새 경로는 솔로66/75·로컬75/75이며 솔로 지옥 직산은 12회 내 미완주이므로 후반 난이도 조정 완료로 표시하지 않는다. Astra 하이 검토·두 배포 빌드·실제 화면과 상위 프로젝트 문서를 포함한다. [정확한 완료 범위](OPENING_BALANCE.md) · [릴리스 JSON](OPENING_BALANCE_RELEASE_VALIDATION.json).
 
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
