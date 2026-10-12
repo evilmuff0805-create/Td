@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-10-12T13:10:27.864837+00:00",
+  "method": "Observed native browser UI and read-only DOM inspection on isolated localhost8095. Not an automated-test count, physical phone test, or WAN test.",
+  "screens": [
+    {
+      "screen": "campaign",
+      "stage": "s1",
+      "difficulty": "normal",
+      "observedStartingGold": 240,
+      "detailsInitiallyCollapsed": true,
+      "expandedAdviceObserved": true,
+      "screenshot": "screenshots/opening-balance/campaign-budget.jpg"
+    },
+    {
+      "screen": "solo-loadout",
+      "stage": "s1",
+      "difficulty": "normal",
+      "observedStartingGold": 240,
+      "screenshot": "screenshots/opening-balance/solo-loadout-budget.jpg"
+    },
+    {
+      "screen": "local-setup",
+      "stage": "s1",
+      "difficulty": "normal",
+      "observedEachStartingGold": 156,
+      "coopHpNotice": 1.1,
+      "screenshot": "screenshots/opening-balance/local-setup-budget.jpg"
+    },
+    {
+      "screen": "local-battle",
+      "stage": "s1",
+      "difficulty": "normal",
+      "beforeWallets": [
+        156,
+        156
+      ],
+      "p2Construction": "Native E then E, sungnyemun70",
+      "afterWallets": [
+        156,
+        86
+      ],
+      "paused": true,
+      "screenshot": "screenshots/opening-balance/local-independent-wallets.jpg"
+    },
+    {
+      "screen": "online-host-lobby",
+      "stage": "s1",
+      "difficulty": "normal",
+      "observedEachStartingGold": 156,
+      "coopHpNotice": 1.1,
+      "testRoomExited": true,
+      "screenshot": "screenshots/opening-balance/online-lobby-budget.jpg"
+    },
+    {
+      "screen": "isolated-real-component-and-engine-review",
+      "stage": "s25",
+      "difficulty": "hell",
+      "mode": "local",
+      "panelBorderWidth": 414,
+      "panelClientWidth": 412,
+      "panelScrollWidth": 412,
+      "wallets": [
+        390,
+        390
+      ],
+      "fixedFinalBossHp": 66880,
+      "profileReadOrWritten": false,
+      "screenshot": "screenshots/opening-balance/hell-coop-414-panel.jpg"
+    }
+  ]
+}

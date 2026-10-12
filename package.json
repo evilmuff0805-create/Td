@@ -70,6 +70,7 @@
     "test:web-release": "node tools/test-web-release.mjs",
     "test:roadmap": "node tools/test-roadmap-regression.mjs",
     "test:earned-tactics": "node tools/check-earned-tactics.mjs",
-    "test:combo-elements": "node tools/combo-element-assets.mjs"
+    "test:combo-elements": "node tools/combo-element-assets.mjs",
+    "test:opening-balance": "node tools/test-opening-balance.mjs"
   }
 }

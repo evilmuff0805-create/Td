@@ -18,6 +18,7 @@ import { ITEMS, ITEM_ORDER, ITEM_PER_BATTLE } from '../data/items.js';
 import { questText } from '../meta/quests.js';
 import { Net } from '../net/net.js';
 import { audio } from '../audio/audio.js';
+import { battleRules } from './battle-rules.js';
 
 const SVGNS = 'http://www.w3.org/2000/svg';
 const svg = (tag, attrs = {}, ...kids) => {
@@ -138,8 +139,8 @@ export function campaignScreen(app, params = {}) {
       h('dt', {}, '출현'), h('dd', {}, sum.kinds.map((k) => ENEMIES[k].name).join(' · ')),
       h('dt', {}, '첫 승리'), h('dd', { id: 'first-clear-reward' }, `${st.unlockTowers.length ? `유산 해금: ${st.unlockTowers.map((t) => TOWERS[t].name).join(', ')} · ` : ''}엽전 ${fmt(campaignFirstClearCoins(stageId,diff))} · 옥 30`),
       h('dt', {}, '기록'), h('dd', {}, DIFF_ORDER.map((d) => h('span', { style: { marginRight: '10px' } }, `${DIFFICULTY[d].name} `, starStr(rec[d] || 0))))),
-    h('div', { class: 'row' }, diffSeg(p, stageId, diff, (d) => app.go('campaign', { stage: stageId, diff: d })),
-      h('span', { class: 'dim', style: { fontSize: '14px' } }, diff === 'normal' ? '' : `적 체력 ×${DIFFICULTY[diff].hp} · 민심 ${DIFFICULTY[diff].lives} · 보상 ×${DIFFICULTY[diff].reward}`)),
+    h('div', { class: 'row' }, diffSeg(p, stageId, diff, (d) => app.go('campaign', { stage: stageId, diff: d }))),
+    battleRules(stageId, diff, false, p.towersUnlocked),
   );
   const chapter = st.chapter || 0;
   return h('div', { class: 'screen' }, topbar(app, '홀로 출정'),
@@ -253,6 +254,7 @@ export function loadoutScreen(app, params) {
             app.startBattle({ kind: 'solo', stageId: params.stageId, difficulty: params.difficulty, specs: [playerSpec(p, lo.heroes, lo.skills)] });
           },
         }, ready ? '출전!' : '영웅 2명 · 비기 2개')),
+      battleRules(st.id, params.difficulty, false, p.towersUnlocked),
       h('h3', {}, `영웅 선택 (${lo.heroes.length}/2)`),
       heroPicker(app, lo.heroes, 2, (next) => { lo.heroes = next; rerender(); }),
       comboPreview(lo.heroes[0], lo.heroes[1], p),
@@ -337,6 +339,7 @@ export function localSetupScreen(app, params = {}) {
             });
           },
         }, ready ? '함께 출전!' : '각자 영웅 1 · 비기 2')),
+      battleRules(stageId, diff, true, p.towersUnlocked),
       comboPreview(a.hero, b.hero, p),
       supplyPanel(app, `1P가 아래 보급 버튼으로 씁니다 · 종류별 ${ITEM_PER_BATTLE}개까지`),
       h('div', { class: 'lobby' }, col('1P (마우스만)', a, b, '#6fa8ff'), col('2P (키보드: 방향키 + ASDF)', b, a, '#ff8a7a'))));
@@ -416,6 +419,7 @@ export function lobbyScreen(app, params) {
             class: `btn btn-big ${L.me.ready ? 'btn-blue' : 'btn-seal'}`, disabled: clash || L.me.skills.length !== 2,
             onclick: () => { L.me.ready = !L.me.ready; p.loadout.coop = { hero: L.me.hero, skills: L.me.skills }; saveProfile(); sendMe(); rerender(); },
           }, L.me.ready ? '준비 취소' : '준비 완료')),
+        battleRules(L.stageId, L.difficulty, true, p.towersUnlocked),
       clash ? h('p', { style: { color: '#ffb3a6' } }, '두 사람이 같은 영웅을 고를 수 없습니다. 다른 영웅을 고르세요.') : null,
       comboPreview(host ? L.me.hero : peerHero, host ? peerHero : L.me.hero),
       h('div', { class: 'lobby' },

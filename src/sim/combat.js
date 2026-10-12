@@ -1,7 +1,7 @@
 // 전투 공용 함수: 피해 계산, 상태 이상, 소환, 처치 보상
 import { ENEMIES } from '../data/enemies.js';
 import { HEROES, heroLevelFromXp, heroLevelMult } from '../data/heroes.js';
-import { STAGE_BY_ID, DIFFICULTY, COOP } from '../data/stages.js';
+import { STAGE_BY_ID, DIFFICULTY, COOP, difficultyHp } from '../data/stages.js';
 import { TACTICS } from '../data/tactics.js';
 import { RESONANCE_MAX } from '../data/combos.js';
 import { getMap, posAt } from './map.js';
@@ -166,7 +166,7 @@ export function spawnEnemy(s, type, pathIdx, wave, d = -0.4, extra = {}) {
   const diff = diffOf(s);
   const tac = extra.tactic ? TACTICS[extra.tactic] : null;
   const hpMult =
-    (def.fixedHp ? 1 : def.tier === 4 ? stage.bossHp ?? stage.hpBase : s.hpBase ?? stage.hpBase) * (def.tier === 4 ? 1 : 1 + stage.hpGrowth * (wave - 1)) * diff.hp * (s.coop ? s.coopHp : 1) * (tac && tac.hpMult ? tac.hpMult : 1);
+    (def.fixedHp ? 1 : def.tier === 4 ? stage.bossHp ?? stage.hpBase : s.hpBase ?? stage.hpBase) * (def.tier === 4 ? 1 : 1 + stage.hpGrowth * (wave - 1)) * difficultyHp(s.difficulty, wave, def.tier) * (s.coop ? s.coopHp : 1) * (tac && tac.hpMult ? tac.hpMult : 1);
   // 전장 중간에 나오는 적장은 가볍다 (방어선이 덜 갖춰진 이른 파도일수록 더): 절반쯤이면 65%
   const midBoss = def.tier === 4 && !def.fixedHp && wave < stage.waves.length ? 0.35 + 0.6 * (wave / stage.waves.length) : 1;
   const hp = def.hp * hpMult * midBoss;

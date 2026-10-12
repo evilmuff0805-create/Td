@@ -12,12 +12,25 @@ export const MAP_H = 14;
 export const DIFFICULTY = {
   normal: { name: '보통', hp: 1, speed: 1, bounty: 1, lives: 20, reward: 1 },
   hard: { name: '어려움', hp: 1.3, speed: 1.05, bounty: 0.92, lives: 15, reward: 1.6 },
-  hell: { name: '지옥', hp: 1.6, speed: 1.08, bounty: 0.9, lives: 10, reward: 2.4 },
+  hell: { name: '지옥', hp: 1.6, openingHp: 1.3, speed: 1.08, bounty: 0.9, lives: 10, reward: 2.4 },
 };
 export const DIFF_ORDER = ['normal', 'hard', 'hell'];
 
+// 지옥의 일반 병력만 1~8파에 걸쳐 최대 체력에 도달한다. 적장과 이후 파도는 기존 배율.
+export const OPENING_RAMP_WAVES = 8;
+export function difficultyHp(difficulty, wave, tier) {
+  const diff = DIFFICULTY[difficulty];
+  if (tier === 4 || diff.openingHp === undefined || wave >= OPENING_RAMP_WAVES) return diff.hp;
+  const progress = Math.max(0, (wave - 1) / (OPENING_RAMP_WAVES - 1));
+  return diff.openingHp + (diff.hp - diff.openingHp) * progress;
+}
+
 // 협동 보정: 적 체력 +10%, 처치 보상은 두 사람 모두에게 60%씩 (합 120%)
 export const COOP = { hpMult: 1.1, goldShare: 0.6, startGoldShare: 0.65 };
+export function startingGold(stageId, coop = false) {
+  const base = STAGE_BY_ID[stageId].startGold;
+  return coop ? Math.round(base * COOP.startGoldShare) : base;
+}
 
 const ORIGINAL = [
   {

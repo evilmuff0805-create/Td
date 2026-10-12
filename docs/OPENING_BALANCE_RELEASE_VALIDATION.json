@@ -1,0 +1,293 @@
+{
+  "generatedAt": "2026-10-12T13:10:27.864837+00:00",
+  "parentCommit": "888ad425269d7cea69a5ec61240c4629962e2451",
+  "scope": "Hell ordinary-enemy opening HP ramp to existing1.6 at wave8, truthful starting-wallet/coop/difficulty advice; prepared paid-progression diagnostics. Local2P preserved.",
+  "implementationChecksPassed": true,
+  "paidCampaignAllPassed": false,
+  "humanDifficultyValidated": false,
+  "regression": {
+    "tests": 411,
+    "groups": 30,
+    "allPassed": true,
+    "report": "OPENING_REGRESSION_VALIDATION.json",
+    "sha256": "8a18f6da66fc3e3ba37a6338e2369e7a3e60314143c969205849ca14b4fdfba3"
+  },
+  "newRuntime": {
+    "tests": 16,
+    "passed": true,
+    "report": "OPENING_BALANCE_RUNTIME_VALIDATION.json"
+  },
+  "normalDeterminism": {
+    "command": "node tools/check-motion-determinism.mjs",
+    "passed": true,
+    "fixtureUnmodified": true,
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721"
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+      }
+    ]
+  },
+  "diagnosticBattles": 228,
+  "historicalEarnedSource": {
+    "report": "DIFFICULTY_PROGRESSION_VALIDATION.json",
+    "sha256": "86d812c9344137c76df507a3824947c23748f591c003c0a383ecacd29eb82dd8"
+  },
+  "comparisons": [
+    {
+      "report": "OPENING_BUDGET_EXPLORATION.json",
+      "sha256": "4a0350a509042e4ea78a3f07c9e7e0b865640e4f4a41a5eb5ac723f541c4d96c",
+      "battles": 36,
+      "summaries": [
+        {
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 3,
+          "averageLives": 1.6666666666666667
+        },
+        {
+          "multiplier": 1.15,
+          "battles": 12,
+          "wins": 7,
+          "averageLives": 3.75
+        },
+        {
+          "multiplier": 1.3,
+          "battles": 12,
+          "wins": 8,
+          "averageLives": 5.166666666666667
+        }
+      ]
+    },
+    {
+      "report": "OPENING_BUDGET_HOLDOUT.json",
+      "sha256": "75f57f69f8708dc574feecba01edc3764e23086357cb3cc4c6016339c6b63acc",
+      "battles": 24,
+      "summaries": [
+        {
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 3,
+          "averageLives": 0.6666666666666666
+        },
+        {
+          "multiplier": 1.3,
+          "battles": 12,
+          "wins": 2,
+          "averageLives": 1
+        }
+      ]
+    },
+    {
+      "report": "OPENING_BUDGET_PREPARED.json",
+      "sha256": "943d533899b72737cfb1770b52525a14535fe924dc4a96f457b48aeb8a442c7d",
+      "battles": 36,
+      "summaries": [
+        {
+          "multiplier": 1,
+          "battles": 18,
+          "wins": 8,
+          "averageLives": 3.111111111111111
+        },
+        {
+          "multiplier": 1.3,
+          "battles": 18,
+          "wins": 11,
+          "averageLives": 5.277777777777778
+        }
+      ]
+    },
+    {
+      "report": "OPENING_BUDGET_HARD.json",
+      "sha256": "0f484ef4fb887e57b1c865d7f3a33bf79137fc37fa49cc967984912a85380288",
+      "battles": 24,
+      "summaries": [
+        {
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 12,
+          "averageLives": 11.5
+        },
+        {
+          "multiplier": 1.15,
+          "battles": 12,
+          "wins": 11,
+          "averageLives": 11.916666666666666
+        }
+      ]
+    },
+    {
+      "report": "OPENING_HP_EXPLORATION.json",
+      "sha256": "47ae293dd8072271a15b1404416ad6ed833a982247178b95aa3ba2ab20337b6b",
+      "battles": 24,
+      "summaries": [
+        {
+          "hpMode": "legacy",
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 3,
+          "averageLives": 1.6666666666666667
+        },
+        {
+          "hpMode": "ramp",
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 7,
+          "averageLives": 3.9166666666666665
+        }
+      ]
+    },
+    {
+      "report": "OPENING_HP_PREPARED.json",
+      "sha256": "5f0193312eef08a67618dfda5dc654d1cdeb5e93126340f6de869155e413315a",
+      "battles": 36,
+      "summaries": [
+        {
+          "hpMode": "legacy",
+          "multiplier": 1,
+          "battles": 18,
+          "wins": 8,
+          "averageLives": 3.111111111111111
+        },
+        {
+          "hpMode": "ramp",
+          "multiplier": 1,
+          "battles": 18,
+          "wins": 9,
+          "averageLives": 4
+        }
+      ]
+    },
+    {
+      "report": "OPENING_HP_HOLDOUT.json",
+      "sha256": "0a793b1fd44742d59f7ab52cc261ecd02d33aca5c748d4fd9287cca116d4c347",
+      "battles": 24,
+      "summaries": [
+        {
+          "hpMode": "legacy",
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 2,
+          "averageLives": 0.4166666666666667
+        },
+        {
+          "hpMode": "ramp",
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 1,
+          "averageLives": 0.6666666666666666
+        }
+      ]
+    },
+    {
+      "report": "OPENING_HP_CONFIRMATION.json",
+      "sha256": "b726fbe7b9c1f27b0e2125bbbb1d3eb2f75ff725430f15a548a797d65db38e5c",
+      "battles": 24,
+      "summaries": [
+        {
+          "hpMode": "legacy",
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 3,
+          "averageLives": 1.3333333333333333
+        },
+        {
+          "hpMode": "ramp",
+          "multiplier": 1,
+          "battles": 12,
+          "wins": 3,
+          "averageLives": 2
+        }
+      ]
+    }
+  ],
+  "preparedPaidProgression": {
+    "report": "DIFFICULTY_PREPARED_PROGRESSION.json",
+    "sha256": "988bf6a811a924ba105cc21eb98d2b0542b8644f2b3bbc794b6ec71f761a46a1",
+    "allPassed": false,
+    "seedStart": 2,
+    "maxAttempts": 12,
+    "runs": [
+      {
+        "kind": "solo",
+        "seed": 2,
+        "cleared": 66,
+        "battles": 81,
+        "retries": 15
+      },
+      {
+        "kind": "local",
+        "seed": 2,
+        "cleared": 75,
+        "battles": 90,
+        "retries": 15
+      }
+    ],
+    "remaining": "Solo hell s17 failed all12 attempts; later solo hell stages not reached in this fresh path."
+  },
+  "build": {
+    "standalone": {
+      "path": "dist/hoguk.html",
+      "bytes": 121857037,
+      "sha256": "e1a86c38ea7f90aacd6228ea2418ae974f2f27192ca840300f96a5a178da0718",
+      "embeddedArtCheckPassed": true,
+      "eachEmbeddedExactlyOnce": true
+    },
+    "web": {
+      "tests": 14,
+      "passed": true,
+      "entryBytes": 1002,
+      "scriptBytes": 1393246,
+      "scriptGzipBytes": 399422,
+      "artFiles": 163,
+      "artByteIdentical": true,
+      "repeatBodyBytes": 0
+    },
+    "zip": {
+      "passed": true,
+      "archive": "dist/hoguk-web.zip",
+      "archiveBytes": 91876482,
+      "archiveSha256": "6cf73e7db0d504459d9544e373889474dede82a303effb7fac19882d6cca999a",
+      "manifestSha256": "20785e9ee98cd417d111b7bbe63163e0831c4886e1a2b5550ef18c153c6cf815",
+      "filesIncludingManifest": 189,
+      "manifestFiles": 188,
+      "manifestFileBytes": 93760166,
+      "allFileHashesAndZipBytesMatch": true,
+      "artFiles": 163,
+      "artIsByteIdentical": true,
+      "sourceAndDevFilesExcluded": true
+    }
+  },
+  "ui": {
+    "report": "OPENING_BALANCE_UI_VALIDATION.json",
+    "screenshots": 6,
+    "physicalPhoneTested": false,
+    "externalWanTested": false
+  },
+  "review": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "high",
+    "adoptNarrowHellRamp": true,
+    "coopNoticeIssue": "Resolved: explicit COOP.hpMult notice and both solo/coop UI assertions.",
+    "finalFunctionalBlockersFound": false,
+    "releaseLinkIssue": "Resolved by saving this release record."
+  },
+  "github": null,
+  "remaining": [
+    "Solo hell s17 and later retry burden across seeds/hero combinations and human play",
+    "Longer character/clothing-consistent animation and combo-specific art",
+    "Physical device RAM/heat/touch/long-session performance",
+    "External-WAN two physical devices and deployed-server operations",
+    "Free-curved road artwork and path scope"
+  ]
+}

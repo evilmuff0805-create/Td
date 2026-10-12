@@ -6,7 +6,7 @@ import { ENEMIES } from '../data/enemies.js';
 import { HEROES } from '../data/heroes.js';
 import { SKILLS, skillCdMult } from '../data/skills.js';
 import { TACTICS, TACTIC_ORDER, TACTIC_CHANCE, TACTIC_MIN_WAVE } from '../data/tactics.js';
-import { STAGE_BY_ID, STAGES, DIFFICULTY, COOP, parseWave } from '../data/stages.js';
+import { STAGE_BY_ID, STAGES, DIFFICULTY, COOP, parseWave, startingGold } from '../data/stages.js';
 import { TOWER_META_BONUS, metaRangeMult, metaAsMult, metaCost } from '../data/quests.js';
 import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
 import { getMap, posAt, tileAt, nearestOnPath, T_BUILD } from './map.js';
@@ -47,7 +47,7 @@ export function createGame(opts) {
   };
   if (opts.hpBase) s.hpBase = opts.hpBase; // 밸런스 도구용 덮어쓰기
   s.courier = planCourier(seed, stage, map, opts.courier);
-  const startGold = coop ? Math.round(stage.startGold * COOP.startGoldShare) : stage.startGold;
+  const startGold = startingGold(stage.id, coop);
   opts.players.forEach((p, i) => {
     s.players.push({
       idx: i, name: p.name || `P${i + 1}`, gold: startGold, goldFrac: 0, left: false,

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>호국영웅전 · 출전 안내 검수</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    body { overflow:auto; padding:24px; min-width:0; }
+    main { width:min(100%,880px); margin:auto; display:grid; gap:16px; }
+    #preview { box-sizing:border-box; width:100%; max-width:100%; }
+    #preview.narrow { width:414px; }
+    #engine { font-size:14px; line-height:1.7; overflow-wrap:anywhere; }
+    select { max-width:100%; color:var(--text); background:var(--lacquer-2); padding:8px; border:1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>출전 안내 검수</h2>
+    <p class="dim">개발용 비교 화면 · 실제 출전 안내와 전투 엔진 사용 · 저장 기록을 바꾸지 않습니다.</p>
+    <div id="controls" class="row"></div>
+    <section id="preview" class="panel stack"></section>
+  </main>
+  <script type="module" src="../src/ui/battle-rules-review.js"></script>
+</body>
+</html>

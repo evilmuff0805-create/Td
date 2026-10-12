@@ -1445,6 +1445,11 @@ p {
 .ring.grid.fresh .rbtn { animation:none; }
 .ring.grid + .rtip { overflow:auto; pointer-events:auto; overscroll-behavior:contain; }
 .ringwrap.kbd .rtip { pointer-events:none; }
+.battle-rules{min-width:0;display:grid;gap:8px;font-size:14px;line-height:1.6}
+.battle-rules>.row{align-items:flex-start}
+.battle-plan summary{cursor:pointer;color:var(--gold-hi);width:fit-content}
+.battle-plan ul{margin:8px 0 0;padding-left:22px}
+.battle-plan li+li{margin-top:5px}
 .ring-halo {
   position: absolute;
   left: 0;
