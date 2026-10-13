@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/evilmuff0805-create/Td",
+  "branch": "claude/korean-hero-tower-defense-i8ard8",
+  "implementationCommit": "e91fe7537df02324dbffd36d762bc549381f6e31",
+  "remoteCommitVerified": "e91fe7537df02324dbffd36d762bc549381f6e31",
+  "verifiedAt": "2026-10-13T17:41:07.082489+00:00",
+  "regressionTests": 451,
+  "regressionGroups": 34,
+  "localCoopPreserved": true,
+  "scope": "Rendering/memory/recovery, mobile controls and visual road finishing. Public game deployment deferred by user.",
+  "publicServerStarted": false,
+  "receiptCommitPurpose": "Record verified implementation publication; this receipt does not claim its own commit hash.",
+  "whitespaceCheck": "Source/docs check passed; generated device-review.js excluded because original Three GLSL string literals retain upstream shader whitespace.",
+  "recordSha256": {
+    "DEVICE_ROADS_RELEASE_VALIDATION.json": "978e471c0082d7a5b66676e0fae6453a59214f8e874769c769a91d3249c3aaca",
+    "DEVICE_ROADS_REGRESSION_VALIDATION.json": "2e179c5c2940e5a34288eaa88f990887bbf385f9fbd6c702a4204fbbce40d272",
+    "DEVICE_ROADS_BROWSER_QA.json": "9e1cfd8ef915982ab19b8c50d949dd36f84a91cb538741b5f0324ca3e4077e73",
+    "DEVICE_ROADS_ASTRA_REVIEW.json": "5a13a3259dffdfbb015f8ae441d2a3c40f03a8f16fcd7f91d8d53b89d2ac669e",
+    "PUBLIC_DEPLOYMENT_STATE.json": "c74d32c8e9206e724c84a2bb2a1322afa159c7d83da42cd263d290566188b4d9",
+    "PROJECT_REVIEW.md": "d74f929e0dd0f2e403e506c03f81494ef30d12dc99a440cbd700e8a4e73166f6"
+  }
+}

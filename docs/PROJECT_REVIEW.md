@@ -329,6 +329,8 @@ npm run build
 
 영웅24외형의 긴 동작·합격기11종의 독립16프레임·439개/32검사군과 실제 로컬2인 유지 기록은 [`6f7b030`](https://github.com/evilmuff0805-create/Td/commit/6f7b03037232977a230bd0c31941fc0bf4724c84)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋 `6f7b03037232977a230bd0c31941fc0bf4724c84`의 일치를 2026-10-13T16:07:32.252Z에 확인했다. 내장imagegen 원본·정확한 프롬프트·선택 원화·서버 번들·자산/런타임/실제 화면 검사와 상위 프로젝트 기록을 포함했다. 난이도는 사용자 요청으로 보류하고 기기 실측·외부WAN·자유 곡선 지형은 남은 범위로 구분한다. [정확한 범위](LONG_MOTION.md) · [릴리스 검사](LONG_MOTION_RELEASE_VALIDATION.json) · [원격 확인 기록](LONG_MOTION_PUBLISH_RECEIPT.json).
 
+PC 렌더링·원화 캔버스 보관·그래픽 복구·44px 모바일 조작·26지도 도로 마감과451개/34검사군은 [`e91fe75`](https://github.com/evilmuff0805-create/Td/commit/e91fe7537df02324dbffd36d762bc549381f6e31)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋의 일치를 2026-10-13T17:41:07.082489+00:00에 확인했다. 실제 로컬2P 건설·독립 지갑, 제품/자유 전장 드라이버 복구, 세 CSS 프레임 크기와 최종 웹 패키지 직접 실행을 기록했다. 공개 배포는 사용자 요청으로 보류했고 실폰·LTE·Docker 이미지 실행은 미검증으로 남긴다. [정확한 범위](DEVICE_AND_ROADS.md) · [릴리스 검사](DEVICE_ROADS_RELEASE_VALIDATION.json) · [원격 확인](DEVICE_ROADS_PUBLISH_RECEIPT.json).
+
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 
 1. 구현 범위·합의한 방향·검증 결과·남은 작업을 이 문서와 해당 상세 문서에 갱신한다.
