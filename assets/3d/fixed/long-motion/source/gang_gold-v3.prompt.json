@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. Re-layout this exact transparent FOUR COLUMN by FOUR ROW character atlas to add much larger blank gutters. Preserve all SIXTEEN existing poses, exact armor and purple cloak colors, head, hands, sword and shield. Especially preserve the raised RIGHT arm and UPWARD sword in THIRD ROW rear views columns2 and3. Do NOT lower those swords. Each whole character including the longest blade must fit within the CENTER FIFTY PERCENT of its equal square cell, leaving generous empty area on every side. Return a SQUARE FOUR BY FOUR atlas. Make the sprites smaller within the cells so diagonal weapon tips cannot enter the rectangle of the row above or below. No extra characters, no new gestures, no cropped weapon, no labels, no floor, no shadow. True transparent alpha background.",
+  "reference": "D:\\codex\\hoguk\\Td\\assets\\3d\\fixed\\long-motion\\source\\gang_gold-v2.png",
+  "generatedSource": "C:\\Users\\USER\\.codex\\generated_images\\01a1208e-1f21-7ee1-8355-345389c0c96c\\exec-7be41c27-8a99-4872-887f-7d9e4bc07855.png",
+  "reason": "v2 separated actors had intersecting rectangular bounds; increase true artwork spacing",
+  "selectedRows": [
+    2
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-14",
+  "reviewer": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "readOnly": true,
+  "independentTestExecution": false,
+  "scope": [
+    "semantic origins for all11 combo sheets",
+    "corrected arrow release and raised rear swords",
+    "loading generations/disposal/fallback/selected costumes",
+    "local2P ownership/support/delayed impacts/individual UV"
+  ],
+  "resolved": [
+    "source-baked isometric water perspective replaced by top-down v3",
+    "alpha centroid replaced by authored semantic pivots",
+    "support combo crest allowed with dedicated artwork",
+    "both hero and combo readiness gate the current battlefield",
+    "gang costume rear sword continuity corrected",
+    "gold Yi released arrow removed",
+    "gang gold rectangular bounds overlap resolved with wider-spaced v3"
+  ],
+  "conclusion": "No blocking defect or required change found in final source/art review. Complete after regression and native UI validation pass.",
+  "limits": [
+    "Review was code and source-art inspection; root executed the tests and native browser checks.",
+    "Origin reading precision approximately5px; final Ahn/Yi smoke origin inferred approximately10px."
+  ]
+}

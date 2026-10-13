@@ -1,0 +1,91 @@
+{
+  "generatedAt": "2026-10-13T16:01:31.830784+00:00",
+  "clientDate": "2026-10-14",
+  "parentCommit": "421d2ef4077058fced71426e2a0c699f6a3aa35a",
+  "implementationChecksPassed": true,
+  "scope": "24 hero looks +384 intermediate poses, six-step gait/five-stage attack, 11 dedicated sixteen-frame combo sequences; display-only; local2P preserved. Hell balance deferred by user.",
+  "regression": {
+    "report": "LONG_MOTION_REGRESSION_VALIDATION.json",
+    "sha256": "c1af21f5318231f4e6d08cb12f89367ca9b7b553d585186d7fb46c20aebdac63",
+    "tests": 439,
+    "groups": 32,
+    "allPassed": true
+  },
+  "newRuntime": {
+    "heroTests": 13,
+    "comboTests": 15
+  },
+  "art": {
+    "tool": "built-in image_gen.imagegen",
+    "exactPromptArchives": [
+      "assets/3d/fixed/long-motion/source/*.prompt.json",
+      "assets/3d/fixed/combo-sequences/source/*.prompt.json"
+    ],
+    "heroLooks": 24,
+    "newHeroPoses": 384,
+    "allHeroPoses": 1152,
+    "unchangedTroopPoses": 896,
+    "allCharacterPoses": 2048,
+    "comboSequences": 11,
+    "comboFrames": 176,
+    "heroDeliveryBytes": 22704878,
+    "comboDeliveryBytes": 12337780,
+    "packedToWebPAlphaAndVisibleRgbDifferences": 0
+  },
+  "nativeBrowser": {
+    "report": "LONG_MOTION_BROWSER_VALIDATION.json",
+    "sha256": "e7b4d59e3f81189a7cb9dc7fe9f61f560b7c5130a7443dac485ecb0bec3d9d8a",
+    "newPoseTransitions": 384,
+    "comboRepresentativeSamples": 11,
+    "local2PInputsConfirmed": true,
+    "warningsAndErrors": 0
+  },
+  "determinism": {
+    "passed": true,
+    "fixtureUnmodified": true,
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721"
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+      }
+    ]
+  },
+  "builds": {
+    "threeBundlesPassed": true,
+    "standaloneBytes": 168627271,
+    "standaloneSha256": "d115d5d19143a495f4d4cd7c8e00c48706e512ae1dfaf6d3daa641091a3d7ddc",
+    "embeddedReport": "LONG_MOTION_EMBEDDED_VALIDATION.json",
+    "webPackage": {
+      "passed": true,
+      "archive": "dist/hoguk-web.zip",
+      "archiveBytes": 126964731,
+      "archiveSha256": "922858dae1640bea393a8f24c6bda4c15712b57d545bcab57d85b344280cbfcc",
+      "manifestSha256": "02ad700b13b3bfda64232aefdf425398efed1ca33b9c88c76164a188fd251c8f",
+      "filesIncludingManifest": 224,
+      "manifestFiles": 223,
+      "manifestFileBytes": 128915569,
+      "allFileHashesAndZipBytesMatch": true,
+      "artFiles": 198,
+      "artIsByteIdentical": true,
+      "sourceAndDevFilesExcluded": true
+    }
+  },
+  "astraReview": "LONG_MOTION_ASTRA_REVIEW.json",
+  "limitations": [
+    "Troops retain approved four-step animation; no new troop long-motion sheet.",
+    "Physical phones, touch and device RAM/heat not verified.",
+    "External WAN two-device operation not verified.",
+    "Human late balance adjustments deferred.",
+    "No full 3D skinned character meshes; fixed-camera illustration battlefield remains."
+  ]
+}

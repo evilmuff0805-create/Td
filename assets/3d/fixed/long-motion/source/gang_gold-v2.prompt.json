@@ -1,0 +1,12 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. This is a targeted sprite animation correction. Image1 is a FOUR COLUMN by FOUR ROW sprite sheet on transparent alpha. Preserve its exact style, character face, armor, all costume colors, headgear, size, camera, cell layout, and every pixel composition of rows1,2,4 as closely as possible. Image2 is a SIX ROW reference of the exact approved costume. Correct ONLY THIRD ROW, the new early sword follow-through. Image2 SIX ROWS is the exact animation reference; image2 rows4 and5 have the attack and following pose that this new row must sit BETWEEN. In the rear-facing columns2 and3, the RIGHT upper arm MUST stay lifted near shoulder height after the swing. The single sword blade is held diagonally UP and forward, visibly projecting beyond the shoulder as in image2 row5, NOT dangling down beside the hip. Front views columns1 and4 keep the sword extended across the body after swing. Same anatomical right-hand sword and left-hand round shield in all directions. Do NOT rotate the rear characters toward the camera, do not change facing, only bring the sword hand, right elbow and sword into the correct raised follow-through pose. ONE sword, ONE shield. Return the complete FOUR COLUMN by FOUR ROW sheet with sixteen isolated full-body sprites and ample empty transparent gutter. Do not add reference rows. No cropping, no labels, no shadows, no floor. True transparent alpha background.",
+  "references": [
+    "D:\\codex\\hoguk\\Td\\assets\\3d\\fixed\\long-motion\\source\\gang_gold-v1.png",
+    "D:\\codex\\hoguk\\Td\\assets\\3d\\fixed\\long-motion\\source\\references\\gang_gold.png"
+  ],
+  "generatedSource": "C:\\Users\\USER\\.codex\\generated_images\\01a1208e-1f21-7ee1-8355-345389c0c96c\\exec-6afd24fa-4e38-4fdd-98a0-167eaed37217.png",
+  "selectedRows": [
+    2
+  ]
+}

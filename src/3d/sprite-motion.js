@@ -5,6 +5,7 @@ const finite=(n,fallback)=>Number.isFinite(n)?n:fallback;
 const smooth=t=>t*t*(3-2*t);
 const stepLength=kind=>kind==='cavalry'||kind==='courier'?.52:kind==='ram'?.48:kind==='turtle'?.6:.32;
 const walkRows=[1,4,2,5],stopDuration=.12;
+const longWalkRows=[1,8,4,2,9,5];
 
 function facingFor(previous,x,y,immediate){
   const length=Math.hypot(x,y);
@@ -49,13 +50,14 @@ export function updateSpriteMotion(previous,input){
   s.hp=input.hp;s.seq=input.actionSeq;s.attack=input.attack||0;
   s.x=x;s.z=z;s.tx=tx;s.tz=tz;s.lastTime=time;
 
-  const age=Math.max(0,s.clock-s.actionStart),attacking=age<s.duration+.09&&!input.stunned;
-  const recovery=attacking?1-smooth(clamp(age/(s.duration+.09),0,1)):0;
+  const extended=!!(input.longMotion&&input.inbetweens),tail=extended?.14:.09;
+  const age=Math.max(0,s.clock-s.actionStart),attacking=age<s.duration+tail&&!input.stunned;
+  const recovery=attacking?1-smooth(clamp(age/(s.duration+tail),0,1)):0;
   const hitAge=s.clock-s.hitAt,hit=hitAge>=0&&hitAge<.18?Math.sin(Math.PI*hitAge/.18):0;
   const moving=distance>.00001,grounded=input.kind==='turtle'||input.kind==='ram';
   if(moving||attacking||input.stunned||snapped)s.stop=null;
-  else if(s.moving&&input.inbetweens&&!grounded&&walkRows.includes(s.visual?.row)){
-    s.stop={elapsed:0,row:s.visual.row,landing:s.visual.row===4?2:s.visual.row===5?1:s.visual.row,lift:Math.abs(Math.sin(s.phase*Math.PI*2))*.009*s.blend,blend:s.blend};
+  else if(s.moving&&input.inbetweens&&!grounded&&(extended?longWalkRows:walkRows).includes(s.visual?.row)){
+    s.stop={elapsed:0,row:s.visual.row,landing:({4:2,5:1,8:1,9:2})[s.visual.row]??s.visual.row,lift:Math.abs(Math.sin(s.phase*Math.PI*2))*.009*s.blend,blend:s.blend};
   }else if(s.stop)s.stop.elapsed+=dt;
   s.moving=moving;
   const stopAge=s.stop?.elapsed??stopDuration,settling=stopAge<stopDuration;
@@ -63,7 +65,9 @@ export function updateSpriteMotion(previous,input){
   // Supplemented actors have actual passing/follow-through/recovery artwork.
   // Unsupported or failed looks retain the approved four-row animation.
   const beat=s.phase%1,walkRow=beat<.30?1:beat<.5?0:beat<.80?2:0;
-  const row=input.inbetweens?(attacking?(age<s.duration*.28?3:age<s.duration*.70?6:7):settling?(stopAge<.04?s.stop.row:s.stop.landing):(moving||grounded)&&s.blend>.16?walkRows[Math.min(3,Math.floor(beat*4))]:0):attacking&&age<s.duration*.72?3:s.blend>.16?walkRow:0;
+  const rows=extended?longWalkRows:walkRows;
+  const attackRow=extended?(age<s.duration*.20?3:age<s.duration*.40?10:age<s.duration*.64?6:age<s.duration?7:11):(age<s.duration*.28?3:age<s.duration*.70?6:7);
+  const row=input.inbetweens?(attacking?attackRow:settling?(stopAge<.04?s.stop.row:s.stop.landing):(moving||grounded)&&s.blend>.16?rows[Math.min(rows.length-1,Math.floor(beat*rows.length))]:0):attacking&&age<s.duration*.72?3:s.blend>.16?walkRow:0;
   const newAim=input.aimKey!=null&&input.aimKey!==s.aimKey;
   const facing=facingFor(input.stunned?undefined:s.visual?.facing,input.facingX,input.facingY,reset||snapped||newAction||newAim);
   s.aimKey=input.aimKey;

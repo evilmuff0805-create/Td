@@ -1,0 +1,12 @@
+{
+  "tool": "image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. This is a targeted sprite animation correction. Image1 is a FOUR COLUMN by FOUR ROW sprite sheet on transparent alpha. Preserve its exact style, character face, armor, all costume colors, headgear, size, camera, cell layout, and every pixel composition of rows1,2,4 as closely as possible. Image2 is a SIX ROW reference of the exact approved costume. Correct ONLY THIRD ROW, early ARROW RELEASE. The arrow has ALREADY flown away. Remove every nocked arrow and horizontal wooden arrow shaft between the drawing hand and the bow grip. The wooden bow itself and relaxed bowstring must remain intact. The bow arm remains extended, the now EMPTY drawing hand has opened beside the cheek and moves slightly back. ONE bow, TWO hands, back quiver arrows stay. Use image2 row5 for released posture. Do not paint a third arm, magic or motion trails. Return the complete FOUR COLUMN by FOUR ROW sheet with sixteen isolated full-body sprites and ample empty transparent gutter. Do not add reference rows. No cropping, no labels, no shadows, no floor. True transparent alpha background.",
+  "references": [
+    "D:\\codex\\hoguk\\Td\\assets\\3d\\fixed\\long-motion\\source\\yi_gold-v1.png",
+    "D:\\codex\\hoguk\\Td\\assets\\3d\\fixed\\long-motion\\source\\references\\yi_gold.png"
+  ],
+  "generatedSource": "C:\\Users\\USER\\.codex\\generated_images\\01a1208e-1f21-7ee1-8355-345389c0c96c\\exec-a9249f37-68c7-4d9e-bb6c-9dc9a90eb35d.png",
+  "selectedRows": [
+    2
+  ]
+}

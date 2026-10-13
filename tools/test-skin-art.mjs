@@ -1,3 +1,4 @@
+import {inbetweenLooksKey} from '../src/3d/inbetween-roster.js';
 import assert from 'node:assert/strict';
 import * as T from 'three';
 import { SKINS } from '../src/data/skins.js';
@@ -23,7 +24,9 @@ function context(){
   const world=Object.assign(Object.create(WinterWorld.prototype),{camera,theme:{id:'winter',...SEASONS.winter},renderer:{domElement:{dataset:{}}},scene:new T.Scene(),units:new Map(),unitTemplates:new Map(),towers:new Map(),bullets:new Map(),scenery:new Map(),fx:{reset(){}},placement:new T.Group(),marker:new T.Group(),corpses:[],pickables:[],enemyCues:new Map(),range:new T.Group(),batchCrowd:false,projectiles(){},combatScenery(){}});
   world.crowd=new CrowdRenderer(world.scene);
   const art=Object.assign(Object.create(FixedBattleArt.prototype),{world,ready:true,coreLoading:false,combatLoading:false,skinLoading:false,heroLooksKey:'',skinGeneration:0,corePromise:Promise.resolve(),combatPromise:Promise.resolve(),skinPromise:Promise.resolve(),textures:new Map(),materials:new Map(),geometries:new Map(),heroPoses:Object.fromEntries(Object.entries(HERO_POSE_ART).map(([id,layout])=>[id,mockAtlas(layout)])),skinPoses:Object.fromEntries(Object.entries(SKIN_POSE_ART).map(([id,layout])=>[id,mockAtlas(layout)]))});
-  art.combatGeneration=0;art.inbetweenPoses={};art.inbetweenKey='';art.inbetweenGeneration=0;art.inbetweenLoading=false;art.inbetweenPromise=Promise.resolve();art.yi=art.heroPoses.yi;art.shadowTexture=new T.DataTexture(new Uint8Array([255,255,255,255]),1,1);art.shadowMaterial=new T.MeshBasicMaterial({map:art.shadowTexture});world.art=art;art.updateLoading();art.refreshPromise();return {world,art};
+  art.combatGeneration=0;art.inbetweenPoses={};art.inbetweenKey='';art.inbetweenGeneration=0;art.inbetweenLoading=false;art.inbetweenPromise=Promise.resolve();// These fixtures exercise the approved 8-row fallback; full long-motion loading is tested separately.
+  art.prepareLongMotion=function(heroes){this.longMotionKey=inbetweenLooksKey(heroes);};
+  art.yi=art.heroPoses.yi;art.shadowTexture=new T.DataTexture(new Uint8Array([255,255,255,255]),1,1);art.shadowMaterial=new T.MeshBasicMaterial({map:art.shadowTexture});world.art=art;art.updateLoading();art.refreshPromise();return {world,art};
 }
 const right=new T.Vector3(1,0,0),up=new T.Vector3(0,1,0);
 function yawFor(camera,col){const r=right.clone().applyQuaternion(camera.quaternion),u=up.clone().applyQuaternion(camera.quaternion);r.y=u.y=0;r.normalize();u.normalize();const d=r.multiplyScalar(col<2?1:-1).addScaledVector(u,col===1||col===2?1:-1);return Math.atan2(d.x,d.z);}

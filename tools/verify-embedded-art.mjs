@@ -16,9 +16,11 @@ import { HERO_BUST_ART } from '../src/data/hero-bust-data.js';
 import { SKIN_BUST_ART } from '../src/data/skin-bust-data.js';
 import { COMBO_IMPACT_ATLAS } from '../src/3d/combo-impact-art.js';
 import { COMBO_ELEMENTS } from '../src/3d/combo-element-data.js';
+import { HERO_LONG_MOTION_ART } from '../src/3d/long-motion-data.js';
+import { COMBO_SEQUENCES } from '../src/3d/combo-sequence-data.js';
 
 const html = fs.readFileSync(new URL('../dist/hoguk.html', import.meta.url), 'utf8');
-const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(COMBAT_INBETWEEN_ART)];
+const sheets = [...Object.values(HERO_POSE_ART), ...Object.values(COMBAT_POSE_ART).flatMap(Object.values), ...Object.values(SKIN_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(COMBAT_INBETWEEN_ART),...Object.values(HERO_LONG_MOTION_ART)];
 const count = needle => { let n=0,at=0; while((at=html.indexOf(needle,at))!==-1){n++;at+=needle.length;} return n; };
 assert.equal(new Set(sheets.map(s=>s.path)).size,sheets.length);
 for(const sheet of sheets){
@@ -47,6 +49,8 @@ function checkSourceArchive(directory){
 }
 checkSourceArchive(new URL('../assets/3d/fixed/inbetweens/source/',import.meta.url));
 checkSourceArchive(new URL('../assets/3d/fixed/combat-inbetweens/source/',import.meta.url));
+checkSourceArchive(new URL('../assets/3d/fixed/long-motion/source/',import.meta.url));
+checkSourceArchive(new URL('../assets/3d/fixed/combo-sequences/source/',import.meta.url));
 const archiveCountBeforePortraits = inbetweenArchivePngs;
 checkSourceArchive(new URL('../assets/illustrated/portraits/source/',import.meta.url));
 const portraitArchivePngs = inbetweenArchivePngs - archiveCountBeforePortraits;
@@ -77,6 +81,10 @@ assert.ok(!html.includes(PAINTED_SURFACES.water));
 const skillAtlases=[SIGNATURE_ART.path,TACTIC_ART.path,'assets/3d/art/hero-abilities-atlas-v1.webp','assets/3d/art/skills-atlas-v1.webp'];
 for(const rel of skillAtlases){const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' skill art must be embedded exactly once');assert.ok(!html.includes(rel));}
 const impactEncoded=fs.readFileSync(new URL('../'+COMBO_IMPACT_ATLAS,import.meta.url)).toString('base64');
+for(const {path:rel}of Object.values(COMBO_SEQUENCES)){
+  const encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');
+  assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' dedicated sequence must be embedded once');assert.ok(!html.includes(rel));
+}
 assert.equal(count('data:image/webp;base64,'+impactEncoded),1,'Combo impact animation must be embedded exactly once');assert.ok(!html.includes(COMBO_IMPACT_ATLAS));
 for(const version of [1,2,3]){const rel='assets/3d/fixed/source/combo-impact-flipbook-v'+version+'.png',encoded=fs.readFileSync(new URL('../'+rel,import.meta.url)).toString('base64');assert.equal(count('data:image/png;base64,'+encoded),0,'Combo source and rejected variants must not ship');}
 for(const [family,{path:rel}]of Object.entries(COMBO_ELEMENTS)){
@@ -94,4 +102,4 @@ for(const {path:rel} of [...Object.values(HERO_BUST_ART), ...Object.values(SKIN_
   assert.equal(count('data:image/webp;base64,'+encoded),1,rel+' portrait must be embedded exactly once');
   assert.ok(!html.includes(rel));
 }
-console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedMenuSheets:1,embeddedHeroBusts:8,embeddedSkinBusts:16,skinPortraitSourcePngsEmbedded:0,skinPortraitSourcePngsChecked:skinPortraitArchivePngs,portraitSourcePngsEmbedded:0,portraitSourcePngsChecked:portraitArchivePngs,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedVillagePropSheets:2,villageSourcePngsEmbedded:0,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,embeddedComboImpactAtlases:1,embeddedComboElementAtlases:Object.keys(COMBO_ELEMENTS).length,comboImpactSourcePngsEmbedded:0,comboElementSourcePngsEmbedded:0,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:archiveCountBeforePortraits},null,2));
+console.log(JSON.stringify({standaloneBytes:Buffer.byteLength(html),embeddedDirectionalSheets:sheets.length,embeddedLongMotionSheets:Object.keys(HERO_LONG_MOTION_ART).length,embeddedMenuSheets:1,embeddedHeroBusts:8,embeddedSkinBusts:16,skinPortraitSourcePngsEmbedded:0,skinPortraitSourcePngsChecked:skinPortraitArchivePngs,portraitSourcePngsEmbedded:0,portraitSourcePngsChecked:portraitArchivePngs,embeddedTerrainSurfaces:terrain.length,embeddedSeasonalPropSheets:1,embeddedVillagePropSheets:2,villageSourcePngsEmbedded:0,embeddedWaterSurfaces:1,embeddedSkillAtlases:skillAtlases.length,embeddedDedicatedComboAtlases:Object.keys(COMBO_SEQUENCES).length,embeddedComboImpactAtlases:1,embeddedComboElementAtlases:Object.keys(COMBO_ELEMENTS).length,comboImpactSourcePngsEmbedded:0,comboElementSourcePngsEmbedded:0,eachEmbeddedExactlyOnce:true,rejectedVersionsEmbedded:0,inbetweenArchivePngsEmbedded:0,inbetweenArchivePngsChecked:archiveCountBeforePortraits},null,2));

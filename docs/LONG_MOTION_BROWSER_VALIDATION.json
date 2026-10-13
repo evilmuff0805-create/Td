@@ -1,0 +1,2996 @@
+{
+  "generatedAt": "2026-10-13T15:54:54.217Z",
+  "engine": "actual in-app browser WebGL",
+  "heroNewPoseTransitions": 384,
+  "uniqueNewPoseTransitions": 384,
+  "poses": [
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "0",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "1",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "2",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_white"
+    },
+    {
+      "direction": "3",
+      "hero": "yi",
+      "long": "true",
+      "pose": "settle",
+      "skin": "yi_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "0",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "1",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "2",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_blue"
+    },
+    {
+      "direction": "3",
+      "hero": "sejong",
+      "long": "true",
+      "pose": "settle",
+      "skin": "sejong_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "0",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "1",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "2",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_iron"
+    },
+    {
+      "direction": "3",
+      "hero": "eulji",
+      "long": "true",
+      "pose": "settle",
+      "skin": "eulji_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "0",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "1",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "2",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_crimson"
+    },
+    {
+      "direction": "3",
+      "hero": "gang",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gang_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "0",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "1",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "2",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_hill"
+    },
+    {
+      "direction": "3",
+      "hero": "gwon",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwon_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "0",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "1",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "2",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_black"
+    },
+    {
+      "direction": "3",
+      "hero": "gwak",
+      "long": "true",
+      "pose": "settle",
+      "skin": "gwak_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "0",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "1",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "2",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_militia"
+    },
+    {
+      "direction": "3",
+      "hero": "ahn",
+      "long": "true",
+      "pose": "settle",
+      "skin": "ahn_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "0",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "1",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "2",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-a",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "compress-b",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "early-follow",
+      "skin": "dangun_gold"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "base"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_sky"
+    },
+    {
+      "direction": "3",
+      "hero": "dangun",
+      "long": "true",
+      "pose": "settle",
+      "skin": "dangun_gold"
+    }
+  ],
+  "combos": [
+    {
+      "id": "yi_sejong",
+      "sampleTime": "0.35",
+      "sequences": "yi_sejong",
+      "active": "yi_sejong",
+      "frames": "5,5,5,5",
+      "origins": "4",
+      "textures": "54",
+      "geometries": "81"
+    },
+    {
+      "id": "eulji_gang",
+      "sampleTime": "0.25",
+      "sequences": "eulji_gang",
+      "active": "eulji_gang",
+      "frames": "4,4,4,4",
+      "origins": "4",
+      "textures": "54",
+      "geometries": "83"
+    },
+    {
+      "id": "gwak_gwon",
+      "sampleTime": "0.25",
+      "sequences": "gwak_gwon",
+      "active": "gwak_gwon",
+      "frames": "4,4,4,4,4,4,4,4",
+      "origins": "8",
+      "textures": "55",
+      "geometries": "91"
+    },
+    {
+      "id": "gwon_yi",
+      "sampleTime": "0.25",
+      "sequences": "gwon_yi",
+      "active": "gwon_yi",
+      "frames": "4,4,4,4",
+      "origins": "4",
+      "textures": "56",
+      "geometries": "83"
+    },
+    {
+      "id": "eulji_sejong",
+      "sampleTime": "0.25",
+      "sequences": "eulji_sejong",
+      "active": "eulji_sejong",
+      "frames": "3,3,3,3",
+      "origins": "4",
+      "textures": "57",
+      "geometries": "83"
+    },
+    {
+      "id": "gang_yi",
+      "sampleTime": "0.65",
+      "sequences": "gang_yi",
+      "active": "gang_yi",
+      "frames": "4,2,1",
+      "origins": "3",
+      "textures": "59",
+      "geometries": "95"
+    },
+    {
+      "id": "ahn_sejong",
+      "sampleTime": "0.25",
+      "sequences": "ahn_sejong",
+      "active": "ahn_sejong",
+      "frames": "4,4,4,4",
+      "origins": "4",
+      "textures": "60",
+      "geometries": "83"
+    },
+    {
+      "id": "dangun_eulji",
+      "sampleTime": "0.25",
+      "sequences": "dangun_eulji",
+      "active": "dangun_eulji",
+      "frames": "4,4,4,4",
+      "origins": "4",
+      "textures": "62",
+      "geometries": "99"
+    },
+    {
+      "id": "ahn_yi",
+      "sampleTime": "0.65",
+      "sequences": "ahn_yi",
+      "active": "ahn_yi",
+      "frames": "4,2,0",
+      "origins": "3",
+      "textures": "64",
+      "geometries": "95"
+    },
+    {
+      "id": "dangun_sejong",
+      "sampleTime": "0.25",
+      "sequences": "dangun_sejong",
+      "active": "dangun_sejong",
+      "frames": "3,3",
+      "origins": "2",
+      "textures": "65",
+      "geometries": "87"
+    },
+    {
+      "id": "generic",
+      "sampleTime": "0.25",
+      "sequences": "generic",
+      "active": "generic",
+      "frames": "4,4,4,4",
+      "origins": "4",
+      "textures": "66",
+      "geometries": "83"
+    }
+  ],
+  "comboSecondPass": [
+    {
+      "geometries": "81",
+      "sample": "combo",
+      "textures": "67"
+    },
+    {
+      "geometries": "83",
+      "sample": "combo-eulji_gang",
+      "textures": "67"
+    },
+    {
+      "geometries": "91",
+      "sample": "combo-gwak_gwon",
+      "textures": "67"
+    },
+    {
+      "geometries": "83",
+      "sample": "combo-gwon_yi",
+      "textures": "67"
+    },
+    {
+      "geometries": "83",
+      "sample": "combo-eulji_sejong",
+      "textures": "67"
+    },
+    {
+      "geometries": "96",
+      "sample": "combo-gang_yi",
+      "textures": "67"
+    },
+    {
+      "geometries": "83",
+      "sample": "combo-ahn_sejong",
+      "textures": "67"
+    },
+    {
+      "geometries": "83",
+      "sample": "combo-dangun_eulji",
+      "textures": "67"
+    },
+    {
+      "geometries": "96",
+      "sample": "combo-ahn_yi",
+      "textures": "67"
+    },
+    {
+      "geometries": "87",
+      "sample": "combo-dangun_sejong",
+      "textures": "67"
+    },
+    {
+      "geometries": "83",
+      "sample": "combo-generic",
+      "textures": "67"
+    }
+  ],
+  "representativeOriginCrosshairs": [
+    "eulji_gang",
+    "dangun_sejong"
+  ],
+  "localCoop": {
+    "entry": "dist/web/index.html?mute=1",
+    "freshQaOrigin": "127.0.0.1:8097",
+    "firstAssetReadyMs": 2817,
+    "observedP1TargetedSkill": true,
+    "observedP2ActualAKeySkill": true,
+    "observedP1RightClickMovement": true,
+    "observedP2RightKeyMovement": true,
+    "p2KeyHoldMs": 600,
+    "lives": "20/20",
+    "wallets": [
+      156,
+      156
+    ],
+    "wave": "1/12",
+    "paused": true,
+    "resultOrPurchaseOrRewardClaimed": false,
+    "state": {
+      "canvas": {
+        "assetReadyMs": "2817",
+        "combatInbetweenActive": "false",
+        "combatInbetweenCount": "12",
+        "combatInbetweenExpected": "12",
+        "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatInbetweenStatus": "ready",
+        "combatPoseActive": "true",
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseLastKind": "ashigaru",
+        "combatPoseLastState": "walk-right",
+        "combatPoseStatus": "ready",
+        "drawCalls": "258",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "fps": "60",
+        "frameP50": "16.7",
+        "frameP95": "17.8",
+        "frameSamples": "60",
+        "frameWorst": "19.8",
+        "geometries": "149",
+        "heroInbetweenActive": "true",
+        "heroInbetweenCount": "2",
+        "heroInbetweenExpected": "2",
+        "heroInbetweenKinds": "sejong,yi",
+        "heroInbetweenLookKey": "sejong,yi",
+        "heroInbetweenStatus": "ready",
+        "heroLongMotionActive": "false",
+        "heroLongMotionCount": "2",
+        "heroLongMotionExpected": "2",
+        "heroLongMotionKinds": "sejong,yi",
+        "heroLongMotionStatus": "ready",
+        "heroPoseCanvasBytes": "22831168",
+        "heroPoseCount": "2",
+        "heroPoseExpected": "2",
+        "heroPoseKinds": "sejong,yi",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "pixelRatio": "1",
+        "quality": "high",
+        "renderMode": "3d",
+        "sceneryBarrierCells": "0",
+        "sceneryBarriers": "0",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "9",
+        "sceneryHouses": "3",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "12",
+        "sceneryProps": "40",
+        "sceneryYardFences": "2",
+        "seasonTreeArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "spriteMotion": "distance-contact-recovery",
+        "tacticArtStatus": "ready",
+        "terrainRoad": "continuous",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3216",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "textures": "78",
+        "triangles": "55504",
+        "villagePropArtStatus": "ready",
+        "villagePropSeason": "temperate",
+        "waterTriangles": "7704",
+        "yiFacing": "3",
+        "yiPose": "pass-a"
+      },
+      "visibleText": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n1P 군자금\n156\n2P 군자금\n156\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n건설 터\n기본 시점\n영웅 집결\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv1\n학익진\n14\n거북선\n신기전\n봉수\n1P 클릭 · 2P Space\n공명 10%\n진격 중\n적 7\n세종대왕 Lv1\n훈민 정음\nA\n자격루\nS\n봉수\nD\n신기전\nF"
+    }
+  },
+  "console": [
+    {
+      "page": "base",
+      "messages": []
+    },
+    {
+      "page": "costumes",
+      "messages": []
+    },
+    {
+      "page": "combos",
+      "messages": []
+    },
+    {
+      "page": "local2P",
+      "messages": []
+    }
+  ],
+  "screenshots": [
+    "qa/long-motion-yi-costumes.jpg",
+    "qa/long-motion-gang-rear.jpg",
+    "qa/combo-sequence-water-origins.jpg",
+    "qa/combo-sequence-healing-origins.jpg",
+    "qa/long-motion-local-coop.jpg"
+  ],
+  "limits": [
+    "Physical phones, touch devices, WAN and device-wide memory/heat were not tested",
+    "384 pose transitions were asserted from rendered card attributes; representative images were visually inspected",
+    "All 176 UV/pivot frames were automated tests; native combo checks used representative held moments"
+  ]
+}

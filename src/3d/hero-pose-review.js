@@ -33,10 +33,10 @@ function draw(now=0){
     if(card.hidden)continue;
     if(art.ready&&!art.loading){
       art.attachUnit(root,entity,true,false);root.rotation.y=facingYaw(col);
-      const forced=motion==='walk'?({a:1,b:2,pa:4,pb:5})[stride]:motion==='attack'?({release:3,follow:6,recover:7})[attackPhase]:undefined;
+      const forced=motion==='walk'?({a:1,b:2,pa:4,pb:5,ca:8,cb:9})[stride]:motion==='attack'?({release:3,follow:6,recover:7,early:10,settle:11})[attackPhase]:undefined;
       const playback=forced!==undefined?{...previewMotion(motion,elapsed,frameDt,kind),poseRow:forced}:(playing||elapsed>0)?previewMotion(motion,elapsed,frameDt,kind):null;
       art.updateUnit(root,entity,motion==='walk',playback?.attack??(motion==='attack'?.2:0),time,playback);
-      const d=root.userData.fixedImage;card.dataset.pose=String(d.poseIndex);card.dataset.poseName=d.pose;card.dataset.supplemented=String(!!d.inbetweens);card.dataset.gait=String(d?.motionPhase??0);card.dataset.facing=String(d.facing);card.dataset.directional=String(d.directional);
+      const d=root.userData.fixedImage;card.dataset.pose=String(d.poseIndex);card.dataset.poseName=d.pose;card.dataset.supplemented=String(!!d.inbetweens);card.dataset.longMotion=String(!!d.longMotion);card.dataset.gait=String(d?.motionPhase??0);card.dataset.facing=String(d.facing);card.dataset.directional=String(d.directional);
     }
     const r=viewport.getBoundingClientRect();if(r.width<=0||r.height<=0||r.bottom<0||r.top>height)continue;
     const half=Math.max(1.3,1.32*r.height/r.width);camera.left=-half*r.width/r.height;camera.right=half*r.width/r.height;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();

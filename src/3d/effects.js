@@ -93,7 +93,8 @@ export class BattleEffects {
       root.userData.comboImpact=event.combo;root.userData.family=style.family;root.userData.phase=event.phase;
       const base=this.art?.decal(style.family,radius,.42)??new T.Mesh(new T.RingGeometry(radius*.76,radius,40),basic(style.color,.42));
       base.rotation.x=-Math.PI/2;base.material.blending=T.NormalBlending;root.add(base);
-      const crest=style.support&&style.family!=='heal'?null:this.comboArt?.decal(radius,style.color,.38,style.family);
+      const dedicated=this.comboArt?.hasSequence(event.combo);
+      const crest=style.support&&style.family!=='heal'&&!dedicated?null:this.comboArt?.decal(radius,style.color,.38,style.family,event.combo);
       if(crest){crest.position.y=.016;root.add(crest);}
       const motif=this.tactics?.decal('combo-'+event.combo,radius*.64,.40);
       if(motif){motif.position.y=.028;root.add(motif);}
@@ -103,9 +104,9 @@ export class BattleEffects {
       const halo=!style.support&&this.glow?new T.Sprite(new T.SpriteMaterial({map:this.glow,color:style.color,transparent:true,opacity:.18,depthWrite:false,blending:T.AdditiveBlending,toneMapped:false})):null;
       if(halo){halo.position.y=.24;root.add(halo);}
       const animate=(t,k)=>{
-        base.scale.setScalar(.75+k*.50);base.material.opacity=Math.min(1,(1-k)*1.8)*.58;
-        if(crest){this.comboArt.frame(crest,Math.floor(k*COMBO_IMPACT_FRAMES+1e-8));crest.material.opacity=Math.pow(1-k,.7)*.58;root.userData.frame=crest.userData.impactFrame;}
-        if(motif){motif.scale.setScalar(.8+k*.2);motif.material.opacity=Math.max(0,1-k*1.5)*.40;}
+        base.scale.setScalar(.75+k*.50);base.material.opacity=Math.min(1,(1-k)*1.8)*(dedicated?.25:.58);
+        if(crest){this.comboArt.frame(crest,Math.floor(k*crest.userData.impactFrames+1e-8));crest.material.opacity=Math.pow(1-k,.7)*.58;root.userData.frame=crest.userData.impactFrame;root.userData.sequence=crest.userData.impactCombo;}
+        if(motif){motif.scale.setScalar(.8+k*.2);motif.material.opacity=Math.max(0,1-k*1.5)*(dedicated?.16:.40);}
         if(sparks){for(let i=0;i<9;i++){const angle=i*2.399,spread=radius*(.16+k*(.5+i%3*.12));particles[i*3]=Math.cos(angle)*spread;particles[i*3+2]=Math.sin(angle)*spread;particles[i*3+1]=Math.max(.025,(.6+i%4*.18)*Math.sin(k*Math.PI)*(style.family==='flood'?.8:1));}spray.attributes.position.needsUpdate=true;sparks.material.opacity=(1-k)*.7;}
         if(halo){halo.scale.setScalar(radius*(.8+Math.sin(k*Math.PI)*.4));halo.material.opacity=Math.pow(1-k,2)*.18;}
       };

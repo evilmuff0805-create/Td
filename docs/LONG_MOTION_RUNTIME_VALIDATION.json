@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-10-13T15:38:25.667Z",
+  "tests": 13,
+  "allPassed": true,
+  "looks": 24,
+  "newPoses": 384,
+  "walkPhases": 6,
+  "attackPhases": 5,
+  "localCoopPreserved": true,
+  "displayOnly": true,
+  "results": [
+    {
+      "name": "기본 8·의상 16에 추가 384자세가 같은 의상·기준 높이를 유지한다",
+      "passed": true
+    },
+    {
+      "name": "24외형의 모든 384 새 자세는 본체·가림·그림자와 발 기준을 함께 바꾼다",
+      "passed": true
+    },
+    {
+      "name": "여섯 보행 자세는 같은 거리 주기를 20·60·120fps에서 유지한다",
+      "passed": true
+    },
+    {
+      "name": "공격은 실제 cue에 즉시 시작해 다섯 자세를 거친 뒤 재시작 없이 종료한다",
+      "passed": true
+    },
+    {
+      "name": "정지 압축 자세는 각 지지발로 착지하고 재이동·새 공격은 복귀를 끊는다",
+      "passed": true
+    },
+    {
+      "name": "정지 중 늦은 cue·기절·위치는 프레임을 고정하고 재개 때 새 공격을 보인다",
+      "passed": true
+    },
+    {
+      "name": "다른 의상·다른 영웅·병력에는 긴 동작을 섞지 않고 8/4행 대체를 유지한다",
+      "passed": true
+    },
+    {
+      "name": "같은 영웅의 두 의상·공격·색상·UV·그림자 재질은 서로 독립적이다",
+      "passed": true
+    },
+    {
+      "name": "로컬 1P·2P 실제 입력·스냅샷과 긴 공격은 소유자별로 유지한다",
+      "passed": true
+    },
+    {
+      "name": "긴 원화는 선택 두 의상만 로드하고 같은 요청·공통 미완료 요청을 재사용한다",
+      "passed": true
+    },
+    {
+      "name": "늦은 이전 긴 원화는 새 로스터와 DOM 준비 상태를 덮어쓰지 않는다",
+      "passed": true
+    },
+    {
+      "name": "긴 시트 한 장 실패는 같은 의상의 기존 동작으로 대체하며 반복하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "종료와 늦은 긴 로딩은 캔버스·GPU·준비 상태를 되살리지 않는다",
+      "passed": true
+    }
+  ]
+}

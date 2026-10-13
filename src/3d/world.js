@@ -18,6 +18,7 @@ import { FixedBattleArt } from './fixed-art.js';
 import { heroLooksKey } from './hero-look-roster.js';
 import { inbetweenLooksKey } from './inbetween-roster.js';
 import { heroPoseKey } from './hero-pose-roster.js';
+import { comboSequenceRoster } from './combo-impact-art.js';
 
 function texture(size, paint) {
   const c=document.createElement('canvas');c.width=c.height=size;paint(c.getContext('2d'),size);
@@ -46,6 +47,7 @@ export class WinterWorld {
     this.home();this.units=new Map();this.towers=new Map();this.bullets=new Map();this.scenery=new Map();this.corpses=[];this.fires=[];
     this.pickables=[];this.raycaster=new T.Raycaster();this.pointer=new T.Vector2();this.plane=new T.Plane(new T.Vector3(0,1,0),0);
     this.glowTex=glowTexture();this.fx=new BattleEffects(this.scene,this.glowTex,{illustrated:this.useIllustrations});
+    this.fx.comboArt?.prepare(comboSequenceRoster(options.heroLooks));
     this.art=this.useIllustrations?new FixedBattleArt(this):null;
     this.lighting();this.environment();this.weather();
     this.range=new T.Mesh(new T.RingGeometry(.98,1,96),new T.MeshBasicMaterial({color:'#e4c58c',transparent:true,opacity:.55,side:T.DoubleSide,depthWrite:false}));
@@ -129,7 +131,9 @@ export class WinterWorld {
     this.snow.material.userData.owned3d=true;
   }
   prepareHeroLooks(heroes) {
-    if(!this.art||this.art.heroPoseKey===heroPoseKey(heroes)&&this.art.heroLooksKey===heroLooksKey(heroes)&&this.art.inbetweenKey===inbetweenLooksKey(heroes))return;
+    const combos=comboSequenceRoster(heroes),comboArt=this.fx?.comboArt;
+    if(comboArt&&comboArt.sequenceKey!==combos.join(',')){this.fx.reset();comboArt.prepare(combos);}
+    if(!this.art||this.art.heroPoseKey===heroPoseKey(heroes)&&this.art.heroLooksKey===heroLooksKey(heroes)&&this.art.inbetweenKey===inbetweenLooksKey(heroes)&&this.art.longMotionKey===inbetweenLooksKey(heroes))return;
     // Remove active and dead hero roots before releasing any old hero atlas.
     for(const [key,root]of this.units)if(key.startsWith('h')){
       this.scene.remove(root);this.disposeCharacter(root);this.units.delete(key);this.pickables=this.pickables.filter(p=>p!==root);

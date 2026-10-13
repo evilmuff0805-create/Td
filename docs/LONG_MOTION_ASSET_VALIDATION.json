@@ -1,0 +1,5678 @@
+{
+  "generatedAt": "2026-10-13T15:38:08.571Z",
+  "looks": 24,
+  "newPoses": 384,
+  "losslessDelivery": true,
+  "operations": [
+    "exact crops",
+    "one uniform scale per source",
+    "transparent padding",
+    "packing"
+  ],
+  "results": [
+    {
+      "id": "yi",
+      "path": "assets/3d/fixed/long-motion/yi-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1324,
+      "height": 1492,
+      "bytes": 1308310,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 34,
+            "top": 15,
+            "width": 242,
+            "height": 289,
+            "anchor": 0.481428,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 360,
+            "top": 14,
+            "width": 220,
+            "height": 293,
+            "anchor": 0.412704,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 655,
+            "top": 14,
+            "width": 225,
+            "height": 293,
+            "anchor": 0.543589,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 956,
+            "top": 15,
+            "width": 234,
+            "height": 288,
+            "anchor": 0.481223,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 39,
+            "top": 327,
+            "width": 242,
+            "height": 288,
+            "anchor": 0.523938,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 355,
+            "top": 327,
+            "width": 222,
+            "height": 292,
+            "anchor": 0.466383,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 647,
+            "top": 327,
+            "width": 229,
+            "height": 290,
+            "anchor": 0.512756,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 955,
+            "top": 327,
+            "width": 231,
+            "height": 288,
+            "anchor": 0.441222,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 20,
+            "top": 641,
+            "width": 266,
+            "height": 275,
+            "anchor": 0.474921,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 344,
+            "top": 641,
+            "width": 239,
+            "height": 271,
+            "anchor": 0.44513,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 649,
+            "top": 645,
+            "width": 250,
+            "height": 266,
+            "anchor": 0.551219,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 949,
+            "top": 640,
+            "width": 263,
+            "height": 276,
+            "anchor": 0.495963,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 40,
+            "top": 930,
+            "width": 237,
+            "height": 305,
+            "anchor": 0.486756,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 361,
+            "top": 930,
+            "width": 217,
+            "height": 299,
+            "anchor": 0.476606,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 653,
+            "top": 930,
+            "width": 231,
+            "height": 297,
+            "anchor": 0.491238,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 961,
+            "top": 932,
+            "width": 230,
+            "height": 303,
+            "anchor": 0.489447,
+            "anchorY": 1,
+            "referenceHeight": 291
+          },
+          "scale": 1.0652920962199313
+        }
+      ]
+    },
+    {
+      "id": "sejong",
+      "path": "assets/3d/fixed/long-motion/sejong-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1180,
+      "height": 1416,
+      "bytes": 1086618,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 59,
+            "top": 23,
+            "width": 191,
+            "height": 276,
+            "anchor": 0.567219,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 366,
+            "top": 21,
+            "width": 171,
+            "height": 277,
+            "anchor": 0.441965,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 680,
+            "top": 23,
+            "width": 169,
+            "height": 275,
+            "anchor": 0.559599,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 990,
+            "top": 23,
+            "width": 177,
+            "height": 277,
+            "anchor": 0.400636,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 47,
+            "top": 341,
+            "width": 197,
+            "height": 273,
+            "anchor": 0.509773,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 362,
+            "top": 343,
+            "width": 178,
+            "height": 268,
+            "anchor": 0.432805,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 678,
+            "top": 346,
+            "width": 167,
+            "height": 266,
+            "anchor": 0.565024,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 991,
+            "top": 344,
+            "width": 178,
+            "height": 270,
+            "anchor": 0.440609,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 61,
+            "top": 662,
+            "width": 224,
+            "height": 261,
+            "anchor": 0.367171,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 365,
+            "top": 663,
+            "width": 218,
+            "height": 260,
+            "anchor": 0.392015,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 646,
+            "top": 664,
+            "width": 208,
+            "height": 259,
+            "anchor": 0.594258,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 936,
+            "top": 664,
+            "width": 220,
+            "height": 259,
+            "anchor": 0.628595,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 58,
+            "top": 969,
+            "width": 190,
+            "height": 274,
+            "anchor": 0.494086,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 375,
+            "top": 971,
+            "width": 174,
+            "height": 272,
+            "anchor": 0.476959,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 671,
+            "top": 971,
+            "width": 174,
+            "height": 273,
+            "anchor": 0.508799,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 989,
+            "top": 969,
+            "width": 181,
+            "height": 273,
+            "anchor": 0.464558,
+            "anchorY": 1,
+            "referenceHeight": 276.5
+          },
+          "scale": 1.1030741410488245
+        }
+      ]
+    },
+    {
+      "id": "eulji",
+      "path": "assets/3d/fixed/long-motion/eulji-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1000,
+      "height": 960,
+      "bytes": 553974,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 171,
+            "top": 22,
+            "width": 185,
+            "height": 231,
+            "anchor": 0.583497,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 509,
+            "top": 26,
+            "width": 195,
+            "height": 227,
+            "anchor": 0.448164,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 835,
+            "top": 24,
+            "width": 191,
+            "height": 229,
+            "anchor": 0.52492,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1182,
+            "top": 22,
+            "width": 185,
+            "height": 231,
+            "anchor": 0.41096,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 169,
+            "top": 268,
+            "width": 195,
+            "height": 232,
+            "anchor": 0.545287,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 505,
+            "top": 270,
+            "width": 197,
+            "height": 232,
+            "anchor": 0.478613,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 836,
+            "top": 270,
+            "width": 193,
+            "height": 232,
+            "anchor": 0.494423,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 1177,
+            "top": 268,
+            "width": 193,
+            "height": 232,
+            "anchor": 0.447276,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 146,
+            "top": 513,
+            "width": 245,
+            "height": 205,
+            "anchor": 0.423296,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 501,
+            "top": 515,
+            "width": 230,
+            "height": 219,
+            "anchor": 0.397901,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 809,
+            "top": 516,
+            "width": 224,
+            "height": 218,
+            "anchor": 0.575916,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 1147,
+            "top": 514,
+            "width": 245,
+            "height": 204,
+            "anchor": 0.566451,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 162,
+            "top": 752,
+            "width": 188,
+            "height": 227,
+            "anchor": 0.584767,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 506,
+            "top": 752,
+            "width": 195,
+            "height": 225,
+            "anchor": 0.505769,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 837,
+            "top": 751,
+            "width": 192,
+            "height": 227,
+            "anchor": 0.491114,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 1188,
+            "top": 752,
+            "width": 187,
+            "height": 227,
+            "anchor": 0.415102,
+            "anchorY": 1,
+            "referenceHeight": 230
+          },
+          "scale": 0.8260869565217391
+        }
+      ]
+    },
+    {
+      "id": "gang",
+      "path": "assets/3d/fixed/long-motion/gang-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1400,
+      "height": 1428,
+      "bytes": 1221482,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 42,
+            "top": 48,
+            "width": 234,
+            "height": 243,
+            "anchor": 0.562741,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 352,
+            "top": 49,
+            "width": 216,
+            "height": 253,
+            "anchor": 0.507372,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 678,
+            "top": 49,
+            "width": 219,
+            "height": 253,
+            "anchor": 0.450175,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 972,
+            "top": 48,
+            "width": 239,
+            "height": 244,
+            "anchor": 0.396558,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 43,
+            "top": 334,
+            "width": 228,
+            "height": 258,
+            "anchor": 0.578518,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 351,
+            "top": 337,
+            "width": 201,
+            "height": 255,
+            "anchor": 0.562713,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 682,
+            "top": 335,
+            "width": 212,
+            "height": 257,
+            "anchor": 0.4349,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 976,
+            "top": 336,
+            "width": 235,
+            "height": 256,
+            "anchor": 0.368034,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 35,
+            "top": 639,
+            "width": 246,
+            "height": 239,
+            "anchor": 0.536071,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 344,
+            "top": 636,
+            "width": 249,
+            "height": 246,
+            "anchor": 0.434023,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 652,
+            "top": 637,
+            "width": 253,
+            "height": 244,
+            "anchor": 0.543067,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 962,
+            "top": 638,
+            "width": 256,
+            "height": 241,
+            "anchor": 0.440748,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 45,
+            "top": 920,
+            "width": 236,
+            "height": 262,
+            "anchor": 0.532114,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 347,
+            "top": 921,
+            "width": 245,
+            "height": 259,
+            "anchor": 0.50903,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 678,
+            "top": 920,
+            "width": 219,
+            "height": 258,
+            "anchor": 0.46717,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 979,
+            "top": 921,
+            "width": 223,
+            "height": 260,
+            "anchor": 0.422171,
+            "anchorY": 1,
+            "referenceHeight": 248.5
+          },
+          "scale": 1.1790744466800804
+        }
+      ]
+    },
+    {
+      "id": "gwon",
+      "path": "assets/3d/fixed/long-motion/gwon-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1496,
+      "height": 1364,
+      "bytes": 1233170,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 63,
+            "top": 47,
+            "width": 212,
+            "height": 260,
+            "anchor": 0.515091,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 375,
+            "top": 58,
+            "width": 190,
+            "height": 245,
+            "anchor": 0.451511,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 680,
+            "top": 60,
+            "width": 189,
+            "height": 251,
+            "anchor": 0.468929,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 977,
+            "top": 50,
+            "width": 207,
+            "height": 260,
+            "anchor": 0.434391,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 60,
+            "top": 351,
+            "width": 215,
+            "height": 252,
+            "anchor": 0.492377,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 374,
+            "top": 352,
+            "width": 192,
+            "height": 251,
+            "anchor": 0.47577,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 682,
+            "top": 351,
+            "width": 185,
+            "height": 251,
+            "anchor": 0.494619,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 974,
+            "top": 352,
+            "width": 210,
+            "height": 251,
+            "anchor": 0.498094,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 25,
+            "top": 653,
+            "width": 291,
+            "height": 236,
+            "anchor": 0.443352,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 365,
+            "top": 652,
+            "width": 247,
+            "height": 232,
+            "anchor": 0.376263,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 631,
+            "top": 652,
+            "width": 246,
+            "height": 233,
+            "anchor": 0.615304,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 930,
+            "top": 653,
+            "width": 292,
+            "height": 237,
+            "anchor": 0.549256,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 49,
+            "top": 940,
+            "width": 227,
+            "height": 258,
+            "anchor": 0.527203,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 377,
+            "top": 944,
+            "width": 186,
+            "height": 255,
+            "anchor": 0.502314,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 683,
+            "top": 941,
+            "width": 194,
+            "height": 259,
+            "anchor": 0.417357,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 977,
+            "top": 941,
+            "width": 214,
+            "height": 263,
+            "anchor": 0.493759,
+            "anchorY": 1,
+            "referenceHeight": 255.5
+          },
+          "scale": 1.1154598825831703
+        }
+      ]
+    },
+    {
+      "id": "gwak",
+      "path": "assets/3d/fixed/long-motion/gwak-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1048,
+      "height": 1272,
+      "bytes": 947162,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 58,
+            "top": 40,
+            "width": 190,
+            "height": 282,
+            "anchor": 0.508629,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 381,
+            "top": 41,
+            "width": 174,
+            "height": 282,
+            "anchor": 0.450429,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 671,
+            "top": 40,
+            "width": 185,
+            "height": 282,
+            "anchor": 0.553749,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 995,
+            "top": 41,
+            "width": 187,
+            "height": 281,
+            "anchor": 0.457094,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 56,
+            "top": 359,
+            "width": 191,
+            "height": 269,
+            "anchor": 0.532797,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 381,
+            "top": 358,
+            "width": 173,
+            "height": 274,
+            "anchor": 0.431244,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 671,
+            "top": 356,
+            "width": 181,
+            "height": 275,
+            "anchor": 0.545663,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 992,
+            "top": 362,
+            "width": 194,
+            "height": 268,
+            "anchor": 0.445518,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 58,
+            "top": 649,
+            "width": 223,
+            "height": 269,
+            "anchor": 0.436636,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 363,
+            "top": 651,
+            "width": 198,
+            "height": 270,
+            "anchor": 0.453772,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 674,
+            "top": 648,
+            "width": 204,
+            "height": 273,
+            "anchor": 0.533099,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 965,
+            "top": 649,
+            "width": 223,
+            "height": 268,
+            "anchor": 0.518007,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 61,
+            "top": 948,
+            "width": 186,
+            "height": 276,
+            "anchor": 0.483426,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 380,
+            "top": 947,
+            "width": 175,
+            "height": 274,
+            "anchor": 0.457283,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 683,
+            "top": 948,
+            "width": 185,
+            "height": 274,
+            "anchor": 0.50202,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 993,
+            "top": 948,
+            "width": 183,
+            "height": 278,
+            "anchor": 0.486511,
+            "anchorY": 1,
+            "referenceHeight": 282
+          },
+          "scale": 0.9574468085106383
+        }
+      ]
+    },
+    {
+      "id": "ahn",
+      "path": "assets/3d/fixed/long-motion/ahn-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1116,
+      "height": 1224,
+      "bytes": 711986,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 73,
+            "top": 41,
+            "width": 170,
+            "height": 267,
+            "anchor": 0.530899,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 376,
+            "top": 42,
+            "width": 184,
+            "height": 264,
+            "anchor": 0.456132,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 682,
+            "top": 45,
+            "width": 175,
+            "height": 263,
+            "anchor": 0.518855,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 995,
+            "top": 43,
+            "width": 170,
+            "height": 265,
+            "anchor": 0.450772,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 75,
+            "top": 349,
+            "width": 174,
+            "height": 265,
+            "anchor": 0.535025,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 384,
+            "top": 349,
+            "width": 174,
+            "height": 268,
+            "anchor": 0.423077,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 688,
+            "top": 350,
+            "width": 172,
+            "height": 268,
+            "anchor": 0.475511,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 992,
+            "top": 352,
+            "width": 173,
+            "height": 265,
+            "anchor": 0.448082,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 50,
+            "top": 661,
+            "width": 240,
+            "height": 247,
+            "anchor": 0.434171,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 368,
+            "top": 666,
+            "width": 223,
+            "height": 239,
+            "anchor": 0.41294,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 652,
+            "top": 666,
+            "width": 224,
+            "height": 243,
+            "anchor": 0.548454,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 950,
+            "top": 664,
+            "width": 235,
+            "height": 249,
+            "anchor": 0.558191,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 72,
+            "top": 951,
+            "width": 163,
+            "height": 261,
+            "anchor": 0.515802,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 385,
+            "top": 956,
+            "width": 170,
+            "height": 257,
+            "anchor": 0.50806,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 684,
+            "top": 957,
+            "width": 169,
+            "height": 255,
+            "anchor": 0.475296,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 998,
+            "top": 957,
+            "width": 165,
+            "height": 254,
+            "anchor": 0.495819,
+            "anchorY": 1,
+            "referenceHeight": 264.5
+          },
+          "scale": 0.9621928166351607
+        }
+      ]
+    },
+    {
+      "id": "dangun",
+      "path": "assets/3d/fixed/long-motion/dangun-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 988,
+      "height": 1172,
+      "bytes": 845964,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 63,
+            "top": 35,
+            "width": 209,
+            "height": 279,
+            "anchor": 0.541054,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 359,
+            "top": 37,
+            "width": 211,
+            "height": 276,
+            "anchor": 0.513021,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 678,
+            "top": 37,
+            "width": 204,
+            "height": 277,
+            "anchor": 0.435063,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 961,
+            "top": 36,
+            "width": 205,
+            "height": 279,
+            "anchor": 0.438587,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 65,
+            "top": 351,
+            "width": 204,
+            "height": 273,
+            "anchor": 0.572314,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 366,
+            "top": 351,
+            "width": 212,
+            "height": 272,
+            "anchor": 0.482769,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 676,
+            "top": 351,
+            "width": 207,
+            "height": 273,
+            "anchor": 0.475698,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 960,
+            "top": 351,
+            "width": 210,
+            "height": 274,
+            "anchor": 0.399974,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 62,
+            "top": 653,
+            "width": 219,
+            "height": 267,
+            "anchor": 0.498416,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 359,
+            "top": 652,
+            "width": 226,
+            "height": 273,
+            "anchor": 0.449361,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 659,
+            "top": 655,
+            "width": 227,
+            "height": 272,
+            "anchor": 0.529011,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 953,
+            "top": 661,
+            "width": 217,
+            "height": 267,
+            "anchor": 0.465133,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 69,
+            "top": 954,
+            "width": 206,
+            "height": 271,
+            "anchor": 0.5493,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 367,
+            "top": 953,
+            "width": 212,
+            "height": 272,
+            "anchor": 0.519572,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 676,
+            "top": 954,
+            "width": 205,
+            "height": 272,
+            "anchor": 0.462584,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 956,
+            "top": 954,
+            "width": 209,
+            "height": 272,
+            "anchor": 0.434642,
+            "anchorY": 1,
+            "referenceHeight": 278
+          },
+          "scale": 0.8776978417266187
+        }
+      ]
+    },
+    {
+      "id": "yi_white",
+      "path": "assets/3d/fixed/long-motion/yi_white-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1132,
+      "height": 1236,
+      "bytes": 1087328,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 57,
+            "top": 41,
+            "width": 213,
+            "height": 266,
+            "anchor": 0.508433,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 370,
+            "top": 39,
+            "width": 198,
+            "height": 276,
+            "anchor": 0.458549,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 674,
+            "top": 39,
+            "width": 199,
+            "height": 275,
+            "anchor": 0.532152,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 971,
+            "top": 39,
+            "width": 214,
+            "height": 268,
+            "anchor": 0.488112,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 57,
+            "top": 340,
+            "width": 222,
+            "height": 269,
+            "anchor": 0.531212,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 371,
+            "top": 341,
+            "width": 203,
+            "height": 275,
+            "anchor": 0.471709,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 669,
+            "top": 342,
+            "width": 205,
+            "height": 274,
+            "anchor": 0.507827,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 971,
+            "top": 344,
+            "width": 216,
+            "height": 267,
+            "anchor": 0.443673,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 40,
+            "top": 643,
+            "width": 249,
+            "height": 257,
+            "anchor": 0.482561,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 358,
+            "top": 643,
+            "width": 223,
+            "height": 257,
+            "anchor": 0.436865,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 663,
+            "top": 643,
+            "width": 222,
+            "height": 257,
+            "anchor": 0.550973,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 955,
+            "top": 642,
+            "width": 247,
+            "height": 258,
+            "anchor": 0.510804,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 57,
+            "top": 931,
+            "width": 222,
+            "height": 272,
+            "anchor": 0.502252,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 370,
+            "top": 935,
+            "width": 201,
+            "height": 266,
+            "anchor": 0.464464,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 669,
+            "top": 935,
+            "width": 203,
+            "height": 265,
+            "anchor": 0.52654,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_white-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 967,
+            "top": 934,
+            "width": 219,
+            "height": 268,
+            "anchor": 0.486984,
+            "anchorY": 1,
+            "referenceHeight": 271.5
+          },
+          "scale": 0.9447513812154696
+        }
+      ]
+    },
+    {
+      "id": "yi_gold",
+      "path": "assets/3d/fixed/long-motion/yi_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1100,
+      "height": 1140,
+      "bytes": 964454,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 55,
+            "top": 36,
+            "width": 205,
+            "height": 251,
+            "anchor": 0.520779,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 374,
+            "top": 37,
+            "width": 191,
+            "height": 250,
+            "anchor": 0.492068,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 665,
+            "top": 38,
+            "width": 196,
+            "height": 250,
+            "anchor": 0.478574,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 969,
+            "top": 37,
+            "width": 204,
+            "height": 250,
+            "anchor": 0.477004,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 57,
+            "top": 341,
+            "width": 205,
+            "height": 250,
+            "anchor": 0.571502,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 379,
+            "top": 339,
+            "width": 195,
+            "height": 251,
+            "anchor": 0.455026,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 659,
+            "top": 339,
+            "width": 194,
+            "height": 252,
+            "anchor": 0.531006,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 969,
+            "top": 341,
+            "width": 203,
+            "height": 250,
+            "anchor": 0.417561,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v2.png",
+          "index": 8,
+          "bounds": {
+            "left": 39,
+            "top": 649,
+            "width": 247,
+            "height": 250,
+            "anchor": 0.490914,
+            "anchorY": 1,
+            "referenceHeight": 256
+          },
+          "scale": 0.919921875
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v2.png",
+          "index": 9,
+          "bounds": {
+            "left": 351,
+            "top": 649,
+            "width": 226,
+            "height": 249,
+            "anchor": 0.488035,
+            "anchorY": 1,
+            "referenceHeight": 256
+          },
+          "scale": 0.919921875
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v2.png",
+          "index": 10,
+          "bounds": {
+            "left": 655,
+            "top": 650,
+            "width": 225,
+            "height": 248,
+            "anchor": 0.510776,
+            "anchorY": 1,
+            "referenceHeight": 256
+          },
+          "scale": 0.919921875
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v2.png",
+          "index": 11,
+          "bounds": {
+            "left": 945,
+            "top": 649,
+            "width": 246,
+            "height": 250,
+            "anchor": 0.505466,
+            "anchorY": 1,
+            "referenceHeight": 256
+          },
+          "scale": 0.919921875
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 56,
+            "top": 955,
+            "width": 204,
+            "height": 251,
+            "anchor": 0.522925,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 380,
+            "top": 954,
+            "width": 192,
+            "height": 245,
+            "anchor": 0.454194,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 663,
+            "top": 954,
+            "width": 190,
+            "height": 246,
+            "anchor": 0.524708,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/yi_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 971,
+            "top": 955,
+            "width": 202,
+            "height": 251,
+            "anchor": 0.462298,
+            "anchorY": 1,
+            "referenceHeight": 250
+          },
+          "scale": 0.942
+        }
+      ]
+    },
+    {
+      "id": "sejong_blue",
+      "path": "assets/3d/fixed/long-motion/sejong_blue-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1036,
+      "height": 1188,
+      "bytes": 902342,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 102,
+            "top": 29,
+            "width": 182,
+            "height": 244,
+            "anchor": 0.528445,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 454,
+            "top": 32,
+            "width": 162,
+            "height": 240,
+            "anchor": 0.451883,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 817,
+            "top": 32,
+            "width": 162,
+            "height": 240,
+            "anchor": 0.541149,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1163,
+            "top": 22,
+            "width": 170,
+            "height": 253,
+            "anchor": 0.418667,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 100,
+            "top": 302,
+            "width": 190,
+            "height": 248,
+            "anchor": 0.511816,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 454,
+            "top": 307,
+            "width": 169,
+            "height": 242,
+            "anchor": 0.437875,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 815,
+            "top": 307,
+            "width": 168,
+            "height": 242,
+            "anchor": 0.556132,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 1153,
+            "top": 302,
+            "width": 185,
+            "height": 248,
+            "anchor": 0.484972,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 92,
+            "top": 563,
+            "width": 215,
+            "height": 240,
+            "anchor": 0.418653,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 453,
+            "top": 568,
+            "width": 206,
+            "height": 235,
+            "anchor": 0.386696,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 777,
+            "top": 568,
+            "width": 211,
+            "height": 235,
+            "anchor": 0.605413,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 1129,
+            "top": 563,
+            "width": 213,
+            "height": 243,
+            "anchor": 0.581054,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 86,
+            "top": 828,
+            "width": 183,
+            "height": 246,
+            "anchor": 0.540614,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 449,
+            "top": 828,
+            "width": 168,
+            "height": 246,
+            "anchor": 0.501488,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 816,
+            "top": 829,
+            "width": 170,
+            "height": 246,
+            "anchor": 0.513233,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_blue-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 1166,
+            "top": 828,
+            "width": 177,
+            "height": 246,
+            "anchor": 0.450709,
+            "anchorY": 1,
+            "referenceHeight": 242
+          },
+          "scale": 0.9834710743801653
+        }
+      ]
+    },
+    {
+      "id": "sejong_gold",
+      "path": "assets/3d/fixed/long-motion/sejong_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1036,
+      "height": 1192,
+      "bytes": 872242,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 118,
+            "top": 27,
+            "width": 209,
+            "height": 265,
+            "anchor": 0.53252,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 466,
+            "top": 27,
+            "width": 177,
+            "height": 262,
+            "anchor": 0.441859,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 794,
+            "top": 27,
+            "width": 179,
+            "height": 262,
+            "anchor": 0.542308,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1108,
+            "top": 28,
+            "width": 195,
+            "height": 267,
+            "anchor": 0.435676,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 131,
+            "top": 321,
+            "width": 194,
+            "height": 258,
+            "anchor": 0.524601,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 471,
+            "top": 321,
+            "width": 181,
+            "height": 254,
+            "anchor": 0.464666,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 792,
+            "top": 321,
+            "width": 181,
+            "height": 255,
+            "anchor": 0.51443,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 1107,
+            "top": 321,
+            "width": 193,
+            "height": 262,
+            "anchor": 0.446016,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 129,
+            "top": 588,
+            "width": 222,
+            "height": 243,
+            "anchor": 0.400203,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 461,
+            "top": 592,
+            "width": 214,
+            "height": 245,
+            "anchor": 0.385806,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 766,
+            "top": 592,
+            "width": 212,
+            "height": 246,
+            "anchor": 0.609952,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 1081,
+            "top": 587,
+            "width": 225,
+            "height": 244,
+            "anchor": 0.604601,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 119,
+            "top": 839,
+            "width": 189,
+            "height": 254,
+            "anchor": 0.53357,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 474,
+            "top": 841,
+            "width": 168,
+            "height": 253,
+            "anchor": 0.467585,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 797,
+            "top": 843,
+            "width": 171,
+            "height": 250,
+            "anchor": 0.522174,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/sejong_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 1123,
+            "top": 841,
+            "width": 186,
+            "height": 253,
+            "anchor": 0.442509,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.937381404174573
+        }
+      ]
+    },
+    {
+      "id": "eulji_iron",
+      "path": "assets/3d/fixed/long-motion/eulji_iron-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1096,
+      "height": 1036,
+      "bytes": 714270,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 53,
+            "top": 66,
+            "width": 192,
+            "height": 238,
+            "anchor": 0.565188,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 378,
+            "top": 67,
+            "width": 199,
+            "height": 247,
+            "anchor": 0.47438,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 669,
+            "top": 66,
+            "width": 200,
+            "height": 246,
+            "anchor": 0.472649,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 986,
+            "top": 65,
+            "width": 193,
+            "height": 240,
+            "anchor": 0.44252,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 54,
+            "top": 371,
+            "width": 197,
+            "height": 245,
+            "anchor": 0.569851,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 376,
+            "top": 369,
+            "width": 206,
+            "height": 244,
+            "anchor": 0.473925,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 671,
+            "top": 368,
+            "width": 201,
+            "height": 243,
+            "anchor": 0.489938,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 986,
+            "top": 370,
+            "width": 191,
+            "height": 245,
+            "anchor": 0.407863,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 46,
+            "top": 675,
+            "width": 265,
+            "height": 226,
+            "anchor": 0.42662,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 363,
+            "top": 669,
+            "width": 236,
+            "height": 234,
+            "anchor": 0.41088,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 641,
+            "top": 670,
+            "width": 233,
+            "height": 234,
+            "anchor": 0.575618,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 932,
+            "top": 673,
+            "width": 256,
+            "height": 225,
+            "anchor": 0.552981,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 59,
+            "top": 969,
+            "width": 188,
+            "height": 236,
+            "anchor": 0.543981,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 368,
+            "top": 967,
+            "width": 202,
+            "height": 235,
+            "anchor": 0.491828,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 671,
+            "top": 966,
+            "width": 198,
+            "height": 235,
+            "anchor": 0.486761,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_iron-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 987,
+            "top": 969,
+            "width": 189,
+            "height": 237,
+            "anchor": 0.453465,
+            "anchorY": 1,
+            "referenceHeight": 243
+          },
+          "scale": 0.8539094650205762
+        }
+      ]
+    },
+    {
+      "id": "eulji_gold",
+      "path": "assets/3d/fixed/long-motion/eulji_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1084,
+      "height": 1044,
+      "bytes": 732002,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 58,
+            "top": 35,
+            "width": 190,
+            "height": 246,
+            "anchor": 0.541821,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 363,
+            "top": 33,
+            "width": 205,
+            "height": 244,
+            "anchor": 0.489514,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 675,
+            "top": 34,
+            "width": 209,
+            "height": 243,
+            "anchor": 0.486359,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 991,
+            "top": 35,
+            "width": 199,
+            "height": 246,
+            "anchor": 0.444811,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 54,
+            "top": 340,
+            "width": 201,
+            "height": 247,
+            "anchor": 0.574777,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 362,
+            "top": 335,
+            "width": 205,
+            "height": 247,
+            "anchor": 0.498951,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 680,
+            "top": 335,
+            "width": 206,
+            "height": 248,
+            "anchor": 0.477001,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 994,
+            "top": 343,
+            "width": 199,
+            "height": 247,
+            "anchor": 0.419301,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 46,
+            "top": 654,
+            "width": 260,
+            "height": 233,
+            "anchor": 0.408195,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 349,
+            "top": 652,
+            "width": 253,
+            "height": 238,
+            "anchor": 0.39246,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 649,
+            "top": 647,
+            "width": 252,
+            "height": 241,
+            "anchor": 0.589373,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 950,
+            "top": 654,
+            "width": 252,
+            "height": 232,
+            "anchor": 0.557891,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 57,
+            "top": 954,
+            "width": 189,
+            "height": 238,
+            "anchor": 0.538285,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 362,
+            "top": 951,
+            "width": 211,
+            "height": 241,
+            "anchor": 0.48783,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 670,
+            "top": 947,
+            "width": 214,
+            "height": 245,
+            "anchor": 0.511586,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/eulji_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 994,
+            "top": 952,
+            "width": 195,
+            "height": 240,
+            "anchor": 0.461097,
+            "anchorY": 1,
+            "referenceHeight": 245
+          },
+          "scale": 0.8591836734693877
+        }
+      ]
+    },
+    {
+      "id": "gang_crimson",
+      "path": "assets/3d/fixed/long-motion/gang_crimson-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1380,
+      "height": 1412,
+      "bytes": 1270570,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 25,
+            "top": 34,
+            "width": 237,
+            "height": 250,
+            "anchor": 0.539,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 353,
+            "top": 33,
+            "width": 235,
+            "height": 269,
+            "anchor": 0.526805,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 677,
+            "top": 32,
+            "width": 214,
+            "height": 269,
+            "anchor": 0.411153,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 966,
+            "top": 34,
+            "width": 249,
+            "height": 262,
+            "anchor": 0.429891,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 28,
+            "top": 332,
+            "width": 239,
+            "height": 261,
+            "anchor": 0.568629,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 347,
+            "top": 333,
+            "width": 241,
+            "height": 270,
+            "anchor": 0.507864,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 680,
+            "top": 331,
+            "width": 218,
+            "height": 272,
+            "anchor": 0.440831,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 974,
+            "top": 332,
+            "width": 240,
+            "height": 261,
+            "anchor": 0.394716,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v2.png",
+          "index": 8,
+          "bounds": {
+            "left": 38,
+            "top": 636,
+            "width": 254,
+            "height": 247,
+            "anchor": 0.52392,
+            "anchorY": 1,
+            "referenceHeight": 268
+          },
+          "scale": 1.0970149253731343
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v2.png",
+          "index": 9,
+          "bounds": {
+            "left": 339,
+            "top": 623,
+            "width": 257,
+            "height": 278,
+            "anchor": 0.522781,
+            "anchorY": 1,
+            "referenceHeight": 268
+          },
+          "scale": 1.0970149253731343
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v2.png",
+          "index": 10,
+          "bounds": {
+            "left": 666,
+            "top": 624,
+            "width": 236,
+            "height": 276,
+            "anchor": 0.424779,
+            "anchorY": 1,
+            "referenceHeight": 268
+          },
+          "scale": 1.0970149253731343
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v2.png",
+          "index": 11,
+          "bounds": {
+            "left": 938,
+            "top": 633,
+            "width": 271,
+            "height": 259,
+            "anchor": 0.442646,
+            "anchorY": 1,
+            "referenceHeight": 268
+          },
+          "scale": 1.0970149253731343
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 25,
+            "top": 931,
+            "width": 247,
+            "height": 268,
+            "anchor": 0.555912,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 347,
+            "top": 932,
+            "width": 257,
+            "height": 265,
+            "anchor": 0.517823,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 668,
+            "top": 931,
+            "width": 227,
+            "height": 268,
+            "anchor": 0.441944,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_crimson-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 973,
+            "top": 932,
+            "width": 241,
+            "height": 271,
+            "anchor": 0.418123,
+            "anchorY": 1,
+            "referenceHeight": 265.5
+          },
+          "scale": 1.1073446327683616
+        }
+      ]
+    },
+    {
+      "id": "gang_gold",
+      "path": "assets/3d/fixed/long-motion/gang_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1576,
+      "height": 1516,
+      "bytes": 1295992,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 80,
+            "top": 43,
+            "width": 240,
+            "height": 245,
+            "anchor": 0.561703,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 432,
+            "top": 47,
+            "width": 223,
+            "height": 245,
+            "anchor": 0.46997,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 784,
+            "top": 46,
+            "width": 223,
+            "height": 244,
+            "anchor": 0.517515,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1108,
+            "top": 48,
+            "width": 246,
+            "height": 238,
+            "anchor": 0.414725,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 76,
+            "top": 306,
+            "width": 234,
+            "height": 244,
+            "anchor": 0.588014,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 433,
+            "top": 306,
+            "width": 214,
+            "height": 253,
+            "anchor": 0.551842,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 793,
+            "top": 304,
+            "width": 215,
+            "height": 254,
+            "anchor": 0.426844,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 1112,
+            "top": 307,
+            "width": 250,
+            "height": 247,
+            "anchor": 0.36625,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v3.png",
+          "index": 8,
+          "bounds": {
+            "left": 61,
+            "top": 716,
+            "width": 181,
+            "height": 144,
+            "anchor": 0.510811,
+            "anchorY": 1,
+            "referenceHeight": 158
+          },
+          "scale": 1.860759493670886
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v3.png",
+          "index": 9,
+          "bounds": {
+            "left": 383,
+            "top": 693,
+            "width": 174,
+            "height": 178,
+            "anchor": 0.452406,
+            "anchorY": 1,
+            "referenceHeight": 158
+          },
+          "scale": 1.860759493670886
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v3.png",
+          "index": 10,
+          "bounds": {
+            "left": 705,
+            "top": 693,
+            "width": 170,
+            "height": 178,
+            "anchor": 0.538008,
+            "anchorY": 1,
+            "referenceHeight": 158
+          },
+          "scale": 1.860759493670886
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v3.png",
+          "index": 11,
+          "bounds": {
+            "left": 1005,
+            "top": 714,
+            "width": 186,
+            "height": 146,
+            "anchor": 0.46415,
+            "anchorY": 1,
+            "referenceHeight": 158
+          },
+          "scale": 1.860759493670886
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 78,
+            "top": 813,
+            "width": 237,
+            "height": 239,
+            "anchor": 0.527643,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 435,
+            "top": 811,
+            "width": 227,
+            "height": 247,
+            "anchor": 0.492324,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 800,
+            "top": 813,
+            "width": 215,
+            "height": 246,
+            "anchor": 0.465192,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gang_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 1128,
+            "top": 815,
+            "width": 220,
+            "height": 237,
+            "anchor": 0.418789,
+            "anchorY": 1,
+            "referenceHeight": 244.5
+          },
+          "scale": 1.2024539877300613
+        }
+      ]
+    },
+    {
+      "id": "gwon_hill",
+      "path": "assets/3d/fixed/long-motion/gwon_hill-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1404,
+      "height": 1256,
+      "bytes": 1126430,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 114,
+            "top": 25,
+            "width": 213,
+            "height": 236,
+            "anchor": 0.53954,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 474,
+            "top": 25,
+            "width": 184,
+            "height": 236,
+            "anchor": 0.485826,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 795,
+            "top": 24,
+            "width": 191,
+            "height": 237,
+            "anchor": 0.485726,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1112,
+            "top": 25,
+            "width": 211,
+            "height": 237,
+            "anchor": 0.43282,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 113,
+            "top": 293,
+            "width": 211,
+            "height": 244,
+            "anchor": 0.561672,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 469,
+            "top": 293,
+            "width": 192,
+            "height": 247,
+            "anchor": 0.460851,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 789,
+            "top": 293,
+            "width": 193,
+            "height": 247,
+            "anchor": 0.463819,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 1113,
+            "top": 293,
+            "width": 218,
+            "height": 244,
+            "anchor": 0.420266,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 96,
+            "top": 583,
+            "width": 281,
+            "height": 213,
+            "anchor": 0.450305,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 439,
+            "top": 581,
+            "width": 252,
+            "height": 215,
+            "anchor": 0.391195,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 741,
+            "top": 581,
+            "width": 251,
+            "height": 215,
+            "anchor": 0.589018,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 1057,
+            "top": 584,
+            "width": 278,
+            "height": 210,
+            "anchor": 0.534129,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 116,
+            "top": 823,
+            "width": 213,
+            "height": 233,
+            "anchor": 0.510634,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 459,
+            "top": 823,
+            "width": 192,
+            "height": 235,
+            "anchor": 0.516219,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 788,
+            "top": 822,
+            "width": 193,
+            "height": 235,
+            "anchor": 0.451244,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_hill-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 1108,
+            "top": 822,
+            "width": 213,
+            "height": 232,
+            "anchor": 0.459567,
+            "anchorY": 1,
+            "referenceHeight": 236.5
+          },
+          "scale": 1.0782241014799154
+        }
+      ]
+    },
+    {
+      "id": "gwon_gold",
+      "path": "assets/3d/fixed/long-motion/gwon_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1292,
+      "height": 1256,
+      "bytes": 1082650,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 62,
+            "top": 82,
+            "width": 211,
+            "height": 244,
+            "anchor": 0.525459,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 374,
+            "top": 80,
+            "width": 182,
+            "height": 247,
+            "anchor": 0.482338,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 692,
+            "top": 81,
+            "width": 183,
+            "height": 246,
+            "anchor": 0.475649,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 976,
+            "top": 82,
+            "width": 207,
+            "height": 245,
+            "anchor": 0.450645,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 60,
+            "top": 371,
+            "width": 210,
+            "height": 246,
+            "anchor": 0.522112,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 378,
+            "top": 369,
+            "width": 187,
+            "height": 248,
+            "anchor": 0.472055,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 686,
+            "top": 369,
+            "width": 187,
+            "height": 248,
+            "anchor": 0.494895,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 978,
+            "top": 369,
+            "width": 207,
+            "height": 248,
+            "anchor": 0.462139,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 39,
+            "top": 672,
+            "width": 255,
+            "height": 217,
+            "anchor": 0.499603,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 360,
+            "top": 664,
+            "width": 233,
+            "height": 222,
+            "anchor": 0.343888,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 648,
+            "top": 663,
+            "width": 236,
+            "height": 223,
+            "anchor": 0.621919,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 951,
+            "top": 672,
+            "width": 256,
+            "height": 217,
+            "anchor": 0.501669,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 59,
+            "top": 935,
+            "width": 211,
+            "height": 243,
+            "anchor": 0.520589,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 386,
+            "top": 931,
+            "width": 168,
+            "height": 247,
+            "anchor": 0.510935,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 693,
+            "top": 935,
+            "width": 174,
+            "height": 241,
+            "anchor": 0.484842,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwon_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 976,
+            "top": 937,
+            "width": 210,
+            "height": 242,
+            "anchor": 0.469031,
+            "anchorY": 1,
+            "referenceHeight": 245.5
+          },
+          "scale": 1.0733197556008147
+        }
+      ]
+    },
+    {
+      "id": "gwak_black",
+      "path": "assets/3d/fixed/long-motion/gwak_black-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1004,
+      "height": 1184,
+      "bytes": 704212,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 58,
+            "top": 43,
+            "width": 187,
+            "height": 285,
+            "anchor": 0.53531,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 388,
+            "top": 43,
+            "width": 175,
+            "height": 281,
+            "anchor": 0.506557,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 681,
+            "top": 37,
+            "width": 172,
+            "height": 288,
+            "anchor": 0.447753,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1006,
+            "top": 38,
+            "width": 174,
+            "height": 287,
+            "anchor": 0.455034,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 51,
+            "top": 372,
+            "width": 197,
+            "height": 274,
+            "anchor": 0.538976,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 383,
+            "top": 366,
+            "width": 185,
+            "height": 282,
+            "anchor": 0.482732,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 677,
+            "top": 364,
+            "width": 185,
+            "height": 282,
+            "anchor": 0.506985,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 1001,
+            "top": 368,
+            "width": 195,
+            "height": 283,
+            "anchor": 0.432401,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 38,
+            "top": 688,
+            "width": 235,
+            "height": 264,
+            "anchor": 0.423066,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 367,
+            "top": 685,
+            "width": 210,
+            "height": 270,
+            "anchor": 0.443687,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 652,
+            "top": 685,
+            "width": 215,
+            "height": 268,
+            "anchor": 0.563303,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 971,
+            "top": 684,
+            "width": 223,
+            "height": 268,
+            "anchor": 0.552245,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 56,
+            "top": 985,
+            "width": 186,
+            "height": 260,
+            "anchor": 0.450758,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 384,
+            "top": 983,
+            "width": 173,
+            "height": 264,
+            "anchor": 0.447396,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 688,
+            "top": 982,
+            "width": 164,
+            "height": 265,
+            "anchor": 0.513138,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_black-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 993,
+            "top": 986,
+            "width": 185,
+            "height": 261,
+            "anchor": 0.5357,
+            "anchorY": 1,
+            "referenceHeight": 286
+          },
+          "scale": 0.8618881118881119
+        }
+      ]
+    },
+    {
+      "id": "gwak_gold",
+      "path": "assets/3d/fixed/long-motion/gwak_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1020,
+      "height": 1296,
+      "bytes": 909174,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 59,
+            "top": 38,
+            "width": 194,
+            "height": 294,
+            "anchor": 0.529932,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 392,
+            "top": 38,
+            "width": 174,
+            "height": 283,
+            "anchor": 0.436085,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 676,
+            "top": 39,
+            "width": 179,
+            "height": 283,
+            "anchor": 0.531958,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 994,
+            "top": 37,
+            "width": 186,
+            "height": 299,
+            "anchor": 0.426607,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 53,
+            "top": 362,
+            "width": 203,
+            "height": 285,
+            "anchor": 0.535009,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 381,
+            "top": 363,
+            "width": 192,
+            "height": 285,
+            "anchor": 0.451053,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 671,
+            "top": 364,
+            "width": 183,
+            "height": 283,
+            "anchor": 0.542522,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 983,
+            "top": 362,
+            "width": 199,
+            "height": 286,
+            "anchor": 0.438695,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 37,
+            "top": 673,
+            "width": 224,
+            "height": 279,
+            "anchor": 0.451672,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 375,
+            "top": 676,
+            "width": 200,
+            "height": 275,
+            "anchor": 0.416071,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 667,
+            "top": 673,
+            "width": 203,
+            "height": 278,
+            "anchor": 0.559436,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 975,
+            "top": 676,
+            "width": 223,
+            "height": 276,
+            "anchor": 0.553224,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 71,
+            "top": 984,
+            "width": 178,
+            "height": 265,
+            "anchor": 0.458732,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 396,
+            "top": 987,
+            "width": 170,
+            "height": 262,
+            "anchor": 0.459488,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 676,
+            "top": 984,
+            "width": 173,
+            "height": 266,
+            "anchor": 0.526575,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/gwak_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 988,
+            "top": 985,
+            "width": 176,
+            "height": 264,
+            "anchor": 0.531044,
+            "anchorY": 1,
+            "referenceHeight": 288.5
+          },
+          "scale": 0.9237435008665511
+        }
+      ]
+    },
+    {
+      "id": "ahn_militia",
+      "path": "assets/3d/fixed/long-motion/ahn_militia-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1052,
+      "height": 1188,
+      "bytes": 667292,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 65,
+            "top": 52,
+            "width": 164,
+            "height": 260,
+            "anchor": 0.553165,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 367,
+            "top": 55,
+            "width": 181,
+            "height": 260,
+            "anchor": 0.410691,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 688,
+            "top": 57,
+            "width": 177,
+            "height": 259,
+            "anchor": 0.514879,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1005,
+            "top": 57,
+            "width": 167,
+            "height": 263,
+            "anchor": 0.454218,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 63,
+            "top": 354,
+            "width": 168,
+            "height": 258,
+            "anchor": 0.562817,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 372,
+            "top": 358,
+            "width": 186,
+            "height": 256,
+            "anchor": 0.448909,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 701,
+            "top": 354,
+            "width": 165,
+            "height": 260,
+            "anchor": 0.502199,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 1009,
+            "top": 355,
+            "width": 168,
+            "height": 258,
+            "anchor": 0.422723,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 47,
+            "top": 646,
+            "width": 229,
+            "height": 243,
+            "anchor": 0.424907,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 372,
+            "top": 647,
+            "width": 204,
+            "height": 231,
+            "anchor": 0.418212,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 666,
+            "top": 646,
+            "width": 202,
+            "height": 250,
+            "anchor": 0.567032,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 967,
+            "top": 647,
+            "width": 226,
+            "height": 242,
+            "anchor": 0.587225,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 69,
+            "top": 934,
+            "width": 169,
+            "height": 265,
+            "anchor": 0.493134,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 382,
+            "top": 936,
+            "width": 178,
+            "height": 255,
+            "anchor": 0.479177,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 682,
+            "top": 937,
+            "width": 180,
+            "height": 256,
+            "anchor": 0.501149,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_militia-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 1009,
+            "top": 935,
+            "width": 165,
+            "height": 261,
+            "anchor": 0.477658,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9403846153846154
+        }
+      ]
+    },
+    {
+      "id": "ahn_gold",
+      "path": "assets/3d/fixed/long-motion/ahn_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1108,
+      "height": 1212,
+      "bytes": 780214,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 62,
+            "top": 48,
+            "width": 159,
+            "height": 265,
+            "anchor": 0.547535,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 369,
+            "top": 49,
+            "width": 180,
+            "height": 255,
+            "anchor": 0.485219,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 676,
+            "top": 49,
+            "width": 175,
+            "height": 256,
+            "anchor": 0.512966,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 999,
+            "top": 49,
+            "width": 167,
+            "height": 264,
+            "anchor": 0.438063,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 64,
+            "top": 357,
+            "width": 168,
+            "height": 263,
+            "anchor": 0.583833,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 368,
+            "top": 357,
+            "width": 185,
+            "height": 264,
+            "anchor": 0.479165,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 691,
+            "top": 357,
+            "width": 165,
+            "height": 264,
+            "anchor": 0.481814,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 998,
+            "top": 358,
+            "width": 167,
+            "height": 265,
+            "anchor": 0.456645,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 56,
+            "top": 671,
+            "width": 237,
+            "height": 245,
+            "anchor": 0.419942,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 360,
+            "top": 673,
+            "width": 215,
+            "height": 248,
+            "anchor": 0.441756,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 652,
+            "top": 673,
+            "width": 215,
+            "height": 249,
+            "anchor": 0.535535,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 934,
+            "top": 671,
+            "width": 238,
+            "height": 248,
+            "anchor": 0.561593,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 65,
+            "top": 970,
+            "width": 168,
+            "height": 260,
+            "anchor": 0.497211,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 368,
+            "top": 970,
+            "width": 187,
+            "height": 263,
+            "anchor": 0.491748,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 677,
+            "top": 970,
+            "width": 181,
+            "height": 262,
+            "anchor": 0.493976,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/ahn_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 997,
+            "top": 970,
+            "width": 167,
+            "height": 258,
+            "anchor": 0.499091,
+            "anchorY": 1,
+            "referenceHeight": 260
+          },
+          "scale": 0.9634615384615385
+        }
+      ]
+    },
+    {
+      "id": "dangun_sky",
+      "path": "assets/3d/fixed/long-motion/dangun_sky-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1028,
+      "height": 1148,
+      "bytes": 865106,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 59,
+            "top": 36,
+            "width": 189,
+            "height": 263,
+            "anchor": 0.565564,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 363,
+            "top": 37,
+            "width": 189,
+            "height": 266,
+            "anchor": 0.517791,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 689,
+            "top": 38,
+            "width": 189,
+            "height": 264,
+            "anchor": 0.486145,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 1006,
+            "top": 36,
+            "width": 193,
+            "height": 262,
+            "anchor": 0.410773,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 60,
+            "top": 347,
+            "width": 196,
+            "height": 266,
+            "anchor": 0.594817,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 367,
+            "top": 348,
+            "width": 195,
+            "height": 266,
+            "anchor": 0.503851,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 687,
+            "top": 349,
+            "width": 193,
+            "height": 265,
+            "anchor": 0.475584,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 991,
+            "top": 347,
+            "width": 202,
+            "height": 266,
+            "anchor": 0.389585,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 56,
+            "top": 658,
+            "width": 231,
+            "height": 251,
+            "anchor": 0.446492,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 363,
+            "top": 656,
+            "width": 224,
+            "height": 263,
+            "anchor": 0.430831,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 657,
+            "top": 658,
+            "width": 220,
+            "height": 261,
+            "anchor": 0.564017,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 972,
+            "top": 657,
+            "width": 233,
+            "height": 256,
+            "anchor": 0.508784,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 58,
+            "top": 957,
+            "width": 190,
+            "height": 257,
+            "anchor": 0.526172,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 365,
+            "top": 959,
+            "width": 188,
+            "height": 250,
+            "anchor": 0.512632,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 689,
+            "top": 959,
+            "width": 187,
+            "height": 250,
+            "anchor": 0.486522,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_sky-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 1005,
+            "top": 957,
+            "width": 190,
+            "height": 254,
+            "anchor": 0.470274,
+            "anchorY": 1,
+            "referenceHeight": 263.5
+          },
+          "scale": 0.8975332068311196
+        }
+      ]
+    },
+    {
+      "id": "dangun_gold",
+      "path": "assets/3d/fixed/long-motion/dangun_gold-long-motion-v1.webp",
+      "sourcePoses": 16,
+      "width": 1000,
+      "height": 1144,
+      "bytes": 821934,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "origins": [
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 0,
+          "bounds": {
+            "left": 43,
+            "top": 42,
+            "width": 205,
+            "height": 271,
+            "anchor": 0.571976,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 1,
+          "bounds": {
+            "left": 353,
+            "top": 41,
+            "width": 194,
+            "height": 274,
+            "anchor": 0.482308,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 2,
+          "bounds": {
+            "left": 663,
+            "top": 42,
+            "width": 194,
+            "height": 274,
+            "anchor": 0.503339,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 3,
+          "bounds": {
+            "left": 965,
+            "top": 42,
+            "width": 208,
+            "height": 271,
+            "anchor": 0.431487,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 4,
+          "bounds": {
+            "left": 38,
+            "top": 354,
+            "width": 199,
+            "height": 263,
+            "anchor": 0.531126,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 5,
+          "bounds": {
+            "left": 354,
+            "top": 354,
+            "width": 193,
+            "height": 268,
+            "anchor": 0.465383,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 6,
+          "bounds": {
+            "left": 664,
+            "top": 355,
+            "width": 194,
+            "height": 268,
+            "anchor": 0.518059,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 7,
+          "bounds": {
+            "left": 978,
+            "top": 354,
+            "width": 199,
+            "height": 264,
+            "anchor": 0.443617,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 8,
+          "bounds": {
+            "left": 41,
+            "top": 663,
+            "width": 231,
+            "height": 265,
+            "anchor": 0.50121,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 9,
+          "bounds": {
+            "left": 350,
+            "top": 660,
+            "width": 223,
+            "height": 267,
+            "anchor": 0.425423,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 10,
+          "bounds": {
+            "left": 640,
+            "top": 661,
+            "width": 226,
+            "height": 269,
+            "anchor": 0.579432,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 11,
+          "bounds": {
+            "left": 944,
+            "top": 662,
+            "width": 232,
+            "height": 264,
+            "anchor": 0.474777,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 12,
+          "bounds": {
+            "left": 51,
+            "top": 969,
+            "width": 193,
+            "height": 271,
+            "anchor": 0.554324,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 13,
+          "bounds": {
+            "left": 357,
+            "top": 973,
+            "width": 191,
+            "height": 263,
+            "anchor": 0.505386,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 14,
+          "bounds": {
+            "left": 664,
+            "top": 971,
+            "width": 192,
+            "height": 264,
+            "anchor": 0.472456,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        },
+        {
+          "source": "assets/3d/fixed/long-motion/source/dangun_gold-v1.png",
+          "index": 15,
+          "bounds": {
+            "left": 972,
+            "top": 970,
+            "width": 191,
+            "height": 269,
+            "anchor": 0.430091,
+            "anchorY": 1,
+            "referenceHeight": 272.5
+          },
+          "scale": 0.8697247706422019
+        }
+      ]
+    }
+  ]
+}

@@ -46,7 +46,7 @@ export class Renderer3D {
   }
   events(list) { this.pending.push(...list); }
   prepareView(view) { this.world.prepareHeroLooks(view.heroes); }
-  get loading() { return this.world?.art?.loading === true; }
+  get loading() { return this.world?.art?.loading === true||this.world?.fx?.comboArt?.sequenceLoading===true; }
   render(view, ui, dt) {
     this.prepareView(view);
     const game = battleView(view), world = this.world, selected = selectedEntity(game, ui);

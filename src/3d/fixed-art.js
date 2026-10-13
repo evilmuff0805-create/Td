@@ -16,6 +16,7 @@ import { villagePropSeason,villagePropIndex,villagePropFallback,fitPropFootprint
 import { updateSpriteMotion } from './sprite-motion.js';
 import { HERO_INBETWEEN_ART } from './inbetween-data.js';
 import { inbetweenLookRoster,inbetweenLooksKey } from './inbetween-roster.js';
+import { HERO_LONG_MOTION_ART } from './long-motion-data.js';
 
 export const FIXED_ART={yi:HERO_POSE_ART.yi.path,towers:'assets/3d/fixed/tower-tiers-v2.webp',winter:'assets/3d/fixed/winter-props-v2.webp'};
 const atlases=new Map();
@@ -69,6 +70,7 @@ export class FixedBattleArt {
     this.heroPoses={};this.heroPoseKey=null;this.heroPoseGeneration=0;this.heroPoseRequests=new Map();
     this.skinPoses={};this.skinGeneration=0;this.heroLooksKey=null;
     this.inbetweenPoses={};this.inbetweenGeneration=0;this.inbetweenKey=null;
+    this.longMotionPoses={};this.longMotionGeneration=0;this.longMotionKey=null;this.longMotionRequests=new Map();
     world.renderer.domElement.dataset.fixedArtStatus='loading';
     const landmarks=Object.values(LANDMARK_STAGE_ART).map(layout=>atlas(layout.path,5,4,layout).catch(error=>{console.warn('Landmark stage art unavailable; keeping base illustration.',error.message);return null;}));
     const trees=atlas(SEASON_TREE_ART.path,3,2,SEASON_TREE_ART).catch(error=>{console.warn('Seasonal trees unavailable; keeping base scenery.',error.message);return null;});
@@ -92,7 +94,7 @@ export class FixedBattleArt {
     this.shadowMaterial.userData.fixedArt=true;
   }
   updateLoading(){
-    this.loading=!!(this.coreLoading||this.combatLoading||this.heroPoseLoading||this.skinLoading||this.inbetweenLoading);
+    this.loading=!!(this.coreLoading||this.combatLoading||this.heroPoseLoading||this.skinLoading||this.inbetweenLoading||this.longMotionLoading);
     if(!this.destroyed)this.world.renderer.domElement.dataset.fixedArtStatus=this.loading?'loading':this.ready?'ready':'fallback';
   }
   releasePoseAtlas(art){
@@ -134,7 +136,7 @@ export class FixedBattleArt {
   }
   refreshPromise(){
     // Replacing this only when a request starts preserves ready-callback identity.
-    this.promise=Promise.all([this.corePromise,this.combatPromise,this.heroPosePromise,this.skinPromise,this.inbetweenPromise]);
+    this.promise=Promise.all([this.corePromise,this.combatPromise,this.heroPosePromise,this.skinPromise,this.inbetweenPromise,this.longMotionPromise]);
   }
   prepareHeroPoses(heroes){
     if(this.destroyed)return this.promise;
@@ -176,6 +178,7 @@ export class FixedBattleArt {
     if(this.destroyed)return this.promise;
     this.prepareHeroPoses(heroes);
     this.prepareInbetweens(heroes);
+    this.prepareLongMotion(heroes);
     const key=heroLooksKey(heroes);if(key===this.heroLooksKey)return this.promise;
     this.heroLooksKey=key;
     const generation=this.skinGeneration=(this.skinGeneration??0)+1,roster=heroLookRoster(heroes),wanted=new Set(roster.map(look=>look.skin));
@@ -213,6 +216,29 @@ export class FixedBattleArt {
       const count=results.filter(x=>x.art).length;
       Object.assign(this.world.renderer.domElement.dataset,{heroInbetweenStatus:count===results.length?'ready':'partial',heroInbetweenCount:String(count),heroInbetweenExpected:String(results.length),heroInbetweenKinds:roster.map(x=>x.key).join(','),heroInbetweenLookKey:key});
     }).finally(()=>{if(generation===this.inbetweenGeneration){this.inbetweenLoading=false;this.updateLoading();}});
+    this.refreshPromise();return this.promise;
+  }
+  prepareLongMotion(heroes=[]){
+    if(this.destroyed)return this.promise;
+    const key=inbetweenLooksKey(heroes);if(key===this.longMotionKey)return this.promise;
+    this.longMotionKey=key;
+    const generation=this.longMotionGeneration=(this.longMotionGeneration??0)+1,roster=inbetweenLookRoster(heroes).filter(look=>HERO_LONG_MOTION_ART[look.key]),wanted=new Set(roster.map(look=>look.key));
+    this.longMotionPoses??={};this.longMotionRequests??=new Map();
+    for(const [id,art]of Object.entries(this.longMotionPoses))if(!wanted.has(id)){this.releasePoseAtlas(art);delete this.longMotionPoses[id];}
+    for(const id of this.longMotionRequests.keys())if(!wanted.has(id))this.longMotionRequests.delete(id);
+    this.longMotionLoading=true;this.updateLoading();
+    this.longMotionPromise=Promise.all(roster.map(async look=>{
+      if(Object.hasOwn(this.longMotionPoses,look.key))return {...look,art:this.longMotionPoses[look.key]};
+      let request=this.longMotionRequests.get(look.key);
+      if(!request){const layout=HERO_LONG_MOTION_ART[look.key];request=atlas(layout.path,4,4,layout,false).catch(error=>{console.warn('Long motion unavailable; keeping same-costume original poses.',look.key,error.message);return null;});this.longMotionRequests.set(look.key,request);}
+      return {...look,art:await request};
+    })).then(results=>{
+      if(this.destroyed||generation!==this.longMotionGeneration)return;
+      this.longMotionPoses=Object.fromEntries(results.map(({key,art})=>[key,art]));
+      for(const {key}of results)this.longMotionRequests.delete(key);
+      const count=results.filter(look=>look.art).length;
+      Object.assign(this.world.renderer.domElement.dataset,{heroLongMotionStatus:count===results.length?'ready':'partial',heroLongMotionCount:String(count),heroLongMotionExpected:String(results.length),heroLongMotionKinds:roster.map(look=>look.key).join(',')});
+    }).finally(()=>{if(generation===this.longMotionGeneration){this.longMotionLoading=false;this.updateLoading();}});
     this.refreshPromise();return this.promise;
   }
   texture(source) {
@@ -295,6 +321,12 @@ export class FixedBattleArt {
     const key=costume&&art===costume?entity.skin:art===this.heroPoses?.[kind]?kind:null;
     return key&&HERO_INBETWEEN_ART[key]?.heroId===kind?this.inbetweenPoses?.[key]??null:null;
   }
+  unitLongMotion(entity,art,faction='hero'){
+    if(faction!=='hero'||!entity.heroId||!art?.poseAtlas)return null;
+    const costume=skinDef(entity.heroId,entity.skin)?this.skinPoses?.[entity.skin]:null;
+    const key=costume&&art===costume?entity.skin:art===this.heroPoses?.[entity.heroId]?entity.heroId:null;
+    return key&&HERO_LONG_MOTION_ART[key]?.heroId===entity.heroId?this.longMotionPoses?.[key]??null:null;
+  }
   unitProxy(entity,ally=false) {
     // Normal illustrated troops need a logical root and muzzle, not an invisible
     // articulated mesh. Missing portraits still use the existing model fallback.
@@ -336,12 +368,13 @@ export class FixedBattleArt {
     const {image,hint,art,height}=d;
     const inbetweens=this.unitInbetweens(entity,art,d.faction);
     d.inbetweens=inbetweens;
+    const longMotion=inbetweens?this.unitLongMotion(entity,art,d.faction):null;d.longMotion=longMotion;
     inverse.copy(root.quaternion).invert();image.quaternion.copy(this.world.camera.quaternion).premultiply(inverse);
     const screenRight=right.clone().applyQuaternion(this.world.camera.quaternion),screenUp=up.clone().applyQuaternion(this.world.camera.quaternion);
     direction.set(Math.sin(root.rotation.y),0,Math.cos(root.rotation.y));
     const dx=direction.dot(screenRight),dy=direction.dot(screenUp);
     groundRight.copy(screenRight).setY(0).normalize();groundUp.copy(screenUp).setY(0).normalize();
-    const motion=motionInput?updateSpriteMotion(d.motion,{...motionInput,kind:d.kind,attack,hp:entity.hp,inbetweens:!!inbetweens,facingX:direction.dot(groundRight),facingY:direction.dot(groundUp),
+    const motion=motionInput?updateSpriteMotion(d.motion,{...motionInput,kind:d.kind,attack,hp:entity.hp,inbetweens:!!inbetweens,longMotion:!!longMotion,facingX:direction.dot(groundRight),facingY:direction.dot(groundUp),
       actionSeq:entity.actionSeq??motionInput.actionSeq,actionAt:entity.actionAt??motionInput.actionAt,
       actionDuration:entity.actionDuration??motionInput.actionDuration,stunned:entity.stunT>0}):null;
     if(motion){d.motion=motion.state;d.motionPhase=motion.phase;d.motionBlend=motion.blend;}
@@ -351,13 +384,14 @@ export class FixedBattleArt {
       const col=facing,requestedRow=Number.isInteger(motionInput?.poseRow)?motionInput.poseRow:motion?motion.row:attack>0?3:moving?1+Math.floor(time*5.5+(root.userData.phase??0))%2:0;
       // poseRow is used by the art inspector only. A missing/mismatched sheet
       // always resolves to an original pose, never another costume's pixels.
-      const row=requestedRow>=4&&requestedRow<=7&&inbetweens?requestedRow:requestedRow>=0&&requestedRow<=3?requestedRow:0,index=row*4+col;
-      const active=row>=4?inbetweens:art,activeIndex=row>=4?index-16:index;
+      const row=requestedRow>=8&&requestedRow<=11&&longMotion?requestedRow:requestedRow>=4&&requestedRow<=7&&inbetweens?requestedRow:requestedRow>=0&&requestedRow<=3?requestedRow:0,index=row*4+col;
+      const active=row>=8?longMotion:row>=4?inbetweens:art,activeIndex=row>=8?index-32:row>=4?index-16:index;
       const isolated=active.isolated?.[activeIndex],source=isolated?.canvas??active.canvas,frame=isolated?.frame??active.frames[activeIndex];
       image.geometry=this.geometry(source,frame,height);image.material.map=this.texture(source);
       image.material.color.copy(this.material(source,true).color);
       image.scale.x=1;
-      d.pose=['idle','walk-left','walk-right','attack','pass-a','pass-b','follow-through','recover'][row];d.facing=col;d.poseIndex=index;
+      d.pose=['idle','walk-left','walk-right','attack','pass-a','pass-b','follow-through','recover','compress-a','compress-b','early-follow','settle'][row];d.facing=col;d.poseIndex=index;
+      if(d.faction==='hero')this.world.renderer.domElement.dataset.heroLongMotionActive=String(row>=8);
       if(d.faction==='hero')this.world.renderer.domElement.dataset.heroInbetweenActive=String(row>=4);
       if(d.kind==='yi'){this.world.renderer.domElement.dataset.yiPose=d.pose;this.world.renderer.domElement.dataset.yiFacing=String(col);}
       if(d.faction!=='hero'){const dataset=this.world.renderer.domElement.dataset;dataset.combatPoseActive='true';dataset.combatPoseLastKind=d.kind;dataset.combatPoseLastState=d.pose;dataset.combatInbetweenActive=String(row>=4);}
@@ -396,9 +430,9 @@ export class FixedBattleArt {
   dispose() {
     if(this.destroyed)return;this.destroyed=true;
     for(const t of this.textures.values())t.dispose();for(const m of this.materials.values())m.dispose();for(const g of this.geometries.values())g.dispose();this.shadowMaterial?.dispose();this.shadowTexture?.dispose();
-    this.textures.clear();this.materials.clear();this.geometries.clear();this.heroPoseRequests?.clear();
-    this.heroPoses={};this.yi=null;this.skinPoses={};this.inbetweenPoses={};this.combatPoses={enemy:{},ally:{}};this.combatInbetweens={enemy:{},ally:{}};
+    this.textures.clear();this.materials.clear();this.geometries.clear();this.heroPoseRequests?.clear();this.longMotionRequests?.clear();
+    this.heroPoses={};this.yi=null;this.skinPoses={};this.inbetweenPoses={};this.longMotionPoses={};this.combatPoses={enemy:{},ally:{}};this.combatInbetweens={enemy:{},ally:{}};
     this.towerFrames=null;this.winter=null;this.landmarks={};this.seasonTrees=null;this.villageProps={};
-    this.ready=false;this.coreLoading=this.combatLoading=this.heroPoseLoading=this.skinLoading=this.inbetweenLoading=this.loading=false;
+    this.ready=false;this.coreLoading=this.combatLoading=this.heroPoseLoading=this.skinLoading=this.inbetweenLoading=this.longMotionLoading=this.loading=false;
   }
 }

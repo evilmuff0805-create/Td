@@ -1,0 +1,3640 @@
+{
+  "generatedAt": "2026-10-13T15:38:00.544Z",
+  "combos": 11,
+  "frames": 176,
+  "losslessDelivery": true,
+  "minimumPadding": 32,
+  "originalPixelsRepainted": false,
+  "results": [
+    {
+      "id": "yi_sejong",
+      "source": "assets/3d/fixed/combo-sequences/source/yi_sejong-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/yi_sejong-sequence-v1.webp",
+      "bytes": 1191596,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 200
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 4386,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.613757
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 200
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 8976,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.613757
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 200
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 13564,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.613757
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 200
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 18553,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.613757
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 490
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 27993,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.550265
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 490
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 36464,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.550265
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 490
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 50578,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.550265
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 490
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 50656,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.550265
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 799
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 40430,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.539683
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 799
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 21886,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.539683
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 799
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 18730,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.539683
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 799
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 16849,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.539683
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 1100
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 10673,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 1100
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 8288,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 1100
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 6102,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 1100
+          },
+          "anchorFeature": "square royal seal base center",
+          "paintedPixels": 4938,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        }
+      ]
+    },
+    {
+      "id": "gwak_gwon",
+      "source": "assets/3d/fixed/combo-sequences/source/gwak_gwon-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/gwak_gwon-sequence-v1.webp",
+      "bytes": 1200250,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 184
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 4552,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.571429
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 184
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 9129,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.571429
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 184
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 16226,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.571429
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 184
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 22306,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.571429
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 494
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 31142,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 494
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 36859,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 494
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 45993,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 494
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 50029,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 807
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 44658,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 807
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 33324,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 807
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 25053,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 807
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 13741,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 1120
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 10402,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.558201
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 1120
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 8109,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.558201
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 1120
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 5559,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.558201
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 1120
+          },
+          "anchorFeature": "central round rally emblem",
+          "paintedPixels": 4776,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.558201
+          }
+        }
+      ]
+    },
+    {
+      "id": "eulji_gang",
+      "source": "assets/3d/fixed/combo-sequences/source/eulji_gang-v3.png",
+      "path": "assets/3d/fixed/combo-sequences/eulji_gang-sequence-v1.webp",
+      "bytes": 1262960,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 201
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 8794,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.615183
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 208
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 19258,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.633508
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 780,
+            "y": 215
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 19452,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.489418,
+            "y": 0.651832
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1094,
+            "y": 214
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 28363,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.489418,
+            "y": 0.649215
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 318
+          },
+          "sourceOrigin": {
+            "x": 160,
+            "y": 503
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 37644,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.507937,
+            "y": 0.578534
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 318
+          },
+          "sourceOrigin": {
+            "x": 470,
+            "y": 503
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 44273,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.497354,
+            "y": 0.578534
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 318
+          },
+          "sourceOrigin": {
+            "x": 782,
+            "y": 504
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 50023,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.494709,
+            "y": 0.581152
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 318
+          },
+          "sourceOrigin": {
+            "x": 1096,
+            "y": 504
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 51934,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.494709,
+            "y": 0.581152
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 632,
+            "width": 314,
+            "height": 309
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 821
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 47869,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.589005
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 632,
+            "width": 313,
+            "height": 309
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 823
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 35735,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.594241
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 632,
+            "width": 314,
+            "height": 309
+          },
+          "sourceOrigin": {
+            "x": 781,
+            "y": 825
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 26705,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.492063,
+            "y": 0.599476
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 632,
+            "width": 313,
+            "height": 309
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 826
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 17963,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.602094
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 167,
+            "y": 1111
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 10048,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.526455,
+            "y": 0.534031
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 476,
+            "y": 1111
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 7517,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.513228,
+            "y": 0.534031
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 781,
+            "y": 1115
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 6046,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.492063,
+            "y": 0.544503
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1105,
+            "y": 1120
+          },
+          "anchorFeature": "water vortex eye, excluding falling stones",
+          "paintedPixels": 2511,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.518519,
+            "y": 0.557592
+          }
+        }
+      ]
+    },
+    {
+      "id": "gwon_yi",
+      "source": "assets/3d/fixed/combo-sequences/source/gwon_yi-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/gwon_yi-sequence-v1.webp",
+      "bytes": 1158134,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 174
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 2602,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.544974
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 174
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 4918,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.544974
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 174
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 9831,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.544974
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 174
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 17804,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.544974
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 471
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 15950,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 471
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 26639,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 471
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 32001,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 471
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 38575,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 785
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 50403,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 785
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 42640,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 785
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 28376,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 785
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 19410,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 1095
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 11152,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.492063
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 1095
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 7299,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.492063
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 1095
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 4365,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.492063
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 1095
+          },
+          "anchorFeature": "central spearhead shoulder junction",
+          "paintedPixels": 1981,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.492063
+          }
+        }
+      ]
+    },
+    {
+      "id": "eulji_sejong",
+      "source": "assets/3d/fixed/combo-sequences/source/eulji_sejong-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/eulji_sejong-sequence-v1.webp",
+      "bytes": 1150654,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 172,
+            "y": 173
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 5235,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.539683,
+            "y": 0.542328
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 474,
+            "y": 172
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 12671,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.507937,
+            "y": 0.539683
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 778,
+            "y": 171
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 17736,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.484127,
+            "y": 0.537037
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1079,
+            "y": 172
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 26591,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.449735,
+            "y": 0.539683
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 171,
+            "y": 471
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 29544,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.537037,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 474,
+            "y": 476
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 33183,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.507937,
+            "y": 0.513228
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 779,
+            "y": 478
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 34353,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.486772,
+            "y": 0.518519
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1083,
+            "y": 478
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 38104,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.460317,
+            "y": 0.518519
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 170,
+            "y": 780
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 51640,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.534392,
+            "y": 0.489418
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 477,
+            "y": 785
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 45876,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.515873,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 786,
+            "y": 784
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 35678,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1087,
+            "y": 778
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 30908,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.470899,
+            "y": 0.484127
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 169,
+            "y": 1079
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 21539,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.531746,
+            "y": 0.449735
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 470,
+            "y": 1078
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 11339,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.497354,
+            "y": 0.44709
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 777,
+            "y": 1076
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 7498,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.481481,
+            "y": 0.441799
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1085,
+            "y": 1078
+          },
+          "anchorFeature": "jade fan crest round rim center",
+          "paintedPixels": 2365,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.465608,
+            "y": 0.44709
+          }
+        }
+      ]
+    },
+    {
+      "id": "gang_yi",
+      "source": "assets/3d/fixed/combo-sequences/source/gang_yi-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/gang_yi-sequence-v1.webp",
+      "bytes": 909460,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 180,
+            "y": 214
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 7044,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.560847,
+            "y": 0.650794
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 486,
+            "y": 211
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 9894,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.539683,
+            "y": 0.642857
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 795,
+            "y": 210
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 14790,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.529101,
+            "y": 0.640212
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1102,
+            "y": 209
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 14838,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.510582,
+            "y": 0.637566
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 166,
+            "y": 501
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 19039,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.52381,
+            "y": 0.579365
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 482,
+            "y": 501
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 23380,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.529101,
+            "y": 0.579365
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 793,
+            "y": 501
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 29073,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.52381,
+            "y": 0.579365
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1101,
+            "y": 502
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 32553,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.507937,
+            "y": 0.582011
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 168,
+            "y": 807
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 32460,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.529101,
+            "y": 0.560847
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 485,
+            "y": 810
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 24383,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.537037,
+            "y": 0.568783
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 795,
+            "y": 811
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 18596,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.529101,
+            "y": 0.571429
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1105,
+            "y": 809
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 11293,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.518519,
+            "y": 0.566138
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 169,
+            "y": 1112
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 7643,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.531746,
+            "y": 0.537037
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 481,
+            "y": 1111
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 5014,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.526455,
+            "y": 0.534392
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 790,
+            "y": 1111
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 4109,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.515873,
+            "y": 0.534392
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1103,
+            "y": 1112
+          },
+          "anchorFeature": "meteor impact bright core, excluding tail",
+          "paintedPixels": 2967,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.513228,
+            "y": 0.537037
+          }
+        }
+      ]
+    },
+    {
+      "id": "ahn_sejong",
+      "source": "assets/3d/fixed/combo-sequences/source/ahn_sejong-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/ahn_sejong-sequence-v1.webp",
+      "bytes": 1036370,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 159
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 3080,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 159
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 6523,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 159
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 10668,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 159
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 17112,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 470
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 21014,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.497354
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 470
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 25026,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.497354
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 470
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 33146,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.497354
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 468
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 39410,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.492063
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 783
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 47984,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.497354
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 783
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 37977,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.497354
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 785
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 30042,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 785
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 18651,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 1098
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 6787,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 1098
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 5582,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 1098
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 2696,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 1098
+          },
+          "anchorFeature": "central golden star intersection",
+          "paintedPixels": 1693,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "dangun_eulji",
+      "source": "assets/3d/fixed/combo-sequences/source/dangun_eulji-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/dangun_eulji-sequence-v1.webp",
+      "bytes": 1170638,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 179
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 6120,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.558201
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 179
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 10629,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.558201
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 179
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 18825,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.558201
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1096,
+            "y": 177
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 26683,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.494709,
+            "y": 0.55291
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 475
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 29326,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.510582
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 474
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 36823,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.507937
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 472
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 42816,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 472
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 52102,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 787
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 51795,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.507937
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 790
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 43420,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.515873
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 792
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 33196,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.521164
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 793
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 21050,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.52381
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 1102
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 12287,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.510582
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 1102
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 9482,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.510582
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 1102
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 7571,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.510582
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 1099
+          },
+          "anchorFeature": "central circular sun core",
+          "paintedPixels": 2602,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        }
+      ]
+    },
+    {
+      "id": "ahn_yi",
+      "source": "assets/3d/fixed/combo-sequences/source/ahn_yi-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/ahn_yi-sequence-v1.webp",
+      "bytes": 961692,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 168
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 6772,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.529101
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 470,
+            "y": 168
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 10872,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.497354,
+            "y": 0.529101
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 168
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 16539,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.529101
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1093,
+            "y": 168
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 18400,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.486772,
+            "y": 0.529101
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 466
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 22290,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.486772
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 466
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 27098,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.486772
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 469
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 32119,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.494709
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1091,
+            "y": 467
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 42989,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.481481,
+            "y": 0.489418
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 780
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 41447,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.489418
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 783
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 36550,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.497354
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 782
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 37981,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.494709
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1093,
+            "y": 783
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 33491,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.486772,
+            "y": 0.497354
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 1094
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 19812,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.489418
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 1095
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 13283,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.492063
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 1094
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 6241,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.489418
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1094,
+            "y": 1098
+          },
+          "anchorFeature": "explosion origin; final smoke-ring void inferred from preceding core",
+          "paintedPixels": 2108,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.489418,
+            "y": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "dangun_sejong",
+      "source": "assets/3d/fixed/combo-sequences/source/dangun_sejong-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/dangun_sejong-sequence-v1.webp",
+      "bytes": 1209214,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 167
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 6052,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.526455
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 171
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 8521,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.537037
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 169
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 12458,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.531746
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1097,
+            "y": 168
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 17716,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.497354,
+            "y": 0.529101
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 473
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 19515,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 473
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 27084,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 472
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 29842,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 472
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 34749,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.502646
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 793
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 39477,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.52381
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 793
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 35229,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.52381
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 784,
+            "y": 795
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 32277,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.529101
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1099,
+            "y": 800
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 27409,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.542328
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 159,
+            "y": 1106
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 17832,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.505291,
+            "y": 0.521164
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 478,
+            "y": 1101
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 10391,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.518519,
+            "y": 0.507937
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 1100
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 6758,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.505291
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 1101
+          },
+          "anchorFeature": "lotus circular seal center, excluding displaced petals",
+          "paintedPixels": 3083,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.507937
+          }
+        }
+      ]
+    },
+    {
+      "id": "generic",
+      "source": "assets/3d/fixed/combo-sequences/source/generic-v1.png",
+      "path": "assets/3d/fixed/combo-sequences/generic-sequence-v1.webp",
+      "bytes": 1086812,
+      "alphaDifferences": 0,
+      "visibleRgbDifferences": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": {
+            "left": 0,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 169
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 4033,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.531746
+          }
+        },
+        {
+          "frame": 1,
+          "sourceBounds": {
+            "left": 314,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 471,
+            "y": 171
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 8527,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.537037
+          }
+        },
+        {
+          "frame": 2,
+          "sourceBounds": {
+            "left": 627,
+            "top": 0,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 782,
+            "y": 173
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 20121,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.494709,
+            "y": 0.542328
+          }
+        },
+        {
+          "frame": 3,
+          "sourceBounds": {
+            "left": 941,
+            "top": 0,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1096,
+            "y": 175
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 25511,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.494709,
+            "y": 0.547619
+          }
+        },
+        {
+          "frame": 4,
+          "sourceBounds": {
+            "left": 0,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 158,
+            "y": 474
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 23314,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.507937
+          }
+        },
+        {
+          "frame": 5,
+          "sourceBounds": {
+            "left": 314,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 475
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 27913,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.510582
+          }
+        },
+        {
+          "frame": 6,
+          "sourceBounds": {
+            "left": 627,
+            "top": 314,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 783,
+            "y": 476
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 32707,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.497354,
+            "y": 0.513228
+          }
+        },
+        {
+          "frame": 7,
+          "sourceBounds": {
+            "left": 941,
+            "top": 314,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1098,
+            "y": 477
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 38244,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.515873
+          }
+        },
+        {
+          "frame": 8,
+          "sourceBounds": {
+            "left": 0,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 791
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 42212,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.518519
+          }
+        },
+        {
+          "frame": 9,
+          "sourceBounds": {
+            "left": 314,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 792
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 35358,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.521164
+          }
+        },
+        {
+          "frame": 10,
+          "sourceBounds": {
+            "left": 627,
+            "top": 627,
+            "width": 314,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 792
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 27976,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.521164
+          }
+        },
+        {
+          "frame": 11,
+          "sourceBounds": {
+            "left": 941,
+            "top": 627,
+            "width": 313,
+            "height": 314
+          },
+          "sourceOrigin": {
+            "x": 1097,
+            "y": 795
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 23627,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.497354,
+            "y": 0.529101
+          }
+        },
+        {
+          "frame": 12,
+          "sourceBounds": {
+            "left": 0,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 157,
+            "y": 1094
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 8723,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.5,
+            "y": 0.489418
+          }
+        },
+        {
+          "frame": 13,
+          "sourceBounds": {
+            "left": 314,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 472,
+            "y": 1095
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 8209,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.492063
+          }
+        },
+        {
+          "frame": 14,
+          "sourceBounds": {
+            "left": 627,
+            "top": 941,
+            "width": 314,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 785,
+            "y": 1095
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 4645,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.502646,
+            "y": 0.492063
+          }
+        },
+        {
+          "frame": 15,
+          "sourceBounds": {
+            "left": 941,
+            "top": 941,
+            "width": 313,
+            "height": 313
+          },
+          "sourceOrigin": {
+            "x": 1097,
+            "y": 1095
+          },
+          "anchorFeature": "central golden guardian knot",
+          "paintedPixels": 2612,
+          "minimumPadding": 32,
+          "pivot": {
+            "x": 0.497354,
+            "y": 0.492063
+          }
+        }
+      ]
+    }
+  ]
+}

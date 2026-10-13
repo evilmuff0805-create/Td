@@ -1,14 +1,14 @@
 {
   "passed": true,
   "archive": "dist/hoguk-web.zip",
-  "archiveBytes": 91876482,
-  "archiveSha256": "6cf73e7db0d504459d9544e373889474dede82a303effb7fac19882d6cca999a",
-  "manifestSha256": "20785e9ee98cd417d111b7bbe63163e0831c4886e1a2b5550ef18c153c6cf815",
-  "filesIncludingManifest": 189,
-  "manifestFiles": 188,
-  "manifestFileBytes": 93760166,
+  "archiveBytes": 126964731,
+  "archiveSha256": "922858dae1640bea393a8f24c6bda4c15712b57d545bcab57d85b344280cbfcc",
+  "manifestSha256": "02ad700b13b3bfda64232aefdf425398efed1ca33b9c88c76164a188fd251c8f",
+  "filesIncludingManifest": 224,
+  "manifestFiles": 223,
+  "manifestFileBytes": 128915569,
   "allFileHashesAndZipBytesMatch": true,
-  "artFiles": 163,
+  "artFiles": 198,
   "artIsByteIdentical": true,
   "sourceAndDevFilesExcluded": true
 }

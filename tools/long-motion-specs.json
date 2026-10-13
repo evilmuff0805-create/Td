@@ -1,0 +1,128 @@
+{
+  "yi": {},
+  "sejong": {},
+  "eulji": {},
+  "gang": {},
+  "gwon": {},
+  "gwak": {},
+  "ahn": {},
+  "dangun": {},
+  "yi_white": {},
+  "yi_gold": {
+    "parts": [
+      {
+        "source": "yi_gold-v1.png",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "source": "yi_gold-v2.png",
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "source": "yi_gold-v1.png",
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    ]
+  },
+  "sejong_blue": {},
+  "sejong_gold": {},
+  "eulji_iron": {},
+  "eulji_gold": {},
+  "gang_crimson": {
+    "parts": [
+      {
+        "source": "gang_crimson-v1.png",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "source": "gang_crimson-v2.png",
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "source": "gang_crimson-v1.png",
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    ]
+  },
+  "gang_gold": {
+    "parts": [
+      {
+        "source": "gang_gold-v1.png",
+        "indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "source": "gang_gold-v3.png",
+        "indices": [
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      {
+        "source": "gang_gold-v1.png",
+        "indices": [
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    ]
+  },
+  "gwon_hill": {},
+  "gwon_gold": {},
+  "gwak_black": {},
+  "gwak_gold": {},
+  "ahn_militia": {},
+  "ahn_gold": {},
+  "dangun_sky": {},
+  "dangun_gold": {}
+}

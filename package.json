@@ -71,6 +71,10 @@
     "test:roadmap": "node tools/test-roadmap-regression.mjs",
     "test:earned-tactics": "node tools/check-earned-tactics.mjs",
     "test:combo-elements": "node tools/combo-element-assets.mjs",
-    "test:opening-balance": "node tools/test-opening-balance.mjs"
+    "test:opening-balance": "node tools/test-opening-balance.mjs",
+    "test:long-motion": "node tools/test-long-motion.mjs",
+    "test:combo-sequences": "node tools/test-combo-sequences.mjs",
+    "art:long-motion": "node tools/long-motion-assets.mjs",
+    "art:combo-sequences": "node tools/combo-sequence-assets.mjs"
   }
 }

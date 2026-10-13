@@ -1,0 +1,81 @@
+{
+  "template": "Use case: identity-preserve.\nAsset type: sixteen new in-between sprites in an existing fixed-overhead Korean historical fantasy game. Image1 is the exact costume, anatomy, hands, and style reference. Its SIX rows show idle, left stride, right stride, attack, follow-through, recovery. Generate ONLY FOUR rows of NEW poses.\nMANDATORY LAYOUT: FOUR COLUMNS by FOUR ROWS, exactly sixteen isolated full-body characters, each about 65% of cell height. Large empty transparent gutters on all sides, especially above hats and below boots. All same size and overhead isometric camera as reference. Columns match reference EXACTLY: front-right, back-right, back-left, front-left. Keep all weapons and clothes in the same anatomical hand and orientation; no horizontal mirror substitutions.\nRows1 and2 are NEW walking COMPRESSION phases, between reference stride and passing pose: Row1 left foot planted forward carrying weight, right heel lifts behind, knees softly bend. Row2 swap the leading legs in all four directions: right foot planted forward, left heel lifts behind. Torso stays upright, face and weapon grips stable, fabric follows with only small movement.\nRow3: FOLLOW_DESCRIPTION\nRow4: final relaxed recovery before idle: hands and weapons move very close to reference idle position, both boots grounded, shoulders relax, cloth settles, but slight residual gesture remains. Preserve the exact costume and face across all sixteen sprites, including every robe/cloak color, belt, cuff, armor trim, headwear and weapon.\nPremium painted stylized 3D material rendering matching reference, restrained warm highlights and cool shadow, detailed fabric and metal, no style redesign.\nTrue transparent alpha background. No floor, no cast shadow, no border, no label, no letters, no numbers, no checkerboard, no extra accessories, no extra limbs, no duplicate weapons. Nothing cropped or overlapping. Clothing colors must match THIS reference, not a generic default skin.\nCharacter: HERO_DESCRIPTION",
+  "heroes": {
+    "yi": "Admiral Yi Sun-sin: black beard and moustache, tall red helmet plume, ONE wooden bow and back quiver. Match this exact costume, especially the cloak outer color and armor. Do not replace with Gwon Yul's spear or shield.",
+    "sejong": "King Sejong: the exact royal dragon robe, black winged ikseongwan hat, green belt pendant, and ONE blue book held in the same anatomical hand as reference. Keep both arms.",
+    "eulji": "Eulji Mundeok: exact green/iron/gold armor and cloak of this reference, white feather helmet crest, ONE white feather fan and belt sword. Keep fan in the same hand as reference.",
+    "gang": "Gang Gam-chan: elderly white-haired white-bearded commander, exact cloak and armor of reference, ONE short steel sword in right hand and ONE round bronze shield in left hand. Never add a second sword.",
+    "gwon": "Gwon Yul: exact heavy armor and cloak of reference, red helmet plume, ONE long spear in right hand and ONE round shield in left hand. Preserve spear length and grip, do not replace with a bow.",
+    "gwak": "Gwak Jae-u: exact robe of reference, black Korean gat hat, black beard, ONE wooden bow held in left hand and back quiver. Preserve hat shape and clothing color.",
+    "ahn": "Ahn Jung-geun: exact dark/olive/gold coat and clothing of reference, black hair and moustache, ONE short pistol in right hand. The left hand remains empty.",
+    "dangun": "Dangun Wanggeom: white-haired elder, exact ivory/jade/blue/gold ceremonial robe and small crown of reference, the same hanging BRONZE BELLS attached at the waist. BOTH hands are free. There is NO staff, NO scepter and NO orb. Keep belt bells attached to the same place."
+  },
+  "followThrough": {
+    "yi": "Early arrow-release follow-through: bow arm still extended, bow string relaxed, empty drawing hand has just opened beside the jaw. The arrow has ALREADY flown away. Absolutely NO arrow, no nocked arrow, no visible shaft on the bow. Exactly two hands. Match reference row5 with the drawing hand slightly earlier in its backward release.",
+    "gwak": "Early arrow-release follow-through: bow arm still extended, bow string relaxed, empty drawing hand has just opened beside the jaw. The arrow has ALREADY flown away. Absolutely NO arrow, no nocked arrow, no visible shaft on the bow. Exactly two hands. Match reference row5.",
+    "sejong": "Early spell follow-through: book stays open in the same hand close to torso, free hand is still half extended with a relaxed open palm, beginning to lower slightly after the gesture. No glowing effects or floating letters, no third arm. Between reference rows4 and5.",
+    "eulji": "Early fan-command follow-through: ONE fan is still extended but the same fan arm has just softened at the elbow after the sweep; other hand stays in its reference position near waist. Between reference rows4 and5, no duplicate fan or arm.",
+    "gang": "Early sword follow-through: the ONE sword has just finished the cross-body sweep, shoulder and wrist relax slightly while the ONE shield stays braced. Between reference rows4 and5. Single blade only, no motion-trail sword.",
+    "gwon": "Early spear-thrust follow-through: the ONE spear remains pointed forward with the same right-hand grip, right elbow begins to soften after the thrust, left arm keeps ONE shield close to body. Between reference rows4 and5.",
+    "ahn": "Early pistol recoil follow-through: the ONE pistol remains aimed toward target, the same right elbow bends slightly after firing, the empty left hand stays near torso. No bullet, no muzzle flash, no extra gun or arms.",
+    "dangun": "Early sacred gesture follow-through: the same free hand softly lowers after the gesture while the other free hand stays near waist. The small bronze bells remain attached to the waist, no handheld bells. No staff, no orb, no glowing effects."
+  },
+  "comboTemplate": "Use case: stylized-concept.\nAsset type: transparent animated game VFX sprite atlas, drawn to lie on the ground of a fixed overhead Korean historical fantasy tower defense game.\nPrimary subject: DESCRIPTION\nMandatory technical framing: square canvas containing EXACTLY SIXTEEN isolated frames in FOUR COLUMNS and FOUR ROWS, read left-to-right then top-to-bottom. All cells equally sized and regularly spaced. Each effect must remain compact, occupying only the CENTER FIFTY FIVE PERCENT of its cell. Leave more than TWENTY PERCENT of each cell completely transparent around the effect, including ALL particles and faint glow. No overlapping or clipped particles.\nCamera: STRICT ORTHOGRAPHIC TOP DOWN, looking straight down at the ground. Every ring is CIRCULAR, not elliptical, not a tilted isometric view. The texture itself must NOT contain perspective because the game projects it onto a ground plane. No horizon, no raised backdrop. The fixed ground origin is precisely at the CENTER of every cell in all sixteen frames.\nAnimation: sixteen distinct, coherent consecutive poses of this ONE effect. Frames1-3 a small gathering;4-6 growing;7-9 peak;10-12 dispersing;13-16 tiny diminishing wisps. Shape evolves smoothly around the stable center, never a random redesign. Keep the last frame small and sparse. No ground/cast shadows.\nArt: premium hand-painted stylized 3D fantasy game illustration, finely sculpted rounded details and painterly soft materials, muted mineral pigments and old bronze, warm ivory glints, restrained contrast, beautiful small silhouette. No neon, no pixel art, no crude vector icon, no hard black outlines.\nTrue transparent ALPHA background, no solid color, no black backdrop, no grey gradient, no checkerboard. No text, no numbers, no labels, no borders, no watermark. No characters or buildings.",
+  "combos": [
+    [
+      "yi_sejong",
+      "성군과 성웅",
+      "A restrained gilded Korean royal sun seal, braided maritime rope, a small symmetrical turtle-shell crest and two navy-blue pennant curls. Warm ivory gold, muted navy and bronze. Supportive empowering aura, no explosion."
+    ],
+    [
+      "eulji_gang",
+      "살수낙성",
+      "A clockwise teal-blue wave ring gradually rises, with exactly three small cool silver meteor fragments entering the water and making white foam. Water and falling stars fuse, then settle into scattered silver-blue ripples. No fire."
+    ],
+    [
+      "gwak_gwon",
+      "의병 궐기",
+      "A circular bronze rally seal with two tiny crimson military pennants and olive-green fabric ribbons rising together, surrounded by small amber sparks. Empowering militia rally, no violent explosion."
+    ],
+    [
+      "gwon_yi",
+      "수륙병진",
+      "A split circular wave and copper fire crest: one side navy teal foamy seawater, the other warm copper flame, meeting in a small bronze spearhead glint. Controlled joint land-and-sea impact."
+    ],
+    [
+      "eulji_sejong",
+      "문무겸전",
+      "An elegant cyan-white geometric scholarly seal unfolds like four translucent parchment panels around a pale jade fan crest, with thin bronze corners. Enemy armor dissolving magical seal. No letters, no written text."
+    ],
+    [
+      "gang_yi",
+      "불멸의 대첩",
+      "A cool blue-white falling meteor impacts a small teal maritime ring, scattering three silver rock fragments and a compact ivory flash, then fading to thin blue ripples. Distinct from fire and from a tall water fountain."
+    ],
+    [
+      "ahn_sejong",
+      "대한 독립 만세",
+      "A small warm ivory starburst unfolds into a circular golden Korean ceremonial rosette with restrained crimson and indigo silk curls, copper sparks and a small open parchment crest. No text, no flags of modern countries."
+    ],
+    [
+      "dangun_eulji",
+      "고조선의 후예",
+      "A pale jade and violet ancient Korean sky-gate ring with three branching thin white-gold lightning forks, bronze cloud curls and an ivory central sun, fading into violet motes. No tall portal, no character."
+    ],
+    [
+      "ahn_yi",
+      "필사즉생의 총성",
+      "A compact bronze cannonburst with a crisp ivory core and dark navy maritime rim, four short copper sparks and a contained grey-blue smoke wreath, quickly settling to bronze embers. Not a huge orange fireball."
+    ],
+    [
+      "dangun_sejong",
+      "홍익의 나라",
+      "An ivory jade lotus slowly opens inside a warm gold circular sun ring, with tiny jade leaf motes and thin gold rays. Gentle healing, no attack sparks, no explosive flash."
+    ],
+    [
+      "generic",
+      "호국 합격",
+      "A restrained old-bronze guardian knot rosette with two small symmetrical ivory wings of light, warm ivory-gold rays and pale blue ember motes. Compact generic cooperative guardian impact."
+    ]
+  ]
+}

@@ -1,3 +1,4 @@
+import {HERO_LONG_MOTION_ART} from '../src/3d/long-motion-data.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import * as T from 'three';
@@ -20,10 +21,10 @@ import { getMap } from '../src/sim/map.js';
 
 const results=[],pending=[],requests=[],warnings=[];
 const savedDocument=globalThis.document,savedImage=globalThis.Image,savedLoad=T.ImageLoader.prototype.load,savedWarn=console.warn;
-const layouts=[...Object.values(HERO_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(SKIN_POSE_ART),...Object.values(COMBAT_POSE_ART.enemy),...Object.values(COMBAT_POSE_ART.ally),...Object.values(COMBAT_INBETWEEN_ART)];
+const layouts=[...Object.values(HERO_LONG_MOTION_ART),...Object.values(HERO_POSE_ART),...Object.values(HERO_INBETWEEN_ART),...Object.values(SKIN_POSE_ART),...Object.values(COMBAT_POSE_ART.enemy),...Object.values(COMBAT_POSE_ART.ally),...Object.values(COMBAT_INBETWEEN_ART)];
 const baseIds=new Map(Object.entries(HERO_POSE_ART).map(([id,layout])=>[layout.path,id]));
 const layoutFor=url=>layouts.find(layout=>url.endsWith('/'+layout.path));
-const kindFor=url=>baseIds.has(layoutFor(url)?.path)?'base':url.includes('/skins/')?'skin':url.includes('/combat-inbetweens/')?'combat':url.includes('/inbetweens/')?'extra':url.includes('/combat/')?'combat':'core';
+const kindFor=url=>baseIds.has(layoutFor(url)?.path)?'base':url.includes('/skins/')?'skin':url.includes('/combat-inbetweens/')?'combat':(url.includes('/inbetweens/')||url.includes('/long-motion/'))?'extra':url.includes('/combat/')?'combat':'core';
 globalThis.document={createElement(){return {width:0,height:0,getContext(){return {drawImage(){},putImageData(){},getImageData(x,y,w,h){return {data:new Uint8ClampedArray(w*h*4).fill(255)};}};}};}};
 globalThis.Image=class{constructor(){this.width=this.height=this.naturalWidth=this.naturalHeight=64;}set src(value){queueMicrotask(()=>this.onload?.());}};
 T.ImageLoader.prototype.load=function(url,onLoad,progress,onError){const item={url,onLoad,onError,kind:kindFor(url),layout:layoutFor(url)};pending.push(item);requests.push(item);};

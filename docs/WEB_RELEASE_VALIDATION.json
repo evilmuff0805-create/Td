@@ -2,9 +2,9 @@
   "tests": 14,
   "passed": true,
   "entryBytes": 1002,
-  "scriptBytes": 1393246,
-  "scriptGzipBytes": 399422,
-  "artFiles": 163,
+  "scriptBytes": 1441061,
+  "scriptGzipBytes": 407803,
+  "artFiles": 198,
   "artByteIdentical": true,
   "repeatBodyBytes": 0
 }

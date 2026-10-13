@@ -1,0 +1,194 @@
+[
+  {
+    "id": "yi",
+    "heroId": "yi",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/yi.png",
+    "base": "assets/3d/fixed/yi-directions-v2.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/yi-inbetweens-v1.webp"
+  },
+  {
+    "id": "sejong",
+    "heroId": "sejong",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/sejong.png",
+    "base": "assets/3d/fixed/sejong-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/sejong-inbetweens-v1.webp"
+  },
+  {
+    "id": "eulji",
+    "heroId": "eulji",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/eulji.png",
+    "base": "assets/3d/fixed/eulji-directions-v2.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/eulji-inbetweens-v1.webp"
+  },
+  {
+    "id": "gang",
+    "heroId": "gang",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/gang.png",
+    "base": "assets/3d/fixed/gang-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gang-inbetweens-v1.webp"
+  },
+  {
+    "id": "gwon",
+    "heroId": "gwon",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/gwon.png",
+    "base": "assets/3d/fixed/gwon-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gwon-inbetweens-v1.webp"
+  },
+  {
+    "id": "gwak",
+    "heroId": "gwak",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/gwak.png",
+    "base": "assets/3d/fixed/gwak-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gwak-inbetweens-v1.webp"
+  },
+  {
+    "id": "ahn",
+    "heroId": "ahn",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/ahn.png",
+    "base": "assets/3d/fixed/ahn-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/ahn-inbetweens-v1.webp"
+  },
+  {
+    "id": "dangun",
+    "heroId": "dangun",
+    "skin": null,
+    "path": "assets/3d/fixed/long-motion/source/references/dangun.png",
+    "base": "assets/3d/fixed/dangun-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/dangun-inbetweens-v1.webp"
+  },
+  {
+    "id": "yi_white",
+    "heroId": "yi",
+    "skin": "yi_white",
+    "path": "assets/3d/fixed/long-motion/source/references/yi_white.png",
+    "base": "assets/3d/fixed/skins/yi_white-directions-v2.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/yi_white-inbetweens-v1.webp"
+  },
+  {
+    "id": "yi_gold",
+    "heroId": "yi",
+    "skin": "yi_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/yi_gold.png",
+    "base": "assets/3d/fixed/skins/yi_gold-directions-v2.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/yi_gold-inbetweens-v1.webp"
+  },
+  {
+    "id": "sejong_blue",
+    "heroId": "sejong",
+    "skin": "sejong_blue",
+    "path": "assets/3d/fixed/long-motion/source/references/sejong_blue.png",
+    "base": "assets/3d/fixed/skins/sejong_blue-directions-v2.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/sejong_blue-inbetweens-v1.webp"
+  },
+  {
+    "id": "sejong_gold",
+    "heroId": "sejong",
+    "skin": "sejong_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/sejong_gold.png",
+    "base": "assets/3d/fixed/skins/sejong_gold-directions-v2.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/sejong_gold-inbetweens-v1.webp"
+  },
+  {
+    "id": "eulji_iron",
+    "heroId": "eulji",
+    "skin": "eulji_iron",
+    "path": "assets/3d/fixed/long-motion/source/references/eulji_iron.png",
+    "base": "assets/3d/fixed/skins/eulji_iron-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/eulji_iron-inbetweens-v1.webp"
+  },
+  {
+    "id": "eulji_gold",
+    "heroId": "eulji",
+    "skin": "eulji_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/eulji_gold.png",
+    "base": "assets/3d/fixed/skins/eulji_gold-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/eulji_gold-inbetweens-v1.webp"
+  },
+  {
+    "id": "gang_crimson",
+    "heroId": "gang",
+    "skin": "gang_crimson",
+    "path": "assets/3d/fixed/long-motion/source/references/gang_crimson.png",
+    "base": "assets/3d/fixed/skins/gang_crimson-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gang_crimson-inbetweens-v1.webp"
+  },
+  {
+    "id": "gang_gold",
+    "heroId": "gang",
+    "skin": "gang_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/gang_gold.png",
+    "base": "assets/3d/fixed/skins/gang_gold-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gang_gold-inbetweens-v1.webp"
+  },
+  {
+    "id": "gwon_hill",
+    "heroId": "gwon",
+    "skin": "gwon_hill",
+    "path": "assets/3d/fixed/long-motion/source/references/gwon_hill.png",
+    "base": "assets/3d/fixed/skins/gwon_hill-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gwon_hill-inbetweens-v1.webp"
+  },
+  {
+    "id": "gwon_gold",
+    "heroId": "gwon",
+    "skin": "gwon_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/gwon_gold.png",
+    "base": "assets/3d/fixed/skins/gwon_gold-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gwon_gold-inbetweens-v1.webp"
+  },
+  {
+    "id": "gwak_black",
+    "heroId": "gwak",
+    "skin": "gwak_black",
+    "path": "assets/3d/fixed/long-motion/source/references/gwak_black.png",
+    "base": "assets/3d/fixed/skins/gwak_black-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gwak_black-inbetweens-v1.webp"
+  },
+  {
+    "id": "gwak_gold",
+    "heroId": "gwak",
+    "skin": "gwak_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/gwak_gold.png",
+    "base": "assets/3d/fixed/skins/gwak_gold-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/gwak_gold-inbetweens-v1.webp"
+  },
+  {
+    "id": "ahn_militia",
+    "heroId": "ahn",
+    "skin": "ahn_militia",
+    "path": "assets/3d/fixed/long-motion/source/references/ahn_militia.png",
+    "base": "assets/3d/fixed/skins/ahn_militia-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/ahn_militia-inbetweens-v1.webp"
+  },
+  {
+    "id": "ahn_gold",
+    "heroId": "ahn",
+    "skin": "ahn_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/ahn_gold.png",
+    "base": "assets/3d/fixed/skins/ahn_gold-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/ahn_gold-inbetweens-v1.webp"
+  },
+  {
+    "id": "dangun_sky",
+    "heroId": "dangun",
+    "skin": "dangun_sky",
+    "path": "assets/3d/fixed/long-motion/source/references/dangun_sky.png",
+    "base": "assets/3d/fixed/skins/dangun_sky-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/dangun_sky-inbetweens-v1.webp"
+  },
+  {
+    "id": "dangun_gold",
+    "heroId": "dangun",
+    "skin": "dangun_gold",
+    "path": "assets/3d/fixed/long-motion/source/references/dangun_gold.png",
+    "base": "assets/3d/fixed/skins/dangun_gold-directions-v1.webp",
+    "inbetweens": "assets/3d/fixed/inbetweens/dangun_gold-inbetweens-v1.webp"
+  }
+]
