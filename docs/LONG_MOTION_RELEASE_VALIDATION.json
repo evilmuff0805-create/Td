@@ -87,5 +87,11 @@
     "External WAN two-device operation not verified.",
     "Human late balance adjustments deferred.",
     "No full 3D skinned character meshes; fixed-camera illustration battlefield remains."
-  ]
+  ],
+  "publication": {
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "implementationCommit": "6f7b03037232977a230bd0c31941fc0bf4724c84",
+    "remoteCommitVerified": "6f7b03037232977a230bd0c31941fc0bf4724c84",
+    "verifiedAt": "2026-10-13T16:07:32.252Z"
+  }
 }

@@ -73,3 +73,5 @@ python tools/verify-web-package.py
 ```
 
 단일 HTML은168,627,271바이트, 방향/중간 시트128장과 독립 합격기11장을 각각 한 번 포함한다. 보존 원본322PNG는 포함하지 않는다. 웹은198개 배포 원화125,391,288바이트를 원본과 동일한 바이트로 전달한다. 생성물 `dist/`는 Git에서 제외하고 재현 소스·선택한 배포 원화·서버 번들·원본/프롬프트·검사/화면/문서를 커밋한다. 단일 HTML은 솔로/로컬 협동용이고 온라인 협동은 웹 서버 주소를 사용한다. [릴리스 검사](LONG_MOTION_RELEASE_VALIDATION.json).
+
+구현 커밋 [`6f7b030`](https://github.com/evilmuff0805-create/Td/commit/6f7b03037232977a230bd0c31941fc0bf4724c84)를 기존 작업 브랜치에 푸시하고 원격 SHA 일치를 확인했다. [원격 확인 기록](LONG_MOTION_PUBLISH_RECEIPT.json)에 확인 시각과 검사 기록 해시를 보존한다.

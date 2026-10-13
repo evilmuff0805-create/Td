@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/evilmuff0805-create/Td",
+  "branch": "claude/korean-hero-tower-defense-i8ard8",
+  "implementationCommit": "6f7b03037232977a230bd0c31941fc0bf4724c84",
+  "remoteCommitVerified": "6f7b03037232977a230bd0c31941fc0bf4724c84",
+  "verifiedAt": "2026-10-13T16:07:32.252Z",
+  "regressionTests": 439,
+  "regressionGroups": 32,
+  "localCoopPreserved": true,
+  "scope": "Hero long-motion and dedicated combo sequences. Late balance deferred.",
+  "receiptCommitPurpose": "Record verified implementation publication; this receipt does not claim its own commit hash.",
+  "recordSha256": {
+    "LONG_MOTION_RELEASE_VALIDATION.json": "d58985ce739d362580ff7dd99065849395b7536277ba647a67b97435c6972d9b",
+    "LONG_MOTION_REGRESSION_VALIDATION.json": "c1af21f5318231f4e6d08cb12f89367ca9b7b553d585186d7fb46c20aebdac63",
+    "LONG_MOTION_BROWSER_VALIDATION.json": "e7b4d59e3f81189a7cb9dc7fe9f61f560b7c5130a7443dac485ecb0bec3d9d8a",
+    "PROJECT_REVIEW.md": "1f8240775b1928209daf534663905cd8f9de0b5314cccc94f800388c8f3a5218"
+  }
+}
