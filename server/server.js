@@ -12,8 +12,11 @@ const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const GUID='258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
 const MAX_PAYLOAD=2*1024*1024,MAX_BACKLOG=512*1024;
 
-export function createRoomServer({root=ROOT,graceMs=30000,heartbeatMs=30000}={}){
-  const server=http.createServer(staticHandler(root)),clients=new Set();
+export function createRoomServer({root=ROOT,publicOnly=false,graceMs=30000,heartbeatMs=30000}={}){
+  const serve=staticHandler(root,{publicOnly}),server=http.createServer((req,res)=>{
+    if((req.url||'').split('?')[0]==='/_health'&&['GET','HEAD'].includes(req.method)){const body='{"ok":true}';res.writeHead(200,{'content-type':'application/json','cache-control':'no-store','content-length':Buffer.byteLength(body)}).end(req.method==='HEAD'?undefined:body);return;}
+    serve(req,res);
+  }),clients=new Set();
   function frame(c,op,payload){
     if(!c||c.socket.destroyed)return false;
     if(c.socket.writableLength>MAX_BACKLOG){c.socket.destroy();return false;}
@@ -64,7 +67,7 @@ export function createRoomServer({root=ROOT,graceMs=30000,heartbeatMs=30000}={})
 
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   const PORT=+(process.env.PORT||8080),HOST=process.env.HOST||'127.0.0.1';
-  const {server}=createRoomServer();server.listen(PORT,HOST,()=>{
+  const {server}=createRoomServer({publicOnly:process.env.PUBLIC_ONLY==='1'});server.listen(PORT,HOST,()=>{
     const port=server.address().port;console.log('\n  호국영웅전 서버 실행 중');console.log(`  이 컴퓨터:        http://localhost:${port}`);
     if(HOST==='0.0.0.0'||HOST==='::')for(const list of Object.values(os.networkInterfaces()))for(const a of list||[])if(a.family==='IPv4'&&!a.internal)console.log(`  같은 네트워크:    http://${a.address}:${port}`);
     console.log('');

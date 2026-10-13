@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-10-13T17:36:38.721251+00:00",
+  "clientDate": "2026-10-14",
+  "parentCommit": "aecfd3cf6e942dfcc263ff9a357083afc40ec807",
+  "implementationChecksPassed": true,
+  "scope": "Rendering/memory and WebGL/input recovery; 44px controls and three responsive game frame sizes; visual-only rounded roads in 26 unchanged maps. Public deployment deferred by user.",
+  "regression": {
+    "report": "DEVICE_ROADS_REGRESSION_VALIDATION.json",
+    "sha256": "2e179c5c2940e5a34288eaa88f990887bbf385f9fbd6c702a4204fbbce40d272",
+    "tests": 451,
+    "groups": 34,
+    "allPassed": true
+  },
+  "determinism": {
+    "existingSoloAndCoopBaselineUnchanged": true,
+    "soloSha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721",
+    "coopSha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+  },
+  "performance": {
+    "scope": "PC fixed 128 enemies + 6 allied actors/movers, 28 combat kinds. Not whole-game/mobile certification.",
+    "highDrawCallsBefore": 803,
+    "highDrawCallsAfter": 513,
+    "lowDrawCallsAfter": 345,
+    "observedFpsBeforeAndAfter": 60,
+    "characterCanvasBytesBefore": 638217172,
+    "characterCanvasBytesAfter": 261162268,
+    "duplicateSheetBytesReleased": 377054904,
+    "memoryIsRgbaCanvasCensusNotProcessOrGpuRam": true
+  },
+  "browser": {
+    "report": "DEVICE_ROADS_BROWSER_QA.json",
+    "sha256": "9e1cfd8ef915982ab19b8c50d949dd36f84a91cb538741b5f0324ca3e4077e73",
+    "realDriverRecoveryInProductAndFreeBattle": true,
+    "localCoopPreserved": true,
+    "independentP1P2Construction": true,
+    "frameSizes": [
+      "414x896",
+      "360x800",
+      "896x414"
+    ],
+    "minimumPrimaryControlPixels": 44,
+    "noHorizontalOverflow": true,
+    "comboLabelClearOfWaveButton": true,
+    "landscapeUiSkillCommandConfirmed": true,
+    "directShippingConsoleWarningsAndErrors": 0,
+    "responsiveIframeInspectionErrorsRecorded": true
+  },
+  "art": {
+    "existing198ShippingImagesByteIdentical": true,
+    "newRasterArtwork": false,
+    "downsampledCharacterFrames": false,
+    "embeddedOriginalArchives": false
+  },
+  "builds": {
+    "standaloneBytes": 168632065,
+    "standaloneSha256": "b33e3a1d68aaea1dd3ffbcb4d63e050bb463b6cc9bf923db2268f13a49676c26",
+    "webManifestFileBytes": 128927563,
+    "webManifestFiles": 223,
+    "webManifestSha256": "18b64273a9a5167c408efc7b727c62386dc3f18b0c11c7c73193f382b6b41298",
+    "zipBytes": 126970419,
+    "zipSha256": "d4b576d956a97ca027dc0400ebfda3399f125383252fbbbcef67904ae34bb1ce"
+  },
+  "review": {
+    "model": "GPT-6 Astra",
+    "effort": "high",
+    "report": "DEVICE_ROADS_ASTRA_REVIEW.json",
+    "finalBlockingFindings": 0
+  },
+  "publicDeployment": {
+    "userDecision": "defer",
+    "serverStarted": false,
+    "domainGenerated": false,
+    "sourceConnected": false,
+    "stagedScope": "empty service creation only",
+    "stateReport": "PUBLIC_DEPLOYMENT_STATE.json"
+  },
+  "notVerified": [
+    "Physical phone/touch/thermal/whole RAM",
+    "Public WAN/LTE two-device cooperative play",
+    "Docker image build and runtime",
+    "New freeform simulation paths"
+  ],
+  "lateDifficultyChanges": "deferred_by_user"
+}

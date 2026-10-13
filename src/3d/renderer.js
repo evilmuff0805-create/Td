@@ -8,6 +8,7 @@ import { getMap, T_BUILD } from '../sim/map.js';
 import { combatStatus } from './combat-status.js';
 import { paintBattleEvent } from './battle-events.js';
 import { FrameMetrics } from './frame-metrics.js';
+import { battleWaiting } from './graphics-state.js';
 
 // The full game owns commands, rewards, audio and networking. This adapter only paints.
 export class Renderer3D {
@@ -46,12 +47,12 @@ export class Renderer3D {
   }
   events(list) { this.pending.push(...list); }
   prepareView(view) { this.world.prepareHeroLooks(view.heroes); }
-  get loading() { return this.world?.art?.loading === true||this.world?.fx?.comboArt?.sequenceLoading===true; }
+  get loading() { return battleWaiting(this.world); }
   render(view, ui, dt) {
     this.prepareView(view);
     const game = battleView(view), world = this.world, selected = selectedEntity(game, ui);
     this.loadingLayer.hidden=!this.loading;
-    if(this.loading){this.loadingLayer.textContent=ui.assetWaitRemote?'전장 그림을 준비하고 있습니다…\n접속한 전투 상태를 동기화하고 있습니다.':'전장 그림을 준비하고 있습니다…';this.pending.length=0;world.draw(ui.clock,dt);return;}
+    if(this.loading){this.frameMetrics.reset();this.buildLayer.hidden=true;this.loadingLayer.textContent=world.graphics?.waiting?(world.graphics.status==='failed'?'그래픽을 복구하지 못했습니다. 메뉴에서 전장에 다시 입장해 주세요.':'그래픽을 복구하고 있습니다…'):ui.assetWaitRemote?'전장 그림을 준비하고 있습니다…\n접속한 전투 상태를 동기화하고 있습니다.':'전장 그림을 준비하고 있습니다…';this.pending.length=0;world.draw(ui.clock,dt);return;}
     this.canvas.dataset.assetReadyMs??=String(Math.round(performance.now()-this.loadBegan));
     world.cueEnemies(this.pending,game.time);
     world.cueHeroes(this.pending,game);
@@ -86,7 +87,7 @@ export class Renderer3D {
     this.canvas.dataset.textures = world.renderer.info.memory.textures;
     const now=performance.now();
     const measured=this.frameMetrics.add(now,!document.hidden);
-    if(measured){for(const [key,value]of Object.entries(measured))this.canvas.dataset[key]=String(value);}
+    if(measured){for(const [key,value]of Object.entries({...measured,...world.art?.characterMemory()}))this.canvas.dataset[key]=String(value);}
     this.canvas.dataset.quality=world.highQuality===false?'low':'high';
     this.canvas.dataset.pixelRatio=String(world.renderer.getPixelRatio());
     this.canvas.dataset.drawCalls=world.renderer.info.render.calls;

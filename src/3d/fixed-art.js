@@ -54,7 +54,12 @@ async function atlas(path,columns,rows,layout=null,shared=true) {
         const x=Math.round(layout?layout.x[col]*img.width/layout.width:col*img.width/columns),y=Math.round(layout?layout.y[row]*img.height/layout.height:row*img.height/rows),x1=Math.round(layout?layout.x[col+1]*img.width/layout.width:(col+1)*img.width/columns),y1=Math.round(layout?layout.y[row+1]*img.height/layout.height:(row+1)*img.height/rows);
         frames.push(frameBounds(pixels,img.width,img.height,x,y,x1-x,y1-y,layout?11:48));
       }
-      resolve({canvas,frames,width:img.width,height:img.height,isolated:layout?frames.map(frame=>isolateFrame(canvas,frame)):null,poseAtlas:!!layout?.frames});
+      const isolated=layout?frames.map(frame=>isolateFrame(canvas,frame)):null;
+      // Private character sheets are used only through the isolated originals.
+      // Release the duplicate backing store after every copy has completed.
+      const releasedSheetBytes=!shared&&layout?.frames?img.width*img.height*4:0;
+      if(releasedSheetBytes){canvas.width=0;canvas.height=0;}
+      resolve({canvas:releasedSheetBytes?null:canvas,frames,width:img.width,height:img.height,isolated,poseAtlas:!!layout?.frames,releasedSheetBytes});
     },undefined,reject);
   });
   // Character sheets belong to one battlefield; only scenery uses this cache.
@@ -96,6 +101,12 @@ export class FixedBattleArt {
   updateLoading(){
     this.loading=!!(this.coreLoading||this.combatLoading||this.heroPoseLoading||this.skinLoading||this.inbetweenLoading||this.longMotionLoading);
     if(!this.destroyed)this.world.renderer.domElement.dataset.fixedArtStatus=this.loading?'loading':this.ready?'ready':'fallback';
+  }
+  characterMemory(){
+    const atlases=new Set([...Object.values(this.heroPoses),...Object.values(this.skinPoses),...Object.values(this.inbetweenPoses),...Object.values(this.longMotionPoses),...Object.values(this.combatPoses.enemy),...Object.values(this.combatPoses.ally),...Object.values(this.combatInbetweens.enemy),...Object.values(this.combatInbetweens.ally)].filter(Boolean));
+    const canvases=new Set();let releasedSheetBytes=0;
+    for(const art of atlases){if(art.canvas)canvases.add(art.canvas);for(const frame of art.isolated??[])canvases.add(frame.canvas);releasedSheetBytes+=art.releasedSheetBytes??0;}
+    return {characterCanvasBytes:[...canvases].reduce((n,c)=>n+c.width*c.height*4,0),characterCanvasCount:canvases.size,releasedSheetBytes};
   }
   releasePoseAtlas(art){
     for(const {canvas}of art?.isolated??[]){
@@ -168,7 +179,7 @@ export class FixedBattleArt {
       // batch is still loading. The bucket owns it after this batch commits.
       for(const {id}of results)this.heroPoseRequests.delete(id);
       const count=results.filter(x=>x.art).length,canvases=new Set();
-      for(const {art}of results)if(art){canvases.add(art.canvas);for(const frame of art.isolated??[])canvases.add(frame.canvas);}
+      for(const {art}of results)if(art){if(art.canvas)canvases.add(art.canvas);for(const frame of art.isolated??[])canvases.add(frame.canvas);}
       const bytes=[...canvases].reduce((sum,canvas)=>sum+canvas.width*canvas.height*4,0);
       Object.assign(dataset,{heroPoseStatus:count===results.length?'ready':'partial',heroPoseCount:String(count),heroPoseExpected:String(results.length),heroPoseKinds:key,heroPoseCanvasBytes:String(bytes)});
     }).finally(()=>{if(generation===this.heroPoseGeneration){this.heroPoseLoading=false;this.updateLoading();}});
@@ -248,7 +259,7 @@ export class FixedBattleArt {
   material(source,foreground=false) {
     const key=source;
     if(!this.materials.has(key)) {
-      const mat=new T.MeshBasicMaterial({map:this.texture(source),transparent:true,alphaTest:.16,depthWrite:true,toneMapped:false,side:T.DoubleSide});
+      const mat=new T.MeshBasicMaterial({map:this.texture(source),transparent:true,alphaTest:.16,depthWrite:true,toneMapped:false,side:T.DoubleSide,forceSinglePass:true});
       mat.userData.fixedArt=true;this.materials.set(key,mat);
     }
     const mat=this.materials.get(key),t=this.world.theme;
@@ -276,12 +287,12 @@ export class FixedBattleArt {
     const obj=new T.Mesh(g,this.shadowMaterial);obj.position.y=.039;obj.raycast=()=>{};parent.add(obj);return obj;
   }
   castImage(parent,image) {
-    const obj=new T.Mesh(image.geometry,this.imageShadowMaterial(image));obj.matrixAutoUpdate=false;obj.raycast=()=>{};obj.userData.fixedArt=true;parent.add(obj);this.projectShadow(obj,image);return obj;
+    const obj=new T.Mesh(image.geometry,this.imageShadowMaterial(image));obj.matrixAutoUpdate=false;obj.raycast=()=>{};obj.userData.fixedArt=true;obj.userData.illustrationShadow=true;obj.userData.shadowAllowed=true;obj.visible=this.world.highQuality!==false;parent.add(obj);this.projectShadow(obj,image);return obj;
   }
   imageShadowMaterial(image) {
     const key='shadow:'+image.material.map.uuid;
     if(!this.materials.has(key)){
-      const mat=new T.MeshBasicMaterial({map:image.material.map,color:'#07172e',transparent:true,opacity:.46,alphaTest:.04,depthWrite:false,toneMapped:false,side:T.DoubleSide});mat.userData.fixedArt=true;this.materials.set(key,mat);
+      const mat=new T.MeshBasicMaterial({map:image.material.map,color:'#07172e',transparent:true,opacity:.46,alphaTest:.04,depthWrite:false,toneMapped:false,side:T.DoubleSide,forceSinglePass:true});mat.userData.fixedArt=true;this.materials.set(key,mat);
     }
     return this.materials.get(key);
   }
@@ -344,7 +355,7 @@ export class FixedBattleArt {
     const directional=!!art.poseAtlas||hero&&art===this.yi,first=directional?art.isolated?.[0]:null;
     const image=this.image(first??art,height,first?.frame??(directional?art.frames[0]:null),true);
     image.material=image.material.clone();image.material.userData.owned3d=true;root.add(image);
-    const hint=hero?new T.Mesh(image.geometry,new T.MeshBasicMaterial({map:image.material.map,color:'#7cb4e6',transparent:true,opacity:.5,alphaTest:.18,depthTest:true,depthFunc:T.GreaterDepth,depthWrite:false,toneMapped:false,side:T.DoubleSide})):null;
+    const hint=hero?new T.Mesh(image.geometry,new T.MeshBasicMaterial({map:image.material.map,color:'#7cb4e6',transparent:true,opacity:.5,alphaTest:.18,depthTest:true,depthFunc:T.GreaterDepth,depthWrite:false,toneMapped:false,side:T.DoubleSide,forceSinglePass:true})):null;
     if(hint){hint.material.userData.owned3d=true;hint.renderOrder=30;hint.raycast=()=>{};root.add(hint);}
     const contact=this.shadow(root,hero?.85:.65,.5),shadow=this.castImage(root,image);
     root.userData.fixedImage={image,hint,height,art,kind,contact,shadow,directional,faction:hero?'hero':ally?'ally':'enemy'};root.userData.labelHeight=height+.18;
@@ -401,8 +412,8 @@ export class FixedBattleArt {
       image.quaternion.multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,0,1),-motion.lean*sign));
       image.position.addScaledVector(screenRight.clone().applyQuaternion(inverse),motion.recoil*sign);
     }
-    d.shadow.visible=true;if(d.contact)d.contact.visible=true;
-    this.projectShadow(d.shadow,image,root);
+    d.shadow.userData.shadowAllowed=true;d.shadow.visible=this.world.highQuality!==false;if(d.contact)d.contact.visible=true;
+    if(d.shadow.visible)this.projectShadow(d.shadow,image,root);
     image.material.opacity=entity.stealth&&!entity.revealed?.25:1;
     if(hint){hint.geometry=image.geometry;hint.material.map=image.material.map;hint.quaternion.copy(image.quaternion);hint.position.copy(image.position);hint.scale.copy(image.scale);hint.material.color.set(entity.owner===1?'#efaa96':'#7cb4e6');hint.visible=!entity.dead;}
     if(root.userData.hp)root.userData.hp.position.copy(screenUp).multiplyScalar(height+.13).applyQuaternion(inverse);
@@ -416,8 +427,8 @@ export class FixedBattleArt {
     d.image.quaternion.copy(this.world.camera.quaternion).premultiply(root.quaternion.clone().invert());
     d.image.rotateZ((root.userData.entity?.id%2?1:-1)*fall*.7);
     d.image.position.set(0,-fall*.07,0);d.image.material.opacity=1-progress;
-    d.shadow.visible=progress<.5;if(d.contact)d.contact.visible=progress<.5;if(d.hint)d.hint.visible=false;
-    this.projectShadow(d.shadow,d.image,root);
+    d.shadow.userData.shadowAllowed=progress<.5;d.shadow.visible=progress<.5&&this.world.highQuality!==false;if(d.contact)d.contact.visible=progress<.5;if(d.hint)d.hint.visible=false;
+    if(d.shadow.visible)this.projectShadow(d.shadow,d.image,root);
   }
   anchor(root,pad=.12) {
     const d=root?.userData.fixedImage;if(!d)return null;

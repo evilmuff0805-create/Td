@@ -351,6 +351,7 @@ export class GameUI {
     cancelAnimationFrame(this.raf);
     window.removeEventListener('resize', this.onResize);
     window.removeEventListener('blur', this.onInputBlur);
+    this.cv.removeEventListener('webglcontextlost',this.onInputGraphics);
     document.removeEventListener('visibilitychange', this.onInputVisibility);
     document.removeEventListener('keydown', this.onKeyDown);
     document.removeEventListener('keyup', this.onKeyUp);
@@ -436,6 +437,7 @@ export class GameUI {
       return { x: ((e.clientX - r.left) / r.width) * (W / TS), y: ((e.clientY - r.top) / r.height) * (H / TS) };
     };
     this.cv.addEventListener('pointermove', (e) => {
+      if(this.renderer?.loading||this.s.networkWaiting)return;
       if (down && Math.hypot(e.clientX-down.x, e.clientY-down.y)>6) { dragged=true; clearTimeout(pressTimer); }
       const p = pos(e);
       if (!p) return;
@@ -459,11 +461,13 @@ export class GameUI {
     // Losing focus may swallow keyup/pointerup. Do not keep a local player's
     // movement key or a touch long-press alive after switching apps.
     this.onInputBlur=()=>{this.p2keys.clear();this.cancelPress();};
+    this.onInputGraphics=()=>{this.onInputBlur();this.closePop();this.closeP2Menu();this.cancelTargeting();};
     this.onInputVisibility=()=>{if(document.hidden)this.onInputBlur();};
     window.addEventListener('blur',this.onInputBlur);
+    this.cv.addEventListener('webglcontextlost',this.onInputGraphics);
     document.addEventListener('visibilitychange',this.onInputVisibility);
     this.cv.addEventListener('pointerdown', (e) => {
-      if(this.s.networkWaiting)return;
+      if(this.renderer?.loading||this.s.networkWaiting)return;
       audio.init();
       clearTimeout(pressTimer); pressTimer=null; pointers.add(e.pointerId);
       if(pointers.size>1){multiTouch=true;dragged=true;down=null;return;}
@@ -475,14 +479,14 @@ export class GameUI {
         if (!p) return;
         pressTimer = setTimeout(() => {
           pressTimer=null;
-          if(!down||dragged||pointers.size!==1||this.destroyed)return;
+          if(!down||dragged||pointers.size!==1||this.destroyed||this.renderer?.loading||this.s.networkWaiting)return;
           longPressed = true;
           this.moveHeroTo(p.x, p.y);
         }, 480);
       }
     });
     this.cv.addEventListener('pointerup', (e) => {
-      if(this.s.networkWaiting){this.cancelPress();return;}
+      if(this.renderer?.loading||this.s.networkWaiting){this.cancelPress();return;}
       clearTimeout(pressTimer);
       pointers.delete(e.pointerId);
       if(multiTouch){if(!pointers.size)multiTouch=false;down=null;return;}
@@ -500,6 +504,7 @@ export class GameUI {
     this.cv.addEventListener('pointercancel', this.cancelPress);
     this.cv.addEventListener('contextmenu', (e) => {
       e.preventDefault();
+      if(this.renderer?.loading||this.s.networkWaiting)return;
       if (this.is3d) return;
       const p = pos(e);
       if (this.targeting) return this.cancelTargeting();
@@ -518,6 +523,7 @@ export class GameUI {
   }
 
   leftClick(p) {
+    if(this.renderer?.loading||this.s.networkWaiting)return;
     const v = this.s.view;
     if (this.targeting) {
       this.fireTargeting(p.x, p.y);
@@ -563,6 +569,7 @@ export class GameUI {
   }
 
   moveHeroTo(x, y, heroIdx) {
+    if(this.renderer?.loading||this.s.networkWaiting)return;
     const v = this.s.view;
     const mine = this.myHeroIdx();
     const i = heroIdx ?? (this.solo ? this.selHero : mine[0]);
@@ -943,6 +950,7 @@ export class GameUI {
   }
 
   build(x, y, type) {
+    if(this.renderer?.loading||this.s.networkWaiting)return;
     this.s.send({ t: 'build', p: this.me, x, y, tower: type });
     this.closePop();
   }
@@ -984,6 +992,7 @@ export class GameUI {
   }
 
   openBuildMenu(x, y) {
+    if(this.renderer?.loading||this.s.networkWaiting)return;
     this.closePop();
     const ring = this.openRing(x, y, this.buildList(this.me).length);
     this.pop = { kind: 'build', ring, x, y, sig: '' };
@@ -1031,6 +1040,7 @@ export class GameUI {
   }
 
   openTowerPanel(id) {
+    if(this.renderer?.loading||this.s.networkWaiting)return;
     this.closePop();
     const t = this.s.view.towers.find((x) => x.id === id);
     if (!t) return;

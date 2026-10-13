@@ -19,6 +19,7 @@ import { heroLooksKey } from './hero-look-roster.js';
 import { inbetweenLooksKey } from './inbetween-roster.js';
 import { heroPoseKey } from './hero-pose-roster.js';
 import { comboSequenceRoster } from './combo-impact-art.js';
+import { GraphicsState } from './graphics-state.js';
 
 function texture(size, paint) {
   const c=document.createElement('canvas');c.width=c.height=size;paint(c.getContext('2d'),size);
@@ -50,6 +51,7 @@ export class WinterWorld {
     this.fx.comboArt?.prepare(comboSequenceRoster(options.heroLooks));
     this.art=this.useIllustrations?new FixedBattleArt(this):null;
     this.lighting();this.environment();this.weather();
+    this.graphics=new GraphicsState(canvas,()=>this.refreshEnvironment());
     this.range=new T.Mesh(new T.RingGeometry(.98,1,96),new T.MeshBasicMaterial({color:'#e4c58c',transparent:true,opacity:.55,side:T.DoubleSide,depthWrite:false}));
     this.range.rotation.x=-Math.PI/2;this.range.position.y=.09;this.range.visible=false;this.scene.add(this.range);
     this.marker=new T.Mesh(new T.RingGeometry(.2,.24,40),new T.MeshBasicMaterial({color:'#b9dcf4',transparent:true,opacity:.8,side:T.DoubleSide}));
@@ -60,16 +62,19 @@ export class WinterWorld {
   }
   lighting() {
     // PBR metal needs reflected surroundings; direct lights alone leave armor black.
-    const room=new RoomEnvironment(),pmrem=new T.PMREMGenerator(this.renderer);
-    this.environmentTarget=pmrem.fromScene(room,.04);this.scene.environment=this.environmentTarget.texture;
+    this.refreshEnvironment();
     // Scene-owned IBL prevents one battle disposing another scene's reflection.
     this.scene.environmentIntensity=.45;
-    room.dispose();pmrem.dispose();
     this.hemi=new T.HemisphereLight(this.theme.hemi,this.theme.bounce,1.5);this.scene.add(this.hemi);
     const moon=new T.DirectionalLight('#c6deff',2.2);moon.position.set(2,20,22);moon.target.position.set(12,0,7);
     moon.castShadow=true;moon.shadow.mapSize.set(2048,2048);moon.shadow.camera.left=-23;moon.shadow.camera.right=23;moon.shadow.camera.top=20;moon.shadow.camera.bottom=-20;moon.shadow.camera.near=.5;moon.shadow.camera.far=70;
     moon.shadow.normalBias=.03;moon.shadow.bias=-.00012;moon.shadow.radius=2;this.scene.add(moon,moon.target);this.moon=moon;
     const fill=new T.DirectionalLight('#7394bc',.6);fill.position.set(30,8,20);this.scene.add(fill);this.fill=fill;this.applySeasonLight();
+  }
+  refreshEnvironment(){
+    const room=new RoomEnvironment(),pmrem=new T.PMREMGenerator(this.renderer);
+    try{const next=pmrem.fromScene(room,.04),previous=this.environmentTarget;this.environmentTarget=next;this.scene.environment=next.texture;previous?.dispose();}
+    finally{room.dispose();pmrem.dispose();}
   }
   home() {
     const c=this.renderer.domElement,portrait=c.clientWidth<c.clientHeight;
@@ -83,6 +88,7 @@ export class WinterWorld {
   resize() {const w=this.renderer.domElement.clientWidth,h=this.renderer.domElement.clientHeight,aspect=w/h;
     const half=aspect<1?15:11.4;this.camera.left=-half*aspect;this.camera.right=half*aspect;this.camera.top=half;this.camera.bottom=-half;this.camera.updateProjectionMatrix();this.renderer.setSize(w,h,false);}
   quality(high) {this.highQuality=high;this.renderer.setPixelRatio(high?Math.min(devicePixelRatio,1.5):1);this.renderer.shadowMap.enabled=high;
+    this.scene.traverse(o=>{if(o.userData.illustrationShadow)o.visible=high&&o.userData.shadowAllowed!==false;});
     this.lampGroup?.traverse(o=>{if(o.isPointLight)o.visible=o.userData.lampIndex<(high?3:1);});this.resize();}
   lamp(x,z,y=1.05,lantern=false) {
     const root=new T.Group();root.position.set(x,0,z);
@@ -114,7 +120,7 @@ export class WinterWorld {
   }
   environment() {
     const field=buildBattlefield(this.stage,this.theme,this.art?.ready?this.art:null);this.static=field.root;this.water=field.water;this.field=field;
-    Object.assign(this.renderer.domElement.dataset,{terrainRoad:'continuous',terrainRoadTriangles:String(field.roads.triangles),terrainRoadLayers:this.theme.snow?'2':'1'});
+    Object.assign(this.renderer.domElement.dataset,{terrainRoad:'rounded-corridor',terrainRoadTriangles:String(field.roads.triangles),terrainRoadLayers:this.theme.snow?'2':'1'});
     Object.assign(this.renderer.domElement.dataset,{terrainShore:'continuous',terrainShoreTriangles:String(field.shore.triangles),waterTriangles:String(field.shore.waterTriangles)});
     Object.assign(this.renderer.domElement.dataset,{sceneryLayout:field.scenery?'clustered':'model',sceneryProps:String(field.scenery?.metrics.props??0),sceneryCrowns:String(field.scenery?.metrics.crowns??0),sceneryLowTrees:String(field.scenery?.metrics.understory??0),sceneryHouses:String(field.scenery?.metrics.houses??0),sceneryCargo:String(field.scenery?.metrics.cargo??0),sceneryLamps:String(field.lamps.length)});
     Object.assign(this.renderer.domElement.dataset,{sceneryBarriers:String(field.scenery?.metrics.barriers??0),sceneryBarrierCells:String(field.scenery?.metrics.barrierCells??0),sceneryYardFences:String(field.scenery?.metrics.yardFences??0),villagePropSeason:this.theme.snow?'winter':'temperate'});
@@ -444,6 +450,7 @@ export class WinterWorld {
   markMove(x,z) {this.marker.position.set(x,.075,z);this.marker.visible=true;this.markerLife=1.8;}
   project(x,y,z) {const p=new T.Vector3(x,y,z).project(this.camera);const c=this.renderer.domElement;return {x:(p.x*.5+.5)*c.clientWidth,y:(-.5*p.y+.5)*c.clientHeight,visible:p.z>=-1&&p.z<=1};}
   draw(time,dt) {
+    if(this.destroyed||this.graphics?.waiting)return;
     this.renderer.domElement.dataset.effectArtStatus=this.fx.art?.ready?'ready':this.fx.art?.failed?'fallback':this.fx.art?'loading':'off';
     this.renderer.domElement.dataset.signatureArtStatus=this.fx.signatures?.ready?'ready':this.fx.signatures?.failed?'fallback':this.fx.signatures?'loading':'off';
     this.renderer.domElement.dataset.tacticArtStatus=this.fx.tactics?.ready?'ready':this.fx.tactics?.failed?'fallback':this.fx.tactics?'loading':'off';
@@ -476,6 +483,7 @@ export class WinterWorld {
   }
   destroy() {
     if(this.destroyed)return;this.destroyed=true;
+    this.graphics?.destroy();
     this.reset();this.fx.destroy();this.controls.dispose();
     for(const root of [this.static,this.water,this.lampGroup,this.snow])this.disposeModel(root);
     for(const root of [this.range,this.marker,this.placement])this.disposeModel(root,true);

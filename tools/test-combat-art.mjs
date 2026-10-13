@@ -16,6 +16,7 @@ import { TACTICS } from '../src/data/tactics.js';
 import { spawnEnemy } from '../src/sim/combat.js';
 import { applyCommand,step,DT } from '../src/sim/sim.js';
 import { whenBattleArtReady } from '../src/3d/battle-art-ready.js';
+import { battleWaiting } from '../src/3d/graphics-state.js';
 import { equippedAbility } from '../src/3d/battle-controls.js';
 
 let passed=0;async function test(name,run){await run();passed++;console.log(`  ✔ ${name}`);}
@@ -97,11 +98,20 @@ await test('초기 진입과 재출정의 늦은 완료는 새 전장의 카메�
 });
 await test('실제 자유 전장 입력 함수는 로딩 중 궁극기 재사용 시간을 소비하지 않는다',()=>{
   const source=fs.readFileSync(new URL('../src/3d/main.js',import.meta.url),'utf8'),game=newBattleGame({heroIds:['sejong'],support:false}),world={art:{loading:true}};
-  const scope={game,world,activeHero:0,equippedAbility,applyCommand,events(){},updateHUD(){},announceSkill(){},lastCommand:''};game.heroes[0].ultCd=0;
+  const scope={game,world,battleWaiting,activeHero:0,equippedAbility,applyCommand,events(){},updateHUD(){},announceSkill(){},lastCommand:''};game.heroes[0].ultCd=0;
   const dispatch=vm.runInNewContext('('+source.match(/function dispatch\(command\) \{[\s\S]*?\n\}/)[0]+')',scope);
-  assert.equal(dispatch({t:'heroUlt',h:0}),false);assert.equal(game.heroes[0].ultCd,0);world.art.loading=false;assert.equal(dispatch({t:'heroUlt',h:0}),true);assert.ok(game.heroes[0].ultCd>0);
-  let skills=0,cancelled=0;const keyboard=source.match(/document.addEventListener\('keydown',e=>\{([\s\S]*?)\n  \}\);/)[1],keydown=vm.runInNewContext('(e=>{'+keyboard+'})',{world,modalOpen:()=>false,chooseSkill:()=>skills++,selection:()=>cancelled++});
+  assert.equal(dispatch({t:'heroUlt',h:0}),false);assert.equal(game.heroes[0].ultCd,0);world.art.loading=false;world.graphics={waiting:true};assert.equal(dispatch({t:'heroUlt',h:0}),false);assert.equal(game.heroes[0].ultCd,0);world.graphics.waiting=false;assert.equal(dispatch({t:'heroUlt',h:0}),true);assert.ok(game.heroes[0].ultCd>0);
+  let skills=0,cancelled=0;const keyboard=source.match(/document.addEventListener\('keydown',e=>\{([\s\S]*?)\n  \}\);/)[1],keydown=vm.runInNewContext('(e=>{'+keyboard+'})',{world,battleWaiting,modalOpen:()=>false,chooseSkill:()=>skills++,selection:()=>cancelled++});
   const event=key=>({key,repeat:false,preventDefault(){}});world.art.loading=true;keydown(event('r'));assert.equal(skills,0);keydown(event('Escape'));assert.equal(cancelled,1);world.art.loading=false;keydown(event('r'));assert.equal(skills,1);
+});
+await test('자유 전장 실제 프레임은 그래픽 손실 중 진행·일시정지 상태와 재화를 보존한다',()=>{
+  const source=fs.readFileSync(new URL('../src/3d/main.js',import.meta.url),'utf8');
+  for(const paused of [false,true]){
+    const game=newBattleGame({heroIds:['yi'],support:false}),snapshot=JSON.stringify(game),world={graphics:{waiting:true,status:'lost'}},loading={querySelector:()=>({textContent:''})};let requested=0,steps=0;
+    const scope={world,game,paused,started:true,last:0,clock:0,uiClock:0,frames:0,modalOpen:()=>false,battleWaiting,$:()=>loading,requestAnimationFrame:()=>requested++,step:()=>steps++};
+    const frame=vm.runInNewContext('('+source.match(/function frame\(now\) \{[\s\S]*?\n\}/)[0]+')',scope);
+    frame(1000);frame(2000);assert.equal(steps,0);assert.equal(requested,2);assert.equal(scope.paused,paused);assert.equal(JSON.stringify(game),snapshot);assert.equal(loading.hidden,false);
+  }
 });
 
 // Exercise the real async loader with small canvas/image substitutes, not WebGL.

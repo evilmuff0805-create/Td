@@ -4,11 +4,14 @@ import { createGame } from '../sim/sim.js';
 import { spawnEnemy,addSummon,newId } from '../sim/combat.js';
 import { getMap,posAt } from '../sim/map.js';
 import { ENEMIES } from '../data/enemies.js';
+import { FrameMetrics } from './frame-metrics.js';
 
 let canvas=document.getElementById('review');const metrics=document.getElementById('metrics');
-let world,game,frames=0,last=performance.now(),lastFrame=last,samples=[],spawnMs=0,sampleWindow=0,generation=0,running=false,warmup=0,setupBegan=0;
+let world,game,lastFrame=performance.now(),spawnMs=0,sampleWindow=0,generation=0,running=false,warmup=0,setupBegan=0;
+const frameMetrics=new FrameMetrics();let history=[],restoreTimer;
+document.addEventListener('visibilitychange',()=>{frameMetrics.reset();lastFrame=performance.now();});
 async function start(){
-  const ticket=++generation;running=false;
+  const ticket=++generation;running=false;clearTimeout(restoreTimer);frameMetrics.reset();history=[];
   const all=document.getElementById('roster').value==='all',enemyKinds=all?Object.keys(ENEMIES):['ashigaru','samurai','teppo'];
   const options={illustrated:document.getElementById('art').value==='fixed',batchCrowd:document.getElementById('batch').value==='on',high:document.getElementById('quality').value==='high',count:+document.getElementById('count').value,heroLooks:[{heroId:'yi'},{heroId:'sejong'}],combatKinds:all?{enemy:enemyKinds,ally:['militia','guard','elite','monk','courier','turtle']}:undefined};
   if(world){world.destroy();const fresh=canvas.cloneNode(false);for(const key of Object.keys(fresh.dataset))delete fresh.dataset[key];canvas.replaceWith(fresh);canvas=fresh;world=null;}
@@ -24,21 +27,32 @@ async function start(){
   await localWorld.art?.promise;
   if(ticket!==generation||world!==localWorld||localWorld.destroyed)return;
   const spawnStart=performance.now();localWorld.sync(localGame,0,0,{kind:'hero',h:0});spawnMs=performance.now()-spawnStart;
-  frames=0;samples=[];sampleWindow=0;last=lastFrame=performance.now();warmup=3;running=true;
+  sampleWindow=0;lastFrame=performance.now();warmup=3;running=true;
   canvas.dataset.ready='false';canvas.dataset.sampleWindow='0';canvas.dataset.count=count;canvas.dataset.roster=all?'all':'basic';
   metrics.textContent=localWorld.art?.failed?'그림 로드 실패 · 모델 대체 준비 중…':'첫 화면 준비 중…';
 }
 function frame(now){
   if(!running||world.destroyed){requestAnimationFrame(frame);return;}
-  const dt=warmup?0:Math.min(.05,(now-lastFrame)/1000);if(!warmup)samples.push(now-lastFrame);lastFrame=now;game.time+=dt;
+  if(world.graphics.waiting){lastFrame=now;frameMetrics.reset();metrics.textContent=world.graphics.status==='failed'?'그래픽 복구 실패':'그래픽 복구 중…';requestAnimationFrame(frame);return;}
+  const dt=warmup?0:Math.min(.05,(now-lastFrame)/1000);lastFrame=now;game.time+=dt;
   const map=getMap(game.stageId);
   for(let i=0;i<game.enemies.length;i++){const e=game.enemies[i],path=map.paths[e.path];e.d=(e.d+dt*.6)%path.total;const p=posAt(path,e.d);e.x=p.x+(i%3-1)*.16;e.y=p.y;e.anim=0;e.hp=e.maxHp;}
   for(const [i,actor]of [...game.summons,...game.movers].entries()){const path=map.paths[actor.path??0],p=posAt(path,(5+i*2+game.time*.6)%path.total);actor.x=p.x+.35;actor.y=p.y;actor.dx=p.dx;actor.dy=p.dy;}
-  world.sync(game,game.time,dt,{kind:'hero',h:0});world.fx.update(dt);world.draw(game.time,dt);frames++;
+  world.sync(game,game.time,dt,{kind:'hero',h:0});world.fx.update(dt);world.draw(game.time,dt);
   const directional=[...world.units.values(),...world.scenery.values()].map(root=>root.userData.fixedImage).filter(d=>d?.directional&&d.faction!=='hero');canvas.dataset.directionalActors=String(directional.length);canvas.dataset.directionalKinds=String(new Set(directional.map(d=>d.kind)).size);
-  if(warmup){warmup--;frames=0;samples=[];last=lastFrame=performance.now();if(!warmup){canvas.dataset.ready='true';canvas.dataset.setupMs=Math.round(performance.now()-setupBegan);}}
-  else if(now-last>=1000){const info=world.renderer.info,ordered=samples.slice().sort((a,b)=>a-b);metrics.textContent=`${world.art?.failed?'모델 대체 · ':''}${Math.round(frames*1000/(now-last))} fps · ${info.render.calls}회 그리기 · ${Math.round(info.render.triangles/1000)}k 삼각형 · p95 ${Math.round(ordered[Math.floor(ordered.length*.95)]??0)}ms · 병력 구성 ${Math.round(spawnMs)}ms`;canvas.dataset.drawCalls=info.render.calls;canvas.dataset.geometries=info.memory.geometries;canvas.dataset.fps=Math.round(frames*1000/(now-last));canvas.dataset.p95=Math.round(ordered[Math.floor(ordered.length*.95)]??0);canvas.dataset.spawnMs=Math.round(spawnMs);canvas.dataset.sampleWindow=++sampleWindow;frames=0;samples=[];last=now;}
+  if(warmup){warmup--;lastFrame=performance.now();if(!warmup){canvas.dataset.ready='true';canvas.dataset.setupMs=Math.round(performance.now()-setupBegan);}}
+  else {
+    const measured=frameMetrics.add(now,!document.hidden);
+    if(measured){
+      const info=world.renderer.info,memory=world.art?.characterMemory()??{};
+      const sample={...measured,...memory,drawCalls:info.render.calls,textures:info.memory.textures,geometries:info.memory.geometries,spawnMs:Math.round(spawnMs),pixelRatio:world.renderer.getPixelRatio(),quality:world.highQuality?'high':'low',viewport:`${canvas.clientWidth}x${canvas.clientHeight}`,sampleWindow:++sampleWindow};
+      Object.assign(canvas.dataset,Object.fromEntries(Object.entries(sample).map(([k,v])=>[k,String(v)])),{p95:String(measured.frameP95)});
+      history.push(sample);history=history.slice(-20);canvas.dataset.frameHistory=JSON.stringify(history);
+      metrics.textContent=`${sample.fps} fps · ${sample.drawCalls}회 그리기 · p95 ${sample.frameP95}ms · 캐릭터 캔버스 ${((memory.characterCanvasBytes??0)/1048576).toFixed(1)} MiB · 복구 ${world.graphics.recoveries}회`;
+    }
+  }
   requestAnimationFrame(frame);
 }
 for(const id of ['count','roster','batch','quality','art'])document.getElementById(id).onchange=start;
-document.getElementById('restart').onclick=start;addEventListener('resize',()=>world?.resize());addEventListener('pagehide',()=>{generation++;running=false;world?.destroy();});start();requestAnimationFrame(frame);
+document.getElementById('restart').onclick=start;addEventListener('resize',()=>world?.resize());addEventListener('pagehide',()=>{generation++;running=false;clearTimeout(restoreTimer);world?.destroy();});start();requestAnimationFrame(frame);
+document.getElementById('restore').onclick=()=>{const current=world;current.renderer.forceContextLoss();clearTimeout(restoreTimer);restoreTimer=setTimeout(()=>{if(world===current&&!current.destroyed)current.renderer.forceContextRestore();},350);};

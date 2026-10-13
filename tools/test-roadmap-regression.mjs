@@ -5,7 +5,7 @@ const flags=Object.fromEntries(process.argv.slice(2).map(a=>a.replace(/^--/,'').
 const output=flags.output??'ROADMAP_REGRESSION_VALIDATION.json';
 if(!/^[A-Z_]+\.json$/.test(output))throw new Error('output must be a report basename');
 const exec=promisify(execFile),historical=JSON.parse(await fs.readFile('docs/BATTLE_FEEDBACK_REGRESSION_VALIDATION.json','utf8'));
-const files=[...historical.results.map(r=>r.file),'test-combo-impacts.mjs','test-hero-loading.mjs','test-build-layout.mjs','test-device-readiness.mjs','test-network-recovery.mjs','test-web-release.mjs','test-opening-balance.mjs','test-long-motion.mjs','test-combo-sequences.mjs'];
+const files=[...historical.results.map(r=>r.file),'test-combo-impacts.mjs','test-hero-loading.mjs','test-build-layout.mjs','test-device-readiness.mjs','test-network-recovery.mjs','test-web-release.mjs','test-opening-balance.mjs','test-long-motion.mjs','test-combo-sequences.mjs','test-graphics-recovery.mjs','test-public-coop.mjs'];
 const preserved=await fs.readFile('docs/TACTIC_VALIDATION.json'),results=new Array(files.length);let next=0;
 async function worker(){while(next<files.length){const i=next++,file=files[i],started=Date.now();let output='',error='',exitCode=0;try{const r=await exec(process.execPath,['tools/'+file],{maxBuffer:4*1024*1024});output=r.stdout;error=r.stderr;}catch(e){output=e.stdout??'';error=e.stderr??String(e);exitCode=e.code??1;}const count=(output.match(/✔/g)??[]).length;results[i]={file,count,passed:exitCode===0,exitCode,elapsedMs:Date.now()-started,output:output.trim(),error:error.trim()};console.log((exitCode===0?'PASS ':'FAIL ')+file+' '+count);}}
 try{await Promise.all([worker(),worker(),worker()]);}finally{await fs.writeFile('docs/TACTIC_VALIDATION.json',preserved);}

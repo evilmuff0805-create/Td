@@ -1,8 +1,12 @@
 {
   "date": "2026-10-11",
-  "tests": 13,
+  "tests": 14,
   "allPassed": true,
   "results": [
+    {
+      "name": "원본 프레임 크기 유지·중복 시트 해제·품질 전환 뒤 사망 그림자 비복원",
+      "passed": true
+    },
     {
       "name": "기본 로스터는 유효한 영웅만 정렬·중복 제거하며 미지정 8명과 빈 목록을 구분한다",
       "passed": true
@@ -57,10 +61,10 @@
     }
   ],
   "memoryEstimate": {
-    "allEightCanvasBytes": 85067488,
-    "yiSejongCanvasBytes": 22831168,
-    "savedCanvasBytes": 62236320,
-    "reductionPercent": 73.16,
+    "allEightCanvasBytes": 34727456,
+    "yiSejongCanvasBytes": 10244704,
+    "savedCanvasBytes": 24482752,
+    "reductionPercent": 70.5,
     "unit": "bytes",
     "basis": "RGBA canvas storage for full base sheets and isolated frames only; excludes decoder, browser overhead, fallback/menu caches and GPU."
   }

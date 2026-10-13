@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-10-13T17:31:11.591387+00:00",
+  "model": "GPT-6 Astra",
+  "reasoningEffort": "high",
+  "scope": "Read-only review of rendering memory, WebGL recovery, input cancellation, visual road corridor, public package isolation and final mobile control changes.",
+  "initialFindings": [
+    {
+      "priority": "P2",
+      "finding": "Free battlefield continued stepping and accepting commands during graphics loss",
+      "resolution": "Shared battleWaiting gate; early graphics-wait frame return; input cancel; 14 combat-art tests and native running/paused driver restoration verified"
+    }
+  ],
+  "finalBlockingFindings": [],
+  "limits": [
+    "Docker image build/run not verified on this PC",
+    "No physical phone/touch/thermal or LTE test",
+    "Public deployment explicitly deferred by user; no accept-deploy or domain creation"
+  ],
+  "finalUiCheck": "414x896, 360x800, 896x414: all sampled primary controls >=44px, no horizontal overflow, combo label clear of wave button"
+}

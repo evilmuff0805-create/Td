@@ -1,0 +1,5 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>호국영웅전 · 휴대폰 크기 검수</title>
+<style>body{margin:0;background:#102333;color:#dce6ed;font:13px sans-serif}header{padding:12px;background:#102333;z-index:2}button,select{padding:7px;background:#234558;color:inherit;border:1px solid #91a8b9;border-radius:4px}p{margin:7px 0}iframe{display:block;margin:0 auto 12px;border:1px solid #91a8b9;background:#102333}</style>
+<header><label>기기 크기 <select id="size"><option value="414x896">세로 414×896</option><option value="360x800">좁은 세로 360×800</option><option value="896x414">가로 896×414</option></select></label><p>같은 게임을 해당 크기의 프레임에서 실행합니다. 실제 휴대폰 성능·터치·발열 검수는 아닙니다.</p></header>
+<iframe id="game-frame" width="414" height="896" src="3d-device-review.html?mute=1" title="휴대폰 크기의 실제 게임"></iframe>
+<script>document.getElementById('size').onchange=e=>{const [w,h]=e.target.value.split('x');const frame=document.getElementById('game-frame');frame.width=w;frame.height=h;};</script></html>

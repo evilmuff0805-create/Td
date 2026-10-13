@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-10-13T17:31:14.921Z",
+  "origin": "http://127.0.0.1:51279",
+  "transport": "HTTP/WS",
+  "scope": "Two actual loopback sockets against the isolated public shipping root. Not public WAN or physical devices.",
+  "tests": 3,
+  "allPassed": true,
+  "results": [
+    {
+      "name": "shipping entry, health, compression and server/source isolation over HTTP",
+      "passed": true
+    },
+    {
+      "name": "two actual WebSocket clients join a dedicated room and exchange a guest command",
+      "passed": true
+    },
+    {
+      "name": "transport reconnect restores a paused battle without replaying old commands",
+      "passed": true
+    }
+  ]
+}

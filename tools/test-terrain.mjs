@@ -4,7 +4,7 @@ import * as T from 'three';
 import { STAGES } from '../src/data/stages.js';
 import { WINTER_STAGE } from '../src/3d/scenario.js';
 import { getMap,T_BUILD } from '../src/sim/map.js';
-import { roadTerrain,roadSample,roadSegments,roadCellIsDry,roadLayer,ROAD_SUBDIVISIONS } from '../src/3d/road-terrain.js';
+import { roadTerrain,roadSample,roadSegments,roundedRoadSegments,roadCellIsDry,roadLayer,ROAD_SUBDIVISIONS } from '../src/3d/road-terrain.js';
 import { buildBattlefield,tileSurface,worldSurface,terrainPlan } from '../src/3d/environment.js';
 import { seasonFor } from '../src/3d/seasons.js';
 import { WinterWorld } from '../src/3d/world.js';
@@ -52,6 +52,14 @@ test('모든 건설 셀 중심의 도로·눈 보간 알파0과 건설 자리 �
       }
     }
   }
+});
+test('둥근 도로가 기존 적 이동 중심을 모두 덮고 원본 지도·분기·시뮬레이션 길이는 불변',()=>{
+  let curves=0;
+  for(const stage of stages){const map=getMap(stage.id),field=fields.get(stage.id),original=roadSegments(map),curved=roundedRoadSegments(map);
+    assert.deepEqual(field.segments,curved);curves+=curved.filter(s=>Math.abs(s.dx)>.001&&Math.abs(s.dz)>.001).length;
+    for(const s of original)for(let t=0;t<=s.length+.0001;t+=.25){const x=s.ax+s.dx*t,z=s.az+s.dz*t;if(roadCellIsDry(stage,map,Math.floor(x),Math.floor(z)))assert.ok(alphaAt(field.road,x,z)>.999,stage.id+' original movement left the visible road');}
+  }
+  assert.ok(curves>100);assert.equal(JSON.stringify(stages.map(s=>({stage:s,grid:getMap(s.id).grid,paths:getMap(s.id).paths}))),snapshot);
 });
 test('물·원본W 위 다리 셀에 도로와 눈 삼각형이 없고 지면 셀 경계를 넘지 않음',()=>{
   let bridges=0;

@@ -75,6 +75,8 @@
     "test:long-motion": "node tools/test-long-motion.mjs",
     "test:combo-sequences": "node tools/test-combo-sequences.mjs",
     "art:long-motion": "node tools/long-motion-assets.mjs",
-    "art:combo-sequences": "node tools/combo-sequence-assets.mjs"
+    "art:combo-sequences": "node tools/combo-sequence-assets.mjs",
+    "test:graphics-recovery": "node tools/test-graphics-recovery.mjs",
+    "test:public-coop": "node tools/test-public-coop.mjs"
   }
 }

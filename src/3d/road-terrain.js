@@ -12,6 +12,24 @@ export function roadSegments(map) {
   })).filter(s=>s.length>0);
 }
 
+// Paint a rounded ribbon inside the existing movement corridor. Simulation
+// points, path length, enemy speed and build tiles are never modified.
+export function roundedRoadSegments(map,radius=.5){
+  const paths=map.paths.map(path=>{
+    const out=[{...path.pts[0]}];
+    for(let i=1;i<path.pts.length-1;i++){
+      const a=path.pts[i-1],b=path.pts[i],c=path.pts[i+1],incoming=Math.hypot(b.x-a.x,b.y-a.y),outgoing=Math.hypot(c.x-b.x,c.y-b.y);
+      const cross=(b.x-a.x)*(c.y-b.y)-(b.y-a.y)*(c.x-b.x);
+      if(!incoming||!outgoing||Math.abs(cross)<1e-8){out.push({...b});continue;}
+      const r=Math.min(radius,incoming*.35,outgoing*.35),p={x:b.x+(a.x-b.x)*r/incoming,y:b.y+(a.y-b.y)*r/incoming},q={x:b.x+(c.x-b.x)*r/outgoing,y:b.y+(c.y-b.y)*r/outgoing};
+      out.push(p);
+      for(let j=1;j<=8;j++){const t=j/8,s=1-t;out.push({x:s*s*p.x+2*s*t*b.x+t*t*q.x,y:s*s*p.y+2*s*t*b.y+t*t*q.y});}
+    }
+    out.push({...path.pts.at(-1)});return {pts:out};
+  });
+  return roadSegments({paths});
+}
+
 // One union distance field avoids overlapping alpha at bends and shared routes.
 // Width and shading depend only on world coordinates, never path order.
 export function roadSample(segments,x,z) {
@@ -24,7 +42,8 @@ export function roadSample(segments,x,z) {
   const width=.50+(broad-.5)*.12+(grain-.5)*.05;
   const alpha=1-smooth(width-.06,width+.12,distance);
   const wear=noise(x*.71+7,z*.71+12);
-  const shade=.93+broad*.09+(wear-.5)*.045;
+  const rut=Math.exp(-Math.pow((distance-.25)/.065,2))*(.45+.55*wear);
+  const shade=.93+broad*.09+(wear-.5)*.045-rut*.075;
   const powder=alpha*(.14+.51*smooth(.3,.78,wear))*(.24+.76*smooth(.13,.49,distance));
   return {distance,width,alpha,shade,powder};
 }
@@ -37,7 +56,7 @@ export function roadCellIsDry(stage,map,x,z) {
 // All triangles are contained in integer land cells: water and bridge decks
 // remain open even when a feathered road edge lies close to the shore.
 export function roadTerrain(stage) {
-  const map=getMap(stage.id),segments=roadSegments(map),n=ROAD_SUBDIVISIONS;
+  const map=getMap(stage.id),segments=roundedRoadSegments(map),n=ROAD_SUBDIVISIONS;
   const xs=segments.flatMap(s=>[s.ax,s.bx]),zs=segments.flatMap(s=>[s.az,s.bz]);
   const bounds={minX:Math.floor(Math.min(...xs)-.8),maxX:Math.ceil(Math.max(...xs)+.8),minZ:Math.floor(Math.min(...zs)-.8),maxZ:Math.ceil(Math.max(...zs)+.8)};
   const positions=[],uv=[],colors=[],snowColors=[],indices=[],vertices=new Map(),samples=new Map(),cells=[];

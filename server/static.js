@@ -3,13 +3,16 @@ import path from 'node:path';
 
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.jpg':'image/jpeg','.ico':'image/x-icon','.woff2':'font/woff2','.ttf':'font/ttf','.txt':'text/plain; charset=utf-8','.md':'text/markdown; charset=utf-8'};
 const stat=file=>fs.promises.stat(file).catch(()=>null);
-export function staticHandler(root) {
+export function staticHandler(root,{publicOnly=false}={}) {
   root=path.resolve(root);
   return async (req,res)=>{
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{allow:'GET, HEAD'}).end();return;}
     let rel;
     try{rel=decodeURIComponent((req.url||'/').split('?')[0]);}catch{res.writeHead(400).end();return;}
     if(rel==='/')rel='/index.html';
+    // A deployment can contain its own server and manifest without publishing
+    // those files. Only the compiled game, styles and artwork are public.
+    if(publicOnly&&!(/^\/(?:index|3d)\.html$/.test(rel)||/^\/styles\/[\w-]+\.css$/.test(rel)||/^\/assets\/[\w./-]+\.(?:js|css|webp|png|jpg|svg|woff2|ttf|txt)$/.test(rel))){res.writeHead(404).end('not found');return;}
     const file=path.resolve(root,'.'+rel);
     if(!file.startsWith(root+path.sep)||rel.includes('..')||rel.includes('\\')||/\/(\.|node_modules)/.test(rel)){res.writeHead(403).end('forbidden');return;}
     const source=await stat(file);
@@ -19,7 +22,7 @@ export function staticHandler(root) {
     const gzipAccepted=(req.headers['accept-encoding']||'').split(',').some(part=>/^\s*gzip(?:\s*;\s*q=(?:1(?:\.0*)?|0\.[0-9]*[1-9][0-9]*))?\s*$/i.test(part));
     if(compressible&&gzipAccepted){const gz=await stat(file+'.gz');if(gz?.isFile()&&gz.mtimeMs>=source.mtimeMs){selected=file+'.gz';info=gz;encoding='gzip';}}
     const etag=`W/"${info.size.toString(16)}-${info.mtimeMs.toString(16)}-${encoding||'raw'}"`;
-    const headers={'content-type':MIME[path.extname(file)]||'application/octet-stream','cache-control':'no-cache',etag,'last-modified':source.mtime.toUTCString()};
+    const headers={'content-type':MIME[path.extname(file)]||'application/octet-stream','x-content-type-options':'nosniff','cache-control':'no-cache',etag,'last-modified':source.mtime.toUTCString()};
     if(compressible)headers.vary='Accept-Encoding';
     if(encoding)headers['content-encoding']=encoding;
     const tag=req.headers['if-none-match'];

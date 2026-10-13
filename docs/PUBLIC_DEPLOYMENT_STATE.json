@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-10-13T17:28:09.197413+00:00",
+  "decision": "public_deployment_deferred_by_user",
+  "projectId": "bbd087be-1444-4cae-9ac5-866ceeb19aae",
+  "environmentId": "b8b3836e-da15-45f4-a37b-8102651b2be7",
+  "stagedServiceId": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
+  "stagedChanges": 1,
+  "stagedScope": "empty service creation only",
+  "deploymentStarted": false,
+  "domainGenerated": false,
+  "sourceConnected": false,
+  "limitsApplied": false,
+  "plannedLimits": {
+    "replicas": 1,
+    "memoryGB": 0.5,
+    "vCPUs": 0.5
+  },
+  "configurationAttempt": "Service Instance not found for an uncommitted empty service; no live configuration was changed",
+  "localPackageTests": "PUBLIC_PACKAGE_VALIDATION.json",
+  "physicalPhoneOrWanTested": false
+}

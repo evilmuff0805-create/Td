@@ -43,6 +43,18 @@ async function context(heroLooks,combatKinds={enemy:[],ally:[]},Constructor){
 async function test(name,fn){assert.equal(pending.length,0,'Previous test has no pending loads');await fn();assert.equal(pending.length,0);results.push({name,passed:true});console.log('  ✔ '+name);}
 let memory;
 try{
+  await test('원본 프레임 크기 유지·중복 시트 해제·품질 전환 뒤 사망 그림자 비복원',async()=>{
+    const {art,world}=await context([{heroId:'yi'}]);await settle(art);
+    const sheet=art.heroPoses.yi;assert.equal(sheet.canvas,null);assert.ok(sheet.releasedSheetBytes>0);
+    for(let i=0;i<sheet.frames.length;i++){assert.equal(sheet.isolated[i].canvas.width,sheet.frames[i].width+24);assert.equal(sheet.isolated[i].canvas.height,sheet.frames[i].height+24);}
+    const memory=art.characterMemory();assert.ok(memory.characterCanvasBytes>0);assert.ok(memory.releasedSheetBytes>=sheet.releasedSheetBytes);
+    const root=world.unit({id:1,heroId:'yi',hp:100},true),d=root.userData.fixedImage;world.scene.add(root);
+    assert.equal(d.image.material.forceSinglePass,true);assert.equal(d.hint.material.forceSinglePass,true);assert.equal(d.shadow.material.forceSinglePass,true);
+    world.renderer.setPixelRatio=()=>{};world.renderer.shadowMap={};world.resize=()=>{};
+    const savedDpr=globalThis.devicePixelRatio;globalThis.devicePixelRatio=1;
+    try{world.quality(false);assert.equal(d.shadow.visible,false);assert.equal(d.contact.visible,true);art.updateDeath(root,.9,1.3);world.quality(true);assert.equal(d.shadow.visible,false);assert.equal(d.contact.visible,false);art.updateUnit(root,{id:1,heroId:'yi',hp:100},false,0,0);assert.equal(d.shadow.visible,true);assert.equal(d.contact.visible,true);}finally{if(savedDpr===undefined)delete globalThis.devicePixelRatio;else globalThis.devicePixelRatio=savedDpr;}
+    world.disposeCharacter(root);art.dispose();assert.equal(art.characterMemory().characterCanvasBytes,0);
+  });
   await test('기본 로스터는 유효한 영웅만 정렬·중복 제거하며 미지정 8명과 빈 목록을 구분한다',()=>{
     assert.equal(heroPoseRoster().length,8);assert.deepEqual(heroPoseRoster([]),[]);assert.deepEqual(heroPoseRoster(null),[]);
     const heroes=[{heroId:'yi',skin:'yi_white'},{heroId:'sejong'},{heroId:'yi',skin:'yi_gold'},null,{heroId:'toString'},{heroId:'invalid'}];
@@ -94,7 +106,7 @@ try{
     for(const failBase of [false,true]){const {art}=await context([{heroId:'yi',skin:'yi_gold'}]);for(const p of pending.filter(p=>p.kind==='skin'))finish(p,true);if(failBase)finishBase('yi',true);await settle(art);const shown=art.unitArt({heroId:'yi',skin:'yi_gold'},true);assert.ok(shown);if(!failBase)assert.equal(shown,art.heroPoses.yi);else assert.equal(shown.poseAtlas,undefined);assert.equal(art.unitInbetweens({heroId:'yi',skin:'yi_gold'},shown),null);art.dispose();}
   });
   await test('별도 전장의 기본 캔버스·텍스처는 공유하지 않고 한쪽 종료가 다른 쪽을 손상시키지 않는다',async()=>{
-    const a=await context([{heroId:'yi'}]);await settle(a.art);const start=requests.length,b=await context([{heroId:'yi'}],undefined,a.FixedBattleArt);assert.equal(requests.slice(start).filter(x=>x.kind==='base').length,1);await settle(b.art);assert.notEqual(a.art.heroPoses.yi.canvas,b.art.heroPoses.yi.canvas);const ra=a.world.unit({id:1,heroId:'yi',hp:100},true),rb=b.world.unit({id:1,heroId:'yi',hp:100},true);assert.notEqual(ra.userData.fixedImage.image.material.map,rb.userData.fixedImage.image.material.map);let otherDisposed=0;rb.userData.fixedImage.image.material.map.addEventListener('dispose',()=>otherDisposed++);a.world.disposeCharacter(ra);a.art.dispose();assert.equal(otherDisposed,0);assert.ok(b.art.heroPoses.yi);b.world.disposeCharacter(rb);b.art.dispose();assert.equal(otherDisposed,1);
+    const a=await context([{heroId:'yi'}]);await settle(a.art);const start=requests.length,b=await context([{heroId:'yi'}],undefined,a.FixedBattleArt);assert.equal(requests.slice(start).filter(x=>x.kind==='base').length,1);await settle(b.art);assert.notEqual(a.art.heroPoses.yi.isolated[0].canvas,b.art.heroPoses.yi.isolated[0].canvas);const ra=a.world.unit({id:1,heroId:'yi',hp:100},true),rb=b.world.unit({id:1,heroId:'yi',hp:100},true);assert.notEqual(ra.userData.fixedImage.image.material.map,rb.userData.fixedImage.image.material.map);let otherDisposed=0;rb.userData.fixedImage.image.material.map.addEventListener('dispose',()=>otherDisposed++);a.world.disposeCharacter(ra);a.art.dispose();assert.equal(otherDisposed,0);assert.ok(b.art.heroPoses.yi);b.world.disposeCharacter(rb);b.art.dispose();assert.equal(otherDisposed,1);
   });
   await test('종료한 소유자는 모든 map·원화 참조를 비우고 늦은 완료·재호출이 DOM과 캐시를 되살리지 않는다',async()=>{
     const {world,art}=await context([{heroId:'yi',skin:'yi_gold'}]),all=art.promise;art.dispose();const before={...world.renderer.domElement.dataset};await settle(art);await all;assert.deepEqual(world.renderer.domElement.dataset,before);assert.equal(art.textures.size,0);assert.equal(art.materials.size,0);assert.equal(art.geometries.size,0);assert.equal(art.heroPoseRequests.size,0);assert.deepEqual(art.heroPoses,{});assert.deepEqual(art.skinPoses,{});assert.deepEqual(art.inbetweenPoses,{});assert.equal(art.yi,null);assert.equal(art.ready,false);assert.equal(art.loading,false);const count=requests.length;art.prepareHeroLooks([{heroId:'sejong'}]);assert.equal(requests.length,count);
