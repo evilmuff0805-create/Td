@@ -1,0 +1,101 @@
+{
+  "recordedAt": "2026-10-14T23:42:15.344313+00:00",
+  "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
+  "scope": "Targeted regressions completed during implementation. Final public tests are reported separately. Previous full 451-test/34-group baseline was not rerun in full.",
+  "tests": 136,
+  "groups": 11,
+  "allPassed": true,
+  "results": [
+    {
+      "command": "node tools/test-touch-motion.mjs",
+      "tests": 18,
+      "passed": true,
+      "report": "TOUCH_MOTION_RUNTIME_VALIDATION.json"
+    },
+    {
+      "command": "node tools/test-sprite-motion.mjs",
+      "tests": 15,
+      "passed": true
+    },
+    {
+      "command": "node tools/test-motion-transitions.mjs",
+      "tests": 15,
+      "passed": true,
+      "report": "MOTION_TRANSITION_RUNTIME_VALIDATION.json"
+    },
+    {
+      "command": "node tools/test-long-motion.mjs",
+      "tests": 13,
+      "passed": true,
+      "report": "LONG_MOTION_RUNTIME_VALIDATION.json"
+    },
+    {
+      "command": "node tools/test-device-readiness.mjs",
+      "tests": 12,
+      "passed": true
+    },
+    {
+      "command": "node tools/test-build-layout.mjs",
+      "tests": 8,
+      "passed": true
+    },
+    {
+      "command": "node tools/test-graphics-recovery.mjs",
+      "tests": 4,
+      "passed": true
+    },
+    {
+      "command": "node tools/test-network-recovery.mjs",
+      "tests": 22,
+      "passed": true
+    },
+    {
+      "command": "node tools/selftest.mjs",
+      "tests": 14,
+      "passed": true
+    },
+    {
+      "command": "node tools/test-web-release.mjs",
+      "tests": 14,
+      "passed": true,
+      "report": "WEB_RELEASE_VALIDATION.json"
+    },
+    {
+      "command": "node tools/check-motion-determinism.mjs",
+      "tests": 1,
+      "passed": true
+    }
+  ],
+  "determinism": {
+    "checkCount": 1,
+    "completeSeededBattles": 2,
+    "fixtureUnmodified": true,
+    "results": [
+      {
+        "mode": "solo",
+        "seed": 42,
+        "tick": 29590,
+        "lives": 18,
+        "sha256": "197d7cc6c0ab46485874691b0e1a2bee5f4065896a017566c635ef7e25c15721"
+      },
+      {
+        "mode": "coop",
+        "seed": 7,
+        "tick": 29082,
+        "lives": 14,
+        "sha256": "020eb8c69ee2a24ca286bb925abeace7019e78a27e43a7d8bd36f44a2e4c681b"
+      }
+    ]
+  },
+  "initialEnvironmentFailures": [
+    "Local WebSocket test could not connect under default sandbox; rerun with network permission passed all 22 checks.",
+    "Initial development pointer helper raised native pointer-capture errors for synthetic IDs; helper was fixed before final source commit and browser retest."
+  ],
+  "publicNetwork": {
+    "report": "PUBLIC_NETWORK_VALIDATION.json",
+    "tests": 3,
+    "allPassed": true
+  },
+  "localCoopPreserved": true,
+  "physicalPhoneTested": false
+}

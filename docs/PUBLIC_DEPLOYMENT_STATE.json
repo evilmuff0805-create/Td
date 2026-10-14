@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-10-14T12:29:52Z",
-  "decision": "public_deployment_explicitly_approved_and_completed",
+  "generatedAt": "2026-10-14T23:42:15.344313+00:00",
+  "decision": "existing_authorized_public_service_updated_with_touch_and_walking_fixes",
   "previousDecision": "Public deployment was deferred; user explicitly resumed with 지금 배포해줘.",
   "origin": "https://hoguk-game-production.up.railway.app",
   "playUrl": "https://hoguk-game-production.up.railway.app/?mute=1",
   "projectId": "bbd087be-1444-4cae-9ac5-866ceeb19aae",
   "environmentId": "b8b3836e-da15-45f4-a37b-8102651b2be7",
   "serviceId": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
-  "deploymentId": "3dc30a4c-f08d-4656-935b-5f549172e3e3",
+  "deploymentId": "fda344fb-ac8b-4136-8247-6e49381efd4a",
   "deploymentStatus": "SUCCESS",
   "deploymentStarted": true,
   "domainGenerated": true,
   "sourceConnected": true,
-  "sourceCommit": "1b67aae9b4be16de90c352fdb6da62c2c2971f93",
+  "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
   "autoDeployOnPush": false,
   "limitsApplied": true,
   "appliedLimits": {
@@ -30,14 +30,14 @@
   },
   "pendingChanges": 0,
   "realLinuxDockerBuildPassed": true,
-  "containerImageDigest": "sha256:94c1ddc563a0c54a2dcd83e94012df2030355d4d2a32f966e55932ad457b9f89",
+  "containerImageDigest": "sha256:a96f9f58771039943c585bbac0bcbc9d9c28864902a1a44011ad1cc4b40f393e",
   "containerBuild": {
     "entryBytes": 984,
-    "scriptBytes": 1445112,
-    "scriptGzipBytes": 409036,
+    "scriptBytes": 1449355,
+    "scriptGzipBytes": 410320,
     "artFiles": 198,
     "artBytes": 125391288,
-    "totalBytes": 128924969,
+    "totalBytes": 128931984,
     "out": "/build/dist/web"
   },
   "buildPackageManager": "pnpm@11.28.5",
@@ -51,8 +51,8 @@
     "webSocketPath": "/ws"
   },
   "publicNetworkTests": "PUBLIC_NETWORK_VALIDATION.json",
-  "realBrowserTests": "PUBLIC_BROWSER_VALIDATION.json",
-  "astraReview": "PUBLIC_DEPLOYMENT_ASTRA_REVIEW.json",
+  "realBrowserTests": "TOUCH_MOTION_PUBLIC_BROWSER_VALIDATION.json",
+  "astraReview": "TOUCH_MOTION_ASTRA_REVIEW.json",
   "localCoopPreserved": true,
   "physicalPhoneOrWanTwoDeviceTested": false,
   "persistentRooms": false,
@@ -65,7 +65,7 @@
     "source": {
       "repo": "evilmuff0805-create/Td",
       "branch": "claude/korean-hero-tower-defense-i8ard8",
-      "commitSha": "1b67aae9b4be16de90c352fdb6da62c2c2971f93"
+      "commitSha": "86336aabcf7aa20dc8f38764feb82fbe331fa53e"
     },
     "networking": {
       "serviceDomains": {
@@ -99,5 +99,24 @@
         }
       }
     }
-  }
+  },
+  "previousDeployment": {
+    "generatedAt": "2026-10-14T12:29:52Z",
+    "deploymentId": "3dc30a4c-f08d-4656-935b-5f549172e3e3",
+    "sourceCommit": "1b67aae9b4be16de90c352fdb6da62c2c2971f93",
+    "containerImageDigest": "sha256:94c1ddc563a0c54a2dcd83e94012df2030355d4d2a32f966e55932ad457b9f89",
+    "containerBuild": {
+      "entryBytes": 984,
+      "scriptBytes": 1445112,
+      "scriptGzipBytes": 409036,
+      "artFiles": 198,
+      "artBytes": 125391288,
+      "totalBytes": 128924969,
+      "out": "/build/dist/web"
+    }
+  },
+  "previousTwoBrowserCoopTests": "PUBLIC_BROWSER_VALIDATION.json",
+  "previousDeploymentAstraReview": "PUBLIC_DEPLOYMENT_ASTRA_REVIEW.json",
+  "publicBundleIdentity": "TOUCH_MOTION_PUBLIC_VALIDATION.json",
+  "liveStateEvidence": "TOUCH_MOTION_RAILWAY_VALIDATION.json"
 }

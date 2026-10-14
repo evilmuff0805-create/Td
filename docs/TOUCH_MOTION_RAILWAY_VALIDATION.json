@@ -1,0 +1,122 @@
+{
+  "recordedAt": "2026-10-14T23:41:59.370Z",
+  "service": {
+    "service": {
+      "id": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
+      "name": "hoguk-game",
+      "state": "live"
+    },
+    "environment": {
+      "id": "b8b3836e-da15-45f4-a37b-8102651b2be7",
+      "name": "production"
+    },
+    "staged": null,
+    "config": {
+      "source": {
+        "repo": "evilmuff0805-create/Td",
+        "branch": "claude/korean-hero-tower-defense-i8ard8",
+        "commitSha": "86336aabcf7aa20dc8f38764feb82fbe331fa53e"
+      },
+      "networking": {
+        "serviceDomains": {
+          "hoguk-game-production.up.railway.app": {
+            "port": 8080
+          }
+        }
+      },
+      "build": {
+        "builder": "DOCKERFILE",
+        "buildEnvironment": "V3",
+        "dockerfilePath": "Dockerfile"
+      },
+      "deploy": {
+        "healthcheckPath": "/_health",
+        "limitOverride": {
+          "containers": {
+            "cpu": 0.5,
+            "memoryBytes": 500000000
+          }
+        },
+        "healthcheckTimeout": 120,
+        "restartPolicyMaxRetries": 3,
+        "sleepApplication": true,
+        "useLegacyStacker": false,
+        "ipv6EgressEnabled": false,
+        "runtime": "V2",
+        "multiRegionConfig": {
+          "asia-southeast1-eqsg3a": {
+            "numReplicas": 1
+          }
+        }
+      }
+    },
+    "stagedChanges": [],
+    "variableNames": [],
+    "volumes": [],
+    "domains": {
+      "serviceDomains": [
+        {
+          "id": "84227e3c-7f60-4cef-b2af-43e57765fba6",
+          "domain": "hoguk-game-production.up.railway.app",
+          "targetPort": 8080
+        }
+      ],
+      "customDomains": []
+    },
+    "tcpProxies": [],
+    "latestDeployment": {
+      "id": "fda344fb-ac8b-4136-8247-6e49381efd4a",
+      "status": "SUCCESS",
+      "createdAt": "2026-10-14T14:18:16.690Z",
+      "url": null
+    },
+    "tracing": {
+      "tracingEnabled": false,
+      "autoInstrumentationEnabled": false,
+      "autoInstrumentationActive": false
+    }
+  },
+  "health": {
+    "environment": {
+      "id": "b8b3836e-da15-45f4-a37b-8102651b2be7",
+      "name": "production"
+    },
+    "services": [
+      {
+        "serviceId": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
+        "serviceName": "hoguk-game",
+        "state": "online",
+        "statusText": "Online",
+        "activeDeployments": [
+          {
+            "id": "fda344fb-ac8b-4136-8247-6e49381efd4a",
+            "status": "SUCCESS",
+            "createdAt": "2026-10-14T14:18:16.690Z",
+            "statusUpdatedAt": "2026-10-14T23:37:23.048Z"
+          }
+        ],
+        "replicaStatus": {
+          "running": 1,
+          "crashed": 0,
+          "total": 1
+        },
+        "cronJob": null,
+        "issues": {
+          "warningCount": 0,
+          "criticalCount": 0
+        },
+        "recentFailures": 0,
+        "recentFailedDeployments": [],
+        "hasIssues": false,
+        "isCronJob": false,
+        "hasVolume": false
+      }
+    ],
+    "pendingWork": [],
+    "summary": {
+      "totalServices": 1,
+      "servicesWithIssues": 0,
+      "totalFailures": 0
+    }
+  }
+}

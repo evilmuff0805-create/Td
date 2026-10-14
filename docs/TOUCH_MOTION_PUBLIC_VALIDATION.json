@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-10-14T14:25:28.486Z",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "publicBundleMatchesFinalLocalSource": true,
+  "bytes": 1449355,
+  "sha256": "951716692a081a1a0ad8f08f31cac4f2b8d6e99c813df157f3f6b74c1744f967",
+  "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
+  "deploymentId": "fda344fb-ac8b-4136-8247-6e49381efd4a"
+}

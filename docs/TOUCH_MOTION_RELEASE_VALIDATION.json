@@ -1,0 +1,109 @@
+{
+  "recordedAt": "2026-10-14T23:42:15.344313+00:00",
+  "clientDate": "2026-10-15",
+  "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
+  "implementationChecksPassed": true,
+  "scope": "Slower distance-based gait, real-time repeated-position hold, explicit touch movement/construction. Same artwork, combat values, server protocol and local2P.",
+  "regression": {
+    "tests": 136,
+    "groups": 11,
+    "allPassed": true,
+    "report": "TOUCH_MOTION_REGRESSION_VALIDATION.json"
+  },
+  "publicTests": {
+    "tests": 3,
+    "allPassed": true,
+    "report": "PUBLIC_NETWORK_VALIDATION.json"
+  },
+  "builds": {
+    "threeBundlesPassed": true,
+    "standaloneBytes": 168636923,
+    "standaloneSha256": "ec0e81136b1ebc2d68cd85df830ebfe85d2e50758c7e843571a1c9d3f8abfa98",
+    "webRelease": {
+      "tests": 14,
+      "passed": true,
+      "entryBytes": 1002,
+      "scriptBytes": 1449355,
+      "scriptGzipBytes": 410320,
+      "artFiles": 198,
+      "artByteIdentical": true,
+      "repeatBodyBytes": 0
+    },
+    "webPackage": {
+      "passed": true,
+      "archive": "dist/hoguk-web.zip",
+      "archiveBytes": 126973553,
+      "archiveSha256": "ec735fe8acc7d7e79a6b96c1b9c29f5ef0f1a59bc2bb39082fe2ef97270a9533",
+      "manifestSha256": "854b49d75908fce46ae9aecbabc9dc64edff6a566c0efd7608eaad01c84e3ce1",
+      "filesIncludingManifest": 224,
+      "manifestFiles": 223,
+      "manifestFileBytes": 128934577,
+      "allFileHashesAndZipBytesMatch": true,
+      "artFiles": 198,
+      "artIsByteIdentical": true,
+      "sourceAndDevFilesExcluded": true
+    },
+    "railwayLinuxBuild": {
+      "entryBytes": 984,
+      "scriptBytes": 1449355,
+      "scriptGzipBytes": 410320,
+      "artFiles": 198,
+      "artBytes": 125391288,
+      "totalBytes": 128931984,
+      "out": "/build/dist/web"
+    }
+  },
+  "publicDeployment": {
+    "id": "fda344fb-ac8b-4136-8247-6e49381efd4a",
+    "status": "SUCCESS",
+    "playUrl": "https://hoguk-game-production.up.railway.app/?mute=1",
+    "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
+    "publicBundleMatchesFinalLocalSource": true,
+    "limitsUnchanged": true
+  },
+  "browser": {
+    "localCoopBothMoved": true,
+    "localCoopFundsAfterBothBuilds": [
+      86,
+      86
+    ],
+    "localCoopTowers": 2,
+    "cssProfiles": [
+      [
+        414,
+        896
+      ],
+      [
+        360,
+        800
+      ],
+      [
+        896,
+        414
+      ]
+    ],
+    "syntheticTouchOnly": true,
+    "developmentRetestPointerCaptureErrors": 0,
+    "developmentRetestUnresolvedMutationObserverErrors": 1,
+    "publicBrowserWarningsAndErrors": 0
+  },
+  "localCoopPreserved": true,
+  "physicalPhoneOrLteTwoDeviceTested": false,
+  "recordSha256": {
+    "TOUCH_MOTION_RUNTIME_VALIDATION.json": "3b7293997bfe881fd8ced981c35b045b0d2076c2842c2390610cf20ed1e1058b",
+    "TOUCH_MOTION_REGRESSION_VALIDATION.json": "489d6024961ed84781da48b3b76dfa0f41c31eddd0ae4fa5fadf1b1613ba7676",
+    "TOUCH_MOTION_BROWSER_VALIDATION.json": "ed5f0a83e96f4e7e9d17209c80c8027107b4203638353a2fff12777939f14bb7",
+    "TOUCH_MOTION_PUBLIC_BROWSER_VALIDATION.json": "7f5f1722703cbf5a09f5b2c3f96664167c59402067cd2fd7b2378ba42ce0e42e",
+    "TOUCH_MOTION_PUBLIC_VALIDATION.json": "bc40f55998fd793135b0a3d9918a42a1ab27630f089d625626bde41271e4c42e",
+    "TOUCH_MOTION_RAILWAY_VALIDATION.json": "dfe71dc28055b6bfd32ebc572f4a8b919935347ddc7aa6f3ec6beab59be0a10f",
+    "TOUCH_MOTION_ASTRA_REVIEW.json": "067983bed1a60c0d1889ef15a0478c9dcfa0d70bb12015521547d81ba8837b5b",
+    "PUBLIC_NETWORK_VALIDATION.json": "f806bfdbf378ca78a3017ec4ada6ce984bb90a4e9cd8f607f62581e57bf19966",
+    "WEB_RELEASE_VALIDATION.json": "e5cd31941888fa0f13ac2e3ad6c13b89bf7668815a381460775f13350e22eae7",
+    "ZIP_PACKAGE_VALIDATION.json": "8f364073428b3f52799325bf96c53b164627a541a400932c1e57d45b1e9ee455"
+  },
+  "limitations": [
+    "No physical-phone touch/LTE or long-duration device performance test.",
+    "One MutationObserver.observe error remained in development iframe inspection; origin not conclusively diagnosed. Separate public browser smoke had no warnings/errors.",
+    "Prior full 451-test baseline retained, not rerun in full."
+  ]
+}
