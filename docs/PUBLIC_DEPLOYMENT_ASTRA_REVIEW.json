@@ -1,0 +1,19 @@
+{
+  "recordedAt": "2026-10-14T12:20:01Z",
+  "reviewer": "GPT-6 Astra",
+  "reasoningEffort": "high",
+  "scope": "Read-only Dockerfile, dockerignore, frozen dependencies, shipping build and public HTTP/WebSocket relay review.",
+  "blockingIssuesFound": 0,
+  "verified": [
+    "Both esbuild entry points compile in memory.",
+    "All 198 referenced shipping artwork files exist; none is excluded by Docker rules and no Linux case mismatch was found.",
+    "The runtime package includes ESM settings and all three server modules without external runtime dependencies.",
+    "PUBLIC_ONLY blocks server, source, development pages and the release manifest.",
+    "HTTPS selects the same-host WSS endpoint."
+  ],
+  "requiredRuntimeChecks": [
+    "Actual Linux Docker build on Railway.",
+    "Real public browser WebSocket connection, including browser Origin/Host validation."
+  ],
+  "filesChangedByReviewer": false
+}

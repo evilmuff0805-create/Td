@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-10-14T12:24:46.800Z",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "transport": "HTTPS/WSS",
+  "scope": "Two Node clients from this PC through the public service. Not two physical devices or LTE.",
+  "tests": 3,
+  "allPassed": true,
+  "results": [
+    {
+      "name": "shipping entry, health, compression and server/source isolation over HTTP",
+      "passed": true
+    },
+    {
+      "name": "two actual WebSocket clients join a dedicated room and exchange a guest command",
+      "passed": true
+    },
+    {
+      "name": "transport reconnect restores a paused battle without replaying old commands",
+      "passed": true
+    }
+  ]
+}

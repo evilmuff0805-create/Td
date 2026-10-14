@@ -1,21 +1,103 @@
 {
-  "generatedAt": "2026-10-13T17:28:09.197413+00:00",
-  "decision": "public_deployment_deferred_by_user",
+  "generatedAt": "2026-10-14T12:29:52Z",
+  "decision": "public_deployment_explicitly_approved_and_completed",
+  "previousDecision": "Public deployment was deferred; user explicitly resumed with 지금 배포해줘.",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "playUrl": "https://hoguk-game-production.up.railway.app/?mute=1",
   "projectId": "bbd087be-1444-4cae-9ac5-866ceeb19aae",
   "environmentId": "b8b3836e-da15-45f4-a37b-8102651b2be7",
-  "stagedServiceId": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
-  "stagedChanges": 1,
-  "stagedScope": "empty service creation only",
-  "deploymentStarted": false,
-  "domainGenerated": false,
-  "sourceConnected": false,
-  "limitsApplied": false,
-  "plannedLimits": {
+  "serviceId": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
+  "deploymentId": "3dc30a4c-f08d-4656-935b-5f549172e3e3",
+  "deploymentStatus": "SUCCESS",
+  "deploymentStarted": true,
+  "domainGenerated": true,
+  "sourceConnected": true,
+  "sourceCommit": "1b67aae9b4be16de90c352fdb6da62c2c2971f93",
+  "autoDeployOnPush": false,
+  "limitsApplied": true,
+  "appliedLimits": {
     "replicas": 1,
     "memoryGB": 0.5,
-    "vCPUs": 0.5
+    "memoryBytes": 500000000,
+    "vCPUs": 0.5,
+    "region": "asia-southeast1-eqsg3a"
   },
-  "configurationAttempt": "Service Instance not found for an uncommitted empty service; no live configuration was changed",
-  "localPackageTests": "PUBLIC_PACKAGE_VALIDATION.json",
-  "physicalPhoneOrWanTested": false
+  "sleepApplication": true,
+  "replicaStatus": {
+    "running": 1,
+    "crashed": 0,
+    "total": 1
+  },
+  "pendingChanges": 0,
+  "realLinuxDockerBuildPassed": true,
+  "containerImageDigest": "sha256:94c1ddc563a0c54a2dcd83e94012df2030355d4d2a32f966e55932ad457b9f89",
+  "containerBuild": {
+    "entryBytes": 984,
+    "scriptBytes": 1445112,
+    "scriptGzipBytes": 409036,
+    "artFiles": 198,
+    "artBytes": 125391288,
+    "totalBytes": 128924969,
+    "out": "/build/dist/web"
+  },
+  "buildPackageManager": "pnpm@11.28.5",
+  "frozenLockfile": true,
+  "publicRuntime": {
+    "nodeMajor": 24,
+    "host": "0.0.0.0",
+    "port": 8080,
+    "publicOnly": true,
+    "healthPath": "/_health",
+    "webSocketPath": "/ws"
+  },
+  "publicNetworkTests": "PUBLIC_NETWORK_VALIDATION.json",
+  "realBrowserTests": "PUBLIC_BROWSER_VALIDATION.json",
+  "astraReview": "PUBLIC_DEPLOYMENT_ASTRA_REVIEW.json",
+  "localCoopPreserved": true,
+  "physicalPhoneOrWanTwoDeviceTested": false,
+  "persistentRooms": false,
+  "limitations": [
+    "Rooms are held in one process; restarting or redeploying discards active rooms.",
+    "Sleep mode may delay the first access after inactivity.",
+    "No physical-phone/LTE, long-running or load test was performed."
+  ],
+  "liveServiceConfig": {
+    "source": {
+      "repo": "evilmuff0805-create/Td",
+      "branch": "claude/korean-hero-tower-defense-i8ard8",
+      "commitSha": "1b67aae9b4be16de90c352fdb6da62c2c2971f93"
+    },
+    "networking": {
+      "serviceDomains": {
+        "hoguk-game-production.up.railway.app": {
+          "port": 8080
+        }
+      }
+    },
+    "build": {
+      "builder": "DOCKERFILE",
+      "buildEnvironment": "V3",
+      "dockerfilePath": "Dockerfile"
+    },
+    "deploy": {
+      "healthcheckPath": "/_health",
+      "limitOverride": {
+        "containers": {
+          "cpu": 0.5,
+          "memoryBytes": 500000000
+        }
+      },
+      "healthcheckTimeout": 120,
+      "restartPolicyMaxRetries": 3,
+      "sleepApplication": true,
+      "useLegacyStacker": false,
+      "ipv6EgressEnabled": false,
+      "runtime": "V2",
+      "multiRegionConfig": {
+        "asia-southeast1-eqsg3a": {
+          "numReplicas": 1
+        }
+      }
+    }
+  }
 }
