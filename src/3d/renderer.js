@@ -38,7 +38,7 @@ export class Renderer3D {
     this.sites=[];const map=getMap(stageId);
     for(let y=0;y<map.h;y++)for(let x=0;x<map.w;x++)if(map.grid[y*map.w+x]===T_BUILD){
       const button=document.createElement('button');button.className='build-site';button.title='이곳에 유산 건설';button.setAttribute('aria-label',`건설 터 ${x+1}, ${y+1}`);
-      button.dataset.gridX=x;button.dataset.gridY=y;button.addEventListener('click',()=>this.onBuild?.(x,y));this.buildLayer.append(button);this.sites.push({x,y,button});
+      button.dataset.gridX=x;button.dataset.gridY=y;button.addEventListener('click',e=>this.onBuild?.(x,y,e));this.buildLayer.append(button);this.sites.push({x,y,button});
     }
     this.p2 = new T.Mesh(new T.RingGeometry(.4, .46, 32), new T.MeshBasicMaterial({ color: '#ee8c77', side: T.DoubleSide, depthWrite: false }));
     this.p2.rotation.x = -Math.PI / 2; this.p2.visible = false; this.world.scene.add(this.p2);
@@ -76,6 +76,7 @@ export class Renderer3D {
     world.draw(ui.clock, dt);
     this.labels.update(game, world, selected, target);
     this.buildLayer.hidden=!ui.showGrid||!!target||!!game.result;
+    this.buildLayer.classList?.toggle('move-mode',!!ui.touchInput&&ui.touchMode!=='build');
     if(!this.buildLayer.hidden)for(const site of this.sites){
       const p=this.screenPoint(site.x+.5,site.y+.5);site.button.hidden=game.towers.some(t=>t.x===site.x&&t.y===site.y)||!p.visible||p.x<20||p.y<20||p.x>this.canvas.clientWidth-20||p.y>this.canvas.clientHeight-20;
       site.button.style.left=`${p.x}px`;site.button.style.top=`${p.y}px`;

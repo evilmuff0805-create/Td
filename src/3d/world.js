@@ -232,7 +232,9 @@ export class WinterWorld {
       hp.quaternion.copy(this.camera.quaternion).premultiply(root.quaternion.clone().invert());
       hp.userData.front.scale.x=.52*ratio;hp.userData.front.position.x=-.26*(1-ratio);
       this.art?.attachUnit(root,e,hero,ally);this.art?.updateUnit(root,e,move,hero||ally?e.anim:cue?Math.max(0,cue.until-game.time):e.swing||0,poseTime,
-        {x:e.x,z:e.y,targetX:e._x1,targetZ:e._y1,time:game.time,dt,frozen:dt===0||game.paused,aimKey:cue?.angle!=null?cue:null});
+        {x:e.x,z:e.y,targetX:e._x1,targetZ:e._y1,time:game.time,dt,frameDt:dt/(game.speed||1),holdMovement:true,
+          walkIntent:hero?(Number.isFinite(e.tx)&&Number.isFinite(e.ty)?Math.hypot(e.tx-e.x,e.ty-e.y)>.01||!!e.moving:e.moving?true:undefined):ally?undefined:move,
+          frozen:dt===0||game.paused,aimKey:cue?.angle!=null?cue:null});
     }
     for(const [key,root] of this.units) if(!activeUnits.has(key)) {
       this.units.delete(key);this.pickables=this.pickables.filter((p)=>p!==root);root.userData.hp.visible=false;

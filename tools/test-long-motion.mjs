@@ -56,7 +56,7 @@ await test('여섯 보행 자세는 같은 거리 주기를 20·60·120fps에서
   const phases=[];
   for(const fps of [20,60,120]){
     let a=updateSpriteMotion(null,sample()),seen=new Set();
-    for(let i=1;i<=fps;i++){a=updateSpriteMotion(a.state,sample({x:8+1.28*i/fps,time:i/fps,dt:1/fps}));seen.add(a.row);}
+    for(let i=1;i<=fps;i++){a=updateSpriteMotion(a.state,sample({x:8+3*i/fps,time:i/fps,dt:1/fps}));seen.add(a.row);}
     assert.deepEqual([...seen].filter(x=>x!==0).sort((a,b)=>a-b),[1,2,4,5,8,9]);phases.push(a.phase);
   }
   assert.ok(phases.every(p=>Math.abs(p-phases[0])<1e-10));

@@ -1,0 +1,81 @@
+{
+  "generatedAt": "2026-10-14T14:06:23.013Z",
+  "tests": 18,
+  "allPassed": true,
+  "scope": "Distance gait cadence, real-time repeated-position holds and actual HUD pointer routing with real solo/local sessions. Synthetic touch events, not physical-phone validation.",
+  "localCoopPreserved": true,
+  "results": [
+    {
+      "name": "normal Yi gait is below ten pose changes per second and keeps real distance",
+      "passed": true
+    },
+    {
+      "name": "20/60/120/144Hz show the same distance phase with all six hero poses",
+      "passed": true
+    },
+    {
+      "name": "60Hz repeated coordinates at 120/144Hz never enter stop recovery while walking",
+      "passed": true
+    },
+    {
+      "name": "snapshot holds expire in real time even if the server clock stalls or speed is 3x",
+      "passed": true
+    },
+    {
+      "name": "actual arrival, attack, stun, pause and teleport override the short movement hold",
+      "passed": true
+    },
+    {
+      "name": "touching buildable grass moves in both 3D and flat fallback without a build menu",
+      "passed": true
+    },
+    {
+      "name": "explicit construction builds once from its owner wallet and returns to movement",
+      "passed": true
+    },
+    {
+      "name": "a touch in construction mode on a path or blocked tile does not order movement",
+      "passed": true
+    },
+    {
+      "name": "hero and existing tower selection retain priority in touch movement mode",
+      "passed": true
+    },
+    {
+      "name": "skill targeting wins over tap or held-touch movement and construction",
+      "passed": true
+    },
+    {
+      "name": "DOM construction markers obey movement and targeting instead of bypassing them",
+      "passed": true
+    },
+    {
+      "name": "mixed canvas/DOM multi-touch cancels both the released tap and trailing marker click",
+      "passed": true
+    },
+    {
+      "name": "dragging over a DOM marker cannot trigger construction on release",
+      "passed": true
+    },
+    {
+      "name": "construction choices also reject a trailing multi-touch click before spending gold",
+      "passed": true
+    },
+    {
+      "name": "switching touch mode cancels an already held canvas press",
+      "passed": true
+    },
+    {
+      "name": "PC left grass click still constructs and right click still moves",
+      "passed": true
+    },
+    {
+      "name": "local P2 keyboard still moves only P2 after P1 touch-mode changes",
+      "passed": true
+    },
+    {
+      "name": "destroy removes every document-wide touch capture handler",
+      "passed": true
+    }
+  ]
+}

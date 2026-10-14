@@ -82,6 +82,20 @@ test('60Hz 전투와 120Hz 화면의 반복 위치에서도 병력·거북선·�
     }
   }
 });
+test('실제 게스트 스냅샷의 도착 직전 moving=false도 반복 화면 프레임에서 걷기를 끊지 않는다',()=>{
+  const session=new Session({kind:'solo',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi']}]}),enc=new SnapshotEncoder(),view=emptyView({stageId:'s1',difficulty:'normal'}),{world,art}=context();
+  applySnapshot(view,enc.encode(session.state,[]));world.sync(view,view.time,1/120,null);
+  for(let i=1;i<=45;i++){
+    const h=session.state.heroes[0];h.x+=.02;h.tx=h.x+.1;h.moving=false;session.state.time=i/60;
+    applySnapshot(view,JSON.parse(JSON.stringify(enc.encode(session.state,[]))));
+    for(const hero of view.heroes){hero.x=hero._x1;hero.y=hero._y1;}
+    assert.equal(view.heroes[0].tx,undefined);
+    world.sync(view,view.time,1/120,null);world.sync(view,view.time,1/120,null);
+    if(i>12){const motion=world.units.get('h'+h.id).userData.fixedImage.motion;assert.equal(motion.visual.settling,false);assert.notEqual(motion.visual.row,0);}
+  }
+  world.reset();art.dispose();session.destroy();
+});
+
 test('발 정리 도중 일시정지와 늦은 위치·공격 패킷은 자세를 유지하고 재개 때만 적용한다',()=>{
   let {a,x,time}=passing();time+=DT;a=updateSpriteMotion(a.state,sample({x,time}));const before={...a};delete before.state;
   for(let i=0;i<6;i++){a=updateSpriteMotion(a.state,sample({x:x+4,time:time+.1,dt:0,frozen:true,actionSeq:1,actionAt:time+.1,facingX:-1}));const visual={...a};delete visual.state;assert.deepEqual(visual,before);}

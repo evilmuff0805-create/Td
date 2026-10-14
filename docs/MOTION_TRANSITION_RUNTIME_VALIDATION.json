@@ -1,6 +1,6 @@
 {
   "date": "2026-10-11",
-  "passed": 14,
+  "passed": 15,
   "scope": "display transitions, paused world transforms, aimed first frame, same-hero local co-op and legacy event fallback; no combat rule changes",
   "tests": [
     {
@@ -17,6 +17,10 @@
     },
     {
       "name": "60Hz 전투와 120Hz 화면의 반복 위치에서도 병력·거북선·충차가 준비 자세로 깜빡이지 않는다",
+      "passed": true
+    },
+    {
+      "name": "실제 게스트 스냅샷의 도착 직전 moving=false도 반복 화면 프레임에서 걷기를 끊지 않는다",
       "passed": true
     },
     {

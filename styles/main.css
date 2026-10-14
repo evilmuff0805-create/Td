@@ -961,6 +961,7 @@ p {
 .game-3d .battle-build-sites { position:absolute; inset:0; pointer-events:none !important; }
 .game-3d .build-site { position:absolute; width:24px; height:16px; transform:translate(-50%,-50%) rotate(-8deg); border:1px solid #e2edb8aa; border-radius:50%; background:#7cb88066; pointer-events:auto; box-shadow:0 0 5px #263d3d88; }
 .game-3d .build-site:hover, .game-3d .build-site:focus-visible { background:#edf1bacc; outline:2px solid #fff6c7; }
+.game-3d .battle-build-sites.move-mode .build-site { pointer-events:none; }
 .game-3d .battle-camera { z-index:4; }
 .game-3d .battle-camera button[aria-pressed='true'] { border-color:#e8d7a6; background:#45635cf0; }
 .game-3d .battle-tower-labels, .game-3d .battle-damage, .game-3d .battle-status { position:absolute; inset:0; pointer-events:none !important; overflow:hidden; }
@@ -1055,6 +1056,10 @@ p {
   flex-direction: column;
   background: #091622;
 }
+.battle-touch-controls { display:flex; align-items:center; justify-content:center; flex:0 0 auto; gap:6px; padding:3px 8px; background:#102636; border-bottom:1px solid #ad956260; }
+.battle-touch-controls button { min-width:56px; min-height:44px; color:#dce5e3; background:#1c3644; border:1px solid #9badad60; border-radius:6px; font:700 14px var(--f-bold); }
+.battle-touch-controls button[aria-pressed='true'] { color:#fff0c4; border-color:#e5cd91; background:#45635c; }
+.battle-touch-controls span { color:#c4d1d0; font-size:12px; }
 #game > .stage-area {
   flex: 1;
 }

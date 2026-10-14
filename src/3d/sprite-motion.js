@@ -3,7 +3,10 @@
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const finite=(n,fallback)=>Number.isFinite(n)?n:fallback;
 const smooth=t=>t*t*(3-2*t);
-const stepLength=kind=>kind==='cavalry'||kind==='courier'?.52:kind==='ram'?.48:kind==='turtle'?.6:.32;
+const heroes=new Set(['yi','sejong','eulji','gang','gwon','gwak','ahn','dangun']);
+// One cycle is two steps. A .64-tile cycle made heroes take almost seven
+// footfalls per second at normal speed; use a walking stride instead.
+const stepLength=kind=>heroes.has(kind)?.75:kind==='cavalry'||kind==='courier'?.7:kind==='ram'?.48:kind==='turtle'?.6:.4;
 const walkRows=[1,4,2,5],stopDuration=.12;
 const longWalkRows=[1,8,4,2,9,5];
 
@@ -38,10 +41,16 @@ export function updateSpriteMotion(previous,input){
   s.wasFrozen=!!input.frozen||dt===0;
   const distance=!reset&&!jump&&!input.stunned&&!input.frozen&&dt>0?Math.hypot(x-s.x,z-s.z):0;
   const snapped=jump||s.frozenJump;
-  if(snapped){s.phase=0;s.blend=0;s.stop=null;s.moving=false;s.frozenJump=false;}
-  if(distance>0.00001)s.phase=(s.phase+distance/(2*stepLength(input.kind)))%1;
+  if(snapped){s.phase=0;s.blend=0;s.stop=null;s.moving=false;s.hasMoved=false;s.frozenJump=false;}
+  const frameDt=clamp(finite(input.frameDt,dt),0,.15);
+  s.moveIdle=distance>.00001?0:(s.moveIdle??0)+frameDt;
+  if(distance>.00001)s.hasMoved=true;
+  // Repeated high-refresh positions or a small snapshot gap are not a fresh
+  // stop/start. Hold the pose briefly; never invent travel or advance phase.
+  const moving=distance>.00001||!!(input.holdMovement&&input.walkIntent!==false&&s.hasMoved&&s.moveIdle<.1&&!input.stunned&&!snapped);
+  if(distance>0.00001){s.phase=(s.phase+distance/(2*stepLength(input.kind)))%1;if(s.phase>1-1e-10)s.phase=0;}
   if(input.stunned)s.blend=0;
-  else if(!input.frozen&&dt>0)s.blend+=(Number(distance>.00001)-s.blend)*(1-Math.exp(-dt*18));
+  else if(!input.frozen&&dt>0)s.blend+=(Number(moving)-s.blend)*(1-Math.exp(-dt*18));
 
   const hasCue=Number.isFinite(input.actionSeq);
   const newAction=hasCue?input.actionSeq>0&&input.actionSeq!==s.seq:input.attack>0&&(s.attack<=0||input.attack>s.attack+.06);
@@ -54,7 +63,7 @@ export function updateSpriteMotion(previous,input){
   const age=Math.max(0,s.clock-s.actionStart),attacking=age<s.duration+tail&&!input.stunned;
   const recovery=attacking?1-smooth(clamp(age/(s.duration+tail),0,1)):0;
   const hitAge=s.clock-s.hitAt,hit=hitAge>=0&&hitAge<.18?Math.sin(Math.PI*hitAge/.18):0;
-  const moving=distance>.00001,grounded=input.kind==='turtle'||input.kind==='ram';
+  const grounded=input.kind==='turtle'||input.kind==='ram';
   if(moving||attacking||input.stunned||snapped)s.stop=null;
   else if(s.moving&&input.inbetweens&&!grounded&&(extended?longWalkRows:walkRows).includes(s.visual?.row)){
     s.stop={elapsed:0,row:s.visual.row,landing:({4:2,5:1,8:1,9:2})[s.visual.row]??s.visual.row,lift:Math.abs(Math.sin(s.phase*Math.PI*2))*.009*s.blend,blend:s.blend};

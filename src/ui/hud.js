@@ -45,6 +45,8 @@ export class GameUI {
     this.stage = STAGE_BY_ID[session.stageId];
     this.map = getMap(session.stageId);
     this.ui = { clock: 0, hover: null, hoverOk: false, placing: null, selTower: null, selHeroes: [], aim: null, p2cursor: null, moveMark: null, buildAt: null, p2intent: null };
+    this.touchInput=(navigator.maxTouchPoints||0)>0||!!window.matchMedia?.('(pointer: coarse)').matches;
+    this.touchMode='move';this.ui.touchInput=this.touchInput;this.ui.touchMode='move';
     // 누가 어디를 만지는지: 협동에서는 내 색과 꼬리표를 칸 위에 띄운다
     const myColor = (this.local ? 0 : this.me) === 1 ? '#d9483b' : '#3d7fd6';
     this.ui.meColor = myColor;
@@ -62,7 +64,7 @@ export class GameUI {
     this.hintTimer = 0;
     this.buildDom();
     try {
-      this.renderer = new rendererClass(this.cv, { overlay: this.overlay, onTowerSelect: id => { if (!this.targeting) this.openTowerPanel(id); }, onBuild: (x,y) => { if(this.canBuildAt(x,y)){this.cancelTargeting();this.openBuildMenu(x,y);} } });
+      this.renderer = new rendererClass(this.cv, { overlay: this.overlay, onTowerSelect: id => { if (!this.targeting) this.openTowerPanel(id); }, onBuild: (x,y,e) => this.buildSiteClick(x,y,e) });
       this.renderer.setup(session.stageId, { mood: profile.settings.mood, quality: profile.settings.quality, heroLooks:session.view.heroes });
     } catch (error) {
       if (!this.is3d) throw error;
@@ -134,14 +136,19 @@ export class GameUI {
     const tip = h('div', { class: 'rotate-tip' }, '화면을 가로로 돌리면 전장이 더 크게 보입니다');
     // 하단
     this.bottom = h('div', { class: 'hud-bottom' });
-    this.el.append(top, this.area, this.bottom);
+    this.touchMoveBtn=h('button',{'aria-pressed':this.touchMode!=='build'?'true':'false',onclick:()=>this.setTouchMode('move')},'이동');
+    this.touchBuildBtn=h('button',{'aria-pressed':this.touchMode==='build'?'true':'false',onclick:()=>this.setTouchMode('build')},'건설');
+    this.touchHint=h('span',{},'빈 땅을 눌러 이동');
+    this.touchControls=h('div',{class:'battle-touch-controls','aria-label':'터치 조작',hidden:!this.touchInput},this.touchMoveBtn,this.touchBuildBtn,this.touchHint);
+    this.cv.dataset.touchMode=this.touchMode||'move';
+    this.el.append(top, this.touchControls, this.area, this.bottom);
     top.after(tip);
     clear(this.root).append(this.el);
     this.buildBottom();
     if (this.is3d) {
       const cam = h('div', { class: 'battle-camera', 'aria-label': '전장 시점' },
         h('span', { class: 'battle-season' }, '고정 시점 · 사계절 전장'),
-        h('button', { 'aria-pressed': 'false', onclick: e => { this.ui.showGrid=!this.ui.showGrid; e.currentTarget.setAttribute('aria-pressed',String(this.ui.showGrid)); } }, '건설 터'),
+        this.gridBtn=h('button', { 'aria-pressed': 'false', onclick: e => { this.ui.showGrid=!this.ui.showGrid; e.currentTarget.setAttribute('aria-pressed',String(this.ui.showGrid)); } }, '건설 터'),
         h('button', { onclick: () => this.renderer.world.home() }, '기본 시점'),
         h('button', { onclick: () => this.rallyHeroes(), title: '내 영웅을 같은 길목에 모읍니다. 협동 동료의 영웅은 동료가 이동합니다.' }, '영웅 집결'));
       this.overlay.append(cam);
@@ -355,6 +362,10 @@ export class GameUI {
     document.removeEventListener('visibilitychange', this.onInputVisibility);
     document.removeEventListener('keydown', this.onKeyDown);
     document.removeEventListener('keyup', this.onKeyUp);
+    document.removeEventListener('pointerdown',this.onTouchDown,true);
+    document.removeEventListener('pointermove',this.onTouchMove,true);
+    document.removeEventListener('pointerup',this.onTouchUp,true);
+    document.removeEventListener('pointercancel',this.onTouchUp,true);
     this.s.destroy();
     this.renderer?.destroy?.();
     audio.stopBgm();
@@ -438,7 +449,7 @@ export class GameUI {
     };
     this.cv.addEventListener('pointermove', (e) => {
       if(this.renderer?.loading||this.s.networkWaiting)return;
-      if (down && Math.hypot(e.clientX-down.x, e.clientY-down.y)>6) { dragged=true; clearTimeout(pressTimer); }
+      if (down && Math.hypot(e.clientX-down.x, e.clientY-down.y)>6) dragged=true;
       const p = pos(e);
       if (!p) return;
       this.mouse = p;
@@ -453,13 +464,30 @@ export class GameUI {
       this.mouse = null;
       if (!this.targeting) this.ui.aim = null;
     });
-    let pressTimer = null;
-    let longPressed = false;
     let down = null, dragged = false, multiTouch = false;
-    const pointers = new Set();
-    this.cancelPress = () => { clearTimeout(pressTimer); pressTimer=null; down=null; pointers.clear(); multiTouch=false; };
-    // Losing focus may swallow keyup/pointerup. Do not keep a local player's
-    // movement key or a touch long-press alive after switching apps.
+    const pointers = new Map();
+    this.cancelPress = () => { down=null; pointers.clear(); multiTouch=false; };
+    const suppress=()=>{this.suppressTouchUntil=performance.now()+350;down=null;};
+    this.onTouchDown=e=>{
+      if(e.pointerType!=='touch')return;
+      pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+      if(pointers.size>1){multiTouch=true;dragged=true;suppress();}
+    };
+    this.onTouchMove=e=>{
+      const start=pointers.get(e.pointerId);
+      if(start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)>6){start.dragged=true;dragged=true;suppress();}
+    };
+    this.onTouchUp=e=>{
+      const start=pointers.get(e.pointerId);
+      if(multiTouch||start?.dragged||e.type==='pointercancel')suppress();
+      pointers.delete(e.pointerId);if(!pointers.size)multiTouch=false;
+    };
+    // Also count fingers on construction markers and the mode buttons.
+    document.addEventListener('pointerdown',this.onTouchDown,true);
+    document.addEventListener('pointermove',this.onTouchMove,true);
+    document.addEventListener('pointerup',this.onTouchUp,true);
+    document.addEventListener('pointercancel',this.onTouchUp,true);
+    // Losing focus may swallow keyup/pointerup. Release both players' input.
     this.onInputBlur=()=>{this.p2keys.clear();this.cancelPress();};
     this.onInputGraphics=()=>{this.onInputBlur();this.closePop();this.closeP2Menu();this.cancelTargeting();};
     this.onInputVisibility=()=>{if(document.hidden)this.onInputBlur();};
@@ -469,27 +497,14 @@ export class GameUI {
     this.cv.addEventListener('pointerdown', (e) => {
       if(this.renderer?.loading||this.s.networkWaiting)return;
       audio.init();
-      clearTimeout(pressTimer); pressTimer=null; pointers.add(e.pointerId);
+      if(e.pointerType==='touch'&&!pointers.has(e.pointerId))this.onTouchDown(e);
       if(pointers.size>1){multiTouch=true;dragged=true;down=null;return;}
       down = { x:e.clientX, y:e.clientY }; dragged=false;
-      if (e.button === 2) return;
-      longPressed = false;
-      if (e.pointerType === 'touch') {
-        const p = pos(e);
-        if (!p) return;
-        pressTimer = setTimeout(() => {
-          pressTimer=null;
-          if(!down||dragged||pointers.size!==1||this.destroyed||this.renderer?.loading||this.s.networkWaiting)return;
-          longPressed = true;
-          this.moveHeroTo(p.x, p.y);
-        }, 480);
-      }
     });
     this.cv.addEventListener('pointerup', (e) => {
       if(this.renderer?.loading||this.s.networkWaiting){this.cancelPress();return;}
-      clearTimeout(pressTimer);
-      pointers.delete(e.pointerId);
-      if(multiTouch){if(!pointers.size)multiTouch=false;down=null;return;}
+      if(e.pointerType==='touch')this.onTouchUp(e);
+      if(multiTouch||e.pointerType==='touch'&&performance.now()<(this.suppressTouchUntil||0)){down=null;return;}
       const wasDown=!!down; down=null;
       if (!wasDown || (this.is3d && dragged)) return;
       if (this.is3d && e.button === 2) {
@@ -498,8 +513,10 @@ export class GameUI {
         else {this.closePop();this.moveHeroTo(p.x,p.y);}
         return;
       }
-      if (e.button === 2 || longPressed) return;
-      const p=pos(e); if(p) this.leftClick(p);
+      if (e.button === 2) return;
+      const p=pos(e);
+      if(e.pointerType==='touch')this.enableTouchInput();
+      if(p) this.leftClick(p,{touch:e.pointerType==='touch'});
     });
     this.cv.addEventListener('pointercancel', this.cancelPress);
     this.cv.addEventListener('contextmenu', (e) => {
@@ -522,7 +539,33 @@ export class GameUI {
     return !this.s.view.towers.some((t) => t.x === x && t.y === y);
   }
 
-  leftClick(p) {
+  enableTouchInput() {
+    if(this.touchInput)return;
+    this.touchInput=true;this.ui.touchInput=true;
+    if(this.touchControls){this.touchControls.hidden=false;this.resize();}
+  }
+
+  setTouchMode(mode) {
+    if(this.renderer?.loading||this.s.networkWaiting)return;
+    this.cancelPress?.();this.closePop();this.cancelTargeting();
+    this.touchMode=mode==='build'?'build':'move';this.ui.touchMode=this.touchMode;
+    this.ui.showGrid=this.touchMode==='build';
+    this.gridBtn?.setAttribute('aria-pressed',String(this.ui.showGrid));
+    this.touchMoveBtn?.setAttribute('aria-pressed',String(this.touchMode==='move'));
+    this.touchBuildBtn?.setAttribute('aria-pressed',String(this.touchMode==='build'));
+    if(this.touchHint)this.touchHint.textContent=this.touchMode==='build'?'빈 터를 눌러 건설':'빈 땅을 눌러 이동';
+    if(this.cv?.dataset)this.cv.dataset.touchMode=this.touchMode;
+  }
+
+  buildSiteClick(x,y,event) {
+    if(this.renderer?.loading||this.s.networkWaiting||this.targeting||performance.now()<(this.suppressTouchUntil||0))return;
+    const touch=event?.pointerType==='touch'||this.touchInput&&event?.pointerType!=='mouse';
+    if(touch)this.enableTouchInput();
+    if(touch&&this.touchMode!=='build'){this.closePop();this.moveHeroTo(x+.5,y+.5);return;}
+    if(this.canBuildAt(x,y)){this.cancelPress?.();this.openBuildMenu(x,y);}
+  }
+
+  leftClick(p,{touch=false}={}) {
     if(this.renderer?.loading||this.s.networkWaiting)return;
     const v = this.s.view;
     if (this.targeting) {
@@ -551,13 +594,16 @@ export class GameUI {
       this.openTowerPanel(tower.id);
       return;
     }
+    if(touch&&this.touchMode!=='build'){
+      this.closePop();this.moveHeroTo(p.x,p.y);return;
+    }
     if (this.canBuildAt(tx, ty)) {
       this.openBuildMenu(tx, ty);
       return;
     }
     this.closePop();
     // 길이나 빈 곳 클릭: 선택한 영웅 이동
-    this.moveHeroTo(p.x, p.y);
+    if(!touch)this.moveHeroTo(p.x, p.y);
   }
 
   selectHero(i) {
@@ -950,9 +996,10 @@ export class GameUI {
   }
 
   build(x, y, type) {
-    if(this.renderer?.loading||this.s.networkWaiting)return;
+    if(this.renderer?.loading||this.s.networkWaiting||performance.now()<(this.suppressTouchUntil||0))return;
     this.s.send({ t: 'build', p: this.me, x, y, tower: type });
     this.closePop();
+    if(this.touchInput&&this.touchMode==='build')this.setTouchMode('move');
   }
 
   // ───────────────────────── 원형 명령 고리 ─────────────────────────
@@ -1455,7 +1502,7 @@ export class GameUI {
     } else {
       rows = [
         ['클릭', '빈 터: 유산 건설 · 유산: 정보/강화 · 영웅: 선택'],
-        ['우클릭 / 길 클릭', '선택한 영웅 이동 (터치: 길게 누르기)'],
+        ['우클릭 / 길 클릭', '선택한 영웅 이동'],
         [this.solo ? 'Q W / E R' : 'Q W', this.solo ? '1번 영웅 / 2번 영웅의 기술·궁극기 (마우스 위치에 시전)' : '영웅 기술 · 궁극기'],
         ['D F', '비기 1 · 2'],
         ['Z X C V', '보급품 (옥 상점에서 산 산삼·궤짝·화차·부적)'],
@@ -1465,6 +1512,7 @@ export class GameUI {
       if (this.solo) rows.push(['Tab / 1 2', '영웅 선택 전환']);
       if (this.s.coop) rows.push(['G', '핑 — 동료에게 위치 알리기']);
     }
+    rows.push(['터치 이동','빈 땅을 눌러 선택한 영웅 이동 · 영웅을 눌러 선택'],['터치 건설','위쪽 건설 버튼 → 빈 터 → 유산 선택 (건설 뒤 이동 모드로 복귀)']);
     if(this.is3d)rows.push(['화면 드래그 / 휠','시점 이동 / 확대·축소 (우클릭 드래그: 회전)'],['영웅 집결','내 영웅을 같은 길목으로 이동']);
     return h('div', { class: 'keys' }, rows.flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)]));
   }
@@ -1495,9 +1543,11 @@ export class GameUI {
     if(v.stageId==='s25'&&v.wave.n>=22)
       if(show('final-reallocate','마지막 적장은 <b>은신 병력</b>을 계속 부릅니다. 탐지를 유지하고, 피해가 적은 유산을 철거해 <b>석굴암의 대광명(A 특화)</b>에 재투자하세요. 특화 유산의 높은 단일 피해가 중요합니다.',{left:'12px',bottom:'12px'}))return;
     if (v.wave.n === 0 && v.towers.length === 0)
-      return show('build', '<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '38%', top: '40%' });
+      return show(this.touchInput?'build-touch-v2':'build', this.touchInput?'<b>빈 땅을 누르면 영웅이 이동</b>합니다. 유산은 위쪽 <b>건설</b> 버튼을 누른 뒤 빈 터를 골라 세우세요. 건설 뒤에는 이동 모드로 돌아갑니다.':'<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '12px', top: '12px' });
     if (v.wave.n === 0 && v.towers.length > 0)
       return show('wave', `파도는 <b>누르지 않아도 저절로</b> 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 <b>출정!</b>(${this.local ? '클릭 또는 2P의 W' : 'N 키'})으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
+    if (v.wave.n >= 2)
+      if(this.touchInput&&show('hero-touch-v2','영웅을 눌러 고르고 <b>빈 땅을 눌러 이동</b>하세요. 기술 버튼을 누른 뒤 지점을 누르면 시전합니다. 건설하려면 위쪽 <b>건설</b> 버튼을 누르세요.',{left:'12px',bottom:'12px'}))return;
     if (v.wave.n >= 2)
       if (show('hero', this.local
         ? '1P는 <b>우클릭</b>으로 영웅을 옮기고, 아래 기술 버튼을 누른 뒤 지점을 클릭해 시전합니다. 2P는 <b>방향키</b>로 움직이고 <b>A·S</b>로 기술을 씁니다.'
