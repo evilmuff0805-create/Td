@@ -1,0 +1,26 @@
+{
+  "repository": "https://github.com/evilmuff0805-create/Td",
+  "branch": "claude/korean-hero-tower-defense-i8ard8",
+  "deployedCommit": "1b67aae9b4be16de90c352fdb6da62c2c2971f93",
+  "documentationCommit": "995381e5a3bb384e55d516fa549e481e819dc878",
+  "remoteCommitVerified": "995381e5a3bb384e55d516fa549e481e819dc878",
+  "verifiedAt": "2026-10-14T12:34:29Z",
+  "publicUrl": "https://hoguk-game-production.up.railway.app/?mute=1",
+  "deploymentId": "3dc30a4c-f08d-4656-935b-5f549172e3e3",
+  "railwayStatus": "SUCCESS",
+  "publicNetworkTests": 3,
+  "publicBrowserSessions": 2,
+  "localCoopPreserved": true,
+  "physicalPhoneOrLteTwoDeviceTested": false,
+  "scope": "Approved single-instance public test deployment and real-browser HTTPS/WSS co-op validation.",
+  "receiptCommitPurpose": "Record verified source and documentation publication; this receipt does not claim its own commit hash.",
+  "recordSha256": {
+    "PUBLIC_DEPLOYMENT_STATE.json": "cdcf14dafcbc80d68f11fcf60a6c7b4e86be3c8a8991e8f72e556fb2ba2046a5",
+    "PUBLIC_NETWORK_VALIDATION.json": "34e52990e6a7e8ac1194fe81b5bf82f3431cd01a16d9c727b5a228d1068c4469",
+    "PUBLIC_BROWSER_VALIDATION.json": "cc227bd512ea13ab8480ad90322b3616ddaa75005f4e7b3a9bcc1039bd1f6791",
+    "PUBLIC_DEPLOYMENT_ASTRA_REVIEW.json": "ae48909981d821cd831ecf15fc97f2a0c2aa905314bccc89cb409ebbf03c38f9",
+    "PUBLIC_DEPLOYMENT.md": "75105957001de9fcc592b3ee563ae3eaf3d31335dd4f92ff1bd095b245ec4c9c",
+    "PROJECT_REVIEW.md": "a8a4ff3129e3168a5eeaed02cb7126d3919d13d376c17addac91b0ea45653f67"
+  },
+  "parentProjectMirrorSha256": "a5954647d54b84444623ae3dd437287928e0cd8ec40d1f4a5bf0870e081957b4"
+}

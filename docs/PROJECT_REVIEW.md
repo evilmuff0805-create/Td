@@ -333,7 +333,7 @@ npm run build
 
 PC 렌더링·원화 캔버스 보관·그래픽 복구·44px 모바일 조작·26지도 도로 마감과451개/34검사군은 [`e91fe75`](https://github.com/evilmuff0805-create/Td/commit/e91fe7537df02324dbffd36d762bc549381f6e31)로 커밋·푸시했다. `git ls-remote`로 실제 원격 브랜치와 구현 커밋의 일치를 2026-10-13T17:41:07.082489+00:00에 확인했다. 실제 로컬2P 건설·독립 지갑, 제품/자유 전장 드라이버 복구, 세 CSS 프레임 크기와 최종 웹 패키지 직접 실행을 기록했다. 당시 공개 배포는 사용자 요청으로 보류했고 실폰·LTE·Docker 이미지 실행은 미검증으로 기록했다. [정확한 범위](DEVICE_AND_ROADS.md) · [릴리스 검사](DEVICE_ROADS_RELEASE_VALIDATION.json) · [원격 확인](DEVICE_ROADS_PUBLISH_RECEIPT.json).
 
-Railway 공개 배포용 pnpm Docker 수정은 [`1b67aae`](https://github.com/evilmuff0805-create/Td/commit/1b67aae9b4be16de90c352fdb6da62c2c2971f93)로 커밋·푸시하고 원격 커밋 일치를 확인했다. 사용자 명시 승인 뒤 이 커밋을 고정해 싱가포르 CPU0.5·메모리0.5GB 서버에 실제 배포했다. 공개 HTTPS/WSS 3검사·실제 브라우저 2인 이동/건설/일시정지와 Astra 하이 검토를 기록하고 상위 프로젝트 문서도 갱신했다. [주소와 배포 기록](PUBLIC_DEPLOYMENT.md) · [적용 설정](PUBLIC_DEPLOYMENT_STATE.json).
+Railway 공개 배포용 pnpm Docker 수정은 [`1b67aae`](https://github.com/evilmuff0805-create/Td/commit/1b67aae9b4be16de90c352fdb6da62c2c2971f93)로 커밋·푸시하고 원격 커밋 일치를 확인했다. 사용자 명시 승인 뒤 이 커밋을 고정해 싱가포르 CPU0.5·메모리0.5GB 서버에 실제 배포했다. 공개 HTTPS/WSS 3검사·실제 브라우저 2인 이동/건설/일시정지와 Astra 하이 검토를 기록하고 상위 프로젝트 문서도 갱신했다. [주소와 배포 기록](PUBLIC_DEPLOYMENT.md) · [적용 설정](PUBLIC_DEPLOYMENT_STATE.json). 공개 검증·주소·프로젝트 기록은 `995381e5a3bb384e55d516fa549e481e819dc878`로 푸시하고 원격 일치를 2026-10-14T12:34:29Z에 확인했다. [GitHub 반영 기록](PUBLIC_DEPLOYMENT_PUBLISH_RECEIPT.json).
 
 이후 완료한 작업 단위마다 다음을 함께 수행한다.
 

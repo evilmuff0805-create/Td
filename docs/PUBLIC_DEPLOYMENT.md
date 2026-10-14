@@ -36,3 +36,5 @@
 Astra 하이 읽기 전용 검토에서 추가 배포 차단 문제는 발견되지 않았다. 제안한 실제 Docker 빌드와 브라우저 Origin/WSS 확인까지 완료했다. [검토 기록](PUBLIC_DEPLOYMENT_ASTRA_REVIEW.json)
 
 이번 변경은 배포용 Docker 두 파일과 기록이며 게임의 전투·로컬2P 로직을 변경하지 않았다. 기존 **451개/34검사군** 통과 기록은 [앞선 릴리스](DEVICE_AND_ROADS.md)에 보존한다. 위 공개 검사는 **한 PC에서 공개 서버를 경유한 검사**다. 실제 PC+휴대폰 LTE 등 서로 다른 물리 기기·네트워크, 장시간 지연·발열·부하 검수는 남아 있다.
+
+배포 소스와 위 검증 기록을 GitHub에 올리고 원격 커밋 일치까지 확인했다. 상위 작업 폴더의 한국어 프로젝트 기록도 함께 갱신했다. [GitHub 반영 기록](PUBLIC_DEPLOYMENT_PUBLISH_RECEIPT.json)
