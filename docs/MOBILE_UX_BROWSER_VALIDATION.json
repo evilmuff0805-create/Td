@@ -826,5 +826,6 @@
       "timestamp": "2026-10-18T06:08:45.300Z"
     }
   ],
-  "allPassed": true
+  "allPassed": true,
+  "consoleNote": "Three existing IAB inspection MutationObserver errors were preserved. No MutationObserver string occurs in src/**/*.js or assets/3d/app.js. They are not counted as confirmed product faults or silently rewritten to zero."
 }

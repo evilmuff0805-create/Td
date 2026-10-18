@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2026-10-18T06:35:30.584846+00:00",
+  "repository": "https://github.com/evilmuff0805-create/Td",
+  "branch": "claude/korean-hero-tower-defense-i8ard8",
+  "approvedSourceCommit": "914386dfafae62d3d5b7f64786948d0272ee6caf",
+  "sourcePushedAndRemoteVerified": true,
+  "remoteSourceHeadVerified": "914386dfafae62d3d5b7f64786948d0272ee6caf",
+  "deploymentId": "7cedb272-b0c4-45a0-9494-ee895a779bd5",
+  "deploymentStatus": "SUCCESS",
+  "publicBundleSHA256": "9f1f732ff733eb369656da4439e0b117ff363acb5f70d2fbd553f889cd65ac28",
+  "allRequiredChecksPassed": true,
+  "projectReviewMirror": "D:/codex/hoguk/호국영웅전_PROJECT_REVIEW.md",
+  "mirrorMatches": true,
+  "publicationScope": "Source is pushed and deployed. This receipt and public verification records are preserved in a subsequent docs-only commit; Railway remains pinned to approvedSourceCommit.",
+  "hashScope": "Local saved bytes; Git may normalize text line endings. Public JS was compared byte-for-byte independently.",
+  "files": {
+    "README.md": "94d5c61a7a6975ccfd68e21b720c42395dd87e73bf72fecd6cf3c9fe253ae19c",
+    "docs/MOBILE_UX.md": "a781f56df856e8e393ea2d319ca33e523b57f0b86cc64195dffb357b8e3f5cd4",
+    "docs/MOBILE_UX_RELEASE_VALIDATION.json": "5502497b95f775deabb9428b900f17e9010b68023e7476be30cd736726d11846",
+    "docs/MOBILE_UX_BUILD_VALIDATION.json": "d4cb02307d35fce37e08f75877e4dd7f46d2611c5cf9b3a0123e9043e7171223",
+    "docs/MOBILE_UX_BROWSER_VALIDATION.json": "8106350c3b9b7285e27aea3e8705dfee556683e5b1e0c22278ae18e7beb85db8",
+    "docs/MOBILE_UX_PUBLIC_BROWSER_VALIDATION.json": "4ba809c01ec95e334e460664b34a401e3287c3c79c58c38e25799f2a6e0a476b",
+    "docs/MOBILE_UX_PUBLIC_BUNDLE_VALIDATION.json": "153410de7f63b385c87f493aeac058a77a6cbfedb8a88907d53bc1024437e09d",
+    "docs/MOBILE_UX_PUBLIC_NETWORK_VALIDATION.json": "1cb76d9bae9c2c970db364887a6f44dd753573a982e5b4a798e4020373ace8fe",
+    "docs/PROJECT_REVIEW.md": "05699ed0a9af9be5d30a3c10c01e4277d7bf502dfd08235271ca31305b1d0f57",
+    "docs/PUBLIC_DEPLOYMENT.md": "50e4d50e7686f6e24ee8de9185d951d9668902ba027af40f75c04bb64822503c",
+    "docs/PUBLIC_DEPLOYMENT_STATE.json": "5502497b95f775deabb9428b900f17e9010b68023e7476be30cd736726d11846",
+    "docs/screenshots/mobile-ux/public-coin-shop.png": "a043e18a1f5b6bb89b66d20c05cd388ccfc7a9fe9c087d791300ee81761cf52c",
+    "docs/screenshots/mobile-ux/public-clear-battle.png": "eb4b753b9a230ed6ba4449675047c272ea0c4311f62778290e4614a62bbde3d4"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-10-18T06:32:04.749Z",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "transport": "HTTPS/WSS",
+  "scope": "Two Node clients from this PC through the public service. Not two physical devices or LTE.",
+  "tests": 6,
+  "allPassed": true,
+  "results": [
+    {
+      "name": "shipping entry, health, compression and server/source isolation over HTTP",
+      "passed": true
+    },
+    {
+      "name": "two actual WebSocket clients join a dedicated room and exchange a guest command",
+      "passed": true
+    },
+    {
+      "name": "transport reconnect restores a paused battle without replaying old commands",
+      "passed": true
+    },
+    {
+      "name": "sustained directional commands use host coordinates over the real connection",
+      "passed": true
+    },
+    {
+      "name": "host background waits for foreground snapshot and guest ACK",
+      "passed": true
+    },
+    {
+      "name": "permanent guest departure stops the started room without takeover or rewards",
+      "passed": true
+    }
+  ]
+}

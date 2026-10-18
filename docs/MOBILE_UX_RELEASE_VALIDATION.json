@@ -1,0 +1,141 @@
+{
+  "generatedAt": "2026-10-18T06:34:33.868Z",
+  "decision": "astra_approved_mobile_ux_fixes_deployed_and_verified",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "playUrl": "https://hoguk-game-production.up.railway.app/?mute=1",
+  "sourceCommit": "914386dfafae62d3d5b7f64786948d0272ee6caf",
+  "deploymentId": "7cedb272-b0c4-45a0-9494-ee895a779bd5",
+  "deploymentStatus": "SUCCESS",
+  "projectId": "bbd087be-1444-4cae-9ac5-866ceeb19aae",
+  "environmentId": "b8b3836e-da15-45f4-a37b-8102651b2be7",
+  "serviceId": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
+  "sourceConnected": true,
+  "deploymentStarted": true,
+  "autoDeployOnPush": false,
+  "pendingChanges": 0,
+  "liveServiceConfig": {
+    "source": {
+      "repo": "evilmuff0805-create/Td",
+      "branch": "claude/korean-hero-tower-defense-i8ard8",
+      "commitSha": "914386dfafae62d3d5b7f64786948d0272ee6caf"
+    },
+    "networking": {
+      "serviceDomains": {
+        "hoguk-game-production.up.railway.app": {
+          "port": 8080
+        }
+      }
+    },
+    "build": {
+      "builder": "DOCKERFILE",
+      "buildEnvironment": "V3",
+      "dockerfilePath": "Dockerfile"
+    },
+    "deploy": {
+      "healthcheckPath": "/_health",
+      "limitOverride": {
+        "containers": {
+          "cpu": 0.5,
+          "memoryBytes": 500000000
+        }
+      },
+      "healthcheckTimeout": 120,
+      "restartPolicyMaxRetries": 3,
+      "sleepApplication": true,
+      "useLegacyStacker": false,
+      "ipv6EgressEnabled": false,
+      "runtime": "V2",
+      "multiRegionConfig": {
+        "asia-southeast1-eqsg3a": {
+          "numReplicas": 1
+        }
+      }
+    }
+  },
+  "replicaStatus": {
+    "running": 1,
+    "crashed": 0,
+    "total": 1
+  },
+  "issues": {
+    "warningCount": 0,
+    "criticalCount": 0
+  },
+  "pendingWork": [],
+  "limitsApplied": true,
+  "appliedLimits": {
+    "replicas": 1,
+    "vCPUs": 0.5,
+    "memoryBytes": 500000000,
+    "region": "asia-southeast1-eqsg3a"
+  },
+  "sleepApplication": true,
+  "realLinuxDockerBuildPassed": true,
+  "containerImageDigest": "sha256:1ec9a3264b63d9bb2e2c29534153496a3d86955c59b6e88efc27a4603a3abe5a",
+  "containerBuild": {
+    "entryBytes": 984,
+    "scriptBytes": 1446656,
+    "scriptGzipBytes": 409720,
+    "artFiles": 195,
+    "artBytes": 125348090,
+    "totalBytes": 127303363,
+    "out": "/build/dist/web"
+  },
+  "regression": {
+    "tests": 525,
+    "groups": 40,
+    "allPassed": true,
+    "record": "MOBILE_UX_REGRESSION_VALIDATION.json"
+  },
+  "directorApproval": "MOBILE_UX_ASTRA_REVIEW.json",
+  "browserValidation": "MOBILE_UX_BROWSER_VALIDATION.json",
+  "publicBrowserValidation": "MOBILE_UX_PUBLIC_BROWSER_VALIDATION.json",
+  "publicNetworkTests": "MOBILE_UX_PUBLIC_NETWORK_VALIDATION.json",
+  "publicNetworkTestCount": 6,
+  "publicBundleIdentity": "MOBILE_UX_PUBLIC_BUNDLE_VALIDATION.json",
+  "publicAppSHA256": "9f1f732ff733eb369656da4439e0b117ff363acb5f70d2fbd553f889cd65ac28",
+  "publicAppBytes": 1446656,
+  "publicBundleExactBytesMatch": true,
+  "windowsBuildRecord": "MOBILE_UX_BUILD_VALIDATION.json",
+  "changes": {
+    "battleOnlyPageZoomGuard": true,
+    "cameraPinchPreserved": true,
+    "viewportRestoredOnLastOwnerExit": true,
+    "waveCardsRemoved": true,
+    "jadeCoinPacks": [
+      {
+        "jade": 10,
+        "coins": 1000
+      },
+      {
+        "jade": 50,
+        "coins": 5000
+      },
+      {
+        "jade": 100,
+        "coins": 10000
+      }
+    ],
+    "atomicCoinExchangeAndConfirm": true
+  },
+  "soloHeroCount": 1,
+  "localCoopRemoved": true,
+  "coopMode": "Room create/join, one distinct hero per player",
+  "persistentRooms": false,
+  "physicalPhoneNativePinchTested": false,
+  "alreadyZoomedPageRecoveryTested": false,
+  "physicalPhoneOrWanTwoDeviceTested": false,
+  "incompleteChecksAcceptedByAstra": true,
+  "limitations": [
+    "Native phone pinch was not reproduced or verified on physical hardware.",
+    "This prevents new page zoom; already enlarged browser pages must reload the new version.",
+    "CSS frames/synthetic pointers and same-PC public clients are not physical-phone/LTE/app-background or endurance QA.",
+    "Rooms are in one process and are lost on restart/redeploy."
+  ],
+  "previousDeployment": {
+    "deploymentId": "e5d77199-a287-4ef7-a10c-6b3bee5f9087",
+    "sourceCommit": "50d843fb515fb798c7322befe1acfbe914e1c05c",
+    "stateArchive": "PUBLIC_DEPLOYMENT_STATE_2026-10-18_ONE_HERO.json"
+  },
+  "allRequiredChecksPassed": true
+}

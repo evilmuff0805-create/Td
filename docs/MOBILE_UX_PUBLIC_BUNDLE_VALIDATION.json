@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-10-18T06:31:59.478Z",
+  "sourceCommit": "914386dfafae62d3d5b7f64786948d0272ee6caf",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "publicAppBytes": 1446656,
+  "publicAppSHA256": "9f1f732ff733eb369656da4439e0b117ff363acb5f70d2fbd553f889cd65ac28",
+  "localAppSHA256": "9f1f732ff733eb369656da4439e0b117ff363acb5f70d2fbd553f889cd65ac28",
+  "gzip": true,
+  "exactBytesMatch": true,
+  "allPassed": true
+}

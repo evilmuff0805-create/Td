@@ -5,9 +5,9 @@
 
 ## 현재 상태
 
-최신 추가 작업은 **모바일 페이지 전체 확대 방지 보강·좌하단 웨이브 설명 제거·옥→엽전 교환**이다. 전투 중에만 문서 핀치를 배제하고 카메라 확대·메뉴/건설 스크롤·두 엄지 조작을 보존하며 종료 때 복원한다. 교환은10옥1,000엽전·50옥5,000·100옥10,000으로 동일 환율이고 확인/부족 잔액/중복/저장을 검사한다. 전체525개/40검사군과 실제CSS414/360/896배치를 통과했으며 아스트라 검토 후 공개 반영을 진행한다. 실제 휴대폰 native pinch 재현/확인은 미완료다. [최신 수정·정확한 한계](MOBILE_UX.md) · [전체 회귀](MOBILE_UX_REGRESSION_VALIDATION.json).
+최신 추가 작업은 **모바일 페이지 전체 확대 방지 보강·좌하단 웨이브 설명 제거·옥→엽전 교환**이다. 전투 중에만 문서 핀치를 배제하고 카메라 확대·메뉴/건설 스크롤·두 엄지 조작을 보존하며 종료 때 복원한다. 교환은10옥1,000엽전·50옥5,000·100옥10,000으로 동일 환율이고 확인/부족 잔액/중복/저장을 검사한다. 전체525개/40검사군과 실제CSS414/360/896배치를 통과했으며 아스트라 승인 후 `914386d`·배포 `7cedb272-b0c4-45a0-9494-ee895a779bd5`의SUCCESS·공개6검사·정식 브라우저·승인 빌드 바이트 일치를 확인했다. 실제 휴대폰 native pinch 재현/확인은 미완료다. [최신 수정·정확한 한계](MOBILE_UX.md) · [전체 회귀](MOBILE_UX_REGRESSION_VALIDATION.json).
 
-현재 전환은 **솔로1영웅·방 코드 온라인 협동·왼쪽 아래 모바일 패드**다. 로컬2인 진입·전용 입력·지휘 인계를 제거했고, 빈 땅 터치로 건설한다. 아스트라가 계획·구현·보통1영웅 솔로 피해1.5배·최종 배포를 승인했으며 이순신의 획득 성장으로25전장×3시드를 완료했다. 전체513개/39검사군·기존 완주2판SHA를 보존했고, 승인 커밋 `50d843f`의 Railway 배포 `e5d77199-a287-4ef7-a10c-6b3bee5f9087`는SUCCESS다. 공개 HTTPS/WSS6검사·공개 브라우저 두 클라이언트·스크립트 바이트 일치를 확인했다. 실제 휴대폰/LTE·앱 전환은 미완료이며 아스트라가 잔여 위험을 명시적으로 수용했다. [전환·검증·정확한 한계](MOBILE_ONLINE.md) · [승인/리스크](MOBILE_ONLINE_RISK_REVIEW.json) · [최종 공개 릴리스](MOBILE_ONLINE_PUBLIC_RELEASE_VALIDATION.json). 아래 과거 로컬2P·2영웅 유지 기록은 각 작업 당시 이력이다.
+앞선1영웅/방 협동 전환은 **솔로1영웅·방 코드 온라인 협동·왼쪽 아래 모바일 패드**다. 로컬2인 진입·전용 입력·지휘 인계를 제거했고, 빈 땅 터치로 건설한다. 아스트라가 계획·구현·보통1영웅 솔로 피해1.5배·최종 배포를 승인했으며 이순신의 획득 성장으로25전장×3시드를 완료했다. 전체513개/39검사군·기존 완주2판SHA를 보존했고, 승인 커밋 `50d843f`의 Railway 배포 `e5d77199-a287-4ef7-a10c-6b3bee5f9087`는SUCCESS다. 공개 HTTPS/WSS6검사·공개 브라우저 두 클라이언트·스크립트 바이트 일치를 확인했다. 실제 휴대폰/LTE·앱 전환은 미완료이며 아스트라가 잔여 위험을 명시적으로 수용했다. [전환·검증·정확한 한계](MOBILE_ONLINE.md) · [승인/리스크](MOBILE_ONLINE_RISK_REVIEW.json) · [최종 공개 릴리스](MOBILE_ONLINE_PUBLIC_RELEASE_VALIDATION.json). 아래 과거 로컬2P·2영웅 유지 기록은 각 작업 당시 이력이다.
 
 2026-10-18 계획→아스트라 본부장 승인→구현→검증→최종 배포 승인 순서를 완료했다. 저장된 편성은 해금된 첫 영웅1명으로 호환하며 재화·성장·구매·성적을 보존한다. 각자 자기 영웅과 군자금만 사용하고, 영구 이탈이 먼저 확정되면 인계·보상·패배 집계 없이 방 입구로 돌아간다. 계획 때 보관했던 패드 초안 stash는 복구용으로 남겨 두었다. [당시 승인 계획](MOBILE_ONLINE_TRANSITION_PLAN.md) · [계획 단계 실행 기록](MOBILE_ONLINE_PLANNING_PROBE.json).
 
@@ -361,3 +361,5 @@ Railway 공개 배포용 pnpm Docker 수정은 [`1b67aae`](https://github.com/ev
 발걸음 주기·반복 좌표 유지·명시적 터치 건설과 관련 검사는 [`86336aa`](https://github.com/evilmuff0805-create/Td/commit/86336aabcf7aa20dc8f38764feb82fbe331fa53e)로 커밋·푸시했다. 같은 소스로 Railway 배포 `fda344fb-ac8b-4136-8247-6e49381efd4a`의 SUCCESS와 공개 스크립트 SHA 일치를 확인했다. 문서·검수 화면·상위 한국어 프로젝트 기록도 함께 갱신한다. [정확한 범위](TOUCH_MOTION.md) · [릴리스 기록](TOUCH_MOTION_RELEASE_VALIDATION.json) · [원격 반영 기록](TOUCH_MOTION_PUBLISH_RECEIPT.json).
 
 솔로1영웅·방 중심 협동·모바일 패드 구현은 [`1842207`](https://github.com/evilmuff0805-create/Td/commit/1842207b08a5a396e3159673917ba4ea7e4c9b8c), 아스트라 최종 승인과 안내 문구 정리는 [`50d843f`](https://github.com/evilmuff0805-create/Td/commit/50d843fb515fb798c7322befe1acfbe914e1c05c)로 푸시했다. 2026-10-18 공개 배포 `e5d77199-a287-4ef7-a10c-6b3bee5f9087`의SUCCESS·공개6검사·브라우저2인·승인 스크립트 SHA 일치를 확인했다. 공개 결과와 한국어 프로젝트 기록을 후속 문서 커밋으로 보관하며 Railway는 승인 소스에 고정한다. [GitHub 반영 영수증](MOBILE_ONLINE_PUBLISH_RECEIPT.json).
+
+모바일 페이지 확대 방지·웨이브 카드 제거·옥→엽전 교환과525개/40검사군·실제CSS세크기 검수는 [`914386d`](https://github.com/evilmuff0805-create/Td/commit/914386dfafae62d3d5b7f64786948d0272ee6caf)로 푸시했다. 같은 소스를 고정한 배포 `7cedb272-b0c4-45a0-9494-ee895a779bd5`의SUCCESS·공개HTTPS/WSS6검사·정식 브라우저·스크립트 바이트 일치를 확인했다. 공개 검증과 한국어 프로젝트 리뷰는 후속 문서 커밋으로 보관하며 게임의 소스 pin은 유지한다. [릴리스/한계](MOBILE_UX_RELEASE_VALIDATION.json) · [반영 기록](MOBILE_UX_PUBLISH_RECEIPT.json).
