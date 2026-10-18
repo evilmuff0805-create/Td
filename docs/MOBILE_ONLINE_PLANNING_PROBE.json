@@ -1,0 +1,63 @@
+{
+  "recordedAt": "2026-10-18T04:39:51.813Z",
+  "clientDate": "2026-10-18",
+  "sourceCommit": "a353f70b1caafbe2008c90dbe2c66c56d09268d2",
+  "scope": "Planning probe on restored released source: eight one-hero states, one second each, real skill/ultimate activation and snapshot round-trip. No stage completion/balance claim and no feature changes.",
+  "allPassed": true,
+  "heroCases": 8,
+  "checks": [
+    {
+      "hero": "yi",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    },
+    {
+      "hero": "sejong",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    },
+    {
+      "hero": "eulji",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    },
+    {
+      "hero": "gang",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    },
+    {
+      "hero": "gwon",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    },
+    {
+      "hero": "gwak",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    },
+    {
+      "hero": "ahn",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    },
+    {
+      "hero": "dangun",
+      "stateAndSnapshotSafe": true,
+      "skillAndUltimateActivated": true,
+      "comboUnavailable": true
+    }
+  ],
+  "legacySavedSoloHeroes": [
+    "yi",
+    "sejong"
+  ],
+  "legacyLocalLoadoutPresent": true
+}

@@ -1,0 +1,140 @@
+{
+  "recordedAt": "2026-10-18T04:42:00.582Z",
+  "clientDate": "2026-10-18",
+  "status": "planning_and_risk_review_only_awaiting_director_approval",
+  "sourceCommit": "a353f70b1caafbe2008c90dbe2c66c56d09268d2",
+  "requestedScope": "One directly controlled hero per player, remove local two-player mode, use room create/join co-op and mobile pad controls.",
+  "approval": {
+    "requiredBy": "User explicitly requested planning, risk validation, then director approval before implementation.",
+    "approver": "GPT-6 Astra, explicitly delegated by the user",
+    "approved": false,
+    "soloDeployedHeroCount": 1,
+    "userConfirmedScope": true
+  },
+  "prototype": {
+    "stash": "811e738ef58d69c05a8d4ce18e19b12061c8cc65",
+    "pushed": false,
+    "deployed": false,
+    "partialRuntimeChecks": 16,
+    "completeRegressionPassed": false,
+    "knownFindings": [
+      {
+        "priority": "P1",
+        "issue": "Sustained direct movement uses delayed guest coordinates and can reverse while holding a constant direction.",
+        "readOnlyReproduction": {
+          "guestX": 14,
+          "hostX": 14.9,
+          "requestedX": 14.75,
+          "nextHostX": 14.863333333333333
+        },
+        "requiredFix": "Transmit normalized direction and derive a finite destination from authoritative host coordinates."
+      },
+      {
+        "priority": "P2",
+        "issue": "Touch HUD hides the whole local P2 companion group.",
+        "resolution": "Superseded if the proposed removal of local 2P is approved."
+      },
+      {
+        "priority": "incomplete_validation",
+        "issue": "Campaign test fixture lacks newly introduced prototype methods and failed before the full campaign regression completed. No passing full-suite claim."
+      }
+    ]
+  },
+  "technicalReview": {
+    "reviewer": "GPT-6 Astra",
+    "reasoningEffort": "high",
+    "agent": "/root/mobile_pad_review",
+    "scope": "Read-only implementation risk assessment and planning probes; technical review is not director approval.",
+    "finalStatus": "completed_findings_reported",
+    "independentReadOnlyHeroChecks": {
+      "heroes": 8,
+      "movementSkillUltimateDeathRespawnJsonSnapshotLerpPassed": true,
+      "comboAtFullGaugeUnavailable": true,
+      "campaignBalanceValidated": false
+    }
+  },
+  "risks": [
+    {
+      "id": "solo_combo_and_balance",
+      "priority": "high",
+      "evidence": [
+        "src/ui/screens-play.js:245",
+        "src/sim/abilities.js:353",
+        "src/data/quests.js:12",
+        "src/data/quests.js:24"
+      ],
+      "finding": "Solo UI requires two heroes; one-hero combo is unavailable and combo missions remain in the quest pool. Existing campaign completion evidence uses previous rosters.",
+      "proposal": "Approve online-only combo UI/mission policy and separately validate single-hero campaign balance."
+    },
+    {
+      "id": "online_roster_validation",
+      "priority": "high",
+      "evidence": [
+        "src/ui/screens-play.js:367",
+        "src/ui/screens-play.js:409"
+      ],
+      "finding": "Peer-provided spec is used directly at host start; the picker alone does not enforce exactly one valid hero per participant.",
+      "proposal": "Validate the received roster at start boundaries, including count, valid ID, displayed selection and distinct heroes."
+    },
+    {
+      "id": "permanent_departure_takeover",
+      "priority": "high",
+      "evidence": [
+        "src/main.js:80",
+        "src/game/session.js:78",
+        "src/sim/sim.js:168",
+        "src/sim/sim.js:99",
+        "src/ui/hud.js:95"
+      ],
+      "finding": "Leave is queued from multiple paths, transfers heroes/towers/gold, and left-owner fallback allows remaining player to control an extra hero.",
+      "proposal": "Approve permanent-departure termination or an explicit alternative. Preserve temporary reconnect grace, remove all implicit two-hero takeover routes."
+    },
+    {
+      "id": "mobile_background_and_delay",
+      "priority": "high",
+      "evidence": [
+        "src/net/net.js:8",
+        "server/rooms.js:5"
+      ],
+      "finding": "30-second room reservation exists but physical-phone background/reconnect is unverified; prototype sustained movement uses stale guest positions.",
+      "proposal": "Host-relative input direction/stop and actual mobile/PC WAN recovery verification."
+    },
+    {
+      "id": "profile_migration",
+      "priority": "medium",
+      "evidence": [
+        "src/meta/profile.js:33",
+        "src/meta/profile.js:75"
+      ],
+      "finding": "Legacy arrays remain intact through merge; changing the default hero count does not migrate saved two-hero rosters.",
+      "proposal": "Normalize selection without resetting currency, unlocks, purchases, upgrades, skins, campaign or quest history."
+    },
+    {
+      "id": "local_fixture_dependency",
+      "priority": "medium",
+      "evidence": [
+        "src/game/session.js:9",
+        "tools/test-campaign.mjs:193",
+        "tools/test-hero-busts.mjs:121"
+      ],
+      "finding": "Local sessions stand in for co-op in many regression and progression tools.",
+      "proposal": "Replace active local-entry tests with explicit rejection, and migrate shared co-op coverage to real host/guest sessions rather than delete it."
+    }
+  ],
+  "planningProbe": "MOBILE_ONLINE_PLANNING_PROBE.json",
+  "decisionsRequiringApproval": [
+    "Online-only combos and explicit online requirement for related mission/full-completion rewards",
+    "Permanent departure ends battle without takeover, victory rewards or defeat count",
+    "Host background explicitly pauses transport/gameplay until return and sync; refresh recovery and host migration excluded",
+    "Single-hero balance validation and bounded corrections; broad late-game rebalancing remains deferred"
+  ],
+  "publicService": {
+    "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
+    "deploymentId": "fda344fb-ac8b-4136-8247-6e49381efd4a",
+    "statusAtRead": "SLEEPING",
+    "noStagedChanges": true,
+    "configUnchanged": true
+  },
+  "featureImplementationStartedForNewPlan": false,
+  "featureDeploymentStartedForNewPlan": false
+}
