@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-10-18T09:46:48.891Z",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "commit": "61d11a81109cb166d1214f4f20be2cef35e8eba3",
+  "deploymentId": "7e67bce7-60b2-449f-b5b7-f58b005e7c39",
+  "passed": true,
+  "results": [
+    {
+      "path": "assets/3d/app.js",
+      "status": 200,
+      "bytes": 1449727,
+      "sha256": "7feafd992355a84b93f2ac654196e28c377b10e8c1a9df7bc7b0ac4526ae3cac",
+      "localSha256": "7feafd992355a84b93f2ac654196e28c377b10e8c1a9df7bc7b0ac4526ae3cac",
+      "exactBytes": true,
+      "sameExceptCRLF": false
+    },
+    {
+      "path": "styles/main.css",
+      "status": 200,
+      "bytes": 66197,
+      "sha256": "b672c9716895f3ccee5cb399997c56f299b9baa0e375804ed30b644271a938c3",
+      "localSha256": "b672c9716895f3ccee5cb399997c56f299b9baa0e375804ed30b644271a938c3",
+      "exactBytes": true,
+      "sameExceptCRLF": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 984,
+      "sha256": "628fc5ca0cfc20aad1d9e6938d9cc56d207e4b1f9e98d7b5b3b10ab2f9efbb66",
+      "localSha256": "c1ce16a09ea1e4a2349dd69347e4b9eb56883eaebede1f6fa8f54d6e617d3510",
+      "exactBytes": false,
+      "sameExceptCRLF": true
+    },
+    {
+      "path": "assets/3d/art/hakikjin-icon-v2.webp",
+      "status": 200,
+      "bytes": 15314,
+      "sha256": "5e0029a73f5da2362ae7301cbb4683fd5438605ab3fabe9d79574f62a879fe3b",
+      "localSha256": "5e0029a73f5da2362ae7301cbb4683fd5438605ab3fabe9d79574f62a879fe3b",
+      "exactBytes": true,
+      "sameExceptCRLF": false
+    },
+    {
+      "path": "assets/3d/art/hakikjin-v2.webp",
+      "status": 200,
+      "bytes": 196008,
+      "sha256": "cbff037c431e106f928d1938b8fa723289be1aff7d15e88f2c99c3d79592c18f",
+      "localSha256": "cbff037c431e106f928d1938b8fa723289be1aff7d15e88f2c99c3d79592c18f",
+      "exactBytes": true,
+      "sameExceptCRLF": false
+    },
+    {
+      "path": "assets/3d/art/hero-abilities-atlas-v1.webp",
+      "status": 200,
+      "bytes": 569438,
+      "sha256": "69bcea27350d4017bb536d2783398fc3533154fd4d8551e7d8cba9413841d218",
+      "localSha256": "69bcea27350d4017bb536d2783398fc3533154fd4d8551e7d8cba9413841d218",
+      "exactBytes": true,
+      "sameExceptCRLF": false
+    }
+  ]
+}

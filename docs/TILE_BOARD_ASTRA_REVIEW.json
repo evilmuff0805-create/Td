@@ -22,5 +22,8 @@
   ],
   "scope": "Same existing Railway service/domain/resource limits. Earned jade shop progression only, not no-exchange or every hero/higher difficulty certification. Physical mobile/LTE not verified.",
   "preDeployConditionsIndependentlyConfirmed": true,
-  "reviewerFinalNote": "Latest508/38 all passed, ZIP/manifest and13 source hashes independently checked; same Railway pinned deployment approved."
+  "reviewerFinalNote": "Latest508/38 all passed, ZIP/manifest and13 source hashes independently checked; same Railway pinned deployment approved.",
+  "postDeployConditionsCompleted": true,
+  "publicReleaseReceipt": "TILE_BOARD_RELEASE_VALIDATION.json",
+  "reviewerPostDeployConfirmed": true
 }

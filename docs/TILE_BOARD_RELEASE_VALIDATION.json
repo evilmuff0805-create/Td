@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-10-18T09:50:39.778Z",
+  "status": "verified_public",
+  "commit": "61d11a81109cb166d1214f4f20be2cef35e8eba3",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "deploymentId": "7e67bce7-60b2-449f-b5b7-f58b005e7c39",
+  "deploymentStatus": "SUCCESS",
+  "source": {
+    "repo": "evilmuff0805-create/Td",
+    "branch": "claude/korean-hero-tower-defense-i8ard8",
+    "commitSha": "61d11a81109cb166d1214f4f20be2cef35e8eba3"
+  },
+  "deploy": {
+    "healthcheckPath": "/_health",
+    "limitOverride": {
+      "containers": {
+        "cpu": 0.5,
+        "memoryBytes": 500000000
+      }
+    },
+    "healthcheckTimeout": 120,
+    "restartPolicyMaxRetries": 3,
+    "sleepApplication": true,
+    "useLegacyStacker": false,
+    "ipv6EgressEnabled": false,
+    "runtime": "V2",
+    "multiRegionConfig": {
+      "asia-southeast1-eqsg3a": {
+        "numReplicas": 1
+      }
+    }
+  },
+  "domain": [
+    {
+      "id": "84227e3c-7f60-4cef-b2af-43e57765fba6",
+      "domain": "hoguk-game-production.up.railway.app",
+      "targetPort": 8080
+    }
+  ],
+  "staged": null,
+  "regression": {
+    "groups": 38,
+    "tests": 508,
+    "allPassed": true
+  },
+  "progression": {
+    "hero": "yi",
+    "difficulty": "normal",
+    "seedCount": 3,
+    "cleared": 75,
+    "expected": 75,
+    "totalBattles": 91,
+    "retries": 16,
+    "policy": "Earned jade shop exchange on retry with normal paid upgrades. Not a no-exchange or human difficulty guarantee."
+  },
+  "publicNetwork": {
+    "tests": 6,
+    "allPassed": true,
+    "receipt": "tile-board/PUBLIC_NETWORK_VALIDATION.json"
+  },
+  "publicBrowser": {
+    "receipt": "tile-board/PUBLIC_BROWSER_VALIDATION.json",
+    "checks": [
+      "host drag slot0→3 and guest drag slot1→5 confirmed on both clients",
+      "two independent bottom-dock builds,156/156→86/86 and4/20 occupancy",
+      "shared pause",
+      "permanent guest departure stops host with no reward/loss record"
+    ],
+    "consoleWarningsAndErrors": 0
+  },
+  "bytesReceipt": "tile-board/PUBLIC_BYTES.json",
+  "zipReceipt": "tile-board/ZIP_PACKAGE_VALIDATION.json",
+  "limits": [
+    "Physical phone native pinch and LTE/two-device play not verified",
+    "All heroes and hard/hell complete campaigns not verified"
+  ],
+  "rollbackNeeded": false
+}

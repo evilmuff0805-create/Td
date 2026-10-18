@@ -1,0 +1,229 @@
+{
+  "generatedAt": "2026-10-18T09:49:46.055Z",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "commit": "61d11a81109cb166d1214f4f20be2cef35e8eba3",
+  "allPassed": true,
+  "scope": "Two real IAB clients on one PC over public HTTPS/WSS, native CUA HUD drags, bottom build, synchronized pause and permanent departure. Not physical mobile/LTE.",
+  "hostErrors": [],
+  "guestErrors": [],
+  "records": [
+    {
+      "kind": "before",
+      "host": [
+        {
+          "drop": "",
+          "gridX": "9",
+          "gridY": "9",
+          "occupant": "own-hero",
+          "slotId": "s1:0"
+        },
+        {
+          "drop": "",
+          "gridX": "7",
+          "gridY": "9",
+          "occupant": "hero",
+          "slotId": "s1:1"
+        }
+      ]
+    },
+    {
+      "kind": "host-drag",
+      "host": [
+        {
+          "drop": "",
+          "gridX": "7",
+          "gridY": "9",
+          "occupant": "hero",
+          "slotId": "s1:1"
+        },
+        {
+          "drop": "",
+          "gridX": "6",
+          "gridY": "2",
+          "occupant": "own-hero",
+          "slotId": "s1:3"
+        }
+      ],
+      "guest": [
+        {
+          "drop": "",
+          "gridX": "7",
+          "gridY": "9",
+          "occupant": "own-hero",
+          "slotId": "s1:1"
+        },
+        {
+          "drop": "",
+          "gridX": "6",
+          "gridY": "2",
+          "occupant": "hero",
+          "slotId": "s1:3"
+        }
+      ]
+    },
+    {
+      "kind": "guest-drag",
+      "host": [
+        {
+          "drop": "",
+          "gridX": "6",
+          "gridY": "2",
+          "occupant": "own-hero",
+          "slotId": "s1:3"
+        },
+        {
+          "drop": "",
+          "gridX": "15",
+          "gridY": "3",
+          "occupant": "hero",
+          "slotId": "s1:5"
+        }
+      ],
+      "guest": [
+        {
+          "drop": "",
+          "gridX": "6",
+          "gridY": "2",
+          "occupant": "hero",
+          "slotId": "s1:3"
+        },
+        {
+          "drop": "",
+          "gridX": "15",
+          "gridY": "3",
+          "occupant": "own-hero",
+          "slotId": "s1:5"
+        }
+      ]
+    },
+    {
+      "kind": "independent-build-and-pause",
+      "host": {
+        "art": [
+          {
+            "assetReadyMs": "3238",
+            "characterCanvasBytes": "122695552",
+            "characterCanvasCount": "480",
+            "combatInbetweenCount": "12",
+            "combatInbetweenExpected": "12",
+            "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+            "combatInbetweenStatus": "ready",
+            "combatPoseCount": "12",
+            "combatPoseExpected": "12",
+            "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+            "combatPoseStatus": "ready",
+            "drawCalls": "137",
+            "effectArtStatus": "ready",
+            "engine": "three.js r186",
+            "fixedArt": "true",
+            "fixedArtStatus": "ready",
+            "fps": "60",
+            "frameP50": "16.7",
+            "frameP95": "17.1",
+            "frameSamples": "60",
+            "frameWorst": "17.6",
+            "geometries": "80",
+            "graphicsRecoveries": "0",
+            "graphicsStatus": "ready",
+            "heroInbetweenActive": "false",
+            "heroInbetweenCount": "2",
+            "heroInbetweenExpected": "2",
+            "heroInbetweenKinds": "sejong,yi",
+            "heroInbetweenLookKey": "sejong,yi",
+            "heroInbetweenStatus": "ready",
+            "heroLongMotionActive": "false",
+            "heroLongMotionCount": "2",
+            "heroLongMotionExpected": "2",
+            "heroLongMotionKinds": "sejong,yi",
+            "heroLongMotionStatus": "ready",
+            "heroPoseCanvasBytes": "10244704",
+            "heroPoseCount": "2",
+            "heroPoseExpected": "2",
+            "heroPoseKinds": "sejong,yi",
+            "heroPoseStatus": "ready",
+            "landmarkArtStatus": "ready",
+            "pixelRatio": "1",
+            "quality": "high",
+            "releasedSheetBytes": "178962912",
+            "renderMode": "3d",
+            "sceneryBarrierCells": "0",
+            "sceneryBarriers": "0",
+            "sceneryCargo": "1",
+            "sceneryCrowns": "9",
+            "sceneryHouses": "3",
+            "sceneryLamps": "7",
+            "sceneryLayout": "clustered",
+            "sceneryLowTrees": "12",
+            "sceneryProps": "40",
+            "sceneryYardFences": "2",
+            "seasonTreeArtStatus": "ready",
+            "signatureArtStatus": "ready",
+            "skinPoseCount": "0",
+            "skinPoseExpected": "0",
+            "skinPoseKinds": "",
+            "skinPoseStatus": "ready",
+            "spriteMotion": "distance-contact-recovery",
+            "tacticArtStatus": "ready",
+            "terrainRoad": "rounded-corridor",
+            "terrainRoadLayers": "1",
+            "terrainRoadTriangles": "3182",
+            "terrainShore": "continuous",
+            "terrainShoreTriangles": "1944",
+            "textures": "45",
+            "touchMode": "tiles",
+            "triangles": "55260",
+            "villagePropArtStatus": "ready",
+            "villagePropSeason": "temperate",
+            "waterTriangles": "7704",
+            "yiFacing": "3",
+            "yiPose": "idle"
+          }
+        ],
+        "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n나 · 수호자\n86\n동료 · 수호자\n86\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n배치 타일\n기본 시점\n영웅 드래그 · 빈 타일 건설\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n배치 4/20 · 영웅 2 · 유산 2 영웅 드래그 · 빈 타일 건설\n이순신 Lv1\n학익진\nQ\n거북선\nW\n9\n신기전\nD\n봉수\nF\n합격기 Space\n공명 0%\n출정!\n9초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\n자격루\n14\n신기전\n봉수",
+        "tiles": [
+          {
+            "drop": "",
+            "gridX": "6",
+            "gridY": "2",
+            "occupant": "own-hero",
+            "slotId": "s1:3"
+          },
+          {
+            "drop": "",
+            "gridX": "15",
+            "gridY": "3",
+            "occupant": "hero",
+            "slotId": "s1:5"
+          }
+        ]
+      },
+      "guest": {
+        "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n동료 · 수호자\n86\n나 · 수호자\n86\n×1\n×2\n×3\n메뉴\n봄 · 부산진 전투\n배치 타일\n기본 시점\n영웅 드래그 · 빈 타일 건설\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n배치 4/20 · 영웅 2 · 유산 2 영웅 드래그 · 빈 타일 건설\n이순신 Lv1\n학익진\n거북선\n9\n신기전\n봉수\n합격기 Space\n공명 0%\n출정!\n9초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\nQ\n자격루\nW\n14\n신기전\nD\n봉수\nF",
+        "tiles": [
+          {
+            "drop": "",
+            "gridX": "6",
+            "gridY": "2",
+            "occupant": "hero",
+            "slotId": "s1:3"
+          },
+          {
+            "drop": "",
+            "gridX": "15",
+            "gridY": "3",
+            "occupant": "own-hero",
+            "slotId": "s1:5"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "permanent-departure",
+      "host": "← 진영\n협동 출정\n●\n400\n엽전\n◆\n20\n옥\n온라인 협동 (방 코드)\n\n호스트가 방을 만들고 코드를 알려 주면 친구가 참가합니다. 두 사람 모두 같은 서버 주소로 접속해야 합니다.\n\n방 만들기\n참가\n\n서버에 연결해 방을 만들거나, 친구의 코드로 참가하세요.",
+      "guest": "진영\n수호자 장수\n●\n400\n엽전\n◆\n20\n옥\n홀로 출정\n영웅 한 명을 이끌고 전장으로 · 최근 전장 부산진 전투\n출정\n협동 출정\n방 만들기 · 방 코드 참가 — 각자 영웅 한 명으로 협동\n2인\n종9품\n권관\n종9품 권관 · 품계 1/18\n다음 품계까지 120 공적 · 0전 0승 · 처치 0\n영웅\n여덟 위인 · 해금과 강화\n비기\n조선의 비밀 병기 · 장착과 강화\n유산\n문화유산 도감 · 복원(영구 강화)\n임무\n일일 · 주간 임무, 출석부\n◆ 옥 상점\n보급품 · 영웅 의복\n설정\n소리 · 이름 · 도움말",
+      "transientMessageObservedInAX": "동료와의 전투가 중단됐습니다. 보상·패배 기록 없이 방을 다시 만들거나 참가해 주세요.",
+      "messageCaptureNote": "Transcribed from the actual post-departure CUA AX result; the temporary toast had disappeared before the later DOM text read."
+    }
+  ],
+  "recordAssertionsPassed": true
+}
