@@ -1,19 +1,49 @@
 {
-  "generatedAt": "2026-10-14T23:42:15.344313+00:00",
-  "decision": "existing_authorized_public_service_updated_with_touch_and_walking_fixes",
-  "previousDecision": "Public deployment was deferred; user explicitly resumed with 지금 배포해줘.",
+  "generatedAt": "2026-10-18T05:34:53.224Z",
+  "decision": "astra_approved_mobile_one_hero_room_only_release_deployed_and_publicly_validated",
   "origin": "https://hoguk-game-production.up.railway.app",
   "playUrl": "https://hoguk-game-production.up.railway.app/?mute=1",
+  "sourceCommit": "50d843fb515fb798c7322befe1acfbe914e1c05c",
+  "implementationCommit": "1842207b08a5a396e3159673917ba4ea7e4c9b8c",
+  "deploymentId": "e5d77199-a287-4ef7-a10c-6b3bee5f9087",
+  "deploymentStatus": "SUCCESS",
   "projectId": "bbd087be-1444-4cae-9ac5-866ceeb19aae",
   "environmentId": "b8b3836e-da15-45f4-a37b-8102651b2be7",
   "serviceId": "40aafaa5-c10c-4c76-ad4a-260a9f3ad0a6",
-  "deploymentId": "fda344fb-ac8b-4136-8247-6e49381efd4a",
-  "deploymentStatus": "SUCCESS",
+  "pendingChanges": 0,
   "deploymentStarted": true,
-  "domainGenerated": true,
   "sourceConnected": true,
-  "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
   "autoDeployOnPush": false,
+  "directorApproval": "MOBILE_ONLINE_RISK_REVIEW.json",
+  "soloHeroCount": 1,
+  "localCoopRemoved": true,
+  "coopMode": "Room create/join, two players, distinct one hero per player",
+  "physicalPhoneOrWanTwoDeviceTested": false,
+  "incompleteChecksExplicitlyAcceptedByAstra": true,
+  "publicBundleSHA256": "221526847ee762fc751cf17cbe42088a769e764c1fdca86994f65cf57f6d2241",
+  "publicBundleExactBytesMatch": true,
+  "realLinuxDockerBuildPassed": true,
+  "containerImageDigest": "sha256:c426bb204b8653f1e37c9490e5468651fbd2dd36c29b4a7cd08504d03a1dc692",
+  "containerBuild": {
+    "entryBytes": 984,
+    "scriptBytes": 1445963,
+    "scriptGzipBytes": 409512,
+    "artFiles": 195,
+    "artBytes": 125348090,
+    "totalBytes": 127303262,
+    "out": "/build/dist/web"
+  },
+  "windowsBuildRecord": "MOBILE_ONLINE_BUILD_VALIDATION.json",
+  "buildPackageManager": "pnpm@11.28.5",
+  "frozenLockfile": true,
+  "publicRuntime": {
+    "nodeMajor": 24,
+    "host": "0.0.0.0",
+    "port": 8080,
+    "publicOnly": true,
+    "healthPath": "/_health",
+    "webSocketPath": "/ws"
+  },
   "limitsApplied": true,
   "appliedLimits": {
     "replicas": 1,
@@ -28,44 +58,11 @@
     "crashed": 0,
     "total": 1
   },
-  "pendingChanges": 0,
-  "realLinuxDockerBuildPassed": true,
-  "containerImageDigest": "sha256:a96f9f58771039943c585bbac0bcbc9d9c28864902a1a44011ad1cc4b40f393e",
-  "containerBuild": {
-    "entryBytes": 984,
-    "scriptBytes": 1449355,
-    "scriptGzipBytes": 410320,
-    "artFiles": 198,
-    "artBytes": 125391288,
-    "totalBytes": 128931984,
-    "out": "/build/dist/web"
-  },
-  "buildPackageManager": "pnpm@11.28.5",
-  "frozenLockfile": true,
-  "publicRuntime": {
-    "nodeMajor": 24,
-    "host": "0.0.0.0",
-    "port": 8080,
-    "publicOnly": true,
-    "healthPath": "/_health",
-    "webSocketPath": "/ws"
-  },
-  "publicNetworkTests": "PUBLIC_NETWORK_VALIDATION.json",
-  "realBrowserTests": "TOUCH_MOTION_PUBLIC_BROWSER_VALIDATION.json",
-  "astraReview": "TOUCH_MOTION_ASTRA_REVIEW.json",
-  "localCoopPreserved": true,
-  "physicalPhoneOrWanTwoDeviceTested": false,
-  "persistentRooms": false,
-  "limitations": [
-    "Rooms are held in one process; restarting or redeploying discards active rooms.",
-    "Sleep mode may delay the first access after inactivity.",
-    "No physical-phone/LTE, long-running or load test was performed."
-  ],
   "liveServiceConfig": {
     "source": {
       "repo": "evilmuff0805-create/Td",
       "branch": "claude/korean-hero-tower-defense-i8ard8",
-      "commitSha": "86336aabcf7aa20dc8f38764feb82fbe331fa53e"
+      "commitSha": "50d843fb515fb798c7322befe1acfbe914e1c05c"
     },
     "networking": {
       "serviceDomains": {
@@ -100,23 +97,52 @@
       }
     }
   },
-  "previousDeployment": {
-    "generatedAt": "2026-10-14T12:29:52Z",
-    "deploymentId": "3dc30a4c-f08d-4656-935b-5f549172e3e3",
-    "sourceCommit": "1b67aae9b4be16de90c352fdb6da62c2c2971f93",
-    "containerImageDigest": "sha256:94c1ddc563a0c54a2dcd83e94012df2030355d4d2a32f966e55932ad457b9f89",
-    "containerBuild": {
-      "entryBytes": 984,
-      "scriptBytes": 1445112,
-      "scriptGzipBytes": 409036,
-      "artFiles": 198,
-      "artBytes": 125391288,
-      "totalBytes": 128924969,
-      "out": "/build/dist/web"
-    }
+  "deploymentHealth": {
+    "status": "online",
+    "issues": {
+      "warningCount": 0,
+      "criticalCount": 0
+    },
+    "recentFailures": 0,
+    "pendingWork": []
   },
-  "previousTwoBrowserCoopTests": "PUBLIC_BROWSER_VALIDATION.json",
-  "previousDeploymentAstraReview": "PUBLIC_DEPLOYMENT_ASTRA_REVIEW.json",
-  "publicBundleIdentity": "TOUCH_MOTION_PUBLIC_VALIDATION.json",
-  "liveStateEvidence": "TOUCH_MOTION_RAILWAY_VALIDATION.json"
+  "regression": {
+    "tests": 513,
+    "groups": 39,
+    "allPassed": true,
+    "record": "MOBILE_ONLINE_REGRESSION_VALIDATION.json"
+  },
+  "normalSoloEarnedProgression": {
+    "heroes": [
+      "yi"
+    ],
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "stagesCompleted": 75,
+    "battles": 98,
+    "losses": 23,
+    "record": "SOLO_ONE_HERO_FINAL_PROGRESSION.json",
+    "scope": "Specific automated strategy; not all heroes, hard/hell or human difficulty certification."
+  },
+  "publicNetworkTests": "PUBLIC_NETWORK_VALIDATION.json",
+  "publicNetworkTestCount": 6,
+  "realBrowserTests": "MOBILE_ONLINE_PUBLIC_BROWSER_VALIDATION.json",
+  "publicBundleIdentity": "MOBILE_ONLINE_PUBLIC_BUNDLE_VALIDATION.json",
+  "persistentRooms": false,
+  "previousDeployment": {
+    "deploymentId": "fda344fb-ac8b-4136-8247-6e49381efd4a",
+    "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
+    "stateArchive": "PUBLIC_DEPLOYMENT_STATE_2026-10-15.json"
+  },
+  "limitations": [
+    "Public browser and WebSocket tests used one PC through the public service, not two physical devices.",
+    "Physical phone, LTE, real app lock/background switching and thermal/endurance checks remain incomplete and were explicitly accepted by Astra.",
+    "Rooms are held in one process; restarting or redeploying discards active rooms.",
+    "Sleep mode may delay the first access after inactivity.",
+    "No refresh recovery, mid-battle join, host migration, persistent room storage or load certification."
+  ],
+  "allRequiredPostDeploymentChecksPassed": true
 }

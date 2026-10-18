@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-14T14:23:45.056Z",
+  "generatedAt": "2026-10-18T05:29:07.186Z",
   "origin": "https://hoguk-game-production.up.railway.app",
   "transport": "HTTPS/WSS",
   "scope": "Two Node clients from this PC through the public service. Not two physical devices or LTE.",
-  "tests": 3,
+  "tests": 6,
   "allPassed": true,
   "results": [
     {
@@ -16,6 +16,18 @@
     },
     {
       "name": "transport reconnect restores a paused battle without replaying old commands",
+      "passed": true
+    },
+    {
+      "name": "sustained directional commands use host coordinates over the real connection",
+      "passed": true
+    },
+    {
+      "name": "host background waits for foreground snapshot and guest ACK",
+      "passed": true
+    },
+    {
+      "name": "permanent guest departure stops the started room without takeover or rewards",
       "passed": true
     }
   ]

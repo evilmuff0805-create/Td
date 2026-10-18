@@ -1,0 +1,277 @@
+{
+  "generatedAt": "2026-10-18T05:34:02.895Z",
+  "sourceCommit": "50d843fb515fb798c7322befe1acfbe914e1c05c",
+  "origin": "https://hoguk-game-production.up.railway.app",
+  "scope": "Two same-PC IAB iframe clients using the ordinary shipped public UI over HTTPS/WSS. No developer input macros in remote mode. Not physical-phone, LTE or real app-background validation.",
+  "roomCode": "UAR7",
+  "observed": {
+    "roomCreatedAndJoined": true,
+    "distinctHeroes": [
+      "yi",
+      "sejong"
+    ],
+    "hostOwnHeroControls": [
+      {
+        "disabled": false,
+        "text": "이순신 Lv1"
+      }
+    ],
+    "guestOwnHeroControls": [
+      {
+        "disabled": false,
+        "text": "세종대왕 Lv1"
+      }
+    ],
+    "hostCompanionDisabled": true,
+    "guestCompanionDisabled": true,
+    "fundsBefore": [
+      156,
+      156
+    ],
+    "fundsAfterHostBuild": [
+      86,
+      156
+    ],
+    "fundsAfterBothBuild": [
+      86,
+      86
+    ],
+    "towerLabelsBothClients": [
+      [
+        "숭례문, 1 / 4단계, 0회 강화",
+        "숭례문, 1 / 4단계, 0회 강화"
+      ],
+      [
+        "숭례문, 1 / 4단계, 0회 강화",
+        "숭례문, 1 / 4단계, 0회 강화"
+      ]
+    ],
+    "ordinaryRightClickMovedBothHeroesToCanvasCenter": true,
+    "movementEvidence": "Visual before/after public-two-clients-paused.png and public-two-clients.png, plus sustained direction protocol in PUBLIC_NETWORK_VALIDATION.json.",
+    "hostPauseVisibleBoth": true,
+    "allArtworkAndGraphicsReady": true,
+    "permanentGuestLeaveReturnsHostToRoomEntry": true,
+    "abortMessage": "← 진영\n협동 출정\n●\n400\n엽전\n◆\n20\n옥\n온라인 협동 (방 코드)\n\n호스트가 방을 만들고 코드를 알려 주면 친구가 참가합니다. 두 사람 모두 같은 서버 주소로 접속해야 합니다.\n\n방 만들기\n참가\n\n서버에 연결해 방을 만들거나, 친구의 코드로 참가하세요.",
+    "afterAbortCamp": {
+      "host": "진영\n수호자 장수\n●\n400\n엽전\n◆\n20\n옥\n홀로 출정\n영웅 한 명을 이끌고 전장으로 · 최근 전장 부산진 전투\n출정\n협동 출정\n방 만들기 · 방 코드 참가 — 각자 영웅 한 명으로 협동\n2인\n종9품\n권관\n종9품 권관 · 품계 1/18\n다음 품계까지 120 공적 · 0전 0승 · 처치 0\n영웅\n여덟 위인 · 해금과 강화\n비기\n조선의 비밀 병기 · 장착과 강화\n유산\n문화유산 도감 · 복원(영구 강화)\n임무\n일일 · 주간 임무, 출석부\n◆ 옥 상점\n보급품 · 영웅 의복\n설정\n소리 · 이름 · 도움말",
+      "guest": "진영\n수호자 장수\n●\n400\n엽전\n◆\n20\n옥\n홀로 출정\n영웅 한 명을 이끌고 전장으로 · 최근 전장 부산진 전투\n출정\n협동 출정\n방 만들기 · 방 코드 참가 — 각자 영웅 한 명으로 협동\n2인\n종9품\n권관\n종9품 권관 · 품계 1/18\n다음 품계까지 120 공적 · 0전 0승 · 처치 0\n영웅\n여덟 위인 · 해금과 강화\n비기\n조선의 비밀 병기 · 장착과 강화\n유산\n문화유산 도감 · 복원(영구 강화)\n임무\n일일 · 주간 임무, 출석부\n◆ 옥 상점\n보급품 · 영웅 의복\n설정\n소리 · 이름 · 도움말"
+    },
+    "persistentCoinsAfterAttendanceAndAbort": [
+      400,
+      400
+    ],
+    "completedBattlesAndWinsAfterAbort": [
+      0,
+      0
+    ],
+    "actualBrowserBackgroundTestCompleted": false,
+    "publicConsoleWarningsOrErrors": [],
+    "preexistingLocalToolObserverErrorExcluded": 1
+  },
+  "battleDOM": {
+    "host": {
+      "canvas": {
+        "assetReadyMs": "6649",
+        "characterCanvasBytes": "122695552",
+        "characterCanvasCount": "480",
+        "combatInbetweenCount": "12",
+        "combatInbetweenExpected": "12",
+        "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatInbetweenStatus": "ready",
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "drawCalls": "137",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "fps": "120",
+        "frameP50": "8.2",
+        "frameP95": "12.4",
+        "frameSamples": "120",
+        "frameWorst": "13.5",
+        "geometries": "79",
+        "graphicsRecoveries": "0",
+        "graphicsStatus": "ready",
+        "heroInbetweenActive": "false",
+        "heroInbetweenCount": "2",
+        "heroInbetweenExpected": "2",
+        "heroInbetweenKinds": "sejong,yi",
+        "heroInbetweenLookKey": "sejong,yi",
+        "heroInbetweenStatus": "ready",
+        "heroLongMotionActive": "false",
+        "heroLongMotionCount": "2",
+        "heroLongMotionExpected": "2",
+        "heroLongMotionKinds": "sejong,yi",
+        "heroLongMotionStatus": "ready",
+        "heroPoseCanvasBytes": "10244704",
+        "heroPoseCount": "2",
+        "heroPoseExpected": "2",
+        "heroPoseKinds": "sejong,yi",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "pixelRatio": "1",
+        "quality": "high",
+        "releasedSheetBytes": "178962912",
+        "renderMode": "3d",
+        "sceneryBarrierCells": "0",
+        "sceneryBarriers": "0",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "9",
+        "sceneryHouses": "3",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "12",
+        "sceneryProps": "40",
+        "sceneryYardFences": "2",
+        "seasonTreeArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "spriteMotion": "distance-contact-recovery",
+        "tacticArtStatus": "ready",
+        "terrainRoad": "rounded-corridor",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3182",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "textures": "45",
+        "touchMode": "pad",
+        "triangles": "55260",
+        "villagePropArtStatus": "ready",
+        "villagePropSeason": "temperate",
+        "waterTriangles": "7704",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "other": [
+        {
+          "disabled": true,
+          "text": "세종대왕 Lv1"
+        }
+      ],
+      "own": [
+        {
+          "disabled": false,
+          "text": "이순신 Lv1"
+        }
+      ],
+      "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n나 · 수호자\n86\n동료 · 수호자\n86\n×1\n×2\n×3\n계속\n메뉴\n건설 터\n기본 시점\n영웅 집결\n−\n다음: 제 1 파도 / 12\n아시가루 ×8\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv1\n학익진\nQ\n거북선\nW\n11\n신기전\nD\n봉수\nF\n합격기\n공명 0%\n출정!\n11초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\n자격루\n16\n신기전\n봉수",
+      "towerLabels": [
+        "숭례문, 1 / 4단계, 0회 강화",
+        "숭례문, 1 / 4단계, 0회 강화"
+      ]
+    },
+    "guest": {
+      "canvas": {
+        "assetReadyMs": "4962",
+        "characterCanvasBytes": "122695552",
+        "characterCanvasCount": "480",
+        "combatInbetweenCount": "12",
+        "combatInbetweenExpected": "12",
+        "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatInbetweenStatus": "ready",
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatPoseStatus": "ready",
+        "drawCalls": "137",
+        "effectArtStatus": "ready",
+        "engine": "three.js r186",
+        "fixedArt": "true",
+        "fixedArtStatus": "ready",
+        "fps": "120",
+        "frameP50": "8.6",
+        "frameP95": "13.0",
+        "frameSamples": "120",
+        "frameWorst": "14.2",
+        "geometries": "80",
+        "graphicsRecoveries": "0",
+        "graphicsStatus": "ready",
+        "heroInbetweenActive": "false",
+        "heroInbetweenCount": "2",
+        "heroInbetweenExpected": "2",
+        "heroInbetweenKinds": "sejong,yi",
+        "heroInbetweenLookKey": "sejong,yi",
+        "heroInbetweenStatus": "ready",
+        "heroLongMotionActive": "false",
+        "heroLongMotionCount": "2",
+        "heroLongMotionExpected": "2",
+        "heroLongMotionKinds": "sejong,yi",
+        "heroLongMotionStatus": "ready",
+        "heroPoseCanvasBytes": "10244704",
+        "heroPoseCount": "2",
+        "heroPoseExpected": "2",
+        "heroPoseKinds": "sejong,yi",
+        "heroPoseStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "pixelRatio": "1",
+        "quality": "high",
+        "releasedSheetBytes": "178962912",
+        "renderMode": "3d",
+        "sceneryBarrierCells": "0",
+        "sceneryBarriers": "0",
+        "sceneryCargo": "1",
+        "sceneryCrowns": "9",
+        "sceneryHouses": "3",
+        "sceneryLamps": "7",
+        "sceneryLayout": "clustered",
+        "sceneryLowTrees": "12",
+        "sceneryProps": "40",
+        "sceneryYardFences": "2",
+        "seasonTreeArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "skinPoseStatus": "ready",
+        "spriteMotion": "distance-contact-recovery",
+        "tacticArtStatus": "ready",
+        "terrainRoad": "rounded-corridor",
+        "terrainRoadLayers": "1",
+        "terrainRoadTriangles": "3182",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "textures": "46",
+        "touchMode": "pad",
+        "triangles": "55260",
+        "villagePropArtStatus": "ready",
+        "villagePropSeason": "temperate",
+        "waterTriangles": "7704",
+        "yiFacing": "3",
+        "yiPose": "idle"
+      },
+      "other": [
+        {
+          "disabled": true,
+          "text": "이순신 Lv1"
+        }
+      ],
+      "own": [
+        {
+          "disabled": false,
+          "text": "세종대왕 Lv1"
+        }
+      ],
+      "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n동료 · 수호자\n86\n나 · 수호자\n86\n×1\n×2\n×3\n메뉴\n건설 터\n기본 시점\n영웅 집결\n−\n다음: 제 1 파도 / 12\n아시가루 ×8\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n이순신 Lv1\n학익진\n거북선\n11\n신기전\n봉수\n합격기\n공명 0%\n출정!\n11초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\nQ\n자격루\nW\n16\n신기전\nD\n봉수\nF",
+      "towerLabels": [
+        "숭례문, 1 / 4단계, 0회 강화",
+        "숭례문, 1 / 4단계, 0회 강화"
+      ]
+    }
+  },
+  "afterHostBuildDOM": {
+    "host": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n나 · 수호자\n86\n동료 · 수호자\n156\n×1\n×2\n×3\n계속\n메뉴\n건설 터\n기본 시점\n영웅 집결\n−\n다음: 제 1 파도 / 12\n아시가루 ×8\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n파도는 누르지 않아도 저절로 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 출정!(N 키)으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!\n알겠소\n이순신 Lv1\n학익진\nQ\n거북선\nW\n11\n신기전\nD\n봉수\nF\n합격기\n공명 0%\n출정!\n11초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\n자격루\n16\n신기전\n봉수",
+    "guest": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n동료 · 수호자\n86\n나 · 수호자\n156\n×1\n×2\n×3\n메뉴\n건설 터\n기본 시점\n영웅 집결\n−\n다음: 제 1 파도 / 12\n아시가루 ×8\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n파도는 누르지 않아도 저절로 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 출정!(N 키)으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!\n알겠소\n이순신 Lv1\n학익진\n거북선\n11\n신기전\n봉수\n합격기\n공명 0%\n출정!\n11초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\nQ\n자격루\nW\n16\n신기전\nD\n봉수\nF"
+  },
+  "screenshots": [
+    "screenshots/mobile-online/public-two-clients-paused.png",
+    "screenshots/mobile-online/public-two-clients.png",
+    "screenshots/mobile-online/public-leave-abort.png"
+  ],
+  "allPassed": true
+}

@@ -1,8 +1,8 @@
 {
   "recordedAt": "2026-10-18T04:42:00.582Z",
   "clientDate": "2026-10-18",
-  "status": "deployment_approved",
-  "sourceCommit": "a353f70b1caafbe2008c90dbe2c66c56d09268d2",
+  "status": "deployed_and_publicly_validated",
+  "sourceCommit": "50d843fb515fb798c7322befe1acfbe914e1c05c",
   "requestedScope": "One directly controlled hero per player, remove local two-player mode, use room create/join co-op and mobile pad controls.",
   "approval": {
     "requiredBy": "User explicitly requested planning, risk validation, then director approval before implementation.",
@@ -131,15 +131,8 @@
     "Host background explicitly pauses transport/gameplay until return and sync; refresh recovery and host migration excluded",
     "Single-hero balance validation and bounded corrections; broad late-game rebalancing remains deferred"
   ],
-  "publicService": {
-    "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
-    "deploymentId": "fda344fb-ac8b-4136-8247-6e49381efd4a",
-    "statusAtRead": "SLEEPING",
-    "noStagedChanges": true,
-    "configUnchanged": true
-  },
   "featureImplementationStartedForNewPlan": true,
-  "featureDeploymentStartedForNewPlan": false,
+  "featureDeploymentStartedForNewPlan": true,
   "deploymentApproval": {
     "approved": true,
     "requiredReviewer": "GPT-6 Astra",
@@ -168,5 +161,30 @@
     "normalSoloOnePlayerOneHeroDamage": 1.5,
     "HPOrGoldBonus": false,
     "scope": "Hero-source damage once, not summon soldiers, healing, HP, CC, online, old two-hero fixtures, hard or hell."
+  },
+  "planningSourceCommit": "a353f70b1caafbe2008c90dbe2c66c56d09268d2",
+  "completedAt": "2026-10-18T05:36:46.748558+00:00",
+  "publicServiceAtPlanReview": {
+    "sourceCommit": "86336aabcf7aa20dc8f38764feb82fbe331fa53e",
+    "deploymentId": "fda344fb-ac8b-4136-8247-6e49381efd4a",
+    "statusAtRead": "SLEEPING",
+    "noStagedChanges": true,
+    "configUnchanged": true
+  },
+  "publicService": {
+    "sourceCommit": "50d843fb515fb798c7322befe1acfbe914e1c05c",
+    "deploymentId": "e5d77199-a287-4ef7-a10c-6b3bee5f9087",
+    "statusAtRead": "SUCCESS",
+    "noStagedChanges": true,
+    "runtimeResourceLimitsUnchanged": true
+  },
+  "featureDeploymentCompletedForNewPlan": true,
+  "postDeploymentValidation": {
+    "allRequiredChecksPassed": true,
+    "publicNetworkTests": 6,
+    "samePcPublicBrowserTwoClients": true,
+    "bundleExactBytesMatch": true,
+    "releaseRecord": "MOBILE_ONLINE_PUBLIC_RELEASE_VALIDATION.json",
+    "physicalDeviceChecksRemainIncomplete": true
   }
 }

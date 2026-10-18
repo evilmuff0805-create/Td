@@ -1,6 +1,6 @@
 # 모바일 패드와 1인 1영웅 전환
 
-2026-10-18 · 아스트라 최종 배포 승인, 공개 갱신 진행
+2026-10-18 · 아스트라 최종 승인, 공개 배포·검수 완료
 
 사용자가 솔로도 영웅 한 명만 출전하고, 로컬 2인을 없애며 방 만들기·참가에 협동을 모으도록 요청했다. 아스트라를 본부장 승인자로 지정했고, 계획·리스크 검토 뒤 구현 착수와 제한된 솔로 피해 보정을 승인받았다. [계획](MOBILE_ONLINE_TRANSITION_PLAN.md) · [승인·리스크 기록](MOBILE_ONLINE_RISK_REVIEW.json)
 
@@ -49,12 +49,14 @@
 
 [360px 세로](screenshots/mobile-online/portrait-360.png) · [896px 가로](screenshots/mobile-online/landscape-896.png) · [실제 온라인 두 클라이언트](screenshots/mobile-online/local-online-two-clients.png)
 
-**실제 휴대폰·LTE·두 물리 기기·앱 잠금/전환·장시간 발열 검수는 미완료**다. IAB에서 다른 탭을 열어도 `document.hidden=false`였으므로 그 시도를 실제 백그라운드 검수로 인정하지 않았다. 백그라운드·복귀 동작은 Session 검사와 실제 소켓의 메시지 전달로 검증했다. 공개 HTTPS/WSS의 새 버전 검사는 배포 후 별도 기록한다.
+공개 서버에서도 HTTPS/WSS **6검사**를 통과했다. 두 실제 브라우저 클라이언트에서 방 생성·참가·각자1영웅·상대 영웅 조작 차단·양측 우클릭 이동·정지 동기화·독립 건설156/156→86/156→86/86을 확인했다. 참가자 이탈 뒤 호스트는 방 입구로 돌아갔고 양측 엽전400·0전0승을 보존했다. 공개 내비게이션 이후 콘솔 경고/오류는0이다. [공개 소켓 검사](PUBLIC_NETWORK_VALIDATION.json) · [공개 브라우저와 DOM](MOBILE_ONLINE_PUBLIC_BROWSER_VALIDATION.json) · [실제 두 화면](screenshots/mobile-online/public-two-clients.png)
+
+**실제 휴대폰·LTE·두 물리 기기·앱 잠금/전환·장시간 발열 검수는 미완료**다. 공개 브라우저 검수도 한 PC의 두 iframe이다. IAB에서 다른 탭을 열어도 `document.hidden=false`였으므로 그 시도를 실제 백그라운드 검수로 인정하지 않았다. 백그라운드·복귀 동작은 Session 검사와 실제 소켓의 메시지 전달로 검증했다. 아스트라가 이 잔여 위험을 명시적으로 수용해 배포를 승인했다.
 
 ## 패키지와 공개 범위
 
 웹은 정식 `index.html`과 `assets/3d/app.js`로만 진입한다. 공개 패키지에서 자유 미리보기 `3d.html`·`game.js`·관련 CSS와 타이틀 링크를 제외하고, 공개 허용 목록에서도 해당 HTML/JS를 차단했다. 기존 manifest 소유 파일 정리와 실제 파일이 남아 있는 소스 루트 양쪽에서 GET/HEAD 차단을 검사한다. **로컬 개발용 자유 미리보기는2영웅 아트 검수 도구**로 보존하며 정식 조작·성장 검증과 구분한다.
 
-웹 그림195개는 원본과 바이트가 같고, 웹 파일211개 합계127,306,094바이트다. ZIP은126,246,019바이트이며 manifest 전체 SHA와 대조했다. 단일 HTML은168,637,797바이트이며 솔로만 가능하다. [빌드·ZIP 기록](MOBILE_ONLINE_BUILD_VALIDATION.json)
+웹 그림195개는 원본과 바이트가 같고, Windows 웹 파일211개 합계127,306,084바이트다. ZIP은126,246,005바이트이며 manifest 전체 SHA와 대조했다. 단일 HTML은168,637,794바이트이며 솔로만 가능하다. Linux 공개 빌드의 합계는 줄바꿈 차이로127,303,262바이트이며 공개 `app.js`1,445,963바이트는 Windows 승인 빌드와 정확히 같다. [빌드·ZIP 기록](MOBILE_ONLINE_BUILD_VALIDATION.json) · [공개 바이트·SHA256](MOBILE_ONLINE_PUBLIC_BUNDLE_VALIDATION.json)
 
-배포는 기존 Railway `hoguk / hoguk-game`의 단일 인스턴스·CPU0.5/메모리0.5GB 범위를 사용하며, 아스트라가 잔여 실기기 위험을 명시적으로 수용하고 최종 배포를 승인했다. 승인받은 커밋을 고정해 갱신한다. 공개 검증 결과와 최종 커밋·배포 ID는 [공개 배포 기록](PUBLIC_DEPLOYMENT.md)에 남긴다.
+기존 Railway `hoguk / hoguk-game`의 단일 인스턴스·CPU0.5/메모리0.5GB 범위로 승인 커밋 `50d843fb515fb798c7322befe1acfbe914e1c05c`를 고정해 배포했다. 배포 `e5d77199-a287-4ef7-a10c-6b3bee5f9087`는SUCCESS이며 인스턴스1/1·진행 중 변경0을 확인했다. 문서만 갱신하는 후속 푸시는 고정된 게임을 재배포하지 않는다. [음소거로 플레이](https://hoguk-game-production.up.railway.app/?mute=1) · [공개 배포 기록](PUBLIC_DEPLOYMENT.md) · [최종 릴리스 기록](MOBILE_ONLINE_PUBLIC_RELEASE_VALIDATION.json)
