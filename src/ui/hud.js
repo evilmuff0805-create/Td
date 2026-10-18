@@ -1328,7 +1328,7 @@ export class GameUI {
     if(v.stageId==='s25'&&v.wave.n>=22)
       if(show('final-reallocate','마지막 적장은 <b>은신 병력</b>을 계속 부릅니다. 탐지를 유지하고, 피해가 적은 유산을 철거해 <b>석굴암의 대광명(A 특화)</b>에 재투자하세요. 특화 유산의 높은 단일 피해가 중요합니다.',{left:'12px',bottom:'12px'}))return;
     if (v.wave.n === 0 && v.towers.length === 0)
-      return show(this.touchInput?'build-pad-v3':'build', this.touchInput?'<b>왼쪽 아래 패드</b>로 영웅을 움직이고, <b>빈 터를 눌러</b> 유산을 세우세요. 아래 영웅 카드를 누르면 조종할 영웅이 바뀝니다.':'<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '12px', top: '12px' });
+      return show(this.touchInput?'build-pad-v3':'build', this.touchInput?'<b>왼쪽 아래 패드</b>로 영웅을 움직이고, <b>빈 터를 눌러</b> 유산을 세우세요. 아래 영웅 카드를 누르면 내 영웅을 선택합니다.':'<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '12px', top: '12px' });
     if (v.wave.n === 0 && v.towers.length > 0)
       return show('wave', `파도는 <b>누르지 않아도 저절로</b> 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 <b>출정!</b>(${'N 키'})으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
     if (v.wave.n >= 2)
