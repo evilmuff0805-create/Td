@@ -2,7 +2,7 @@
 // Assumed permanent upgrades follow tools/balance.mjs's documented progression.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { defaultProfile, playerSpec } from '../src/meta/profile.js';
 import { STAGES, START_TOWERS, DIFF_ORDER } from '../src/data/stages.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
@@ -35,6 +35,6 @@ for(let i=0;i<STAGES.length;i++) {
 const summary={completed:results.length,wins:results.filter(r=>r.win).length,byMode:{},byDifficulty:{}};
 for(const kind of ['solo','local'])summary.byMode[kind]={played:results.filter(r=>r.kind===kind).length,won:results.filter(r=>r.kind===kind&&r.win).length};
 for(const difficulty of DIFF_ORDER)summary.byDifficulty[difficulty]={played:results.filter(r=>r.difficulty===difficulty).length,won:results.filter(r=>r.difficulty===difficulty&&r.win).length};
-const report={generatedAt:new Date().toISOString(),assumptions:'Original Session. Yi + Sejong; singijeon + bongsu; one balanced bot strategy, seed 7919. Only prior stage tower unlocks. expectedMeta permanent levels. Bot losses are not a claim of impossibility or human difficulty.',summary,results};
+const report={generatedAt:new Date().toISOString(),assumptions:'Historical pure two-hero fixture using Session stepping, not product entry. Yi + Sejong; singijeon + bongsu; one balanced bot strategy, seed 7919. Only prior stage tower unlocks. expectedMeta permanent levels. Bot losses are not a claim of impossibility or human difficulty.',summary,results};
 fs.writeFileSync(new URL('../docs/RELEASE_VALIDATION.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(summary));

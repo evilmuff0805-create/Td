@@ -10,7 +10,7 @@ GameUI.prototype.bindInput=function(){currentUI=this;return bindInput.call(this)
 const draw=WinterWorld.prototype.draw;let current;
 const sync=WinterWorld.prototype.sync;
 WinterWorld.prototype.sync=function(game,...args){
-  Object.assign(this.renderer.domElement.dataset,{reviewBattleTime:game.time.toFixed(3),reviewGold:game.players.map(p=>p.gold).join(','),reviewHeroes:JSON.stringify(game.heroes.map(h=>({x:h.x,y:h.y,tx:h.tx,ty:h.ty,skillCd:h.skillCd}))),reviewTowers:String(game.towers.length)});
+  Object.assign(this.renderer.domElement.dataset,{reviewBattleTime:game.time.toFixed(3),reviewGold:game.players.map(p=>p.gold).join(','),reviewHeroes:JSON.stringify(game.heroes.map(h=>({x:h.x,y:h.y,tx:h.tx,ty:h.ty,skillCd:h.skillCd}))),reviewTowers:String(game.towers.length),reviewPadHeld:String(currentUI?.pad?.pointerId!=null),reviewPadMoving:String(!!currentUI?.padMoving)});
   const result=sync.call(this,game,...args),yi=[...this.units.values()].find(root=>root.userData.fixedImage?.kind==='yi')?.userData.fixedImage;
   if(yi)Object.assign(this.renderer.domElement.dataset,{reviewYiPhase:String(yi.motionPhase??0),reviewYiRow:String(yi.motion?.visual?.row??0),reviewYiSettling:String(yi.motion?.visual?.settling??false)});
   return result;
@@ -23,7 +23,7 @@ lose.onclick=()=>{if(current&&!current.destroyed)current.renderer.forceContextLo
 WinterWorld.prototype.draw=function(...args){current=this;status.textContent=` ${this.graphics?.status??'준비'} · 복구 ${this.graphics?.recoveries??0}회`;return draw.apply(this,args);};
 function touchTap(kind){
   const ui=currentUI;if(!touchReview||!ui||ui.destroyed||ui.renderer.loading)return;
-  const map=getMap(ui.s.stageId),hero=ui.s.view.heroes[ui.selHero],wanted=kind==='path'?T_PATH:T_BUILD,rect=ui.cv.getBoundingClientRect();
+  const map=getMap(ui.s.stageId),hero=ui.s.view.heroes[ui.padHeroIndex()],wanted=kind==='path'?T_PATH:T_BUILD,rect=ui.cv.getBoundingClientRect();
   const cells=map.grid.flatMap((tile,i)=>tile===wanted?[{x:i%map.w,y:Math.floor(i/map.w)}]:[])
     .filter(p=>!ui.s.view.towers.some(t=>t.x===p.x&&t.y===p.y)&&ui.s.view.heroes.every(h=>Math.hypot(h.x-p.x-.5,h.y-p.y-.5)>1.5))
     .sort((a,b)=>Math.hypot(a.x-hero.x,a.y-hero.y)-Math.hypot(b.x-hero.x,b.y-hero.y));
@@ -37,11 +37,16 @@ function touchTap(kind){
   ui.cv.releasePointerCapture=id=>{if(id!==91&&id!==92)release.call(ui.cv,id);};
   try{
     ui.cv.dispatchEvent(new PointerEvent('pointerdown',init));
-    if(kind==='cancel')ui.touchBuildBtn.dispatchEvent(new PointerEvent('pointerdown',{...init,pointerId:92}));
+    if(kind==='cancel')ui.bottom.dispatchEvent(new PointerEvent('pointerdown',{...init,pointerId:92}));
     ui.cv.dispatchEvent(new PointerEvent('pointerup',{...init,buttons:0}));
-    if(kind==='cancel')ui.touchBuildBtn.dispatchEvent(new PointerEvent('pointerup',{...init,pointerId:92,buttons:0}));
+    if(kind==='cancel')ui.bottom.dispatchEvent(new PointerEvent('pointerup',{...init,pointerId:92,buttons:0}));
   }finally{ui.cv.setPointerCapture=capture;ui.cv.releasePointerCapture=release;}
 }
-window.addEventListener('message',e=>{if(e.origin===location.origin&&e.source===window.parent&&e.data?.type==='review-touch-tap')touchTap(e.data.kind);});
+function padReview(kind){
+  const ui=currentUI;if(!touchReview||!ui||ui.destroyed||!ui.pad)return;
+  const surface=ui.pad.surface,r=surface.getBoundingClientRect(),init={bubbles:true,pointerId:93,pointerType:'touch',button:0,buttons:1,clientX:r.left+r.width/2+(kind==='up'?0:32),clientY:r.top+r.height/2+(kind==='up'?-32:0)};
+  surface.dispatchEvent(new PointerEvent(kind==='release'?'pointerup':'pointerdown',{...init,buttons:kind==='release'?0:1}));
+}
+window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==window.parent)return;if(e.data?.type==='review-touch-tap')touchTap(e.data.kind);if(e.data?.type==='review-pad')padReview(e.data.kind);});
 if(touchReview)for(const [label,kind]of [['빈 땅 터치','grass'],['길 터치','path'],['두 손가락 취소','cancel']]){const b=document.createElement('button');b.textContent=label;b.onclick=()=>touchTap(kind);panel.append(b);}
 if(document.body.dataset.freeReview==='true')import('./main.js');else import('../main.js');

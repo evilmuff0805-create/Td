@@ -1,4 +1,4 @@
-// 출정 지도 · 출전 준비 · 협동(로컬/온라인 로비) · 전투 결과
+// 출정 지도 · 1영웅 출전 준비 · 방 코드 협동 · 전투 결과
 import { h, clear, toast, modal, fmt, starStr } from './dom.js';
 import { setBackdrop } from './backdrop.js';
 import { topbar, rewardText, plainReward } from './screens-menu.js';
@@ -19,6 +19,7 @@ import { questText } from '../meta/quests.js';
 import { Net } from '../net/net.js';
 import { audio } from '../audio/audio.js';
 import { battleRules } from './battle-rules.js';
+import { networkPick,validateBattleSetup } from '../game/battle-setup.js';
 
 const SVGNS = 'http://www.w3.org/2000/svg';
 const svg = (tag, attrs = {}, ...kids) => {
@@ -242,22 +243,21 @@ export function loadoutScreen(app, params) {
   lo.skills = valid(lo.skills, (id) => skillUnlocked(p, id));
   const st = STAGE_BY_ID[params.stageId];
   const rerender = () => app.go('loadout', params);
-  const ready = lo.heroes.length === 2 && lo.skills.length === 2;
+  const ready = lo.heroes.length === 1 && lo.skills.length === 2;
   return h('div', { class: 'screen' }, topbar(app, '출전 준비', { back: 'campaign' }),
     h('div', { class: 'content stack' },
       h('div', { class: 'panel row' }, h('span', { class: 'brush', style: { fontSize: '30px', color: 'var(--gold-hi)' } }, st.name),
-        h('span', { class: 'chip' }, DIFFICULTY[params.difficulty].name), h('span', { class: 'dim' }, '홀로 출정에서는 두 영웅을 모두 지휘합니다.'),
+        h('span', { class: 'chip' }, DIFFICULTY[params.difficulty].name), h('span', { class: 'dim' }, '영웅 한 명을 직접 이끌고 전장을 지킵니다.'),
         h('span', { class: 'spacer' }),
         h('button', {
           class: 'btn btn-seal btn-big', disabled: !ready, onclick: () => {
             saveProfile();
             app.startBattle({ kind: 'solo', stageId: params.stageId, difficulty: params.difficulty, specs: [playerSpec(p, lo.heroes, lo.skills)] });
           },
-        }, ready ? '출전!' : '영웅 2명 · 비기 2개')),
+        }, ready ? '출전!' : '영웅 1명 · 비기 2개')),
       battleRules(st.id, params.difficulty, false, p.towersUnlocked),
-      h('h3', {}, `영웅 선택 (${lo.heroes.length}/2)`),
-      heroPicker(app, lo.heroes, 2, (next) => { lo.heroes = next; rerender(); }),
-      comboPreview(lo.heroes[0], lo.heroes[1], p),
+      h('h3', {}, `영웅 선택 (${lo.heroes.length}/1)`),
+      heroPicker(app, lo.heroes, 1, (next) => { lo.heroes = next; rerender(); }),
       h('h3', {}, `비기 장착 (${lo.skills.length}/2)`),
       skillPicker(app, lo.skills, (next) => { lo.skills = next; rerender(); }),
       supplyPanel(app),
@@ -284,15 +284,9 @@ export function coopScreen(app) {
   return h('div', { class: 'screen' }, topbar(app, '협동 출정'),
     h('div', { class: 'content lobby' },
       h('div', { class: 'panel stack' },
-        h('h3', {}, '한 화면 협동 (로컬 2인)'),
-        h('p', {}, '한 대의 컴퓨터로 둘이 함께. 1P는 마우스만, 2P는 키보드만 씁니다. 2P는 오른손 방향키로 영웅을 몰고, 왼손으로 기술을 쓰며 발밑에 유산을 세웁니다.'),
-        h('div', { class: 'keys' },
-          [['1P 마우스', '클릭 건설·강화 · 우클릭 이동 · 버튼으로 기술·비기·합격기'], ['2P ← ↑ → ↓', '영웅 이동'], ['2P A S', '기술 · 궁극기'], ['2P D F', '비기 1 · 2'], ['2P E', '발밑에 건설 / 강화 (Q 취소)'], ['2P Space', '합격기'], ['2P W', '다음 파도']].flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)])),
-        h('div', {}, h('button', { class: 'btn btn-seal', onclick: () => app.go('localSetup') }, '로컬 협동 준비'))),
-      h('div', { class: 'panel stack' },
         h('h3', {}, '온라인 협동 (방 코드)'),
         h('p', {}, '호스트가 방을 만들고 코드를 알려 주면 친구가 참가합니다. 두 사람 모두 같은 서버 주소로 접속해야 합니다.'),
-        netOk ? null : h('p', { style: { color: '#ffb3a6' } }, '단일 파일·오프라인 화면에서는 온라인 방을 사용할 수 없습니다. 온라인 협동은 node server/server.js 실행 후 기본 게임 주소(예: http://localhost:8080/)에서 접속하세요. 로컬 협동은 지금 바로 할 수 있습니다.'),
+        netOk ? null : h('p', { style: { color: '#ffb3a6' } }, '단일 파일·오프라인 화면에서는 온라인 방을 사용할 수 없습니다. 온라인 협동은 node server/server.js 실행 후 기본 게임 주소(예: http://localhost:8080/)에서 접속하세요. 혼자 출정은 오프라인에서도 할 수 있습니다.'),
         h('div', { class: 'row' },
           h('button', { class: 'btn btn-blue', disabled: !netOk, onclick: () => go((n) => n.create()) }, '방 만들기'),
           codeInput,
@@ -306,43 +300,6 @@ function stageSelect(p, stageId, diff, onChange) {
     STAGES.filter((s) => stageUnlocked(p, s.id)).map((s) => h('option', { value: s.id, selected: s.id === stageId }, `${s.name} (${s.waves.length}파)`)));
   sel.addEventListener('change', () => onChange(sel.value, 'normal'));
   return h('div', { class: 'row' }, sel, diffSeg(p, stageId, diff, (d) => onChange(stageId, d)));
-}
-
-export function localSetupScreen(app, params = {}) {
-  setBackdrop('lacquer');
-  const p = app.profile;
-  const a = p.loadout.coop;
-  const b = p.loadout.p2;
-  if (!heroUnlockState(p, a.hero).unlocked) a.hero = 'yi';
-  if (!heroUnlockState(p, b.hero).unlocked || b.hero === a.hero) b.hero = HERO_ORDER.find((id) => id !== a.hero && heroUnlockState(p, id).unlocked);
-  a.skills = a.skills.filter((id) => skillUnlocked(p, id));
-  b.skills = b.skills.filter((id) => skillUnlocked(p, id));
-  const stageId = params.stageId || [...STAGES].reverse().find((s) => stageUnlocked(p, s.id)).id;
-  const diff = params.difficulty || 'normal';
-  const rerender = (extra = {}) => app.go('localSetup', { stageId, difficulty: diff, ...extra });
-  const ready = a.hero && b.hero && a.hero !== b.hero && a.skills.length === 2 && b.skills.length === 2;
-  const col = (who, lo, other, color) => h('div', { class: 'panel stack', style: { borderColor: color } },
-    h('h3', { style: { color } }, who),
-    heroPicker(app, [lo.hero], 1, (n) => { lo.hero = n[0] || lo.hero; rerender(); }, [other.hero]),
-    h('h3', {}, '비기'),
-    skillPicker(app, lo.skills, (n) => { lo.skills = n; rerender(); }));
-  return h('div', { class: 'screen' }, topbar(app, '로컬 협동', { back: 'coop' }),
-    h('div', { class: 'content stack' },
-      h('div', { class: 'panel row' }, h('span', { class: 'dim' }, '전장'), stageSelect(p, stageId, diff, (s, d) => rerender({ stageId: s, difficulty: d })),
-        h('span', { class: 'spacer' }),
-        h('button', {
-          class: 'btn btn-seal btn-big', disabled: !ready, onclick: () => {
-            saveProfile();
-            app.startBattle({
-              kind: 'local', stageId, difficulty: diff,
-              specs: [playerSpec(p, [a.hero], a.skills, '1P'), playerSpec(p, [b.hero], b.skills, '2P', { noItems: true })],
-            });
-          },
-        }, ready ? '함께 출전!' : '각자 영웅 1 · 비기 2')),
-      battleRules(stageId, diff, true, p.towersUnlocked),
-      comboPreview(a.hero, b.hero, p),
-      supplyPanel(app, `1P가 아래 보급 버튼으로 씁니다 · 종류별 ${ITEM_PER_BATTLE}개까지`),
-      h('div', { class: 'lobby' }, col('1P (마우스만)', a, b, '#6fa8ff'), col('2P (키보드: 방향키 + ASDF)', b, a, '#ff8a7a'))));
 }
 
 // ───────────── 온라인 로비 ─────────────
@@ -363,15 +320,15 @@ export function lobbyScreen(app, params) {
   if (!L.bound) {
     L.bound = true;
     L.offs = [
-      net.on('pick', (m) => { L.peer = m; rerender(); }),
-      net.on('cfg', (m) => { L.stageId = m.stageId; L.difficulty = m.difficulty; rerender(); }),
+      net.on('pick', (m) => { L.peer=networkPick(m); if(!L.peer)toast('동료의 편성이 올바르지 않습니다. 영웅 한 명과 비기 두 개를 다시 선택해 주세요.'); rerender(); }),
+      net.on('cfg', (m) => { if(host||!Object.hasOwn(STAGE_BY_ID,m.stageId)||!Object.hasOwn(DIFFICULTY,m.difficulty))return; L.stageId = m.stageId; L.difficulty = m.difficulty; rerender(); }),
       net.on('peer-joined', () => { toast('동료가 들어왔습니다'); audio.play('ping'); sendMe(); sendCfg(); rerender(); }),
       net.on('peer-left', () => { toast('동료가 나갔습니다'); L.peer = null; rerender(); }),
       net.on('reconnecting',()=>rerender()),net.on('peer-reconnecting',()=>rerender()),
       net.on('reconnected',()=>{sendMe();sendCfg();rerender();}),
       net.on('peer-restored',()=>{sendMe();sendCfg();rerender();}),
       net.on('close', () => { if (!L.started) { toast('서버와 연결이 끊겼습니다'); cleanup(); app.go('coop'); } }),
-      net.on('start', (m) => { L.started = true; cleanup(false); app.startBattle({ kind: 'guest', stageId: m.stageId, difficulty: m.difficulty, net, names: m.names }); }),
+      net.on('start', (m) => { if(host||!Object.hasOwn(STAGE_BY_ID,m.stageId)||!Object.hasOwn(DIFFICULTY,m.difficulty))return; L.started = true; cleanup(false); app.startBattle({ kind: 'guest', stageId: m.stageId, difficulty: m.difficulty, net, names: m.names }); }),
     ];
     if (!host) sendMe();
   }
@@ -406,7 +363,9 @@ export function lobbyScreen(app, params) {
         host ? h('button', {
           class: 'btn btn-seal btn-big', disabled: !canStart, onclick: () => {
             const seed = (Math.random() * 1e9) | 0;
-            const specs = [playerSpec(p, [L.me.hero], L.me.skills, p.name), L.peer.spec];
+            const peer=networkPick(L.peer);if(!peer){toast('동료의 출전 편성을 다시 확인해 주세요.');return;}
+            const specs = [playerSpec(p, [L.me.hero], L.me.skills, p.name), peer.spec];
+            try{validateBattleSetup({kind:'host',stageId:L.stageId,difficulty:L.difficulty,specs});}catch(error){toast(error.message);return;}
             p.loadout.coop = { hero: L.me.hero, skills: L.me.skills };
             saveProfile();
             if(net.send({ t: 'start', seed, stageId: L.stageId, difficulty: L.difficulty, names: [p.name, L.peer.name] })===false){toast('연결을 확인한 뒤 다시 출전해 주세요.');return;}

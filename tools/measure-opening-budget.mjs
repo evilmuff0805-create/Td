@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { defaultProfile, playerSpec } from '../src/meta/profile.js';
 import { STAGE_BY_ID, COOP, DIFFICULTY } from '../src/data/stages.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';

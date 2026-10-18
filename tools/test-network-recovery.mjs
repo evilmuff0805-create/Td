@@ -40,7 +40,7 @@ await test('started rooms reject fresh replacements and replay start before rest
 });
 await test('guest cannot forge host start, configuration, snapshots or terminal results',()=>{
   const f=brokerFixture();f.messages.length=0;
-  for(const t of ['start','cfg','snap','sync-state','finish','end'])f.broker.message(f.guest,{type:'relay',data:{t,s:{res:{win:true},T:[]}}});
+  for(const t of ['start','cfg','snap','sync-state','finish','end','host-background'])f.broker.message(f.guest,{type:'relay',data:{t,s:{res:{win:true},T:[]}}});
   assert.equal(f.messages.length,0);assert.equal(f.room.started,false);assert.equal(f.room.terminal,null);f.broker.destroy();
 });
 await test('atomic final result is acknowledged, replayed after host cleanup, and expires',()=>{
@@ -86,12 +86,11 @@ await test('overlapping sync requests reject an old ACK and complete on the next
   assert.equal(p.host.networkWaiting,false);assert.equal(p.guest.networkWaiting,false);
   p.host.destroy();p.guest.destroy();
 });
-await test('host restored after permanent guest departure does not wait for nonexistent ACK',()=>{
-  const p=pair();p.host.send({t:'leave',p:1});p.host.update(.1);assert.equal(p.host.state.players[1].left,true);
-  p.a.peer=false;p.a.emit('reconnected');assert.equal(p.host.networkWaiting,false);p.host.update(.1);assert.ok(p.host.state.tick>0);p.host.destroy();p.guest.destroy();
+await test('host restored after permanent departure aborts without transfer or waiting for ACK',()=>{
+  const p=pair(),assets=JSON.stringify({owners:p.host.state.heroes.map(h=>h.owner),gold:p.host.state.players.map(x=>x.gold)});p.a.peer=false;p.a.emit('reconnected');assert.ok(p.host.interrupted);const tick=p.host.state.tick;p.host.update(.1);assert.equal(p.host.state.tick,tick);assert.equal(JSON.stringify({owners:p.host.state.heroes.map(h=>h.owner),gold:p.host.state.players.map(x=>x.gold)}),assets);p.host.destroy();p.guest.destroy();
 });
-await test('host restored after expiry while offline transfers guest assets even before a render tick',()=>{
-  const p=pair();p.a.peer=false;p.a.emit('reconnected');assert.equal(p.host.networkWaiting,false);p.host.update(.1);assert.equal(p.host.state.players[1].left,true);assert.equal(p.host.state.heroes[1].owner,0);p.host.destroy();p.guest.destroy();
+await test('permanent guest departure after simulated result but before server acceptance aborts',()=>{
+  const p=pair();p.host.state.result={win:true,stars:3};p.a.emit('peer-left');assert.ok(p.host.interrupted);assert.equal(p.host.terminalConfirmed,false);p.host.destroy();p.guest.destroy();
 });
 await test('failed snapshot sends force next full tower state; result retries preserve full terminal data',()=>{
   const p=pair();p.a.fail=true;p.host.lastSnap=-1000;p.host.update(0);assert.equal(p.host.encoder.towerSig,null);

@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-14T14:06:23.013Z",
+  "generatedAt": "2026-10-18T05:19:45.664Z",
   "tests": 18,
   "allPassed": true,
-  "scope": "Distance gait cadence, real-time repeated-position holds and actual HUD pointer routing with real solo/local sessions. Synthetic touch events, not physical-phone validation.",
-  "localCoopPreserved": true,
+  "scope": "Distance gait cadence, real-time repeated-position holds and updated pad-era ground-tap construction routing with real solo/host/guest sessions. Synthetic events, not physical-phone validation.",
+  "localCoopRemoved": true,
   "results": [
     {
       "name": "normal Yi gait is below ten pose changes per second and keeps real distance",
@@ -26,19 +26,19 @@
       "passed": true
     },
     {
-      "name": "touching buildable grass moves in both 3D and flat fallback without a build menu",
+      "name": "touching buildable grass opens construction in both 3D and flat fallback",
       "passed": true
     },
     {
-      "name": "explicit construction builds once from its owner wallet and returns to movement",
+      "name": "ground-tap construction builds once from its owner wallet and permits another plot",
       "passed": true
     },
     {
-      "name": "a touch in construction mode on a path or blocked tile does not order movement",
+      "name": "a ground touch on a path or blocked tile does not order movement",
       "passed": true
     },
     {
-      "name": "hero and existing tower selection retain priority in touch movement mode",
+      "name": "hero and existing tower selection retain priority over ground construction",
       "passed": true
     },
     {
@@ -46,7 +46,7 @@
       "passed": true
     },
     {
-      "name": "DOM construction markers obey movement and targeting instead of bypassing them",
+      "name": "DOM construction markers open construction and respect skill targeting",
       "passed": true
     },
     {
@@ -62,7 +62,7 @@
       "passed": true
     },
     {
-      "name": "switching touch mode cancels an already held canvas press",
+      "name": "explicit input cancellation cancels an already held canvas press",
       "passed": true
     },
     {
@@ -70,7 +70,7 @@
       "passed": true
     },
     {
-      "name": "local P2 keyboard still moves only P2 after P1 touch-mode changes",
+      "name": "online guest movement controls only its own hero; local keyboard entry is absent",
       "passed": true
     },
     {

@@ -1,0 +1,241 @@
+{
+  "generatedAt": "2026-10-18T05:15:47.738Z",
+  "allPassed": true,
+  "scope": "Actual built-game DOM in 414×896,360×800,896×414 iframes; visible own-hero controls have no overlap, stay inside the screen and are at least44px. Synthetic mobile UI, not physical hardware.",
+  "layouts": [
+    {
+      "controls": [
+        {
+          "class": "hud-top",
+          "height": 90,
+          "hidden": false,
+          "left": 0,
+          "top": 0,
+          "width": 414
+        },
+        {
+          "class": "hud-bottom",
+          "height": 150,
+          "hidden": false,
+          "left": 0,
+          "top": 746,
+          "width": 414
+        },
+        {
+          "class": "virtual-pad",
+          "height": 116,
+          "hidden": false,
+          "left": 9,
+          "top": 754,
+          "width": 116
+        },
+        {
+          "class": "hero-card",
+          "height": 44,
+          "hidden": false,
+          "left": 139,
+          "top": 772,
+          "width": 72
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 215,
+          "top": 770,
+          "width": 44
+        },
+        {
+          "class": "sk ult illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 263,
+          "top": 770,
+          "width": 44
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 311,
+          "top": 770,
+          "width": 44
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 359,
+          "top": 770,
+          "width": 44
+        },
+        {
+          "class": "btn btn-seal wave-btn",
+          "height": 50,
+          "hidden": false,
+          "left": 135,
+          "top": 839,
+          "width": 272
+        }
+      ],
+      "height": 896,
+      "width": 414
+    },
+    {
+      "controls": [
+        {
+          "class": "hud-top",
+          "height": 90,
+          "hidden": false,
+          "left": 0,
+          "top": 0,
+          "width": 360
+        },
+        {
+          "class": "hud-bottom",
+          "height": 178,
+          "hidden": false,
+          "left": 0,
+          "top": 622,
+          "width": 360
+        },
+        {
+          "class": "virtual-pad",
+          "height": 104,
+          "hidden": false,
+          "left": 9,
+          "top": 671.40625,
+          "width": 104
+        },
+        {
+          "class": "hero-card",
+          "height": 44,
+          "hidden": false,
+          "left": 124,
+          "top": 636,
+          "width": 129
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 257,
+          "top": 634,
+          "width": 44
+        },
+        {
+          "class": "sk ult illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 305,
+          "top": 634,
+          "width": 44
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 124,
+          "top": 686,
+          "width": 44
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 172,
+          "top": 686,
+          "width": 44
+        },
+        {
+          "class": "btn btn-seal wave-btn",
+          "height": 50,
+          "hidden": false,
+          "left": 120,
+          "top": 743,
+          "width": 233
+        }
+      ],
+      "height": 800,
+      "width": 360
+    },
+    {
+      "controls": [
+        {
+          "class": "hud-top",
+          "height": 54,
+          "hidden": false,
+          "left": 0,
+          "top": 0,
+          "width": 896
+        },
+        {
+          "class": "hud-bottom",
+          "height": 107,
+          "hidden": false,
+          "left": 0,
+          "top": 307,
+          "width": 896
+        },
+        {
+          "class": "virtual-pad",
+          "height": 92,
+          "hidden": false,
+          "left": 13,
+          "top": 315,
+          "width": 92
+        },
+        {
+          "class": "hero-card",
+          "height": 44,
+          "hidden": false,
+          "left": 123,
+          "top": 339,
+          "width": 124
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 251,
+          "top": 337,
+          "width": 44
+        },
+        {
+          "class": "sk ult illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 299,
+          "top": 337,
+          "width": 44
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 347,
+          "top": 337,
+          "width": 44
+        },
+        {
+          "class": "sk illustrated",
+          "height": 48,
+          "hidden": false,
+          "left": 395,
+          "top": 337,
+          "width": 44
+        },
+        {
+          "class": "btn btn-seal wave-btn",
+          "height": 50,
+          "hidden": false,
+          "left": 778.546875,
+          "top": 336,
+          "width": 110.453125
+        }
+      ],
+      "height": 414,
+      "width": 896
+    }
+  ]
+}

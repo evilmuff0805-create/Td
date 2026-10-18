@@ -1,6 +1,6 @@
 // Room credentials live only in this tab. Interrupted commands are never replayed.
 const MAX_BACKLOG=512*1024;
-const SYNC_MESSAGES=new Set(['sync','sync-state','sync-ready','end','finish']);
+const SYNC_MESSAGES=new Set(['sync','sync-state','sync-ready','host-background','end','finish']);
 
 export class Net {
   constructor({socketFactory=url=>new WebSocket(url),url,now=Date.now,connectTimeout=5000,retryDelays=[500,1000,2000],heartbeatMs=5000,staleMs=20000}={}){

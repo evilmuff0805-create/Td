@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-14T13:52:37.935Z",
+  "generatedAt": "2026-10-18T05:19:45.119Z",
   "tests": 13,
   "allPassed": true,
   "looks": 24,
   "newPoses": 384,
   "walkPhases": 6,
   "attackPhases": 5,
-  "localCoopPreserved": true,
+  "ownerArtIsolationPreserved": true,
   "displayOnly": true,
   "results": [
     {
@@ -42,7 +42,7 @@
       "passed": true
     },
     {
-      "name": "로컬 1P·2P 실제 입력·스냅샷과 긴 공격은 소유자별로 유지한다",
+      "name": "두 소유자 시뮬레이션 명령·스냅샷과 긴 공격은 소유자별로 유지한다",
       "passed": true
     },
     {

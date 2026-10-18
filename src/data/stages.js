@@ -26,6 +26,7 @@ export function difficultyHp(difficulty, wave, tier) {
 }
 
 // 협동 보정: 적 체력 +10%, 처치 보상은 두 사람 모두에게 60%씩 (합 120%)
+export const SOLO_HERO_DAMAGE = 1.5; // 보통의 1인·1영웅 솔로만 영웅 출처 피해 보정
 export const COOP = { hpMult: 1.1, goldShare: 0.6, startGoldShare: 0.65 };
 export function startingGold(stageId, coop = false) {
   const base = STAGE_BY_ID[stageId].startGold;

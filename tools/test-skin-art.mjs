@@ -1,3 +1,4 @@
+import {Session as NetworkSession} from '../src/game/session.js';
 import {inbetweenLooksKey} from '../src/3d/inbetween-roster.js';
 import assert from 'node:assert/strict';
 import * as T from 'three';
@@ -14,7 +15,7 @@ import { SEASONS } from '../src/3d/seasons.js';
 import { newBattleGame,STAGE_ID } from '../src/3d/scenario.js';
 import { SnapshotEncoder,emptyView,applySnapshot } from '../src/sim/snapshot.js';
 import { defaultProfile,playerSpec } from '../src/meta/profile.js';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { GameUI } from '../src/ui/hud.js';
 let passed=0;
 async function test(name,fn){await fn();passed++;console.log('  ✔ '+name);}
@@ -134,7 +135,7 @@ try{
     try{ui.frame(100);assert.equal(session.state.time,0);assert.equal(ui.bottom.inert,true);assert.equal(pending.length,2);const all=art.promise;ui.frame(200);assert.equal(art.promise,all);finishOriginal('yi_gold');await Promise.resolve();ui.frame(250);assert.equal(session.state.time,0);assert.equal(ui.bottom.inert,true);finishSupplement('yi_gold');await all;ui.frame(300);assert.ok(session.state.time>0);assert.equal(ui.bottom.inert,false);}finally{globalThis.requestAnimationFrame=raf;session.destroy();art.dispose();}
   });
   await test('늦은 게스트 의상은 수신·보간을 유지하며 다음 스냅샷에서 같은 그림을 재사용한다',async()=>{
-    const handlers=new Map(),net={on(k,fn){handlers.set(k,fn);return()=>handlers.delete(k);},send(){}},guest=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net}),{world,art}=context();art.skinPoses={};
+    const handlers=new Map(),net={on(k,fn){handlers.set(k,fn);return()=>handlers.delete(k);},send(){}},guest=new NetworkSession({kind:'guest',stageId:'s1',difficulty:'normal',net}),{world,art}=context();art.skinPoses={};
     const renderer={world,prepareView:Renderer3D.prototype.prepareView};renderer.prepareView(guest.view);assert.equal(pending.length,0);
     const state=newBattleGame({heroIds:['yi','gwon'],skins:{yi:'yi_white',gwon:'gwon_hill'},support:false}),encode=()=>new SnapshotEncoder().encode(state,[{k:'toast',text:'동기화'}]);
     handlers.get('snap')({s:encode()});renderer.prepareView(guest.view);const all=art.promise;assert.equal(pending.length,6);assert.equal(guest.update(.1,{waitingForRenderer:true})[0].text,'동기화');

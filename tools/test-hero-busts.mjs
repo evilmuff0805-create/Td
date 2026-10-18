@@ -118,14 +118,14 @@ try {
     await drain();assert.equal(JSON.stringify(profile),before);
     for(const id of HERO_ORDER)assert.ok(busts.heroBustArt(id));
   });
-  const {localSetupScreen}=await import('../src/ui/screens-play.js');
-  await test('로컬 2인 실제 선택창은 양측 16흉상·서로 선택 금지·원래 두 출전 사양을 유지한다',()=>{
-    const before=JSON.stringify(profile),screen=localSetupScreen(app,{stageId:'s1'});body.append(screen);
-    assert.equal(all(screen,e=>e.dataset.heroImage==='bust').length,16);
+  const {loadoutScreen}=await import('../src/ui/screens-play.js');
+  await test('솔로 선택창은 8흉상과 1영웅 출전 사양을 유지한다',()=>{
+    const before=JSON.stringify(profile),screen=loadoutScreen(app,{stageId:'s1',difficulty:'normal'});body.append(screen);
+    assert.equal(all(screen,e=>e.dataset.heroImage==='bust').length,8);
     const cards=all(screen,e=>e.tagName==='button'&&e.className?.startsWith('card')&&all(e,c=>c.dataset.heroImage==='bust').length===1);
-    assert.equal(cards.filter(c=>c.attributes.disabled==='').length,2);
-    const start=all(screen,e=>e.tagName==='button'&&e.textContent==='함께 출전!')[0];assert.ok(start);start.events.click();
-    assert.equal(app.battle.kind,'local');assert.equal(app.battle.stageId,'s1');assert.deepEqual(app.battle.specs,[playerSpec(profile,['yi'],profile.loadout.coop.skills,'1P'),playerSpec(profile,['sejong'],profile.loadout.p2.skills,'2P',{noItems:true})]);
+    assert.equal(cards.filter(c=>c.attributes.disabled==='').length,0);
+    const start=all(screen,e=>e.tagName==='button'&&e.textContent==='출전!')[0];assert.ok(start);start.events.click();
+    assert.equal(app.battle.kind,'solo');assert.equal(app.battle.stageId,'s1');assert.deepEqual(app.battle.specs,[playerSpec(profile,['yi'],profile.loadout.solo.skills)]);
     assert.equal(JSON.stringify(profile),before);
   });
   await test('도감 장착 의상은 전용 원화를 쓰고 그림 전환은 소유·재화·전투 사양을 바꾸지 않는다',()=>{
@@ -137,5 +137,5 @@ try {
 } finally {
   for(const [key,value]of Object.entries(saved))if(value===undefined)delete globalThis[key];else globalThis[key]=value;
 }
-await fs.writeFile(new URL('../docs/HERO_BUST_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,results,scope:'Menu-only lazy base/costume images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume busts/fallback, actual codex and local two-player setup DOM/specs'},null,2)+'\n');
+await fs.writeFile(new URL('../docs/HERO_BUST_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,results,scope:'Menu-only lazy base/costume images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume busts/fallback, actual codex and single-hero solo setup DOM/specs'},null,2)+'\n');
 console.log(`\n영웅 흉상 검사 ${results.length}개 통과`);

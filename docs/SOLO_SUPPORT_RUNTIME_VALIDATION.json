@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-10-18T05:19:46.516Z",
+  "tests": 4,
+  "allPassed": true,
+  "factor": 1.5,
+  "scope": "Scoped damage and real ability/summon behavior; representative Gwak battles are diagnostics, not an all-hero progression certificate.",
+  "results": [
+    {
+      "name": "damage support applies once to each hero source only in normal solo one-player one-hero",
+      "passed": true
+    },
+    {
+      "name": "Yi actual turtle damage receives exactly one multiplier, without changing its speed or lifetime",
+      "passed": true
+    },
+    {
+      "name": "Gwak summons and Dangun healing keep HP, damage, duration and control effects",
+      "passed": true
+    },
+    {
+      "name": "representative samples (zero permanent upgrades, isolated fixture; not earned Gwak campaign)",
+      "samples": [
+        {
+          "stageId": "s1",
+          "win": true,
+          "wave": 12,
+          "maxSummons": 3
+        },
+        {
+          "stageId": "s17",
+          "win": false,
+          "wave": 3,
+          "maxSummons": 3
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "summon-focused hero runs representative first and multi-path battles without invalid state",
+      "passed": true
+    }
+  ]
+}

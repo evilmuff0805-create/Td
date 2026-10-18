@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-10-18T05:19:35.716134+00:00",
+  "allPassed": true,
+  "webFiles": 211,
+  "artFiles": 195,
+  "webBytes": 127306094,
+  "zipBytes": 126246019,
+  "zipMatchesManifest": true,
+  "standaloneBytes": 168637797,
+  "publicAppSHA256": "9e6ccd1e8bf4b198dcb5bab4d50a2e3b5d3ad663154a5300b737d0de29efb521",
+  "publicPreviewExcluded": true,
+  "embeddedArtworkVerified": true,
+  "legacySeededBattleCount": 2,
+  "legacyBattleSHAUnchanged": true,
+  "legacyBattleScope": "Historical two-hero combat/economy snapshots, separate from actual solo-one-hero earned progression."
+}

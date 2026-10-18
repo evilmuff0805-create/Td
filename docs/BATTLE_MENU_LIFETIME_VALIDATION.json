@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-10-18T05:19:46.595Z",
+  "tests": 3,
+  "allPassed": true,
+  "scope": "Actual modal and asynchronous GameUI menu/finish code with real guest Session; synthetic DOM and controlled timers.",
+  "results": [
+    {
+      "name": "aborting a modal removes its overlay and keyboard listener and ignores a late button",
+      "passed": true
+    },
+    {
+      "name": "confirmed battle end closes a pending quit confirmation and grants the result once",
+      "passed": true
+    },
+    {
+      "name": "permanent departure closes an open guest menu and handles interruption once",
+      "passed": true
+    }
+  ]
+}

@@ -37,7 +37,6 @@ export function titleScreen(app) {
     app.go('hub');
   };
   const el = h('div', { class: 'screen', id: 'title' },
-    !window.__HOGUK_STANDALONE__ ? h('a', { class: 'btn btn-small title-3d-link', href: '3d.html', onkeydown: (e) => e.stopPropagation() }, '3D 전장 자유 미리보기 →') : null,
     h('div', { class: 'title-wrap' },
       h('div', { class: 'logo', role: 'heading', 'aria-level': '1' }, '호국영웅전', h('span', { class: 'logo-seal', 'aria-hidden': 'true' }, h('span', {}, '護'), h('span', {}, '國'))),
       h('div', { class: 'tagline' }, '임진년, 영웅들이 다시 일어선다'),
@@ -76,10 +75,10 @@ export function hubScreen(app) {
     h('div', { class: 'content hub' },
       h('div', { class: 'hub-main' },
         h('button', { class: 'big-tile', onclick: () => app.go('campaign') }, thumb,
-          h('div', {}, h('div', { class: 't' }, '홀로 출정'), h('div', { class: 's' }, `두 영웅을 이끌고 전장으로 · 최근 전장 ${lastStage.name}`)),
+          h('div', {}, h('div', { class: 't' }, '홀로 출정'), h('div', { class: 's' }, `영웅 한 명을 이끌고 전장으로 · 최근 전장 ${lastStage.name}`)),
           h('span', { class: 'btn btn-seal' }, '출정')),
         h('button', { class: 'big-tile', onclick: () => app.go('coop') }, thumb2,
-          h('div', {}, h('div', { class: 't' }, '협동 출정'), h('div', { class: 's' }, '한 화면 2인 · 온라인 방 코드 — 합격기로 호흡을 맞춰라')),
+          h('div', {}, h('div', { class: 't' }, '협동 출정'), h('div', { class: 's' }, '방 만들기 · 방 코드 참가 — 각자 영웅 한 명으로 협동')),
           h('span', { class: 'btn btn-blue' }, '2인')),
       ),
       h('div', { class: 'hub-side' },
@@ -155,13 +154,14 @@ export function questsScreen(app, params = {}) {
   } else {
     const q = p.quests[tab];
     body.append(h('p', { class: 'dim' }, `${tab === 'daily' ? '매일 자정' : '매주 월요일'} 새 임무 · 초기화까지 ${fmtDuration(msToReset(tab))}`));
+    if(q.list.some(item=>['combos','coopGames','coopWins'].includes(questDef(tab,item.id)?.stat)))body.append(h('p',{class:'dim'},'협동 전용 임무와 해당 전체완료 보너스에는 온라인 플레이가 필요합니다.'));
     q.list.forEach((item, i) => {
       const def = questDef(tab, item.id);
       if (!def) return;
       const done = item.prog >= def.n;
       body.append(h('div', { class: `quest${done ? ' done' : ''}${item.claimed ? ' claimed' : ''}` },
         h('div', { class: 'stack', style: { gap: '4px' } },
-          h('span', { class: 'qt' }, questText(def)),
+          h('span', { class: 'qt' }, questText(def), ['combos','coopGames','coopWins'].includes(def.stat)?h('small',{class:'chip'},'온라인 협동 전용'):null),
           h('div', { class: 'bar' }, h('i', { style: { width: `${(item.prog / def.n) * 100}%` } })),
           h('span', { class: 'dim num', style: { fontSize: '14px' } }, `${fmt(item.prog)} / ${fmt(def.n)}`)),
         h('div', { class: 'stack', style: { gap: '4px', justifyItems: 'end' } },
@@ -283,12 +283,11 @@ export function settingsScreen(app) {
       h('div', { class: 'panel stack', style: { marginTop: '14px' } },
         h('h3', {}, '조작 · 혼자 / 온라인'),
         h('div', { class: 'keys' },
-          [['클릭', '빈 터에 유산 건설 · 유산 선택 · 영웅 선택'], ['우클릭', '영웅 이동'], ['터치', '빈 땅: 이동 · 건설 버튼 → 빈 터: 유산 건설'], ['Q W / E R', '영웅 기술 · 궁극기'], ['D F', '비기'],
+          [['클릭', '빈 터에 유산 건설 · 유산 선택 · 영웅 선택'], ['우클릭', '영웅 이동'], ['터치', '왼쪽 패드: 영웅 이동 · 빈 땅: 유산 건설 · 내 영웅 한 명 조작'], ['Q W', '영웅 기술 · 궁극기'], ['D F', '비기'],
             ['Space', '합격기'], ['N', '다음 파도'], ['G', '협동 핑'], ['Esc', '군막(메뉴)']].flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)])),
-        h('h3', { style: { marginTop: '10px' } }, '조작 · 로컬 협동'),
+        h('h3', { style: { marginTop: '10px' } }, '조작 · 온라인 협동'),
         h('div', { class: 'keys' },
-          [['1P', '마우스만: 클릭 건설·강화, 우클릭 이동, 버튼으로 기술·비기·합격기'], ['2P ← ↑ → ↓', '영웅 이동'], ['2P A S', '기술 · 궁극기'], ['2P D F', '비기 1 · 2'],
-            ['2P E / Q', '발밑에 건설·강화 / 취소'], ['2P Space', '합격기'], ['2P W', '다음 파도']].flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)]))),
+          [['방 만들기 / 참가', '각자 영웅 한 명 선택 · 준비 후 방장이 출전'], ['합격기', '두 사람이 2.5초 안에 함께 발동']].flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)]))),
     ));
   return el;
 }

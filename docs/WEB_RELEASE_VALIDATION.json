@@ -1,10 +1,10 @@
 {
-  "tests": 14,
+  "tests": 16,
   "passed": true,
   "entryBytes": 1002,
-  "scriptBytes": 1449355,
-  "scriptGzipBytes": 410320,
-  "artFiles": 198,
+  "scriptBytes": 1445966,
+  "scriptGzipBytes": 409519,
+  "artFiles": 195,
   "artByteIdentical": true,
   "repeatBodyBytes": 0
 }

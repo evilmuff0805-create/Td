@@ -349,6 +349,7 @@ export function castEquipSkill(s, pl, slot, x, y) {
 
 // ───── 합격기 ─────
 export function comboStatus(s) {
+  if(s.aborted||s.players.some(p=>p.left))return{ok:false,why:'협동 전투가 중단됐습니다'};
   const alive = s.heroes.filter((h) => !h.dead);
   if (s.heroes.length < 2) return { ok: false, why: '영웅이 둘 필요합니다' };
   if (s.resonance.gauge < RESONANCE_MAX) return { ok: false, why: '공명 게이지 부족' };

@@ -11,7 +11,7 @@ import {HERO_INBETWEEN_ART} from '../src/3d/inbetween-data.js';
 import {COMBAT_POSE_ART} from '../src/3d/combat-pose-data.js';
 import {COMBAT_INBETWEEN_ART} from '../src/3d/combat-inbetween-data.js';
 import {SEASONS} from '../src/3d/seasons.js';
-import {Session} from '../src/game/session.js';
+import {SimulationSession as Session} from './session-fixtures.mjs';
 import {GameUI} from '../src/ui/hud.js';
 import {SnapshotEncoder,emptyView,applySnapshot} from '../src/sim/snapshot.js';
 import {newWinterGame} from '../src/3d/scenario.js';
@@ -143,11 +143,11 @@ test('정지한 원화 검사기의 수동 방향도 타격 그림·기울기·�
   root.rotation.y=yaw(world.camera,-1,-1);art.updateUnit(root,e,false,.25,0,{...sample({dt:0,frozen:true}),poseRow:3});const after=appearance(root),d=root.userData.fixedImage;
   assert.equal(before.pose,12);assert.equal(after.pose,15);assert.ok(Math.abs(before.position.dot(right)+after.position.dot(right))<1e-8);assert.ok(Math.abs(before.muzzle.dot(right)+after.muzzle.dot(right))<1e-8);assert.equal(d.motion.visual.facing,0,'수동 검토 방향은 실제 pause 상태를 덮어쓰지 않는다');world.disposeCharacter(root);art.dispose();
 });
-test('겹쳐 선 동일 이순신 로컬 2인의 실제 기술과 스냅샷은 각 시전자만 즉시 조준한다',()=>{
+test('겹쳐 선 동일 이순신 그림 fixture의 기술과 스냅샷은 각 시전자만 즉시 조준한다',()=>{
   const session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi']},{heroes:['yi']}]}),[a,b]=session.view.heroes;
-  b.x=a.x;b.y=a.y;a.skillCd=b.skillCd=0;const ui=Object.assign(Object.create(GameUI.prototype),{s:session,p2keys:new Set(),lastP2Move:0,p2moving:false});
+  b.x=a.x;b.y=a.y;a.skillCd=b.skillCd=0;const ui=Object.assign(Object.create(GameUI.prototype),{s:session,});
   session.send({t:'heroSkill',p:0,h:0,x:a.x+4,y:a.y});const first=session.update(DT).filter(e=>e.k==='cone');assert.equal(first.length,1);assert.equal(first[0].caster,a.id);
-  b.skillCd=0;b.facing=-1;ui.p2Key({code:'KeyA'});const events=session.update(DT).filter(e=>e.k==='cone');assert.equal(events.length,1);assert.equal(events[0].caster,b.id);assert.notEqual(events[0].a,first[0].a);
+  b.skillCd=0;b.facing=-1;session.send({t:'heroSkill',p:1,h:1,x:b.x-4,y:b.y});const events=session.update(DT).filter(e=>e.k==='cone');assert.equal(events.length,1);assert.equal(events[0].caster,b.id);assert.notEqual(events[0].a,first[0].a);
   const packet=JSON.parse(JSON.stringify(new SnapshotEncoder().encode(session.state,events))),view=emptyView({stageId:'s1',difficulty:'normal'});applySnapshot(view,packet);assert.equal(packet.ev[0].caster,b.id);
   const {world,art}=context();world.cueHeroes(packet.ev,view);assert.equal(world.heroCues.has(a.id),false);assert.equal(world.heroCues.has(b.id),true);world.sync(view,view.time,DT,null);
   const rb=world.units.get('h'+b.id),d=rb.userData.fixedImage;assert.ok(Math.abs(rb.rotation.y-(Math.PI/2-events[0].a))<1e-9);assert.equal(d.pose,'attack');
@@ -168,5 +168,5 @@ test('정식 렌더러는 조준 수집→본체 배치→효과 순서를 지�
   }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 });
 
-await fs.writeFile(new URL('../docs/MOTION_TRANSITION_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',passed:results.length,scope:'display transitions, paused world transforms, aimed first frame, same-hero local co-op and legacy event fallback; no combat rule changes',tests:results},null,2)+'\n');
+await fs.writeFile(new URL('../docs/MOTION_TRANSITION_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',passed:results.length,scope:'display transitions, paused world transforms, aimed first frame, isolated same-hero owner fixture and legacy event fallback; no combat rule changes',tests:results},null,2)+'\n');
 console.log(`\n캐릭터 전환 ${results.length}개 검증 통과`);

@@ -96,7 +96,7 @@ export function queueCommand(s, cmd) {
 
 // ───────────────────────── 명령 처리 ─────────────────────────
 function canControlHero(s, p, h) {
-  return h && (h.owner === p || s.players[h.owner].left);
+  return h && h.owner === p;
 }
 
 export function applyCommand(s, c) {
@@ -114,9 +114,21 @@ export function applyCommand(s, c) {
     case 'move': {
       const h = s.heroes[c.h];
       if (!canControlHero(s, c.p, h) || h.dead) return;
-      h.tx = clamp(c.x, 0.3, mapOf(s).w - 0.3);
-      h.ty = clamp(c.y, 0.3, mapOf(s).h - 0.3);
+      if(c.stop===true){delete h.directMove;h.tx=h.x;h.ty=h.y;h.post={x:h.x,y:h.y};h.moving=false;return;}
+      if(c.direct===true){
+        if(!Number.isFinite(c.dx)||!Number.isFinite(c.dy)||Math.abs(c.dx)>1||Math.abs(c.dy)>1)return;
+        const length=Math.hypot(c.dx,c.dy);if(length<.001)return;
+        const lead=Math.max(.75,HEROES[h.heroId].speed*s.speed*.2);
+        h.tx=clamp(h.x+c.dx/length*lead,.3,mapOf(s).w-.3);
+        h.ty=clamp(h.y+c.dy/length*lead,.3,mapOf(s).h-.3);
+      }else{
+        if(!Number.isFinite(c.x)||!Number.isFinite(c.y))return;
+        h.tx = clamp(c.x, 0.3, mapOf(s).w - 0.3);
+        h.ty = clamp(c.y, 0.3, mapOf(s).h - 0.3);
+      }
       h.post = { x: h.tx, y: h.ty };
+      if(c.direct===true){h.directMove=true;releaseBlocker(s,h.id);}
+      else delete h.directMove;
       return;
     }
     case 'heroSkill': {
@@ -163,16 +175,8 @@ export function applyCommand(s, c) {
       ev(s, 'sfx', { n: 'ping' });
       return;
     case 'leave': {
-      // 동료 이탈: 남은 사람이 영웅·유산·군자금을 넘겨받는다
-      const other = s.players.find((o) => o !== pl && !o.left);
-      pl.left = true;
-      if (other) {
-        other.gold += pl.gold;
-        pl.gold = 0;
-        for (const t of s.towers) if (t.owner === pl.idx) t.owner = other.idx;
-        for (const h of s.heroes) if (h.owner === pl.idx) h.owner = other.idx;
-        ev(s, 'toast', { p: -1, text: `${pl.name} 이탈 — ${other.name}이(가) 지휘를 넘겨받습니다` });
-      }
+      pl.left=true;
+      if(!s.result)s.aborted={reason:'peer-left',p:c.p};
       return;
     }
   }
@@ -423,10 +427,10 @@ function updateWave(s) {
 
 // ───────────────────────── 메인 스텝 ─────────────────────────
 export function step(s) {
-  if (s.result) return;
+  if (s.result || s.aborted) return;
   for (const c of s.cmds) applyCommand(s, c);
   s.cmds.length = 0;
-  if (s.paused) return;
+  if (s.paused || s.aborted) return;
   s.tick++;
   s.time += DT;
   updateWave(s);
@@ -759,6 +763,7 @@ function updateHeroes(s) {
     if (h.ultCd > 0) h.ultCd -= DT;
     if (h.anim > 0) h.anim -= DT;
     if (h.dead) {
+      delete h.directMove;
       h.respawn -= DT;
       if (h.respawn <= 0) {
         h.dead = false;
@@ -775,8 +780,10 @@ function updateHeroes(s) {
     // 회복 (단군의 홍익인간: 모든 영웅 +0.7%/초)
     const regen = (def.regen || 0) + (s.time - h.hurtT > 4 ? 0.01 : 0) + (dangunAura ? 0.007 : 0);
     h.hp = Math.min(h.maxHp, h.hp + h.maxHp * regen * DT);
-    // 근접 영웅: 거점 주변 적을 가로막으러 이동
-    if (def.block > 0 && h.engaged.length === 0 && h.post) {
+    if(h.directMove&&Math.hypot(h.tx-h.x,h.ty-h.y)<=.05)delete h.directMove;
+    // Pad movement follows the player's direction until its finite goal or stop.
+    // Regular orders retain automatic melee interception.
+    if (!h.directMove && def.block > 0 && h.engaged.length === 0 && h.post) {
       let near = null;
       let bd = 1.6 * 1.6;
       for (const e of s.enemies) {
@@ -800,12 +807,12 @@ function updateHeroes(s) {
     const dy = h.ty - h.y;
     const dist = Math.hypot(dx, dy);
     const spd = def.speed * (bf.gwakT > 0 ? 1.4 : 1);
-    if (dist > 0.05 && !(h.engaged.length && def.block > 0 && dist < 0.8)) {
+    if (dist > 0.05 && !(!h.directMove && h.engaged.length && def.block > 0 && dist < 0.8)) {
       const stepLen = Math.min(dist, spd * DT);
       h.x += (dx / dist) * stepLen;
       h.y += (dy / dist) * stepLen;
       h.facing = dx >= 0 ? 1 : -1;
-      h.moving = dist > 0.3;
+      h.moving = dist > (h.directMove ? .05 : .3);
       if (h.engaged.length && dist > 0.8) releaseBlocker(s, h.id);
     } else h.moving = false;
     // 공격
@@ -921,7 +928,7 @@ function updateSummons(s) {
 
 function updateBlocking(s) {
   const blockers = [];
-  for (const h of s.heroes) if (!h.dead && HEROES[h.heroId].block > 0) blockers.push(h);
+  for (const h of s.heroes) if (!h.dead && !h.directMove && HEROES[h.heroId].block > 0) blockers.push(h);
   for (const m of s.summons) if (m.hp > 0 && m.block > 0) blockers.push(m);
   for (const b of blockers) {
     const cap = b.heroId ? HEROES[b.heroId].block : b.block;

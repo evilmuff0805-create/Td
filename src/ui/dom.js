@@ -42,14 +42,18 @@ export function toast(text, ms = 1800) {
 }
 
 // confirm() 대신 쓰는 모달
-export function modal(title, body, buttons = [{ label: '확인', value: true, cls: 'btn-seal' }]) {
+export function modal(title, body, buttons = [{ label: '확인', value: true, cls: 'btn-seal' }], {signal} = {}) {
+  if(signal?.aborted)return Promise.resolve(null);
   return new Promise((resolve) => {
-    const back = h('div', { class: 'modal-back' });
+    const back = h('div', { class: 'modal-back' });let closed=false;
     const close = (v) => {
+      if(closed)return;closed=true;signal?.removeEventListener('abort',onAbort);
       back.remove();
       document.removeEventListener('keydown', onKey, true);
       resolve(v);
     };
+    const onAbort=()=>close(null);
+    signal?.addEventListener('abort',onAbort,{once:true});
     const onKey = (e) => {
       if (e.key === 'Escape') {
         e.stopPropagation();

@@ -43,7 +43,7 @@
       "passed": true
     },
     {
-      "name": "로컬 2인 실제 선택창은 양측 16흉상·서로 선택 금지·원래 두 출전 사양을 유지한다",
+      "name": "솔로 선택창은 8흉상과 1영웅 출전 사양을 유지한다",
       "passed": true
     },
     {
@@ -51,5 +51,5 @@
       "passed": true
     }
   ],
-  "scope": "Menu-only lazy base/costume images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume busts/fallback, actual codex and local two-player setup DOM/specs"
+  "scope": "Menu-only lazy base/costume images, cache and failure handling, canvas lifetime, unchanged full/HUD poses, equipped-costume busts/fallback, actual codex and single-hero solo setup DOM/specs"
 }

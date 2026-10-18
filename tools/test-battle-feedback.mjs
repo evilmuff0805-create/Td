@@ -1,3 +1,4 @@
+import {Session as NetworkSession} from '../src/game/session.js';
 import assert from 'node:assert/strict';
 import { writeFileSync } from 'node:fs';
 import { TowerLabels } from '../src/3d/tower-labels.js';
@@ -7,7 +8,7 @@ import { audio } from '../src/audio/audio.js';
 import { createGame, applyCommand, DT } from '../src/sim/sim.js';
 import { HERO_ORDER } from '../src/data/heroes.js';
 import { SKILL_ORDER } from '../src/data/skills.js';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { GameUI } from '../src/ui/hud.js';
 import { loadProfile } from '../src/meta/profile.js';
 import { settingsScreen } from '../src/ui/screens-menu.js';
@@ -151,7 +152,7 @@ test('장착 비기 8종과 전원 사망 중 봉수·군량도 성공 한 번�
   }
 });
 
-test('로컬 2인 동시 기술은 각각 한 번 전달하고 독립 군자금·재사용·소유권을 보존',()=>{
+test('두 소유자 시뮬레이션 동시 기술은 각각 한 번 전달하고 독립 군자금·재사용·소유권을 보존',()=>{
   const session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:7,specs:[spec('yi'),spec('sejong')]});session.setPaused(true);
   const gold=session.state.players.map(p=>p.gold);session.state.heroes.forEach(h=>h.skillCd=0);
   session.send({t:'heroSkill',p:0,h:0,x:5,y:5});session.send({t:'heroSkill',p:1,h:1,x:6,y:5});
@@ -162,7 +163,7 @@ test('로컬 2인 동시 기술은 각각 한 번 전달하고 독립 군자금�
 test('온라인 JSON 전달과 실제 HUD 이벤트 소비는 두 사람 발동음을 중복하지 않음',()=>{
   const endpoint=()=>({handlers:new Map(),on(k,f){this.handlers.set(k,f);return()=>this.handlers.delete(k);},send(m){this.peer.handlers.get(m.t)?.(JSON.parse(JSON.stringify(m)));}});
   const hn=endpoint(),gn=endpoint();hn.peer=gn;gn.peer=hn;
-  const host=new Session({kind:'host',stageId:'s1',difficulty:'normal',seed:7,specs:[spec('yi'),spec('sejong')],net:hn}),guest=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net:gn});
+  const host=new NetworkSession({kind:'host',stageId:'s1',difficulty:'normal',seed:7,specs:[spec('yi'),spec('sejong')],net:hn}),guest=new NetworkSession({kind:'guest',stageId:'s1',difficulty:'normal',net:gn});
   host.setPaused(true);host.state.heroes.forEach(h=>h.skillCd=0);host.send({t:'heroSkill',p:0,h:0,x:5,y:5});guest.send({t:'heroSkill',p:0,h:1,x:6,y:5});host.lastSnap=-1e9;
   const sent=host.update(DT),received=guest.update(DT);assert.deepEqual(cues(received),cues(sent));assert.deepEqual(cues(received).map(e=>e.p),[0,1]);
   const oldActivation=audio.playActivation,oldPlay=audio.play,played=[],oldSounds=[];audio.playActivation=k=>played.push(k);audio.play=k=>oldSounds.push(k);
@@ -178,7 +179,7 @@ test('소리 전용 빈 좌표는 추가 효과를 그리지 않고 기존 시�
 
 test('온라인 전투 종료에 실은 마지막 발동음을 다음 정기 스냅샷에서 재전송하지 않음',()=>{
   const packets=[],net={on(){return()=>{};},send:p=>packets.push(JSON.parse(JSON.stringify(p)))};
-  const host=new Session({kind:'host',stageId:'s1',difficulty:'normal',seed:7,specs:[spec('yi'),spec('sejong')],net});
+  const host=new NetworkSession({kind:'host',stageId:'s1',difficulty:'normal',seed:7,specs:[spec('yi'),spec('sejong')],net});
   host.setPaused(true);host.state.heroes[0].skillCd=0;host.lastSnap=performance.now()+1e6;
   host.send({t:'heroSkill',p:0,h:0,x:5,y:5});assert.equal(cues(host.update(DT)).length,1);assert.equal(cues(host.netEvents).length,1);
   host.state.result={win:true};host.announceEnd();assert.equal(cues(packets.find(p=>p.t==='finish').s.ev).length,1);

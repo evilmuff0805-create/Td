@@ -14,12 +14,16 @@ check('manifest files have exact SHA and source images are byte-identical',()=>{
   for(const f of manifest.files){const b=fs.readFileSync(new URL(f.path,root));assert.equal(b.length,f.bytes);assert.equal(crypto.createHash('sha256').update(b).digest('hex'),f.sha256);if(/\.(webp|png|jpg)$/.test(f.path)){assert.deepEqual(b,fs.readFileSync(new URL('../'+f.path,import.meta.url)));assert.ok(!f.path.includes('/source/'));}}
 });
 const html=fs.readFileSync(new URL('index.html',root),'utf8'),js=fs.readFileSync(new URL('assets/3d/app.js',root),'utf8');
-check('detached package declares ESM and contains no broken internal review links',()=>{assert.equal(JSON.parse(fs.readFileSync(new URL('package.json',root))).type,'module');assert.ok(!fs.readFileSync(new URL('3d.html',root),'utf8').includes('href="dev/'));});
+check('detached package contains only product entry and no preview files or links',()=>{assert.equal(JSON.parse(fs.readFileSync(new URL('package.json',root))).type,'module');for(const path of ['3d.html','3d.html.gz','assets/3d/game.js','assets/3d/game.js.gz','assets/3d/game.js.LEGAL.txt','assets/3d/game.js.LEGAL.txt.gz','styles/3d.css','styles/3d-battle.css']){assert.ok(!manifest.files.some(f=>f.path===path),path);assert.ok(!fs.existsSync(new URL(path,root)),path);}assert.ok(!js.includes('title-3d-link'));});
 check('web entry keeps online enabled and artwork external at the correct module root',()=>{
   assert.ok(html.includes('assets/3d/app.js'));assert.ok(!html.includes('__HOGUK_STANDALONE__'));assert.ok(!js.includes('data:image/webp;base64,'));assert.ok(Buffer.byteLength(html)<4000);
   for(const rel of new Set([...js.matchAll(/assets\/[\w./-]+\.(?:webp|png|jpg|svg)/g)].map(m=>m[0])))assert.ok(fs.existsSync(new URL(rel,root)),rel);
 });
 check('compressed entry decodes to exactly the shipping script',()=>assert.deepEqual(gunzipSync(fs.readFileSync(new URL('assets/3d/app.js.gz',root))),Buffer.from(js)));
+for(const sourceRoot of [fileURLToPath(root),fileURLToPath(new URL('../',import.meta.url))]){
+  const publicServer=http.createServer(staticHandler(sourceRoot,{publicOnly:true}));publicServer.listen(0,'127.0.0.1');await once(publicServer,'listening');
+  try{const responses=[];for(const path of ['/3d.html','/assets/3d/game.js'])for(const method of ['GET','HEAD'])responses.push(await new Promise((resolve,reject)=>{const req=http.request({hostname:'127.0.0.1',port:publicServer.address().port,path,method},res=>{res.resume();res.on('end',()=>resolve(res.statusCode));});req.on('error',reject);req.end();}));check('publicOnly blocks GET/HEAD preview even in '+(sourceRoot===fileURLToPath(root)?'shipping package':'source root with existing preview'),()=>assert.ok(responses.every(status=>status===404)));}finally{publicServer.close();await once(publicServer,'close');}
+}
 const server=http.createServer(staticHandler(fileURLToPath(root)));server.listen(0,'127.0.0.1');await once(server,'listening');
 const request=(rel,headers={},method='GET')=>new Promise((resolve,reject)=>{const req=http.request({hostname:'127.0.0.1',port:server.address().port,path:rel,headers,method},res=>{const parts=[];res.on('data',p=>parts.push(p));res.on('end',()=>resolve({status:res.statusCode,headers:res.headers,body:Buffer.concat(parts)}));});req.on('error',reject);req.end();});
 try{

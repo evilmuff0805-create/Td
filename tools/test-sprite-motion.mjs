@@ -6,7 +6,7 @@ import { HERO_POSE_ART } from '../src/3d/hero-pose-data.js';
 import { createGame,applyCommand,step,DT } from '../src/sim/sim.js';
 import { actionCue,spawnEnemy,addSummon } from '../src/sim/combat.js';
 import { SnapshotEncoder,emptyView,applySnapshot,lerpView } from '../src/sim/snapshot.js';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { GameUI } from '../src/ui/hud.js';
 
 let passed=0;const test=(name,run)=>{run();passed++;console.log('  ✔ '+name);};
@@ -98,14 +98,14 @@ test('스냅샷의 작은 이동은 보간하고 큰 재출전 보정은 한 번
   s.heroes[0].dead=true;applySnapshot(v,enc.encode(s,[]));s.heroes[0].dead=false;s.heroes[0].x+=.8;applySnapshot(v,enc.encode(s,[]));lerpView(v,.2);
   assert.ok(Math.abs(v.heroes[0].x-s.heroes[0].x)<.011,'가까운 재출전도 중간 위치를 거치지 않음');
 });
-test('로컬 1P 이동과 실제 2P 방향키·기술 입력은 각자의 영웅만 조작한다',()=>{
+test('두 소유자 시뮬레이션 이동·기술 명령은 각자의 영웅만 조작한다',()=>{
   const s=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi']},{heroes:['sejong']}]});
-  const ui=Object.assign(Object.create(GameUI.prototype),{s,p2keys:new Set(),lastP2Move:0,p2moving:false});
+  const ui=Object.assign(Object.create(GameUI.prototype),{s,});
   const [a,b]=s.view.heroes,ax=a.x,bx=b.x,az=a.y;
-  s.send({t:'move',p:0,h:0,x:ax-1,y:az});ui.p2Key({code:'ArrowRight'});
-  for(let i=1;i<=30;i++){ui.p2Tick(i*1000/60);s.update(DT);}
-  assert.ok(a.x<ax&&b.x>bx);ui.p2keys.clear();ui.p2Tick(600);s.update(DT);
-  b.skillCd=0;const p1Skill=a.skillCd;ui.p2Key({code:'KeyA'});s.update(DT);assert.ok(b.skillCd>0);assert.ok(a.skillCd<=p1Skill&&a.skillCd>p1Skill-.02);
+  s.send({t:'move',p:0,h:0,x:ax-1,y:az});s.send({t:'move',p:1,h:1,x:bx+1,y:b.y});
+  for(let i=1;i<=30;i++){s.update(DT);}
+  assert.ok(a.x<ax&&b.x>bx);s.update(DT);
+  b.skillCd=0;const p1Skill=a.skillCd;s.send({t:'heroSkill',p:1,h:1,x:b.x-4,y:b.y});s.update(DT);assert.ok(b.skillCd>0);assert.ok(a.skillCd<=p1Skill&&a.skillCd>p1Skill-.02);
   let ma=updateSpriteMotion(null,sample({x:a.x,z:a.y,time:s.view.time})),mb=updateSpriteMotion(null,sample({x:b.x,z:b.y,time:s.view.time}));
   ma=updateSpriteMotion(ma.state,sample({x:a.x+.1,z:a.y,time:s.view.time+DT}));mb=updateSpriteMotion(mb.state,sample({x:b.x,z:b.y,time:s.view.time+DT}));
   assert.ok(ma.phase>0);assert.equal(mb.phase,0);assert.notEqual(ma.state,mb.state);s.destroy();

@@ -1,0 +1,1228 @@
+{
+  "generatedAt": "2026-10-18T04:59:32.370Z",
+  "factor": 1,
+  "seed": 7919,
+  "entry": {
+    "coins": 25,
+    "jade": 640,
+    "heroes": {
+      "yi": 5
+    },
+    "skills": {
+      "singijeon": 2,
+      "bongsu": 4
+    },
+    "towers": {
+      "sungnyemun": 11,
+      "hwaseong": 27,
+      "bosingak": 3,
+      "cheomseong": 13,
+      "haeinsa": 1,
+      "seokguram": 9,
+      "namhansan": 3,
+      "gyeongbok": 3,
+      "seokbinggo": 2,
+      "bulguksa": 2
+    }
+  },
+  "hero": "yi",
+  "stage": "s17",
+  "scope": "Fixed earned entry profile and seed; no rewards or investment between tactics, damage only; not a full progression pass.",
+  "wins": 3,
+  "runs": [
+    {
+      "attempt": 1,
+      "plan": {
+        "plan": "balanced",
+        "placement": "default",
+        "branch": "A",
+        "upgradePolicy": "cannon",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 7,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "skill:singijeon": 807.7711443735157,
+        "hero:yi": 11863.510399019187,
+        "tower:hwaseong": 7642.899643270217,
+        "tower:sungnyemun": 3219.896052935373,
+        "tower:cheomseong": 1981.2345764854076,
+        "tower:haeinsa": 444.40614494306783,
+        "tower:bosingak": 399.0003402780591,
+        "tower:seokguram": 283.6206463999996
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.490999999999957,
+          "y": 7.637436730787158
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.49099999999988,
+          "y": 7.6566828593611715
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.476833333333218,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48874999999947,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.497500000000016,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.496500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48249999999954,
+          "y": 7.333226715307683
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.499999999999503,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.487499999998903,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 7,
+          "type": "onmyoji",
+          "x": 22.492416666667886,
+          "y": 7.31386486319825
+        },
+        {
+          "wave": 7,
+          "type": "teppo",
+          "x": 22.493166666666113,
+          "y": 7.487798775639385
+        },
+        {
+          "wave": 7,
+          "type": "teppo",
+          "x": 22.491583333332756,
+          "y": 7.4081279437989
+        },
+        {
+          "wave": 7,
+          "type": "onmyoji",
+          "x": 22.49666666666785,
+          "y": 7.593212289083749
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "plan": {
+        "plan": "ice",
+        "placement": "exit",
+        "buildPlacement": "exit",
+        "branch": "A",
+        "upgradePolicy": "cannon",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": true,
+      "wave": 18,
+      "lives": 5,
+      "rawUsefulDamage": {
+        "skill:singijeon": 2955.22138913401,
+        "hero:yi": 44499.57734213989,
+        "tower:seokbinggo": 5811.44759961322,
+        "tower:sungnyemun": 44135.911799312475,
+        "tower:hwaseong": 108636.70885268741,
+        "tower:cheomseong": 48446.246508034856,
+        "tower:haeinsa": 3875.3026252874256,
+        "tower:seokguram": 7336.051120145213
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.4909999999998,
+          "y": 7.5434937352314595
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.48533333333323,
+          "y": 7.439142378419637
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.483166666666627,
+          "y": 7.622422637511045
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.485333333333287,
+          "y": 7.6566828593611715
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.490999999999957,
+          "y": 7.421044021472335
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.480333333333313,
+          "y": 7.35005647810176
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.493833333333292,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.494999999999862,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 9,
+          "type": "cavalry",
+          "x": 22.475000000000144,
+          "y": 7.67869313377887
+        },
+        {
+          "wave": 9,
+          "type": "ninja",
+          "x": 22.487812499999023,
+          "y": 7.597717227134853
+        },
+        {
+          "wave": 9,
+          "type": "cavalry",
+          "x": 22.487500000000587,
+          "y": 7.364937404915691
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "plan": {
+        "plan": "fresh",
+        "placement": "gate",
+        "branch": "A",
+        "upgradePolicy": "cannon",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": true,
+      "wave": 18,
+      "lives": 6,
+      "rawUsefulDamage": {
+        "skill:singijeon": 3152.10133073181,
+        "tower:seokbinggo": 8448.890759744992,
+        "tower:sungnyemun": 27588.477394319227,
+        "hero:yi": 43271.008513089306,
+        "tower:namhansan": 9059.30175404099,
+        "tower:hwaseong": 127004.08109841596,
+        "tower:cheomseong": 38469.94704556634,
+        "tower:haeinsa": 1607.2059462973777,
+        "tower:bulguksa": 24531.697102668168
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.492500000000177,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.493124999999743,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.49999999999971,
+          "y": 7.333226715307683
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999999722,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999998934,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 6,
+          "type": "cavalry",
+          "x": 22.487499999998953,
+          "y": 7.4403174265287815
+        },
+        {
+          "wave": 12,
+          "type": "cavalry",
+          "x": 22.497499999999228,
+          "y": 7.450441335141659
+        }
+      ]
+    },
+    {
+      "attempt": 4,
+      "plan": {
+        "plan": "nam",
+        "placement": "rally",
+        "branch": "A",
+        "upgradePolicy": "cannon",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": true,
+      "wave": 18,
+      "lives": 4,
+      "rawUsefulDamage": {
+        "hero:yi": 52203.250740132804,
+        "skill:singijeon": 2871.4438638065344,
+        "tower:namhansan": 8301.510980955798,
+        "tower:sungnyemun": 23068.77307497065,
+        "tower:bosingak": 3117.1619392093435,
+        "tower:hwaseong": 120637.81311092147,
+        "tower:cheomseong": 36071.14766047427,
+        "tower:haeinsa": 1249.5462318398631,
+        "tower:seokguram": 23927.328931551314
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.493749999999196,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.499999999999638,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999999133,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.493500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.494999999999095,
+          "y": 7.333226715307683
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.497499999999135,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48687499999933,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 9,
+          "type": "ninja",
+          "x": 22.49250000000005,
+          "y": 7.474870461039245
+        }
+      ]
+    },
+    {
+      "attempt": 5,
+      "plan": {
+        "plan": "balanced",
+        "placement": "middle",
+        "branch": "A",
+        "upgradePolicy": "cannon",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 7,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "skill:singijeon": 1011.8363524112145,
+        "tower:hwaseong": 11956.693883244381,
+        "hero:yi": 7500.712750754064,
+        "tower:sungnyemun": 3306.0903999999955,
+        "tower:cheomseong": 2276.202183065663,
+        "tower:bosingak": 499.97232000000037,
+        "tower:haeinsa": 477.5675515997333,
+        "tower:seokguram": 512.9728725333323
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.49099999999995,
+          "y": 7.637436730787158
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.49099999999988,
+          "y": 7.6566828593611715
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.485999999999414,
+          "y": 7.4779071099124845
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.48883333333295,
+          "y": 7.35005647810176
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.47683333333321,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48874999999947,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.497500000000016,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.490500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.479999999999443,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 7,
+          "type": "onmyoji",
+          "x": 22.49525000000122,
+          "y": 7.31386486319825
+        },
+        {
+          "wave": 7,
+          "type": "teppo",
+          "x": 22.49316666666612,
+          "y": 7.487798775639385
+        },
+        {
+          "wave": 7,
+          "type": "teppo",
+          "x": 22.49791666666608,
+          "y": 7.4081279437989
+        },
+        {
+          "wave": 7,
+          "type": "onmyoji",
+          "x": 22.496666666667856,
+          "y": 7.593212289083749
+        },
+        {
+          "wave": 7,
+          "type": "teppo",
+          "x": 22.489999999999398,
+          "y": 7.445795984659344
+        }
+      ]
+    },
+    {
+      "attempt": 6,
+      "plan": {
+        "plan": "bul",
+        "placement": "spread",
+        "branch": "A",
+        "upgradePolicy": "cannon",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 7,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "hero:yi": 13879.401645981861,
+        "skill:singijeon": 918.878395221033,
+        "tower:hwaseong": 4934.919431749765,
+        "tower:sungnyemun": 3078.9673831148666,
+        "tower:cheomseong": 1896.2044812799993,
+        "tower:bosingak": 369.2743200000002,
+        "tower:haeinsa": 411.69398656001,
+        "tower:bulguksa": 382.17535283199993
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.49099999999995,
+          "y": 7.637436730787158
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.49099999999988,
+          "y": 7.6566828593611715
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.476833333333204,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48874999999947,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48999999999998,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999998784,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.490500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.487499999999372,
+          "y": 7.333226715307683
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.487499999999507,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.492499999998905,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 7,
+          "type": "onmyoji",
+          "x": 22.49525000000122,
+          "y": 7.31386486319825
+        },
+        {
+          "wave": 7,
+          "type": "teppo",
+          "x": 22.49316666666612,
+          "y": 7.487798775639385
+        }
+      ]
+    },
+    {
+      "attempt": 7,
+      "plan": {
+        "plan": "balanced",
+        "placement": "default",
+        "branch": "alt",
+        "upgradePolicy": "focus",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 9,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "skill:singijeon": 1259.8962955366167,
+        "hero:yi": 15466.693740498651,
+        "tower:hwaseong": 5740.844438822785,
+        "tower:sungnyemun": 12159.309485958676,
+        "tower:cheomseong": 5367.4224519475765,
+        "tower:haeinsa": 589.766384639992,
+        "tower:bosingak": 894.0199077119001,
+        "tower:seokguram": 3242.9809433475366
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.480333333332858,
+          "y": 7.622422637511045
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.493833333333235,
+          "y": 7.6566828593611715
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.476833333333204,
+          "y": 7.421044021472335
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.493833333333242,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48874999999947,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.497500000000016,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.49499999999879,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.490500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.494499999999704,
+          "y": 7.694681607559323
+        },
+        {
+          "wave": 7,
+          "type": "onmyoji",
+          "x": 22.491666666668692,
+          "y": 7.39969314886257
+        },
+        {
+          "wave": 9,
+          "type": "ninja",
+          "x": 22.491750000000025,
+          "y": 7.367184278741479
+        },
+        {
+          "wave": 9,
+          "type": "cavalry",
+          "x": 22.494999999998875,
+          "y": 7.342977457214147
+        },
+        {
+          "wave": 9,
+          "type": "ninja",
+          "x": 22.485000000000127,
+          "y": 7.454910682421177
+        }
+      ]
+    },
+    {
+      "attempt": 8,
+      "plan": {
+        "plan": "ice",
+        "placement": "exit",
+        "buildPlacement": "exit",
+        "branch": "alt",
+        "upgradePolicy": "focus",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 8,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "skill:singijeon": 1700.4098137974427,
+        "hero:yi": 15979.02061712503,
+        "tower:seokbinggo": 1607.7702965436638,
+        "tower:sungnyemun": 7398.851291721141,
+        "tower:cheomseong": 6723.651415975407,
+        "tower:hwaseong": 1447.0002703558623,
+        "tower:haeinsa": 1017.8241068117459,
+        "tower:seokguram": 313.36191481826825
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 3,
+          "type": "ashigaru",
+          "x": 22.498333333332297,
+          "y": 7.319320490211249
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.482499999999945,
+          "y": 7.5434937352314595
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.490999999999957,
+          "y": 7.439142378419637
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.480333333333313,
+          "y": 7.345215594861656
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.482499999999966,
+          "y": 7.637436730787158
+        },
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.482499999999966,
+          "y": 7.6566828593611715
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.485333333333088,
+          "y": 7.421044021472335
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.480333333333313,
+          "y": 7.35005647810176
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.493833333333292,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.494999999999862,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.499999999999112,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.49166666666664,
+          "y": 7.582610513269901
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.485999999999976,
+          "y": 7.429695937782526
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.494499999999967,
+          "y": 7.625343681685626
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.49166666666664,
+          "y": 7.569337120652198
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.494499999999967,
+          "y": 7.643507183063775
+        },
+        {
+          "wave": 8,
+          "type": "cavalry",
+          "x": 22.490625000000087,
+          "y": 7.535326390713453
+        }
+      ]
+    },
+    {
+      "attempt": 9,
+      "plan": {
+        "plan": "fresh",
+        "placement": "gate",
+        "branch": "alt",
+        "upgradePolicy": "focus",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 12,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "skill:singijeon": 2043.905154308086,
+        "tower:seokbinggo": 4389.73037568001,
+        "tower:sungnyemun": 17586.501822975082,
+        "hero:yi": 25506.892979942455,
+        "tower:namhansan": 5189.419803008628,
+        "tower:hwaseong": 5065.359218522689,
+        "tower:cheomseong": 12599.89466458064,
+        "tower:haeinsa": 634.9400291600897,
+        "tower:bulguksa": 3373.7733000934404
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.492500000000177,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.493124999999743,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999999722,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999998934,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 6,
+          "type": "cavalry",
+          "x": 22.487499999998953,
+          "y": 7.4403174265287815
+        },
+        {
+          "wave": 8,
+          "type": "scout",
+          "x": 22.488833333333567,
+          "y": 7.520661992114038
+        },
+        {
+          "wave": 10,
+          "type": "cavalry",
+          "x": 22.492499999999715,
+          "y": 7.458547241520137
+        },
+        {
+          "wave": 10,
+          "type": "cavalry",
+          "x": 22.492499999999715,
+          "y": 7.446298610605299
+        },
+        {
+          "wave": 10,
+          "type": "cavalry",
+          "x": 22.489999999999718,
+          "y": 7.48608484165743
+        },
+        {
+          "wave": 12,
+          "type": "cavalry",
+          "x": 22.497499999999228,
+          "y": 7.450441335141659
+        },
+        {
+          "wave": 12,
+          "type": "ninja",
+          "x": 22.48050000000039,
+          "y": 7.450710409879685
+        }
+      ]
+    },
+    {
+      "attempt": 10,
+      "plan": {
+        "plan": "nam",
+        "placement": "rally",
+        "branch": "alt",
+        "upgradePolicy": "focus",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 9,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "hero:yi": 19170.955613375747,
+        "skill:singijeon": 1780.371229279881,
+        "tower:namhansan": 1624.7573123639638,
+        "tower:sungnyemun": 10048.092226867551,
+        "tower:bosingak": 817.5647343540722,
+        "tower:hwaseong": 2611.133982405027,
+        "tower:cheomseong": 4888.085699266409,
+        "tower:haeinsa": 436.4454461892202,
+        "tower:seokguram": 2182.1479539065003
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.493749999999196,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.499999999999638,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999999133,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.487500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.494999999999095,
+          "y": 7.333226715307683
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.4974999999994,
+          "y": 7.4403174265287815
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.497499999999135,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48687499999933,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 9,
+          "type": "cavalry",
+          "x": 22.494999999999067,
+          "y": 7.398633612878621
+        },
+        {
+          "wave": 9,
+          "type": "ninja",
+          "x": 22.49250000000015,
+          "y": 7.605716778710485
+        }
+      ]
+    },
+    {
+      "attempt": 11,
+      "plan": {
+        "plan": "balanced",
+        "placement": "middle",
+        "branch": "alt",
+        "upgradePolicy": "focus",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 7,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "skill:singijeon": 877.3639229921035,
+        "tower:hwaseong": 4025.186721144712,
+        "hero:yi": 8358.037488579648,
+        "tower:bosingak": 742.4198881430364,
+        "tower:sungnyemun": 5490.592740503884,
+        "tower:cheomseong": 2123.4362743939555,
+        "tower:haeinsa": 499.5820319999718,
+        "tower:seokguram": 4.037488000000001
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 3,
+          "type": "scout",
+          "x": 22.485999999999315,
+          "y": 7.345215594861656
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.485333333333237,
+          "y": 7.6566828593611715
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.497333333332868,
+          "y": 7.622422637511045
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.476833333333204,
+          "y": 7.421044021472335
+        },
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.485333333333244,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48874999999947,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.497500000000016,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.49499999999879,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.490500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.489999999998837,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.497333333332783,
+          "y": 7.518348250724375
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.494499999999704,
+          "y": 7.694681607559323
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.497333333332953,
+          "y": 7.573684390354901
+        },
+        {
+          "wave": 6,
+          "type": "scout",
+          "x": 22.491666666666283,
+          "y": 7.458680893201381
+        },
+        {
+          "wave": 7,
+          "type": "scout",
+          "x": 22.48883333333265,
+          "y": 7.3644068347290155
+        }
+      ]
+    },
+    {
+      "attempt": 12,
+      "plan": {
+        "plan": "bul",
+        "placement": "spread",
+        "branch": "alt",
+        "upgradePolicy": "focus",
+        "economyAware": true,
+        "staggerBongsu": true
+      },
+      "win": false,
+      "wave": 10,
+      "lives": 0,
+      "rawUsefulDamage": {
+        "hero:yi": 21692.641816488424,
+        "skill:singijeon": 1191.151018007398,
+        "tower:hwaseong": 5004.150532039969,
+        "tower:sungnyemun": 17026.18490086047,
+        "tower:cheomseong": 6505.940123452823,
+        "tower:haeinsa": 560.6910557454001,
+        "tower:bosingak": 703.9777070916741,
+        "tower:bulguksa": 2101.95486482222
+      },
+      "deaths": 0,
+      "deadSeconds": 0,
+      "leaks": [
+        {
+          "wave": 4,
+          "type": "scout",
+          "x": 22.485333333333244,
+          "y": 7.409255330637097
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48874999999947,
+          "y": 7.4073709128424525
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48999999999998,
+          "y": 7.459366941824555
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.484999999998784,
+          "y": 7.458303188625723
+        },
+        {
+          "wave": 5,
+          "type": "drum",
+          "x": 22.490500000000907,
+          "y": 7.611849332228303
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.48249999999954,
+          "y": 7.333226715307683
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.489999999998894,
+          "y": 7.4403174265287815
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.499999999999503,
+          "y": 7.608091916702688
+        },
+        {
+          "wave": 5,
+          "type": "cavalry",
+          "x": 22.487499999998903,
+          "y": 7.46443906435743
+        },
+        {
+          "wave": 10,
+          "type": "cavalry",
+          "x": 22.479999999999386,
+          "y": 7.446298610605299
+        },
+        {
+          "wave": 10,
+          "type": "cavalry",
+          "x": 22.48499999999943,
+          "y": 7.4731192392297086
+        }
+      ]
+    }
+  ]
+}

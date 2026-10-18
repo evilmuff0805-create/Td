@@ -256,13 +256,6 @@ export class Renderer {
     if (ui.placing && at) {
       this.rangeCircle(ctx, ui.placing, 1, null, at.x, at.y, 1, ui.buildAt ? true : ui.hoverOk);
     }
-    const p2 = ui.p2intent;
-    if (p2) {
-      const t2 = p2.towerId !== null && p2.towerId !== undefined ? v.towers.find((x) => x.id === p2.towerId) : null;
-      if (p2.type) this.rangeCircle(ctx, p2.type, 1, null, p2.x, p2.y, 1, true, PAL.p1);
-      else if (t2) this.rangeCircle(ctx, t2.type, t2.level, t2.branch, t2.x, t2.y, t2.rangeMult || 1, true, PAL.p1);
-    }
-
     // 깊이 정렬
     const list = [];
     for (const t of v.towers) list.push({ y: t.y + 0.9, k: 0, o: t });
@@ -336,29 +329,11 @@ export class Renderer {
       ctx.fillText(Math.ceil(h.respawn), x, y - 1);
     }
 
-    // 로컬 2P 커서
-    if (ui.p2cursor && !p2) {
-      const c = ui.p2cursor;
-      ctx.strokeStyle = PAL.p1;
-      ctx.lineWidth = 2;
-      ctx.setLineDash([4, 3]);
-      ctx.strokeRect(c.x * TS + 2, c.y * TS + 2, TS - 4, TS - 4);
-      ctx.setLineDash([]);
-    }
     // 각자 고른 자리 (누가 어디에 짓는지 서로 보이게)
     if (ui.buildAt) this.intentMark(ctx, ui.buildAt.x, ui.buildAt.y, ui.meColor || PAL.p0, time);
     else if (ui.selTower) {
       const t = v.towers.find((x) => x.id === ui.selTower);
       if (t) this.intentMark(ctx, t.x, t.y, ui.meColor || PAL.p0, time);
-    }
-    if (p2) {
-      if (p2.type) {
-        ctx.globalAlpha = 0.6;
-        drawTower(ctx, { type: p2.type, level: 1, branch: null, x: p2.x, y: p2.y, angle: -1 }, time, { noPips: true });
-        ctx.globalAlpha = 1;
-        this.previewSynergy(ctx, v, p2.type, p2.x, p2.y);
-      }
-      this.intentMark(ctx, p2.x, p2.y, PAL.p1, time);
     }
     // 배치 유령
     if (ui.placing && at) {

@@ -9,7 +9,7 @@
     "courier",
     "turtle"
   ],
-  "localCoopPreserved": true,
+  "ownerArtIsolationPreserved": true,
   "alphaReadbacks": 0,
   "tests": [
     {
@@ -53,7 +53,7 @@
       "passed": true
     },
     {
-      "name": "로컬 2인 실제 이동 입력과 두 병영의 재화·병사 소유권을 유지한다",
+      "name": "두 소유자 시뮬레이션 이동 명령과 두 병영의 재화·병사 소유권을 유지한다",
       "passed": true
     },
     {
@@ -65,7 +65,7 @@
       "passed": true
     },
     {
-      "name": "실제 로컬 협동 HUD는 병력 원본이 준비되어도 마지막 중간 그림 전에는 시계를 소비하지 않는다",
+      "name": "두 소유자 그림 fixture의 실제 HUD는 병력 원본이 준비되어도 마지막 중간 그림 전에는 시계를 소비하지 않는다",
       "passed": true
     },
     {

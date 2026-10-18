@@ -32,6 +32,8 @@ export class RoomBroker {
     this.cancel(slot.timer);slot.timer=null;
     const peer=this.other(room,role)?.client;
     this.send(peer,{type:'peer-left'});
+    // A permanent departure closes a started battle before any later finish.
+    if(room.started){this.drop(room);return;}
     if(role==='host')this.drop(room);else{room.guest=null;if(!room.host.client)this.drop(room);}
   }
   message(client,msg){
@@ -64,7 +66,7 @@ export class RoomBroker {
     const room=this.rooms.get(client.room),role=client.role;
     if(!room||room[role]?.client!==client||!msg.data||typeof msg.data!=='object')return;
     const type=msg.data.t;
-    if(role==='guest'&&['start','cfg','snap','end','finish','sync-state'].includes(type))return;
+    if(role==='guest'&&['start','cfg','snap','end','finish','sync-state','host-background'].includes(type))return;
     if(room.terminal){if(type==='sync')this.finalTo(room,client);if(role==='host'&&type==='finish')this.send(client,{type:'end-cached'});return;}
     if(role==='host'){
       if(type==='start'){if(room.started)return;room.started=true;room.start=msg.data;}

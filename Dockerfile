@@ -7,7 +7,7 @@ COPY src ./src
 COPY styles ./styles
 COPY assets ./assets
 COPY server ./server
-COPY index.html 3d.html ./
+COPY index.html ./
 COPY tools/build-web.mjs ./tools/build-web.mjs
 RUN node tools/build-web.mjs
 

@@ -1,4 +1,4 @@
-// 전투 화면: 캔버스 + 상·하단 지휘판 + 팝업 + 입력 (P1 마우스/키보드, 로컬 P2 오른쪽 키보드)
+// 전투 화면: 1인 1영웅 · 마우스/모바일 패드 · 방 코드 협동
 import { h, clear, toast, modal, fmt } from './dom.js';
 import { Renderer } from '../render/renderer.js';
 import { towerIcon } from '../render/draw-towers.js';
@@ -21,6 +21,7 @@ import { Ring, spread } from './ring.js';
 import { ITEMS, ITEM_ORDER, ITEM_CD } from '../data/items.js';
 import { spendItem } from '../meta/profile.js';
 import { metaCost, TOWER_META_BONUS } from '../data/quests.js';
+import { createVirtualPad, padWorldDirection } from './virtual-pad.js';
 
 const W = 960;
 const H = 560;
@@ -30,7 +31,7 @@ const ULT_TARGETLESS = { sejong: true, gang: true, gwak: true, ahn: true, dangun
 const TARGET_LABEL = { first: '선두', last: '후미', strong: '강적', close: '근접' };
 
 export class GameUI {
-  constructor({ root, session, profile, names, onEnd, onQuit, onRestart, rendererClass = Renderer }) {
+  constructor({ root, session, profile, names, onEnd, onQuit, onRestart, onInterrupted, rendererClass = Renderer }) {
     this.root = root;
     this.s = session;
     this.profile = profile;
@@ -39,23 +40,20 @@ export class GameUI {
     this.onEnd = onEnd;
     this.onQuit = onQuit;
     this.onRestart = onRestart;
+    this.onInterrupted=onInterrupted;
     this.me = session.me;
-    this.local = session.kind === 'local';
     this.solo = session.kind === 'solo';
     this.stage = STAGE_BY_ID[session.stageId];
     this.map = getMap(session.stageId);
-    this.ui = { clock: 0, hover: null, hoverOk: false, placing: null, selTower: null, selHeroes: [], aim: null, p2cursor: null, moveMark: null, buildAt: null, p2intent: null };
+    this.ui = { clock: 0, hover: null, hoverOk: false, placing: null, selTower: null, selHeroes: [], aim: null, moveMark: null, buildAt: null };
     this.touchInput=(navigator.maxTouchPoints||0)>0||!!window.matchMedia?.('(pointer: coarse)').matches;
-    this.touchMode='move';this.ui.touchInput=this.touchInput;this.ui.touchMode='move';
+    this.ui.touchInput=this.touchInput;
     // 누가 어디를 만지는지: 협동에서는 내 색과 꼬리표를 칸 위에 띄운다
-    const myColor = (this.local ? 0 : this.me) === 1 ? '#d9483b' : '#3d7fd6';
+    const myColor = this.me === 1 ? '#d9483b' : '#3d7fd6';
     this.ui.meColor = myColor;
     this.selHero = this.myHeroIdx()[0] ?? 0;
     this.targeting = null;
     this.pop = null;
-    this.p2menu = null;
-    this.p2keys = new Set();
-    this.lastP2Move = 0;
     this.cache = {};
     this.ended = false;
     this.destroyed = false;
@@ -92,18 +90,14 @@ export class GameUI {
     const v = this.s.view;
     const out = [];
     v.heroes.forEach((hh, i) => {
-      if (hh.owner === p || (v.players[hh.owner] && v.players[hh.owner].left)) out.push(i);
+      if (hh.owner === p && !v.players[p]?.left) out.push(i);
     });
-    if (!out.length && this.s.kind !== 'guest') {
-      // 생성 직후
-      this.s.state.heroes.forEach((hh, i) => hh.owner === p && out.push(i));
-    }
     return out;
   }
 
   // ───────────────────────── DOM 구성 ─────────────────────────
   buildDom() {
-    this.el = h('div', { id: 'game', class: this.is3d ? 'game-3d' : '' });
+    this.el = h('div', { id: 'game', class: `${this.is3d ? 'game-3d' : ''}${this.touchInput ? ' touch-ui' : ''}` });
     // 상단
     this.elLives = h('span', { class: 'num' });
     this.elWave = h('span', { class: 'num' });
@@ -136,12 +130,11 @@ export class GameUI {
     const tip = h('div', { class: 'rotate-tip' }, '화면을 가로로 돌리면 전장이 더 크게 보입니다');
     // 하단
     this.bottom = h('div', { class: 'hud-bottom' });
-    this.touchMoveBtn=h('button',{'aria-pressed':this.touchMode!=='build'?'true':'false',onclick:()=>this.setTouchMode('move')},'이동');
-    this.touchBuildBtn=h('button',{'aria-pressed':this.touchMode==='build'?'true':'false',onclick:()=>this.setTouchMode('build')},'건설');
-    this.touchHint=h('span',{},'빈 땅을 눌러 이동');
-    this.touchControls=h('div',{class:'battle-touch-controls','aria-label':'터치 조작',hidden:!this.touchInput},this.touchMoveBtn,this.touchBuildBtn,this.touchHint);
-    this.cv.dataset.touchMode=this.touchMode||'move';
-    this.el.append(top, this.touchControls, this.area, this.bottom);
+    this.pad?.destroy();
+    this.pad=createVirtualPad({canStart:()=>this.canUsePad(),onStart:()=>this.beginPad(),onChange:()=>this.padTick(performance.now()),onEnd:()=>this.endPad()});
+    this.touchControls=this.pad.el;this.touchControls.hidden=!this.touchInput;
+    this.cv.dataset.touchMode='pad';
+    this.el.append(top, this.area, this.bottom);
     top.after(tip);
     clear(this.root).append(this.el);
     this.buildBottom();
@@ -150,7 +143,7 @@ export class GameUI {
         h('span', { class: 'battle-season' }, '고정 시점 · 사계절 전장'),
         this.gridBtn=h('button', { 'aria-pressed': 'false', onclick: e => { this.ui.showGrid=!this.ui.showGrid; e.currentTarget.setAttribute('aria-pressed',String(this.ui.showGrid)); } }, '건설 터'),
         h('button', { onclick: () => this.renderer.world.home() }, '기본 시점'),
-        h('button', { onclick: () => this.rallyHeroes(), title: '내 영웅을 같은 길목에 모읍니다. 협동 동료의 영웅은 동료가 이동합니다.' }, '영웅 집결'));
+        h('button', { hidden:!this.s.coop, onclick: () => this.rallyHeroes(), title: '내 영웅을 같은 길목에 모읍니다. 협동 동료의 영웅은 동료가 이동합니다.' }, '영웅 집결'));
       this.overlay.append(cam);
       this.xray.hidden = true;
     }
@@ -158,7 +151,6 @@ export class GameUI {
 
   goldLabel(p) {
     if (!this.s.coop) return '군자금';
-    if (this.local) return `${p + 1}P 군자금`;
     return p === this.me ? `나 · ${this.playerName(p)}` : `동료 · ${this.playerName(p)}`;
   }
 
@@ -170,32 +162,34 @@ export class GameUI {
   buildBottom() {
     const v = this.s.view;
     clear(this.bottom);
+    this.bottom.append(this.touchControls);
     this.heroEls = [];
     this.skillEls = [];
     this.itemEls = [];
     const groups = this.s.coop ? [0, 1] : [0];
     const makeGroup = (p) => {
-      const g = h('div', { class: `pgroup p${p}` });
+      const g = h('div', { class: `pgroup p${p} ${p===this.me?'touch-owned':'touch-companion'}` });
       const heroes = v.heroes.map((hh, i) => ({ hh, i })).filter(({ hh }) => hh.owner === p);
-      const mine = p === this.me || (this.local && p === 1);
+      const mine = p === this.me;
       heroes.forEach(({ hh, i }, k) => {
         const def = HEROES[hh.heroId];
         const canvas = heroPortrait(hh.heroId, 46, p, hh.skin);
         const hp = h('i', { style: { width: '100%' } });
         const lv = h('span', { class: 'num dim', style: { fontSize: '13px' } });
-        const card = h('button', { class: 'hero-card', 'aria-pressed': 'false', title: `${def.name} — 클릭해 선택`, onclick: () => this.selectHero(i) },
+        const card = h('button', { class: 'hero-card', 'aria-pressed': 'false', title: `${def.name} — 클릭해 선택`, disabled:!mine, onclick: () => this.selectHero(i) },
           canvas, h('span', { class: 'nm' }, def.name, ' ', lv), h('div', { class: 'bar green hpbar' }, hp));
         const keys = this.keyLabels(p, k);
         const sk = this.skillButton(def.skill.short, `${def.name} 기술 · ${def.skill.name}`, keys.skill, () => this.useHeroSkill(i, 'skill'), !mine);
         const ul = this.skillButton(def.ult.short, `${def.name} 궁극기 · ${def.ult.name}`, keys.ult, () => this.useHeroSkill(i, 'ult'), !mine, true);
         this.paintSkill(sk, hh.heroId, 'heroSkill');
         this.paintSkill(ul, hh.heroId, 'heroUlt');
-        this.heroEls.push({ i, card, hp, lv, canvas, sk, ul });
-        g.append(card, h('div', { class: 'skills' }, sk.el, ul.el));
+        const actions=h('div', { class: `skills hero-skills${!this.solo||i===this.selHero?' mobile-selected':''}` }, sk.el, ul.el);
+        this.heroEls.push({ i, card, hp, lv, canvas, sk, ul, actions });
+        g.append(card, actions);
       });
       const pl = v.players[p];
       if (pl) {
-        const box = h('div', { class: 'skills' });
+        const box = h('div', { class: 'skills equipped-skills' });
         pl.skills.forEach((slot, si) => {
           const sd = SKILLS[slot.id];
           const b = this.skillButton(sd.short, `비기 · ${sd.name}`, this.keyLabels(p, 0).equip[si], () => this.useEquip(p, si), !mine);
@@ -211,7 +205,7 @@ export class GameUI {
         const box = h('div', { class: 'skills items', 'aria-label': '보급품' });
         for (const id of ids) {
           const it = ITEMS[id];
-          const key = this.local ? '' : 'ZXCV'[ITEM_ORDER.indexOf(id)];
+          const key = 'ZXCV'[ITEM_ORDER.indexOf(id)];
           const b = this.skillButton(it.short, `보급품 · ${it.name} — ${it.desc}`, key, () => this.useItem(p, id), false);
           b.el.classList.add('item');
           b.cnt = h('span', { class: 'cnt num' });
@@ -225,17 +219,17 @@ export class GameUI {
     };
     // 중앙: 합격기 + 파도 버튼
     this.resCv = h('canvas', { width: 148, height: 148 });
-    this.comboBtn = h('button', { class: 'combo', title: '합격기 (공명 게이지가 가득 차고 두 영웅이 5칸 이내일 때)', onclick: () => this.pressCombo(this.local ? 0 : this.me) },
-      this.resCv, this.local ? h('span', { class: 'lbl' }, '1P 클릭 · 2P Space') : h('span', { class: 'lbl' }, '합격기', h('span', { class: 'k' }, ' Space')));
-    this.waveBtn = h('button', { class: 'btn btn-seal wave-btn', onclick: () => this.callWave() }, h('span', {}, '출정!'), h('small', {}, this.local ? '클릭 · 2P W' : 'N 키'));
+    this.comboBtn = h('button', { class: 'combo', title: '합격기 (공명 게이지가 가득 차고 두 영웅이 5칸 이내일 때)', onclick: () => this.pressCombo(this.me) },
+      this.resCv, h('span', { class: 'lbl' }, '합격기', h('span', { class: 'k' }, ' Space')));
+    this.waveBtn = h('button', { class: 'btn btn-seal wave-btn', onclick: () => this.callWave() }, h('span', {}, '출정!'), h('small', {}, 'N 키'));
     this.comboNote = h('small', { class: 'combo-note', 'aria-live': 'off' });
-    const center = h('div', { class: 'center-cmd' }, h('div', { class: 'combo-state' }, this.comboBtn, this.comboNote), this.waveBtn);
+    const center = h('div', { class: 'center-cmd' }, h('div', { class: 'combo-state', hidden:!this.s.coop }, this.comboBtn, this.comboNote), this.waveBtn);
     this.bottom.append(makeGroup(0), center);
     if (groups.includes(1)) this.bottom.append(makeGroup(1));
   }
 
   itemUser(p) {
-    return this.local || this.solo ? p === 0 : p === this.me;
+    return p === this.me;
   }
 
   paintSkill(button, id, kind) {
@@ -249,14 +243,14 @@ export class GameUI {
   rallyHeroes() {
     const v = this.s.view, targets = rallyTargets(v);
     if (!targets) return toast('두 영웅이 살아 있을 때 집결할 수 있습니다');
-    for (const i of this.local ? v.heroes.map((_, i) => i) : this.myHeroIdx()) {
+    for (const i of this.myHeroIdx()) {
       if (!targets[i]) continue;
-      const p = this.local ? v.heroes[i].owner : this.me;
+      const p = this.me;
       this.s.send({ t: 'move', p, h: i, x: targets[i].x, y: targets[i].y });
     }
     this.closePop();
     this.ui.moveMark = { x: targets[0].x, y: targets[0].y, t: 1, p: this.me };
-    toast(this.s.coop && !this.local ? '내 영웅이 집결합니다. 동료도 집결하면 합격기를 쓸 수 있습니다.' : '두 영웅이 같은 길목으로 이동합니다.');
+    toast('내 영웅이 집결합니다. 동료도 집결하면 합격기를 쓸 수 있습니다.');
   }
 
   useItem(p, id, at) {
@@ -280,8 +274,6 @@ export class GameUI {
   }
 
   keyLabels(p, heroSlot) {
-    if (this.local) return p === 1 ? { skill: 'A', ult: 'S', equip: ['D', 'F'] } : { skill: '', ult: '', equip: ['', ''] };
-    if (this.solo) return { skill: heroSlot ? 'E' : 'Q', ult: heroSlot ? 'R' : 'W', equip: ['D', 'F'] };
     if (p !== this.me) return { skill: '', ult: '', equip: ['', ''] };
     return { skill: 'Q', ult: 'W', equip: ['D', 'F'] };
   }
@@ -298,6 +290,7 @@ export class GameUI {
   // ───────────────────────── 루프 ─────────────────────────
   frame(t) {
     if (this.destroyed) return;
+    if(this.s.interrupted){this.interruptBattle();return;}
     const dt = Math.min(0.1, (t - this.last) / 1000);
     this.last = t;
     if(!this.s.networkWaiting)this.ui.clock += dt;
@@ -309,17 +302,15 @@ export class GameUI {
     if(this.networkBanner){this.networkBanner.hidden=!waitingForNetwork;this.networkBanner.textContent=waitingForNetwork?this.s.networkMessage:'';}
     if(this.overlay)this.overlay.inert=waitingForNetwork;
     if(waitingForNetwork)this.cancelPress?.();
-    if (this.local && !waitingForRenderer) this.p2Tick(t);
+    this.pad?.setDisabled(!this.canUsePad());
+    this.flushPadStop();
+    this.padTick(t);
     const evs = this.s.update(dt, { waitingForRenderer });
     this.handleEvents(evs);
     this.renderer.events(evs);
     if (this.ui.moveMark) this.ui.moveMark.t -= dt;
     const v = this.s.view;
     this.ui.selHeroes = this.solo ? [this.selHero] : this.myHeroIdx();
-    if (this.local) {
-      const h2 = v.heroes.find((x) => x.owner === 1);
-      this.ui.p2cursor = h2 && !h2.dead ? this.p2Tile(h2) : null;
-    }
     this.renderer.render(v, this.ui, waitingForNetwork?0:dt);
     if (this.is3d) this.repositionRings();
     this.drawXray(v);
@@ -333,18 +324,27 @@ export class GameUI {
     this.raf = requestAnimationFrame((tt) => this.frame(tt));
   }
 
+  interruptBattle() {
+    this.pad?.cancel();this.menuAbort?.abort();clearTimeout(this.finishTimer);
+    if(this.interruptionHandled)return;this.interruptionHandled=true;this.ended=true;
+    this.onInterrupted?.(this.s.interrupted);
+  }
+
   finish() {
-    this.ended = true;
+    if(this.ended)return;
+    this.ended = true;this.menuAbort?.abort();
     this.s.announceEnd();
     audio.play(this.s.view.result.win ? 'win' : 'lose');
     const wait = () => {
       if (this.destroyed) return;
+      if(this.s.interrupted){this.interruptBattle();return;}
       const terminalPending=this.s.kind==='host'?!this.s.terminalCached:this.s.kind==='guest'?!this.s.endInfo:false;
       if (terminalPending&&(this.s.networkWaiting||(this.s.net?.connected&&performance.now()-start<35000))) {
         this.finishTimer = setTimeout(wait, 200);
         return;
       }
-      this.onEnd({ result: this.s.view.result, stats: this.s.stats(this.me), stats2: this.local ? this.s.stats(1) : null });
+      if(terminalPending){this.s.abort('result-unconfirmed');this.interruptBattle();return;}
+      this.onEnd({ result: this.s.view.result, stats: this.s.stats(this.me) });
     };
     const start = performance.now();
     this.finishTimer = setTimeout(wait, 2200);
@@ -352,7 +352,7 @@ export class GameUI {
 
   destroy() {
     if (this.destroyed) return;
-    this.destroyed = true;
+    this.destroyed = true;this.menuAbort?.abort();
     clearTimeout(this.finishTimer);
     this.cancelPress?.();
     cancelAnimationFrame(this.raf);
@@ -361,11 +361,11 @@ export class GameUI {
     this.cv.removeEventListener('webglcontextlost',this.onInputGraphics);
     document.removeEventListener('visibilitychange', this.onInputVisibility);
     document.removeEventListener('keydown', this.onKeyDown);
-    document.removeEventListener('keyup', this.onKeyUp);
     document.removeEventListener('pointerdown',this.onTouchDown,true);
     document.removeEventListener('pointermove',this.onTouchMove,true);
     document.removeEventListener('pointerup',this.onTouchUp,true);
     document.removeEventListener('pointercancel',this.onTouchUp,true);
+    this.pad?.destroy();
     this.s.destroy();
     this.renderer?.destroy?.();
     audio.stopBgm();
@@ -394,7 +394,6 @@ export class GameUI {
     this.xray.height = Math.round(H * k * this.xdpr);
     this.xrayDirty = true;
     if (this.pop) this.pop.kind === 'build' ? this.openBuildMenu(this.pop.x, this.pop.y) : this.openTowerPanel(this.pop.id);
-    if (this.p2menu) this.renderP2Menu();
   }
 
   // ───── 창에 가려진 영웅 비추기 ─────
@@ -402,8 +401,7 @@ export class GameUI {
     const out = [];
     // 고리마다 주인을 적어 둔다: 내 고리는 가운데가 내 영웅 자리라 비춰 줄 필요가 없다
     const own = (rs, owner) => rs.map((r) => ({ ...r, owner }));
-    if (this.pop) out.push(...own(this.pop.ring.rects(), this.local ? 0 : this.me));
-    if (this.p2menu) out.push(...own(this.p2menu.ring.rects(), 1));
+    if (this.pop) out.push(...own(this.pop.ring.rects(), this.me));
     const base = this.overlay.getBoundingClientRect();
     for (const el of [this.waveCardEl, this.hintEl, this.bossEl]) {
       if (!el || !el.isConnected) continue;
@@ -440,7 +438,7 @@ export class GameUI {
 
   // ───────────────────────── 입력 ─────────────────────────
   bindInput() {
-    this.onResize = () => this.resize();
+    this.onResize = () => { this.pad?.cancel(); this.resize(); };
     window.addEventListener('resize', this.onResize);
     const pos = (e) => {
       if (this.is3d) return this.renderer.pick(e.clientX, e.clientY);
@@ -448,6 +446,7 @@ export class GameUI {
       return { x: ((e.clientX - r.left) / r.width) * (W / TS), y: ((e.clientY - r.top) / r.height) * (H / TS) };
     };
     this.cv.addEventListener('pointermove', (e) => {
+      if(this.isPadTouch(e))return;
       if(this.renderer?.loading||this.s.networkWaiting)return;
       if (down && Math.hypot(e.clientX-down.x, e.clientY-down.y)>6) dragged=true;
       const p = pos(e);
@@ -470,31 +469,36 @@ export class GameUI {
     const suppress=()=>{this.suppressTouchUntil=performance.now()+350;down=null;};
     this.onTouchDown=e=>{
       if(e.pointerType!=='touch')return;
+      if(this.isPadTouch(e))return;
       pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
       if(pointers.size>1){multiTouch=true;dragged=true;suppress();}
     };
     this.onTouchMove=e=>{
+      if(this.isPadTouch(e))return;
       const start=pointers.get(e.pointerId);
       if(start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)>6){start.dragged=true;dragged=true;suppress();}
     };
     this.onTouchUp=e=>{
+      if(this.isPadTouch(e))return;
       const start=pointers.get(e.pointerId);
       if(multiTouch||start?.dragged||e.type==='pointercancel')suppress();
       pointers.delete(e.pointerId);if(!pointers.size)multiTouch=false;
     };
-    // Also count fingers on construction markers and the mode buttons.
+    // Also count world fingers on construction markers.
     document.addEventListener('pointerdown',this.onTouchDown,true);
     document.addEventListener('pointermove',this.onTouchMove,true);
     document.addEventListener('pointerup',this.onTouchUp,true);
     document.addEventListener('pointercancel',this.onTouchUp,true);
-    // Losing focus may swallow keyup/pointerup. Release both players' input.
-    this.onInputBlur=()=>{this.p2keys.clear();this.cancelPress();};
-    this.onInputGraphics=()=>{this.onInputBlur();this.closePop();this.closeP2Menu();this.cancelTargeting();};
-    this.onInputVisibility=()=>{if(document.hidden)this.onInputBlur();};
+    // Losing focus may swallow keyup/pointerup. Release held input.
+    this.onInputBlur=()=>{this.cancelPress();this.pad?.cancel();};
+    this.onInputGraphics=()=>{this.onInputBlur();this.closePop();this.cancelTargeting();};
+    this.onInputVisibility=()=>{if(document.hidden)this.onInputBlur();this.s.setBackground?.(!!document.hidden);};
     window.addEventListener('blur',this.onInputBlur);
     this.cv.addEventListener('webglcontextlost',this.onInputGraphics);
     document.addEventListener('visibilitychange',this.onInputVisibility);
+    this.s.setBackground?.(!!document.hidden);
     this.cv.addEventListener('pointerdown', (e) => {
+      if(this.isPadTouch(e))return;
       if(this.renderer?.loading||this.s.networkWaiting)return;
       audio.init();
       if(e.pointerType==='touch'&&!pointers.has(e.pointerId))this.onTouchDown(e);
@@ -502,6 +506,7 @@ export class GameUI {
       down = { x:e.clientX, y:e.clientY }; dragged=false;
     });
     this.cv.addEventListener('pointerup', (e) => {
+      if(this.isPadTouch(e))return;
       if(this.renderer?.loading||this.s.networkWaiting){this.cancelPress();return;}
       if(e.pointerType==='touch')this.onTouchUp(e);
       if(multiTouch||e.pointerType==='touch'&&performance.now()<(this.suppressTouchUntil||0)){down=null;return;}
@@ -529,9 +534,7 @@ export class GameUI {
       this.moveHeroTo(p.x, p.y);
     });
     this.onKeyDown = (e) => this.keyDown(e);
-    this.onKeyUp = (e) => this.p2keys.delete(e.code);
     document.addEventListener('keydown', this.onKeyDown);
-    document.addEventListener('keyup', this.onKeyUp);
   }
 
   canBuildAt(x, y) {
@@ -542,26 +545,60 @@ export class GameUI {
   enableTouchInput() {
     if(this.touchInput)return;
     this.touchInput=true;this.ui.touchInput=true;
+    this.el?.classList.add('touch-ui');
     if(this.touchControls){this.touchControls.hidden=false;this.resize();}
   }
 
-  setTouchMode(mode) {
-    if(this.renderer?.loading||this.s.networkWaiting)return;
-    this.cancelPress?.();this.closePop();this.cancelTargeting();
-    this.touchMode=mode==='build'?'build':'move';this.ui.touchMode=this.touchMode;
-    this.ui.showGrid=this.touchMode==='build';
-    this.gridBtn?.setAttribute('aria-pressed',String(this.ui.showGrid));
-    this.touchMoveBtn?.setAttribute('aria-pressed',String(this.touchMode==='move'));
-    this.touchBuildBtn?.setAttribute('aria-pressed',String(this.touchMode==='build'));
-    if(this.touchHint)this.touchHint.textContent=this.touchMode==='build'?'빈 터를 눌러 건설':'빈 땅을 눌러 이동';
-    if(this.cv?.dataset)this.cv.dataset.touchMode=this.touchMode;
+  isPadTouch(e) {
+    return !!e.target?.closest?.('.battle-touch-controls') || this.pad?.pointerId!=null&&e.pointerId===this.pad.pointerId;
+  }
+
+  padHeroIndex() { return this.solo?this.selHero:this.myHeroIdx()[0]; }
+
+  canUsePad() {
+    const v=this.s.view, i=this.padHeroIndex();
+    return !!this.touchInput&&!this.destroyed&&!this.ended&&!this.renderer?.loading&&!this.s.networkWaiting&&!v.paused&&!v.result&&!document.hidden&&!document.querySelector?.('.modal-back')&&i!==undefined&&this.myHeroIdx().includes(i)&&!!v.heroes[i]&&!v.heroes[i].dead;
+  }
+
+  beginPad() {
+    this.enableTouchInput();this.closePop();this.flushPadStop();
+    this.padHero=this.padHeroIndex();this.lastPadMove=-Infinity;
+    audio.init();
+  }
+
+  padTick(t) {
+    if(this.pad?.pointerId==null)return;
+    if(!this.canUsePad()||this.padHero!==this.padHeroIndex()){this.pad.cancel();return;}
+    const value=this.pad.value;
+    if(!value.x&&!value.y){this.endPad();return;}
+    if(t-(this.lastPadMove??-Infinity)<60)return;
+    const hero=this.s.view.heroes[this.padHero];let direction;
+    if(this.is3d){
+      const origin=this.renderer.screenPoint(hero.x,hero.y),x=this.renderer.screenPoint(hero.x+1,hero.y),y=this.renderer.screenPoint(hero.x,hero.y+1);
+      direction=padWorldDirection(value,{x:x.x-origin.x,y:x.y-origin.y},{x:y.x-origin.x,y:y.y-origin.y});
+    }else direction=padWorldDirection(value);
+    if(!direction){this.pad.cancel();return;}
+    if(this.s.send({t:'move',p:this.me,h:this.padHero,dx:direction.x,dy:direction.y,direct:true})!==false){this.padMoving=true;this.lastPadMove=t;}
+  }
+
+  endPad() {
+    if(this.padMoving){this.pendingPadStop=this.padHero;this.padMoving=false;}
+    this.flushPadStop();
+  }
+
+  flushPadStop() {
+    const i=this.pendingPadStop;
+    if(i==null||this.renderer?.loading||this.s.networkWaiting)return;
+    const hero=this.s.view.heroes[i];
+    if(!hero||hero.dead||this.s.view.result||!this.myHeroIdx().includes(i)){this.pendingPadStop=null;return;}
+    // The host stops at its authoritative position, never at an old guest frame.
+    if(this.s.send({t:'move',p:this.me,h:i,x:hero.x,y:hero.y,stop:true})!==false)this.pendingPadStop=null;
   }
 
   buildSiteClick(x,y,event) {
     if(this.renderer?.loading||this.s.networkWaiting||this.targeting||performance.now()<(this.suppressTouchUntil||0))return;
     const touch=event?.pointerType==='touch'||this.touchInput&&event?.pointerType!=='mouse';
     if(touch)this.enableTouchInput();
-    if(touch&&this.touchMode!=='build'){this.closePop();this.moveHeroTo(x+.5,y+.5);return;}
     if(this.canBuildAt(x,y)){this.cancelPress?.();this.openBuildMenu(x,y);}
   }
 
@@ -594,9 +631,6 @@ export class GameUI {
       this.openTowerPanel(tower.id);
       return;
     }
-    if(touch&&this.touchMode!=='build'){
-      this.closePop();this.moveHeroTo(p.x,p.y);return;
-    }
     if (this.canBuildAt(tx, ty)) {
       this.openBuildMenu(tx, ty);
       return;
@@ -609,6 +643,7 @@ export class GameUI {
   selectHero(i) {
     const v = this.s.view;
     if (!this.myHeroIdx().includes(i)) return;
+    this.pad?.cancel();
     this.selHero = i;
     audio.play('ui');
     if (v.heroes[i] && v.heroes[i].dead) toast(`${HEROES[v.heroes[i].heroId].name}은(는) ${Math.ceil(v.heroes[i].respawn)}초 뒤 돌아옵니다`);
@@ -616,11 +651,12 @@ export class GameUI {
 
   moveHeroTo(x, y, heroIdx) {
     if(this.renderer?.loading||this.s.networkWaiting)return;
+    this.pad?.cancel();this.pendingPadStop=null;
     const v = this.s.view;
     const mine = this.myHeroIdx();
     const i = heroIdx ?? (this.solo ? this.selHero : mine[0]);
     if (i === undefined || !v.heroes[i] || v.heroes[i].dead) return;
-    this.s.send({ t: 'move', p: this.local ? v.heroes[i].owner : this.me, h: i, x, y });
+    this.s.send({ t: 'move', p: this.me, h: i, x, y });
     this.ui.moveMark = { x, y, t: 1, p: v.heroes[i].owner };
   }
 
@@ -630,19 +666,9 @@ export class GameUI {
     if (document.querySelector('.modal-back')) return;
     audio.init();
     const code = e.code;
-    // 로컬 협동: 키보드는 모두 2P 것 (1P는 마우스만)
-    if (this.local) {
-      if (this.p2Key(e)) e.preventDefault();
-      else if (code === 'Escape') {
-        if (this.targeting) this.cancelTargeting();
-        else if (this.pop) this.closePop();
-        else this.openMenu();
-      }
-      return;
-    }
     const k = e.key.toLowerCase();
     const mouse = this.mouse;
-    const heroes = this.myHeroIdx(this.local ? 0 : this.me);
+    const heroes = this.myHeroIdx(this.me);
     const cast = (i, kind) => {
       if (i === undefined) return;
       this.useHeroSkill(i, kind, mouse);
@@ -662,11 +688,9 @@ export class GameUI {
     switch (code) {
       case 'KeyQ': cast(this.solo ? 0 : heroes[0], 'skill'); break;
       case 'KeyW': cast(this.solo ? 0 : heroes[0], 'ult'); break;
-      case 'KeyE': if (this.solo) cast(1, 'skill'); break;
-      case 'KeyR': if (this.solo) cast(1, 'ult'); break;
-      case 'KeyD': this.useEquip(this.local ? 0 : this.me, 0, mouse); break;
-      case 'KeyF': this.useEquip(this.local ? 0 : this.me, 1, mouse); break;
-      case 'Space': e.preventDefault(); this.pressCombo(this.local ? 0 : this.me); break;
+      case 'KeyD': this.useEquip(this.me, 0, mouse); break;
+      case 'KeyF': this.useEquip(this.me, 1, mouse); break;
+      case 'Space': e.preventDefault(); this.pressCombo(this.me); break;
       case 'KeyN': this.callWave(); break;
       case 'KeyZ':
       case 'KeyX':
@@ -677,15 +701,7 @@ export class GameUI {
         if (id && pl && pl.items && id in pl.items) this.useItem(this.me, id, mouse);
         break;
       }
-      case 'KeyG': if (mouse && this.s.coop) this.s.send({ t: 'ping', p: this.local ? 0 : this.me, x: mouse.x, y: mouse.y }); break;
-      case 'Tab':
-        if (this.solo) {
-          e.preventDefault();
-          this.selectHero(this.selHero === 0 ? 1 : 0);
-        }
-        break;
-      case 'Digit1': if (this.solo && !this.pop) this.selectHero(0); break;
-      case 'Digit2': if (this.solo && !this.pop) this.selectHero(1); break;
+      case 'KeyG': if (mouse && this.s.coop) this.s.send({ t: 'ping', p: this.me, x: mouse.x, y: mouse.y }); break;
       case 'KeyU':
         if (this.pop && this.pop.kind === 'tower') {
           const t = this.s.view.towers.find((x) => x.id === this.pop.id);
@@ -698,214 +714,6 @@ export class GameUI {
     }
   }
 
-  // ───── 로컬 2P ─────
-  p2Tile(hh) {
-    const x = Math.floor(hh.x);
-    const y = Math.floor(hh.y);
-    if (this.canBuildAt(x, y) || this.s.view.towers.some((t) => t.x === x && t.y === y)) return { x, y };
-    let best = null;
-    let bd = 9;
-    for (let dy = -1; dy <= 1; dy++) {
-      for (let dx = -1; dx <= 1; dx++) {
-        const nx = x + dx;
-        const ny = y + dy;
-        if (!this.canBuildAt(nx, ny) && !this.s.view.towers.some((t) => t.x === nx && t.y === ny)) continue;
-        const d = (nx + 0.5 - hh.x) ** 2 + (ny + 0.5 - hh.y) ** 2;
-        if (d < bd) {
-          bd = d;
-          best = { x: nx, y: ny };
-        }
-      }
-    }
-    return best || { x, y };
-  }
-
-  // 2P: 방향키 이동 + 왼손 A S D F · E Q · W · Space
-  p2Key(e) {
-    const c = e.code;
-    const arrows = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
-    const v = this.s.view;
-    const hi = v.heroes.findIndex((x) => x.owner === 1);
-    const hero = v.heroes[hi];
-    if (this.p2menu) {
-      const m = this.p2menu;
-      if (c === 'ArrowLeft' || c === 'ArrowUp') m.idx = (m.idx + m.options.length - 1) % m.options.length;
-      else if (c === 'ArrowRight' || c === 'ArrowDown') m.idx = (m.idx + 1) % m.options.length;
-      else if (c === 'KeyE' || c === 'Space' || c === 'Enter') {
-        const o = m.options[m.idx];
-        if (o && !o.disabled) o.run();
-        else audio.play('deny');
-        this.closeP2Menu();
-        return true;
-      } else if (c === 'KeyQ' || c === 'Backspace') {
-        this.closeP2Menu();
-        return true;
-      } else return true;
-      audio.play('tick');
-      this.renderP2Menu();
-      return true;
-    }
-    if (arrows.includes(c)) {
-      this.p2keys.add(c);
-      return true;
-    }
-    if (c === 'KeyW') {
-      this.callWave();
-      return true;
-    }
-    if (!hero) return false;
-    const aim = (r = 1.6) => {
-      const a = this.s.state ? autoAim(this.s.state, hero, 6, r) : null;
-      return a || { x: hero.x + hero.facing * 1.5, y: hero.y };
-    };
-    switch (c) {
-      case 'KeyE':
-        this.openP2Menu();
-        return true;
-      case 'KeyA': {
-        if (hero.dead || hero.skillCd > 0) return this.p2Deny(hero, 'skill');
-        const a = aim(SKILL_AIM[hero.heroId]);
-        this.s.send({ t: 'heroSkill', p: 1, h: hi, x: a.x, y: a.y });
-        return true;
-      }
-      case 'KeyS': {
-        if (hero.dead || hero.ultCd > 0) return this.p2Deny(hero, 'ult');
-        const a = hero.heroId === 'yi' || hero.heroId === 'gang' ? aim(2.5) : aim(ULT_AIM[hero.heroId] || 2);
-        this.s.send({ t: 'heroUlt', p: 1, h: hi, x: a.x, y: a.y });
-        return true;
-      }
-      case 'KeyD':
-      case 'KeyF': {
-        const si = c === 'KeyD' ? 0 : 1;
-        const slot = v.players[1].skills[si];
-        if (!slot) return true;
-        if (slot.cd > 0) {
-          audio.play('deny');
-          return true;
-        }
-        const a = aim(SKILLS[slot.id].radius || 1.6);
-        this.s.send({ t: 'skill', p: 1, slot: si, x: a.x, y: a.y });
-        return true;
-      }
-      case 'Space':
-        this.pressCombo(1);
-        return true;
-      case 'KeyQ':
-        return true;
-    }
-    return false;
-  }
-
-  p2Deny(hero, kind) {
-    audio.play('deny');
-    if (!hero.dead) toast(`2P ${kind === 'skill' ? HEROES[hero.heroId].skill.name : HEROES[hero.heroId].ult.name} 재사용 대기 ${Math.ceil(kind === 'skill' ? hero.skillCd : hero.ultCd)}초`, 1200);
-    return true;
-  }
-
-  p2Tick(t) {
-    const v = this.s.view;
-    const hi = v.heroes.findIndex((x) => x.owner === 1);
-    const hero = v.heroes[hi];
-    if (!hero || hero.dead || this.p2menu) return;
-    let dx = 0;
-    let dy = 0;
-    if (this.p2keys.has('ArrowUp')) dy -= 1;
-    if (this.p2keys.has('ArrowDown')) dy += 1;
-    if (this.p2keys.has('ArrowLeft')) dx -= 1;
-    if (this.p2keys.has('ArrowRight')) dx += 1;
-    if (!dx && !dy) {
-      if (this.p2moving) {
-        this.p2moving = false;
-        this.s.send({ t: 'move', p: 1, h: hi, x: hero.x, y: hero.y });
-      }
-      return;
-    }
-    if (t - this.lastP2Move < 60) return;
-    this.lastP2Move = t;
-    this.p2moving = true;
-    const l = Math.hypot(dx, dy);
-    this.s.send({ t: 'move', p: 1, h: hi, x: hero.x + (dx / l) * 0.7, y: hero.y + (dy / l) * 0.7 });
-  }
-
-  openP2Menu() {
-    const v = this.s.view;
-    const hero = v.heroes.find((x) => x.owner === 1);
-    if (!hero || hero.dead) return;
-    const tile = this.p2Tile(hero);
-    const tower = v.towers.find((t) => t.x === tile.x && t.y === tile.y);
-    if (!tower && !this.canBuildAt(tile.x, tile.y)) return;
-    this.closeP2Menu();
-    this.p2menu = { tile, towerId: tower ? tower.id : null, idx: 0, options: [], ring: new Ring({ owner: 1, kbd: true, help: '←→ 고르기 · E 확정 · Q 취소' }) };
-    this.overlay.append(this.p2menu.ring.el);
-    this.renderP2Menu();
-    audio.play('ui');
-  }
-
-  p2Options() {
-    const v = this.s.view;
-    const m = this.p2menu;
-    const pl = v.players[1];
-    const tower = m.towerId !== null ? v.towers.find((t) => t.id === m.towerId) : null;
-    const options = [];
-    if (tower) {
-      const def = TOWERS[tower.type];
-      if (!tower.branch && tower.level < def.levels.length) {
-        const cost = this.price(tower.type, def.levels[tower.level].cost);
-        options.push({ label: `${def.name} 강화`, cost, icon: towerIcon(tower.type, tower.level + 1), disabled: pl.gold < cost, desc: this.upgradeDiff(tower), run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id }) });
-      } else if (!tower.branch) {
-        for (const b of ['A', 'B']) {
-          const br = def.branches[b];
-          const bc = this.price(tower.type, br.cost);
-          options.push({ label: `특화 · ${br.name}`, cost: bc, icon: towerIcon(tower.type, 3, b), disabled: pl.gold < bc, desc: br.desc, run: () => this.s.send({ t: 'upgrade', p: 1, id: tower.id, branch: b }) });
-        }
-      }
-      if (tower.owner === 1) {
-        const refund = Math.floor((tower.spent[0] + tower.spent[1]) * SELL_RATE);
-        options.push({ label: `${def.name} 철거`, cost: `+${refund}`, glyph: '철거', cls: 'sell', desc: `투자한 군자금의 ${Math.round(SELL_RATE * 100)}%를 돌려받습니다.`, run: () => this.s.send({ t: 'sell', p: 1, id: tower.id }) });
-      }
-    } else {
-      for (const type of this.buildList(1)) {
-        const def = TOWERS[type];
-        const cost = this.price(type, def.levels[0].cost);
-        options.push({ type, label: `${def.name} · ${def.title}`, cost, icon: towerIcon(type), disabled: pl.gold < cost, desc: def.desc, cat: def.cat, run: () => this.s.send({ t: 'build', p: 1, x: m.tile.x, y: m.tile.y, tower: type }) });
-      }
-    }
-    return options;
-  }
-
-  renderP2Menu() {
-    const m = this.p2menu;
-    if (!m) return;
-    m.options = this.p2Options();
-    if (!m.options.length) return this.closeP2Menu();
-    m.idx = Math.min(m.idx, m.options.length - 1);
-    const k = this.scale;
-    this.positionRing(m.ring, m.tile.x, m.tile.y, m.options.length);
-    const angles = spread(m.options.length);
-    m.ring.hoverKey = m.idx;
-    m.ring.render(m.options.map((o, i) => ({
-      key: i, angle: angles[i], icon: o.icon, glyph: o.glyph, cost: o.cost, cls: `${o.cls || ''}${o.disabled ? ' poor' : ''}`, active: i === m.idx, label: o.label,
-      tip: () => this.tipBody(o.label, o.cost, o.desc, o.cat, o.disabled),
-    })), null);
-    const o = m.options[m.idx];
-    this.ui.p2intent = { x: m.tile.x, y: m.tile.y, type: o && o.type ? o.type : null, towerId: m.towerId };
-    m.sig = this.p2Sig();
-  }
-
-  p2Sig() {
-    const v = this.s.view;
-    const m = this.p2menu;
-    const t = m.towerId !== null ? v.towers.find((x) => x.id === m.towerId) : null;
-    return `${v.players[1] ? v.players[1].gold : 0}|${t ? `${t.level}${t.branch}` : v.towers.some((x) => x.x === m.tile.x && x.y === m.tile.y)}`;
-  }
-
-  closeP2Menu() {
-    if (this.p2menu) this.p2menu.ring.remove();
-    this.p2menu = null;
-    this.ui.p2intent = null;
-  }
-
-  // ───────────────────────── 명령 ─────────────────────────
   setSpeed(n) {
     this.s.setSpeed(n);
     [...this.speedSeg.children].forEach((b, i) => b.setAttribute('aria-pressed', String(i + 1 === n)));
@@ -913,6 +721,7 @@ export class GameUI {
 
   togglePause() {
     const v = this.s.view;
+    this.pad?.cancel();
     this.s.setPaused(!v.paused);
   }
 
@@ -924,6 +733,7 @@ export class GameUI {
   }
 
   pressCombo(p) {
+    if(!this.s.coop)return;
     this.s.send({ t: 'combo', p });
   }
 
@@ -932,7 +742,7 @@ export class GameUI {
     const hh = v.heroes[i];
     if (!hh) return;
     const owner = hh.owner;
-    if (!(owner === this.me || (this.local && owner === 0) || (v.players[owner] && v.players[owner].left))) return;
+    if (!(owner === this.me)) return;
     if (hh.dead) return toast('쓰러진 영웅은 기술을 쓸 수 없습니다');
     const cd = kind === 'skill' ? hh.skillCd : hh.ultCd;
     if (cd > 0) {
@@ -940,7 +750,7 @@ export class GameUI {
       return toast(`${kind === 'skill' ? HEROES[hh.heroId].skill.name : HEROES[hh.heroId].ult.name} 재사용 대기 ${Math.ceil(cd)}초`);
     }
     const t = kind === 'skill' ? 'heroSkill' : 'heroUlt';
-    const p = this.local ? owner : this.me;
+    const p = this.me;
     if (kind === 'ult' && ULT_TARGETLESS[hh.heroId]) {
       this.s.send({ t, p, h: i, x: hh.x, y: hh.y });
       return;
@@ -999,7 +809,6 @@ export class GameUI {
     if(this.renderer?.loading||this.s.networkWaiting||performance.now()<(this.suppressTouchUntil||0))return;
     this.s.send({ t: 'build', p: this.me, x, y, tower: type });
     this.closePop();
-    if(this.touchInput&&this.touchMode==='build')this.setTouchMode('move');
   }
 
   // ───────────────────────── 원형 명령 고리 ─────────────────────────
@@ -1011,7 +820,7 @@ export class GameUI {
   }
 
   openRing(tx, ty, n = 0) {
-    const ring = new Ring({ owner: this.local ? 0 : this.me });
+    const ring = new Ring({ owner: this.me });
     const k = this.scale;
     this.positionRing(ring, tx, ty, n);
     this.overlay.append(ring.el);
@@ -1027,7 +836,6 @@ export class GameUI {
 
   repositionRings() {
     if(this.pop){const t=this.pop.kind==='tower'?this.s.view.towers.find(t=>t.id===this.pop.id):this.pop;if(t)this.positionRing(this.pop.ring,t.x,t.y,this.pop.ring.items.length);}
-    if(this.p2menu)this.positionRing(this.p2menu.ring,this.p2menu.tile.x,this.p2menu.tile.y,this.p2menu.options.length);
   }
 
   closePop() {
@@ -1056,7 +864,7 @@ export class GameUI {
     const pl = this.s.view.players[this.me];
     const list = this.buildList(this.me);
     const angles = spread(list.length);
-    const keys = !this.local && !('ontouchstart' in window);
+    const keys = !this.touchInput;
     pop.sig = list.map((t) => (pl.gold >= this.price(t, TOWERS[t].levels[0].cost) ? 1 : 0)).join('');
     pop.ring.render(list.map((type, i) => {
       const def = TOWERS[type];
@@ -1134,14 +942,14 @@ export class GameUI {
     const st = towerBase(t.type, t.level, t.branch);
     const spent = t.spent[0] + t.spent[1];
     const refund = Math.floor(spent * SELL_RATE);
-    const mine = t.owner === this.me || (this.local && t.owner === 0);
+    const mine = t.owner === this.me;
     const ownerName = this.s.coop ? this.playerName(t.owner) : '';
     const items = [];
     if (!t.branch && t.level < def.levels.length) {
       const cost = this.price(t.type, def.levels[t.level].cost);
       const poor = pl.gold < cost;
       items.push({
-        key: 'up', angle: -90, icon: towerIcon(t.type, t.level + 1), cost, cls: `up${poor ? ' poor' : ''}`, label: `강화 (${cost}냥)`, num: this.local ? null : 'U',
+        key: 'up', angle: -90, icon: towerIcon(t.type, t.level + 1), cost, cls: `up${poor ? ' poor' : ''}`, label: `강화 (${cost}냥)`, num: 'U',
         tip: () => this.tipBody(`${t.level + 1}단계로 강화`, cost, this.upgradeDiff(t), null, poor),
         run: () => (poor ? this.denyGold(cost) : this.s.send({ t: 'upgrade', p: this.me, id: t.id })),
       });
@@ -1239,6 +1047,7 @@ export class GameUI {
       e.hp.style.width = `${Math.max(0, (hh.hp / hh.maxHp) * 100)}%`;
       this.set(`lv${e.i}`, e.lv, hh.dead ? `부활 ${Math.ceil(hh.respawn)}` : `Lv${hh.lv}`);
       e.card.setAttribute('aria-pressed', String(this.ui.selHeroes.includes(e.i)));
+      e.actions?.classList.toggle('mobile-selected',!this.solo||e.i===this.selHero);
       e.canvas.style.opacity = hh.dead ? 0.35 : 1;
       this.cdStyle(e.sk, hh.skillCd, HEROES[hh.heroId].skill.cd, hh.dead);
       this.cdStyle(e.ul, hh.ultCd, HEROES[hh.heroId].ult.cd, hh.dead);
@@ -1255,7 +1064,7 @@ export class GameUI {
       this.set(`it${e.p}${e.id}`, e.cnt, `×${n}`);
     }
     // 공명
-    const press = v.resonance.press[this.local ? 0 : this.me];
+    const press = v.resonance.press[this.me];
     const waiting = this.s.coop && v.time - press < COMBO_WINDOW ? 1 - (v.time - press) / COMBO_WINDOW : 0;
     drawResonance(this.resCv, v.resonance.gauge, this.ui.clock, { waiting });
     const combo = comboStatus(v);
@@ -1270,7 +1079,7 @@ export class GameUI {
     let dis = false;
     if (w.n === 0) {
       label = '출정!';
-      sub = `${Math.max(0, Math.ceil(w.timer))}초 뒤 자동 · ${this.local ? '2P W' : 'N 키'}`;
+      sub = `${Math.max(0, Math.ceil(w.timer))}초 뒤 자동 · ${'N 키'}`;
     } else if (w.phase === 'prep') {
       label = `다음 파도`;
       sub = `${Math.max(0, Math.ceil(w.timer))}초 뒤 자동 · +${Math.floor(w.timer * EARLY_BONUS_PER_SEC)}냥`;
@@ -1298,7 +1107,6 @@ export class GameUI {
       if (this.pop.sig !== sig) this.renderBuildRing();
       if (v.towers.some((t) => t.x === this.pop.x && t.y === this.pop.y)) this.closePop();
     }
-    if (this.p2menu && this.p2menu.sig !== this.p2Sig()) this.renderP2Menu();
   }
 
   // 수치가 바뀔 때 칸을 톡 튀게 (군자금 증가 · 민심 감소)
@@ -1422,15 +1230,14 @@ export class GameUI {
           break;
         }
         case 'toast':
-          if (e.p === -1 || e.p === this.me || this.local || this.solo) toast(e.text);
+          if (e.p === -1 || e.p === this.me || this.solo) toast(e.text);
           break;
         case 'comboWait':
-          if (this.local) toast(`${e.p === 0 ? '1P' : '2P'}가 합격기를 눌렀습니다! ${COMBO_WINDOW}초 안에 ${e.p === 0 ? '2P는 Space' : '1P는 태극 버튼 클릭'}`, 2400);
-          else if (e.p === this.me) toast('동료의 호흡을 기다리는 중…');
+          if (e.p === this.me) toast('동료의 호흡을 기다리는 중…');
           else toast(`${this.playerName(e.p)}이(가) 합격기를 눌렀습니다! Space로 호흡을 맞추세요`, 2400);
           break;
         case 'resonanceFull':
-          toast('공명 게이지 가득! 두 영웅을 5칸 안에 모으고 합격기를 발동하세요', 2600);
+          if(this.s.coop)toast('공명 게이지 가득! 두 영웅을 5칸 안에 모으고 합격기를 발동하세요', 2600);
           break;
         case 'combo':
           this.comboCine(e);
@@ -1467,6 +1274,9 @@ export class GameUI {
 
   // ───────────────────────── 메뉴 ─────────────────────────
   async openMenu() {
+    if(this.destroyed||this.ended||this.s.view.result)return;
+    this.menuAbort?.abort();this.menuAbort=new AbortController();const signal=this.menuAbort.signal;
+    this.pad?.cancel();
     const wasPaused = this.s.view.paused;
     if (this.s.kind !== 'guest') this.s.setPaused(true);
     const body = h('div', { class: 'stack' },
@@ -1476,48 +1286,23 @@ export class GameUI {
       { label: '전장 이탈', value: 'quit' },
       ...(this.s.kind === 'guest' || this.s.kind === 'host' ? [] : [{ label: '다시 시작', value: 'restart' }]),
       { label: '계속', value: 'resume', cls: 'btn-seal' },
-    ]);
+    ],{signal});
+    if(signal.aborted||this.destroyed||this.ended||this.s.view.result)return;
     if (v === 'quit') {
-      const ok = await modal('전장 이탈', '지금 나가면 이번 전투의 보상을 받지 못합니다.', [{ label: '머무르기', value: false }, { label: '나가기', value: true, cls: 'btn-seal' }]);
+      const ok = await modal('전장 이탈', '지금 나가면 이번 전투의 보상을 받지 못합니다.', [{ label: '머무르기', value: false }, { label: '나가기', value: true, cls: 'btn-seal' }],{signal});
+      if(signal.aborted||this.destroyed||this.ended||this.s.view.result)return;
       if (ok) return this.onQuit();
     } else if (v === 'restart') return this.onRestart();
     if (this.s.kind !== 'guest') this.s.setPaused(wasPaused && v !== 'resume' ? wasPaused : false);
   }
 
   controlsHelp() {
-    let rows;
-    if (this.local) {
-      rows = [
-        ['1P 클릭', '빈 터: 유산 건설 · 유산: 정보/강화 · 기술 버튼 → 지점 클릭으로 시전'],
-        ['1P 우클릭', '영웅 이동 (길 클릭도 가능)'],
-        ['1P 태극 버튼', '합격기 (2P Space와 2.5초 안에 함께)'],
-        ['1P 보급 버튼', '보급품 (옥 상점에서 산 소모품)'],
-        ['2P ← ↑ → ↓', '2P 영웅 이동'],
-        ['2P A · S', '기술 · 궁극기 (적이 몰린 곳 자동 조준)'],
-        ['2P D · F', '비기 1 · 2'],
-        ['2P E', '영웅 발밑에 건설/강화 (←→ 고르고 E 확정, Q 취소)'],
-        ['2P Space', '합격기'],
-        ['2P W', '다음 파도 부르기'],
-      ];
-    } else {
-      rows = [
-        ['클릭', '빈 터: 유산 건설 · 유산: 정보/강화 · 영웅: 선택'],
-        ['우클릭 / 길 클릭', '선택한 영웅 이동'],
-        [this.solo ? 'Q W / E R' : 'Q W', this.solo ? '1번 영웅 / 2번 영웅의 기술·궁극기 (마우스 위치에 시전)' : '영웅 기술 · 궁극기'],
-        ['D F', '비기 1 · 2'],
-        ['Z X C V', '보급품 (옥 상점에서 산 산삼·궤짝·화차·부적)'],
-        ['Space', '합격기 (공명 가득 + 두 영웅 5칸 이내)'],
-        ['N', '다음 파도 조기 호출 (보너스 군자금)'],
-      ];
-      if (this.solo) rows.push(['Tab / 1 2', '영웅 선택 전환']);
-      if (this.s.coop) rows.push(['G', '핑 — 동료에게 위치 알리기']);
-    }
-    rows.push(['터치 이동','빈 땅을 눌러 선택한 영웅 이동 · 영웅을 눌러 선택'],['터치 건설','위쪽 건설 버튼 → 빈 터 → 유산 선택 (건설 뒤 이동 모드로 복귀)']);
-    if(this.is3d)rows.push(['화면 드래그 / 휠','시점 이동 / 확대·축소 (우클릭 드래그: 회전)'],['영웅 집결','내 영웅을 같은 길목으로 이동']);
-    return h('div', { class: 'keys' }, rows.flatMap(([k, d]) => [h('kbd', {}, k), h('span', {}, d)]));
+    const rows=[['마우스','빈 터 클릭: 건설 · 유산: 강화 · 우클릭: 내 영웅 이동'],['터치','왼쪽 패드: 내 영웅 이동 · 빈 터: 건설'],['Q W','내 영웅 기술 · 궁극기'],['D F','비기 1 · 2'],['Z X C V','보유 보급품'],['N','다음 파도 조기 호출']];
+    if(this.s.coop)rows.push(['Space','두 사람이 함께 합격기'],['G','동료에게 위치 핑']);
+    if(this.is3d)rows.push(['화면 드래그 / 휠','시점 이동 / 확대·축소']);
+    return h('div',{class:'keys'},rows.flatMap(([key,text])=>[h('kbd',{},key),h('span',{},text)]));
   }
 
-  // ───────────────────────── 튜토리얼 힌트 ─────────────────────────
   checkHints() {
     if (!this.profile.settings.hints || this.hintEl) return;
     const v = this.s.view;
@@ -1543,19 +1328,17 @@ export class GameUI {
     if(v.stageId==='s25'&&v.wave.n>=22)
       if(show('final-reallocate','마지막 적장은 <b>은신 병력</b>을 계속 부릅니다. 탐지를 유지하고, 피해가 적은 유산을 철거해 <b>석굴암의 대광명(A 특화)</b>에 재투자하세요. 특화 유산의 높은 단일 피해가 중요합니다.',{left:'12px',bottom:'12px'}))return;
     if (v.wave.n === 0 && v.towers.length === 0)
-      return show(this.touchInput?'build-touch-v2':'build', this.touchInput?'<b>빈 땅을 누르면 영웅이 이동</b>합니다. 유산은 위쪽 <b>건설</b> 버튼을 누른 뒤 빈 터를 골라 세우세요. 건설 뒤에는 이동 모드로 돌아갑니다.':'<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '12px', top: '12px' });
+      return show(this.touchInput?'build-pad-v3':'build', this.touchInput?'<b>왼쪽 아래 패드</b>로 영웅을 움직이고, <b>빈 터를 눌러</b> 유산을 세우세요. 아래 영웅 카드를 누르면 조종할 영웅이 바뀝니다.':'<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '12px', top: '12px' });
     if (v.wave.n === 0 && v.towers.length > 0)
-      return show('wave', `파도는 <b>누르지 않아도 저절로</b> 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 <b>출정!</b>(${this.local ? '클릭 또는 2P의 W' : 'N 키'})으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
+      return show('wave', `파도는 <b>누르지 않아도 저절로</b> 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 <b>출정!</b>(${'N 키'})으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
     if (v.wave.n >= 2)
-      if(this.touchInput&&show('hero-touch-v2','영웅을 눌러 고르고 <b>빈 땅을 눌러 이동</b>하세요. 기술 버튼을 누른 뒤 지점을 누르면 시전합니다. 건설하려면 위쪽 <b>건설</b> 버튼을 누르세요.',{left:'12px',bottom:'12px'}))return;
+      if(this.touchInput&&show('hero-pad-v3','아래 영웅 카드를 눌러 고르고 <b>왼쪽 패드</b>를 미세요. 다른 손으로 기술 버튼을 누른 뒤 지점을 누르면 시전합니다. <b>빈 터 터치</b>는 건설입니다.',{left:'12px',bottom:'12px'}))return;
     if (v.wave.n >= 2)
-      if (show('hero', this.local
-        ? '1P는 <b>우클릭</b>으로 영웅을 옮기고, 아래 기술 버튼을 누른 뒤 지점을 클릭해 시전합니다. 2P는 <b>방향키</b>로 움직이고 <b>A·S</b>로 기술을 씁니다.'
-        : `영웅을 클릭해 고르고 <b>우클릭</b>(또는 길 클릭)으로 옮기세요. ${this.solo ? '<b>Q/W</b>는 1번, <b>E/R</b>은 2번 영웅의 기술입니다.' : '<b>Q/W</b>로 기술을 씁니다.'} 마우스를 올린 곳에 시전됩니다.`, { left: '12px', bottom: '12px' })) return;
-    if (v.wave.n >= 3) if (show('equip', this.local ? '비기: 1P는 아래 버튼 클릭 후 지점 클릭, 2P는 <b>D·F</b>. 2P는 <b>E</b>로 발밑에 유산을 세울 수 있습니다.' : '<b>D/F</b>는 장착한 비기입니다. 적이 몰린 곳에 쓰세요. 비기는 진영의 <b>비기</b> 메뉴에서 바꾸고 강화합니다.', { left: '12px', bottom: '12px' })) return;
+      if (show('hero', `영웅을 클릭해 고르고 <b>우클릭</b>(또는 길 클릭)으로 옮기세요. <b>Q/W</b>로 내 영웅의 기술을 씁니다. 마우스를 올린 곳에 시전됩니다.`, { left: '12px', bottom: '12px' })) return;
+    if (v.wave.n >= 3) if (show('equip', '<b>D/F</b>는 장착한 비기입니다. 적이 몰린 곳에 쓰세요. 비기는 진영의 <b>비기</b> 메뉴에서 바꾸고 강화합니다.', { left: '12px', bottom: '12px' })) return;
     if (v.wave.nextTactic) if (show('tactic', '<b>왜군 전술 카드</b>가 공개됐습니다! 대비책을 세워 한 명도 놓치지 않으면 <b>전술 파훼</b> 보너스를 받습니다.', { left: '270px', top: '12px' })) return;
-    if (v.resonance.gauge >= RESONANCE_MAX)
-      if (show('combo', `<b>공명 게이지</b>가 찼습니다. 두 영웅을 <b>5칸 안</b>에 모으고 ${this.local ? '1P는 <b>태극 버튼</b>, 2P는 <b>Space</b>를 2.5초 안에 함께' : this.s.coop ? '두 사람이 <b>2.5초 안에 함께</b> <b>Space</b>를' : '<b>Space</b>를'} 누르면 <b>합격기</b>가 발동합니다!`, { left: '40%', bottom: '12px' })) return;
+    if (this.s.coop && v.resonance.gauge >= RESONANCE_MAX)
+      if (show('combo', `<b>공명 게이지</b>가 찼습니다. 두 영웅을 <b>5칸 안</b>에 모으고 두 사람이 <b>2.5초 안에 함께</b> <b>Space</b>를 누르면 <b>합격기</b>가 발동합니다!`, { left: '40%', bottom: '12px' })) return;
     if (v.towers.some((t) => t.level >= 3 && !t.branch))
       if (show('branch', '3단계 유산은 <b>두 갈래 특화</b> 중 하나를 고를 수 있습니다. 유산을 클릭해 보세요.', { right: '12px', top: '12px' })) return;
     if (v.towers.some((t) => t.syn > 0))

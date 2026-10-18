@@ -12,7 +12,7 @@ export function staticHandler(root,{publicOnly=false}={}) {
     if(rel==='/')rel='/index.html';
     // A deployment can contain its own server and manifest without publishing
     // those files. Only the compiled game, styles and artwork are public.
-    if(publicOnly&&!(/^\/(?:index|3d)\.html$/.test(rel)||/^\/styles\/[\w-]+\.css$/.test(rel)||/^\/assets\/[\w./-]+\.(?:js|css|webp|png|jpg|svg|woff2|ttf|txt)$/.test(rel))){res.writeHead(404).end('not found');return;}
+    if(publicOnly&&!(rel==='/index.html'||rel==='/assets/3d/app.js'||/^\/styles\/[\w-]+\.css$/.test(rel)||/^\/assets\/[\w./-]+\.(?:css|webp|png|jpg|svg|woff2|ttf|txt)$/.test(rel))){res.writeHead(404).end('not found');return;}
     const file=path.resolve(root,'.'+rel);
     if(!file.startsWith(root+path.sep)||rel.includes('..')||rel.includes('\\')||/\/(\.|node_modules)/.test(rel)){res.writeHead(403).end('forbidden');return;}
     const source=await stat(file);

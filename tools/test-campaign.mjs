@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { Session } from '../src/game/session.js';
+import {FixtureWire} from './session-fixtures.mjs';
 import { defaultProfile, loadProfile, playerSpec, applyBattle, stageUnlocked, diffUnlocked, campaignFirstClearCoins } from '../src/meta/profile.js';
 import { STAGES, DIFF_ORDER } from '../src/data/stages.js';
 import { createGame, step, queueCommand } from '../src/sim/sim.js';
@@ -23,7 +24,7 @@ const memory=new Map();
 globalThis.localStorage={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,String(v))};
 let passed=0;
 function test(name,fn){fn();passed++;console.log(`  ✔ ${name}`);}
-const spec=(p=defaultProfile(),heroes=['yi','sejong'])=>playerSpec(p,heroes,['singijeon','bongsu'],'검증');
+const spec=(p=defaultProfile(),heroes=['yi'])=>playerSpec(p,heroes,['singijeon','bongsu'],'검증');
 
 test('유산 단계 배지는 좁은 화면·상단 지붕·밀집 배치에서 선택을 보존하고 서로 겹치지 않음',()=>{
   for(const [width,height,insets] of [[414,500,{}],[1280,560,{}],[414,896,{top:73,bottom:306}]]) {
@@ -85,7 +86,7 @@ test('GameUI의 그림 대기는 자동 출정·수동 출정을 멈추고 게�
   const guest=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net});
   const state=createGame({stageId:'s1',difficulty:'normal',mode:'solo',seed:2,players:[spec()]});
   handlers.get('snap')({s:new SnapshotEncoder().encode(state,[{k:'toast',p:1,text:'동기화'}])});
-  assert.equal(guest.update(.1,{waitingForRenderer:true})[0].text,'동기화');assert.equal(guest.view.heroes.length,2);guest.destroy();
+  assert.equal(guest.update(.1,{waitingForRenderer:true})[0].text,'동기화');assert.equal(guest.view.heroes.length,1);guest.destroy();
 });
 
 test('온라인 Session은 상대 영웅 이동·상대 유산 철거를 거부하고 게스트 이벤트는 한 번만 전달',()=>{
@@ -124,13 +125,13 @@ test('3D 오른쪽 회전·두 손가락 확대·취소·화면 종료가 영웅
   globalThis.window={addEventListener(){}};globalThis.document={addEventListener(){}};audio.ctx={state:'running'};
   globalThis.setTimeout=fn=>{timers.set(++seq,fn);return seq;};globalThis.clearTimeout=id=>timers.delete(id);
   try {
-    const ui={s:{networkWaiting:false},is3d:true,cv:{addEventListener:(k,f)=>handlers.set(k,f)},renderer:{pick:()=>({x:5,y:5})},ui:{},canBuildAt:()=>true,moveHeroTo:()=>moves++,leftClick:()=>clicks++,keyDown(){},p2keys:new Set()};
+    const ui=Object.assign(Object.create(GameUI.prototype),{s:{networkWaiting:false},is3d:true,cv:{addEventListener:(k,f)=>handlers.set(k,f)},renderer:{pick:()=>({x:5,y:5})},ui:{},canBuildAt:()=>true,moveHeroTo:()=>moves++,leftClick:()=>clicks++,keyDown(){}});
     GameUI.prototype.bindInput.call(ui);
     const send=(k,id,x=10,y=10,button=0)=>handlers.get(k)({pointerId:id,pointerType:'touch',clientX:x,clientY:y,button,preventDefault(){}});
     send('pointerdown',1);send('pointerdown',2);send('pointermove',1,30,30);send('pointercancel',2);
     assert.equal(timers.size,0);assert.equal(moves,0);
     send('pointerdown',3);send('pointerdown',4);send('pointerup',3);send('pointerup',4);assert.equal(clicks,0);
-    send('pointerdown',5);send('pointerup',5);assert.equal(clicks,1);
+    send('pointerdown',5);send('pointerup',5);assert.equal(clicks,0);ui.suppressTouchUntil=0;send('pointerdown',8);send('pointerup',8);assert.equal(clicks,1);
     send('pointerdown',6,10,10,2);send('pointermove',6,40,10,2);send('contextmenu',6,40,10,2);send('pointerup',6,40,10,2);assert.equal(moves,0);
     send('pointerdown',7);ui.cancelPress();assert.equal(timers.size,0);
   }finally{globalThis.window=original.window;globalThis.document=original.document;globalThis.setTimeout=original.setTimeout;globalThis.clearTimeout=original.clearTimeout;audio.ctx=original.ctx;}
@@ -188,12 +189,12 @@ test('첫 전장 실제 승리 → 보상·품계·다음 전장·새 유산·�
   console.log(`    신규 기록 · ${s.wave.n}파 승리 · 민심 ${s.lives}/${s.maxLives} · 엽전 +${reward.rewards.coins}`);
 });
 
-test('25전장 × 3난이도 × 솔로·로컬 편성이 올바른 실제 Session을 생성',()=>{
+test('25전장 × 3난이도 × 솔로1영웅·온라인 각1영웅 편성이 올바른 실제 Session을 생성',()=>{
   let count=0;
-  for(const stage of STAGES)for(const difficulty of DIFF_ORDER)for(const kind of ['solo','local']){
-    const specs=kind==='solo'?[spec()]:[spec(defaultProfile(),['yi']),spec(defaultProfile(),['sejong'])];
-    const session=new Session({kind,stageId:stage.id,difficulty,seed:8,specs});
-    assert.equal(session.view.wave.total,stage.waves.length);assert.equal(session.view.heroes.length,2);assert.equal(session.view.coop,kind==='local');
+  for(const stage of STAGES)for(const difficulty of DIFF_ORDER)for(const kind of ['solo','host']){
+    const specs=kind==='solo'?[spec(defaultProfile(),['yi'])]:[spec(defaultProfile(),['yi']),spec(defaultProfile(),['sejong'])];
+    const session=new Session({kind,stageId:stage.id,difficulty,seed:8,specs,net:kind==='host'?new FixtureWire():undefined});
+    assert.equal(session.view.wave.total,stage.waves.length);assert.equal(session.view.heroes.length,kind==='solo'?1:2);assert.equal(session.view.coop,kind==='host');
     assert.equal(session.view.towers.length,0);assert.ok(Number.isFinite(session.view.players[0].gold));session.destroy();count++;
   }
   console.log(`    ${count}개 출전 설정 생성·정리`);

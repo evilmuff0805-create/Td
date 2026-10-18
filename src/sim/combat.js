@@ -1,7 +1,7 @@
 // 전투 공용 함수: 피해 계산, 상태 이상, 소환, 처치 보상
 import { ENEMIES } from '../data/enemies.js';
 import { HEROES, heroLevelFromXp, heroLevelMult } from '../data/heroes.js';
-import { STAGE_BY_ID, DIFFICULTY, COOP, difficultyHp } from '../data/stages.js';
+import { STAGE_BY_ID, DIFFICULTY, COOP, SOLO_HERO_DAMAGE, difficultyHp } from '../data/stages.js';
 import { TACTICS } from '../data/tactics.js';
 import { RESONANCE_MAX } from '../data/combos.js';
 import { getMap, posAt } from './map.js';
@@ -87,7 +87,8 @@ export function damage(s, e, amt, type, src) {
   else if (type === 'fire') m = 1 - reduction((armor - e.shred) * 0.5);
   else if (type === 'holy') m = 1 - reduction(resist - e.rshred);
   const vuln = (e.vulnT > 0 ? e.vulnA : 0) + (s.buffs.vulnT > 0 ? s.buffs.vuln : 0);
-  let d = amt * m * (1 + vuln);
+  const soloHero = s.mode==='solo'&&s.difficulty==='normal'&&s.players.length===1&&s.heroes.length===1&&src?.kind==='hero';
+  let d = amt * m * (1 + vuln) * (soloHero ? SOLO_HERO_DAMAGE : 1);
   if (e.shield > 0) {
     const ab = Math.min(e.shield, d);
     e.shield -= ab;
@@ -313,6 +314,7 @@ export function hurtHero(s, h, amt) {
   if (h.hp <= 0) {
     h.hp = 0;
     h.dead = true;
+    delete h.directMove;
     h.respawn = 12 + h.lv;
     releaseBlocker(s, h.id);
     ev(s, 'heroDown', { x: h.x, y: h.y, id: h.id, heroId: h.heroId });

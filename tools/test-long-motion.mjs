@@ -7,7 +7,7 @@ import {HERO_INBETWEEN_ART} from '../src/3d/inbetween-data.js';
 import {HERO_LONG_MOTION_ART} from '../src/3d/long-motion-data.js';
 import {FixedBattleArt} from '../src/3d/fixed-art.js';
 import {updateSpriteMotion} from '../src/3d/sprite-motion.js';
-import {Session} from '../src/game/session.js';
+import {SimulationSession as Session} from './session-fixtures.mjs';
 import {GameUI} from '../src/ui/hud.js';
 import {SnapshotEncoder,emptyView,applySnapshot} from '../src/sim/snapshot.js';
 import {DT} from '../src/sim/sim.js';
@@ -98,11 +98,11 @@ await test('같은 영웅의 두 의상·공격·색상·UV·그림자 재질은
   const da=ra.userData.fixedImage,db=rb.userData.fixedImage;assert.equal(da.pose,'early-follow');assert.notEqual(db.pose,'early-follow');assert.notEqual(da.motion,db.motion);assert.notEqual(da.image.material,db.image.material);assert.equal(da.longMotion,art.longMotionPoses.yi_white);assert.equal(db.longMotion,art.longMotionPoses.yi_gold);
   const otherMap=db.image.material.map;da.image.material.opacity=.2;assert.equal(db.image.material.opacity,1);assert.equal(db.hint.material.color.getHexString(),'efaa96');release(ra);assert.equal(db.image.material.map,otherMap);release(rb);art.dispose();
 });
-await test('로컬 1P·2P 실제 입력·스냅샷과 긴 공격은 소유자별로 유지한다',()=>{
+await test('두 소유자 시뮬레이션 명령·스냅샷과 긴 공격은 소유자별로 유지한다',()=>{
   const s=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi'],skins:{yi:'yi_white'}},{heroes:['yi'],skins:{yi:'yi_gold'}}]}),[a,b]=s.view.heroes;
-  const ui=Object.assign(Object.create(GameUI.prototype),{s,p2keys:new Set(),lastP2Move:0,p2moving:false}),ax=a.x,bx=b.x;
-  s.send({t:'move',p:0,h:0,x:ax-1,y:a.y});ui.p2Key({code:'ArrowRight'});for(let i=1;i<=30;i++){ui.p2Tick(i*1000/60);s.update(DT);}assert.ok(a.x<ax&&b.x>bx);
-  ui.p2keys.clear();ui.p2Tick(600);b.skillCd=0;ui.p2Key({code:'KeyA'});s.update(DT);assert.ok(b.skillCd>0);assert.equal(a.actionSeq,undefined);
+  const ui=Object.assign(Object.create(GameUI.prototype),{s,}),ax=a.x,bx=b.x;
+  s.send({t:'move',p:0,h:0,x:ax-1,y:a.y});s.send({t:'move',p:1,h:1,x:bx+1,y:b.y});for(let i=1;i<=30;i++){s.update(DT);}assert.ok(a.x<ax&&b.x>bx);
+  b.skillCd=0;s.send({t:'heroSkill',p:1,h:1,x:b.x-4,y:b.y});s.update(DT);assert.ok(b.skillCd>0);assert.equal(a.actionSeq,undefined);
   const view=emptyView({stageId:'s1',difficulty:'normal'});applySnapshot(view,JSON.parse(JSON.stringify(new SnapshotEncoder().encode(s.state,[]))));assert.equal(view.heroes[0].skin,'yi_white');assert.equal(view.heroes[1].skin,'yi_gold');assert.equal(view.heroes[1].actionSeq,b.actionSeq);
   const motion=updateSpriteMotion(null,sample({kind:b.heroId,time:s.view.time,actionSeq:b.actionSeq,actionAt:b.actionAt,actionDuration:b.actionDuration}));assert.ok([3,10].includes(motion.row));s.destroy();
 });
@@ -130,5 +130,5 @@ try{
     const {art,world}=fixture();art.longMotionPoses={};const p=art.prepareLongMotion([{heroId:'yi'}]);art.dispose();const before={...world.renderer.domElement.dataset};for(const r of pending.slice())done(r);await p;assert.deepEqual(art.longMotionPoses,{});assert.deepEqual(world.renderer.domElement.dataset,before);assert.equal(art.loading,false);assert.equal(art.longMotionRequests.size,0);assert.equal(art.textures.size,0);
   });
 }finally{globalThis.document=oldDoc;T.ImageLoader.prototype.load=oldLoad;console.warn=oldWarn;}
-await fs.writeFile('docs/LONG_MOTION_RUNTIME_VALIDATION.json',JSON.stringify({generatedAt:new Date().toISOString(),tests:results.length,allPassed:true,looks:24,newPoses:384,walkPhases:6,attackPhases:5,localCoopPreserved:true,displayOnly:true,results},null,2)+'\n');
+await fs.writeFile('docs/LONG_MOTION_RUNTIME_VALIDATION.json',JSON.stringify({generatedAt:new Date().toISOString(),tests:results.length,allPassed:true,looks:24,newPoses:384,walkPhases:6,attackPhases:5,ownerArtIsolationPreserved:true,displayOnly:true,results},null,2)+'\n');
 console.log('\n긴 영웅 동작 '+results.length+'개 검증 통과');

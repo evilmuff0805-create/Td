@@ -1,7 +1,7 @@
 {
   "date": "2026-10-11",
   "passed": 15,
-  "scope": "display transitions, paused world transforms, aimed first frame, same-hero local co-op and legacy event fallback; no combat rule changes",
+  "scope": "display transitions, paused world transforms, aimed first frame, isolated same-hero owner fixture and legacy event fallback; no combat rule changes",
   "tests": [
     {
       "name": "영웅·병력의 중간 걸음 A·B는 다음 디딤을 거쳐 준비 자세로 끝나며 위치·거리 위상을 바꾸지 않는다",
@@ -52,7 +52,7 @@
       "passed": true
     },
     {
-      "name": "겹쳐 선 동일 이순신 로컬 2인의 실제 기술과 스냅샷은 각 시전자만 즉시 조준한다",
+      "name": "겹쳐 선 동일 이순신 그림 fixture의 기술과 스냅샷은 각 시전자만 즉시 조준한다",
       "passed": true
     },
     {

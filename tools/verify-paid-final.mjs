@@ -2,7 +2,7 @@
 // Writes a diagnostic report; never modifies a player's browser save.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { defaultProfile, playerSpec } from '../src/meta/profile.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
 import { TOWERS } from '../src/data/towers.js';

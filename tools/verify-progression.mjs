@@ -1,10 +1,11 @@
 // Legal, paid progression. Never installs assumed permanent levels or free unlocks.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import { Session } from '../src/game/session.js';
 import { loadProfile,saveProfile,playerSpec,applyBattle,stageUnlocked,diffUnlocked,upgradeHero,upgradeSkill,upgradeTower,skillUnlocked } from '../src/meta/profile.js';
 import { checkIn,claimQuest,claimBonus } from '../src/meta/quests.js';
-import { STAGES } from '../src/data/stages.js';
+import { STAGES,SOLO_HERO_DAMAGE } from '../src/data/stages.js';
 import { heroMetaCost } from '../src/data/heroes.js';
 import { skillMetaCost } from '../src/data/skills.js';
 import { towerMetaCost } from '../src/data/quests.js';
@@ -16,17 +17,17 @@ import { preparedStrategy,preparedSender } from './prepared-campaign-policy.mjs'
 const memory=new Map();
 globalThis.localStorage={getItem:k=>memory.get(k)??null,setItem:(k,v)=>memory.set(k,String(v))};
 const flags=Object.fromEntries(process.argv.slice(2).map(a=>a.replace(/^--/,'').split('=')));
-const kinds=(flags.modes??'solo,local').split(','),seeds=+(flags.seeds??2),maxAttempts=+(flags.attempts??12),runs=[];
+const kinds=(flags.modes??'solo').split(','),seeds=+(flags.seeds??2),maxAttempts=+(flags.attempts??12),runs=[];
 const difficulties=(flags.difficulties??'normal').split(','),output=flags.output??'PROGRESSION_VALIDATION.json';
 const policy=flags.policy??'legacy',seedStart=+(flags['seed-start']??1);
 assert.ok(['legacy','prepared'].includes(policy),'policy must be legacy/prepared');
 assert.ok(Number.isInteger(seedStart)&&seedStart>0,'seed-start must be a positive integer');
-assert.ok(kinds.every(kind=>['solo','local'].includes(kind)),'modes must be solo/local');
+assert.ok(kinds.every(kind=>kind==='solo'),'current earned progression supports solo one-hero mode; online coverage uses real network tests');
 assert.ok(difficulties.every((diff,i)=>diff===['normal','hard','hell'][i]),'difficulties must progress from normal to hard to hell');
 assert.match(output,/^[A-Z_]+\.json$/,'output must be a report basename');
 assert.ok(Number.isInteger(seeds)&&seeds>0&&Number.isInteger(maxAttempts)&&maxAttempts>0,'seeds and attempts must be positive integers');
 assert.ok(policy!=='prepared'||maxAttempts<=12,'prepared policy is capped at12 attempts per stage');
-const heroes=['yi','sejong'],skills=['singijeon','bongsu'];
+const heroes=flags.hero?[flags.hero]:['yi'],skills=['singijeon','bongsu'];
 function collect(p){
   for(const kind of ['daily','weekly']){p.quests[kind].list.forEach((_,i)=>claimQuest(p,kind,i));claimBonus(p,kind);}saveProfile();
 }
@@ -91,7 +92,8 @@ for(const kind of kinds)for(let seed=seedStart;seed<seedStart+seeds;seed++){
   }
   runs.push({kind,seed,cleared:complete,battles:battles.length,retries:battles.filter(b=>!b.win).length,simulatedMinutes:Math.round(battles.reduce((n,b)=>n+b.time,0)/60),remainingCoins:p.coins,battleLog:battles,finalProfile:p});
 }
-const report={generatedAt:new Date().toISOString(),policy,seedStart,difficulties,expectedClears:STAGES.length*difficulties.length,allPassed:runs.every(run=>run.cleared===STAGES.length*difficulties.length),assumptions:'Same-day new profile, one attendance claim, earned battle/rank/quest rewards only; Yi + Sejong; two unlocked skills; legal paid permanent upgrades. Purchases use smoothed useful HP-damage shares and real growth rates, with a fixed support-skill heuristic; this is not an optimal policy. '+(policy==='prepared'?'Prepared policy uses economy-aware costs and staggered Bongsu from attempt1, the real 30-second initial preparation, six documented tactics and a second branch/upgrade pass within12 attempts.':'Legacy bounded alternate bot plans/branches and seeds; attempts93+ reuse the base seed for independently reproduced tactical counterexamples.')+' No purchased items, free levels, jade conversion, or fabricated unlocks. Results are not a human difficulty or reasonable retry-count guarantee.',maxAttempts,runs};
+const sourceHashes=Object.fromEntries(['src/data/stages.js','src/sim/sim.js','src/sim/combat.js','src/sim/abilities.js','src/game/session.js','src/game/battle-setup.js','src/meta/profile.js','src/sim/ai.js','tools/verify-progression.mjs','tools/prepared-campaign-policy.mjs','tools/campaign-tactics.mjs'].map(path=>[path,crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex')]));
+const report={sourceHashes,generatedAt:new Date().toISOString(),soloHeroDamage:SOLO_HERO_DAMAGE,heroes,policy,seedStart,difficulties,expectedClears:STAGES.length*difficulties.length,allPassed:runs.every(run=>run.cleared===STAGES.length*difficulties.length),assumptions:'Same-day new profile, one attendance claim, earned battle/rank/quest rewards only; one solo hero (' + heroes.join('/') + '); two unlocked skills; legal paid permanent upgrades. Purchases use smoothed useful HP-damage shares and real growth rates, with a fixed support-skill heuristic; this is not an optimal policy. '+(policy==='prepared'?'Prepared policy uses economy-aware costs and staggered Bongsu from attempt1, the real 30-second initial preparation, six documented tactics and a second branch/upgrade pass within12 attempts.':'Legacy bounded alternate bot plans/branches and seeds; attempts93+ reuse the base seed for independently reproduced tactical counterexamples.')+' No purchased items, free levels, jade conversion, or fabricated unlocks. Results are not a human difficulty or reasonable retry-count guarantee.',maxAttempts,runs};
 fs.writeFileSync(new URL('../docs/'+output,import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(runs.map(({battleLog,finalProfile,...summary})=>summary),null,2));
 assert.ok(report.allPassed,'At least one earned-profile campaign did not finish; see '+output);

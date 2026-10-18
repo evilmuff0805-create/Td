@@ -45,11 +45,11 @@
       "passed": true
     },
     {
-      "name": "host restored after permanent guest departure does not wait for nonexistent ACK",
+      "name": "host restored after permanent departure aborts without transfer or waiting for ACK",
       "passed": true
     },
     {
-      "name": "host restored after expiry while offline transfers guest assets even before a render tick",
+      "name": "permanent guest departure after simulated result but before server acceptance aborts",
       "passed": true
     },
     {

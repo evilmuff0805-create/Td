@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {SOLO_HERO_DAMAGE} from '../src/data/stages.js';
 // 자체 점검: node tools/selftest.mjs
 //  - 모든 지도·웨이브 문법 검증
 //  - 같은 시드 → 같은 결과 (결정성)
@@ -359,7 +360,7 @@ test('선택적 피해 진단은 초과 피해를 제외하고 실제 전투 결
   const mk=()=>createGame({stageId:'s1',difficulty:'normal',mode:'solo',seed:2,players:[{heroes:['yi'],skills:[]}]});
   const a=mk(),b=mk();a.damageLedger={};
   for(const s of [a,b]){const e=spawnEnemy(s,'ashigaru',0,1);e.hp=10;e.armor=0;e.shield=0;damage(s,e,100,'phys',{p:0,kind:'hero',ref:s.heroes[0]});}
-  assert.equal(a.damageLedger['hero:yi'],10);assert.equal(a.players[0].stats.damage,100);
+  assert.equal(a.damageLedger['hero:yi'],10);assert.equal(a.players[0].stats.damage,100*SOLO_HERO_DAMAGE);
   delete a.damageLedger;assert.deepEqual(a,b);
 });
 console.log(`\n자체 점검 통과: ${passed}개`);

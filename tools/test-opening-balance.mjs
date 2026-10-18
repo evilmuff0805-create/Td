@@ -127,7 +127,7 @@ test('prebattle budget text matches actual wallets for every stage in solo and c
   }
 });
 test('difficulty hints use the real multipliers, lives and rewards',()=>{
-  assert.equal(difficultyText('normal'),'적 체력 ×1 · 민심 20 · 보상 ×1');
+  assert.equal(difficultyText('normal'),'적 체력 ×1 · 1영웅 솔로: 영웅 피해 ×1.5 · 민심 20 · 보상 ×1');
   assert.equal(difficultyText('hard'),'적 체력 ×1.3 · 민심 15 · 보상 ×1.6');
   assert.equal(difficultyText('hell'),'일반 병력 체력 ×1.3→1.6 (8파부터 최대) · 적장 ×1.6 · 민심 10 · 보상 ×2.4');
   assert.equal(difficultyText('hell',true),'일반 병력 체력 ×1.3→1.6 (8파부터 최대) · 적장 ×1.6 · 협동: 적 체력 추가 ×1.1 · 민심 10 · 보상 ×2.4');

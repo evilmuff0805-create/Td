@@ -30,7 +30,7 @@ export function defaultProfile() {
     campaignBonuses: {},
     campaignBonusNotice: 0,
     loadout: {
-      solo: { heroes: ['yi', 'sejong'], skills: ['singijeon', 'bongsu'] },
+      solo: { heroes: ['yi'], skills: ['singijeon', 'bongsu'] },
       coop: { hero: 'yi', skills: ['singijeon', 'bongsu'] },
       p2: { hero: 'sejong', skills: ['bongsu', 'singijeon'] },
     },
@@ -55,6 +55,9 @@ export function loadProfile() {
     saved = null;
   }
   profile = saved ? merge(d, saved) : d;
+  const savedHeroes=profile.loadout.solo.heroes;
+  profile.loadout.solo.heroes=savedHeroes.filter(id=>typeof id==='string'&&Object.prototype.hasOwnProperty.call(HEROES,id)&&heroUnlockState(profile,id).unlocked).slice(0,1);
+  if(!profile.loadout.solo.heroes.length)profile.loadout.solo.heroes=['yi'];
   // 새로 생긴 유산: 이미 이긴 전장이 해금하는 유산은 바로 열어 준다
   for (const st of STAGES) {
     if (!Object.values(profile.stages[st.id] || {}).some((v) => v > 0)) continue;

@@ -81,7 +81,7 @@
   ],
   "combos": 11,
   "reversePairs": 11,
-  "localCoopPreserved": true,
+  "ownerArtIsolationPreserved": true,
   "maximumTargetsPerCue": 24,
   "maximumEffectRoots": 64,
   "animationFrames": 8,

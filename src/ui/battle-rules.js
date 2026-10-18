@@ -1,5 +1,5 @@
 import { h, fmt } from './dom.js';
-import { STAGE_BY_ID, DIFFICULTY, COOP, OPENING_RAMP_WAVES, startingGold, parseWave } from '../data/stages.js';
+import { STAGE_BY_ID, DIFFICULTY, COOP, SOLO_HERO_DAMAGE, OPENING_RAMP_WAVES, startingGold, parseWave } from '../data/stages.js';
 import { ENEMIES } from '../data/enemies.js';
 
 export function difficultyText(difficulty, coop = false) {
@@ -7,7 +7,7 @@ export function difficultyText(difficulty, coop = false) {
   const hp = d.openingHp === undefined
     ? `적 체력 ×${d.hp}`
     : `일반 병력 체력 ×${d.openingHp}→${d.hp} (${OPENING_RAMP_WAVES}파부터 최대) · 적장 ×${d.hp}`;
-  return `${hp}${coop ? ` · 협동: 적 체력 추가 ×${COOP.hpMult}` : ''} · 민심 ${d.lives} · 보상 ×${d.reward}`;
+  return `${hp}${!coop&&difficulty==='normal'?` · 1영웅 솔로: 영웅 피해 ×${SOLO_HERO_DAMAGE}`:''}${coop ? ` · 협동: 적 체력 추가 ×${COOP.hpMult}` : ''} · 민심 ${d.lives} · 보상 ×${d.reward}`;
 }
 
 export function stageAdvice(stageId, towers) {
@@ -16,7 +16,7 @@ export function stageAdvice(stageId, towers) {
   const advice = [];
   const sharedEntry = st.paths.length > 1 && st.paths.every(path => path[0][0] === st.paths[0][0][0] && path[0][1] === st.paths[0][0][1]);
   advice.push(sharedEntry
-    ? '첫 파도 전에 방어선을 마련하고, 두 길이 갈라지기 전 입구 굽이에 영웅을 모으세요.'
+    ? '첫 파도 전에 방어선을 마련하고, 두 길이 갈라지기 전 입구 굽이에 영웅을 배치하세요.'
     : st.paths.length > 1
       ? '첫 파도 전에 방어선을 마련하고, 두 길에 영웅과 유산의 화력을 나눠 배치하세요.'
       : '첫 파도 전에 방어선을 마련하고, 유산의 사거리가 겹치는 길목에 영웅을 배치하세요.');

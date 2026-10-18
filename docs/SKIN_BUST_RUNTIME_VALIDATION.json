@@ -39,9 +39,9 @@
       "passed": true
     },
     {
-      "name": "실제 도감과 로컬2인 선택은 장착 백의·청룡포를 표시하며 원래 두 출전 사양과 중복 선택 금지를 유지한다",
+      "name": "실제 도감과 솔로 선택은 장착 백의·청룡포를 표시하며 1영웅 출전 사양을 유지한다",
       "passed": true
     }
   ],
-  "scope": "Costume-specific cache and errors, late costume replacement lifetime, unchanged HUD/full art, actual locked shop preview/purchase/equip, codex and two-player setup/specs"
+  "scope": "Costume-specific cache and errors, late costume replacement lifetime, unchanged HUD/full art, actual locked shop preview/purchase/equip, codex and single-hero solo setup/specs"
 }

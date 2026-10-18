@@ -132,8 +132,8 @@ try {
     assert.equal(p.jade,50);assert.ok(p.skins.owned.includes('yi_gold'));assert.equal(p.skins.eq.yi,'yi_gold');assert.equal(a.last.params.art,'full');assert.equal(p.coins,coins);assert.equal(JSON.stringify(p.heroes),heroes);screen.remove();
   });
   const {heroesScreen}=await import('../src/ui/screens-codex.js');
-  const {localSetupScreen}=await import('../src/ui/screens-play.js');
-  await test('실제 도감과 로컬2인 선택은 장착 백의·청룡포를 표시하며 원래 두 출전 사양과 중복 선택 금지를 유지한다',()=>{
+  const {loadoutScreen}=await import('../src/ui/screens-play.js');
+  await test('실제 도감과 솔로 선택은 장착 백의·청룡포를 표시하며 1영웅 출전 사양을 유지한다',()=>{
     profile.skins.owned.push('yi_white','sejong_blue');profile.skins.eq.yi='yi_white';profile.skins.eq.sejong='sejong_blue';
     const before=JSON.stringify(profile);
     for(const [hero,skin]of [['yi','yi_white'],['sejong','sejong_blue']]){
@@ -141,14 +141,14 @@ try {
       const equipped=all(codex,e=>e.dataset.heroImage==='bust'&&e.dataset.hero===hero);assert.equal(equipped.length,2);
       for(const cv of equipped){assert.equal(cv.dataset.skin,skin);assert.equal(cv.dataset.artSource,'hero-skin-bust-v1');}codex.remove();
     }
-    const screen=localSetupScreen(app,{stageId:'s1'});body.append(screen);const canvases=all(screen,e=>e.dataset.heroImage==='bust');assert.equal(canvases.length,16);
-    assert.equal(canvases.filter(c=>c.dataset.skin==='yi_white').length,2);assert.equal(canvases.filter(c=>c.dataset.skin==='sejong_blue').length,2);
-    const cards=all(screen,e=>e.tagName==='button'&&e.className?.startsWith('card')&&all(e,c=>c.dataset.heroImage==='bust').length===1);assert.equal(cards.filter(c=>c.getAttribute('disabled')==='').length,2);
-    all(screen,e=>e.tagName==='button'&&e.textContent==='함께 출전!')[0].events.click();
-    assert.equal(app.battle.kind,'local');assert.deepEqual(app.battle.specs,[playerSpec(profile,['yi'],profile.loadout.coop.skills,'1P'),playerSpec(profile,['sejong'],profile.loadout.p2.skills,'2P',{noItems:true})]);assert.equal(JSON.stringify(profile),before);
+    const screen=loadoutScreen(app,{stageId:'s1',difficulty:'normal'});body.append(screen);const canvases=all(screen,e=>e.dataset.heroImage==='bust');assert.equal(canvases.length,8);
+    assert.equal(canvases.filter(c=>c.dataset.skin==='yi_white').length,1);assert.equal(canvases.filter(c=>c.dataset.skin==='sejong_blue').length,1);
+    const cards=all(screen,e=>e.tagName==='button'&&e.className?.startsWith('card')&&all(e,c=>c.dataset.heroImage==='bust').length===1);assert.equal(cards.filter(c=>c.getAttribute('disabled')==='').length,0);
+    all(screen,e=>e.tagName==='button'&&e.textContent==='출전!')[0].events.click();
+    assert.equal(app.battle.kind,'solo');assert.deepEqual(app.battle.specs,[playerSpec(profile,['yi'],profile.loadout.solo.skills)]);assert.equal(JSON.stringify(profile),before);
   });
 } finally {
   for(const [key,value]of Object.entries(saved))if(value===undefined)delete globalThis[key];else globalThis[key]=value;
 }
-await fs.writeFile(new URL('../docs/SKIN_BUST_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,results,scope:'Costume-specific cache and errors, late costume replacement lifetime, unchanged HUD/full art, actual locked shop preview/purchase/equip, codex and two-player setup/specs'},null,2)+'\n');
+await fs.writeFile(new URL('../docs/SKIN_BUST_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',tests:results.length,results,scope:'Costume-specific cache and errors, late costume replacement lifetime, unchanged HUD/full art, actual locked shop preview/purchase/equip, codex and single-hero solo setup/specs'},null,2)+'\n');
 console.log('\n의상 흉상 검사 '+results.length+'개 통과');

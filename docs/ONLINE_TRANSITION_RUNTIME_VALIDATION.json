@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-10-18T05:19:45.991Z",
+  "tests": 15,
+  "allPassed": true,
+  "scope": "Real product Session solo/host/guest, broker ordering, synthetic HUD settlement callbacks and profile persistence. Loopback and public transport are validated separately; not physical-phone QA.",
+  "results": [
+    {
+      "name": "entry accepts exactly one hero per player and rejects local or malformed rosters",
+      "passed": true
+    },
+    {
+      "name": "received picks are checked before display, agree with spec and sanitize only valid data",
+      "passed": true
+    },
+    {
+      "name": "old two-hero saves normalize selection while currency, purchases and history survive",
+      "passed": true
+    },
+    {
+      "name": "all eight solo heroes cast, die, respawn and round-trip as a single hero",
+      "passed": true
+    },
+    {
+      "name": "late guest display positions never reverse a held directional command",
+      "passed": true
+    },
+    {
+      "name": "host rejects nonfinite, excessive, zero or foreign directional input and uses its current stop position",
+      "passed": true
+    },
+    {
+      "name": "host background freezes time and input; lost foreground notification heals through full sync",
+      "passed": true
+    },
+    {
+      "name": "guest background delays art-ready ACK; manual pause survives recovery",
+      "passed": true
+    },
+    {
+      "name": "stalled snapshots gate guest commands until full hydration succeeds",
+      "passed": true
+    },
+    {
+      "name": "permanent departure aborts without transferring heroes, structures or wallets",
+      "passed": true
+    },
+    {
+      "name": "a direct sim leave aborts instead of making the other hero controllable",
+      "passed": true
+    },
+    {
+      "name": "broker departure before finish rejects late victory; committed finish before departure remains",
+      "passed": true
+    },
+    {
+      "name": "unconfirmed simulated result aborts; confirmed server results survive later peer-left",
+      "passed": true
+    },
+    {
+      "name": "HUD interrupts an already-ended animation exactly once and never applies a result",
+      "passed": true
+    },
+    {
+      "name": "finish waits for server acceptance, awards once, and cancels if departure wins the race",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-10-18T05:12:02.999Z",
+  "scope": "Two real same-PC IAB iframe clients through loopback WebSocket; synthetic developer pad touch, ordinary room/ready/build/leave UI. Not physical-phone or WAN validation.",
+  "observed": {
+    "roomCreatedAndJoined": true,
+    "distinctHeroes": [
+      "yi",
+      "sejong"
+    ],
+    "eachOneHero": true,
+    "bothPadsMoved": true,
+    "separateFundsBefore": [
+      156,
+      156
+    ],
+    "separateFundsAfter": [
+      86,
+      86
+    ],
+    "towerCount": 2,
+    "hostHeroControls": 1,
+    "guestHeroControls": 1,
+    "permanentLeaveAbortNoResult": true,
+    "actualBrowserBackgroundTestCompleted": false,
+    "actualBrowserBackgroundReason": "IAB tabs kept document.hidden=false when another tab opened; background recovery is covered by Session tests, physical app switching remains unverified."
+  }
+}

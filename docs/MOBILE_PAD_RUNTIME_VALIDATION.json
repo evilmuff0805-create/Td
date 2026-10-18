@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-10-18T05:19:45.816Z",
+  "tests": 16,
+  "allPassed": true,
+  "scope": "Actual virtual-pad and HUD pointer handlers with real solo/host/guest sessions; synthetic DOM pointer events, not physical-device touch or latency measurements.",
+  "localCoopRemoved": true,
+  "results": [
+    {
+      "name": "dead zone, finite coordinates and thumb travel are bounded",
+      "passed": true
+    },
+    {
+      "name": "isometric screen directions round-trip and diagonals keep unit speed",
+      "passed": true
+    },
+    {
+      "name": "actual pad holds move at hero speed in flat and isometric views across frame rates",
+      "passed": true
+    },
+    {
+      "name": "a centered held thumb does not move and returning to the dead zone stops once",
+      "passed": true
+    },
+    {
+      "name": "pad plus another finger opens a ground build and spends only its owner wallet",
+      "passed": true
+    },
+    {
+      "name": "pad plus another finger can target a real hero skill without building",
+      "passed": true
+    },
+    {
+      "name": "two world fingers cancel building while the independent pad keeps moving",
+      "passed": true
+    },
+    {
+      "name": "pad cancellation does not suppress a concurrently held valid ground tap",
+      "passed": true
+    },
+    {
+      "name": "blur, hide, resize, pause and loading cancel movement without leaving a held thumb",
+      "passed": true
+    },
+    {
+      "name": "reconnecting preserves one pending stop and flushes it before any resumed pad movement",
+      "passed": true
+    },
+    {
+      "name": "solo has one hero and cannot select an absent or foreign hero",
+      "passed": true
+    },
+    {
+      "name": "host pad and online guest move their own hero with independent ownership",
+      "passed": true
+    },
+    {
+      "name": "direct melee movement releases an engaged enemy and follows the short pad goal",
+      "passed": true
+    },
+    {
+      "name": "arrival, an ordinary move, stop, death and respawn end the direct state",
+      "passed": true
+    },
+    {
+      "name": "guest stop ignores stale coordinates and the host rejects forged ownership",
+      "passed": true
+    },
+    {
+      "name": "destroy removes pad document listeners and capture as well as HUD input listeners",
+      "passed": true
+    }
+  ]
+}

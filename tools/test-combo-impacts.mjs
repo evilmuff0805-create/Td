@@ -1,3 +1,4 @@
+import {Session as NetworkSession} from '../src/game/session.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
@@ -8,7 +9,7 @@ import { createGame,applyCommand,step,DT } from '../src/sim/sim.js';
 import { spawnEnemy,comboCue } from '../src/sim/combat.js';
 import { COMBOS } from '../src/data/combos.js';
 import { SnapshotEncoder,emptyView,applySnapshot } from '../src/sim/snapshot.js';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { BattleEffects } from '../src/3d/effects.js';
 import { ComboImpactArt,COMBO_IMPACT_STYLES } from '../src/3d/combo-impact-art.js';
 import { COMBO_IMPACT_PIVOTS } from '../src/3d/combo-impact-data.js';
@@ -93,7 +94,7 @@ await test('표시 24곳 상한은 피해 80명 전원과 첫·마지막 대상 
 
 await test('JSON 게스트 전달은 착탄 좌표를 보존하고 새 스냅샷 없이 재생하지 않는다',()=>withCanvas(()=>{
   const game=gameFor(['yi','gwon']);fire(game);const encoder=new SnapshotEncoder(),snap=JSON.parse(JSON.stringify(encoder.encode(game,game.events))),view=emptyView({stageId:'s1'});applySnapshot(view,snap);
-  assert.deepEqual(snap.ev.filter(e=>e.combo),cues(game));const {fx}=fixture(),handlers=new Map(),session=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net:{on:(name,fn)=>{handlers.set(name,fn);return ()=>{};},send(){}}});
+  assert.deepEqual(snap.ev.filter(e=>e.combo),cues(game));const {fx}=fixture(),handlers=new Map(),session=new NetworkSession({kind:'guest',stageId:'s1',difficulty:'normal',net:{on:(name,fn)=>{handlers.set(name,fn);return ()=>{};},send(){}}});
   handlers.get('snap')({s:snap});session.update(0).forEach(e=>paintBattleEvent({fx},e,session.view));const count=fx.active.length;assert.deepEqual(session.update(0),[]);assert.equal(fx.active.length,count);assert.ok(count>0);fx.destroy();
 }));
 
@@ -161,5 +162,5 @@ await test('변경 전 코드와 11조합 전체의 피해·재화·소환·투�
   for(const c of cases){const a=gameFor(c.pair,30),b=populate(baseline.createGame(config(c.pair)),30);fire(a);baseline.applyCommand(b,{t:'combo',p:0});baseline.applyCommand(b,{t:'combo',p:1});assert.equal(combat(a),combat(b),c.id+' initial');for(let i=0;i<180;i++){step(a);baseline.step(b);assert.equal(combat(a),combat(b),c.id+' tick '+i);a.events.length=0;b.events.length=0;}}
 });
 
-await fs.writeFile('docs/COMBO_IMPACT_RUNTIME_VALIDATION.json',JSON.stringify({date:'2026-10-11',passedTests:results.length,results,combos:11,reversePairs:11,localCoopPreserved:true,maximumTargetsPerCue:24,maximumEffectRoots:64,animationFrames:8,baselineCommit,allComboCombatComparisonTicks:180,jsonGuestEventsOnce:true,sharedTextureOffsetUnchanged:true,lateLoadingAndFallback:true},null,2)+'\n');
+await fs.writeFile('docs/COMBO_IMPACT_RUNTIME_VALIDATION.json',JSON.stringify({date:'2026-10-11',passedTests:results.length,results,combos:11,reversePairs:11,ownerArtIsolationPreserved:true,maximumTargetsPerCue:24,maximumEffectRoots:64,animationFrames:8,baselineCommit,allComboCombatComparisonTicks:180,jsonGuestEventsOnce:true,sharedTextureOffsetUnchanged:true,lateLoadingAndFallback:true},null,2)+'\n');
 console.log('\n합격기 착탄·동작·협동·자원 '+results.length+'개 검증 통과');

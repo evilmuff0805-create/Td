@@ -12,7 +12,8 @@ import {CrowdRenderer} from '../src/3d/crowd.js';
 import {Renderer3D} from '../src/3d/renderer.js';
 import {SEASONS} from '../src/3d/seasons.js';
 import {updateSpriteMotion,previewMotion} from '../src/3d/sprite-motion.js';
-import {Session} from '../src/game/session.js';
+import {SimulationSession as Session} from './session-fixtures.mjs';
+import {Session as NetworkSession} from '../src/game/session.js';
 import {GameUI} from '../src/ui/hud.js';
 import {SnapshotEncoder,emptyView,applySnapshot} from '../src/sim/snapshot.js';
 import {DT} from '../src/sim/sim.js';
@@ -100,11 +101,11 @@ await test('같은 영웅의 흰 의상 1P·금빛 의상 2P는 중간 동작과
   art.updateUnit(rb,b,false,0,.13,{...sample({time:.13}),poseRow:5});assert.equal(db.image.material.map.image,art.inbetweenPoses.yi_gold.isolated[4+db.facing].canvas);assert.equal(da.pose,'follow-through');
   let released=0;db.image.material.map.addEventListener('dispose',()=>released++);world.disposeCharacter(ra);assert.equal(released,0);world.disposeCharacter(rb);art.dispose();assert.equal(released,1);
 });
-await test('서로 다른 의상도 로컬 1P·2P 실제 입력과 스냅샷·두 동작 상태가 독립적이다',()=>{
+await test('서로 다른 의상도 두 소유자 시뮬레이션 명령과 스냅샷·두 동작 상태가 독립적이다',()=>{
   const session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi'],skins:{yi:'yi_white'}},{heroes:['yi'],skins:{yi:'yi_gold'}}]});
-  const ui=Object.assign(Object.create(GameUI.prototype),{s:session,p2keys:new Set(),lastP2Move:0,p2moving:false}),[a,b]=session.view.heroes,ax=a.x,bx=b.x;
-  assert.equal(a.skin,'yi_white');assert.equal(b.skin,'yi_gold');session.send({t:'move',p:0,h:0,x:ax-1,y:a.y});ui.p2Key({code:'ArrowRight'});for(let i=1;i<=30;i++){ui.p2Tick(i*1000/60);session.update(DT);}assert.ok(a.x<ax&&b.x>bx);
-  ui.p2keys.clear();ui.p2Tick(600);b.skillCd=0;ui.p2Key({code:'KeyA'});session.update(DT);assert.ok(b.skillCd>0);
+  const ui=Object.assign(Object.create(GameUI.prototype),{s:session,}),[a,b]=session.view.heroes,ax=a.x,bx=b.x;
+  assert.equal(a.skin,'yi_white');assert.equal(b.skin,'yi_gold');session.send({t:'move',p:0,h:0,x:ax-1,y:a.y});session.send({t:'move',p:1,h:1,x:bx+1,y:b.y});for(let i=1;i<=30;i++){session.update(DT);}assert.ok(a.x<ax&&b.x>bx);
+  b.skillCd=0;session.send({t:'heroSkill',p:1,h:1,x:b.x-4,y:b.y});session.update(DT);assert.ok(b.skillCd>0);
   const packet=JSON.parse(JSON.stringify(new SnapshotEncoder().encode(session.state,[]))),view=emptyView({stageId:'s1',difficulty:'normal'});applySnapshot(view,packet);assert.equal(view.heroes[0].owner,0);assert.equal(view.heroes[1].owner,1);assert.equal(view.heroes[0].skin,'yi_white');assert.equal(view.heroes[1].skin,'yi_gold');assert.equal(view.heroes[1].actionSeq,b.actionSeq);
   const {world,art}=context(),ha={heroId:'yi',owner:0,hp:100,actionSeq:1,actionAt:0,actionDuration:.25},hb={heroId:'yi',owner:1,hp:100},ra=world.unit(ha,true),rb=world.unit(hb,true);
   art.updateUnit(ra,ha,false,0,0,sample());art.updateUnit(rb,hb,false,0,0,sample());art.updateUnit(ra,ha,false,0,.12,sample({time:.12}));art.updateUnit(rb,hb,false,0,.12,sample({time:.12}));
@@ -154,14 +155,14 @@ try{
     try{const all=art.prepareHeroLooks(heroes);finish('yi',true);finish('sejong');await all;assert.equal(art.prepareHeroLooks(heroes),all);}finally{console.warn=warn;}
     assert.equal(warnings.length,1);assert.equal(art.loading,false);assert.equal(art.inbetweenPoses.yi,null);assert.ok(art.inbetweenPoses.sejong);assert.equal(world.renderer.domElement.dataset.heroInbetweenStatus,'partial');assert.equal(art.unitArt(heroes[0],true,false),art.heroPoses.yi);art.dispose();
   });
-  await test('실제 로컬 협동 HUD는 두 중간 시트를 첫 프레임부터 기다린 뒤 시계를 재개한다',async()=>{
+  await test('두 소유자 그림 fixture의 실제 HUD는 두 중간 시트를 첫 프레임부터 기다린 뒤 시계를 재개한다',async()=>{
     const {world,art}=context(false),session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:1,specs:[{heroes:['yi']},{heroes:['sejong']}]});
     const renderer={world,prepareView:Renderer3D.prototype.prepareView,get loading(){return art.loading;},events(){},render(){}};
-    const ui=Object.assign(Object.create(GameUI.prototype),{s:session,renderer,map:getMap(session.stageId),me:0,ui:{clock:0},bottom:{},last:0,solo:false,local:true,selHero:0,hintTimer:100,p2keys:new Set(),lastP2Move:0,p2moving:false,handleEvents(){},drawXray(){},updateHud(){}}),raf=globalThis.requestAnimationFrame;globalThis.requestAnimationFrame=()=>1;
+    const ui=Object.assign(Object.create(GameUI.prototype),{s:session,renderer,map:getMap(session.stageId),me:0,ui:{clock:0},bottom:{},last:0,solo:false,selHero:0,hintTimer:100,handleEvents(){},drawXray(){},updateHud(){}}),raf=globalThis.requestAnimationFrame;globalThis.requestAnimationFrame=()=>1;
     try{ui.frame(100);assert.equal(session.state.time,0);assert.equal(ui.bottom.inert,true);assert.equal(pending.length,2);const all=art.promise;ui.frame(200);assert.equal(art.promise,all);finish('yi');await Promise.resolve();ui.frame(300);assert.equal(session.state.time,0);finish('sejong');await all;ui.frame(400);assert.ok(session.state.time>0);assert.equal(ui.bottom.inert,false);}finally{globalThis.requestAnimationFrame=raf;session.destroy();art.dispose();}
   });
   await test('게스트는 중간 원화 대기 중에도 후속 스냅샷과 이벤트를 계속 받는다',async()=>{
-    const handlers=new Map(),net={on(k,fn){handlers.set(k,fn);return()=>handlers.delete(k);},send(){}},guest=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net}),host=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:1,specs:[{heroes:['yi']},{heroes:['sejong']}]}),{world,art}=context(false),renderer={world,prepareView:Renderer3D.prototype.prepareView};
+    const handlers=new Map(),net={on(k,fn){handlers.set(k,fn);return()=>handlers.delete(k);},send(){}},guest=new NetworkSession({kind:'guest',stageId:'s1',difficulty:'normal',net}),host=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:1,specs:[{heroes:['yi']},{heroes:['sejong']}]}),{world,art}=context(false),renderer={world,prepareView:Renderer3D.prototype.prepareView};
     const encode=()=>new SnapshotEncoder().encode(host.state,[{k:'toast',text:'동기화'}]);handlers.get('snap')({s:encode()});renderer.prepareView(guest.view);const all=art.promise;assert.equal(pending.length,2);assert.equal(guest.update(.1,{waitingForRenderer:true})[0].text,'동기화');host.state.time=3;handlers.get('snap')({s:encode()});renderer.prepareView(guest.view);assert.equal(guest.view.time,3);assert.equal(art.promise,all);finish('yi');finish('sejong');await all;assert.equal(art.loading,false);guest.destroy();host.destroy();art.dispose();
   });
 }finally{T.ImageLoader.prototype.load=oldLoad;if(oldDocument===undefined)delete globalThis.document;else globalThis.document=oldDocument;}

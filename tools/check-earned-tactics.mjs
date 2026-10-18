@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import { Session } from '../src/game/session.js';
+import { SimulationSession as Session } from './session-fixtures.mjs';
 import { defaultProfile,playerSpec } from '../src/meta/profile.js';
 import { createBot,botThink,botSkills } from '../src/sim/ai.js';
 import { getMap } from '../src/sim/map.js';

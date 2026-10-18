@@ -12,7 +12,7 @@ import {SEASONS} from '../src/3d/seasons.js';
 import {updateSpriteMotion} from '../src/3d/sprite-motion.js';
 import {combatPoseRoster} from '../src/3d/combat-pose-roster.js';
 import {newWinterGame} from '../src/3d/scenario.js';
-import {Session} from '../src/game/session.js';
+import {SimulationSession as Session} from './session-fixtures.mjs';
 import {GameUI} from '../src/ui/hud.js';
 import {SnapshotEncoder,emptyView,applySnapshot} from '../src/sim/snapshot.js';
 import {applyCommand,step,DT} from '../src/sim/sim.js';
@@ -86,10 +86,10 @@ await test('중간 원화가 없거나 병종·진영이 다르면 원본 동작
 await test('원본 병력 그림만 실패해도 성공한 중간 원화를 정적 대체 그림에 붙이지 않는다',()=>{
   const {art}=context();art.combatPoses.enemy.teppo=null;assert.equal(art.unitInbetweens({type:'teppo'},{canvas:{width:80,height:80}},'enemy'),null);assert.equal(art.unitInbetweens({type:'teppo'},art.combatPoses.enemy.ashigaru,'enemy'),null);assert.ok(art.combatInbetweens.enemy.teppo);art.dispose();
 });
-await test('로컬 2인 실제 이동 입력과 두 병영의 재화·병사 소유권을 유지한다',()=>{
+await test('두 소유자 시뮬레이션 이동 명령과 두 병영의 재화·병사 소유권을 유지한다',()=>{
   const session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:8,specs:[{heroes:['yi'],towers:['namhansan']},{heroes:['sejong'],towers:['namhansan']}]}),s=session.state,map=getMap('s1'),sites=[];
   for(let y=0;y<map.h;y++)for(let x=0;x<map.w;x++)if(map.grid[y*map.w+x]===T_BUILD&&nearestOnPath(map,x+.5,y+.5)?.dist<2.2)sites.push({x,y});assert.ok(sites.length>=2);const gold=s.players.map(p=>p.gold);
-  for(let p=0;p<2;p++)session.send({t:'build',p,tower:'namhansan',...sites[p]});const [a,b]=s.heroes,ax=a.x,bx=b.x,ui=Object.assign(Object.create(GameUI.prototype),{s:session,p2keys:new Set(),lastP2Move:0,p2moving:false});session.send({t:'move',p:0,h:0,x:ax-1,y:a.y});ui.p2Key({code:'ArrowRight'});for(let i=1;i<=30;i++){ui.p2Tick(i*1000/60);session.update(DT);}assert.ok(a.x<ax&&b.x>bx);assert.equal(s.towers.length,2);assert.deepEqual(s.towers.map(t=>t.owner),[0,1]);assert.ok(s.summons.some(m=>m.owner===0)&&s.summons.some(m=>m.owner===1));assert.deepEqual(s.players.map(p=>p.gold),gold.map(g=>g-90));session.destroy();
+  for(let p=0;p<2;p++)session.send({t:'build',p,tower:'namhansan',...sites[p]});const [a,b]=s.heroes,ax=a.x,bx=b.x,ui=Object.assign(Object.create(GameUI.prototype),{s:session,});session.send({t:'move',p:0,h:0,x:ax-1,y:a.y});session.send({t:'move',p:1,h:1,x:bx+1,y:b.y});for(let i=1;i<=30;i++){session.update(DT);}assert.ok(a.x<ax&&b.x>bx);assert.equal(s.towers.length,2);assert.deepEqual(s.towers.map(t=>t.owner),[0,1]);assert.ok(s.summons.some(m=>m.owner===0)&&s.summons.some(m=>m.owner===1));assert.deepEqual(s.players.map(p=>p.gold),gold.map(g=>g-90));session.destroy();
 });
 await test('영웅과 양쪽 병력의 새 원화는 서로의 atlas나 개인 재질을 덮어쓰지 않는다',()=>{
   const {world,art}=context(),h={id:1,heroId:'yi',hp:100},e={id:2,type:'ashigaru',hp:100},a={id:3,kind:'guard',hp:100},roots=[world.unit(h,true),world.unit(e,false),world.unit(a,false,true)];for(const [i,entity]of [h,e,a].entries())art.updateUnit(roots[i],entity,false,0,0,{...sample('test'),poseRow:4});const looks=roots.map(r=>r.userData.fixedImage);assert.equal(looks[0].inbetweens,art.inbetweenPoses.yi);assert.equal(looks[1].inbetweens,art.combatInbetweens.enemy.ashigaru);assert.equal(looks[2].inbetweens,art.combatInbetweens.ally.guard);assert.equal(new Set(looks.map(d=>d.image.material)).size,3);for(const root of roots)world.disposeCharacter(root);art.dispose();
@@ -105,8 +105,8 @@ try{
   await test('코어·병력 원본·중간 원화 완료 순서 6가지 모두 마지막 원화까지 기다린다',async()=>{
     for(const order of permutations([0,1,2])){const {art}=context(false);let core;art.coreLoading=true;art.corePromise=new Promise(r=>core=r).then(()=>{art.coreLoading=false;art.updateLoading();});const all=art.prepareCombatArt(null,{enemy:['ashigaru'],ally:[]}),complete=[core,()=>finish('ashigaru'),()=>finish('ashigaru',true)];for(const [i,next]of order.entries()){complete[next]();await flush();assert.equal(art.loading,i<2);}await all;art.dispose();}
   });
-  await test('실제 로컬 협동 HUD는 병력 원본이 준비되어도 마지막 중간 그림 전에는 시계를 소비하지 않는다',async()=>{
-    const {art,world}=context(false),session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:1,specs:[{heroes:['yi']},{heroes:['sejong']}]}),renderer={world,prepareView(){},get loading(){return art.loading;},events(){},render(){}},ui=Object.assign(Object.create(GameUI.prototype),{s:session,renderer,map:getMap('s1'),me:0,ui:{clock:0},bottom:{},last:0,solo:false,local:true,selHero:0,hintTimer:100,p2keys:new Set(),lastP2Move:0,p2moving:false,handleEvents(){},drawXray(){},updateHud(){}}),raf=globalThis.requestAnimationFrame;globalThis.requestAnimationFrame=()=>1;
+  await test('두 소유자 그림 fixture의 실제 HUD는 병력 원본이 준비되어도 마지막 중간 그림 전에는 시계를 소비하지 않는다',async()=>{
+    const {art,world}=context(false),session=new Session({kind:'local',stageId:'s1',difficulty:'normal',seed:1,specs:[{heroes:['yi']},{heroes:['sejong']}]}),renderer={world,prepareView(){},get loading(){return art.loading;},events(){},render(){}},ui=Object.assign(Object.create(GameUI.prototype),{s:session,renderer,map:getMap('s1'),me:0,ui:{clock:0},bottom:{},last:0,solo:false,selHero:0,hintTimer:100,handleEvents(){},drawXray(){},updateHud(){}}),raf=globalThis.requestAnimationFrame;globalThis.requestAnimationFrame=()=>1;
     try{const all=art.prepareCombatArt(null,{enemy:['ashigaru'],ally:[]});ui.frame(100);assert.equal(safeTime(session),0);assert.equal(ui.bottom.inert,true);finish('ashigaru');await flush();ui.frame(200);assert.equal(safeTime(session),0);finish('ashigaru',true);await all;ui.frame(300);assert.ok(safeTime(session)>0);assert.equal(ui.bottom.inert,false);}finally{globalThis.requestAnimationFrame=raf;session.destroy();art.dispose();}
     function safeTime(s){return s.state.time;}
   });
@@ -131,5 +131,5 @@ try{
   });
 }finally{T.ImageLoader.prototype.load=oldLoad;if(oldDocument===undefined)delete globalThis.document;else globalThis.document=oldDocument;}
 assert.equal(pending.length,0);assert.equal(readbacks,0);
-await fs.writeFile(new URL('../docs/COMBAT_INBETWEEN_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',passed:results.length,enemyActors:22,allyActors:6,newPoses:448,totalCombatPoses:896,reservedActionArt:['courier','turtle'],localCoopPreserved:true,alphaReadbacks:readbacks,tests:results},null,2)+'\n');
+await fs.writeFile(new URL('../docs/COMBAT_INBETWEEN_RUNTIME_VALIDATION.json',import.meta.url),JSON.stringify({date:'2026-10-11',passed:results.length,enemyActors:22,allyActors:6,newPoses:448,totalCombatPoses:896,reservedActionArt:['courier','turtle'],ownerArtIsolationPreserved:true,alphaReadbacks:readbacks,tests:results},null,2)+'\n');
 console.log('\n병력 중간 원화 '+results.length+'개 검증 통과');

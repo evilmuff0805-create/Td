@@ -3,7 +3,7 @@ import { clear, toast, modal, h } from './ui/dom.js';
 import { STAGE_BY_ID, DIFFICULTY } from './data/stages.js';
 import { loadProfile, applyBattle, saveProfile } from './meta/profile.js';
 import { titleScreen, hubScreen, questsScreen, settingsScreen } from './ui/screens-menu.js';
-import { campaignScreen, loadoutScreen, coopScreen, localSetupScreen, lobbyScreen, resultScreen } from './ui/screens-play.js';
+import { campaignScreen, loadoutScreen, coopScreen, lobbyScreen, resultScreen } from './ui/screens-play.js';
 import { heroesScreen, skillsScreen, relicsScreen } from './ui/screens-codex.js';
 import { shopScreen } from './ui/screens-shop.js';
 import { Session } from './game/session.js';
@@ -20,7 +20,6 @@ const SCREENS = {
   campaign: campaignScreen,
   loadout: loadoutScreen,
   coop: coopScreen,
-  localSetup: localSetupScreen,
   lobby: lobbyScreen,
   result: resultScreen,
   heroes: heroesScreen,
@@ -64,7 +63,7 @@ class App {
   startBattle(battle) {
     if (this.game) this.game.destroy();
     const b = { ...battle, seed: battle.seed ?? ((Math.random() * 1e9) | 0) };
-    const session = new Session(b);
+    let session;try{session = new Session(b);}catch(error){toast(error.message);return false;}
     document.body.classList.add('in-game');
     // 먹 장막이 걷히며 전장이 드러난다
     const st = STAGE_BY_ID[b.stageId];
@@ -73,32 +72,29 @@ class App {
     document.body.append(wipe);
     setTimeout(() => wipe.remove(), 1400);
     audio.play('wave');
-    let peerEnded=false;
-    const onPeerLeft = () => {
-      if(peerEnded)return;peerEnded=true;
-      if (b.kind === 'host') {
-        session.send({ t: 'leave', p: 1 });
-        toast('동료가 떠났습니다. 동료의 영웅과 유산을 넘겨받습니다.', 3000);
-      } else if (b.kind === 'guest' && !session.view.result) {
-        modal('연결 끊김', '호스트와의 연결이 끊겼습니다. 진영으로 돌아갑니다.').then(() => this.go('hub'));
-      }
-    };
-    const offs = b.net ? [b.net.on('peer-left', onPeerLeft), b.net.on('close', onPeerLeft)] : [];
+    let settled=false;
+    const offs=[];
     this.game = new GameUI({
       root: this.root,
       session,
       profile: this.profile,
       names: b.names,
       rendererClass: new URLSearchParams(location.search).get('view') === '2d' || this.profile.settings.renderer === '2d' ? undefined : Renderer3D,
-      onEnd: ({ result, stats, stats2 }) => {
+      onEnd: ({ result, stats }) => {
+        if(settled||!session.terminalConfirmed)return;settled=true;
         offs.forEach((o) => o());
         const merged = { ...stats };
-        if (stats2) for (const [k, v] of Object.entries(stats2)) merged[k] = (merged[k] || 0) + v;
         const applied = applyBattle(this.profile, { stageId: b.stageId, difficulty: b.difficulty, mode: b.kind === 'solo' ? 'solo' : 'coop', result, stats: merged });
         if (b.net) b.net.close();
         this.go('result', { battle: b, result, applied, stats: merged });
       },
+      onInterrupted: () => {
+        if(settled||session.terminalConfirmed)return;settled=true;
+        if(b.net)b.net.close();saveProfile();
+        this.go('coop');toast('동료와의 전투가 중단됐습니다. 보상·패배 기록 없이 방을 다시 만들거나 참가해 주세요.',5000);
+      },
       onQuit: () => {
+        if(settled||session.result)return;settled=true;
         offs.forEach((o) => o());
         saveProfile();
         if (b.net) b.net.close();

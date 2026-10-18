@@ -40,10 +40,6 @@ export class Renderer3D {
       const button=document.createElement('button');button.className='build-site';button.title='이곳에 유산 건설';button.setAttribute('aria-label',`건설 터 ${x+1}, ${y+1}`);
       button.dataset.gridX=x;button.dataset.gridY=y;button.addEventListener('click',e=>this.onBuild?.(x,y,e));this.buildLayer.append(button);this.sites.push({x,y,button});
     }
-    this.p2 = new T.Mesh(new T.RingGeometry(.4, .46, 32), new T.MeshBasicMaterial({ color: '#ee8c77', side: T.DoubleSide, depthWrite: false }));
-    this.p2.rotation.x = -Math.PI / 2; this.p2.visible = false; this.world.scene.add(this.p2);
-    this.p2Preview = new T.Mesh(new T.PlaneGeometry(.92, .92), new T.MeshBasicMaterial({ color: '#ee8c77', transparent: true, opacity: .32, side: T.DoubleSide, depthWrite: false }));
-    this.p2Preview.rotation.x = -Math.PI / 2; this.p2Preview.visible = false; this.world.scene.add(this.p2Preview);
   }
   events(list) { this.pending.push(...list); }
   prepareView(view) { this.world.prepareHeroLooks(view.heroes); }
@@ -68,15 +64,10 @@ export class Renderer3D {
     const at = ui.buildAt || ui.hover;
     world.buildPreview(ui.placing, at ? { x: at.x, z: at.y } : null, !!ui.buildAt || ui.hoverOk);
     if (ui.moveMark && ui.moveMark !== this.lastMove) { world.markMove(ui.moveMark.x, ui.moveMark.y); this.lastMove = ui.moveMark; }
-    this.p2.visible = !!ui.p2cursor;
-    if (ui.p2cursor) this.p2.position.set(ui.p2cursor.x + .5, .09, ui.p2cursor.y + .5);
-    this.p2Preview.visible = !!ui.p2intent?.type;
-    if (ui.p2intent) this.p2Preview.position.set(ui.p2intent.x + .5, .075, ui.p2intent.y + .5);
     world.fx.update(view.paused ? 0 : dt * view.speed);
     world.draw(ui.clock, dt);
     this.labels.update(game, world, selected, target);
     this.buildLayer.hidden=!ui.showGrid||!!target||!!game.result;
-    this.buildLayer.classList?.toggle('move-mode',!!ui.touchInput&&ui.touchMode!=='build');
     if(!this.buildLayer.hidden)for(const site of this.sites){
       const p=this.screenPoint(site.x+.5,site.y+.5);site.button.hidden=game.towers.some(t=>t.x===site.x&&t.y===site.y)||!p.visible||p.x<20||p.y<20||p.x>this.canvas.clientWidth-20||p.y>this.canvas.clientHeight-20;
       site.button.style.left=`${p.x}px`;site.button.style.top=`${p.y}px`;
@@ -136,7 +127,6 @@ export class Renderer3D {
     document.removeEventListener('visibilitychange',this.onMetricVisibility);
     this.labels?.clear(); this.labelLayer?.remove(); this.damageLayer?.remove();this.buildLayer?.remove();this.sites=[];
     this.statusLayer?.remove();this.statuses?.clear();this.loadingLayer?.remove();
-    for(const o of [this.p2,this.p2Preview]) if(o){o.geometry.dispose();o.material.dispose();this.world?.scene.remove(o);}
     this.world?.destroy(); this.pending=[]; this.health.clear(); this.numbers=[];
   }
 }

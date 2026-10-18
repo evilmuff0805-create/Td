@@ -1,0 +1,2010 @@
+{
+  "generatedAt": "2026-10-18T04:56:00.911Z",
+  "policy": "prepared",
+  "seedStart": 1,
+  "difficulties": [
+    "normal"
+  ],
+  "expectedClears": 25,
+  "allPassed": false,
+  "assumptions": "Same-day new profile, one attendance claim, earned battle/rank/quest rewards only; one solo hero (yi); two unlocked skills; legal paid permanent upgrades. Purchases use smoothed useful HP-damage shares and real growth rates, with a fixed support-skill heuristic; this is not an optimal policy. Prepared policy uses economy-aware costs and staggered Bongsu from attempt1, the real 30-second initial preparation, six documented tactics and a second branch/upgrade pass within12 attempts. No purchased items, free levels, jade conversion, or fabricated unlocks. Results are not a human difficulty or reasonable retry-count guarantee.",
+  "maxAttempts": 12,
+  "runs": [
+    {
+      "kind": "solo",
+      "seed": 1,
+      "cleared": 16,
+      "battles": 30,
+      "retries": 14,
+      "simulatedMinutes": 198,
+      "remainingCoins": 185,
+      "battleLog": [
+        {
+          "stage": "s1",
+          "name": "부산진 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 20,
+          "wave": 12,
+          "time": 404,
+          "before": {
+            "coins": 0,
+            "jade": 20,
+            "heroes": {
+              "yi": 0
+            },
+            "skills": {
+              "singijeon": 0,
+              "bongsu": 0
+            },
+            "towers": {
+              "sungnyemun": 3,
+              "hwaseong": 2,
+              "bosingak": 0,
+              "cheomseong": 0
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.2041945900930968,
+            "hero:yi": 0.26341778178317005,
+            "skill:singijeon": 0.0387650477925499,
+            "tower:bosingak": 0.18210977075356538,
+            "tower:cheomseong": 0.14013607435358433,
+            "tower:hwaseong": 0.17137673522403354
+          },
+          "rewards": {
+            "coins": 664,
+            "jade": 30,
+            "xp": 231
+          }
+        },
+        {
+          "stage": "s6",
+          "name": "동래성 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 2,
+          "wave": 12,
+          "time": 425,
+          "before": {
+            "coins": 29,
+            "jade": 60,
+            "heroes": {
+              "yi": 1
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 1
+            },
+            "towers": {
+              "sungnyemun": 4,
+              "hwaseong": 3,
+              "bosingak": 3,
+              "cheomseong": 2,
+              "haeinsa": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.14279944478342976,
+            "hero:yi": 0.2932917275561535,
+            "skill:singijeon": 0.04189840873468055,
+            "tower:bosingak": 0.10249306884808386,
+            "tower:cheomseong": 0.12460632924146343,
+            "tower:hwaseong": 0.292397632920825,
+            "tower:haeinsa": 0.005026775830727669
+          },
+          "rewards": {
+            "coins": 584,
+            "jade": 30,
+            "xp": 181
+          }
+        },
+        {
+          "stage": "s7",
+          "name": "상주 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 18,
+          "wave": 14,
+          "time": 452,
+          "before": {
+            "coins": 13,
+            "jade": 100,
+            "heroes": {
+              "yi": 2
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 1
+            },
+            "towers": {
+              "sungnyemun": 4,
+              "hwaseong": 6,
+              "bosingak": 3,
+              "cheomseong": 2,
+              "haeinsa": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.1256705598830281,
+            "hero:yi": 0.24845049327046778,
+            "skill:singijeon": 0.04147265795175452,
+            "tower:bosingak": 0.06133526742923036,
+            "tower:cheomseong": 0.12623126551822858,
+            "tower:hwaseong": 0.39529346160535483,
+            "tower:haeinsa": 0.0028029882996176954
+          },
+          "rewards": {
+            "coins": 688,
+            "jade": 30,
+            "xp": 247
+          }
+        },
+        {
+          "stage": "s2",
+          "name": "탄금대 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 4,
+          "wave": 15,
+          "time": 528,
+          "before": {
+            "coins": 31,
+            "jade": 140,
+            "heroes": {
+              "yi": 2
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 1
+            },
+            "towers": {
+              "sungnyemun": 4,
+              "hwaseong": 10,
+              "bosingak": 3,
+              "cheomseong": 2,
+              "haeinsa": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.16133477732571264,
+            "hero:yi": 0.24315283844013824,
+            "skill:singijeon": 0.028504424517915603,
+            "tower:bosingak": 0.057760613993957655,
+            "tower:cheomseong": 0.13556609192806973,
+            "tower:hwaseong": 0.3676995484328567,
+            "tower:haeinsa": 0.006610052340190402
+          },
+          "rewards": {
+            "coins": 620,
+            "jade": 30,
+            "xp": 205
+          }
+        },
+        {
+          "stage": "s8",
+          "name": "옥포 해전",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 6,
+          "wave": 14,
+          "time": 496,
+          "before": {
+            "coins": 51,
+            "jade": 180,
+            "heroes": {
+              "yi": 2
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 1
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 11,
+              "bosingak": 3,
+              "cheomseong": 4,
+              "haeinsa": 1,
+              "seokguram": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.105853510080146,
+            "hero:yi": 0.33175266926063085,
+            "skill:singijeon": 0.02283832990954521,
+            "tower:bosingak": 0.036938469550560175,
+            "tower:cheomseong": 0.09580964408308096,
+            "tower:hwaseong": 0.37043200979307656,
+            "tower:haeinsa": 0.0064728372673545555,
+            "tower:seokguram": 0.06043340709005224
+          },
+          "rewards": {
+            "coins": 608,
+            "jade": 30,
+            "xp": 197
+          }
+        },
+        {
+          "stage": "s9",
+          "name": "사천 해전",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 9,
+          "wave": 15,
+          "time": 474,
+          "before": {
+            "coins": 19,
+            "jade": 240,
+            "heroes": {
+              "yi": 3
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 2
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 13,
+              "bosingak": 3,
+              "cheomseong": 4,
+              "haeinsa": 1,
+              "seokguram": 2,
+              "namhansan": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.10206983494137681,
+            "hero:yi": 0.35071179905552397,
+            "skill:singijeon": 0.02108124702553897,
+            "tower:bosingak": 0.02140260891563934,
+            "tower:cheomseong": 0.0918582287781277,
+            "tower:hwaseong": 0.3622418991875818,
+            "tower:haeinsa": 0.0042021782787150935,
+            "tower:seokguram": 0.06169764233471963
+          },
+          "rewards": {
+            "coins": 920,
+            "jade": 30,
+            "xp": 205
+          }
+        },
+        {
+          "stage": "s10",
+          "name": "평양성 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 7,
+          "wave": 15,
+          "time": 512,
+          "before": {
+            "coins": 84,
+            "jade": 280,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 2
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 14,
+              "bosingak": 3,
+              "cheomseong": 4,
+              "haeinsa": 1,
+              "seokguram": 3,
+              "namhansan": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.11951818187781758,
+            "hero:yi": 0.31584428230988615,
+            "skill:singijeon": 0.018961717176454406,
+            "tower:bosingak": 0.026340234078934318,
+            "tower:cheomseong": 0.0972342156629138,
+            "tower:hwaseong": 0.37745554543016263,
+            "tower:haeinsa": 0.003815723951971591,
+            "tower:seokguram": 0.04846281877047122
+          },
+          "rewards": {
+            "coins": 920,
+            "jade": 30,
+            "xp": 205
+          }
+        },
+        {
+          "stage": "s3",
+          "name": "한산도 대첩",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 20,
+          "wave": 15,
+          "time": 525,
+          "before": {
+            "coins": 24,
+            "jade": 310,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 2
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 16,
+              "bosingak": 3,
+              "cheomseong": 4,
+              "haeinsa": 1,
+              "seokguram": 4,
+              "namhansan": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.13164238203461603,
+            "hero:yi": 0.23186143645961071,
+            "skill:singijeon": 0.014622496909374573,
+            "tower:bosingak": 0.0233204244836573,
+            "tower:cheomseong": 0.09839165405173446,
+            "tower:hwaseong": 0.42084328032211316,
+            "tower:haeinsa": 0.005990841332660963,
+            "tower:seokguram": 0.07714384403553856
+          },
+          "rewards": {
+            "coins": 1000,
+            "jade": 30,
+            "xp": 255
+          }
+        },
+        {
+          "stage": "s11",
+          "name": "부산포 해전",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 20,
+          "wave": 16,
+          "time": 526,
+          "before": {
+            "coins": 54,
+            "jade": 370,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 2
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 20,
+              "bosingak": 3,
+              "cheomseong": 5,
+              "haeinsa": 1,
+              "seokguram": 4,
+              "namhansan": 1,
+              "gyeongbok": 0
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.10020098170270494,
+            "hero:yi": 0.16866051062654278,
+            "skill:singijeon": 0.016451353246034747,
+            "tower:bosingak": 0.020454432434216754,
+            "tower:cheomseong": 0.11483810956826848,
+            "tower:hwaseong": 0.5135755846257328,
+            "tower:haeinsa": 0.0032182808693318565,
+            "tower:seokguram": 0.06450892674182046
+          },
+          "rewards": {
+            "coins": 1012,
+            "jade": 30,
+            "xp": 263
+          }
+        },
+        {
+          "stage": "s12",
+          "name": "진주대첩",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 12,
+          "wave": 16,
+          "time": 504,
+          "before": {
+            "coins": 51,
+            "jade": 400,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 2
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 21,
+              "bosingak": 3,
+              "cheomseong": 7,
+              "haeinsa": 1,
+              "seokguram": 4,
+              "namhansan": 1,
+              "gyeongbok": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.11871101208934028,
+            "hero:yi": 0.1926283279201855,
+            "skill:singijeon": 0.017048016923352564,
+            "tower:bosingak": 0.011451061097655542,
+            "tower:cheomseong": 0.17676985419705676,
+            "tower:hwaseong": 0.43377832071081845,
+            "tower:haeinsa": 0.0017147737414848771,
+            "tower:seokguram": 0.04885272322743253
+          },
+          "rewards": {
+            "coins": 972,
+            "jade": 30,
+            "xp": 238
+          }
+        },
+        {
+          "stage": "s13",
+          "name": "평양성 탈환",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 9,
+          "wave": 16,
+          "time": 546,
+          "before": {
+            "coins": 18,
+            "jade": 440,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 2
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 22,
+              "bosingak": 3,
+              "cheomseong": 10,
+              "haeinsa": 1,
+              "seokguram": 5,
+              "namhansan": 1,
+              "gyeongbok": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.09011497500927201,
+            "hero:yi": 0.1717853161818776,
+            "skill:singijeon": 0.014025134051149496,
+            "tower:bosingak": 0.02192893387883994,
+            "tower:cheomseong": 0.1784943694406098,
+            "tower:hwaseong": 0.4656942501807625,
+            "tower:haeinsa": 0.0024429927686280615,
+            "tower:seokguram": 0.05599107344252396
+          },
+          "rewards": {
+            "coins": 1232,
+            "jade": 30,
+            "xp": 213
+          }
+        },
+        {
+          "stage": "s4",
+          "name": "행주대첩",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 16,
+          "wave": 18,
+          "time": 631,
+          "before": {
+            "coins": 45,
+            "jade": 470,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 3
+            },
+            "towers": {
+              "sungnyemun": 6,
+              "hwaseong": 23,
+              "bosingak": 3,
+              "cheomseong": 10,
+              "haeinsa": 1,
+              "seokguram": 5,
+              "namhansan": 2,
+              "gyeongbok": 1,
+              "seokbinggo": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.12821436371502887,
+            "hero:yi": 0.1391904353622443,
+            "skill:singijeon": 0.010350062410902566,
+            "tower:bosingak": 0.020810131577786738,
+            "tower:cheomseong": 0.13228996228622344,
+            "tower:hwaseong": 0.4320736496312373,
+            "tower:haeinsa": 0.005152012172229889,
+            "tower:seokguram": 0.13215790532117852
+          },
+          "rewards": {
+            "coins": 1296,
+            "jade": 30,
+            "xp": 254
+          }
+        },
+        {
+          "stage": "s5",
+          "name": "한양 수복",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 9,
+          "time": 271,
+          "before": {
+            "coins": 6,
+            "jade": 500,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 3
+            },
+            "towers": {
+              "sungnyemun": 8,
+              "hwaseong": 23,
+              "bosingak": 3,
+              "cheomseong": 10,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 2,
+              "gyeongbok": 1,
+              "seokbinggo": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.11078269868738588,
+            "hero:yi": 0.20977672573610642,
+            "skill:singijeon": 0.010342996832692306,
+            "tower:bosingak": 0.022857404551248066,
+            "tower:cheomseong": 0.1697975831422534,
+            "tower:hwaseong": 0.3654459845324884,
+            "tower:haeinsa": 0.006768213457176964,
+            "tower:seokguram": 0.10434765429906431
+          },
+          "rewards": {
+            "coins": 136,
+            "jade": 0,
+            "xp": 74
+          }
+        },
+        {
+          "stage": "s5",
+          "name": "한양 수복",
+          "difficulty": "normal",
+          "attempt": 2,
+          "seed": 7920,
+          "plan": "ice",
+          "placement": "exit",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "exit",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 10,
+          "wave": 20,
+          "time": 720,
+          "before": {
+            "coins": 57,
+            "jade": 510,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 3
+            },
+            "towers": {
+              "sungnyemun": 8,
+              "hwaseong": 23,
+              "bosingak": 3,
+              "cheomseong": 12,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 2,
+              "gyeongbok": 1,
+              "seokbinggo": 1
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.13670575400253535,
+            "hero:yi": 0.1605987515659636,
+            "skill:singijeon": 0.007681847367628572,
+            "tower:bosingak": 0.011428702275624033,
+            "tower:cheomseong": 0.16124516764331465,
+            "tower:hwaseong": 0.4023836209958437,
+            "tower:haeinsa": 0.009689248402074952,
+            "tower:seokguram": 0.10165479523813656,
+            "tower:seokbinggo": 0.017343486256172873
+          },
+          "rewards": {
+            "coins": 1320,
+            "jade": 30,
+            "xp": 270
+          }
+        },
+        {
+          "stage": "s14",
+          "name": "진주성 2차 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 12,
+          "wave": 18,
+          "time": 588,
+          "before": {
+            "coins": 27,
+            "jade": 540,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 3
+            },
+            "towers": {
+              "sungnyemun": 10,
+              "hwaseong": 24,
+              "bosingak": 3,
+              "cheomseong": 12,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 2,
+              "gyeongbok": 2,
+              "seokbinggo": 2
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.1387129368311185,
+            "hero:yi": 0.16340165471750195,
+            "skill:singijeon": 0.009195473809660645,
+            "tower:bosingak": 0.013311526610548373,
+            "tower:cheomseong": 0.17097436574713373,
+            "tower:hwaseong": 0.38147133362073615,
+            "tower:haeinsa": 0.008546697909739895,
+            "tower:seokguram": 0.11007995449912145,
+            "tower:seokbinggo": 0.008671743128086436
+          },
+          "rewards": {
+            "coins": 1296,
+            "jade": 30,
+            "xp": 254
+          }
+        },
+        {
+          "stage": "s15",
+          "name": "칠천량의 밤",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 12,
+          "wave": 16,
+          "time": 565,
+          "before": {
+            "coins": 48,
+            "jade": 570,
+            "heroes": {
+              "yi": 4
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 3
+            },
+            "towers": {
+              "sungnyemun": 10,
+              "hwaseong": 25,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 2,
+              "seokbinggo": 2,
+              "bulguksa": 2
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.14590684509817559,
+            "hero:yi": 0.2241505960822762,
+            "skill:singijeon": 0.015997338226918484,
+            "tower:bosingak": 0.012344847512135944,
+            "tower:cheomseong": 0.1405438979374784,
+            "tower:hwaseong": 0.38830365941453115,
+            "tower:haeinsa": 0.004745350301368411,
+            "tower:seokguram": 0.0658544372998961,
+            "tower:seokbinggo": 0.004335871564043218
+          },
+          "rewards": {
+            "coins": 1272,
+            "jade": 30,
+            "xp": 238
+          }
+        },
+        {
+          "stage": "s16",
+          "name": "남원성 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 13,
+          "time": 425,
+          "before": {
+            "coins": 10,
+            "jade": 610,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 25,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 2,
+              "seokbinggo": 2,
+              "bulguksa": 2
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.11287854005580007,
+            "hero:yi": 0.26347532375554455,
+            "skill:singijeon": 0.014419041462627211,
+            "tower:bosingak": 0.022939907387992575,
+            "tower:cheomseong": 0.12214939392036132,
+            "tower:hwaseong": 0.38172146783960204,
+            "tower:haeinsa": 0.0071600741638669346,
+            "tower:seokguram": 0.0741797373505955,
+            "tower:seokbinggo": 0.002167935782021609
+          },
+          "rewards": {
+            "coins": 184,
+            "jade": 0,
+            "xp": 106
+          }
+        },
+        {
+          "stage": "s16",
+          "name": "남원성 전투",
+          "difficulty": "normal",
+          "attempt": 2,
+          "seed": 7920,
+          "plan": "ice",
+          "placement": "exit",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "exit",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": true,
+          "lives": 20,
+          "wave": 18,
+          "time": 698,
+          "before": {
+            "coins": 84,
+            "jade": 610,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 1,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 25,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 3,
+              "seokbinggo": 2,
+              "bulguksa": 2
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.1313129342274348,
+            "hero:yi": 0.23924707187849648,
+            "skill:singijeon": 0.01191795165431708,
+            "tower:bosingak": 0.011469953693996287,
+            "tower:cheomseong": 0.09726628152402594,
+            "tower:hwaseong": 0.42167751610977877,
+            "tower:haeinsa": 0.004861654980778932,
+            "tower:seokguram": 0.07270815858174612,
+            "tower:seokbinggo": 0.010084188208631509
+          },
+          "rewards": {
+            "coins": 1636,
+            "jade": 30,
+            "xp": 279
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 1,
+          "seed": 7919,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 7,
+          "time": 220,
+          "before": {
+            "coins": 25,
+            "jade": 640,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 2,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 3,
+              "seokbinggo": 2,
+              "bulguksa": 2
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.12608464609709377,
+            "hero:yi": 0.34226747163696597,
+            "skill:singijeon": 0.021118514671684484,
+            "tower:bosingak": 0.013223064530689145,
+            "tower:cheomseong": 0.08581520988091228,
+            "tower:hwaseong": 0.35427398080826994,
+            "tower:haeinsa": 0.010771051406453569,
+            "tower:seokguram": 0.04167682229321807,
+            "tower:seokbinggo": 0.005042094104315754
+          },
+          "rewards": {
+            "coins": 112,
+            "jade": 0,
+            "xp": 58
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 2,
+          "seed": 7920,
+          "plan": "ice",
+          "placement": "exit",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "exit",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 6,
+          "time": 171,
+          "before": {
+            "coins": 27,
+            "jade": 640,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 2,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 3,
+              "seokbinggo": 2,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.10974692553348192,
+            "hero:yi": 0.42657619967498994,
+            "skill:singijeon": 0.03247774562677055,
+            "tower:bosingak": 0.0066115322653445725,
+            "tower:cheomseong": 0.10889819452795474,
+            "tower:hwaseong": 0.24969449024644247,
+            "tower:haeinsa": 0.014337155991874344,
+            "tower:seokguram": 0.020838411146609035,
+            "tower:seokbinggo": 0.030955772701333942
+          },
+          "rewards": {
+            "coins": 100,
+            "jade": 0,
+            "xp": 50
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 3,
+          "seed": 7921,
+          "plan": "fresh",
+          "placement": "gate",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 9,
+          "time": 268,
+          "before": {
+            "coins": 17,
+            "jade": 640,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 2,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 3,
+              "seokbinggo": 3,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.08150172332187805,
+            "hero:yi": 0.414248246531041,
+            "skill:singijeon": 0.03277138091387245,
+            "tower:bosingak": 0.0033057661326722863,
+            "tower:cheomseong": 0.11963381119053403,
+            "tower:hwaseong": 0.24718746059183921,
+            "tower:haeinsa": 0.01073612497832907,
+            "tower:seokguram": 0.010419205573304518,
+            "tower:seokbinggo": 0.052990481784843224,
+            "tower:namhansan": 0.03091991815055184,
+            "tower:bulguksa": 0.023628107527621935
+          },
+          "rewards": {
+            "coins": 136,
+            "jade": 0,
+            "xp": 74
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 4,
+          "seed": 7922,
+          "plan": "nam",
+          "placement": "rally",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 6,
+          "time": 171,
+          "before": {
+            "coins": 18,
+            "jade": 640,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 2,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 1,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 3,
+              "seokbinggo": 4,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.08461186522860914,
+            "hero:yi": 0.42657337723671856,
+            "skill:singijeon": 0.04556096584496222,
+            "tower:bosingak": 0.020344197538019318,
+            "tower:cheomseong": 0.11125850954795563,
+            "tower:hwaseong": 0.22743507751891354,
+            "tower:haeinsa": 0.0134638433890323,
+            "tower:seokguram": 0.005209602786652259,
+            "tower:seokbinggo": 0.026495240892421612,
+            "tower:namhansan": 0.04090437960114834,
+            "tower:bulguksa": 0.011814053763810967
+          },
+          "rewards": {
+            "coins": 100,
+            "jade": 0,
+            "xp": 50
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 5,
+          "seed": 7923,
+          "plan": "balanced",
+          "placement": "middle",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 10,
+          "time": 294,
+          "before": {
+            "coins": 33,
+            "jade": 640,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 2,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 2,
+              "seokguram": 9,
+              "namhansan": 3,
+              "gyeongbok": 3,
+              "seokbinggo": 4,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.09293739143730145,
+            "hero:yi": 0.3315490917198095,
+            "skill:singijeon": 0.046670307126975355,
+            "tower:bosingak": 0.01694919762450759,
+            "tower:cheomseong": 0.10957202887026518,
+            "tower:hwaseong": 0.3029769400921519,
+            "tower:haeinsa": 0.014276347109566281,
+            "tower:seokguram": 0.05229741556485423,
+            "tower:seokbinggo": 0.013247620446210806,
+            "tower:namhansan": 0.02045218980057417,
+            "tower:bulguksa": 0.005907026881905484
+          },
+          "rewards": {
+            "coins": 148,
+            "jade": 0,
+            "xp": 82
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 6,
+          "seed": 7924,
+          "plan": "bul",
+          "placement": "spread",
+          "branch": "A",
+          "economyAware": true,
+          "upgradePolicy": "cannon",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 6,
+          "time": 171,
+          "before": {
+            "coins": 46,
+            "jade": 640,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 2,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 2,
+              "seokguram": 9,
+              "namhansan": 4,
+              "gyeongbok": 3,
+              "seokbinggo": 4,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.11783690945070271,
+            "hero:yi": 0.3891192980509624,
+            "skill:singijeon": 0.04283718565156289,
+            "tower:bosingak": 0.019604088111661415,
+            "tower:cheomseong": 0.10525015450627256,
+            "tower:hwaseong": 0.2645459836204983,
+            "tower:haeinsa": 0.018272032598628356,
+            "tower:seokguram": 0.026148707782427116,
+            "tower:seokbinggo": 0.006623810223105403,
+            "tower:namhansan": 0.010226094900287084,
+            "tower:bulguksa": 0.002953513440952742
+          },
+          "rewards": {
+            "coins": 100,
+            "jade": 0,
+            "xp": 50
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 7,
+          "seed": 7925,
+          "plan": "balanced",
+          "placement": "default",
+          "branch": "alt",
+          "economyAware": true,
+          "upgradePolicy": "focus",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 5,
+          "time": 148,
+          "before": {
+            "coins": 36,
+            "jade": 640,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 2,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 3,
+              "cheomseong": 13,
+              "haeinsa": 3,
+              "seokguram": 9,
+              "namhansan": 4,
+              "gyeongbok": 3,
+              "seokbinggo": 4,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.17265947535438853,
+            "hero:yi": 0.43019963146395246,
+            "skill:singijeon": 0.04974967571602425,
+            "tower:bosingak": 0.019041844595446538,
+            "tower:cheomseong": 0.08457682473443603,
+            "tower:hwaseong": 0.20387676742387492,
+            "tower:haeinsa": 0.018628606707021576,
+            "tower:seokguram": 0.013074353891213558,
+            "tower:seokbinggo": 0.0033119051115527015,
+            "tower:namhansan": 0.005113047450143542,
+            "tower:bulguksa": 0.001476756720476371
+          },
+          "rewards": {
+            "coins": 88,
+            "jade": 0,
+            "xp": 42
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 8,
+          "seed": 7926,
+          "plan": "ice",
+          "placement": "exit",
+          "branch": "alt",
+          "economyAware": true,
+          "upgradePolicy": "focus",
+          "buildPlacement": "exit",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 8,
+          "time": 253,
+          "before": {
+            "coins": 44,
+            "jade": 650,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 3,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 4,
+              "cheomseong": 13,
+              "haeinsa": 3,
+              "seokguram": 9,
+              "namhansan": 4,
+              "gyeongbok": 4,
+              "seokbinggo": 4,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.18912635607189363,
+            "hero:yi": 0.4653171463097438,
+            "skill:singijeon": 0.04263955909902825,
+            "tower:bosingak": 0.009520922297723269,
+            "tower:cheomseong": 0.11035363077618339,
+            "tower:hwaseong": 0.12439441765378573,
+            "tower:haeinsa": 0.018977436429636993,
+            "tower:seokguram": 0.0126854804237537,
+            "tower:seokbinggo": 0.024544593437206542,
+            "tower:namhansan": 0.002556523725071771,
+            "tower:bulguksa": 0.0007383783602381855
+          },
+          "rewards": {
+            "coins": 124,
+            "jade": 0,
+            "xp": 66
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 9,
+          "seed": 7927,
+          "plan": "fresh",
+          "placement": "gate",
+          "branch": "alt",
+          "economyAware": true,
+          "upgradePolicy": "focus",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 8,
+          "time": 235,
+          "before": {
+            "coins": 8,
+            "jade": 650,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 3,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 4,
+              "cheomseong": 13,
+              "haeinsa": 3,
+              "seokguram": 9,
+              "namhansan": 4,
+              "gyeongbok": 4,
+              "seokbinggo": 5,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.2012813473308438,
+            "hero:yi": 0.43081192805976154,
+            "skill:singijeon": 0.05048851033193814,
+            "tower:bosingak": 0.0047604611488616345,
+            "tower:cheomseong": 0.10885430608565533,
+            "tower:hwaseong": 0.08989221904142936,
+            "tower:haeinsa": 0.01575343875939608,
+            "tower:seokguram": 0.00634274021187685,
+            "tower:seokbinggo": 0.06133556937135711,
+            "tower:namhansan": 0.01696807534715339,
+            "tower:bulguksa": 0.013938626603859468
+          },
+          "rewards": {
+            "coins": 124,
+            "jade": 0,
+            "xp": 66
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 10,
+          "seed": 7928,
+          "plan": "nam",
+          "placement": "rally",
+          "branch": "alt",
+          "economyAware": true,
+          "upgradePolicy": "focus",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 9,
+          "time": 265,
+          "before": {
+            "coins": 132,
+            "jade": 650,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 3,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 4,
+              "cheomseong": 13,
+              "haeinsa": 3,
+              "seokguram": 9,
+              "namhansan": 4,
+              "gyeongbok": 4,
+              "seokbinggo": 5,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.215400385180324,
+            "hero:yi": 0.4431088120135846,
+            "skill:singijeon": 0.03923887944940587,
+            "tower:bosingak": 0.013890558787275681,
+            "tower:cheomseong": 0.11114823481929453,
+            "tower:hwaseong": 0.0751622820814012,
+            "tower:haeinsa": 0.013246624499278745,
+            "tower:seokguram": 0.02459784129964265,
+            "tower:seokbinggo": 0.030667784685678556,
+            "tower:namhansan": 0.026782895028250684,
+            "tower:bulguksa": 0.006969313301929734
+          },
+          "rewards": {
+            "coins": 136,
+            "jade": 0,
+            "xp": 74
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 11,
+          "seed": 7929,
+          "plan": "balanced",
+          "placement": "middle",
+          "branch": "alt",
+          "economyAware": true,
+          "upgradePolicy": "focus",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 5,
+          "time": 149,
+          "before": {
+            "coins": 108,
+            "jade": 650,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 3,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 4,
+              "cheomseong": 13,
+              "haeinsa": 3,
+              "seokguram": 9,
+              "namhansan": 5,
+              "gyeongbok": 4,
+              "seokbinggo": 5,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.19309441822235718,
+            "hero:yi": 0.44643226959676197,
+            "skill:singijeon": 0.060952496639128426,
+            "tower:bosingak": 0.020089219772078594,
+            "tower:cheomseong": 0.0932306182680186,
+            "tower:hwaseong": 0.1241687290839392,
+            "tower:haeinsa": 0.017630136832998296,
+            "tower:seokguram": 0.012298920649821325,
+            "tower:seokbinggo": 0.015333892342839278,
+            "tower:namhansan": 0.013391447514125342,
+            "tower:bulguksa": 0.003484656650964867
+          },
+          "rewards": {
+            "coins": 88,
+            "jade": 0,
+            "xp": 42
+          }
+        },
+        {
+          "stage": "s17",
+          "name": "직산 전투",
+          "difficulty": "normal",
+          "attempt": 12,
+          "seed": 7930,
+          "plan": "bul",
+          "placement": "spread",
+          "branch": "alt",
+          "economyAware": true,
+          "upgradePolicy": "focus",
+          "buildPlacement": "coverage",
+          "opening": "prepared",
+          "finalOrders": 0,
+          "win": false,
+          "lives": 0,
+          "wave": 8,
+          "time": 235,
+          "before": {
+            "coins": 61,
+            "jade": 650,
+            "heroes": {
+              "yi": 5
+            },
+            "skills": {
+              "singijeon": 3,
+              "bongsu": 4
+            },
+            "towers": {
+              "sungnyemun": 11,
+              "hwaseong": 27,
+              "bosingak": 4,
+              "cheomseong": 13,
+              "haeinsa": 4,
+              "seokguram": 9,
+              "namhansan": 5,
+              "gyeongbok": 4,
+              "seokbinggo": 5,
+              "bulguksa": 3
+            }
+          },
+          "damageShare": {
+            "tower:sungnyemun": 0.21444006189482356,
+            "hero:yi": 0.4784156384941227,
+            "skill:singijeon": 0.047841700640805805,
+            "tower:bosingak": 0.017425178959608063,
+            "tower:cheomseong": 0.08222234127042495,
+            "tower:hwaseong": 0.11480726926686548,
+            "tower:haeinsa": 0.015878200550796997,
+            "tower:seokguram": 0.006149460324910662,
+            "tower:seokbinggo": 0.007666946171419639,
+            "tower:namhansan": 0.006695723757062671,
+            "tower:bulguksa": 0.00851088145567601
+          },
+          "rewards": {
+            "coins": 124,
+            "jade": 0,
+            "xp": 66
+          }
+        }
+      ],
+      "finalProfile": {
+        "v": 1,
+        "name": "수호자",
+        "coins": 185,
+        "jade": 650,
+        "rank": 11,
+        "rankXp": 319,
+        "heroes": {
+          "yi": {
+            "unlocked": true,
+            "lv": 5
+          },
+          "sejong": {
+            "unlocked": true,
+            "lv": 0
+          },
+          "eulji": {
+            "unlocked": false,
+            "lv": 0
+          },
+          "gang": {
+            "unlocked": false,
+            "lv": 0
+          },
+          "gwon": {
+            "unlocked": false,
+            "lv": 0
+          },
+          "gwak": {
+            "unlocked": false,
+            "lv": 0
+          },
+          "ahn": {
+            "unlocked": false,
+            "lv": 0
+          },
+          "dangun": {
+            "unlocked": false,
+            "lv": 0
+          }
+        },
+        "skills": {
+          "singijeon": {
+            "lv": 3
+          },
+          "bongsu": {
+            "lv": 4
+          },
+          "uibyeong": {
+            "lv": 0
+          },
+          "bigyeok": {
+            "lv": 0
+          },
+          "gunryang": {
+            "lv": 0
+          },
+          "cheonja": {
+            "lv": 0
+          },
+          "donguibogam": {
+            "lv": 0
+          },
+          "hanpa": {
+            "lv": 0
+          }
+        },
+        "towers": {
+          "sungnyemun": {
+            "lv": 11
+          },
+          "hwaseong": {
+            "lv": 27
+          },
+          "bosingak": {
+            "lv": 4
+          },
+          "cheomseong": {
+            "lv": 13
+          },
+          "haeinsa": {
+            "lv": 4
+          },
+          "seokguram": {
+            "lv": 9
+          },
+          "gyeongbok": {
+            "lv": 4
+          },
+          "namhansan": {
+            "lv": 5
+          },
+          "seokbinggo": {
+            "lv": 5
+          },
+          "bulguksa": {
+            "lv": 3
+          }
+        },
+        "towersUnlocked": [
+          "sungnyemun",
+          "hwaseong",
+          "bosingak",
+          "cheomseong",
+          "haeinsa",
+          "seokguram",
+          "namhansan",
+          "gyeongbok",
+          "seokbinggo",
+          "bulguksa"
+        ],
+        "items": {
+          "insam": 0,
+          "chest": 0,
+          "hwacha": 0,
+          "bujeok": 0
+        },
+        "skins": {
+          "owned": [],
+          "eq": {}
+        },
+        "stages": {
+          "s1": {
+            "normal": 3
+          },
+          "s6": {
+            "normal": 1
+          },
+          "s7": {
+            "normal": 3
+          },
+          "s2": {
+            "normal": 1
+          },
+          "s8": {
+            "normal": 1
+          },
+          "s9": {
+            "normal": 1
+          },
+          "s10": {
+            "normal": 1
+          },
+          "s3": {
+            "normal": 3
+          },
+          "s11": {
+            "normal": 3
+          },
+          "s12": {
+            "normal": 2
+          },
+          "s13": {
+            "normal": 1
+          },
+          "s4": {
+            "normal": 2
+          },
+          "s5": {
+            "normal": 2
+          },
+          "s14": {
+            "normal": 2
+          },
+          "s15": {
+            "normal": 2
+          },
+          "s16": {
+            "normal": 3
+          }
+        },
+        "campaignBonuses": {
+          "s1:normal": true,
+          "s6:normal": true,
+          "s7:normal": true,
+          "s2:normal": true,
+          "s8:normal": true,
+          "s9:normal": true,
+          "s10:normal": true,
+          "s3:normal": true,
+          "s11:normal": true,
+          "s12:normal": true,
+          "s13:normal": true,
+          "s4:normal": true,
+          "s5:normal": true,
+          "s14:normal": true,
+          "s15:normal": true,
+          "s16:normal": true
+        },
+        "campaignBonusNotice": 0,
+        "loadout": {
+          "solo": {
+            "heroes": [
+              "yi"
+            ],
+            "skills": [
+              "singijeon",
+              "bongsu"
+            ]
+          },
+          "coop": {
+            "hero": "yi",
+            "skills": [
+              "singijeon",
+              "bongsu"
+            ]
+          },
+          "p2": {
+            "hero": "sejong",
+            "skills": [
+              "bongsu",
+              "singijeon"
+            ]
+          }
+        },
+        "quests": {
+          "daily": {
+            "key": "2026-10-18",
+            "list": [
+              {
+                "id": "d_perfect",
+                "prog": 12,
+                "claimed": true
+              },
+              {
+                "id": "d_tactic",
+                "prog": 3,
+                "claimed": true
+              },
+              {
+                "id": "d_combo",
+                "prog": 0,
+                "claimed": false
+              }
+            ],
+            "bonus": false
+          },
+          "weekly": {
+            "key": "2026-10-12",
+            "list": [
+              {
+                "id": "w_hard",
+                "prog": 0,
+                "claimed": false
+              },
+              {
+                "id": "w_tactic",
+                "prog": 15,
+                "claimed": true
+              },
+              {
+                "id": "w_boss",
+                "prog": 6,
+                "claimed": true
+              },
+              {
+                "id": "w_combo",
+                "prog": 0,
+                "claimed": false
+              }
+            ],
+            "bonus": false
+          }
+        },
+        "attendance": {
+          "last": "2026-10-18",
+          "count": 1
+        },
+        "stats": {
+          "games": 30,
+          "wins": 16,
+          "kills": 6145,
+          "combos": 0,
+          "bossKills": 23
+        },
+        "settings": {
+          "sfx": 0.7,
+          "bgm": 0.35,
+          "dmgNumbers": true,
+          "shakeLv": 1,
+          "hints": true,
+          "mood": "cinema",
+          "renderer": "3d",
+          "quality": "high"
+        },
+        "tutorialDone": false
+      }
+    }
+  ]
+}

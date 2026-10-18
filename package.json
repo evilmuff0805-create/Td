@@ -78,6 +78,10 @@
     "art:combo-sequences": "node tools/combo-sequence-assets.mjs",
     "test:graphics-recovery": "node tools/test-graphics-recovery.mjs",
     "test:public-coop": "node tools/test-public-coop.mjs",
-    "test:touch-motion": "node tools/test-touch-motion.mjs"
+    "test:touch-motion": "node tools/test-touch-motion.mjs",
+    "test:mobile-pad": "node tools/test-mobile-pad.mjs",
+    "test:online-transition": "node tools/test-online-transition.mjs",
+    "test:solo-support": "node tools/test-one-hero-support.mjs",
+    "test:battle-menu-lifetime": "node tools/test-battle-menu-lifetime.mjs"
   }
 }
