@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T05:19:45.816Z",
+  "generatedAt": "2026-10-18T06:04:34.916Z",
   "tests": 16,
   "allPassed": true,
   "scope": "Actual virtual-pad and HUD pointer handlers with real solo/host/guest sessions; synthetic DOM pointer events, not physical-device touch or latency measurements.",

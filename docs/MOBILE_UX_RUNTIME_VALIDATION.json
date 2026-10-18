@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-10-18T06:04:36.679Z",
+  "tests": 12,
+  "allPassed": true,
+  "scope": "Actual battle viewport guard, fixed coin exchange and complete shop confirm handlers with synthetic DOM. Native phone pinch remains a physical-device check.",
+  "results": [
+    {
+      "name": "battle viewport locks native zoom and restores the exact menu viewport once",
+      "passed": true
+    },
+    {
+      "name": "camera pointer events and noncancelable native gestures are untouched",
+      "passed": true
+    },
+    {
+      "name": "overlapping battles in one document keep the lock until the last owner leaves in either order",
+      "passed": true
+    },
+    {
+      "name": "viewport cleanup does not overwrite a subsequent owner change",
+      "passed": true
+    },
+    {
+      "name": "each fixed coin pack atomically saves both exact balances once and survives reload",
+      "passed": true
+    },
+    {
+      "name": "one jade short, unknown packs and arbitrary quantities change and save nothing",
+      "passed": true
+    },
+    {
+      "name": "invalid balances and coin overflow cannot spend jade",
+      "passed": true
+    },
+    {
+      "name": "successive deliberate exchanges require enough jade for each complete purchase",
+      "passed": true
+    },
+    {
+      "name": "shop shows exact prices, affordable choices and no reward is granted on cancel",
+      "passed": true
+    },
+    {
+      "name": "one confirmed shop purchase refreshes wallets and rejects duplicate or stale clicks",
+      "passed": true
+    },
+    {
+      "name": "leaving the shop while confirmation is pending cannot spend later",
+      "passed": true
+    },
+    {
+      "name": "confirmation rechecks current funds and a separate new purchase remains possible",
+      "passed": true
+    }
+  ]
+}

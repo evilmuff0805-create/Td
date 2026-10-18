@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-10-18T06:14:30.033961+00:00",
+  "allPassed": true,
+  "webFiles": 211,
+  "artFiles": 195,
+  "webBytes": 127303524,
+  "zipBytes": 126246016,
+  "standaloneBytes": 168635192,
+  "publicAppSHA256": "9f1f732ff733eb369656da4439e0b117ff363acb5f70d2fbd553f889cd65ac28",
+  "publicAppBytes": 1446656,
+  "zipMatchesManifest": true,
+  "nativePhonePinchTested": false,
+  "legacyCompleteBattleSHAUnchanged": true,
+  "sourceSHA256": {
+    "src/ui/battle-viewport.js": "15a65c3cd39ec495057fe891a9b3c9a9ef346f27efbf531e6a599c9d34bda33d",
+    "src/ui/hud.js": "ab0bc67ce645a5b741220553d718abe8daf2f771e371fc2b325a8793f5d72d1a",
+    "src/ui/screens-shop.js": "ec407684902fe044df8ed2554b98c2027146b5fcbfb29ad83fa195c0fc1fa7ba",
+    "src/meta/profile.js": "91587ee2f28f9f06fafa1abf982efe56cd2238d0afa5c86b62ff9cbb1f412186",
+    "src/data/shop.js": "42a8a32b4ebb6126ee9aef3af01f117340e29e62a2145fbc847593133075e12d",
+    "styles/main.css": "276e1ad3e7ca41e407c9f7ab6186ac0e8c8674380988e4f4c411ba037d8644c7",
+    "src/main.js": "3aba387461266131ff21936f52426a062829f25ec2462d09c757f8bb8ab7b3ca",
+    "src/3d/world.js": "5e3f1006cfe788308e3b8ab921fb962f38c8004af8473ead98b8612cd1817034",
+    "index.html": "c1ce16a09ea1e4a2349dd69347e4b9eb56883eaebede1f6fa8f54d6e617d3510",
+    "tools/build-web.mjs": "23c376d9761dca58d8c119ce898c8d0ac23054634cac8f00f9cf8c671dc2c67d",
+    "pnpm-lock.yaml": "7adf106609dad7c461e56cff500b63983b75d522d3c30a04266b6fb25b2b0609"
+  },
+  "embeddedArtworkVerified": true
+}

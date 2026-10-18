@@ -1,31 +1,75 @@
-// 옥 상점: 보급소(전투 소모품) · 의상실(영웅 의복)
-import { h, toast, fmt } from './dom.js';
+// 옥 상점: 보급소 · 엽전 교환 · 의상실
+import { h, toast, fmt, modal } from './dom.js';
 import { setBackdrop } from './backdrop.js';
 import { topbar } from './screens-menu.js';
 import { heroBust, heroFull } from './icons.js';
 import { HEROES, HERO_ORDER } from '../data/heroes.js';
 import { ITEMS, ITEM_ORDER, ITEM_PER_BATTLE, ITEM_BUNDLE } from '../data/items.js';
 import { SKINS } from '../data/skins.js';
-import { itemPrice, buyItem, buySkin, equipSkin, ownsSkin, heroSkin, heroUnlockState } from '../meta/profile.js';
+import { COIN_PACKS } from '../data/shop.js';
+import { itemPrice, buyItem, buySkin, equipSkin, ownsSkin, heroSkin, heroUnlockState, exchangeCoins } from '../meta/profile.js';
 import { audio } from '../audio/audio.js';
 
 const jade = (n) => h('span', { class: 'jade num' }, `◆${fmt(n)}`);
 
 export function shopScreen(app, params = {}) {
   setBackdrop('lacquer');
-  const tab = params.tab || 'items';
-  const tabs = [['items', '보급소'], ['skins', '의상실']];
+  const tab = ['items', 'coins', 'skins'].includes(params.tab) ? params.tab : 'items';
+  const tabs = [['items', '보급소'], ['coins', '엽전 교환'], ['skins', '의상실']];
   const tabBar = h('div', { class: 'tabs', role: 'tablist' }, tabs.map(([k, label]) =>
     h('button', { role: 'tab', 'aria-selected': String(k === tab), onclick: () => app.go('shop', { tab: k, hero: params.hero, art: params.art }) }, label)));
-  const body = tab === 'items' ? itemsTab(app) : skinsTab(app, params.hero, params.art);
+  const body = tab === 'coins' ? coinsTab(app) : tab === 'skins' ? skinsTab(app, params.hero, params.art) : itemsTab(app);
   return h('div', { class: 'screen' }, topbar(app, '옥 상점'),
     h('div', { class: 'content stack' },
       h('div', { class: 'panel shop-banner' },
         h('span', { class: 'gem', 'aria-hidden': 'true' }, '◆'),
         h('div', { class: 'stack', style: { gap: '2px' } },
           h('b', {}, '옥은 임무·출석·첫 승리로 모읍니다'),
-          h('span', { class: 'dim' }, '보급품은 전투를 돕고, 의복은 영웅의 모습을 바꿉니다. 능력치를 사는 곳은 아닙니다.'))),
+          h('span', { class: 'dim' }, '보급품·의복을 구입하거나, 영구 강화에 쓰는 엽전으로 교환할 수 있습니다.'))),
       tabBar, body));
+}
+
+function coinsTab(app) {
+  const p = app.profile, buttons = [];
+  let pending = false;
+  const body = h('div', { class: 'stack' },
+    h('p', { class: 'dim' }, '옥 1개당 엽전 100개로 교환합니다. 엽전은 영웅·비기·유산의 영구 강화에 쓰며, 전투 중 군자금과는 별개입니다.'),
+    h('div', { class: 'grid-cards shop-grid' }, COIN_PACKS.map(pack => {
+      let spent = false;
+      const button = h('button', {
+        class: 'btn btn-gold', disabled: p.jade < pack.jade,
+        'aria-label': `${fmt(pack.coins)}엽전 교환 · ${fmt(pack.jade)}옥`,
+        onclick: async () => {
+          if (pending || spent || button.disabled || !body.isConnected) return;
+          pending = true;
+          buttons.forEach(b => { b.disabled = true; });
+          try {
+            const confirmed = await modal('엽전 교환', `${fmt(pack.jade)}옥을 사용해 ${fmt(pack.coins)}엽전을 받을까요?`, [
+              { label: '취소', value: false }, { label: '교환하기', value: true, cls: 'btn-gold' },
+            ]);
+            if (!confirmed || !body.isConnected || app.profile !== p) return;
+            if (exchangeCoins(p, pack.id)) {
+              spent = true;
+              audio.play('coin');
+              toast(`${fmt(pack.coins)}엽전을 받았습니다`);
+              app.go('shop', { tab: 'coins' });
+            } else {
+              audio.play('deny');
+              toast('잔액을 확인해 주세요. 교환하지 않았습니다');
+            }
+          } finally {
+            pending = false;
+            if (body.isConnected) buttons.forEach((b, i) => { b.disabled = p.jade < COIN_PACKS[i].jade; });
+          }
+        },
+      }, '교환 ', jade(pack.jade));
+      buttons.push(button);
+      return h('div', { class: 'card item-card coin-pack' },
+        h('div', { class: 'item-medal', 'aria-hidden': 'true' }, h('span', { class: 'coin' }, '●')),
+        h('b', { class: 'nm coin num' }, `${fmt(pack.coins)}엽전`),
+        h('span', { class: 'desc' }, `${fmt(pack.jade)}옥으로 교환`), button);
+    })));
+  return body;
 }
 
 function itemsTab(app) {

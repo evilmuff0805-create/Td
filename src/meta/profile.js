@@ -7,6 +7,7 @@ import { RANKS, rankXpNeeded, towerMetaCost, TOWER_META_MAX, battleRewards } fro
 import { ensureQuests, progressQuests } from './quests.js';
 import { ITEMS, ITEM_ORDER, ITEM_BUNDLE } from '../data/items.js';
 import { skinDef } from '../data/skins.js';
+import { COIN_PACKS } from '../data/shop.js';
 
 export const HERO_JADE_UNLOCK = 120; // 전장 조건 없이 옥으로 바로 해금
 
@@ -174,7 +175,19 @@ export function unlockHeroJade(p, id) {
   return true;
 }
 
-// ───── 옥 상점: 보급품 · 의복 ─────
+// ───── 옥 상점: 엽전 · 보급품 · 의복 ─────
+export function exchangeCoins(p, packId) {
+  const pack = COIN_PACKS.find(it => it.id === packId);
+  if (!p || !pack || ![p.jade, p.coins, pack.jade, pack.coins].every(Number.isSafeInteger)
+    || p.coins < 0 || pack.jade <= 0 || pack.coins <= 0 || p.jade < pack.jade
+    || !Number.isSafeInteger(p.coins + pack.coins)) return false;
+  // Commit both balances before saving; never persist a jade-only deduction.
+  p.jade -= pack.jade;
+  p.coins += pack.coins;
+  saveProfile();
+  return true;
+}
+
 export function itemPrice(id, n = 1) {
   const unit = ITEMS[id].price;
   return n >= ITEM_BUNDLE ? unit * (n - 1) : unit * n;

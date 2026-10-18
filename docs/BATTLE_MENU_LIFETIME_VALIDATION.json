@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T05:19:46.595Z",
+  "generatedAt": "2026-10-18T06:04:35.786Z",
   "tests": 3,
   "allPassed": true,
   "scope": "Actual modal and asynchronous GameUI menu/finish code with real guest Session; synthetic DOM and controlled timers.",

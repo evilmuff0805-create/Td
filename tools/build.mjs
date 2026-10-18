@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 단일 HTML 파일 빌드: dist/hoguk.html (서버 없이 열 수 있음 — 솔로·로컬 협동 가능, 온라인 협동은 서버 필요)
+// 단일 HTML 파일 빌드: dist/hoguk.html (서버 없이 솔로 가능, 방 협동은 서버 필요)
 //   npm install && npm run build (고정된 개발용 esbuild 사용, Windows 지원)
 import { buildSync } from 'esbuild';
 import fs from 'node:fs';

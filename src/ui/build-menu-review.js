@@ -2,6 +2,11 @@ import { Ring,spread } from './ring.js';
 import { h } from './dom.js';
 import { TOWER_ORDER,TOWERS } from '../data/towers.js';
 import { towerIcon } from '../render/draw-towers.js';
+import { lockBattlePageZoom } from './battle-viewport.js';
+
+let releaseZoom=lockBattlePageZoom();
+document.querySelector('header').append(h('label',{},h('input',{type:'checkbox',checked:true,'aria-label':'전투 줌 제한',onchange:e=>{releaseZoom();releaseZoom=e.target.checked?lockBattlePageZoom():()=>{};}}),'전투 줌 제한'));
+window.addEventListener('pagehide',()=>releaseZoom(),{once:true});
 
 const area=document.getElementById('review'),overlay=area.querySelector('.overlay'),status=document.getElementById('status');
 let ring,index=0;

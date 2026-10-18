@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-18T05:19:46.432Z",
-  "origin": "http://127.0.0.1:62982",
+  "generatedAt": "2026-10-18T06:04:35.599Z",
+  "origin": "http://127.0.0.1:55142",
   "transport": "HTTP/WS",
   "scope": "Two actual loopback sockets against the isolated public shipping root. Not public WAN or physical devices.",
   "tests": 6,

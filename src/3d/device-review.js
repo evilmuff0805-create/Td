@@ -10,7 +10,7 @@ GameUI.prototype.bindInput=function(){currentUI=this;return bindInput.call(this)
 const draw=WinterWorld.prototype.draw;let current;
 const sync=WinterWorld.prototype.sync;
 WinterWorld.prototype.sync=function(game,...args){
-  Object.assign(this.renderer.domElement.dataset,{reviewBattleTime:game.time.toFixed(3),reviewGold:game.players.map(p=>p.gold).join(','),reviewHeroes:JSON.stringify(game.heroes.map(h=>({x:h.x,y:h.y,tx:h.tx,ty:h.ty,skillCd:h.skillCd}))),reviewTowers:String(game.towers.length),reviewPadHeld:String(currentUI?.pad?.pointerId!=null),reviewPadMoving:String(!!currentUI?.padMoving)});
+  Object.assign(this.renderer.domElement.dataset,{reviewCameraZoom:String(this.camera.zoom),reviewBattleTime:game.time.toFixed(3),reviewGold:game.players.map(p=>p.gold).join(','),reviewHeroes:JSON.stringify(game.heroes.map(h=>({x:h.x,y:h.y,tx:h.tx,ty:h.ty,skillCd:h.skillCd}))),reviewTowers:String(game.towers.length),reviewPadHeld:String(currentUI?.pad?.pointerId!=null),reviewPadMoving:String(!!currentUI?.padMoving)});
   const result=sync.call(this,game,...args),yi=[...this.units.values()].find(root=>root.userData.fixedImage?.kind==='yi')?.userData.fixedImage;
   if(yi)Object.assign(this.renderer.domElement.dataset,{reviewYiPhase:String(yi.motionPhase??0),reviewYiRow:String(yi.motion?.visual?.row??0),reviewYiSettling:String(yi.motion?.visual?.settling??false)});
   return result;
@@ -47,6 +47,14 @@ function padReview(kind){
   const surface=ui.pad.surface,r=surface.getBoundingClientRect(),init={bubbles:true,pointerId:93,pointerType:'touch',button:0,buttons:1,clientX:r.left+r.width/2+(kind==='up'?0:32),clientY:r.top+r.height/2+(kind==='up'?-32:0)};
   surface.dispatchEvent(new PointerEvent(kind==='release'?'pointerup':'pointerdown',{...init,buttons:kind==='release'?0:1}));
 }
-window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==window.parent)return;if(e.data?.type==='review-touch-tap')touchTap(e.data.kind);if(e.data?.type==='review-pad')padReview(e.data.kind);});
+function pinchReview(){
+  const ui=currentUI;if(!touchReview||!ui||ui.destroyed||ui.renderer.loading)return;
+  const cv=ui.cv,r=cv.getBoundingClientRect(),capture=cv.setPointerCapture,release=cv.releasePointerCapture;
+  cv.setPointerCapture=id=>{if(id!==94&&id!==95)capture.call(cv,id);};cv.releasePointerCapture=id=>{if(id!==94&&id!==95)release.call(cv,id);};
+  const send=(type,id,x)=>cv.dispatchEvent(new PointerEvent(type,{bubbles:true,pointerType:'touch',pointerId:id,button:0,buttons:type==='pointerup'?0:1,clientX:r.left+r.width/2+x,clientY:r.top+r.height/2}));
+  try{send('pointerdown',94,-35);send('pointerdown',95,35);send('pointermove',94,-65);send('pointermove',95,65);send('pointerup',94,-65);send('pointerup',95,65);}
+  finally{cv.setPointerCapture=capture;cv.releasePointerCapture=release;}
+}
+window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==window.parent)return;if(e.data?.type==='review-touch-tap')touchTap(e.data.kind);if(e.data?.type==='review-pad')padReview(e.data.kind);if(e.data?.type==='review-pinch')pinchReview();});
 if(touchReview)for(const [label,kind]of [['빈 땅 터치','grass'],['길 터치','path'],['두 손가락 취소','cancel']]){const b=document.createElement('button');b.textContent=label;b.onclick=()=>touchTap(kind);panel.append(b);}
 if(document.body.dataset.freeReview==='true')import('./main.js');else import('../main.js');

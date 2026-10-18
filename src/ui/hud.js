@@ -3,13 +3,13 @@ import { h, clear, toast, modal, fmt } from './dom.js';
 import { Renderer } from '../render/renderer.js';
 import { towerIcon } from '../render/draw-towers.js';
 import { TS } from '../render/paint.js';
-import { heroPortrait, enemyIcon, drawResonance } from './icons.js';
+import { heroPortrait, drawResonance } from './icons.js';
 import { TOWERS, TOWER_ORDER, towerBase, SELL_RATE, CATEGORIES } from '../data/towers.js';
 import { HEROES } from '../data/heroes.js';
 import { SKILLS } from '../data/skills.js';
-import { ENEMIES, TIERS } from '../data/enemies.js';
+import { ENEMIES } from '../data/enemies.js';
 import { TACTICS } from '../data/tactics.js';
-import { STAGE_BY_ID, DIFFICULTY, parseWave } from '../data/stages.js';
+import { STAGE_BY_ID, DIFFICULTY } from '../data/stages.js';
 import { findCombo, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import { EARLY_BONUS_PER_SEC } from '../sim/sim.js';
 import { getMap, tileAt, nearestOnPath, T_BUILD } from '../sim/map.js';
@@ -22,6 +22,7 @@ import { ITEMS, ITEM_ORDER, ITEM_CD } from '../data/items.js';
 import { spendItem } from '../meta/profile.js';
 import { metaCost, TOWER_META_BONUS } from '../data/quests.js';
 import { createVirtualPad, padWorldDirection } from './virtual-pad.js';
+import { lockBattlePageZoom } from './battle-viewport.js';
 
 const W = 960;
 const H = 560;
@@ -57,7 +58,6 @@ export class GameUI {
     this.cache = {};
     this.ended = false;
     this.destroyed = false;
-    this.waveCardOpen = true;
     this.hintsSeen = new Set(profile.hintsSeen || []);
     this.hintTimer = 0;
     this.buildDom();
@@ -353,6 +353,7 @@ export class GameUI {
   destroy() {
     if (this.destroyed) return;
     this.destroyed = true;this.menuAbort?.abort();
+    this.releasePageZoom?.();
     clearTimeout(this.finishTimer);
     this.cancelPress?.();
     cancelAnimationFrame(this.raf);
@@ -403,7 +404,7 @@ export class GameUI {
     const own = (rs, owner) => rs.map((r) => ({ ...r, owner }));
     if (this.pop) out.push(...own(this.pop.ring.rects(), this.me));
     const base = this.overlay.getBoundingClientRect();
-    for (const el of [this.waveCardEl, this.hintEl, this.bossEl]) {
+    for (const el of [this.hintEl, this.bossEl]) {
       if (!el || !el.isConnected) continue;
       const r = el.getBoundingClientRect();
       if (r.width && r.height) out.push({ x: r.left - base.left, y: r.top - base.top, w: r.width, h: r.height });
@@ -438,6 +439,7 @@ export class GameUI {
 
   // ───────────────────────── 입력 ─────────────────────────
   bindInput() {
+    this.releasePageZoom = lockBattlePageZoom();
     this.onResize = () => { this.pad?.cancel(); this.resize(); };
     window.addEventListener('resize', this.onResize);
     const pos = (e) => {
@@ -1098,7 +1100,6 @@ export class GameUI {
       this.cache.wdis = dis;
       this.waveBtn.disabled = dis;
     }
-    this.updateWaveCard();
     this.updateBossBar();
     if (this.pop && this.pop.kind === 'tower') this.refreshTowerPanel(false);
     if (this.pop && this.pop.kind === 'build') {
@@ -1139,41 +1140,6 @@ export class GameUI {
       this.pauseEl.remove();
       this.pauseEl = null;
     }
-  }
-
-  updateWaveCard() {
-    const v = this.s.view;
-    const w = v.wave;
-    const show = w.phase === 'prep' && w.n < w.total;
-    const key = `${show}${w.n}/${w.total}${w.nextTactic}${this.waveCardOpen}`;
-    if (this.cache.wc === key) return;
-    this.cache.wc = key;
-    if (this.waveCardEl) this.waveCardEl.remove();
-    this.waveCardEl = null;
-    if (!show) return;
-    const n = w.n + 1;
-    const groups = parseWave(this.stage.waves[n - 1]);
-    const counts = new Map();
-    for (const g of groups) counts.set(g.type, (counts.get(g.type) || 0) + g.n);
-    const tac = w.nextTactic ? TACTICS[w.nextTactic] : null;
-    if (tac && tac.add) for (const a of tac.add) counts.set(a.type, (counts.get(a.type) || 0) + a.n);
-    const el = h('div', { class: 'panel wave-card' },
-      h('button', { class: 'collapse', onclick: () => { this.waveCardOpen = !this.waveCardOpen; this.cache.wc = null; }, 'aria-label': '접기' }, this.waveCardOpen ? '−' : '+'),
-      h('h3', { style: { fontSize: '17px' } }, `다음: 제 ${n} 파도`, h('span', { class: 'dim', style: { fontSize: '14px' } }, ` / ${w.total}`)),
-    );
-    if (this.waveCardOpen) {
-      el.append(h('div', { class: 'enemies' }, [...counts.entries()].map(([type, c]) => {
-        const def = ENEMIES[type];
-        return h('span', { class: 'en', title: `${def.name} (${TIERS[def.tier].name}) — ${def.desc}`, style: { borderLeft: `3px solid ${TIERS[def.tier].color}` } },
-          h('img', { src: enemyIcon(type), alt: '', width: 22, height: 22 }), `${def.name} ×${c}`);
-      })));
-      if (tac) {
-        el.append(h('div', { class: 'tactic' }, h('b', {}, `왜군 전술 · ${tac.name}`), h('span', {}, tac.desc), h('span', { class: 'dim' }, `대비: ${tac.counter}`),
-          h('span', { style: { color: '#ffe68c' } }, `한 명도 놓치지 않으면 파훼 보너스 +${tac.bonus}냥`)));
-      }
-    }
-    this.overlay.append(el);
-    this.waveCardEl = el;
   }
 
   updateBossBar() {

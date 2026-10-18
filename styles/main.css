@@ -44,6 +44,11 @@ body {
   overflow: hidden;
   touch-action: manipulation;
 }
+/* The battle owns pinch zoom. Ordinary modal/list panning remains native. */
+html[data-battle-zoom='locked'], html[data-battle-zoom='locked'] body {
+  touch-action: pan-x pan-y;
+  overscroll-behavior: none;
+}
 button, input, select {
   font: inherit;
   color: inherit;
@@ -1022,7 +1027,6 @@ p {
   .game-3d .combo-note { max-width:76px; }
   .game-3d .wave-btn { padding:5px 12px; }
   .game-3d .battle-camera { right:6px; bottom:6px; gap:3px; }
-  .game-3d .wave-card { bottom:44px; }
   .game-3d .battle-camera button { padding:5px 7px; font-size:11px; }
   .game-3d .battle-season { display:none; }
   .game-3d .rotate-tip { display:none; }
@@ -1046,7 +1050,6 @@ p {
   .game-3d .combo .lbl { max-width:80px; font-size:11px; white-space:normal; text-align:center; }
   .game-3d .wave-btn { min-height:48px; }
   .game-3d .battle-camera button { min-width:44px; min-height:44px; }
-  .game-3d .wave-card { bottom:56px; }
 }
 #game {
   position: absolute;
@@ -1664,39 +1667,7 @@ p {
   }
 }
 
-/* 다음 파도 / 전술 카드 */
-.wave-card {
-  position: absolute;
-  left: 8px;
-  bottom: 8px;
-  z-index: 4;
-  width: 300px;
-  max-width: calc(100% - 16px);
-  box-sizing: border-box;
-  padding: 10px 12px;
-  font-size: 14px;
-}
-.wave-card .enemies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin: 6px 0;
-}
-.wave-card .en {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 4px;
-  padding: 2px 6px 2px 2px;
-  font-family: var(--f-bold);
-  font-weight: 700;
-  font-size: 14px;
-}
-.wave-card .en canvas {
-  width: 22px;
-  height: 22px;
-}
+/* 전술 안내 */
 .tactic {
   border: 1px solid #b98aff;
   background: linear-gradient(180deg, rgba(80, 40, 120, 0.55), rgba(40, 20, 60, 0.55));
@@ -1711,14 +1682,6 @@ p {
   font-weight: 700;
   color: #e3ccff;
   font-size: 16px;
-}
-.wave-card .collapse {
-  position: absolute;
-  top: 6px;
-  right: 8px;
-  background: none;
-  border: 0;
-  color: var(--text-dim);
 }
 
 /* 알림 배너 / 합격기 연출 / 적장 체력 */
@@ -2361,11 +2324,6 @@ div.side-tile:hover {
     max-width: 200px;
     padding: 7px 9px;
   }
-  .wave-card {
-    width: 200px;
-    font-size: 13px;
-    padding: 7px 9px;
-  }
   .pop {
     width: 250px;
   }
@@ -2388,11 +2346,6 @@ div.side-tile:hover {
   .hint {
     font-size: 14px;
     max-width: 220px;
-    padding: 7px 9px;
-  }
-  .wave-card {
-    width: 210px;
-    font-size: 13px;
     padding: 7px 9px;
   }
   .hud-top {
