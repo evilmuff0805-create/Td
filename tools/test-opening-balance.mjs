@@ -153,12 +153,14 @@ test('prepared progression uses economy-aware costs from attempt1 and documents 
     const policy=preparedStrategy(st,kind,attempt);assert.equal(policy.economyAware,true);assert.equal(policy.staggerBongsu,true);
     assert.ok(['A','alt'].includes(policy.branch));assert.ok(['cannon','focus'].includes(policy.upgradePolicy));
   }
-  assert.equal(preparedStrategy(STAGE_BY_ID.s21,'solo',1).placement,'gate');
-  assert.equal(preparedStrategy(STAGE_BY_ID.s25,'solo',1).placement,'final-entry');
+  // Fixed-slot bots start in the authored formation, or request a legal tile
+  // through preparedSender. The retired free-walking entry/gate policy is gone.
+  assert.equal(preparedStrategy(STAGE_BY_ID.s21,'solo',1).placement,'default');
+  assert.equal(preparedStrategy(STAGE_BY_ID.s25,'solo',1).placement,'neighbor');
 });
 test('prepared bots spend the real initial preparation and cannot claim an early-wave reward',()=>{
   const s=game('s1','normal'),commands=[],send=preparedSender({state:s,send:c=>commands.push(c)});
-  send({t:'nextWave',p:0});send({t:'move',p:0,h:0,x:1,y:1});assert.equal(commands.length,1);
+  send({t:'nextWave',p:0});send({t:'build',p:0,tower:'sungnyemun',x:1,y:1});assert.equal(commands.length,1);
   for(let i=0;i<Math.floor(FIRST_PREP/DT)-1;i++)step(s);
   assert.equal(s.wave.n,0);step(s);step(s);assert.equal(s.wave.n,1);assert.equal(s.players[0].stats.earlyCalls,0);
   send({t:'nextWave',p:0});assert.equal(commands.at(-1).t,'nextWave');

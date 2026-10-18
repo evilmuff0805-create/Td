@@ -162,7 +162,7 @@ test('정식 렌더러는 조준 수집→본체 배치→효과 순서를 지�
   const previous=globalThis.document;globalThis.document={hidden:false,addEventListener(){},removeEventListener(){}};
   try{
   const order=[],world={prepareHeroLooks(){},art:{loading:false},cueEnemies(){order.push('enemyAim');},cueHeroes(){order.push('heroAim');},sync(){order.push('sync');},fx:{preview(){},update(){}},buildPreview(){},draw(){order.push('draw');},renderer:{getPixelRatio:()=>1,info:{memory:{},render:{}}}};
-  const renderer=Object.assign(new Renderer3D({dataset:{},clientWidth:800,clientHeight:600}),{world,loadingLayer:{},pending:[{k:'cone'}],effect(){order.push('effect');},p2:{},p2Preview:{},labels:{update(){}},buildLayer:{},damage(){},statusMarkers(){}});
+  const renderer=Object.assign(new Renderer3D({dataset:{},clientWidth:800,clientHeight:600}),{world,loadingLayer:{},sites:[],pending:[{k:'cone'}],effect(){order.push('effect');},p2:{},p2Preview:{},labels:{update(){}},buildLayer:{classList:{toggle(){}}},damage(){},statusMarkers(){}});
   renderer.render({heroes:[],enemies:[],summons:[],towers:[],time:1,speed:1,paused:false},{clock:1,selHeroes:[]},DT);
   assert.deepEqual(order,['enemyAim','heroAim','sync','effect','draw']);assert.equal(renderer.pending.length,0);
   }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}

@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-10-18T09:38:29.553Z",
+  "tests": 16,
+  "passed": true,
+  "results": [
+    {
+      "name": "normal/hard rules and every stage/enemy/wave HP remain exactly equal to the previous formula",
+      "passed": true
+    },
+    {
+      "name": "hell ordinary HP rises monotonically from1.3 to1.6 at wave8 with no change from wave8 onward",
+      "passed": true
+    },
+    {
+      "name": "all hell bosses, including early mid-bosses and the fixed-HP final boss, retain their original HP",
+      "passed": true
+    },
+    {
+      "name": "hell wave8+ preserves the complete old HP formula for all ordinary enemies, coop and march tactic",
+      "passed": true
+    },
+    {
+      "name": "early hell changes only HP, retaining speed, armor, resistance, attack, seed consumption and bounty factors",
+      "passed": true
+    },
+    {
+      "name": "a ram destroyed after the next wave starts gives its children the original wave HP",
+      "passed": true
+    },
+    {
+      "name": "boss summons also use the boss original wave rather than the current wave",
+      "passed": true
+    },
+    {
+      "name": "online snapshots transmit the host computed HP without applying the ramp a second time",
+      "passed": true
+    },
+    {
+      "name": "all25 stage wallets remain unchanged in solo/local/online, independently of difficulty",
+      "passed": true
+    },
+    {
+      "name": "local2P wallets and tower/hero ownership remain independent after legal commands",
+      "passed": true
+    },
+    {
+      "name": "prebattle budget text matches actual wallets for every stage in solo and coop",
+      "passed": true
+    },
+    {
+      "name": "difficulty hints use the real multipliers, lives and rewards",
+      "passed": true
+    },
+    {
+      "name": "stage hints reflect scheduled threats and the players unlocked defenses",
+      "passed": true
+    },
+    {
+      "name": "existing profile levels, unlocks, coins, skins and settings survive save/load unchanged",
+      "passed": true
+    },
+    {
+      "name": "prepared progression uses economy-aware costs from attempt1 and documents bounded alternative tactics",
+      "passed": true
+    },
+    {
+      "name": "prepared bots spend the real initial preparation and cannot claim an early-wave reward",
+      "passed": true
+    }
+  ]
+}

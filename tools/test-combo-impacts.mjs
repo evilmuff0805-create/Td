@@ -154,13 +154,9 @@ await test('물 원화만 실패해도 물은 공용으로 대체하고 불·회
   }finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 });
 
-await test('변경 전 코드와 11조합 전체의 피해·재화·소환·투사체·난수·이벤트가 3초간 완전히 같다',async()=>{
-  const root=fileURLToPath(new URL('../',import.meta.url)),old=rel=>execFileSync('git',['show',baselineCommit+':'+rel],{cwd:root,encoding:'utf8'});
-  const bundle=await build({stdin:{contents:old('src/sim/sim.js'),resolveDir:root+'src/sim',sourcefile:'baseline-sim.js'},plugins:[{name:'baseline-abilities',setup(b){b.onLoad({filter:/[/\\]abilities\.js$/},()=>({contents:old('src/sim/abilities.js'),resolveDir:root+'src/sim',loader:'js'}));}}],bundle:true,platform:'node',format:'esm',write:false});
-  const baseline=await import('data:text/javascript;base64,'+Buffer.from(bundle.outputFiles[0].text).toString('base64'));
-  const combat=game=>JSON.stringify(game,(key,value)=>key==='visualCombo'?undefined:key==='events'?value.filter(e=>e.k!=='abilityCue'):value);
-  for(const c of cases){const a=gameFor(c.pair,30),b=populate(baseline.createGame(config(c.pair)),30);fire(a);baseline.applyCommand(b,{t:'combo',p:0});baseline.applyCommand(b,{t:'combo',p:1});assert.equal(combat(a),combat(b),c.id+' initial');for(let i=0;i<180;i++){step(a);baseline.step(b);assert.equal(combat(a),combat(b),c.id+' tick '+i);a.events.length=0;b.events.length=0;}}
+await test('새 타일 규칙의 11조합은 같은 시드에서 피해·재화·투사체·난수·이벤트가 3초간 결정적이다',()=>{
+  for(const c of cases){const a=gameFor(c.pair,30),b=gameFor(c.pair,30);fire(a);fire(b);assert.deepEqual(a,b,c.id+' initial');for(let i=0;i<180;i++){step(a);step(b);assert.deepEqual(a,b,c.id+' tick '+i);a.events.length=0;b.events.length=0;}}
 });
 
-await fs.writeFile('docs/COMBO_IMPACT_RUNTIME_VALIDATION.json',JSON.stringify({date:'2026-10-11',passedTests:results.length,results,combos:11,reversePairs:11,ownerArtIsolationPreserved:true,maximumTargetsPerCue:24,maximumEffectRoots:64,animationFrames:8,baselineCommit,allComboCombatComparisonTicks:180,jsonGuestEventsOnce:true,sharedTextureOffsetUnchanged:true,lateLoadingAndFallback:true},null,2)+'\n');
+await fs.writeFile('docs/COMBO_IMPACT_RUNTIME_VALIDATION.json',JSON.stringify({date:'2026-10-11',passedTests:results.length,results,combos:11,reversePairs:11,ownerArtIsolationPreserved:true,maximumTargetsPerCue:24,maximumEffectRoots:64,animationFrames:8,historicalBaselineCommit:baselineCommit,ruleset:'shared-tiles-1',deterministicComboTicks:180,jsonGuestEventsOnce:true,sharedTextureOffsetUnchanged:true,lateLoadingAndFallback:true},null,2)+'\n');
 console.log('\n합격기 착탄·동작·협동·자원 '+results.length+'개 검증 통과');

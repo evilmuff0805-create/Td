@@ -76,7 +76,7 @@ export function heroesScreen(app, params = {}) {
       h('dl', { class: 'kv' },
         h('dt', {}, '체력'), h('dd', { class: 'num' }, Math.round(def.hp * m)),
         h('dt', {}, '공격'), h('dd', { class: 'num' }, `${Math.round(def.dmg * m)} (${{ phys: '물리', holy: '신성', fire: '화기' }[def.dmgType]}) · ${def.cd}초`),
-        h('dt', {}, '사거리'), h('dd', { class: 'num' }, `${def.range}칸 · 이동 ${def.speed}${def.block ? ` · 저지 ${def.block}명` : ''}`)),
+        h('dt', {}, '사거리'), h('dd', { class: 'num' }, `${def.range}칸 · 전투 재배치 ${sel==='gwak'?2:3}초`)),
       h('div', { class: 'skill-desc' },
         h('div', {}, h('b', {}, `상시 · ${def.passive.name}`), h('br'), def.passive.desc),
         h('div', {}, h('b', {}, `기술 · ${def.skill.name}`), ` (${def.skill.cd}초)`, h('br'), def.skill.desc),

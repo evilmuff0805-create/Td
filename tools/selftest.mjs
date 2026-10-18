@@ -14,7 +14,7 @@ import { ENEMIES } from '../src/data/enemies.js';
 import { TOWERS } from '../src/data/towers.js';
 import { SKILL_ORDER } from '../src/data/skills.js';
 import { HERO_ORDER } from '../src/data/heroes.js';
-import { getMap, T_BUILD } from '../src/sim/map.js';
+import { getMap, T_BUILD,nearestOnPath } from '../src/sim/map.js';
 import { createGame, step, queueCommand, FIRST_PREP } from '../src/sim/sim.js';
 import { spawnEnemy, damage } from '../src/sim/combat.js';
 import { createBot, botThink, botSkills } from '../src/sim/ai.js';
@@ -172,7 +172,7 @@ test('급보 전령: 5% 확률, 한 판에 한 번, 1P · 2P 모두 같은 군�
 test('명령 검증: 남의 유산 철거 불가, 길 위 건설 불가', () => {
   const all = Object.keys(TOWERS);
   const s = createGame({ stageId: 's1', difficulty: 'normal', mode: 'local', seed: 1, players: [{ heroes: ['yi'], skills: [], towers: all }, { heroes: ['sejong'], skills: [], towers: all }] });
-  queueCommand(s, { t: 'build', p: 0, x: 6, y: 4, tower: 'sungnyemun' });
+  queueCommand(s, { t: 'build', p: 0, ...getMap(s.stageId).deploymentSlots[2], tower: 'sungnyemun' });
   queueCommand(s, { t: 'build', p: 1, x: 5, y: 4, tower: 'sungnyemun' }); // 길
   step(s);
   assert.equal(s.towers.length, 1);
@@ -193,7 +193,8 @@ test('새 유산: 남한산성 병사 · 석빙고 얼림 · 불국사 체력 �
   const s = createGame({ stageId: 's1', difficulty: 'normal', mode: 'solo', seed: 5, players: [{ heroes: [], skills: [], towers: all }] });
   s.players[0].gold = 1e5;
   const build = (tower, x, y) => {
-    queueCommand(s, { t: 'build', p: 0, x, y, tower });
+    const slot=getMap(s.stageId).deploymentSlots.filter(p=>!s.towers.some(t=>t.deploymentSlotId===p.id)).sort((a,b)=>(a.x-x)**2+(a.y-y)**2-((b.x-x)**2+(b.y-y)**2))[0];
+    queueCommand(s, { t: 'build', p: 0, x:slot.x, y:slot.y, tower });
     step(s);
     return s.towers.at(-1);
   };
@@ -208,7 +209,7 @@ test('새 유산: 남한산성 병사 · 석빙고 얼림 · 불국사 체력 �
   run(2);
   const guards = () => s.summons.filter((m) => m.tower === b.id);
   assert.equal(guards().length, 2);
-  for (const m of guards()) assert.ok(Math.hypot(m.x - 5.5, 0) < 0.6, `병사가 길 위에 있어야 함: ${m.x}`);
+  for (const m of guards()) assert.ok(nearestOnPath(getMap(s.stageId),m.x,m.y).dist < 0.6, `병사가 길 위에 있어야 함: ${m.x}`);
   queueCommand(s, { t: 'upgrade', p: 0, id: b.id });
   queueCommand(s, { t: 'upgrade', p: 0, id: b.id });
   run(2);

@@ -2,8 +2,8 @@ import crypto from 'node:crypto';
 
 const CHARS='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 export class RoomBroker {
-  constructor(send,{graceMs=30000,terminalMs=graceMs+30000,now=Date.now,schedule=setTimeout,cancel=clearTimeout}={}){
-    this.rooms=new Map();this.send=send;this.graceMs=graceMs;this.terminalMs=terminalMs;this.now=now;this.schedule=schedule;this.cancel=cancel;
+  constructor(send,{graceMs=30000,terminalMs=graceMs+30000,now=Date.now,schedule=setTimeout,cancel=clearTimeout,version=null}={}){
+    this.version=version;this.rooms=new Map();this.send=send;this.graceMs=graceMs;this.terminalMs=terminalMs;this.now=now;this.schedule=schedule;this.cancel=cancel;
   }
   newCode(){let code;do{code=Array.from({length:4},()=>CHARS[crypto.randomInt(CHARS.length)]).join('');}while(this.rooms.has(code));return code;}
   slot(client){return{client,token:crypto.randomBytes(32).toString('hex'),until:0,timer:null};}
@@ -38,6 +38,7 @@ export class RoomBroker {
   }
   message(client,msg){
     if(!msg||typeof msg!=='object')return;
+    if(this.version&&['create','join','resume'].includes(msg.type)&&(msg.ruleset!==this.version.ruleset||msg.mapVersion!==this.version.mapVersion))return this.error(client,'게임 버전이 다릅니다. 새로고침 후 같은 버전으로 참가하세요.');
     if(msg.type==='ping'){this.send(client,{type:'pong',at:msg.at});return;}
     if(msg.type==='leave'){this.leave(client,true);return;}
     if(msg.type==='create'){

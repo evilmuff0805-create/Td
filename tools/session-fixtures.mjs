@@ -1,3 +1,4 @@
+import {fixtureCommand} from './tile-fixtures.mjs';
 // Pure combat/art fixtures may keep historical multi-hero configurations.
 // Product entry validation is tested with real Session host/guest/solo instances.
 import {createGame} from '../src/sim/sim.js';
@@ -5,7 +6,7 @@ import {Session} from '../src/game/session.js';
 export function SimulationSession(options) {
   if(!['solo','local'].includes(options.kind))throw new Error('Use a real Session for network tests');
   const state=createGame({...options,mode:options.kind,players:options.specs});
-  return Object.assign(Object.create(Session.prototype),{stageId:options.stageId,difficulty:options.difficulty,kind:options.kind,fixtureMode:options.kind,me:0,coop:state.coop,state,view:state,acc:0,pending:[],offs:[],endInfo:null,localBackground:false,hostBackground:false,abortInfo:null});
+  return Object.assign(Object.create(Session.prototype),{stageId:options.stageId,difficulty:options.difficulty,kind:options.kind,fixtureMode:options.kind,me:0,coop:state.coop,state,view:state,acc:0,pending:[],offs:[],endInfo:null,localBackground:false,hostBackground:false,abortInfo:null,send(command){return Session.prototype.send.call(this,fixtureCommand(state,command));}});
 }
 export class FixtureWire {
   constructor(){this.handlers=new Map();this.connected=true;this.peer=true;this.sent=[];}

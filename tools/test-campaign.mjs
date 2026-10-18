@@ -45,14 +45,14 @@ test('정식 캠페인은 프로필 편성·강화·예산으로 시작하며 �
   assert.equal(session.state.towers.length,0);assert.equal(session.state.players[0].gold,STAGES[0].startGold);
   assert.equal(session.state.players[0].towerLv.sungnyemun,7);assert.equal(session.state.players[0].skills[0].lv,1);
   assert.equal(session.state.heroes[0].skin,'yi_gold');assert.equal(session.state.players[0].items.insam,2);
-  session.setPaused(true);session.send({t:'build',p:0,x:13,y:6,tower:'sungnyemun'});session.update(1/60);
+  session.setPaused(true);session.send({t:'build',p:0,...getMap('s1').deploymentSlots[2],tower:'sungnyemun'});session.update(1/60);
   assert.equal(session.state.towers.length,1);assert.ok(session.state.players[0].gold<240);assert.equal(session.state.time,0);
   session.destroy();
 });
 
 test('온라인 압축 상태의 특화 유산·배율·투사체를 3D 표시로 복원하고 원본은 보존',()=>{
   const s=createGame({stageId:'s1',difficulty:'normal',mode:'solo',seed:1,players:[spec()]});
-  queueCommand(s,{t:'build',p:0,x:13,y:6,tower:'sungnyemun'});step(s);const t=s.towers[0];
+  queueCommand(s,{t:'build',p:0,...getMap('s1').deploymentSlots[2],tower:'sungnyemun'});step(s);const t=s.towers[0];
   t.level=3;t.branch='A';t.dmgMult=1.74;t.asMult=1.21;t.rangeMult=1.32;
   s.projectiles.push({id:999,kind:'bigshell',mode:'drop',x:5,y:5,k:.3,hit:{single:true,r:.8},src:{kind:'tower',ref:t},target:777});
   s.projectiles.push({id:1000,kind:'arrow',mode:'homing',x:6,y:5,src:{kind:'hero',ref:s.heroes[0]},target:777,chained:true});
@@ -61,7 +61,7 @@ test('온라인 압축 상태의 특화 유산·배율·투사체를 3D 표시�
   const packet=JSON.parse(JSON.stringify(new SnapshotEncoder().encode(s,[{k:'shot',caster:s.heroes[0].id,x1:1,y1:2,x2:3,y2:4}])));
   applySnapshot(view,packet);
   const rendered=battleView(view),rt=rendered.towers[0];
-  assert.equal(rt.cx,13.5);assert.equal(rt.cy,6.5);assert.equal(view.towers[0].cx,undefined);
+  assert.equal(rt.cx,getMap('s1').deploymentSlots[2].cx);assert.equal(rt.cy,getMap('s1').deploymentSlots[2].cy);assert.equal(view.towers[0].cx,undefined);
   assert.equal(rt.branch,'A');assert.equal(rt.dmgMult,1.74);assert.equal(rt.asMult,1.21);
   const stats=towerDisplayStats(rt,rendered);assert.ok(Number.isFinite(stats.dmg));assert.ok(Number.isFinite(stats.range));
   assert.equal(view.projectiles[0].hit.single,true);assert.equal(view.projectiles[0].src.id,t.id);assert.equal(view.projectiles[0].target,777);
@@ -94,7 +94,7 @@ test('온라인 Session은 상대 영웅 이동·상대 유산 철거를 거부�
   const hn=endpoint(),gn=endpoint();hn.peer=gn;gn.peer=hn;
   const host=new Session({kind:'host',stageId:'s1',difficulty:'normal',seed:4,specs:[spec(defaultProfile(),['yi']),spec(defaultProfile(),['sejong'])],net:hn});
   const guest=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net:gn});
-  host.setPaused(true);host.send({t:'build',p:0,x:13,y:6,tower:'sungnyemun'});host.lastSnap=-1e9;host.update(1/60);
+  host.setPaused(true);host.send({t:'build',p:0,...getMap('s1').deploymentSlots[2],tower:'sungnyemun'});host.lastSnap=-1e9;host.update(1/60);
   assert.equal(guest.view.heroes.length,2);const h=host.state.heroes[0],old=JSON.stringify(h);
   guest.send({t:'move',p:0,h:0,x:2,y:2});guest.send({t:'sell',p:0,id:host.state.towers[0].id});host.update(1/60);
   assert.equal(JSON.stringify(h),old);assert.equal(host.state.towers.length,1);
@@ -122,13 +122,13 @@ test('상점 의복 16종을 실제 3D 재질에 적용하며 공용 재질 색�
 test('3D 오른쪽 회전·두 손가락 확대·취소·화면 종료가 영웅 이동이나 유령 클릭을 남기지 않음',()=>{
   const original={window:globalThis.window,document:globalThis.document,setTimeout,clearTimeout,ctx:audio.ctx};
   const timers=new Map(),handlers=new Map();let seq=0,moves=0,clicks=0;
-  globalThis.window={addEventListener(){}};globalThis.document={addEventListener(){}};audio.ctx={state:'running'};
+  globalThis.window={addEventListener(){}};globalThis.document={addEventListener:(k,f)=>handlers.set(k,f)};audio.ctx={state:'running'};
   globalThis.setTimeout=fn=>{timers.set(++seq,fn);return seq;};globalThis.clearTimeout=id=>timers.delete(id);
   try {
-    const ui=Object.assign(Object.create(GameUI.prototype),{s:{networkWaiting:false},is3d:true,cv:{addEventListener:(k,f)=>handlers.set(k,f)},renderer:{pick:()=>({x:5,y:5})},ui:{},canBuildAt:()=>true,moveHeroTo:()=>moves++,leftClick:()=>clicks++,keyDown(){}});
+    const ui=Object.assign(Object.create(GameUI.prototype),{touchInput:true,el:{contains:()=>true},s:{networkWaiting:false,view:{heroes:[],players:[]}},is3d:true,cv:{style:{},addEventListener:(k,f)=>handlers.set(k,f)},renderer:{pick:()=>({x:5,y:5})},ui:{},heroAtPoint:()=>-1,slotAtPointer:()=>null,canBuildAt:()=>true,moveHeroTo:()=>moves++,leftClick:()=>clicks++,keyDown(){}});
     GameUI.prototype.bindInput.call(ui);
-    const send=(k,id,x=10,y=10,button=0)=>handlers.get(k)({pointerId:id,pointerType:'touch',clientX:x,clientY:y,button,preventDefault(){}});
-    send('pointerdown',1);send('pointerdown',2);send('pointermove',1,30,30);send('pointercancel',2);
+    const send=(k,id,x=10,y=10,button=0)=>handlers.get(k)({target:ui.cv,type:k,pointerId:id,pointerType:'touch',clientX:x,clientY:y,button,preventDefault(){},stopImmediatePropagation(){}});
+    send('pointerdown',1);send('pointerdown',2);send('pointermove',1,30,30);send('pointercancel',2);send('pointercancel',1);
     assert.equal(timers.size,0);assert.equal(moves,0);
     send('pointerdown',3);send('pointerdown',4);send('pointerup',3);send('pointerup',4);assert.equal(clicks,0);
     send('pointerdown',5);send('pointerup',5);assert.equal(clicks,0);ui.suppressTouchUntil=0;send('pointerdown',8);send('pointerup',8);assert.equal(clicks,1);
@@ -168,14 +168,14 @@ test('카메라에서 실제 건물에 가려진 영웅만 표시하며 앞·옆
   building.geometry.dispose();building.material.dispose();
 });
 
-test('측정 봇의 두 갈래 경로 배치는 숫자 ID와 각 협동 담당 경로를 사용',()=>{
+test('측정 봇은 영웅의 공용 타일을 예약하고 실제 빈 타일만 건설한다',()=>{
   const stage=STAGES.find(st=>getMap(st.id).paths.length>1),map=getMap(stage.id);
   const s=createGame({stageId:stage.id,difficulty:'normal',mode:'coop',seed:7,players:[spec(defaultProfile(),['yi']),spec(defaultProfile(),['sejong'])]});
   for(let p=0;p<2;p++){
     const commands=[];botThink(s,createBot(s,p),c=>commands.push(c));
-    const move=commands.find(c=>c.t==='move'),at=map.samples.find(sm=>sm.path===p&&sm.d>map.paths[p].total*.35);
-    assert.ok(move);assert.equal(move.x,at.x+.8);assert.equal(move.y,at.y+.8);
-    assert.notEqual(at.d,map.samples.find(sm=>sm.d>4).d);
+    assert.ok(!commands.some(c=>c.t==='move'));
+    const build=commands.find(c=>c.t==='build');assert.ok(build);
+    const slot=map.deploymentSlots.find(t=>t.x===build.x&&t.y===build.y);assert.ok(slot);assert.ok(s.heroes.every(h=>h.deploymentSlotId!==slot.id));
   }
 });
 

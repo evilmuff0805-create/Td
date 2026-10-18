@@ -1,0 +1,1324 @@
+{
+  "generatedAt": "2026-10-18T09:38:52.866Z",
+  "scope": "Real product renderer/HUD inside CSS-sized iframe. Synthetic touch macros plus native CUA click; no physical mobile or LTE claim. Development held preparation and unlocked fixture are not campaign proof.",
+  "records": [
+    {
+      "after": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0
+      },
+      "before": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0
+      },
+      "kind": "valid",
+      "preview": {
+        "drag": true,
+        "ghost": true,
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0,
+        "valid": true
+      },
+      "slot": "s1:1"
+    },
+    {
+      "after": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0
+      },
+      "before": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0
+      },
+      "kind": "cancel",
+      "preview": {
+        "drag": true,
+        "ghost": true,
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0,
+        "valid": true
+      },
+      "slot": "s1:0"
+    },
+    {
+      "after": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0
+      },
+      "before": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0
+      },
+      "kind": "multitouch",
+      "preview": {
+        "drag": true,
+        "ghost": true,
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 0,
+        "valid": true
+      },
+      "slot": "s1:0"
+    },
+    {
+      "battle": {
+        "bottom": 623,
+        "height": 533,
+        "left": 0,
+        "right": 414,
+        "top": 90,
+        "width": 414,
+        "x": 0,
+        "y": 90
+      },
+      "buttons": [
+        {
+          "h": 44,
+          "label": "공용 타일 1",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 3",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 4",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 5",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 7",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 9",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 12",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 13",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 15",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 16",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 17",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "강감찬 — 끌어 빈 타일로 배치",
+          "w": 92
+        },
+        {
+          "h": 48,
+          "label": "강감찬 기술 · 귀주 돌격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "강감찬 궁극기 · 낙성우",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 신기전 일제사격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 봉수 경보",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "",
+          "w": 150
+        }
+      ],
+      "dock": {
+        "bottom": 787,
+        "height": 134,
+        "left": 0,
+        "right": 414,
+        "top": 653,
+        "width": 414,
+        "x": 0,
+        "y": 653
+      },
+      "gold": "110",
+      "heroes": "[{\"id\":1,\"owner\":0,\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"cd\":0,\"dead\":false}]",
+      "kind": "build-upgrade",
+      "size": [
+        414,
+        896
+      ],
+      "towers": "[{\"type\":\"sungnyemun\",\"slot\":\"s1:1\",\"x\":7,\"y\":9,\"owner\":0}]"
+    },
+    {
+      "battle": {
+        "bottom": 527,
+        "height": 437,
+        "left": 0,
+        "right": 360,
+        "top": 90,
+        "width": 360,
+        "x": 0,
+        "y": 90
+      },
+      "buttons": [
+        {
+          "h": 44,
+          "label": "공용 타일 1",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 3",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 4",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 5",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 7",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 9",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 10",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 12",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 13",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 15",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 16",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 17",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 18",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "강감찬 — 끌어 빈 타일로 배치",
+          "w": 92
+        },
+        {
+          "h": 48,
+          "label": "강감찬 기술 · 귀주 돌격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "강감찬 궁극기 · 낙성우",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 신기전 일제사격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 봉수 경보",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "",
+          "w": 150
+        }
+      ],
+      "dock": {
+        "bottom": 691,
+        "height": 134,
+        "left": 0,
+        "right": 360,
+        "top": 557,
+        "width": 360,
+        "x": 0,
+        "y": 557
+      },
+      "kind": "layout",
+      "size": [
+        360,
+        800
+      ]
+    },
+    {
+      "after": {
+        "gold": [
+          110
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 1
+      },
+      "before": {
+        "gold": [
+          110
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 1
+      },
+      "kind": "occupied",
+      "preview": {
+        "drag": true,
+        "ghost": true,
+        "gold": [
+          110
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 1,
+        "valid": false
+      },
+      "slot": "s1:1"
+    },
+    {
+      "after": {
+        "gold": [
+          110
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:2",
+            "x": 1.5,
+            "y": 1.5
+          }
+        ],
+        "pending": false,
+        "towers": 1
+      },
+      "before": {
+        "gold": [
+          110
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 1
+      },
+      "kind": "valid",
+      "preview": {
+        "drag": true,
+        "ghost": true,
+        "gold": [
+          110
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pending": false,
+        "towers": 1,
+        "valid": true
+      },
+      "slot": "s1:2"
+    },
+    {
+      "battle": {
+        "bottom": 325,
+        "height": 271,
+        "left": 0,
+        "right": 896,
+        "top": 54,
+        "width": 896,
+        "x": 0,
+        "y": 54
+      },
+      "buttons": [
+        {
+          "h": 44,
+          "label": "공용 타일 1",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 4",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 5",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 6",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 7",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 8",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 9",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 10",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 11",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 12",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 13",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 14",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 15",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 16",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 17",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 18",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 19",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "강감찬 — 끌어 빈 타일로 배치",
+          "w": 92
+        },
+        {
+          "h": 48,
+          "label": "강감찬 기술 · 귀주 돌격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "강감찬 궁극기 · 낙성우",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 신기전 일제사격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 봉수 경보",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "",
+          "w": 82
+        }
+      ],
+      "dock": {
+        "bottom": 0,
+        "height": 0,
+        "left": 0,
+        "right": 0,
+        "top": 0,
+        "width": 0,
+        "x": 0,
+        "y": 0
+      },
+      "kind": "layout",
+      "size": [
+        896,
+        414
+      ]
+    },
+    {
+      "battle": {
+        "bottom": 207,
+        "height": 153,
+        "left": 0,
+        "right": 896,
+        "top": 54,
+        "width": 896,
+        "x": 0,
+        "y": 54
+      },
+      "buttons": [
+        {
+          "h": 44,
+          "label": "공용 타일 1",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 6",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 7",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 8",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 9",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 10",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 11",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 12",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 13",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 14",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 15",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 16",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 17",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "공용 타일 18",
+          "w": 44
+        },
+        {
+          "h": 44,
+          "label": "강감찬 — 끌어 빈 타일로 배치",
+          "w": 92
+        },
+        {
+          "h": 48,
+          "label": "강감찬 기술 · 귀주 돌격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "강감찬 궁극기 · 낙성우",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 신기전 일제사격",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "비기 · 봉수 경보",
+          "w": 44
+        },
+        {
+          "h": 48,
+          "label": "",
+          "w": 82
+        }
+      ],
+      "dock": {
+        "bottom": 351,
+        "height": 118,
+        "left": 0,
+        "right": 896,
+        "top": 233,
+        "width": 896,
+        "x": 0,
+        "y": 233
+      },
+      "kind": "landscape-dock",
+      "size": [
+        896,
+        414
+      ]
+    },
+    {
+      "after": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pageScale": 1,
+        "pending": false,
+        "towers": 0,
+        "zoom": 3.1
+      },
+      "before": {
+        "gold": [
+          240
+        ],
+        "heroes": [
+          {
+            "cd": 0,
+            "dead": false,
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5
+          }
+        ],
+        "pageScale": 1,
+        "pending": false,
+        "towers": 0,
+        "zoom": 1.8
+      },
+      "kind": "camera-pinch"
+    },
+    {
+      "heroes": "[{\"id\":1,\"owner\":0,\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"cd\":0,\"dead\":false}]",
+      "kind": "gwon-projectile",
+      "seen": "[\"spearWave\"]"
+    },
+    {
+      "heroes": "[{\"id\":1,\"owner\":0,\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"cd\":0,\"dead\":false}]",
+      "kind": "gwon-skill",
+      "seen": "[\"spearWave\",\"stone\"]"
+    },
+    {
+      "heroes": "[{\"id\":1,\"owner\":0,\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"cd\":0,\"dead\":false}]",
+      "kind": "gang-projectile",
+      "seen": "[\"blade\",\"star\"]"
+    },
+    {
+      "heroes": "[{\"id\":1,\"owner\":0,\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"cd\":0,\"dead\":false}]",
+      "kind": "gang-skill",
+      "seen": "[\"blade\",\"star\",\"bladeWave\"]"
+    },
+    {
+      "check": "gang projectile flight and reserved-tile revival",
+      "metrics": {
+        "touchMode": "tiles",
+        "engine": "three.js r186",
+        "fixedArtStatus": "ready",
+        "heroPoseStatus": "ready",
+        "heroPoseExpected": "1",
+        "heroPoseKinds": "gang",
+        "terrainRoad": "rounded-corridor",
+        "terrainRoadTriangles": "3182",
+        "terrainRoadLayers": "1",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "waterTriangles": "7704",
+        "sceneryLayout": "clustered",
+        "sceneryProps": "40",
+        "sceneryCrowns": "9",
+        "sceneryLowTrees": "12",
+        "sceneryHouses": "3",
+        "sceneryCargo": "1",
+        "sceneryLamps": "7",
+        "sceneryBarriers": "0",
+        "sceneryBarrierCells": "0",
+        "sceneryYardFences": "2",
+        "villagePropSeason": "temperate",
+        "graphicsStatus": "ready",
+        "graphicsRecoveries": "0",
+        "skinPoseStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "seasonTreeArtStatus": "ready",
+        "villagePropArtStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "effectArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "tacticArtStatus": "ready",
+        "reviewHeroes": "[{\"id\":1,\"owner\":0,\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"cd\":0,\"dead\":false}]",
+        "reviewTowers": "[]",
+        "reviewGold": "240",
+        "reviewProjectileKinds": "[]",
+        "reviewSeenProjectiles": "[\"blade\",\"star\",\"bladeWave\"]",
+        "reviewCameraZoom": "1.8",
+        "reviewPending": "false",
+        "reviewDrag": "false",
+        "reviewPreview": "undefined",
+        "heroPoseCount": "1",
+        "heroPoseCanvasBytes": "5386436",
+        "combatPoseStatus": "ready",
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatInbetweenStatus": "ready",
+        "combatInbetweenCount": "12",
+        "combatInbetweenExpected": "12",
+        "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "heroLongMotionStatus": "ready",
+        "heroLongMotionCount": "1",
+        "heroLongMotionExpected": "1",
+        "heroLongMotionKinds": "gang",
+        "heroInbetweenStatus": "ready",
+        "heroInbetweenCount": "1",
+        "heroInbetweenExpected": "1",
+        "heroInbetweenKinds": "gang",
+        "heroInbetweenLookKey": "gang",
+        "assetReadyMs": "2305",
+        "heroLongMotionActive": "false",
+        "heroInbetweenActive": "false",
+        "fixedArt": "true",
+        "spriteMotion": "distance-contact-recovery",
+        "renderMode": "3d",
+        "geometries": "92",
+        "textures": "62",
+        "quality": "high",
+        "pixelRatio": "1",
+        "drawCalls": "77",
+        "triangles": "53968",
+        "fps": "60",
+        "frameP50": "16.6",
+        "frameP95": "17.4",
+        "frameWorst": "18.6",
+        "frameSamples": "60",
+        "characterCanvasBytes": "108477884",
+        "characterCanvasCount": "432",
+        "releasedSheetBytes": "159041992",
+        "combatPoseActive": "true",
+        "combatPoseLastKind": "ashigaru",
+        "combatPoseLastState": "walk-right",
+        "combatInbetweenActive": "false",
+        "reviewClick": "{\"x\":179,\"y\":417,\"detail\":1,\"target\":\"stage-area\"}",
+        "status": "배치 1/20 · 영웅 1 · 유산 0  영웅 드래그 · 빈 타일 건설",
+        "width": 414,
+        "height": 896,
+        "buttons": [
+          {
+            "label": "공용 타일 1",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 2",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 3",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 4",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 5",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 7",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 9",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 12",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 13",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 15",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 16",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 17",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "강감찬 — 끌어 빈 타일로 배치",
+            "w": 92,
+            "h": 44
+          },
+          {
+            "label": "강감찬 기술 · 귀주 돌격",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "강감찬 궁극기 · 낙성우",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "비기 · 신기전 일제사격",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "비기 · 봉수 경보",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "",
+            "w": 150,
+            "h": 44
+          }
+        ],
+        "dock": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "battle": {
+          "x": 0,
+          "y": 90,
+          "width": 414,
+          "height": 667,
+          "top": 90,
+          "right": 414,
+          "bottom": 757,
+          "left": 0
+        }
+      },
+      "deathMacro": "{\"kind\":\"camera-pinch\",\"before\":{\"heroes\":[{\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"dead\":false,\"cd\":0}],\"gold\":[240],\"towers\":0,\"pending\":false,\"zoom\":1.8,\"pageScale\":1},\"after\":{\"heroes\":[{\"slot\":\"s1:0\",\"x\":9.5,\"y\":9.5,\"dead\":false,\"cd\":0}],\"gold\":[240],\"towers\":0,\"pending\":false,\"zoom\":3.1,\"pageScale\":1}}"
+    },
+    {
+      "kind": "valid",
+      "before": {
+        "heroes": [
+          {
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5,
+            "dead": false,
+            "cd": 0
+          }
+        ],
+        "gold": [
+          240
+        ],
+        "towers": 0,
+        "pending": false,
+        "zoom": 1.8,
+        "pageScale": 1
+      },
+      "preview": {
+        "heroes": [
+          {
+            "slot": "s1:0",
+            "x": 9.5,
+            "y": 9.5,
+            "dead": false,
+            "cd": 0
+          }
+        ],
+        "gold": [
+          240
+        ],
+        "towers": 0,
+        "pending": false,
+        "zoom": 1.8,
+        "pageScale": 1,
+        "drag": true,
+        "valid": true,
+        "ghost": true
+      },
+      "after": {
+        "heroes": [
+          {
+            "slot": "s1:1",
+            "x": 7.5,
+            "y": 9.5,
+            "dead": false,
+            "cd": 0
+          }
+        ],
+        "gold": [
+          240
+        ],
+        "towers": 0,
+        "pending": false,
+        "zoom": 1.8,
+        "pageScale": 1
+      },
+      "slot": "s1:1",
+      "build": "final"
+    },
+    {
+      "kind": "final browser construction and upgrade",
+      "metrics": {
+        "touchMode": "tiles",
+        "engine": "three.js r186",
+        "fixedArtStatus": "ready",
+        "heroPoseStatus": "ready",
+        "heroPoseExpected": "1",
+        "heroPoseKinds": "gang",
+        "terrainRoad": "rounded-corridor",
+        "terrainRoadTriangles": "3182",
+        "terrainRoadLayers": "1",
+        "terrainShore": "continuous",
+        "terrainShoreTriangles": "1944",
+        "waterTriangles": "7704",
+        "sceneryLayout": "clustered",
+        "sceneryProps": "40",
+        "sceneryCrowns": "9",
+        "sceneryLowTrees": "12",
+        "sceneryHouses": "3",
+        "sceneryCargo": "1",
+        "sceneryLamps": "7",
+        "sceneryBarriers": "0",
+        "sceneryBarrierCells": "0",
+        "sceneryYardFences": "2",
+        "villagePropSeason": "temperate",
+        "graphicsStatus": "ready",
+        "graphicsRecoveries": "0",
+        "skinPoseStatus": "ready",
+        "skinPoseCount": "0",
+        "skinPoseExpected": "0",
+        "skinPoseKinds": "",
+        "effectArtStatus": "ready",
+        "signatureArtStatus": "ready",
+        "tacticArtStatus": "ready",
+        "reviewHeroes": "[{\"id\":1,\"owner\":0,\"slot\":\"s1:1\",\"x\":7.5,\"y\":9.5,\"cd\":0,\"dead\":false}]",
+        "reviewTowers": "[{\"type\":\"sungnyemun\",\"slot\":\"s1:0\",\"x\":9,\"y\":9,\"owner\":0,\"level\":2,\"branch\":null}]",
+        "reviewGold": "110",
+        "reviewProjectileKinds": "[]",
+        "reviewSeenProjectiles": "[]",
+        "reviewCameraZoom": "1.8",
+        "reviewPending": "false",
+        "reviewDrag": "false",
+        "reviewPreview": "null",
+        "seasonTreeArtStatus": "ready",
+        "villagePropArtStatus": "ready",
+        "landmarkArtStatus": "ready",
+        "heroPoseCount": "1",
+        "heroPoseCanvasBytes": "5386436",
+        "combatPoseStatus": "ready",
+        "combatPoseCount": "12",
+        "combatPoseExpected": "12",
+        "combatPoseKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "combatInbetweenStatus": "ready",
+        "combatInbetweenCount": "12",
+        "combatInbetweenExpected": "12",
+        "combatInbetweenKinds": "ashigaru,scout,teppo,samurai,drum,konishi,militia,guard,elite,monk,courier,turtle",
+        "heroInbetweenStatus": "ready",
+        "heroInbetweenCount": "1",
+        "heroInbetweenExpected": "1",
+        "heroInbetweenKinds": "gang",
+        "heroInbetweenLookKey": "gang",
+        "heroLongMotionStatus": "ready",
+        "heroLongMotionCount": "1",
+        "heroLongMotionExpected": "1",
+        "heroLongMotionKinds": "gang",
+        "assetReadyMs": "4086",
+        "heroLongMotionActive": "false",
+        "heroInbetweenActive": "false",
+        "fixedArt": "true",
+        "spriteMotion": "distance-contact-recovery",
+        "renderMode": "3d",
+        "geometries": "58",
+        "textures": "35",
+        "quality": "high",
+        "pixelRatio": "1",
+        "drawCalls": "84",
+        "triangles": "54088",
+        "fps": "56",
+        "frameP50": "16.6",
+        "frameP95": "20.6",
+        "frameWorst": "79.3",
+        "frameSamples": "56",
+        "characterCanvasBytes": "108477884",
+        "characterCanvasCount": "432",
+        "releasedSheetBytes": "159041992",
+        "reviewClick": "{\"x\":47,\"y\":741,\"detail\":1,\"target\":\"command-option up\"}",
+        "status": "배치 2/20 · 영웅 1 · 유산 1  영웅 드래그 · 빈 타일 건설",
+        "width": 414,
+        "height": 896,
+        "buttons": [
+          {
+            "label": "공용 타일 2",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 3",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 4",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 5",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 7",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 9",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 12",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 13",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 15",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 16",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "공용 타일 17",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "label": "강감찬 — 끌어 빈 타일로 배치",
+            "w": 92,
+            "h": 44
+          },
+          {
+            "label": "강감찬 기술 · 귀주 돌격",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "강감찬 궁극기 · 낙성우",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "비기 · 신기전 일제사격",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "비기 · 봉수 경보",
+            "w": 44,
+            "h": 48
+          },
+          {
+            "label": "",
+            "w": 150,
+            "h": 44
+          }
+        ],
+        "dock": {
+          "x": 0,
+          "y": 653,
+          "width": 414,
+          "height": 134,
+          "top": 653,
+          "right": 414,
+          "bottom": 787,
+          "left": 0
+        },
+        "battle": {
+          "x": 0,
+          "y": 90,
+          "width": 414,
+          "height": 533,
+          "top": 90,
+          "right": 414,
+          "bottom": 623,
+          "left": 0
+        }
+      }
+    }
+  ]
+}

@@ -10,7 +10,7 @@ const holdTimes={yi:[.25,.65],gang:[.15,.58],gwon:[.45,.35],gwak:[.25,.25],ahn:[
 export const ABILITY_SAMPLES=[
   ...HERO_ORDER.flatMap(id=>['heroSkill','heroUlt'].map((kind,i)=>({key:`${id}-${kind}`,id,kind,name:`${HEROES[id].name} · ${HEROES[id][kind==='heroSkill'?'skill':'ult'].name}`,description:HEROES[id][kind==='heroSkill'?'skill':'ult'].desc,holdAt:holdTimes[id]?.[i]??.35}))),
   ...SKILL_ORDER.map(id=>({key:`${id}-skill`,id,kind:'skill',name:`비기 · ${SKILLS[id].name}`,description:skillDesc(id),holdAt:id==='bigyeok'?1.7:id==='cheonja'?.32:.35})),
-  {key:'slash',id:'gang',kind:'attack',name:'강감찬 · 기본 참격',description:'실제 근접 기본 공격 접촉 장면입니다.',holdAt:.12},
+  {key:'slash',id:'gang',kind:'attack',name:'강감찬 · 기본 검기',description:'무기를 휘둘러 검기를 발사하는 기본 공격 장면입니다.',holdAt:.12},
   {key:'combo',id:'taegeuk',kind:'combo',pair:['yi','sejong'],comboId:'yi_sejong',name:'합격기 · 성군과 성웅',description:COMBOS[0].desc,holdAt:.35},
   ...[...COMBOS.filter(c=>c.id!=='yi_sejong'),{...GENERIC_COMBO,pair:['yi','eulji']}].map(c=>({key:'combo-'+c.id,id:'taegeuk',kind:'combo',pair:c.pair,comboId:c.id,name:'합격기 · '+c.name,description:c.desc,holdAt:['gang_yi','ahn_yi'].includes(c.id)?.65:.25})),
 ];

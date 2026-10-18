@@ -2,10 +2,12 @@
 import { TOWER_ORDER } from '../data/towers.js';
 import { ENEMIES } from '../data/enemies.js';
 import { FIRST_PREP } from './sim.js';
+import {battleVersion,compatibleBattle} from '../data/deployment.js';
+import {deploymentAt,getMap} from './map.js';
 
 const ENEMY_IDS = Object.keys(ENEMIES);
 const PHASES = ['prep', 'spawn', 'final'];
-const PKINDS = ['arrow', 'bolt', 'orb', 'shell', 'bigshell', 'rocket', 'meteor', 'star', 'hangul', 'stone', 'bomb', 'garlic', 'thunder', 'ice'];
+const PKINDS = ['arrow', 'bolt', 'orb', 'shell', 'bigshell', 'rocket', 'meteor', 'star', 'hangul', 'stone', 'bomb', 'garlic', 'thunder', 'ice', 'blade', 'spearWave', 'bladeWave'];
 const r2 = (v) => Math.round(v * 100) / 100;
 const r1 = (v) => Math.round(v * 10) / 10;
 
@@ -32,16 +34,17 @@ export class SnapshotEncoder {
     this.towerSig = sig;
     const b = s.buffs;
     return {
+      ...battleVersion(),battleKey:s.battleKey,
       t: r2(s.time), lv: s.lives, ml: s.maxLives, sp: s.speed, pz: s.paused ? 1 : 0,
       w: [s.wave.n, s.wave.total, PHASES.indexOf(s.wave.phase), r1(s.wave.timer), s.wave.tactic || '', s.wave.nextTactic || ''],
       r: [r1(s.resonance.gauge), r2(s.resonance.press[0]), r2(s.resonance.press[1])],
       b: [r1(b.slowT), r1(b.revealT), r1(b.dmgT), r1(b.armorZeroT), r1(b.vulnT), r1(b.asT)],
-      p: s.players.map((p) => [p.gold, p.left ? 1 : 0, p.name, p.skills.map((k) => [k.id, r1(k.cd), r1(k.max), k.lv]), p.items || {}, r1(p.itemCd || 0)]),
+      p: s.players.map((p) => [p.gold, p.left ? 1 : 0, p.name, p.skills.map((k) => [k.id, r1(k.cd), r1(k.max), k.lv]), p.items || {}, r1(p.itemCd || 0),p.deploymentSeq,p.deploymentResult]),
       h: s.heroes.map((h) => [
         h.id, h.owner, h.heroId, r2(h.x), r2(h.y), h.hp | 0, h.maxHp | 0, h.lv, h.dead ? 1 : 0, r1(h.respawn), h.facing,
         h.moving ? 1 : 0, h.anim > 0 ? 1 : 0, r1(h.skillCd), r1(h.ultCd),
         (h.buffs.invulnT > 0 ? 1 : 0) | (h.buffs.dmgT > 0 ? 2 : 0) | (h.buffs.drT > 0 ? 4 : 0) | (h.buffs.gwakT > 0 ? 8 : 0), h.xp | 0, h.slot, h.skin || '',
-        h.actionSeq || 0, r2(h.actionAt ?? -9), h.actionDuration || 0,
+        h.actionSeq || 0, r2(h.actionAt ?? -9), h.actionDuration || 0,h.deploymentSlotId,r2(h.relocateCd||0),
       ]),
       e: s.enemies.map((e) => [
         e.id, ENEMY_IDS.indexOf(e.type), r2(e.x), r2(e.y), e.hp | 0, e.maxHp | 0,
@@ -52,7 +55,7 @@ export class SnapshotEncoder {
       ]),
       T: sendT ? T : null,
       td: s.towers.map((t) => [t.id, r2(t.angle), t.flash > 0 ? 1 : 0, r1(t.disabledT), t.beam, r2(t.beamPow || 0), r2(t.rangeMult || 1), Number.isFinite(t.dmgMult) ? r2(t.dmgMult) : null, Number.isFinite(t.asMult) ? r2(t.asMult) : null]),
-      pr: s.projectiles.map((p) => [PKINDS.indexOf(p.kind), r2(p.x), r2(p.y), r2(p.a || 0), r2(p.k || 0), p.sx !== undefined ? r2(p.sx) : null, p.sy !== undefined ? r2(p.sy) : null, p.hit ? p.hit.r : 0, p.id, p.mode === 'lob' ? 1 : p.mode === 'drop' ? 2 : 0, p.crit ? 1 : 0, p.hue || '', p.hit?.single ? 1 : 0, p.src?.kind === 'tower' ? p.src.ref?.id ?? p.src.id ?? null : null, p.target ?? null, p.src?.kind === 'hero' ? p.src.ref?.id ?? p.src.id ?? null : null, p.chained ? 1 : 0]),
+      pr: s.projectiles.map((p) => [PKINDS.indexOf(p.kind), r2(p.x), r2(p.y), r2(p.a || 0), r2(p.k || 0), p.sx !== undefined ? r2(p.sx) : null, p.sy !== undefined ? r2(p.sy) : null, p.hit ? p.hit.r : 0, p.id, p.mode === 'lob' ? 1 : p.mode === 'drop' ? 2 : p.mode === 'linear' ? 3 : 0, p.crit ? 1 : 0, p.hue || '', p.hit?.single ? 1 : 0, p.src?.kind === 'tower' ? p.src.ref?.id ?? p.src.id ?? null : null, p.target ?? null, p.src?.kind === 'hero' ? p.src.ref?.id ?? p.src.id ?? null : null, p.chained ? 1 : 0]),
       su: s.summons.map((m) => [m.id, m.kind, r2(m.x), r2(m.y), m.hp | 0, m.maxHp | 0, m.anim > 0 ? 1 : 0, m.owner, m.actionSeq || 0, r2(m.actionAt ?? -9), m.actionDuration || 0]),
       z: s.zones.map((z) => [z.id, z.kind, r2(z.x), r2(z.y), z.r, r1(z.t), z.max]),
       m: s.movers.map((m) => [m.id, m.kind, r2(m.x), r2(m.y), r2(m.dx), r2(m.dy)]),
@@ -64,6 +67,7 @@ export class SnapshotEncoder {
 
 export function emptyView(opts) {
   return {
+    ...battleVersion(),battleKey:opts.battleKey??null,
     stageId: opts.stageId, difficulty: opts.difficulty, mode: opts.mode, coop: true, time: 0, lives: 20, maxLives: 20, speed: 1, paused: false,
     wave: { n: 0, total: 1, phase: 'prep', timer: FIRST_PREP, tactic: null, nextTactic: null },
     resonance: { gauge: 0, press: [-99, -99] },
@@ -74,6 +78,8 @@ export function emptyView(opts) {
 
 // 스냅샷 적용: 이전 위치를 보간 시작점으로 보관
 export function applySnapshot(v, snap) {
+  if(!compatibleBattle(snap))throw Error('전투 규칙이 다릅니다. 새로고침 후 같은 버전으로 참가하세요.');
+  Object.assign(v,battleVersion(),{battleKey:snap.battleKey});
   v.time = snap.t;
   v.lives = snap.lv;
   v.maxLives = snap.ml;
@@ -84,15 +90,15 @@ export function applySnapshot(v, snap) {
   v.resonance = { gauge: snap.r[0], press: [snap.r[1], snap.r[2]] };
   const [slowT, revealT, dmgT, armorZeroT, vulnT, asT] = snap.b;
   v.buffs = { slowT, revealT, dmgT, armorZeroT, vulnT, asT };
-  v.players = snap.p.map(([gold, left, name, skills, items, itemCd], idx) => ({
-    idx, gold, left: !!left, name, skills: skills.map(([id, cd, max, lv]) => ({ id, cd, max, lv })), items: items || {}, itemCd: itemCd || 0, stats: {},
+  v.players = snap.p.map(([gold, left, name, skills, items, itemCd,deploymentSeq,deploymentResult], idx) => ({
+    idx, gold, left: !!left, name, skills: skills.map(([id, cd, max, lv]) => ({ id, cd, max, lv })), items: items || {}, itemCd: itemCd || 0, stats: {},deploymentSeq,deploymentResult,
   }));
   const prevH = new Map(v.heroes.map((h) => [h.id, h]));
   v.heroes = snap.h.map((a) => {
-    const [id, owner, heroId, x, y, hp, maxHp, lv, dead, respawn, facing, moving, anim, skillCd, ultCd, bm, xp, slot, skin, actionSeq, actionAt, actionDuration] = a;
+    const [id, owner, heroId, x, y, hp, maxHp, lv, dead, respawn, facing, moving, anim, skillCd, ultCd, bm, xp, slot, skin, actionSeq, actionAt, actionDuration,deploymentSlotId,relocateCd] = a;
     const p = prevH.get(id);
     return {
-      id, owner, heroId, ...visualPosition(p?.dead&&!dead?null:p,x,y),
+      id, owner, heroId, ...visualPosition(null,x,y),deploymentSlotId,relocateCd,
       hp, maxHp, lv, dead: !!dead, respawn, facing, moving: !!moving, anim: anim ? 0.2 : 0, skillCd, ultCd, xp, slot, skin: skin || null,
       actionSeq, actionAt, actionDuration,
       buffs: { invulnT: bm & 1 ? 1 : 0, dmgT: bm & 2 ? 1 : 0, drT: bm & 4 ? 1 : 0, gwakT: bm & 8 ? 1 : 0 },
@@ -112,7 +118,7 @@ export function applySnapshot(v, snap) {
   if (snap.T) {
     const prevT = new Map(v.towers.map((t) => [t.id, t]));
     v.towers = snap.T.map(([id, ti, x, y, level, branch, owner, mode, synIds, kills, s0, s1, dmgDone, syn]) => ({
-      ...(prevT.get(id) || {}), id, type: TOWER_ORDER[ti], x, y, level, branch: branch || null, owner, mode, synIds, kills, spent: [s0, s1], dmgDone, syn,
+      ...(prevT.get(id) || {}), id, deploymentSlotId:deploymentAt(getMap(v.stageId),x,y)?.id, type: TOWER_ORDER[ti], x, y, level, branch: branch || null, owner, mode, synIds, kills, spent: [s0, s1], dmgDone, syn,
     }));
   }
   const byId = new Map(v.towers.map((t) => [t.id, t]));
@@ -122,7 +128,7 @@ export function applySnapshot(v, snap) {
     Object.assign(t, { angle, flash: flash ? 0.1 : 0, disabledT, beam, beamPow, rangeMult, dmgMult: dmgMult ?? undefined, asMult: asMult ?? undefined });
   }
   v.projectiles = snap.pr.map(([ki, x, y, a, k, sx, sy, r, id, mode, crit, hue, single, towerId, target, heroId, chained]) => ({
-    kind: PKINDS[ki], x, y, a, k, sx: sx ?? undefined, sy: sy ?? undefined, hit: { r, single: !!single }, id, mode: mode === 1 ? 'lob' : mode === 2 ? 'drop' : 'homing', crit: !!crit, hue,
+    kind: PKINDS[ki], x, y, a, k, sx: sx ?? undefined, sy: sy ?? undefined, hit: { r, single: !!single }, id, mode: mode === 1 ? 'lob' : mode === 2 ? 'drop' : mode===3?'linear':'homing', crit: !!crit, hue,
     ...(towerId != null ? {src:{kind:'tower',id:towerId}} : heroId != null ? {src:{kind:'hero',id:heroId}} : {}), target: target ?? undefined, chained: !!chained,
   }));
   const prevSu = new Map(v.summons.map(m => [m.id, m]));

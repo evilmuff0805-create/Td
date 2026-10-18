@@ -1,0 +1,26 @@
+{
+  "reviewer": "GPT Astra high / mobile_pad_review",
+  "date": "2026-10-18",
+  "decision": "deployment_approved",
+  "independentTileTests": 23,
+  "progressionSourceHashesMatched": 13,
+  "blockingP0P1Found": false,
+  "conditionsBeforeDeploy": {
+    "regression": {
+      "groups": 38,
+      "tests": 508,
+      "allPassed": true
+    },
+    "webZip": "docs/tile-board/ZIP_PACKAGE_VALIDATION.json",
+    "mobileBrowser": "docs/TILE_BOARD_BROWSER_VALIDATION.json",
+    "twoBrowserOnline": "docs/tile-board/LOCAL_ONLINE_BROWSER.json"
+  },
+  "conditionsAfterDeploy": [
+    "Verify pinned commit and public bundle SHA",
+    "HTTPS/WSS six checks",
+    "Real public browser host and guest drag/build/pause; rollback on failure"
+  ],
+  "scope": "Same existing Railway service/domain/resource limits. Earned jade shop progression only, not no-exchange or every hero/higher difficulty certification. Physical mobile/LTE not verified.",
+  "preDeployConditionsIndependentlyConfirmed": true,
+  "reviewerFinalNote": "Latest508/38 all passed, ZIP/manifest and13 source hashes independently checked; same Railway pinned deployment approved."
+}

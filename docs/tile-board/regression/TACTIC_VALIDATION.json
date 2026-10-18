@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-11",
+  "passedTests": 8,
+  "motifs": 20,
+  "actualCommandSamples": 36,
+  "equipmentSkills": 8,
+  "specificCombos": 10,
+  "genericCombo": true,
+  "localCoopHandshakeAndOwnerPreserved": true,
+  "lateLoadingAndFallbackChecked": true,
+  "ownedResourcesDisposedOnce": true
+}

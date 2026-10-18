@@ -50,7 +50,7 @@ await test('25전장 K칸 248개를 누락·중복 없이 122개 경계 그림�
 await test('속이 빈 비정형 경계는 빈 건설 칸을 가로질러 합치거나 안전하지 않은 중심에 놓지 않는다',()=>{
   const id='village-boundary-hole',grid=Array.from({length:14},()=>'.'.repeat(24));
   for(let z=2;z<=6;z++)for(let x=8;x<=10;x++)if(x!==9||z!==3)grid[z]=grid[z].slice(0,x)+'K'+grid[z].slice(x+1);
-  const s={...WINTER_STAGE,id,grid,paths:[[[-1,12],[22,12]]]};STAGE_BY_ID[id]=s;
+  const s={...WINTER_STAGE,id,grid,deploymentSlots:undefined,paths:[[[-1,12],[22,12]]]};STAGE_BY_ID[id]=s;
   try{
     const p=sceneryPlan(s,seasonFor(s)),map=getMap(id),walls=p.items.filter(q=>q.role==='wall');
     assert.equal(walls.flatMap(q=>q.cells).length,14);assert.equal(p.metrics.omittedBarrierCells,0);

@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-11",
+  "tests": 10,
+  "results": [
+    {
+      "name": "16의상은 기존 소유 ID와 일치하고 기본8명과 모두 다른 배포 경로를 가진다",
+      "passed": true
+    },
+    {
+      "name": "기존 전장 준비는 24개 큰 일러스트를 요청하지 않으며 의상 원래 그림은 준비한다",
+      "passed": true
+    },
+    {
+      "name": "동일 영웅 기본·백의·금빛은 별도 요청이며 동일 의상 두 카드는 완료를 공유한다",
+      "passed": true
+    },
+    {
+      "name": "외국 영웅의 의상·잘못된 ID는 다른 의상을 빌리지 않고 자기 기본 외형으로 돌아간다",
+      "passed": true
+    },
+    {
+      "name": "의상을 바꾸고 이전 캔버스를 제거하면 늦은 이전 응답이 새 의상을 덮지 않는다",
+      "passed": true
+    },
+    {
+      "name": "한 의상의 누락·잘못된 크기는 그 의상에만 실패로 남고 기본·다른 의상은 정상이다",
+      "passed": true
+    },
+    {
+      "name": "16개 원화는 각각 완전한 정사각을 표시하고 HUD 얼굴과 전신은 승인 포즈를 유지한다",
+      "passed": true
+    },
+    {
+      "name": "실제 의상실의 잠긴16의상 미리보기·전신 전환·영웅 전환은 소유·군자금·출전 사양을 바꾸지 않는다",
+      "passed": true
+    },
+    {
+      "name": "기존 구매·장착 버튼은 원래150옥 가격·소유·장착만 바꾸며 그림 모드를 보존한다",
+      "passed": true
+    },
+    {
+      "name": "실제 도감과 솔로 선택은 장착 백의·청룡포를 표시하며 1영웅 출전 사양을 유지한다",
+      "passed": true
+    }
+  ],
+  "scope": "Costume-specific cache and errors, late costume replacement lifetime, unchanged HUD/full art, actual locked shop preview/purchase/equip, codex and single-hero solo setup/specs"
+}

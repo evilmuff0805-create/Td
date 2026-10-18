@@ -1,10 +1,11 @@
+import {applyFixtureCommand as applyCommand} from './tile-fixtures.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import * as THREE from 'three';
 import { STAGE_ID, WINTER_STAGE, newWinterGame,newBattleGame,campaignSupport,canBuildAt } from '../src/3d/scenario.js';
 import { getMap,T_PATH,T_BASE } from '../src/sim/map.js';
 import { STAGES, parseWave } from '../src/data/stages.js';
-import { applyCommand, step } from '../src/sim/sim.js';
+import {  step } from '../src/sim/sim.js';
 import { spawnEnemy } from '../src/sim/combat.js';
 import { MAT, character, animateCharacter, hanok, gate, towerModel, bakeStatic, pine, rock,roof } from '../src/3d/models.js';
 import { MAX_TOWER_LEVEL,towerTier,towerVisual,towerDisplayStats } from '../src/3d/tower-visuals.js';
@@ -242,7 +243,7 @@ test('실제 전투 명령: 이동·건설·강화·철거와 군자금',()=>{
   applyCommand(s,{t:'upgrade',p:0,id:tower.id});assert.equal(tower.level,2);assert.equal(s.players[0].gold,100);
   applyCommand(s,{t:'sell',p:0,id:tower.id});assert.equal(s.towers.length,2);assert.equal(s.players[0].gold,191);
   applyCommand(s,{t:'move',p:0,h:0,x:12,y:7});for(let i=0;i<240;i++)step(s);
-  assert.ok(Math.hypot(s.heroes[0].x-12,s.heroes[0].y-7)<.25);
+  assert.ok(s.heroes[0].deploymentSlotId);assert.equal(s.heroes[0].x,Math.floor(s.heroes[0].x)+.5);assert.equal(s.heroes[0].moving,false);
 });
 test('관절 모델·한옥·성문·유산의 모든 정점과 변환이 유효',()=>{
   const models=[character('yi'),character('ashigaru'),character('samurai'),hanok(),gate(),towerModel('sungnyemun',3),towerModel('hwaseong',2),...Array.from({length:8},(_,i)=>rock(1+i*.3,i*.79)),pine(3.4,1.7)];
@@ -494,20 +495,19 @@ test('UI의 원래 클릭 좌표가 엔진에서 한 번만 보정되고 의병 
     actual.forEach((unit,i)=>assert.ok(Math.hypot(unit.x-preview.spawns[i].x,unit.y-preview.spawns[i].y)<1e-8));
   }
   const scene=new THREE.Scene(),fx=new BattleEffects(scene,null),dash=abilityTarget(s,'heroSkill',{...gwon,heroId:'gang'},point);
-  fx.preview('heroSkill',gwon,point,dash);assert.equal(fx.reach.scale.x,4);assert.equal(fx.corridorRoot.scale.z,1.6);
+  fx.preview('heroSkill',gwon,point,dash);assert.equal(fx.reach.scale.x,4);assert.equal(fx.corridorRoot.scale.z,1.3);
   fx.preview('skill',gwak,point,abilityTarget(s,'skill',gwak,point,'uibyeong'));assert.equal(fx.spawns.children.filter(o=>o.visible).length,4);assert.equal(fx.target.visible,false);fx.reset();
 });
-test('25개 지도에서 실제 이동으로 집결하고 합격기 거리 조건을 충족',()=>{
-  for(const stage of STAGES) {
-    const s=newBattleGame({stageId:stage.id}),map=getMap(stage.id),points=rallyTargets(s),before=s.heroes.map(h=>({x:h.x,y:h.y}));assert.ok(points);
-    assert.equal(points[0].path,points[1].path);
-    points.forEach((p,h)=>{assert.ok(p.x>=.8&&p.x<map.w-.8&&p.y>=.8&&p.y<map.h-.8);assert.ok([T_PATH,T_BASE].includes(map.grid[Math.floor(p.y)*map.w+Math.floor(p.x)]));applyCommand(s,{t:'move',p:0,h,x:p.x,y:p.y});});
-    assert.deepEqual(s.heroes.map(h=>({x:h.x,y:h.y})),before,'집결 명령이 순간이동시킴');assert.equal(s.resonance.gauge,0);
-    for(let i=0;i<60*15&&Math.hypot(s.heroes[0].x-s.heroes[1].x,s.heroes[0].y-s.heroes[1].y)>1;i++)step(s);
-    assert.ok(comboView(s).distance<1.01,stage.id);s.resonance.gauge=100;assert.equal(comboView(s).ok,true);
+test('25개 지도에서 영웅은 고유 공용 타일에 서고 출전부터 합격기 범위를 충족',()=>{
+  for(const stage of STAGES){
+    const s=newBattleGame({stageId:stage.id}),map=getMap(stage.id);
+    assert.notEqual(s.heroes[0].deploymentSlotId,s.heroes[1].deploymentSlotId);
+    for(const h of s.heroes){const slot=map.deploymentSlots.find(t=>t.id===h.deploymentSlotId);assert.ok(slot);assert.equal(h.x,slot.cx);assert.equal(h.y,slot.cy);}
+    assert.equal(s.resonance.gauge,0);s.resonance.gauge=100;assert.equal(comboView(s).ok,true,stage.id);
   }
-  const solo=newWinterGame();assert.equal(rallyTargets(solo),null);assert.equal(comboView(solo).hasPair,false);
+  const solo=newWinterGame();assert.equal(comboView(solo).hasPair,false);
 });
+
 test('영웅 28조합의 전용 10종·일반 합격기를 실제 명령과 효과로 검증',()=>{
   const ids=Object.keys(HEROES),seen=new Set();let pairs=0;
   for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++) {

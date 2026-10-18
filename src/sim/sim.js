@@ -9,12 +9,13 @@ import { TACTICS, TACTIC_ORDER, TACTIC_CHANCE, TACTIC_MIN_WAVE } from '../data/t
 import { STAGE_BY_ID, STAGES, DIFFICULTY, COOP, parseWave, startingGold } from '../data/stages.js';
 import { TOWER_META_BONUS, metaRangeMult, metaAsMult, metaCost } from '../data/quests.js';
 import { ITEMS, ITEM_PER_BATTLE, ITEM_CD } from '../data/items.js';
-import { getMap, posAt, tileAt, nearestOnPath, T_BUILD } from './map.js';
+import { getMap, posAt, tileAt, nearestOnPath, T_BUILD, deploymentSlot, vacantSlot, slotOccupant } from './map.js';
+import {battleVersion} from '../data/deployment.js';
 import { rand, randInt, makeRng } from './rng.js';
 import {
   ev, comboCue, actionCue, d2, clamp, mapOf, stageOf, damage, aoe, applySlow, applyStun, applyVuln, spawnEnemy, grant, addGold,
   isTargetable, hurtHero, hurtSummon, releaseBlocker, releaseEnemy, findEnemy, findBlocker, recalcHero,
-  addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn, addSummon,
+  addProjectile, drop, knockback, waveEnemyGone, checkWaveResolved, addResonance, MAX_SLOW, BOSS_SLOW, newId, randomPointIn, addSummon, reviveHero,
 } from './combat.js';
 import { castHeroSkill, castHeroUlt, castEquipSkill, pressCombo, AHN_BOSS_MULT } from './abilities.js';
 
@@ -35,7 +36,7 @@ export function createGame(opts) {
   const map = getMap(stage.id);
   const seed = (opts.seed ?? 12345) >>> 0;
   const s = {
-    v: 1, stageId: stage.id, difficulty: opts.difficulty || 'normal', mode: opts.mode || 'solo', coop,
+    v: 2, ...battleVersion(), battleKey:opts.battleKey??`${stage.id}:${seed}`, stageId: stage.id, difficulty: opts.difficulty || 'normal', mode: opts.mode || 'solo', coop,
     coopHp: COOP.hpMult, seed, rng: seed, tick: 0, time: 0, nextId: 1, speed: 1, paused: false,
     lives: diff.lives, maxLives: diff.lives, goldMult: 1,
     players: [], heroes: [], towers: [], enemies: [], projectiles: [], summons: [], zones: [], movers: [],
@@ -50,7 +51,7 @@ export function createGame(opts) {
   const startGold = startingGold(stage.id, coop);
   opts.players.forEach((p, i) => {
     s.players.push({
-      idx: i, name: p.name || `P${i + 1}`, gold: startGold, goldFrac: 0, left: false,
+      idx: i, name: p.name || `P${i + 1}`, gold: startGold, goldFrac: 0, left: false, deploymentSeq:0, deploymentResult:null,
       towers: p.towers || Object.keys(TOWERS), towerLv: p.towerLv || {},
       skills: (p.skills || []).map((id) => {
         const lv = (p.skillLv && p.skillLv[id]) || 0;
@@ -65,15 +66,15 @@ export function createGame(opts) {
       },
     });
   });
-  // 영웅 배치: 기지 쪽 경로 위
+  if(opts.players.reduce((n,p)=>n+p.heroes.length,0)>map.deploymentSlots.length)throw Error('영웅을 배치할 빈 타일이 부족합니다.');
+  // Shared building slots: heroes reserve a tile even while dead.
   let hi = 0;
   opts.players.forEach((p, pi) => {
     for (const heroId of p.heroes) {
-      const path = map.paths[Math.min(hi, map.paths.length - 1)];
-      const q = posAt(path, Math.max(1, path.total * (0.62 - hi * 0.12)));
+      const at=map.deploymentSlots[hi];
       const h = {
         id: newId(s), owner: pi, slot: hi, heroId, skin: (p.skins && p.skins[heroId]) || null, metaLv: (p.heroLv && p.heroLv[heroId]) || 0, lv: 1, xp: 0,
-        x: q.x + 0.6, y: q.y - 0.6, tx: 0, ty: 0, post: null, facing: 1, hp: 0, maxHp: 0, dmg: 0, skillMult: 1,
+        deploymentSlotId:at.id, relocateCd:0, x: at.cx, y: at.cy, tx: 0, ty: 0, post: null, facing: 1, hp: 0, maxHp: 0, dmg: 0, skillMult: 1,
         cd: 0, skillCd: 2, ultCd: HEROES[heroId].ult.cd * 0.5, dead: false, respawn: 0, engaged: [], atkCount: 0,
         anim: 0, moving: false, hurtT: -9, buffs: { invulnT: 0, dmgT: 0, drT: 0, gwakT: 0 },
       };
@@ -111,26 +112,8 @@ export function applyCommand(s, c) {
       if (t && ['first', 'last', 'strong', 'close'].includes(c.mode)) t.mode = c.mode;
       return;
     }
-    case 'move': {
-      const h = s.heroes[c.h];
-      if (!canControlHero(s, c.p, h) || h.dead) return;
-      if(c.stop===true){delete h.directMove;h.tx=h.x;h.ty=h.y;h.post={x:h.x,y:h.y};h.moving=false;return;}
-      if(c.direct===true){
-        if(!Number.isFinite(c.dx)||!Number.isFinite(c.dy)||Math.abs(c.dx)>1||Math.abs(c.dy)>1)return;
-        const length=Math.hypot(c.dx,c.dy);if(length<.001)return;
-        const lead=Math.max(.75,HEROES[h.heroId].speed*s.speed*.2);
-        h.tx=clamp(h.x+c.dx/length*lead,.3,mapOf(s).w-.3);
-        h.ty=clamp(h.y+c.dy/length*lead,.3,mapOf(s).h-.3);
-      }else{
-        if(!Number.isFinite(c.x)||!Number.isFinite(c.y))return;
-        h.tx = clamp(c.x, 0.3, mapOf(s).w - 0.3);
-        h.ty = clamp(c.y, 0.3, mapOf(s).h - 0.3);
-      }
-      h.post = { x: h.tx, y: h.ty };
-      if(c.direct===true){h.directMove=true;releaseBlocker(s,h.id);}
-      else delete h.directMove;
-      return;
-    }
+    case 'move': return; // Old clients and arbitrary coordinates cannot bypass slots.
+    case 'relocate': return cmdRelocate(s,pl,c);
     case 'heroSkill': {
       const h = s.heroes[c.h];
       if (!canControlHero(s, c.p, h) || h.dead || h.skillCd > 0) return;
@@ -182,17 +165,44 @@ export function applyCommand(s, c) {
   }
 }
 
+function cmdRelocate(s,pl,c){
+  if(c.battleKey!==s.battleKey||!Number.isSafeInteger(c.requestId)||c.requestId<1||!Number.isInteger(c.h))return;
+  const h=s.heroes[c.h],seq=pl.deploymentSeq??0;
+  const reply=(ok,reason)=>({p:pl.idx,battleKey:s.battleKey,requestId:c.requestId,h:c.h,ok,reason,slotId:h?.deploymentSlotId??null});
+  if(c.requestId<=seq){
+    ev(s,'deploymentResult',pl.deploymentResult?.requestId===c.requestId?{...pl.deploymentResult,replayed:true}:reply(false,'stale'));
+    return;
+  }
+  let reason=null;const at=deploymentSlot(mapOf(s),c.slotId);
+  if(!canControlHero(s,pl.idx,h))reason='owner';
+  else if(s.result||s.aborted)reason='ended';
+  else if(s.paused)reason='paused';
+  else if(h.dead)reason='dead';
+  else if(!at)reason='invalid';
+  else if(h.deploymentSlotId===at.id)reason='same';
+  else if(slotOccupant(s,at.id))reason='occupied';
+  else if(s.wave.phase!=='prep'&&h.relocateCd>0)reason='cooldown';
+  if(!reason){
+    releaseBlocker(s,h.id);
+    h.deploymentSlotId=at.id;h.x=h.tx=at.cx;h.y=h.ty=at.cy;h.post={x:at.cx,y:at.cy};h.moving=false;
+    h.relocateCd=s.wave.phase==='prep'?0:(h.heroId==='gwak'?2:3);
+    ev(s,'rally',{x:h.x,y:h.y});
+  }
+  pl.deploymentSeq=c.requestId;pl.deploymentResult=reply(!reason,reason);
+  ev(s,'deploymentResult',pl.deploymentResult);
+}
+
 function cmdBuild(s, pl, c) {
   const def = TOWERS[c.tower];
   if (!def || !pl.towers.includes(c.tower)) return;
   const map = mapOf(s);
-  if (tileAt(map, c.x, c.y) !== T_BUILD) return;
-  if (s.towers.some((t) => t.x === c.x && t.y === c.y)) return;
+  const at=vacantSlot(map,s,c.x,c.y);
+  if(!at)return;
   const cost = metaCost(def.levels[0].cost, pl.towerLv[c.tower] || 0);
   if (pl.gold < cost) return ev(s, 'toast', { p: pl.idx, text: '군자금이 부족합니다' });
   pl.gold -= cost;
   const t = {
-    id: newId(s), type: c.tower, x: c.x, y: c.y, cx: c.x + 0.5, cy: c.y + 0.5, level: 1, branch: null,
+    id: newId(s), deploymentSlotId:at.id, type: c.tower, x: at.x, y: at.y, cx: at.cx, cy: at.cy, level: 1, branch: null,
     owner: pl.idx, cd: 0.4, angle: -Math.PI / 2, spent: [0, 0], kills: 0, dmgDone: 0, shots: 0,
     ramp: 0, beam: [], disabledT: 0, flash: 0, mode: def.kind === 'beam' || def.kind === 'pagoda' ? 'strong' : 'first',
     syn: 0, synIds: [], bDmg: 0, bAs: 0, bRange: 0, metaLv: pl.towerLv[c.tower] || 0, built: s.time,
@@ -766,55 +776,16 @@ function updateHeroes(s) {
       delete h.directMove;
       h.respawn -= DT;
       if (h.respawn <= 0) {
-        h.dead = false;
-        h.hp = h.maxHp;
-        h.x = base.x + 0.5 - 1;
-        h.y = base.y + 0.5;
-        h.tx = h.x;
-        h.ty = h.y;
-        h.post = { x: h.x, y: h.y };
-        ev(s, 'heroUp', { x: h.x, y: h.y, id: h.id });
+        reviveHero(s,h);
       }
       continue;
     }
     // 회복 (단군의 홍익인간: 모든 영웅 +0.7%/초)
     const regen = (def.regen || 0) + (s.time - h.hurtT > 4 ? 0.01 : 0) + (dangunAura ? 0.007 : 0);
     h.hp = Math.min(h.maxHp, h.hp + h.maxHp * regen * DT);
-    if(h.directMove&&Math.hypot(h.tx-h.x,h.ty-h.y)<=.05)delete h.directMove;
-    // Pad movement follows the player's direction until its finite goal or stop.
-    // Regular orders retain automatic melee interception.
-    if (!h.directMove && def.block > 0 && h.engaged.length === 0 && h.post) {
-      let near = null;
-      let bd = 1.6 * 1.6;
-      for (const e of s.enemies) {
-        if (e.hp <= 0 || e.unblockable || e.blockedBy || !isTargetable(e)) continue;
-        const dd = (e.x - h.post.x) ** 2 + (e.y - h.post.y) ** 2;
-        if (dd < bd) {
-          bd = dd;
-          near = e;
-        }
-      }
-      if (near) {
-        h.tx = near.x;
-        h.ty = near.y;
-      } else {
-        h.tx = h.post.x;
-        h.ty = h.post.y;
-      }
-    }
-    // 이동
-    const dx = h.tx - h.x;
-    const dy = h.ty - h.y;
-    const dist = Math.hypot(dx, dy);
-    const spd = def.speed * (bf.gwakT > 0 ? 1.4 : 1);
-    if (dist > 0.05 && !(!h.directMove && h.engaged.length && def.block > 0 && dist < 0.8)) {
-      const stepLen = Math.min(dist, spd * DT);
-      h.x += (dx / dist) * stepLen;
-      h.y += (dy / dist) * stepLen;
-      h.facing = dx >= 0 ? 1 : -1;
-      h.moving = dist > (h.directMove ? .05 : .3);
-      if (h.engaged.length && dist > 0.8) releaseBlocker(s, h.id);
-    } else h.moving = false;
+    h.relocateCd=Math.max(0,(h.relocateCd||0)-DT);
+    const at=deploymentSlot(mapOf(s),h.deploymentSlotId);
+    h.x=h.tx=at.cx;h.y=h.ty=at.cy;h.moving=false;
     // 공격
     if (h.cd > 0) h.cd -= DT * (bf.gwakT > 0 ? 2 : 1);
     if (h.cd <= 0 && !h.moving) {
@@ -855,12 +826,10 @@ function heroAttack(s, h, def, e) {
       ev(s, 'bolt', { x1: e.x, y1: e.y, x2: next.x, y2: next.y, c: '#bfe6ff' });
     }
     ev(s, 'sfx', { n: 'star' });
-  } else if (def.attack === 'melee') {
-    damage(s, e, dmg, def.dmgType, src);
-    ev(s, 'slash', { x: e.x, y: e.y, f: h.facing });
-    if (h.heroId === 'gang' && h.atkCount % 4 === 0) {
-      drop(s, 'star', e.x, e.y, 0.3, { r: 1.2, dmg: dmg * 2, type: 'holy' }, src);
-    }
+  } else if (def.attack === 'blade' || def.attack === 'spearWave') {
+    addProjectile(s,{kind:def.attack,mode:'homing',x:h.x,y:h.y,target:e.id,speed:9,dmg,type:def.dmgType,src,hue:h.heroId,
+      starStrike:h.heroId==='gang'&&h.atkCount%4===0,slow:h.heroId==='gwon'?.25:0,slowDur:1.2});
+    ev(s,'slash',{x:h.x,y:h.y,f:h.facing});
   } else {
     const bounce = h.heroId === 'gwak' && h.buffs.gwakT > 0 ? 2 : 0;
     addProjectile(s, {
@@ -928,7 +897,7 @@ function updateSummons(s) {
 
 function updateBlocking(s) {
   const blockers = [];
-  for (const h of s.heroes) if (!h.dead && !h.directMove && HEROES[h.heroId].block > 0) blockers.push(h);
+  // Heroes fire from shared tiles; only summoned troops and walls block roads.
   for (const m of s.summons) if (m.hp > 0 && m.block > 0) blockers.push(m);
   for (const b of blockers) {
     const cap = b.heroId ? HEROES[b.heroId].block : b.block;
@@ -1245,6 +1214,19 @@ function updateProjectiles(s) {
         p.x += (dx / dist) * stp;
         p.y += (dy / dist) * stp;
       }
+    } else if(p.mode==='linear'){
+      const ax=p.x,ay=p.y,dx=p.tx-ax,dy=p.ty-ay,dist=Math.hypot(dx,dy),stepLen=Math.min(dist,p.speed*DT);
+      if(dist<.001){p.done=true;continue;}
+      p.x+=dx/dist*stepLen;p.y+=dy/dist*stepLen;
+      const lx=p.x-ax,ly=p.y-ay,len2=lx*lx+ly*ly;
+      for(const e of s.enemies){
+        if(!isTargetable(e)||p.hitIds.includes(e.id))continue;
+        const k=clamp(((e.x-ax)*lx+(e.y-ay)*ly)/(len2||1),0,1);
+        if(Math.hypot(e.x-ax-lx*k,e.y-ay-ly*k)>p.radius)continue;
+        p.hitIds.push(e.id);applyStun(e,p.stun);damage(s,e,p.dmg,p.type,p.src);
+        ev(s,'slash',{x:e.x,y:e.y,f:dx>=0?1:-1});
+      }
+      if(stepLen>=dist)p.done=true;
     } else if (p.mode === 'lob') {
       const k = Math.min(1, p.t / p.dur);
       p.x = p.sx + (p.tx - p.sx) * k;
@@ -1292,6 +1274,9 @@ function frostHit(s, p, e) {
 
 function projectileHit(s, p, e) {
   if (p.frost) return frostHit(s, p, e);
+  if(p.kind==='blade'||p.kind==='spearWave')ev(s,'slash',{x:e.x,y:e.y,f:p.a>=-Math.PI/2&&p.a<=Math.PI/2?1:-1});
+  if(p.slow)applySlow(e,p.slow,p.slowDur);
+  if(p.starStrike)drop(s,'star',e.x,e.y,.2,{r:1.2,dmg:p.dmg*2,type:'holy'},p.src);
   if (p.splash) aoe(s, e.x, e.y, p.splash, p.dmg, p.type, p.src);
   else damage(s, e, p.dmg, p.type, p.src);
   if (p.crit) ev(s, 'crit', { x: e.x, y: e.y, v: Math.round(p.dmg) });

@@ -1,3 +1,4 @@
+import {applyFixtureCommand as applyCommand} from './tile-fixtures.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import * as T from 'three';
@@ -9,7 +10,7 @@ import {sceneryPlan} from '../src/3d/scenery-plan.js';
 import {roadSegments,roadSample} from '../src/3d/road-terrain.js';
 import {buildBattlefield} from '../src/3d/environment.js';
 import {WinterWorld} from '../src/3d/world.js';
-import {createGame,applyCommand} from '../src/sim/sim.js';
+import {createGame} from '../src/sim/sim.js';
 import {TOWER_ORDER,TOWERS} from '../src/data/towers.js';
 
 let passed=0;function test(name,fn){fn();passed++;console.log('  ✔ '+name);}
@@ -99,11 +100,11 @@ test('실제 사계절 풍경 조립은 새 위치·높이·그림을 사용하�
   }}finally{geometry.dispose();material.dispose();}
 });
 
-test('새 풍경 뒤에도 26지도 건설 칸과 로컬 2P 실제 건설·양측 군자금 소유를 유지한다',()=>{
+test('새 풍경 뒤에도 26지도 공용 타일과 협동 건설·양측 군자금 소유를 유지한다',()=>{
   for(const stage of stages){
     const game=createGame({stageId:stage.id,difficulty:'normal',mode:'coop',seed:7,courier:false,players:[{heroes:['yi'],skills:[],towers:TOWER_ORDER},{heroes:['sejong'],skills:[],towers:TOWER_ORDER}]}),map=getMap(stage.id);
     const p=sceneryPlan(stage,seasonFor(stage)),build=[];
-    for(let z=0;z<map.h;z++)for(let x=0;x<map.w;x++)assert.equal(canBuildAt(game,x,z),map.grid[z*map.w+x]===T_BUILD);
+    for(let z=0;z<map.h;z++)for(let x=0;x<map.w;x++)assert.equal(canBuildAt(game,x,z),map.deploymentSlots.some(slot=>slot.x===x&&slot.y===z&&!game.heroes.some(h=>h.deploymentSlotId===slot.id)));
     for(let z=0;z<map.h;z++)for(let x=0;x<map.w;x++)if(canBuildAt(game,x,z))build.push({x,z,d:Math.min(...p.items.map(q=>distance(q,x+.5,z+.5)))});
     build.sort((a,b)=>a.d-b.d);const q=build[0],gold=game.players.map(player=>player.gold);assert.ok(q);
     applyCommand(game,{t:'build',p:1,tower:'sungnyemun',x:q.x,y:q.z});assert.equal(game.towers.length,1);assert.equal(game.towers[0].owner,1);assert.equal(game.players[0].gold,gold[0]);assert.equal(game.players[1].gold,gold[1]-TOWERS.sungnyemun.levels[0].cost);

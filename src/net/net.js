@@ -1,3 +1,4 @@
+import {battleVersion} from '../data/deployment.js';
 // Room credentials live only in this tab. Interrupted commands are never replayed.
 const MAX_BACKLOG=512*1024;
 const SYNC_MESSAGES=new Set(['sync','sync-state','sync-ready','host-background','end','finish']);
@@ -79,7 +80,7 @@ export class Net {
     }
     if(!this.closed)this._fatal();return false;
   }
-  raw(obj){if(!this.ws||this.ws.readyState!==1)return false;try{this.ws.send(JSON.stringify(obj));return true;}catch{this._breakSocket();return false;}}
+  raw(obj){if(!this.ws||this.ws.readyState!==1)return false;try{this.ws.send(JSON.stringify(['create','join','resume'].includes(obj.type)?{...obj,...battleVersion()}:obj));return true;}catch{this._breakSocket();return false;}}
   send(data){
     if(this.closed||!this.connected||this.reconnecting||(this.peerReconnecting&&!SYNC_MESSAGES.has(data.t)))return false;
     if(this.ws.bufferedAmount>MAX_BACKLOG){this._breakSocket();return false;}

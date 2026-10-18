@@ -88,11 +88,11 @@ test('신규 동작 정보 왕복과 이전 버전의 영웅·적군·소환수 
   const old={...packet,h:packet.h.map(a=>a.slice(0,19)),e:packet.e.map(a=>a.slice(0,10)),su:packet.su.map(a=>a.slice(0,8))};
   applySnapshot(v,old);for(const o of [...v.heroes,...v.enemies,...v.summons])assert.equal(o.actionSeq,undefined);
 });
-test('스냅샷의 작은 이동은 보간하고 큰 재출전 보정은 한 번에 적용한다',()=>{
+test('영웅 타일은 즉시 동기화하고 병력 이동은 보간하며 재출전 보정은 즉시 적용한다',()=>{
   const s=game();addSummon(s,{kind:'militia',x:4,y:4,hp:100,maxHp:100,owner:0});
   const enc=new SnapshotEncoder(),v=emptyView({stageId:'s1',difficulty:'normal'});applySnapshot(v,enc.encode(s,[]));
   const hx=s.heroes[0].x;s.heroes[0].x+=.1;s.summons[0].x+=.1;applySnapshot(v,enc.encode(s,[]));lerpView(v,.5);
-  assert.ok(Math.abs(v.heroes[0].x-(hx+.05))<.011);assert.ok(Math.abs(v.summons[0].x-4.05)<.001);
+  assert.ok(Math.abs(v.heroes[0].x-(hx+.1))<.011);assert.ok(Math.abs(v.summons[0].x-4.05)<.001);
   s.heroes[0].x+=5;s.summons[0].x+=5;applySnapshot(v,enc.encode(s,[]));lerpView(v,.2);
   assert.ok(Math.abs(v.heroes[0].x-s.heroes[0].x)<.011);assert.equal(v.summons[0].x,9.1);
   s.heroes[0].dead=true;applySnapshot(v,enc.encode(s,[]));s.heroes[0].dead=false;s.heroes[0].x+=.8;applySnapshot(v,enc.encode(s,[]));lerpView(v,.2);

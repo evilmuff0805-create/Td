@@ -839,6 +839,13 @@ export function drawProjectile(ctx, p, time) {
   const x = p.x * TS;
   const y = p.y * TS;
   switch (p.kind) {
+    case 'blade':
+    case 'spearWave':
+    case 'bladeWave': {
+      ctx.save();ctx.translate(x,y-12);ctx.rotate(p.a||0);
+      const size=p.kind==='bladeWave'?18:12,color=p.kind==='spearWave'?'#f2cc88':'#b8dcfa';
+      ctx.shadowColor=color;ctx.shadowBlur=8;ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(-size*.4,-size);ctx.quadraticCurveTo(size*1.4,0,-size*.4,size);ctx.quadraticCurveTo(size*.5,0,-size*.4,-size);ctx.fill();ctx.restore();break;
+    }
     case 'arrow':
     case 'bolt': {
       const a = p.a ?? 0;

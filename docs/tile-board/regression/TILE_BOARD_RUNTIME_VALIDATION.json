@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-10-18T09:38:31.298Z",
+  "tests": 23,
+  "allPassed": true,
+  "scope": "Actual tile simulation, Session host/guest, snapshot and drag-controller cases. Browser and physical-device checks are separate.",
+  "results": [
+    {
+      "name": "25 maps have 20 unique legal shared slots and distinct combo-ready hero starts",
+      "passed": true
+    },
+    {
+      "name": "hero/building occupancy enforces N-H for solo and coop, including dead heroes",
+      "passed": true
+    },
+    {
+      "name": "arbitrary coordinates, fractional positions, path and old move commands cannot bypass slots",
+      "passed": true
+    },
+    {
+      "name": "successful relocation atomically frees the origin and preserves all combat timers and health",
+      "passed": true
+    },
+    {
+      "name": "occupied, same-slot, foreign hero, wrong battle, stale and duplicate requests do not move twice",
+      "passed": true
+    },
+    {
+      "name": "every prep phase permits relocation while combat, pause and death respect their own rules",
+      "passed": true
+    },
+    {
+      "name": "all eight heroes remain anchored, cast and naturally revive on their reserved slot",
+      "passed": true
+    },
+    {
+      "name": "Donguibogam revives on the same reserved tile without releasing capacity",
+      "passed": true
+    },
+    {
+      "name": "new blade and spear attacks fly before impact; slow and star passive occur at impact",
+      "passed": true
+    },
+    {
+      "name": "a launched weapon wave survives its caster relocating and dying before impact",
+      "passed": true
+    },
+    {
+      "name": "a dead homing target cannot transfer a fourth-shot star or damage to a different enemy",
+      "passed": true
+    },
+    {
+      "name": "heroes no longer block roads, while summoned soldiers still block and fight",
+      "passed": true
+    },
+    {
+      "name": "Gang charge wave crosses targets once without moving the hero or damaging at cast",
+      "passed": true
+    },
+    {
+      "name": "a linear blade wave pierces two enemies and never damages either twice",
+      "passed": true
+    },
+    {
+      "name": "snapshot carries slots, reservations, results, cooldowns and all three new projectile kinds",
+      "passed": true
+    },
+    {
+      "name": "two clients racing for a shared tile get one approval with independent wallets",
+      "passed": true
+    },
+    {
+      "name": "hero drop and building construction race atomically and rejected construction costs nothing",
+      "passed": true
+    },
+    {
+      "name": "post-send background/reconnect follows host approval and keeps request numbering",
+      "passed": true
+    },
+    {
+      "name": "full sync settles queued drops before the guest resolves approval, with no simulation tick",
+      "passed": true
+    },
+    {
+      "name": "drag controller commits only a threshold-crossing valid drop, never changes state on cancellation",
+      "passed": true
+    },
+    {
+      "name": "room admission rejects missing/old rules and admits exactly matching clients",
+      "passed": true
+    },
+    {
+      "name": "overlapping expanded tile targets resolve to the nearest centre and keyboard keeps its focused tile",
+      "passed": true
+    },
+    {
+      "name": "pointer capture cannot drop onto a tile behind a HUD overlay",
+      "passed": true
+    }
+  ]
+}

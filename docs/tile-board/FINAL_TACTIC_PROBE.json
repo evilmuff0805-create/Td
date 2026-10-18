@@ -1,0 +1,2734 @@
+{
+  "generatedAt": "2026-10-18T09:32:48.078Z",
+  "sourceReport": "2026-10-18T09:30:17.896Z",
+  "scope": "Fixed actual first s25 entry profiles, unchanged slot layout and combat numbers. Not fresh campaign completion.",
+  "results": [
+    {
+      "seed": 1,
+      "battleSeed": 7919,
+      "placement": "neighbor-before-construction",
+      "plan": "holy",
+      "buildPlacement": "coverage",
+      "win": false,
+      "wave": 22,
+      "lives": 0,
+      "gold": 91,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "hwaseong",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 216694.77614702456
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 7666.3570307610735
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:14",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 12771.0088000002
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 65101.009306748434
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:1",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 18773.772600000015
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 22872.064857779154
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:3",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3358.4546666667216
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 8411.266676666695
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:4",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 7780.189920000002
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:5",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 100720.2082482375
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:9",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 36477.18213726381
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:15",
+          "level": 2,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 17932.05334613465
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 127.14986666666738
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:16",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5653.564399999996
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:13",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 11805.079433333662
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:7",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 500.1578400000038
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:19",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1950.7429200000001
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "battleSeed": 7919,
+      "placement": "neighbor-before-construction",
+      "plan": "holy",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 19,
+      "lives": 0,
+      "gold": 219,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "hwaseong",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 28018.112202372275
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 21837.891736973816
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 15830.35887333339
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 49643.09474139752
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:14",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 10350.273999999996
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 22382.742479311964
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 9980.230000000229
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:12",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 16649.81187999995
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 8451.00480000001
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3274.145493
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:18",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 30368.438172948572
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:9",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 6342.144960000002
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 10373.797806665785
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 6951.5646199985495
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:15",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 2065.2311680000003
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:13",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5625.532466666803
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:5",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4792.463606666728
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "battleSeed": 7919,
+      "placement": "neighbor-before-construction",
+      "plan": "fresh",
+      "buildPlacement": "coverage",
+      "win": false,
+      "wave": 11,
+      "lives": 0,
+      "gold": 18,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 7861.260499999992
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:6",
+          "level": 2,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4617.964999999987
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 22199.115497133567
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1324.3955999999996
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5655.657600000004
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 3845.202935464956
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 6555.8803199999975
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 7155.509336640001
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:15",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 12344.023879096609
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:11",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 107.68999999999998
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:12",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2807.5679999999993
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 334.026
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:5",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 371.69471999999996
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "battleSeed": 7919,
+      "placement": "neighbor-before-construction",
+      "plan": "fresh",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 14,
+      "lives": 0,
+      "gold": 28,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4713.522400000003
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 12368.727249999969
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 29447.290262379644
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1799.5955999999999
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6124.550399999994
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 7547.081322657328
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6343.881599999997
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3109.25367
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 24847.054707786923
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:4",
+          "level": 2,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1071.2130000000004
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2105.1935999999996
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1088.0232000000017
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6185.471542200001
+        },
+        {
+          "type": "sungnyemun",
+          "slot": "s25:9",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1839.3810000000003
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:5",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 603.7900000000003
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:13",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 8894.607948100364
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:16",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 662.3760000000005
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1691.6159999999995
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "battleSeed": 7919,
+      "placement": "neighbor-before-construction",
+      "plan": "nam",
+      "buildPlacement": "coverage",
+      "win": false,
+      "wave": 11,
+      "lives": 0,
+      "gold": 103,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 9843.67507200002
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4766.596999999992
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 14002.138970626966
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 3937.4596800000118
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3535.0271999999977
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:11",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 119.47039999999976
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.1875,
+          "damage": 4505.165759999996
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 10170.645593333149
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:9",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:3",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 9752.877892139984
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 793.5180000000006
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2040.2304
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:5",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0.1875,
+          "damage": 374.86548000000016
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:15",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 734.5265200000049
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "battleSeed": 7919,
+      "placement": "neighbor-before-construction",
+      "plan": "nam",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 11,
+      "lives": 0,
+      "gold": 19,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 763.4048
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:0",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.1875,
+          "damage": 4457.0576874999915
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 12626.246905825723
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0.1875,
+          "damage": 7185.304417499933
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4742.3136
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1440.1773866664635
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5031.753599999999
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 7059.621486666789
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:19",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5552.673704307978
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 916.5750000000004
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:12",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2093.615999999999
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:9",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 99.00000000000001
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "battleSeed": 15838,
+      "placement": "neighbor-before-construction",
+      "plan": "holy",
+      "buildPlacement": "coverage",
+      "win": true,
+      "wave": 24,
+      "lives": 8,
+      "gold": 5959,
+      "finalOrders": 7,
+      "towers": [
+        {
+          "type": "cheomseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4083.040067556836
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:14",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5996.542108888936
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": "A",
+          "syn": 2,
+          "bDmg": 0,
+          "damage": 72037.35175460517
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:1",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 25538.503439999993
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 21563.472195665938
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:3",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 9821.303439999796
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:12",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:4",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 17801.250803111107
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:10",
+          "level": 3,
+          "branch": "A",
+          "syn": 2,
+          "bDmg": 0,
+          "damage": 80070.38270738086
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:9",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 80808.7011320146
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:15",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 17005.20992142186
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 104.56320000000045
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:16",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 9174.343800000013
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:18",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 8376.837256666713
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:13",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 26.544266666666665
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:2",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 2,
+          "bDmg": 0,
+          "damage": 0
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "battleSeed": 15838,
+      "placement": "neighbor-before-construction",
+      "plan": "holy",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 8,
+      "lives": 0,
+      "gold": 104,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "hwaseong",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 11339.058020687487
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:7",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3138.0096
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 9632.373457778276
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 9409.190933334123
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:19",
+          "level": 2,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 837.9684
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3329.28
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2209.0752000000007
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3214.3253133333183
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "battleSeed": 15838,
+      "placement": "neighbor-before-construction",
+      "plan": "fresh",
+      "buildPlacement": "coverage",
+      "win": false,
+      "wave": 14,
+      "lives": 0,
+      "gold": 215,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 24626.175900000024
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 15441.044200000035
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 27581.837209625643
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 990.5688000000009
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 7488.921599999991
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 4920.568426668783
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 7576.560000000008
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 9360.920564351994
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:15",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 21105.486465165493
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 129.19500000000002
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:12",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4415.5392
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1409.2451999999976
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:5",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3444.920393599999
+        },
+        {
+          "type": "sungnyemun",
+          "slot": "s25:9",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3780.1926000000008
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:7",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 54.230000000000004
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:16",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 7183.002064289113
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 95.076
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 470.01599999999996
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "battleSeed": 15838,
+      "placement": "neighbor-before-construction",
+      "plan": "fresh",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 7,
+      "lives": 0,
+      "gold": 15,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:11",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 543.168
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:0",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 2676.4738000000025
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 10034.89464916494
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 923.0032799999998
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2923.891200000001
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 2151.0805866664123
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2214.9504
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 807.630048
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 567.4125718263484
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "battleSeed": 15838,
+      "placement": "neighbor-before-construction",
+      "plan": "nam",
+      "buildPlacement": "coverage",
+      "win": false,
+      "wave": 9,
+      "lives": 0,
+      "gold": 59,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:0",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 4417.757567999997
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3870.8736000000185
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 20762.471876694693
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 2779.8644160000094
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3190.233600000002
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:11",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 137.2918400000055
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 4150.339200000002
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5189.993946222329
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:9",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1247.68037503448
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 612.4800000000001
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 898.9055999999998
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "battleSeed": 15838,
+      "placement": "neighbor-before-construction",
+      "plan": "nam",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 9,
+      "lives": 0,
+      "gold": 19,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 685.6254000000001
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:0",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2587.153800000006
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 14466.94812001377
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3815.0459999999966
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4205.990400000001
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2441.812800000592
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2374.233600000001
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2902.207186666643
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6156.440455752438
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 489.8563999999999
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 730.4831999999999
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 19.080000000000002
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "battleSeed": 23757,
+      "placement": "neighbor-before-construction",
+      "plan": "holy",
+      "buildPlacement": "coverage",
+      "win": true,
+      "wave": 24,
+      "lives": 12,
+      "gold": 5394,
+      "finalOrders": 10,
+      "towers": [
+        {
+          "type": "cheomseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 13578.520088320882
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:14",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 12885.476051111256
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0.15,
+          "damage": 68218.0769760741
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:1",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 21244.800639999903
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 25887.065854241046
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:3",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 15152.870817777288
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 20053.008338889293
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:4",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 16170.77442307152
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:9",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 52437.83968186786
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:18",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 13896.506057759527
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 100.48111999999998
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:16",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4050.0364800000043
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:13",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 19948.883755388153
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:7",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:2",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5152.611955555555
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:19",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4567.152239999999
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0.15,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:5",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "battleSeed": 23757,
+      "placement": "neighbor-before-construction",
+      "plan": "holy",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 14,
+      "lives": 0,
+      "gold": 33,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "hwaseong",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 22739.533792599865
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 7794.961139756717
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 12666.211370222674
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 30775.342225990622
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:14",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4089.729280000001
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 2,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6249.331199999995
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 5774.607329110998
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4504.329599999999
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:12",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6352.643035555421
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1193.5587899999998
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 291.91504484476684
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 746.1120000000001
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:9",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 163.48170000000326
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "battleSeed": 23757,
+      "placement": "neighbor-before-construction",
+      "plan": "fresh",
+      "buildPlacement": "coverage",
+      "win": false,
+      "wave": 21,
+      "lives": 0,
+      "gold": 248,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0.1875,
+          "damage": 61700.55291199995
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0.1875,
+          "damage": 41910.95839999985
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 39232.241667514456
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:14",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4246.412800000004
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 22515.570583235105
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2087.5011199998407
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 13951.574106387938
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 20382.151811799984
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 44413.42006435289
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:4",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 19366.72179200016
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:18",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 16356.95049263762
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:9",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 10731.18376960005
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:5",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 15319.964013000017
+        },
+        {
+          "type": "sungnyemun",
+          "slot": "s25:16",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 26458.128699999936
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4825.088000000001
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:15",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 43755.418362419055
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:2",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3039.232000000003
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:19",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2802.7439999999997
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "battleSeed": 23757,
+      "placement": "neighbor-before-construction",
+      "plan": "fresh",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 9,
+      "lives": 0,
+      "gold": 23,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:11",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 684.5962000000002
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:0",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 4148.4607999999935
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 13838.069593255295
+        },
+        {
+          "type": "seokbinggo",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1325.9769599999997
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2913.6959999999995
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.15,
+          "damage": 2165.746159999341
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3257.807999999998
+        },
+        {
+          "type": "bulguksa",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1033.779651
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4822.672902034278
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 387.19999999999993
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 611.0400000000001
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "battleSeed": 23757,
+      "placement": "neighbor-before-construction",
+      "plan": "nam",
+      "buildPlacement": "coverage",
+      "win": false,
+      "wave": 14,
+      "lives": 0,
+      "gold": 9,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:0",
+          "level": 3,
+          "branch": "A",
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 21085.34825600003
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:6",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 14077.38879999996
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:8",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 18834.579641295262
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 5312.055168000012
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:14",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6011.347200000001
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:11",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 160.26423999999423
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:3",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4765.468799999997
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:1",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 16440.329923333968
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 23970.0553529896
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:18",
+          "level": 2,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1874.1888000000006
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:5",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 6534.268799999996
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 250.902
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:9",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4848.486283333361
+        },
+        {
+          "type": "sungnyemun",
+          "slot": "s25:15",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 926.1240000000001
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:7",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:13",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 4045.735727248156
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:2",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 771.8400000000001
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "battleSeed": 23757,
+      "placement": "neighbor-before-construction",
+      "plan": "nam",
+      "buildPlacement": "exit",
+      "win": false,
+      "wave": 8,
+      "lives": 0,
+      "gold": 69,
+      "finalOrders": 0,
+      "towers": [
+        {
+          "type": "sungnyemun",
+          "slot": "s25:11",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 523.9799999999998
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:0",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0.1875,
+          "damage": 4061.9215999999874
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:7",
+          "level": 3,
+          "branch": "A",
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 12221.332887394768
+        },
+        {
+          "type": "bosingak",
+          "slot": "s25:6",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0.1875,
+          "damage": 4128.685425000007
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:8",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3662.3808
+        },
+        {
+          "type": "haeinsa",
+          "slot": "s25:4",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1540.8658000000917
+        },
+        {
+          "type": "cheomseong",
+          "slot": "s25:17",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 2478.2496
+        },
+        {
+          "type": "seokguram",
+          "slot": "s25:19",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 1994.26430666666
+        },
+        {
+          "type": "gyeongbok",
+          "slot": "s25:10",
+          "level": 1,
+          "branch": null,
+          "syn": 1,
+          "bDmg": 0,
+          "damage": 0
+        },
+        {
+          "type": "hwaseong",
+          "slot": "s25:12",
+          "level": 3,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 3075.9052118781615
+        },
+        {
+          "type": "namhansan",
+          "slot": "s25:18",
+          "level": 1,
+          "branch": null,
+          "syn": 0,
+          "bDmg": 0,
+          "damage": 133.76000000000002
+        }
+      ]
+    }
+  ]
+}

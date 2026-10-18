@@ -1,5 +1,6 @@
 import { getMap, nearestOnPath,posAt } from '../sim/map.js';
 import { SKILLS } from '../data/skills.js';
+import {GANG_WAVE} from '../data/heroes.js';
 
 export function abilityTarget(game,kind,hero,point,skillId) {
   if(!point)return null;
@@ -7,9 +8,9 @@ export function abilityTarget(game,kind,hero,point,skillId) {
   if(kind==='heroSkill') {
     if(hero.heroId==='yi')fan=true;
     else {
-      const limit=hero.heroId==='gang'?4:5,dx=x-hero.x,dy=y-hero.y,d=Math.hypot(dx,dy);reach=limit;
+      const limit=hero.heroId==='gang'?GANG_WAVE.range:5,dx=x-hero.x,dy=y-hero.y,d=Math.hypot(dx,dy);reach=limit;
       if(d>limit){x=hero.x+dx/d*limit;y=hero.y+dy/d*limit;}
-      radius={sejong:1.8,eulji:1.5,gang:.8,gwon:2.3,gwak:.45,ahn:2.2,dangun:2.1}[hero.heroId];
+      radius={sejong:1.8,eulji:1.5,gang:GANG_WAVE.radius,gwon:2.3,gwak:.45,ahn:2.2,dangun:2.1}[hero.heroId];
       dash=hero.heroId==='gang';path=hero.heroId==='gwak';spawnCount=path?3:0;
     }
   } else if(kind==='heroUlt') {

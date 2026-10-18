@@ -221,7 +221,7 @@ export class Renderer {
     if (!this.painted && !this.illustrated) this.drawWater(ctx, time);
 
     // 건설 가능 격자 (배치 중)
-    if (ui.placing || ui.showGrid) this.drawGrid(ctx, v, ui);
+    if (!ui.targeting) this.drawGrid(ctx,v,ui);
     drawSpawns(ctx, map, time, v.wave.phase === 'prep' && v.wave.n < v.wave.total);
 
     // 장판
@@ -416,14 +416,11 @@ export class Renderer {
 
   drawGrid(ctx, v, ui) {
     const map = this.map;
-    const taken = new Set(v.towers.map((t) => t.y * 100 + t.x));
-    for (let y = 0; y < map.h; y++) {
-      for (let x = 0; x < map.w; x++) {
-        if (map.grid[y * map.w + x] !== T_BUILD || taken.has(y * 100 + x)) continue;
-        ctx.strokeStyle = 'rgba(255,255,240,0.22)';
-        ctx.lineWidth = 1;
-        ctx.strokeRect(x * TS + 3, y * TS + 3, TS - 6, TS - 6);
-      }
+    const taken=new Set([...v.towers.map(t=>t.deploymentSlotId),...v.heroes.map(h=>h.deploymentSlotId)]);
+    for(const slot of map.deploymentSlots){
+      if(taken.has(slot.id))continue;
+      ctx.strokeStyle=ui.dragPreview?'rgba(166,230,190,.8)':'rgba(232,218,169,.45)';ctx.lineWidth=1.5;
+      ctx.strokeRect(slot.x*TS+7,slot.y*TS+7,TS-14,TS-14);
     }
     if (ui.hover) {
       ctx.fillStyle = ui.hoverOk ? 'rgba(120,255,150,0.25)' : 'rgba(255,90,70,0.25)';

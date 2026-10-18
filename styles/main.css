@@ -2498,3 +2498,44 @@ div.side-tile:hover {
   #game.touch-ui .virtual-pad { width:92px; height:92px; }
   #game.touch-ui .pad-caption { display:none; }
 }
+
+/* Shared tile battlefield: the command dock consumes layout space below it. */
+#game.tile-mode>.stage-area{min-height:100px;overflow:hidden}
+#game.tile-mode .battle-command-host{flex:0 0 auto;min-width:0;background:linear-gradient(180deg,#182f3c,#0b1d29);border-top:1px solid #bda36b70;padding:4px max(8px,env(safe-area-inset-right)) 6px max(8px,env(safe-area-inset-left));z-index:6}
+#game.tile-mode .battle-command-host[hidden]{display:none}
+.command-dock{position:relative;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:3px 6px;color:#e9dfc6}
+.command-detail{grid-column:1;min-width:0;max-height:43px;overflow-y:auto;font-size:11px;line-height:1.5;padding:2px 0}
+.command-detail .tt{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:700 13px var(--f-bold)}
+.command-detail .td{color:#bbcbc9;font-size:11px}
+.command-close{grid-column:2;grid-row:1;min-width:44px;min-height:44px;background:#132a36;border:1px solid #91a9a150;border-radius:6px;color:#dcd4ba;font-size:24px}
+.command-options{grid-column:1 / -1;display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;touch-action:pan-x;scrollbar-width:thin;padding:2px 0 4px}
+.command-option{flex:0 0 78px;min-width:78px;min-height:70px;display:grid;grid-template-columns:30px minmax(0,1fr);align-content:center;align-items:center;gap:2px 4px;border:1px solid #a7b9a660;border-radius:7px;background:#122a36;color:#eee0b8;padding:5px;cursor:pointer}
+.command-option:hover,.command-option:focus-visible{border-color:#e8cb86;background:#25434b;outline:1px solid #e8cb86}
+.command-option img{width:30px;height:34px;object-fit:contain;grid-row:1 / span 2}
+.command-name{font:700 11px var(--f-bold);line-height:1.35;word-break:keep-all}
+.command-price{font-size:11px;color:#e1bc70}
+.command-glyph{grid-row:1 / span 2;font:700 12px var(--f-bold);color:#e8d7ac}
+.command-option.poor{opacity:.56}.command-option:disabled{opacity:.35;cursor:default}.command-option.armed{border-color:#e7907f;background:#512f31}
+.tile-status{flex:0 0 auto;min-height:23px;padding:3px 10px;background:#0c202be8;border-top:1px solid #77908b44;color:#b5c9c6;font:700 11px var(--f-bold);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#game.tile-mode .build-site{width:44px;height:44px;transform:translate(-50%,-50%);border:0;background:transparent;box-shadow:none;touch-action:none;cursor:pointer;padding:0;opacity:.7}
+#game.tile-mode .build-site::before{content:'';position:absolute;inset:14px;border:1px solid #d5c391ad;border-radius:3px;background:#122a3020;box-shadow:0 0 0 2px #10232b20;transform:rotate(45deg)}
+#game.tile-mode .show-slots .build-site{opacity:1}
+#game.tile-mode .show-slots .build-site::before{inset:10px;background:#718b5a40;border-color:#e5cf91}
+#game.tile-mode .build-site[data-occupant='own-hero']::before{border-color:#9fcbe9;background:#3c809b44}
+#game.tile-mode .build-site[data-occupant='hero']::before{border-color:#dfaca1;background:#af5c4b33}
+#game.tile-mode .build-site[data-drop='free']::before{border-color:#a4e0ac;background:#69b28155}
+#game.tile-mode .build-site[data-drop='blocked']::before{border-color:#ca857c;background:#a54c4c44}
+#game.tile-mode .build-site:hover,#game.tile-mode .build-site:focus-visible{background:transparent;outline:1px solid #d9c38b;border-radius:8px}
+.hero-drag-ghost{position:fixed;z-index:160;left:0;top:0;width:72px;height:112px;margin:-104px 0 0 -36px;pointer-events:none;opacity:.8;filter:drop-shadow(0 0 5px #b9d8bd);display:flex;align-items:center;flex-direction:column}
+.hero-drag-ghost canvas{width:72px;height:100px;object-fit:contain}.hero-drag-ghost span{font:700 10px var(--f-bold);color:#e6ebd0;background:#102a36d9;padding:2px 5px;border-radius:4px;white-space:nowrap}.hero-drag-ghost[data-valid='false']{filter:drop-shadow(0 0 5px #d6877a);opacity:.55}
+#game.tile-mode .hero-card{touch-action:none;cursor:grab}#game.tile-mode .tile-camera-help{font-size:10px;color:#c2cec1;padding:5px}
+#game.tile-mode.touch-ui .hud-bottom{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:3px 5px}
+#game.tile-mode.touch-ui .pgroup.touch-owned{grid-column:1;grid-row:1;flex-wrap:nowrap;padding:0;gap:4px}
+#game.tile-mode.touch-ui .hero-card{flex:0 1 92px;min-width:60px}
+#game.tile-mode.touch-ui .center-cmd{grid-column:2;grid-row:1;width:auto;gap:4px}
+#game.tile-mode.touch-ui .wave-btn{min-width:52px;max-width:82px;min-height:48px;font-size:12px;padding:3px 4px}
+#game.tile-mode.touch-ui .wave-btn small{font-size:9px}
+#game.tile-mode.touch-ui .sk{width:44px;min-width:44px;flex-basis:44px;height:48px}
+#game.tile-mode.touch-ui .items{flex:0 1 auto;max-width:80px;order:1}
+@media(max-width:700px){#game.tile-mode.touch-ui .hud-bottom{grid-template-columns:minmax(0,1fr);gap:2px}#game.tile-mode.touch-ui .pgroup.touch-owned{grid-column:1;grid-row:1;justify-content:center;flex-wrap:wrap}#game.tile-mode.touch-ui .center-cmd{grid-column:1;grid-row:2;justify-content:center}#game.tile-mode.touch-ui .items{flex-basis:100%;max-width:none;justify-content:center}#game.tile-mode.touch-ui .wave-btn{max-width:150px;min-height:44px}#game.tile-mode .tile-camera-help{display:none}}
+@media(min-width:701px) and (max-height:520px){.command-detail{max-height:28px}.command-option{min-height:54px}.command-option img{height:28px}.command-name{font-size:10px}#game.tile-mode .tile-status{font-size:10px;min-height:19px}}

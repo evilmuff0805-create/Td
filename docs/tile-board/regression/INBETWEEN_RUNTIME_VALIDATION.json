@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-11",
+  "passed": 19,
+  "baseHeroes": 8,
+  "specialCostumes": 16,
+  "newPoses": 384,
+  "totalHeroLookPoses": 768,
+  "scope": "display-only supplements for all 24 hero looks; troops retain their approved 448 poses",
+  "alphaReadbacks": 0,
+  "tests": [
+    {
+      "name": "기본 8명·특수 의상 16종의 새 384자세가 기존 기준 높이와 의상 정체성을 보존한다",
+      "passed": true
+    },
+    {
+      "name": "기본 영웅도 로딩 키에 포함하며 소유자·스냅샷 순서와 중복에 영향받지 않는다",
+      "passed": true
+    },
+    {
+      "name": "실제 24개 영웅 외형의 768자세가 방향·배율·본체·가림·그림자를 함께 바꾼다",
+      "passed": true
+    },
+    {
+      "name": "새 보행 네 박자는 이동 거리로 연결되고 20·60·120fps에서 같은 위상을 가진다",
+      "passed": true
+    },
+    {
+      "name": "실제 공격 시각부터 발사→타격 후→복귀하고 같은 cue를 재생하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "정지 중 늦은 공격·피격·기절·위치 패킷도 표시 프레임을 바꾸지 않는다",
+      "passed": true
+    },
+    {
+      "name": "중간 시트가 누락된 특수 의상은 기본·다른 의상의 중간 원화로 바뀌지 않는다",
+      "passed": true
+    },
+    {
+      "name": "의상 원본이 실패하고 의상 중간 원화만 성공해도 옷이 섞이지 않는다",
+      "passed": true
+    },
+    {
+      "name": "같은 영웅의 흰 의상 1P·금빛 의상 2P는 중간 동작과 재질을 독립적으로 유지한다",
+      "passed": true
+    },
+    {
+      "name": "서로 다른 의상도 두 소유자 시뮬레이션 명령과 스냅샷·두 동작 상태가 독립적이다",
+      "passed": true
+    },
+    {
+      "name": "기본·두 의상·중복 소유자가 함께 있어도 선택한 세 중간 시트만 준비한다",
+      "passed": true
+    },
+    {
+      "name": "특수 의상 중간 시트만 실패하면 기존 의상 보행으로 복귀하고 반복 재요청하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "기본 영웅 중복·반복 스냅샷은 선택한 시트와 준비 Promise를 재요청하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "코어와 중간 시트는 어느 순서로 끝나도 마지막 원화까지 전투를 기다린다",
+      "passed": true
+    },
+    {
+      "name": "기본 영웅 교체는 활성·사망 루트부터 제거하고 이전 시트 GPU 자원을 해제한다",
+      "passed": true
+    },
+    {
+      "name": "늦은 이전 완료와 전장 종료 뒤 완료는 현재 그림·DOM을 되살리지 않는다",
+      "passed": true
+    },
+    {
+      "name": "일부 중간 시트 실패는 원본 동작으로 대체하고 반복 수신 때 재요청하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "두 소유자 그림 fixture의 실제 HUD는 두 중간 시트를 첫 프레임부터 기다린 뒤 시계를 재개한다",
+      "passed": true
+    },
+    {
+      "name": "게스트는 중간 원화 대기 중에도 후속 스냅샷과 이벤트를 계속 받는다",
+      "passed": true
+    }
+  ]
+}

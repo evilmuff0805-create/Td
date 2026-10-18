@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "note": "Raw Windows progression source hash matches working file; Git commit source is identical after CRLF/LF normalization. Public executable bundle will also be compared byte for byte.",
+  "files": [
+    {
+      "path": "src/data/stages.js",
+      "progressionRawSha256": "956691778369f72e726c4a5eb0111e21a8e214e9ee159b74e2c340d05f03e6c1",
+      "gitStagedSha256": "10ce2237a557785ac61ef56190f8e38878cbcec87e4def3c3fe9c0ea317a20c7",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/data/deployment.js",
+      "progressionRawSha256": "151c77516884fa0d83b0a93b53bb3039abe24b2825fe0b900aec27ee7b1e2b6a",
+      "gitStagedSha256": "151c77516884fa0d83b0a93b53bb3039abe24b2825fe0b900aec27ee7b1e2b6a",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/data/heroes.js",
+      "progressionRawSha256": "27bd5de769881548fe40d15213674ae27bf212d4f0fcbbf72c9b2abf0f4525c9",
+      "gitStagedSha256": "27bd5de769881548fe40d15213674ae27bf212d4f0fcbbf72c9b2abf0f4525c9",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/sim/sim.js",
+      "progressionRawSha256": "abeb676da1aef3011ce7537173315e75a01ebf0360f4780c1c15764b7e3e4df4",
+      "gitStagedSha256": "abeb676da1aef3011ce7537173315e75a01ebf0360f4780c1c15764b7e3e4df4",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/sim/combat.js",
+      "progressionRawSha256": "6607bf16b96ba177dc9c79989a146f83715b589658b6ff40cdaa787fcc02ddf0",
+      "gitStagedSha256": "ad3804f257395b048fc04d29f5fcf134259fb87293c581d13c5eb249d9d5a38c",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/sim/abilities.js",
+      "progressionRawSha256": "f29992065a954e17bf6537753c11e91c7b064b5770171bc7dfcfd522778ccdd5",
+      "gitStagedSha256": "f29992065a954e17bf6537753c11e91c7b064b5770171bc7dfcfd522778ccdd5",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/game/session.js",
+      "progressionRawSha256": "326933a1c65323f1569241a9036da7ad14f410132362e48c35911b732a75fb19",
+      "gitStagedSha256": "c40ee1961628090abaa33cf2f49c2d8fac161e94cd4ec177373aaefe03a4f412",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/game/battle-setup.js",
+      "progressionRawSha256": "782239d1a44c8b8021bd9535df8c86a0461dcefb5a9d75f05d60ea16800f82f5",
+      "gitStagedSha256": "782239d1a44c8b8021bd9535df8c86a0461dcefb5a9d75f05d60ea16800f82f5",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/meta/profile.js",
+      "progressionRawSha256": "91587ee2f28f9f06fafa1abf982efe56cd2238d0afa5c86b62ff9cbb1f412186",
+      "gitStagedSha256": "a428b33666ce535266f6b856e58f004cd92cfa4e877247888c63a10d619a95ef",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "src/sim/ai.js",
+      "progressionRawSha256": "27b0a9e2b6411d2f1a3f6fa095432fbdd87d5a9987a037c31b09ca8e9b3a6443",
+      "gitStagedSha256": "27b0a9e2b6411d2f1a3f6fa095432fbdd87d5a9987a037c31b09ca8e9b3a6443",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "tools/verify-progression.mjs",
+      "progressionRawSha256": "6016ad34936bbeb4f4684eb2f710dc28c4602921b4f488b5fac38a6725fdffdf",
+      "gitStagedSha256": "6016ad34936bbeb4f4684eb2f710dc28c4602921b4f488b5fac38a6725fdffdf",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "tools/prepared-campaign-policy.mjs",
+      "progressionRawSha256": "8a870a8261647f57b05fbda346670fe0ff5440c2fb2999bfd4776120838471d1",
+      "gitStagedSha256": "8a870a8261647f57b05fbda346670fe0ff5440c2fb2999bfd4776120838471d1",
+      "sameExceptWindowsLineEndings": true
+    },
+    {
+      "path": "tools/campaign-tactics.mjs",
+      "progressionRawSha256": "bfd6591bc5c6d040e5e469b214aa9c13e8fc72ddc607c00df83dfd45319b21f3",
+      "gitStagedSha256": "bfd6591bc5c6d040e5e469b214aa9c13e8fc72ddc607c00df83dfd45319b21f3",
+      "sameExceptWindowsLineEndings": true
+    }
+  ]
+}

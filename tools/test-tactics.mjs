@@ -1,3 +1,4 @@
+import {applyFixtureCommand as applyCommand} from './tile-fixtures.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import * as T from 'three';
@@ -9,7 +10,7 @@ import { BattleEffects } from '../src/3d/effects.js';
 import { WinterWorld } from '../src/3d/world.js';
 import { paintBattleEvent } from '../src/3d/battle-events.js';
 import { ABILITY_SAMPLES,createAbilitySample } from '../src/3d/ability-samples.js';
-import { createGame,applyCommand,step,DT } from '../src/sim/sim.js';
+import { createGame,step,DT } from '../src/sim/sim.js';
 import { SnapshotEncoder } from '../src/sim/snapshot.js';
 import { SKILL_ORDER,SKILLS } from '../src/data/skills.js';
 import { COMBOS,findCombo } from '../src/data/combos.js';
@@ -20,7 +21,7 @@ async function test(name,run){await run();passed++;console.log(`  ✔ ${name}`);
 function ready(layout){const art=new PaintedSignatures(layout);art.image={width:layout.width,height:layout.height};art.ready=true;return art;}
 async function withCanvas(run){
   const previous=globalThis.document,draws=[];
-  globalThis.document={createElement:()=>({width:0,height:0,getContext:()=>({drawImage:(...a)=>draws.push(a)})})};
+  globalThis.document={createElement:()=>({width:0,height:0,getContext:()=>new Proxy({drawImage:(...a)=>draws.push(a),createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]??(()=>{})})})};
   try{return await run(draws);}finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}
 }
 function fixture(){

@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 import { createRoomServer } from '../server/server.js';
 import { Net } from '../src/net/net.js';
 import { Session } from '../src/game/session.js';
+import { getMap } from '../src/sim/map.js';
+import { battleVersion } from '../src/data/deployment.js';
 const supplied=process.argv.find(x=>x.startsWith('--url='))?.slice(6);let service,base;
 if(supplied){base=new URL(supplied);assert.ok(['https:','http:'].includes(base.protocol));assert.equal(base.username,'');assert.equal(base.password,'');}
 else{service=createRoomServer({root:fileURLToPath(new URL('../dist/web/',import.meta.url)),publicOnly:true});await new Promise((resolve,reject)=>{service.server.once('error',reject);service.server.listen(0,'127.0.0.1',resolve);});base=new URL(`http://127.0.0.1:${service.server.address().port}`);}
@@ -23,12 +25,15 @@ try{
   });
   await test('two actual WebSocket clients join a dedicated room and exchange a guest command',async()=>{
     const code=await a.create();await b.join(code);await until(()=>a.peer,'peer joined');
-    a.send({t:'start',stageId:'s1',difficulty:'normal',seed:7});
+    a.send({t:'start',...battleVersion(),stageId:'s1',difficulty:'normal',seed:7});
     const specs=[{name:'공개 접속 검수 1P',heroes:['yi'],skills:['singijeon','bongsu'],towers:['sungnyemun']},{name:'공개 접속 검수 2P',heroes:['sejong'],skills:['singijeon','bongsu'],towers:['sungnyemun']}];
     host=new Session({kind:'host',stageId:'s1',difficulty:'normal',seed:7,specs,net:a});guest=new Session({kind:'guest',stageId:'s1',difficulty:'normal',net:b});
     host.beginSync();await until(()=>{guest.update(0);host.update(0);return guest.view.heroes.length===2&&!host.networkWaiting&&!guest.networkWaiting;},'initial hydration');
-    guest.send({t:'move',p:1,h:1,x:12.5,y:7.5});await until(()=>host.state.cmds.some(c=>c.t==='move'),'guest command');
-    host.update(.1);assert.equal(host.state.heroes[1].tx,12.5);assert.equal(host.state.heroes[1].ty,7.5);assert.equal(host.state.players[1].left,false);
+    const slot=getMap('s1').deploymentSlots[2];assert.equal(guest.relocateHero(1,slot.id),true);
+    await until(()=>host.state.cmds.some(c=>c.t==='relocate'),'guest drop');
+    host.update(.1);assert.equal(host.state.heroes[1].deploymentSlotId,slot.id);assert.equal(host.state.heroes[1].x,slot.cx);assert.equal(host.state.heroes[1].y,slot.cy);assert.equal(host.state.players[1].left,false);
+    await until(()=>{host.update(.02);guest.update(0);return !guest.deploymentPending;},'drop approval');
+    assert.equal(guest.lastDeploymentResult.ok,true);
   });
   await test('transport reconnect restores a paused battle without replaying old commands',async()=>{
     host.state.paused=true;let restored=0;b.on('reconnected',()=>restored++);b._breakSocket();
@@ -36,8 +41,18 @@ try{
     await until(()=>{guest.update(0);host.update(0);return !host.networkWaiting&&!guest.networkWaiting;},'rehydration ACK');
     assert.equal(host.state.paused,true);assert.equal(guest.view.heroes.length,2);assert.equal(host.state.players[1].left,false);assert.equal(host.state.cmds.length,0);
   });
-  await test('sustained directional commands use host coordinates over the real connection',async()=>{
-    host.state.paused=false;const h=host.state.heroes[1];let x=h.x;for(let i=0;i<12;i++){assert.equal(guest.send({t:'move',p:0,h:1,dx:1,dy:0,direct:true,x:-999,y:-999}),true);await until(()=>host.state.cmds.some(c=>c.direct),'direction command');host.update(.1);assert.ok(h.x>=x);x=h.x;}guest.send({t:'move',p:0,h:1,stop:true,x:-999,y:-999});await until(()=>host.state.cmds.some(c=>c.stop),'stop command');host.update(.1);assert.equal(h.tx,h.x);assert.equal(h.ty,h.y);
+  await test('approved tile relocation and foreign-hero refusal over the real connection',async()=>{
+    host.state.paused=false;
+    await until(()=>{host.update(.02);guest.update(0);return !guest.view.paused;},'unpause approval');
+    const slot=getMap('s1').deploymentSlots[3];assert.equal(guest.relocateHero(1,slot.id),true);
+    await until(()=>host.state.cmds.some(c=>c.t==='relocate'),'second drop');host.update(.1);
+    await until(()=>{host.update(.02);guest.update(0);return !guest.deploymentPending;},'second approval');
+    assert.equal(guest.view.heroes[1].deploymentSlotId,slot.id);assert.equal(guest.view.heroes[1].x,slot.cx);
+    const before=host.state.heroes[0].deploymentSlotId;
+    assert.equal(guest.relocateHero(0,getMap('s1').deploymentSlots[4].id),true);
+    await until(()=>host.state.cmds.some(c=>c.t==='relocate'),'foreign drop');host.update(.1);
+    await until(()=>{host.update(.02);guest.update(0);return !guest.deploymentPending;},'foreign refusal');
+    assert.equal(guest.lastDeploymentResult.reason,'owner');assert.equal(host.state.heroes[0].deploymentSlotId,before);
   });
   await test('host background waits for foreground snapshot and guest ACK',async()=>{
     host.setBackground(true);await until(()=>guest.hostBackground,'background notice');const tick=host.state.tick;assert.equal(guest.send({t:'nextWave',p:1}),false);host.update(.1);assert.equal(host.state.tick,tick);host.setBackground(false);await until(()=>{guest.update(0);host.update(0);return !host.networkWaiting&&!guest.networkWaiting;},'foreground hydration');assert.equal(host.state.paused,false);

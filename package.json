@@ -82,6 +82,10 @@
     "test:mobile-pad": "node tools/test-mobile-pad.mjs",
     "test:online-transition": "node tools/test-online-transition.mjs",
     "test:solo-support": "node tools/test-one-hero-support.mjs",
-    "test:battle-menu-lifetime": "node tools/test-battle-menu-lifetime.mjs"
+    "test:battle-menu-lifetime": "node tools/test-battle-menu-lifetime.mjs",
+    "test:tiles": "node tools/test-tile-board.mjs",
+    "test:tile-regression": "node tools/test-tile-regression.mjs",
+    "test:tile-progression": "node tools/verify-progression.mjs --policy=prepared --seeds=3 --output=TILE_BOARD_SOLO_PROGRESSION.json",
+    "test:tile-shop-progression": "node tools/verify-progression.mjs --policy=prepared --exchange=on-retry --seeds=3 --output=TILE_BOARD_SHOP_PROGRESSION.json"
   }
 }

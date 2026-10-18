@@ -6,7 +6,7 @@ import { SKILLS } from '../data/skills.js';
 import { RESONANCE_MAX } from '../data/combos.js';
 import { STAGE_BY_ID, parseWave } from '../data/stages.js';
 import { mapOf, d2 } from './combat.js';
-import { T_BUILD } from './map.js';
+import { T_BUILD, deploymentAt, deploymentSlot } from './map.js';
 import { autoAim, comboStatus } from './abilities.js';
 import { metaCost } from '../data/quests.js';
 
@@ -20,6 +20,7 @@ const PLANS = {
   nam: ['sungnyemun', 'namhansan', 'hwaseong', 'bosingak', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'seokguram', 'gyeongbok', 'hwaseong', 'U', 'U', 'namhansan', 'cheomseong', 'U', 'U', 'U', 'bosingak', 'seokguram', 'U', 'U', 'U', 'U'],
   ice: ['sungnyemun', 'sungnyemun', 'hwaseong', 'seokbinggo', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'seokguram', 'gyeongbok', 'hwaseong', 'U', 'U', 'sungnyemun', 'cheomseong', 'U', 'U', 'U', 'seokbinggo', 'seokguram', 'U', 'U', 'U', 'U'],
   bul: ['sungnyemun', 'sungnyemun', 'hwaseong', 'bosingak', 'U', 'cheomseong', 'haeinsa', 'U', 'U', 'bulguksa', 'gyeongbok', 'hwaseong', 'U', 'U', 'sungnyemun', 'cheomseong', 'U', 'U', 'U', 'bosingak', 'bulguksa', 'U', 'U', 'U', 'U'],
+  holy: ['hwaseong','cheomseong','seokguram','haeinsa','U','U','seokbinggo','U','U','seokguram','U','U','U','gyeongbok','seokguram','U','U','U','bulguksa','U','U','U'],
 };
 
 export function createBot(s, p, opts = {}) {
@@ -29,7 +30,7 @@ export function createBot(s, p, opts = {}) {
   const spots = [];
   for (let y = 0; y < map.h; y++) {
     for (let x = 0; x < map.w; x++) {
-      if (map.grid[y * map.w + x] !== T_BUILD) continue;
+      if (!deploymentAt(map,x,y)) continue;
       const c = { x: x + 0.5, y: y + 0.5 };
       let score = 0;
       let near = 0;
@@ -63,7 +64,7 @@ function uncoveredPath(s, bot) {
 }
 
 function freeSpot(s, bot, kind, pathIdx = -1) {
-  const taken = new Set(s.towers.map((t) => t.y * 100 + t.x));
+  const taken=new Set([...s.towers.map(t=>t.y*100+t.x),...s.heroes.map(h=>{const slot=deploymentSlot(mapOf(s),h.deploymentSlotId);return slot.y*100+slot.x;})]);
   if (pathIdx >= 0) {
     const map = mapOf(s);
     const total = map.paths[pathIdx].total;
@@ -97,20 +98,8 @@ export function botThink(s, bot, send) {
   const w = s.wave;
   // 첫 파도 시작
   if (w.n === 0 && bot.p === 0) send({ t: 'nextWave', p: bot.p });
-  // 영웅 배치: 경로 샘플이 가장 많이 보이는 지점
-  const myHeroes = s.heroes.filter((h) => h.owner === bot.p);
-  if (!bot.posted) {
-    bot.posted = true;
-    const map = mapOf(s);
-    myHeroes.forEach((h, i) => {
-      const pathIdx = Math.min(s.coop ? bot.p : h.slot, map.paths.length - 1);
-      const path = map.paths[pathIdx];
-      const target = map.samples.find((sm) => sm.path === pathIdx && sm.d > path.total * (0.35 + i * 0.15)) ||
-        map.samples.find((sm) => sm.d > 4);
-      const melee = HEROES[h.heroId].block > 0;
-      if (target) send({ t: 'move', p: bot.p, h: s.heroes.indexOf(h), x: target.x + (melee ? 0 : 0.8), y: target.y + (melee ? 0 : 0.8) });
-    });
-  }
+  // Initial deployment uses the same authored slots as human players.
+  bot.posted=true;
   // 다음 파도 미리보기에 시노비가 있으면 첨성대부터 (사람이 하는 대응)
   const upcoming = upcomingTypes(s);
   if ((upcoming.has('ninja') || s.enemies.some((e) => e.stealth)) && pl.towers.includes('cheomseong')) {
@@ -118,8 +107,7 @@ export function botThink(s, bot, send) {
     if (blind >= 0) {
       if (pl.gold < price('cheomseong')) return;
       const sp = freeSpot(s, bot, 'star', blind);
-      if (sp) send({ t: 'build', p: bot.p, x: sp.x, y: sp.y, tower: 'cheomseong' });
-      return;
+      if(sp){send({t:'build',p:bot.p,x:sp.x,y:sp.y,tower:'cheomseong'});return;}
     }
   }
   // 중장(철갑·충차)이 오면 갑옷을 무시하는 신성·화기 유산을 먼저
@@ -129,8 +117,7 @@ export function botThink(s, bot, send) {
     const pick = pl.towers.includes('seokguram') && pl.gold >= price('seokguram') ? 'seokguram' : 'cheomseong';
     if (pl.gold < price(pick)) return;
     const sp = freeSpot(s, bot, TOWERS[pick].kind);
-    if (sp) send({ t: 'build', p: bot.p, x: sp.x, y: sp.y, tower: pick });
-    return;
+    if(sp){send({t:'build',p:bot.p,x:sp.x,y:sp.y,tower:pick});return;}
   }
   // 소비
   for (let guard = 0; guard < 4; guard++) {

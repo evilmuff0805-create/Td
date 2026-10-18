@@ -1,3 +1,5 @@
+import {battleVersion} from '../src/data/deployment.js';
+import {getMap,slotOccupant} from '../src/sim/map.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {Session} from '../src/game/session.js';
@@ -22,7 +24,7 @@ test('entry accepts exactly one hero per player and rejects local or malformed r
   for(const bad of [{kind:'local'}, {stageId:'__proto__'}, {difficulty:'constructor'}, {specs:[]}, {specs:[{heroes:[]}]}, {specs:[{heroes:['yi','sejong']}]}, {specs:[{heroes:['__proto__']}]}, {kind:'host',specs:[{heroes:['yi']},{heroes:['yi']}]}])assert.throws(()=>new Session({...setup,...bad}));
 });
 test('received picks are checked before display, agree with spec and sanitize only valid data',()=>{
-  const spec=playerSpec(defaultProfile(),['yi'],['singijeon','bongsu']),pick={hero:'yi',skills:spec.skills,name:'동료',ready:true,spec};
+  const spec=playerSpec(defaultProfile(),['yi'],['singijeon','bongsu']),pick={...battleVersion(),hero:'yi',skills:spec.skills,name:'동료',ready:true,spec};
   assert.ok(networkPick(pick));
   for(const change of [{hero:'constructor'}, {hero:'sejong'}, {skills:['singijeon','bad']},{skills:['bongsu','singijeon']},{spec:{...spec,heroes:[]}},{spec:{...spec,heroes:['yi','sejong']}},{spec:{...spec,towers:['__proto__']}}])assert.equal(networkPick({...pick,...change}),null);
   const safe=networkPick({...pick,rank:Infinity,spec:{...spec,heroLv:{yi:99},towerLv:{sungnyemun:NaN},items:{insam:99},skins:{yi:'sejong_blue'}}});
@@ -36,14 +38,16 @@ test('old two-hero saves normalize selection while currency, purchases and histo
 test('all eight solo heroes cast, die, respawn and round-trip as a single hero',()=>{
   for(const id of HERO_ORDER){const s=new Session({...setup,specs:[{heroes:[id]}]});const h=s.state.heroes[0];h.skillCd=h.ultCd=0;s.send({t:'heroSkill',p:0,h:0,x:h.x+1,y:h.y});s.send({t:'heroUlt',p:0,h:0,x:h.x+1,y:h.y});s.update(.1);assert.equal(s.view.heroes.length,1);assert.equal(comboStatus(s.state).ok,false);h.buffs.invulnT=h.buffs.gwakT=0;hurtHero(s.state,h,h.maxHp*100);assert.ok(h.dead);h.respawn=.001;s.update(.1);assert.equal(h.dead,false);const view=emptyView({stageId:'s1',difficulty:'normal'});applySnapshot(view,JSON.parse(JSON.stringify(new SnapshotEncoder().encode(s.state,[]))));assert.equal(view.heroes.length,1);assert.equal(view.heroes[0].heroId,id);s.destroy();}
 });
-test('late guest display positions never reverse a held directional command',()=>{
-  for(const speed of [1,2,3]){const p=onlineFixture(),h=p.host.state.heroes[1];p.host.state.speed=speed;const y=h.y;let last=h.x;for(let i=0;i<90;i++){if(i%6===0)p.guest.send({t:'move',p:0,h:1,dx:1,dy:0,direct:true,x:-999,y:-999});p.host.update(1/60);assert.ok(h.x>=last);assert.equal(h.y,y);last=h.x;}assert.ok(h.x>1);p.destroy();}
+test('guest positions snap to approved slots and arbitrary legacy movement is rejected',()=>{
+  for(const speed of [1,2,3]){const p=onlineFixture();p.host.beginSync();p.guest.update(0);const h=p.host.state.heroes[1],slot=getMap('s1').deploymentSlots.find(a=>!slotOccupant(p.host.state,a.id));p.host.state.speed=speed;
+    const at={x:h.x,y:h.y};for(const direct of [false,true])p.guest.send({t:'move',p:0,h:1,x:-999,y:-999,dx:1,dy:0,direct});p.host.update(.1);assert.deepEqual({x:h.x,y:h.y},at);
+    assert.equal(p.guest.relocateHero(1,slot.id),true);p.host.update(.1);p.host.beginSync();p.guest.update(0);assert.equal(h.deploymentSlotId,slot.id);assert.equal(p.guest.view.heroes[1].x,slot.cx);assert.equal(p.guest.view.heroes[1].y,slot.cy);p.destroy();
+  }
 });
-test('host rejects nonfinite, excessive, zero or foreign directional input and uses its current stop position',()=>{
-  const p=onlineFixture(),h=p.host.state.heroes[1],own=p.host.state.heroes[0],origin={x:h.tx,y:h.ty};
-  for(const [dx,dy]of [[NaN,0],[Infinity,1],[2,0],[0,-2],[0,0],['1',0]]){p.guest.send({t:'move',h:1,p:0,dx,dy,direct:true});p.host.update(0);assert.deepEqual({x:h.tx,y:h.ty},origin);}
-  p.guest.send({t:'move',h:0,p:0,dx:1,dy:0,direct:true});p.host.update(.1);assert.equal(own.tx,own.x);assert.ok(!own.directMove);
-  p.guest.send({t:'move',h:1,p:0,dx:1,dy:0,direct:true});p.host.update(.1);p.guest.send({t:'move',h:1,p:0,x:-99,y:-99,stop:true});p.host.update(.1);assert.equal(h.tx,h.x);assert.equal(h.ty,h.y);assert.ok(!h.directMove);p.destroy();
+test('host refuses foreign hero drops and nonfinite or old-coordinate movement',()=>{
+  const p=onlineFixture(),h=p.host.state.heroes[0],at={x:h.x,y:h.y};
+  p.guest.send({t:'relocate',p:0,h:0,slotId:getMap('s1').deploymentSlots[3].id,requestId:1,battleKey:p.host.state.battleKey});
+  for(const dx of [NaN,Infinity,2,0,'1'])p.guest.send({t:'move',p:0,h:0,dx,dy:0,direct:true});p.host.update(.1);assert.deepEqual({x:h.x,y:h.y},at);assert.ok(!h.directMove);p.destroy();
 });
 test('host background freezes time and input; lost foreground notification heals through full sync',()=>{
   const p=onlineFixture([{heroes:['gwon']},{heroes:['sejong']}]);p.host.send({t:'move',p:0,h:0,dx:1,dy:0,direct:true});p.host.update(.1);p.host.setBackground(true);assert.ok(p.guest.hostBackground);const tick=p.host.state.tick,h=p.host.state.heroes[0],at={x:h.x,y:h.y};assert.ok(!h.directMove);assert.deepEqual(h.post,at);assert.equal(p.guest.send({t:'wave',p:1}),false);p.host.update(.1);assert.equal(p.host.state.tick,tick);
@@ -56,7 +60,7 @@ test('stalled snapshots gate guest commands until full hydration succeeds',()=>{
   const p=onlineFixture();p.a.send({t:'snap',s:new SnapshotEncoder().encode(p.host.state,[])});p.guest.snapAt=performance.now()-2000;assert.ok(p.guest.snapshotStale);assert.equal(p.guest.send({t:'move',h:1,dx:1,dy:0,direct:true}),false);p.host.beginSync();p.guest.update(0);assert.equal(p.guest.networkWaiting,false);p.destroy();
 });
 test('permanent departure aborts without transferring heroes, structures or wallets',()=>{
-  const p=onlineFixture();p.host.send({t:'build',p:0,tower:'sungnyemun',x:13,y:6});p.guest.send({t:'build',p:1,tower:'sungnyemun',x:14,y:6});p.host.update(.1);const before=JSON.stringify({heroes:p.host.state.heroes.map(h=>h.owner),towers:p.host.state.towers.map(t=>t.owner),gold:p.host.state.players.map(x=>x.gold)}),tick=p.host.state.tick;
+  const p=onlineFixture();p.host.send({t:'build',p:0,tower:'sungnyemun',...getMap('s1').deploymentSlots[2]});p.guest.send({t:'build',p:1,tower:'sungnyemun',...getMap('s1').deploymentSlots[3]});p.host.update(.1);const before=JSON.stringify({heroes:p.host.state.heroes.map(h=>h.owner),towers:p.host.state.towers.map(t=>t.owner),gold:p.host.state.players.map(x=>x.gold)}),tick=p.host.state.tick;
   p.a.emit('peer-left');assert.ok(p.host.interrupted);assert.equal(p.host.send({t:'move',p:0,h:1,x:1,y:1}),false);p.host.update(.1);assert.equal(p.host.state.tick,tick);assert.equal(JSON.stringify({heroes:p.host.state.heroes.map(h=>h.owner),towers:p.host.state.towers.map(t=>t.owner),gold:p.host.state.players.map(x=>x.gold)}),before);p.destroy();
 });
 test('a direct sim leave aborts instead of making the other hero controllable',()=>{

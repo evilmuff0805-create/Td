@@ -4,7 +4,7 @@ import { TOWER_ORDER } from '../data/towers.js';
 import { HEROES } from '../data/heroes.js';
 import { skinDef } from '../data/skins.js';
 import { createGame, applyCommand } from '../sim/sim.js';
-import { getMap, T_BUILD } from '../sim/map.js';
+import { getMap, T_BUILD, vacantSlot } from '../sim/map.js';
 import { normalizeBattleSkills } from './battle-controls.js';
 
 export const STAGE_ID = 'winter3d';
@@ -31,6 +31,7 @@ export const WINTER_STAGE = {
     'TT......TTT.......HH...T',
     'TTT....TTTT....MMMM..TTT',
   ],
+  deploymentSlots:[[10,5],[12,5],[8,7],[16,4],[10,7],[4,8],[4,10],[7,8],[8,5],[12,7],[14,5],[16,7],[14,8],[17,5],[18,2],[20,2],[21,4],[9,3],[12,3],[7,10]],
   paths: [[[-1, 9], [6, 9], [6, 6], [15, 6], [15, 3], [22, 3]]],
   waves: [
     'ash*9@1.1', 'ash*14@0.85', 'ash*12@0.7, sam*2@3+5',
@@ -53,8 +54,7 @@ export function newWinterGame(seed = 20261009, skins = {}) {
 
 export function canBuildAt(game, x, y) {
   const map = getMap(game.stageId);
-  return Number.isInteger(x) && Number.isInteger(y) && x >= 0 && y >= 0 && x < map.w && y < map.h
-    && map.grid[y * map.w + x] === T_BUILD && !game.towers.some((t) => t.x === x && t.y === y);
+  return !!vacantSlot(map,game,x,y);
 }
 
 export function campaignSupport(stageId) {

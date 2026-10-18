@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-10-18T09:38:29.760Z",
+  "tests": 15,
+  "allPassed": true,
+  "combos": 11,
+  "newFrames": 176,
+  "selectionOnlyLoading": true,
+  "maximumTargets": 24,
+  "maximumEffectRoots": 64,
+  "localCoopRulesUnchanged": true,
+  "results": [
+    {
+      "name": "11합격기 각각은 독립 16프레임과 top-down 지면 원점을 가진다",
+      "passed": true
+    },
+    {
+      "name": "준비 로스터는 선택 조합만 요청하고 역순·중복·빈 게스트를 처리한다",
+      "passed": true
+    },
+    {
+      "name": "176프레임 UV와 의미상 원점은 개별 mesh에 적용되고 바닥 발원점은 고정된다",
+      "passed": true
+    },
+    {
+      "name": "새 16프레임과 누락된 원화의 기존 8프레임은 한 전장에서 각자 범위를 지킨다",
+      "passed": true
+    },
+    {
+      "name": "지원·회복 3종도 전용 원화를 실제 아군 위치에만 표시한다",
+      "passed": true
+    },
+    {
+      "name": "지연 착탄 2종은 cast 때 지면 폭발을 만들지 않고 impact 좌표에서만 재생한다",
+      "passed": true
+    },
+    {
+      "name": "16프레임 재생은 동일 경과 시간·정지·수명 종료에서 같은 상태다",
+      "passed": true
+    },
+    {
+      "name": "64효과·24대상 상한과 종료시 독립 geometry/material 1회 해제를 유지한다",
+      "passed": true
+    },
+    {
+      "name": "선택 조합만 로드하고 반복·공통 미완료 요청을 중복하지 않는다",
+      "passed": true
+    },
+    {
+      "name": "새 조합 준비 후 도착한 이전 원화는 새 textures와 준비 상태를 덮어쓰지 않는다",
+      "passed": true
+    },
+    {
+      "name": "전용 한 장 실패는 공용으로 대체하며 다른 조합과 반복 요청을 보존한다",
+      "passed": true
+    },
+    {
+      "name": "공용 4장이 모두 실패해도 성공한 전용 원화로 재생한다",
+      "passed": true
+    },
+    {
+      "name": "서로 다른 전장은 전용 GPU를 소유하며 교체/종료시 한 번만 해제한다",
+      "passed": true
+    },
+    {
+      "name": "종료 뒤 늦은 원화 응답은 texture나 준비 상태를 되살리지 않는다",
+      "passed": true
+    },
+    {
+      "name": "첫 틱 준비는 영웅과 합격기 모두 완료한 현재 전장에만 허용한다",
+      "passed": true
+    }
+  ]
+}

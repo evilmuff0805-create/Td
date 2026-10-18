@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-11",
+  "scope": "Pure room/session cases and actual loopback WebSocket transport faults; not an external-network two-device test.",
+  "tests": 22,
+  "allPassed": true,
+  "results": [
+    {
+      "name": "unexpected disconnect reserves its slot; explicit leave releases immediately",
+      "passed": true
+    },
+    {
+      "name": "secret resume replaces a blackholed socket and its late close cannot evict replacement",
+      "passed": true
+    },
+    {
+      "name": "wrong, malformed and expired credentials cannot recover a room",
+      "passed": true
+    },
+    {
+      "name": "started rooms reject fresh replacements and replay start before restoration to a resumed guest",
+      "passed": true
+    },
+    {
+      "name": "guest cannot forge host start, configuration, snapshots or terminal results",
+      "passed": true
+    },
+    {
+      "name": "atomic final result is acknowledged, replayed after host cleanup, and expires",
+      "passed": true
+    },
+    {
+      "name": "terminal cache cancels older disconnect timers and retains guest credentials for its full lifetime",
+      "passed": true
+    },
+    {
+      "name": "restored state freezes host until guest snapshot and art are both ready, without replaying input",
+      "passed": true
+    },
+    {
+      "name": "full restoration clears stale towers and paused state remains user-controlled",
+      "passed": true
+    },
+    {
+      "name": "overlapping sync requests reject an old ACK and complete on the next guest frame",
+      "passed": true
+    },
+    {
+      "name": "host restored after permanent departure aborts without transfer or waiting for ACK",
+      "passed": true
+    },
+    {
+      "name": "permanent guest departure after simulated result but before server acceptance aborts",
+      "passed": true
+    },
+    {
+      "name": "failed snapshot sends force next full tower state; result retries preserve full terminal data",
+      "passed": true
+    },
+    {
+      "name": "real WebSocket guest and host recover in either order with hydration ACK",
+      "passed": true
+    },
+    {
+      "name": "accepted battle start is replayed after loss before lobby receipt",
+      "passed": true
+    },
+    {
+      "name": "real atomic terminal cache restores result and stats after host closes",
+      "passed": true
+    },
+    {
+      "name": "permanent expiry emits once and never renews the reconnect deadline",
+      "passed": true
+    },
+    {
+      "name": "backpressure drops unsafe queued commands and close cancels reconnect work",
+      "passed": true
+    },
+    {
+      "name": "closing during a pending connect rejects promptly and releases the reconnect promise",
+      "passed": true
+    },
+    {
+      "name": "app heartbeat detects silent transport loss even when TCP is still open",
+      "passed": true
+    },
+    {
+      "name": "WebSocket parser rejects unmasked and orphan continuation messages",
+      "passed": true
+    },
+    {
+      "name": "WebSocket parser caps aggregate fragmented payload and rejects oversized controls",
+      "passed": true
+    }
+  ]
+}

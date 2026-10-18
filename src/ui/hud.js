@@ -1,4 +1,4 @@
-// 전투 화면: 1인 1영웅 · 마우스/모바일 패드 · 방 코드 협동
+// 전투 화면: 1인 1영웅 · 공용 타일/영웅 드래그 · 방 코드 협동
 import { h, clear, toast, modal, fmt } from './dom.js';
 import { Renderer } from '../render/renderer.js';
 import { towerIcon } from '../render/draw-towers.js';
@@ -12,16 +12,16 @@ import { TACTICS } from '../data/tactics.js';
 import { STAGE_BY_ID, DIFFICULTY } from '../data/stages.js';
 import { findCombo, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import { EARLY_BONUS_PER_SEC } from '../sim/sim.js';
-import { getMap, tileAt, nearestOnPath, T_BUILD } from '../sim/map.js';
+import { getMap, nearestOnPath, deploymentAt, slotOccupant, vacantSlot } from '../sim/map.js';
 import { autoAim, comboStatus } from '../sim/abilities.js';
 import { abilityIllustration, paintAbility } from '../3d/skill-art.js';
-import { rallyTargets } from '../3d/battle-controls.js';
 import { audio } from '../audio/audio.js';
-import { Ring, spread } from './ring.js';
+import {spread} from './ring.js';
+import {CommandDock} from './command-dock.js';
+import {HeroDrag} from './hero-drag.js';
 import { ITEMS, ITEM_ORDER, ITEM_CD } from '../data/items.js';
 import { spendItem } from '../meta/profile.js';
 import { metaCost, TOWER_META_BONUS } from '../data/quests.js';
-import { createVirtualPad, padWorldDirection } from './virtual-pad.js';
 import { lockBattlePageZoom } from './battle-viewport.js';
 
 const W = 960;
@@ -130,20 +130,20 @@ export class GameUI {
     const tip = h('div', { class: 'rotate-tip' }, '화면을 가로로 돌리면 전장이 더 크게 보입니다');
     // 하단
     this.bottom = h('div', { class: 'hud-bottom' });
-    this.pad?.destroy();
-    this.pad=createVirtualPad({canStart:()=>this.canUsePad(),onStart:()=>this.beginPad(),onChange:()=>this.padTick(performance.now()),onEnd:()=>this.endPad()});
-    this.touchControls=this.pad.el;this.touchControls.hidden=!this.touchInput;
-    this.cv.dataset.touchMode='pad';
-    this.el.append(top, this.area, this.bottom);
+    this.cv.dataset.touchMode='tiles';
+    this.el.classList.add('tile-mode');
+    this.slotState=h('div',{class:'tile-status',role:'status','aria-live':'off'});
+    this.commandHost=h('div',{class:'battle-command-host',hidden:true});
+    this.el.append(top,this.area,this.slotState,this.commandHost,this.bottom);
     top.after(tip);
     clear(this.root).append(this.el);
     this.buildBottom();
     if (this.is3d) {
       const cam = h('div', { class: 'battle-camera', 'aria-label': '전장 시점' },
         h('span', { class: 'battle-season' }, '고정 시점 · 사계절 전장'),
-        this.gridBtn=h('button', { 'aria-pressed': 'false', onclick: e => { this.ui.showGrid=!this.ui.showGrid; e.currentTarget.setAttribute('aria-pressed',String(this.ui.showGrid)); } }, '건설 터'),
+        this.gridBtn=h('button', { 'aria-pressed': 'false', onclick: e => { this.ui.showGrid=!this.ui.showGrid; e.currentTarget.setAttribute('aria-pressed',String(this.ui.showGrid)); } }, '배치 타일'),
         h('button', { onclick: () => this.renderer.world.home() }, '기본 시점'),
-        h('button', { hidden:!this.s.coop, onclick: () => this.rallyHeroes(), title: '내 영웅을 같은 길목에 모읍니다. 협동 동료의 영웅은 동료가 이동합니다.' }, '영웅 집결'));
+        h('span',{class:'tile-camera-help'},'영웅 드래그 · 빈 타일 건설'));
       this.overlay.append(cam);
       this.xray.hidden = true;
     }
@@ -162,7 +162,6 @@ export class GameUI {
   buildBottom() {
     const v = this.s.view;
     clear(this.bottom);
-    this.bottom.append(this.touchControls);
     this.heroEls = [];
     this.skillEls = [];
     this.itemEls = [];
@@ -176,7 +175,7 @@ export class GameUI {
         const canvas = heroPortrait(hh.heroId, 46, p, hh.skin);
         const hp = h('i', { style: { width: '100%' } });
         const lv = h('span', { class: 'num dim', style: { fontSize: '13px' } });
-        const card = h('button', { class: 'hero-card', 'aria-pressed': 'false', title: `${def.name} — 클릭해 선택`, disabled:!mine, onclick: () => this.selectHero(i) },
+        const card = h('button', { class: 'hero-card', 'aria-pressed': 'false', title: `${def.name} — 끌어 빈 타일로 배치`, 'data-hero-index':i, disabled:!mine, onclick: () => this.selectHero(i) },
           canvas, h('span', { class: 'nm' }, def.name, ' ', lv), h('div', { class: 'bar green hpbar' }, hp));
         const keys = this.keyLabels(p, k);
         const sk = this.skillButton(def.skill.short, `${def.name} 기술 · ${def.skill.name}`, keys.skill, () => this.useHeroSkill(i, 'skill'), !mine);
@@ -240,19 +239,6 @@ export class GameUI {
     paintAbility(layer, art); button.el.prepend(layer); button.el.classList.add('illustrated');
   }
 
-  rallyHeroes() {
-    const v = this.s.view, targets = rallyTargets(v);
-    if (!targets) return toast('두 영웅이 살아 있을 때 집결할 수 있습니다');
-    for (const i of this.myHeroIdx()) {
-      if (!targets[i]) continue;
-      const p = this.me;
-      this.s.send({ t: 'move', p, h: i, x: targets[i].x, y: targets[i].y });
-    }
-    this.closePop();
-    this.ui.moveMark = { x: targets[0].x, y: targets[0].y, t: 1, p: this.me };
-    toast('내 영웅이 집결합니다. 동료도 집결하면 합격기를 쓸 수 있습니다.');
-  }
-
   useItem(p, id, at) {
     const pl = this.s.view.players[p];
     const it = ITEMS[id];
@@ -302,9 +288,7 @@ export class GameUI {
     if(this.networkBanner){this.networkBanner.hidden=!waitingForNetwork;this.networkBanner.textContent=waitingForNetwork?this.s.networkMessage:'';}
     if(this.overlay)this.overlay.inert=waitingForNetwork;
     if(waitingForNetwork)this.cancelPress?.();
-    this.pad?.setDisabled(!this.canUsePad());
-    this.flushPadStop();
-    this.padTick(t);
+    if(waitingForRenderer||waitingForNetwork||this.s.view.paused||this.s.view.result)this.cancelHeroDrag?.();
     const evs = this.s.update(dt, { waitingForRenderer });
     this.handleEvents(evs);
     this.renderer.events(evs);
@@ -325,7 +309,7 @@ export class GameUI {
   }
 
   interruptBattle() {
-    this.pad?.cancel();this.menuAbort?.abort();clearTimeout(this.finishTimer);
+    this.cancelHeroDrag?.();this.menuAbort?.abort();clearTimeout(this.finishTimer);
     if(this.interruptionHandled)return;this.interruptionHandled=true;this.ended=true;
     this.onInterrupted?.(this.s.interrupted);
   }
@@ -366,7 +350,8 @@ export class GameUI {
     document.removeEventListener('pointermove',this.onTouchMove,true);
     document.removeEventListener('pointerup',this.onTouchUp,true);
     document.removeEventListener('pointercancel',this.onTouchUp,true);
-    this.pad?.destroy();
+    document.removeEventListener('click',this.onConsumedClick,true);
+    this.cancelHeroDrag?.();
     this.s.destroy();
     this.renderer?.destroy?.();
     audio.stopBgm();
@@ -439,166 +424,128 @@ export class GameUI {
 
   // ───────────────────────── 입력 ─────────────────────────
   bindInput() {
-    this.releasePageZoom = lockBattlePageZoom();
-    this.onResize = () => { this.pad?.cancel(); this.resize(); };
-    window.addEventListener('resize', this.onResize);
-    const pos = (e) => {
-      if (this.is3d) return this.renderer.pick(e.clientX, e.clientY);
-      const r = this.cv.getBoundingClientRect();
-      return { x: ((e.clientX - r.left) / r.width) * (W / TS), y: ((e.clientY - r.top) / r.height) * (H / TS) };
-    };
-    this.cv.addEventListener('pointermove', (e) => {
-      if(this.isPadTouch(e))return;
-      if(this.renderer?.loading||this.s.networkWaiting)return;
-      if (down && Math.hypot(e.clientX-down.x, e.clientY-down.y)>6) dragged=true;
-      const p = pos(e);
-      if (!p) return;
-      this.mouse = p;
-      const tx = Math.floor(p.x);
-      const ty = Math.floor(p.y);
-      this.ui.hover = { x: tx, y: ty };
-      this.ui.hoverOk = this.canBuildAt(tx, ty);
-      if (this.targeting) this.ui.aim = { x: p.x, y: p.y, r: this.targeting.r };
-    });
-    this.cv.addEventListener('pointerleave', () => {
-      this.ui.hover = null;
-      this.mouse = null;
-      if (!this.targeting) this.ui.aim = null;
-    });
-    let down = null, dragged = false, multiTouch = false;
-    const pointers = new Map();
-    this.cancelPress = () => { down=null; pointers.clear(); multiTouch=false; };
+    this.releasePageZoom=lockBattlePageZoom();
+    const pointers=new Set();let down=null,multi=false,heroGesture=false;
+    const controls=enabled=>{if(this.renderer.world?.controls)this.renderer.world.controls.enabled=enabled;};
+    const pos=e=>this.pointerPoint(e);
+    const consume=e=>{e.preventDefault();e.stopImmediatePropagation();};
     const suppress=()=>{this.suppressTouchUntil=performance.now()+350;down=null;};
+    this.heroDrag=new HeroDrag({
+      onPreview:(drag,event)=>this.previewHeroDrag(drag,event),
+      onDrop:(hero,slotId)=>this.s.relocateHero(hero,slotId),
+      onEnd:()=>{this.ui.dragPreview=null;this.dragGhost?.remove();this.dragGhost=null;try{if(this.cv.hasPointerCapture?.(this.dragPointer))this.cv.releasePointerCapture(this.dragPointer);}catch{}if(!heroGesture)controls(true);},
+    });
+    this.cancelHeroDrag=()=>{this.heroDrag?.cancel();if(!pointers.size){heroGesture=false;controls(true);}};
+    this.cancelPress=()=>{down=null;this.cancelHeroDrag();};
+    this.onResize=()=>{this.cancelPress();this.resize();};window.addEventListener('resize',this.onResize);
     this.onTouchDown=e=>{
-      if(e.pointerType!=='touch')return;
-      if(this.isPadTouch(e))return;
-      pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
-      if(pointers.size>1){multiTouch=true;dragged=true;suppress();}
+      if(!this.el.contains(e.target))return;
+      if(e.pointerType==='touch')pointers.add(e.pointerId);
+      if(pointers.size>1){multi=true;suppress();this.cancelHeroDrag();return;}
+      if(this.renderer.loading||this.s.networkWaiting||this.ended)return;
+      audio.init();if(e.pointerType==='touch')this.enableTouchInput();
+      const portrait=e.target.closest?.('.hero-card[data-hero-index]');
+      const inWorld=e.target===this.cv||!!e.target.closest?.('.build-site');
+      if(!portrait&&!inWorld){e.stopPropagation();return;}
+      const point=inWorld?pos(e):null;
+      let hero=portrait?Number(portrait.dataset.heroIndex):this.heroAtPoint(point,e);
+      if(e.button!==0||this.targeting||this.s.view.paused||this.s.view.result||this.s.deploymentPending)hero=-1;
+      if(hero>=0&&this.myHeroIdx().includes(hero)){
+        const h=this.s.view.heroes[hero];
+        if(!h.dead){
+          this.closePop();this.selectHero(hero);heroGesture=true;controls(false);
+          this.heroDrag.begin(hero,e);this.dragPointer=e.pointerId;
+          try{this.cv.setPointerCapture(e.pointerId);}catch{}
+          consume(e);return;
+        }
+      }
+      if(inWorld)down={x:e.clientX,y:e.clientY,pointerId:e.pointerId,dragged:false,site:!!e.target.closest?.('.build-site')};
     };
     this.onTouchMove=e=>{
-      if(this.isPadTouch(e))return;
-      const start=pointers.get(e.pointerId);
-      if(start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)>6){start.dragged=true;dragged=true;suppress();}
+      const drag=this.heroDrag.current;
+      if(drag?.pointerId===e.pointerId){
+        if(!this.canDragHero(drag.hero)){this.cancelHeroDrag();suppress();consume(e);return;}
+        const slot=this.slotAtPointer(e),h=this.s.view.heroes[drag.hero];
+        const valid=!!slot&&!slotOccupant(this.s.view,slot.id)&&(this.s.view.wave.phase==='prep'||!(h.relocateCd>0));
+        this.heroDrag.move(e,slot,valid);consume(e);return;
+      }
+      if(down?.pointerId===e.pointerId&&Math.hypot(e.clientX-down.x,e.clientY-down.y)>7)down.dragged=true;
+      if(e.target!==this.cv)return;
+      const p=pos(e);if(!p)return;this.mouse=p;
+      const slot=this.slotAtPointer(e);this.ui.hover=slot?{x:slot.x,y:slot.y}:null;this.ui.hoverOk=!!slot&&!slotOccupant(this.s.view,slot.id);
+      if(this.targeting)this.ui.aim={x:p.x,y:p.y,r:this.targeting.r};
     };
     this.onTouchUp=e=>{
-      if(this.isPadTouch(e))return;
-      const start=pointers.get(e.pointerId);
-      if(multiTouch||start?.dragged||e.type==='pointercancel')suppress();
-      pointers.delete(e.pointerId);if(!pointers.size)multiTouch=false;
+      const drag=this.heroDrag.current;
+      const canceled=multi||down?.dragged||e.type==='pointercancel'||this.renderer.loading||this.s.networkWaiting||this.ended;
+      if(drag?.pointerId===e.pointerId){
+        if(e.type==='pointercancel')this.heroDrag.cancel();
+        else{this.onTouchMove(e);this.heroDrag.end(e);}
+        suppress();consume(e);
+      }else if(down?.pointerId===e.pointerId){
+        const press=down;down=null;
+        const hit=document.elementFromPoint?.(e.clientX,e.clientY);
+        const inWorld=!hit||hit===this.cv||!!hit.closest?.('.build-site');
+        if(!canceled&&inWorld&&performance.now()>=(this.suppressTouchUntil||0)){
+          const p=pos(e);if(press.site&&e.button===0){const slot=this.slotAtPointer(e);if(slot&&this.canBuildAt(slot.x,slot.y)){this.openBuildMenu(slot.x,slot.y);this.suppressSiteClickUntil=performance.now()+350;}}
+          else if(p&&e.button===0)this.leftClick(p,{touch:e.pointerType==='touch'});
+          else if(e.button===2){this.closePop();this.cancelTargeting();}
+        }
+      }
+      if(canceled)suppress();
+      pointers.delete(e.pointerId);
+      if(!pointers.size){multi=false;heroGesture=false;controls(true);}
     };
-    // Also count world fingers on construction markers.
     document.addEventListener('pointerdown',this.onTouchDown,true);
     document.addEventListener('pointermove',this.onTouchMove,true);
     document.addEventListener('pointerup',this.onTouchUp,true);
     document.addEventListener('pointercancel',this.onTouchUp,true);
-    // Losing focus may swallow keyup/pointerup. Release held input.
-    this.onInputBlur=()=>{this.cancelPress();this.pad?.cancel();};
+    this.onConsumedClick=e=>{if(this.el.contains(e.target)&&e.detail&&performance.now()<(this.suppressTouchUntil||0))consume(e);};
+    document.addEventListener('click',this.onConsumedClick,true);
+    this.onInputBlur=()=>{pointers.clear();multi=false;heroGesture=false;this.cancelPress();controls(true);suppress();};
     this.onInputGraphics=()=>{this.onInputBlur();this.closePop();this.cancelTargeting();};
     this.onInputVisibility=()=>{if(document.hidden)this.onInputBlur();this.s.setBackground?.(!!document.hidden);};
-    window.addEventListener('blur',this.onInputBlur);
-    this.cv.addEventListener('webglcontextlost',this.onInputGraphics);
-    document.addEventListener('visibilitychange',this.onInputVisibility);
-    this.s.setBackground?.(!!document.hidden);
-    this.cv.addEventListener('pointerdown', (e) => {
-      if(this.isPadTouch(e))return;
-      if(this.renderer?.loading||this.s.networkWaiting)return;
-      audio.init();
-      if(e.pointerType==='touch'&&!pointers.has(e.pointerId))this.onTouchDown(e);
-      if(pointers.size>1){multiTouch=true;dragged=true;down=null;return;}
-      down = { x:e.clientX, y:e.clientY }; dragged=false;
-    });
-    this.cv.addEventListener('pointerup', (e) => {
-      if(this.isPadTouch(e))return;
-      if(this.renderer?.loading||this.s.networkWaiting){this.cancelPress();return;}
-      if(e.pointerType==='touch')this.onTouchUp(e);
-      if(multiTouch||e.pointerType==='touch'&&performance.now()<(this.suppressTouchUntil||0)){down=null;return;}
-      const wasDown=!!down; down=null;
-      if (!wasDown || (this.is3d && dragged)) return;
-      if (this.is3d && e.button === 2) {
-        const p=pos(e); if (!p) return;
-        if(this.targeting) this.cancelTargeting();
-        else {this.closePop();this.moveHeroTo(p.x,p.y);}
-        return;
-      }
-      if (e.button === 2) return;
-      const p=pos(e);
-      if(e.pointerType==='touch')this.enableTouchInput();
-      if(p) this.leftClick(p,{touch:e.pointerType==='touch'});
-    });
-    this.cv.addEventListener('pointercancel', this.cancelPress);
-    this.cv.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-      if(this.renderer?.loading||this.s.networkWaiting)return;
-      if (this.is3d) return;
-      const p = pos(e);
-      if (this.targeting) return this.cancelTargeting();
-      this.closePop();
-      this.moveHeroTo(p.x, p.y);
-    });
-    this.onKeyDown = (e) => this.keyDown(e);
-    document.addEventListener('keydown', this.onKeyDown);
+    window.addEventListener('blur',this.onInputBlur);this.cv.addEventListener('webglcontextlost',this.onInputGraphics);
+    document.addEventListener('visibilitychange',this.onInputVisibility);this.s.setBackground?.(!!document.hidden);
+    this.cv.addEventListener('contextmenu',e=>{e.preventDefault();this.closePop();this.cancelTargeting();});
+    this.onKeyDown=e=>this.keyDown(e);document.addEventListener('keydown',this.onKeyDown);
   }
 
-  canBuildAt(x, y) {
-    if (tileAt(this.map, x, y) !== T_BUILD) return false;
-    return !this.s.view.towers.some((t) => t.x === x && t.y === y);
+  pointerPoint(e){
+    if(this.is3d)return this.renderer.pick(e.clientX,e.clientY);
+    const r=this.cv.getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*(W/TS),y:(e.clientY-r.top)/r.height*(H/TS)};
   }
-
-  enableTouchInput() {
-    if(this.touchInput)return;
-    this.touchInput=true;this.ui.touchInput=true;
-    this.el?.classList.add('touch-ui');
-    if(this.touchControls){this.touchControls.hidden=false;this.resize();}
+  slotAtPointer(e){
+    const r=this.cv.getBoundingClientRect();if(e.clientX<r.left||e.clientY<r.top||e.clientX>r.right||e.clientY>r.bottom)return null;
+    const hit=document.elementFromPoint?.(e.clientX,e.clientY);
+    if(hit&&hit!==this.cv&&!hit.closest?.('.build-site'))return null;
+    if(!this.is3d){const p=this.pointerPoint(e);return deploymentAt(this.map,Math.floor(p.x),Math.floor(p.y));}
+    let best=null,distance=Infinity;
+    for(const slot of this.map.deploymentSlots){const p=this.renderer.screenPoint(slot.cx,slot.cy),d=Math.hypot(p.x+r.left-e.clientX,p.y+r.top-e.clientY);if(p.visible&&d<distance&&d<=24){best=slot;distance=d;}}
+    return best;
   }
-
-  isPadTouch(e) {
-    return !!e.target?.closest?.('.battle-touch-controls') || this.pad?.pointerId!=null&&e.pointerId===this.pad.pointerId;
+  heroAtPoint(p,e){
+    if(p?.entity?.kind==='hero')return this.s.view.heroes.findIndex(h=>h.id===p.entity.id);
+    const slot=this.slotAtPointer(e);return slot?this.s.view.heroes.findIndex(h=>h.deploymentSlotId===slot.id):-1;
   }
-
-  padHeroIndex() { return this.solo?this.selHero:this.myHeroIdx()[0]; }
-
-  canUsePad() {
-    const v=this.s.view, i=this.padHeroIndex();
-    return !!this.touchInput&&!this.destroyed&&!this.ended&&!this.renderer?.loading&&!this.s.networkWaiting&&!v.paused&&!v.result&&!document.hidden&&!document.querySelector?.('.modal-back')&&i!==undefined&&this.myHeroIdx().includes(i)&&!!v.heroes[i]&&!v.heroes[i].dead;
+  canDragHero(i){const v=this.s.view,h=v.heroes[i];return !this.destroyed&&!this.ended&&!this.renderer.loading&&!this.s.networkWaiting&&!v.paused&&!v.result&&!this.targeting&&!this.s.deploymentPending&&!!h&&!h.dead&&this.myHeroIdx().includes(i);}
+  previewHeroDrag(drag,event){
+    const hero=this.s.view.heroes[drag.hero],slot=drag.slot;
+    this.ui.dragPreview={h:drag.hero,slotId:slot?.id,x:slot?.cx,y:slot?.cy,valid:drag.valid};
+    if(!this.dragGhost){
+      const canvas=h('canvas',{width:128,height:180}),source=this.renderer.dragImage?.(hero),ctx=canvas.getContext('2d');
+      if(source){const scale=Math.min(128/source.width,180/source.height);ctx.drawImage(source,(128-source.width*scale)/2,180-source.height*scale,source.width*scale,source.height*scale);}
+      else ctx.drawImage(heroPortrait(hero.heroId,90,hero.owner,hero.skin),19,45,90,90);
+      this.dragGhost=h('div',{class:'hero-drag-ghost','aria-hidden':'true'},canvas,h('span',{},HEROES[hero.heroId].name));this.el.append(this.dragGhost);
+    }
+    this.dragGhost.dataset.valid=String(drag.valid);
+    this.dragGhost.style.transform=`translate(${event.clientX}px,${event.clientY-22}px)`;
   }
-
-  beginPad() {
-    this.enableTouchInput();this.closePop();this.flushPadStop();
-    this.padHero=this.padHeroIndex();this.lastPadMove=-Infinity;
-    audio.init();
-  }
-
-  padTick(t) {
-    if(this.pad?.pointerId==null)return;
-    if(!this.canUsePad()||this.padHero!==this.padHeroIndex()){this.pad.cancel();return;}
-    const value=this.pad.value;
-    if(!value.x&&!value.y){this.endPad();return;}
-    if(t-(this.lastPadMove??-Infinity)<60)return;
-    const hero=this.s.view.heroes[this.padHero];let direction;
-    if(this.is3d){
-      const origin=this.renderer.screenPoint(hero.x,hero.y),x=this.renderer.screenPoint(hero.x+1,hero.y),y=this.renderer.screenPoint(hero.x,hero.y+1);
-      direction=padWorldDirection(value,{x:x.x-origin.x,y:x.y-origin.y},{x:y.x-origin.x,y:y.y-origin.y});
-    }else direction=padWorldDirection(value);
-    if(!direction){this.pad.cancel();return;}
-    if(this.s.send({t:'move',p:this.me,h:this.padHero,dx:direction.x,dy:direction.y,direct:true})!==false){this.padMoving=true;this.lastPadMove=t;}
-  }
-
-  endPad() {
-    if(this.padMoving){this.pendingPadStop=this.padHero;this.padMoving=false;}
-    this.flushPadStop();
-  }
-
-  flushPadStop() {
-    const i=this.pendingPadStop;
-    if(i==null||this.renderer?.loading||this.s.networkWaiting)return;
-    const hero=this.s.view.heroes[i];
-    if(!hero||hero.dead||this.s.view.result||!this.myHeroIdx().includes(i)){this.pendingPadStop=null;return;}
-    // The host stops at its authoritative position, never at an old guest frame.
-    if(this.s.send({t:'move',p:this.me,h:i,x:hero.x,y:hero.y,stop:true})!==false)this.pendingPadStop=null;
-  }
+  canBuildAt(x,y){return !!vacantSlot(this.map,this.s.view,x,y);}
+  enableTouchInput(){if(this.touchInput)return;this.touchInput=true;this.ui.touchInput=true;this.el.classList.add('touch-ui');this.resize();}
 
   buildSiteClick(x,y,event) {
-    if(this.renderer?.loading||this.s.networkWaiting||this.targeting||performance.now()<(this.suppressTouchUntil||0))return;
+    if(this.renderer?.loading||this.s.networkWaiting||this.targeting||performance.now()<(this.suppressTouchUntil||0)||event?.detail&&performance.now()<(this.suppressSiteClickUntil||0))return;
     const touch=event?.pointerType==='touch'||this.touchInput&&event?.pointerType!=='mouse';
     if(touch)this.enableTouchInput();
     if(this.canBuildAt(x,y)){this.cancelPress?.();this.openBuildMenu(x,y);}
@@ -626,8 +573,8 @@ export class GameUI {
         return;
       }
     }
-    const tx = Math.floor(p.x);
-    const ty = Math.floor(p.y);
+    const slot=deploymentAt(this.map,Math.floor(p.x),Math.floor(p.y));
+    const tx=slot?.x??Math.floor(p.x),ty=slot?.y??Math.floor(p.y);
     const tower = v.towers.find((t) => t.x === tx && t.y === ty);
     if (tower) {
       this.openTowerPanel(tower.id);
@@ -638,28 +585,16 @@ export class GameUI {
       return;
     }
     this.closePop();
-    // 길이나 빈 곳 클릭: 선택한 영웅 이동
-    if(!touch)this.moveHeroTo(p.x, p.y);
+    // Background taps only dismiss selection.
   }
 
   selectHero(i) {
     const v = this.s.view;
     if (!this.myHeroIdx().includes(i)) return;
-    this.pad?.cancel();
+    this.cancelHeroDrag?.();
     this.selHero = i;
     audio.play('ui');
     if (v.heroes[i] && v.heroes[i].dead) toast(`${HEROES[v.heroes[i].heroId].name}은(는) ${Math.ceil(v.heroes[i].respawn)}초 뒤 돌아옵니다`);
-  }
-
-  moveHeroTo(x, y, heroIdx) {
-    if(this.renderer?.loading||this.s.networkWaiting)return;
-    this.pad?.cancel();this.pendingPadStop=null;
-    const v = this.s.view;
-    const mine = this.myHeroIdx();
-    const i = heroIdx ?? (this.solo ? this.selHero : mine[0]);
-    if (i === undefined || !v.heroes[i] || v.heroes[i].dead) return;
-    this.s.send({ t: 'move', p: this.me, h: i, x, y });
-    this.ui.moveMark = { x, y, t: 1, p: v.heroes[i].owner };
   }
 
   keyDown(e) {
@@ -723,7 +658,7 @@ export class GameUI {
 
   togglePause() {
     const v = this.s.view;
-    this.pad?.cancel();
+    this.cancelHeroDrag?.();
     this.s.setPaused(!v.paused);
   }
 
@@ -786,7 +721,7 @@ export class GameUI {
     this.ui.targeting = tg;
     this.ui.aim = this.mouse ? { x: this.mouse.x, y: this.mouse.y, r: tg.r } : null;
     this.cv.style.cursor = 'crosshair';
-    toast('대상 지점을 클릭하세요 (우클릭 취소)', 1400);
+    toast(this.touchInput?'전장에서 대상 지점을 터치하세요 · 같은 기술 버튼으로 취소':'대상 지점을 클릭하세요 (우클릭 취소)', 1400);
   }
 
   fireTargeting(x, y) {
@@ -809,6 +744,7 @@ export class GameUI {
 
   build(x, y, type) {
     if(this.renderer?.loading||this.s.networkWaiting||performance.now()<(this.suppressTouchUntil||0))return;
+    if(!this.canBuildAt(x,y))return toast('이 타일은 이미 사용 중입니다.');
     this.s.send({ t: 'build', p: this.me, x, y, tower: type });
     this.closePop();
   }
@@ -821,24 +757,9 @@ export class GameUI {
       desc ? h('div', { class: 'td' }, desc) : null);
   }
 
-  openRing(tx, ty, n = 0) {
-    const ring = new Ring({ owner: this.me });
-    const k = this.scale;
-    this.positionRing(ring, tx, ty, n);
-    this.overlay.append(ring.el);
-    return ring;
-  }
-
-  positionRing(ring, x, y, n = 0) {
-    const p = this.is3d ? this.renderer.screenPoint(x+.5,y+.5,.35) : {x:(x+.5)*TS*this.scale,y:(y+.5)*TS*this.scale};
-    ring.layout(p.x,p.y,this.overlay.clientWidth,this.overlay.clientHeight,this.scale,n);
-    const el=ring.el.querySelector('.ring');
-    if(el){el.style.left=`${ring.cx}px`;el.style.top=`${ring.cy}px`;ring.placeTip();}
-  }
-
-  repositionRings() {
-    if(this.pop){const t=this.pop.kind==='tower'?this.s.view.towers.find(t=>t.id===this.pop.id):this.pop;if(t)this.positionRing(this.pop.ring,t.x,t.y,this.pop.ring.items.length);}
-  }
+  openRing(){return new CommandDock({owner:this.me,host:this.commandHost,onClose:()=>this.closePop()});}
+  positionRing(){}
+  repositionRings(){}
 
   closePop() {
     if (this.pop) this.pop.ring.remove();
@@ -849,9 +770,9 @@ export class GameUI {
   }
 
   openBuildMenu(x, y) {
-    if(this.renderer?.loading||this.s.networkWaiting)return;
-    this.closePop();
-    const ring = this.openRing(x, y, this.buildList(this.me).length);
+    if(this.renderer?.loading||this.s.networkWaiting||!this.canBuildAt(x,y))return;
+    this.cancelHeroDrag?.();this.closePop();
+    const ring = this.openRing(x,y,this.buildList(this.me).length);
     this.pop = { kind: 'build', ring, x, y, sig: '' };
     ring.onleave = () => {
       this.ui.placing = null;
@@ -1020,6 +941,14 @@ export class GameUI {
 
   updateHud(dt) {
     const v = this.s.view;
+    const own=v.heroes[this.myHeroIdx()[0]],cd=own?.relocateCd??0;
+    this.set('slots',this.slotState,`배치 ${v.heroes.length+v.towers.length}/${this.map.deploymentSlots.length} · 영웅 ${v.heroes.length} · 유산 ${v.towers.length}  ${this.s.deploymentPending?'배치 확인 중…':own?.dead?'부활할 자리를 유지합니다':v.wave.phase!=='prep'&&cd>0?`재배치 ${Math.ceil(cd)}초`:'영웅 드래그 · 빈 타일 건설'}`);
+    const receipt=this.s.lastDeploymentResult;
+    if(receipt&&receipt.requestId!==this.lastDropReceipt){
+      this.lastDropReceipt=receipt.requestId;
+      if(receipt.ok){audio.play('rally');this.ui.moveMark={x:own.x,y:own.y,t:1,p:this.me};}
+      else if(receipt.reason!=='same'){const reasons={occupied:'이미 사용 중인 타일입니다',cooldown:'재배치 대기시간이 남았습니다',dead:'부활 뒤 배치할 수 있습니다',paused:'계속하기 후 배치하세요',unsent:'배치가 확정되지 않았습니다. 다시 옮겨 주세요'};toast(reasons[receipt.reason]??'이 타일에는 배치할 수 없습니다');}
+    }
     const sig = `${v.heroes.length}:${v.players.length}:${v.heroes.map((x) => x.owner).join('')}`;
     if (sig !== this.cache.bottomSig) {
       this.cache.bottomSig = sig;
@@ -1106,7 +1035,7 @@ export class GameUI {
       const pl = v.players[this.me];
       const sig = this.buildList(this.me).map((t) => (pl.gold >= this.price(t, TOWERS[t].levels[0].cost) ? 1 : 0)).join('');
       if (this.pop.sig !== sig) this.renderBuildRing();
-      if (v.towers.some((t) => t.x === this.pop.x && t.y === this.pop.y)) this.closePop();
+      if (!this.canBuildAt(this.pop.x,this.pop.y)) this.closePop();
     }
   }
 
@@ -1209,7 +1138,7 @@ export class GameUI {
           this.comboCine(e);
           break;
         case 'heroDown':
-          toast(`${HEROES[e.heroId].name} 쓰러짐 — 잠시 뒤 도성에서 부활`);
+          toast(`${HEROES[e.heroId].name} 쓰러짐 — 예약한 타일에서 부활합니다`);
           break;
         case 'leak':
           break;
@@ -1242,7 +1171,7 @@ export class GameUI {
   async openMenu() {
     if(this.destroyed||this.ended||this.s.view.result)return;
     this.menuAbort?.abort();this.menuAbort=new AbortController();const signal=this.menuAbort.signal;
-    this.pad?.cancel();
+    this.cancelHeroDrag?.();
     const wasPaused = this.s.view.paused;
     if (this.s.kind !== 'guest') this.s.setPaused(true);
     const body = h('div', { class: 'stack' },
@@ -1263,51 +1192,10 @@ export class GameUI {
   }
 
   controlsHelp() {
-    const rows=[['마우스','빈 터 클릭: 건설 · 유산: 강화 · 우클릭: 내 영웅 이동'],['터치','왼쪽 패드: 내 영웅 이동 · 빈 터: 건설'],['Q W','내 영웅 기술 · 궁극기'],['D F','비기 1 · 2'],['Z X C V','보유 보급품'],['N','다음 파도 조기 호출']];
+    const rows=[['드래그','내 영웅 또는 초상화를 끌어 빈 타일에 배치'],['빈 타일','하단 목록에서 유산 건설 · 영웅과 건물이 같은 자리 사용'],['유산 터치','하단에서 강화·특화·철거'],['Q W','내 영웅 기술·궁극기'],['D F','비기1·2'],['Z X C V','보유 보급품'],['N','다음 파도 조기 호출']];
     if(this.s.coop)rows.push(['Space','두 사람이 함께 합격기'],['G','동료에게 위치 핑']);
-    if(this.is3d)rows.push(['화면 드래그 / 휠','시점 이동 / 확대·축소']);
+    if(this.is3d)rows.push(['빈 전장 드래그 / 두 손가락','시점 이동 / 확대·축소']);
     return h('div',{class:'keys'},rows.flatMap(([key,text])=>[h('kbd',{},key),h('span',{},text)]));
   }
-
-  checkHints() {
-    if (!this.profile.settings.hints || this.hintEl) return;
-    const v = this.s.view;
-    const show = (id, text, anchor) => {
-      if (this.hintsSeen.has(id)) return false;
-      this.hintsSeen.add(id);
-      this.profile.hintsSeen = [...this.hintsSeen];
-      const el = h('div', { class: 'hint', role: 'note' }, h('div', { html: text }),
-        h('button', { class: 'btn btn-small ok', onclick: () => { el.remove(); this.hintEl = null; } }, '알겠소'));
-      Object.assign(el.style, anchor);
-      this.overlay.append(el);
-      this.hintEl = el;
-      setTimeout(() => {
-        if (this.hintEl === el) {
-          el.remove();
-          this.hintEl = null;
-        }
-      }, 12000);
-      return true;
-    };
-    if(v.stageId==='s25'&&v.wave.n<=2)
-      if(show('final-opening','두 갈래 길이 갈라지기 전 <b>입구의 첫 굽이</b>에 영웅을 배치하면 초반을 함께 막을 수 있습니다. <b>남한산성</b>의 병사와 <b>첨성대</b>의 은신 탐지도 준비하세요.',{left:'12px',bottom:'12px'}))return;
-    if(v.stageId==='s25'&&v.wave.n>=22)
-      if(show('final-reallocate','마지막 적장은 <b>은신 병력</b>을 계속 부릅니다. 탐지를 유지하고, 피해가 적은 유산을 철거해 <b>석굴암의 대광명(A 특화)</b>에 재투자하세요. 특화 유산의 높은 단일 피해가 중요합니다.',{left:'12px',bottom:'12px'}))return;
-    if (v.wave.n === 0 && v.towers.length === 0)
-      return show(this.touchInput?'build-pad-v3':'build', this.touchInput?'<b>왼쪽 아래 패드</b>로 영웅을 움직이고, <b>빈 터를 눌러</b> 유산을 세우세요. 아래 영웅 카드를 누르면 내 영웅을 선택합니다.':'<b>빈 터(풀밭)</b>를 클릭해 유산을 세우세요. 적이 지나갈 <b>길 가까이</b>가 좋습니다. 처음엔 값싼 <b>숭례문</b>을 추천합니다.', { left: '12px', top: '12px' });
-    if (v.wave.n === 0 && v.towers.length > 0)
-      return show('wave', `파도는 <b>누르지 않아도 저절로</b> 옵니다(첫 파도 30초, 그다음은 18초 쉬고). 준비가 끝났으면 <b>출정!</b>(${'N 키'})으로 바로 부르세요. 둘째 파도부터는 일찍 부를수록 보너스 군자금!`, { right: '12px', bottom: '12px' });
-    if (v.wave.n >= 2)
-      if(this.touchInput&&show('hero-pad-v3','아래 영웅 카드를 눌러 고르고 <b>왼쪽 패드</b>를 미세요. 다른 손으로 기술 버튼을 누른 뒤 지점을 누르면 시전합니다. <b>빈 터 터치</b>는 건설입니다.',{left:'12px',bottom:'12px'}))return;
-    if (v.wave.n >= 2)
-      if (show('hero', `영웅을 클릭해 고르고 <b>우클릭</b>(또는 길 클릭)으로 옮기세요. <b>Q/W</b>로 내 영웅의 기술을 씁니다. 마우스를 올린 곳에 시전됩니다.`, { left: '12px', bottom: '12px' })) return;
-    if (v.wave.n >= 3) if (show('equip', '<b>D/F</b>는 장착한 비기입니다. 적이 몰린 곳에 쓰세요. 비기는 진영의 <b>비기</b> 메뉴에서 바꾸고 강화합니다.', { left: '12px', bottom: '12px' })) return;
-    if (v.wave.nextTactic) if (show('tactic', '<b>왜군 전술 카드</b>가 공개됐습니다! 대비책을 세워 한 명도 놓치지 않으면 <b>전술 파훼</b> 보너스를 받습니다.', { left: '270px', top: '12px' })) return;
-    if (this.s.coop && v.resonance.gauge >= RESONANCE_MAX)
-      if (show('combo', `<b>공명 게이지</b>가 찼습니다. 두 영웅을 <b>5칸 안</b>에 모으고 두 사람이 <b>2.5초 안에 함께</b> <b>Space</b>를 누르면 <b>합격기</b>가 발동합니다!`, { left: '40%', bottom: '12px' })) return;
-    if (v.towers.some((t) => t.level >= 3 && !t.branch))
-      if (show('branch', '3단계 유산은 <b>두 갈래 특화</b> 중 하나를 고를 수 있습니다. 유산을 클릭해 보세요.', { right: '12px', top: '12px' })) return;
-    if (v.towers.some((t) => t.syn > 0))
-      show('synergy', '<b>유산 공명</b>! 같은 계열(궁궐·사찰·성곽과학)의 <b>다른</b> 유산이 2칸 안에 있으면 1종당 공격력 +12%. 점선이 공명을 뜻합니다.', { right: '12px', top: '12px' });
-  }
+  checkHints() {} // Persistent instructions live below the field; no wave popups.
 }

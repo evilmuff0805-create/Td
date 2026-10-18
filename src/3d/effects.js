@@ -58,7 +58,7 @@ export class BattleEffects {
     if(this.corridorRoot.visible) {
       const dx=aim.x-hero.x,dy=aim.y-hero.y,d=Math.hypot(dx,dy);
       this.corridorRoot.position.set(aim.wall?aim.x:(aim.x+hero.x)/2,.08,aim.wall?aim.y:(aim.y+hero.y)/2);
-      this.corridorRoot.rotation.y=aim.wall?0:-Math.atan2(dy,dx);this.corridorRoot.scale.set(aim.wall?1.34:Math.max(.01,d),1,aim.wall?.36:1.6);
+      this.corridorRoot.rotation.y=aim.wall?0:-Math.atan2(dy,dx);this.corridorRoot.scale.set(aim.wall?1.34:Math.max(.01,d),1,aim.wall?.36:aim.radius*2);
     }
   }
   add(root,life,animate) {

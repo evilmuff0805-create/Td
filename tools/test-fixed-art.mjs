@@ -1,3 +1,4 @@
+import {applyFixtureCommand as applyCommand} from './tile-fixtures.mjs';
 import assert from 'node:assert/strict';
 import * as T from 'three';
 import { FixedBattleArt,frameBounds,isolateFrame } from '../src/3d/fixed-art.js';
@@ -6,7 +7,7 @@ import { TOWER_ORDER } from '../src/data/towers.js';
 import { WinterWorld } from '../src/3d/world.js';
 import { CrowdRenderer } from '../src/3d/crowd.js';
 import { newWinterGame,newBattleGame,canBuildAt } from '../src/3d/scenario.js';
-import { applyCommand,step,DT } from '../src/sim/sim.js';
+import { step,DT } from '../src/sim/sim.js';
 import { hurtHero,spawnEnemy } from '../src/sim/combat.js';
 import { SEASONS } from '../src/3d/seasons.js';
 import { HERO_ORDER } from '../src/data/heroes.js';

@@ -8,7 +8,7 @@ import { HEROES } from '../data/heroes.js';
 import { SKILLS,skillDesc } from '../data/skills.js';
 import { findCombo } from '../data/combos.js';
 import { ENEMIES } from '../data/enemies.js';
-import { getMap,T_WATER } from '../sim/map.js';
+import { getMap,T_WATER,slotOccupant } from '../sim/map.js';
 import { audio } from '../audio/audio.js';
 import { loadProfile } from '../meta/profile.js';
 import { towerTier,towerVisual,towerDisplayStats } from './tower-visuals.js';
@@ -37,6 +37,14 @@ const cost=(type,base=TOWERS[type].levels[0].cost)=>metaCost(base,game.players[0
 function notice(text) {$('notice').textContent=text;$('notice').classList.add('show');noticeUntil=performance.now()+2900;}
 function dispatch(command) {
   if(game.result||battleWaiting(world))return false;
+  // The art comparison screen retains point selection. Convert that editor
+  // input into a legal tile command; production uses the drag UI in GameUI.
+  if(command.t==='move'){
+    const actor=game.heroes[command.h??activeHero],at=getMap(game.stageId).deploymentSlots.filter(p=>!slotOccupant(game,p.id)||p.id===actor.deploymentSlotId)
+      .sort((a,b)=>(a.cx-command.x)**2+(a.cy-command.y)**2-((b.cx-command.x)**2+(b.cy-command.y)**2))[0];
+    if(!at)return false;
+    command={t:'relocate',h:command.h??activeHero,slotId:at.id,requestId:(game.players[0].deploymentSeq||0)+1,battleKey:game.battleKey};
+  }
   const h=game.heroes[command.h??activeHero],slot=equippedAbility(game,command.slot??0),combos=game.players[0].stats.combos;
   if(command.t==='skill'&&!slot)return false;
   const prior=command.t==='heroSkill'?h.skillCd:command.t==='heroUlt'?h.ultCd:command.t==='skill'?slot.cd:undefined;

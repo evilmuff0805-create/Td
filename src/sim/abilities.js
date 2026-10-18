@@ -1,10 +1,10 @@
 // 영웅 스킬 · 비기 · 합격기
-import { HEROES, YI_FAN } from '../data/heroes.js';
+import { HEROES, YI_FAN, GANG_WAVE } from '../data/heroes.js';
 import { SKILLS, skillPower } from '../data/skills.js';
 import { findCombo, COMBO_RANGE, COMBO_WINDOW, RESONANCE_MAX } from '../data/combos.js';
 import {
   ev, comboCue, d2, clamp, mapOf, aoe, damage, applySlow, applyStun, applyVuln, addSummon, drop, randomPointIn,
-  addGold, heroPower, isTargetable, addResonance, releaseBlocker,
+  addGold, heroPower, isTargetable, addResonance, releaseBlocker, reviveHero, addProjectile,
 } from './combat.js';
 
 // 안중근의 상시 효과: 적장에게 +25%
@@ -96,34 +96,13 @@ export function castHeroSkill(s, h, x, y) {
       break;
     }
     case 'gang': {
-      const p = clampToHero(h, x, y, 4);
-      const dmg = scaled(h, def.skill.base, def.skill.perLv);
-      const ax = h.x;
-      const ay = h.y;
-      const bx = p.x;
-      const by = p.y;
-      const lx = bx - ax;
-      const ly = by - ay;
-      const L2 = lx * lx + ly * ly || 1;
-      for (const e of s.enemies) {
-        if (e.hp <= 0) continue;
-        const t = clamp(((e.x - ax) * lx + (e.y - ay) * ly) / L2, 0, 1);
-        const px = ax + lx * t;
-        const py = ay + ly * t;
-        if ((e.x - px) ** 2 + (e.y - py) ** 2 <= 0.8 * 0.8) {
-          applyStun(e, 0.5);
-          damage(s, e, dmg, 'phys', src);
-        }
-      }
-      releaseBlocker(s, h.id);
-      ev(s, 'dash', { x1: ax, y1: ay, x2: bx, y2: by });
-      h.x = bx;
-      h.y = by;
-      h.tx = bx;
-      h.ty = by;
-      h.post = { x: bx, y: by };
-      h.facing = lx >= 0 ? 1 : -1;
-      ev(s, 'sfx', { n: 'slash' });
+      const p=clampToHero(h,x,y,GANG_WAVE.range),distance=Math.hypot(p.x-h.x,p.y-h.y);
+      if(distance<.05)break;
+      addProjectile(s,{kind:'bladeWave',mode:'linear',sx:h.x,sy:h.y,x:h.x,y:h.y,tx:p.x,ty:p.y,speed:GANG_WAVE.speed,hitIds:[],
+        radius:GANG_WAVE.radius,dmg:scaled(h,def.skill.base,def.skill.perLv),type:'phys',stun:.5,src,a:Math.atan2(p.y-h.y,p.x-h.x)});
+      h.facing=p.x>=h.x?1:-1;
+      ev(s,'abilityCue',{motif:'gang-skill',caster:h.id,p:h.owner,x:h.x,y:h.y,r:.65});
+      ev(s,'sfx',{n:'slash'});
       break;
     }
     case 'gwon': {
@@ -320,8 +299,7 @@ export function castEquipSkill(s, pl, slot, x, y) {
     case 'donguibogam':
       for (const h of s.heroes) {
         if (h.dead) {
-          h.dead = false;
-          h.respawn = 0;
+          reviveHero(s,h);
         }
         h.hp = h.maxHp;
         ev(s, 'heal', { x: h.x, y: h.y });
@@ -463,8 +441,7 @@ export function fireCombo(s) {
       cueTargets = [];
       for (const h of s.heroes) {
         if (h.dead) {
-          h.dead = false;
-          h.respawn = 0;
+          reviveHero(s,h);
         }
         h.hp = h.maxHp;
         h.buffs.invulnT = 8;

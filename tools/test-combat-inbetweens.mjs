@@ -1,3 +1,4 @@
+import {applyFixtureCommand as applyCommand} from './tile-fixtures.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import * as T from 'three';
@@ -15,7 +16,7 @@ import {newWinterGame} from '../src/3d/scenario.js';
 import {SimulationSession as Session} from './session-fixtures.mjs';
 import {GameUI} from '../src/ui/hud.js';
 import {SnapshotEncoder,emptyView,applySnapshot} from '../src/sim/snapshot.js';
-import {applyCommand,step,DT} from '../src/sim/sim.js';
+import {step,DT} from '../src/sim/sim.js';
 import {spawnEnemy,addSummon,actionCue} from '../src/sim/combat.js';
 import {getMap,T_BUILD,nearestOnPath} from '../src/sim/map.js';
 import {STAGES} from '../src/data/stages.js';

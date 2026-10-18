@@ -7,6 +7,7 @@ export const HERO_XP = [0, 60, 150, 280, 450, 680, 960, 1300, 1720, 2200]; // �
 export const HERO_MAX_LV = 10;
 export const HERO_META_MAX = 10;
 export const YI_FAN = Object.freeze({ range: 4.2, halfAngle: 0.72 });
+export const GANG_WAVE = Object.freeze({range:4,radius:.65,speed:8});
 
 export const HEROES = {
   yi: {
@@ -37,18 +38,18 @@ export const HEROES = {
     unlock: { coins: 1500, stage: 's1' },
   },
   gang: {
-    name: '강감찬', title: '귀주의 별', era: '고려', role: '근접 · 적장 사냥', color: '#5a4a8a', accent: '#f0c75e',
-    hp: 700, dmg: 40, cd: 1.0, range: 1.1, speed: 2.3, dmgType: 'phys', attack: 'melee', block: 2,
-    passive: { name: '낙성', desc: '4번째 공격마다 별이 떨어져 주변 1.2칸에 2배 신성 피해.' },
-    skill: { short: '돌격', name: '귀주 돌격', cd: 12, base: 80, perLv: 12, desc: '지정 지점까지 돌진하며 경로의 적에게 피해와 기절 0.5초.' },
+    name: '강감찬', title: '귀주의 별', era: '고려', role: '검기 · 적장 사냥', color: '#5a4a8a', accent: '#f0c75e',
+    hp: 700, dmg: 28, cd: 1.0, range: 3.0, speed: 2.3, dmgType: 'phys', attack: 'blade', block: 0,
+    passive: { name: '낙성', desc: '4번째 검기 명중 시 별이 떨어져 주변 1.2칸에 2배 신성 피해.' },
+    skill: { short: '돌격', name: '귀주 돌격', cd: 12, base: 80, perLv: 12, desc: '타일에서 직선 돌격 검기를 날려 경로의 적에게 피해와 기절 0.5초.' },
     ult: { short: '낙성우', name: '낙성우', cd: 60, base: 180, perLv: 25, desc: '가장 강한 적 8명에게 유성이 떨어진다.' },
     quote: '별이 떨어진 곳에서 태어났으니, 이 땅에 떨어지는 적 또한 별과 같으리라.',
     unlock: { coins: 2000, stage: 's2' },
   },
   gwon: {
-    name: '권율', title: '행주의 방패', era: '조선', role: '근접 · 방어', color: '#7a5230', accent: '#e6d3a3',
-    hp: 900, dmg: 30, cd: 1.1, range: 1.1, speed: 2.0, dmgType: 'phys', attack: 'melee', block: 3, regen: 0.015,
-    passive: { name: '행주치마', desc: '초당 최대 체력 1.5% 회복. 적 3명까지 저지.' },
+    name: '권율', title: '행주의 방패', era: '조선', role: '창기 · 방어 통제', color: '#7a5230', accent: '#e6d3a3',
+    hp: 900, dmg: 24, cd: 1.1, range: 2.9, speed: 2.0, dmgType: 'phys', attack: 'spearWave', block: 0, regen: 0.015,
+    passive: { name: '행주치마', desc: '초당 최대 체력 1.5% 회복. 창기에 맞은 적은 1.2초간 25% 둔화.' },
     skill: { short: '투석', name: '투석', cd: 12, base: 45, perLv: 7, desc: '행주치마에 담아 온 돌 6개가 반경 2칸에 떨어져 피해와 기절 0.6초.' },
     ult: { short: '산성', name: '행주산성', cd: 55, desc: '길 위에 목책을 세워 6초간 모든 졸병·정예·중장을 막고, 권율이 받는 피해 50% 감소.' },
     quote: '돌 하나, 치마폭 하나까지 모두가 성벽이다.',
@@ -57,7 +58,7 @@ export const HEROES = {
   gwak: {
     name: '곽재우', title: '홍의장군', era: '조선', role: '기동 · 게릴라', color: '#c0392b', accent: '#2c2c2c',
     hp: 440, dmg: 16, cd: 0.5, range: 3.0, speed: 2.8, dmgType: 'phys', attack: 'arrow', block: 0, detect: 3,
-    passive: { name: '천강홍의', desc: '주변 3칸의 은신한 적을 발각한다. 이동 속도가 빠르다.' },
+    passive: { name: '천강홍의', desc: '주변 3칸의 은신한 적을 발각한다. 전투 중 재배치 대기시간이 2초로 짧다.' },
     skill: { short: '매복', name: '의병 매복', cd: 18, desc: '지정 지점에 의병 3명을 매복시켜 12초간 적을 저지한다.' },
     ult: { short: '질풍', name: '홍의 질풍', cd: 50, desc: '8초간 무적, 공격 속도 2배, 화살이 적 3명에게 튕긴다.' },
     quote: '하늘이 내린 붉은 옷의 장군이 여기 있다!',

@@ -1,5 +1,6 @@
 // 지도·경로 처리 (정적 데이터: 네트워크로 보내지 않고 stageId 로 양쪽에서 재구성한다)
 import { MAP_W, MAP_H, STAGE_BY_ID } from '../data/stages.js';
+import {DEPLOYMENT_LAYOUTS,DEPLOYMENT_VERSION} from '../data/deployment.js';
 
 export const T_BUILD = 0;
 export const T_PATH = 1;
@@ -65,8 +66,24 @@ export function buildMap(stage) {
     }
   });
 
-  return { id: stage.id, w, h, grid, decor: cleanDecor, paths, base, samples };
+  // Development scenery may supply its own stage; campaign slots are explicit.
+  const layout=stage.deploymentSlots??DEPLOYMENT_LAYOUTS[stage.id]??grid.flatMap((tile,i)=>tile===T_BUILD&&i%w%2===0&&Math.floor(i/w)%2===0?[[i%w,Math.floor(i/w)]]:[]).slice(0,20);
+  const deploymentSlots=layout.map(([x,y],i)=>({id:`${stage.id}:${i}`,x,y,cx:x+.5,cy:y+.5}));
+  const cells=new Set();
+  for(const slot of deploymentSlots){
+    if(!Number.isInteger(slot.x)||!Number.isInteger(slot.y)||slot.x<0||slot.y<0||slot.x>=w||slot.y>=h||grid[slot.y*w+slot.x]!==T_BUILD||cells.has(`${slot.x},${slot.y}`))throw Error(`${stage.id}: 배치 타일 설정 오류 (${slot.id})`);
+    cells.add(`${slot.x},${slot.y}`);
+  }
+  if(deploymentSlots.length<2)throw Error(`${stage.id}: 영웅 배치 자리가 부족합니다`);
+  return { id: stage.id, w, h, grid, decor: cleanDecor, paths, base, samples, deploymentSlots, deploymentVersion:DEPLOYMENT_VERSION };
 }
+
+export const deploymentSlot=(map,id)=>map.deploymentSlots.find(slot=>slot.id===id)??null;
+export const deploymentAt=(map,x,y)=>Number.isInteger(x)&&Number.isInteger(y)?map.deploymentSlots.find(slot=>slot.x===x&&slot.y===y)??null:null;
+export function slotOccupant(state,slotId){
+  return state.heroes.find(h=>h.deploymentSlotId===slotId)??state.towers.find(t=>t.deploymentSlotId===slotId)??null;
+}
+export const vacantSlot=(map,state,x,y)=>{const slot=deploymentAt(map,x,y);return slot&&!slotOccupant(state,slot.id)?slot:null;};
 
 function buildPath(pts) {
   const p = pts.map(([x, y]) => ({ x: x + 0.5, y: y + 0.5 }));

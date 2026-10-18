@@ -1,3 +1,4 @@
+import {applyFixtureCommand as applyCommand} from './tile-fixtures.mjs';
 import assert from 'node:assert/strict';
 import * as T from 'three';
 import { PaintedSignatures } from '../src/3d/signature-art.js';
@@ -9,7 +10,7 @@ import { Renderer3D } from '../src/3d/renderer.js';
 import { paintBattleEvent } from '../src/3d/battle-events.js';
 import { ABILITY_SAMPLES,createAbilitySample } from '../src/3d/ability-samples.js';
 import { newBattleGame,WINTER_STAGE } from '../src/3d/scenario.js';
-import { createGame,applyCommand,step,DT } from '../src/sim/sim.js';
+import { createGame,step,DT } from '../src/sim/sim.js';
 import { SnapshotEncoder } from '../src/sim/snapshot.js';
 import { combatantModel } from '../src/3d/combat-models.js';
 import { abilityIllustration } from '../src/3d/skill-art.js';
@@ -18,7 +19,7 @@ import { SKILL_ORDER } from '../src/data/skills.js';
 
 let passed=0;
 async function test(name,run){await run();passed++;console.log(`  ✔ ${name}`);}
-function canvasDocument(){const draws=[];return {draws,createElement:()=>({width:0,height:0,getContext:()=>({drawImage:(...args)=>draws.push(args)})})};}
+function canvasDocument(){const draws=[];return {draws,createElement:()=>({width:0,height:0,getContext:()=>new Proxy({drawImage:(...args)=>draws.push(args),createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]??(()=>{})})})};}
 async function withCanvas(run){const previous=globalThis.document,mock=canvasDocument();globalThis.document=mock;try{return await run(mock);}finally{if(previous===undefined)delete globalThis.document;else globalThis.document=previous;}}
 function imageFixture(){const mock=canvasDocument(),listeners=new Map(),image={width:1254,height:1254,addEventListener:(k,fn)=>listeners.set(k,fn),removeEventListener:()=>{},set src(value){this.url=value;}};mock.createElementNS=()=>image;return {document:mock,listeners,image};}
 function readySignatures(){const art=new PaintedSignatures();art.image={width:1254,height:1254};art.ready=true;return art;}

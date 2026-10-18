@@ -4,7 +4,7 @@ import { HEROES, heroLevelFromXp, heroLevelMult } from '../data/heroes.js';
 import { STAGE_BY_ID, DIFFICULTY, COOP, SOLO_HERO_DAMAGE, difficultyHp } from '../data/stages.js';
 import { TACTICS } from '../data/tactics.js';
 import { RESONANCE_MAX } from '../data/combos.js';
-import { getMap, posAt } from './map.js';
+import { getMap, posAt, deploymentSlot } from './map.js';
 import { rand, randRange } from './rng.js';
 
 export const BOSS_CC = 0.35; // 적장은 기절 지속시간 35%만 받는다
@@ -319,6 +319,14 @@ export function hurtHero(s, h, amt) {
     releaseBlocker(s, h.id);
     ev(s, 'heroDown', { x: h.x, y: h.y, id: h.id, heroId: h.heroId });
   }
+}
+
+export function reviveHero(s,h){
+  const at=deploymentSlot(mapOf(s),h.deploymentSlotId);
+  if(!at)throw Error('영웅의 예약 타일이 없습니다.');
+  h.dead=false;h.respawn=0;h.hp=h.maxHp;h.x=h.tx=at.cx;h.y=h.ty=at.cy;
+  h.post={x:h.x,y:h.y};h.moving=false;delete h.directMove;
+  ev(s,'heroUp',{x:h.x,y:h.y,id:h.id});
 }
 
 export function hurtSummon(s, m, amt) {

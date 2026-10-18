@@ -1,3 +1,4 @@
+import {battleVersion,compatibleBattle} from '../data/deployment.js';
 // 출정 지도 · 1영웅 출전 준비 · 방 코드 협동 · 전투 결과
 import { h, clear, toast, modal, fmt, starStr } from './dom.js';
 import { setBackdrop } from './backdrop.js';
@@ -314,21 +315,21 @@ export function lobbyScreen(app, params) {
   });
   if (!heroUnlockState(p, L.me.hero).unlocked) L.me.hero = 'yi';
   L.me.skills = L.me.skills.filter((id) => skillUnlocked(p, id));
-  const sendMe = () => net.send({ t: 'pick', ...L.me, spec: playerSpec(p, [L.me.hero], L.me.skills, p.name) });
-  const sendCfg = () => host && net.send({ t: 'cfg', stageId: L.stageId, difficulty: L.difficulty });
+  const sendMe = () => net.send({ t: 'pick', ...battleVersion(), ...L.me, spec: playerSpec(p, [L.me.hero], L.me.skills, p.name) });
+  const sendCfg = () => host && net.send({ t: 'cfg', ...battleVersion(), stageId: L.stageId, difficulty: L.difficulty });
   const rerender = () => app.go('lobby', params);
   if (!L.bound) {
     L.bound = true;
     L.offs = [
       net.on('pick', (m) => { L.peer=networkPick(m); if(!L.peer)toast('동료의 편성이 올바르지 않습니다. 영웅 한 명과 비기 두 개를 다시 선택해 주세요.'); rerender(); }),
-      net.on('cfg', (m) => { if(host||!Object.hasOwn(STAGE_BY_ID,m.stageId)||!Object.hasOwn(DIFFICULTY,m.difficulty))return; L.stageId = m.stageId; L.difficulty = m.difficulty; rerender(); }),
+      net.on('cfg', (m) => { if(host||!compatibleBattle(m)||!Object.hasOwn(STAGE_BY_ID,m.stageId)||!Object.hasOwn(DIFFICULTY,m.difficulty))return; L.stageId = m.stageId; L.difficulty = m.difficulty; rerender(); }),
       net.on('peer-joined', () => { toast('동료가 들어왔습니다'); audio.play('ping'); sendMe(); sendCfg(); rerender(); }),
       net.on('peer-left', () => { toast('동료가 나갔습니다'); L.peer = null; rerender(); }),
       net.on('reconnecting',()=>rerender()),net.on('peer-reconnecting',()=>rerender()),
       net.on('reconnected',()=>{sendMe();sendCfg();rerender();}),
       net.on('peer-restored',()=>{sendMe();sendCfg();rerender();}),
       net.on('close', () => { if (!L.started) { toast('서버와 연결이 끊겼습니다'); cleanup(); app.go('coop'); } }),
-      net.on('start', (m) => { if(host||!Object.hasOwn(STAGE_BY_ID,m.stageId)||!Object.hasOwn(DIFFICULTY,m.difficulty))return; L.started = true; cleanup(false); app.startBattle({ kind: 'guest', stageId: m.stageId, difficulty: m.difficulty, net, names: m.names }); }),
+      net.on('start', (m) => { if(host||!compatibleBattle(m)||!Object.hasOwn(STAGE_BY_ID,m.stageId)||!Object.hasOwn(DIFFICULTY,m.difficulty))return; L.started = true; cleanup(false); app.startBattle({ kind: 'guest', stageId: m.stageId, difficulty: m.difficulty, net, battleKey:m.battleKey, names: m.names }); }),
     ];
     if (!host) sendMe();
   }
@@ -363,15 +364,16 @@ export function lobbyScreen(app, params) {
         host ? h('button', {
           class: 'btn btn-seal btn-big', disabled: !canStart, onclick: () => {
             const seed = (Math.random() * 1e9) | 0;
+            const battleKey=globalThis.crypto?.randomUUID?.()??`${L.stageId}:${Date.now()}:${seed}`;
             const peer=networkPick(L.peer);if(!peer){toast('동료의 출전 편성을 다시 확인해 주세요.');return;}
             const specs = [playerSpec(p, [L.me.hero], L.me.skills, p.name), peer.spec];
             try{validateBattleSetup({kind:'host',stageId:L.stageId,difficulty:L.difficulty,specs});}catch(error){toast(error.message);return;}
             p.loadout.coop = { hero: L.me.hero, skills: L.me.skills };
             saveProfile();
-            if(net.send({ t: 'start', seed, stageId: L.stageId, difficulty: L.difficulty, names: [p.name, L.peer.name] })===false){toast('연결을 확인한 뒤 다시 출전해 주세요.');return;}
+            if(net.send({ t: 'start', ...battleVersion(), battleKey, seed, stageId: L.stageId, difficulty: L.difficulty, names: [p.name, L.peer.name] })===false){toast('연결을 확인한 뒤 다시 출전해 주세요.');return;}
             L.started = true;
             cleanup(false);
-            app.startBattle({ kind: 'host', stageId: L.stageId, difficulty: L.difficulty, specs, seed, net, names: [p.name, L.peer.name] });
+            app.startBattle({ kind: 'host', stageId: L.stageId, difficulty: L.difficulty, specs, seed, net, battleKey, names: [p.name, L.peer.name] });
           },
         }, canStart ? '함께 출전!' : '동료 준비 대기')
           : h('button', {

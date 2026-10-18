@@ -3,8 +3,9 @@ import { WinterWorld } from './world.js';
 import { battleView, selectedEntity } from './view.js';
 import { abilityTarget } from './targeting.js';
 import { TowerLabels } from './tower-labels.js';
+import {HEROES} from '../data/heroes.js';
 import { STAGE_BY_ID } from '../data/stages.js';
-import { getMap, T_BUILD } from '../sim/map.js';
+import { getMap, slotOccupant } from '../sim/map.js';
 import { combatStatus } from './combat-status.js';
 import { paintBattleEvent } from './battle-events.js';
 import { FrameMetrics } from './frame-metrics.js';
@@ -21,7 +22,7 @@ export class Renderer3D {
     document.addEventListener('visibilitychange',this.onMetricVisibility);
   }
   setup(stageId, opts = {}) {
-    this.world = new WinterWorld(this.canvas, STAGE_BY_ID[stageId], 'auto', {heroLooks:opts.heroLooks});
+    this.world = new WinterWorld(this.canvas, STAGE_BY_ID[stageId], 'auto', {heroLooks:opts.heroLooks,sharedTiles:true,controlsElement:this.overlay.parentElement});
     this.world.quality(opts.quality !== 'low');
     if (opts.mood === 'bright') {
       this.world.hemi.intensity = 1.9; this.world.renderer.toneMappingExposure *= 1.12;
@@ -36,10 +37,21 @@ export class Renderer3D {
     this.labels = new TowerLabels(this.labelLayer, id => this.onTowerSelect?.(id));
     this.buildLayer=document.createElement('div');this.buildLayer.className='battle-build-sites';this.buildLayer.hidden=true;this.overlay.prepend(this.buildLayer);
     this.sites=[];const map=getMap(stageId);
-    for(let y=0;y<map.h;y++)for(let x=0;x<map.w;x++)if(map.grid[y*map.w+x]===T_BUILD){
-      const button=document.createElement('button');button.className='build-site';button.title='이곳에 유산 건설';button.setAttribute('aria-label',`건설 터 ${x+1}, ${y+1}`);
-      button.dataset.gridX=x;button.dataset.gridY=y;button.addEventListener('click',e=>this.onBuild?.(x,y,e));this.buildLayer.append(button);this.sites.push({x,y,button});
+    for(const slot of map.deploymentSlots){
+      const {x,y,id}=slot,button=document.createElement('button');button.className='build-site';
+      button.title='공용 타일 · 영웅 드래그 또는 유산 건설';button.setAttribute('aria-label',`공용 타일 ${this.sites.length+1}`);
+      button.dataset.slotId=id;button.dataset.gridX=x;button.dataset.gridY=y;
+      button.addEventListener('click',e=>{const at=this.buildSiteAt(e,slot);if(at)this.onBuild?.(at.x,at.y,e);});this.buildLayer.append(button);this.sites.push({...slot,button});
     }
+  }
+  buildSiteAt(event,fallback){
+    // Expanded 44px touch targets can overlap when zoomed out. Resolve the
+    // closest actual tile centre, independent of DOM stacking order.
+    if(!event.detail)return fallback;
+    const r=this.canvas.getBoundingClientRect(),x=event.clientX-r.left,y=event.clientY-r.top;
+    let nearest=null,distance=24;
+    for(const slot of this.sites){const p=this.screenPoint(slot.cx,slot.cy),d=Math.hypot(p.x-x,p.y-y);if(p.visible&&d<distance){distance=d;nearest=slot;}}
+    return nearest;
   }
   events(list) { this.pending.push(...list); }
   prepareView(view) { this.world.prepareHeroLooks(view.heroes); }
@@ -47,6 +59,7 @@ export class Renderer3D {
   render(view, ui, dt) {
     this.prepareView(view);
     const game = battleView(view), world = this.world, selected = selectedEntity(game, ui);
+    world.focusHeroId=game.heroes[ui.selHeroes?.[0]]?.id;
     this.loadingLayer.hidden=!this.loading;
     if(this.loading){this.frameMetrics.reset();this.buildLayer.hidden=true;this.loadingLayer.textContent=world.graphics?.waiting?(world.graphics.status==='failed'?'그래픽을 복구하지 못했습니다. 메뉴에서 전장에 다시 입장해 주세요.':'그래픽을 복구하고 있습니다…'):ui.assetWaitRemote?'전장 그림을 준비하고 있습니다…\n접속한 전투 상태를 동기화하고 있습니다.':'전장 그림을 준비하고 있습니다…';this.pending.length=0;world.draw(ui.clock,dt);return;}
     this.canvas.dataset.assetReadyMs??=String(Math.round(performance.now()-this.loadBegan));
@@ -64,12 +77,14 @@ export class Renderer3D {
     const at = ui.buildAt || ui.hover;
     world.buildPreview(ui.placing, at ? { x: at.x, z: at.y } : null, !!ui.buildAt || ui.hoverOk);
     if (ui.moveMark && ui.moveMark !== this.lastMove) { world.markMove(ui.moveMark.x, ui.moveMark.y); this.lastMove = ui.moveMark; }
+    if(ui.dragPreview?.slotId){world.range.visible=true;world.range.position.set(ui.dragPreview.x,.095,ui.dragPreview.y);world.range.scale.setScalar(HEROES[game.heroes[ui.dragPreview.h].heroId].range);world.range.material.color.set(ui.dragPreview.valid?'#b5e4bb':'#df8e7b');}
     world.fx.update(view.paused ? 0 : dt * view.speed);
     world.draw(ui.clock, dt);
     this.labels.update(game, world, selected, target);
-    this.buildLayer.hidden=!ui.showGrid||!!target||!!game.result;
+    this.buildLayer.hidden=!!target||!!game.result;
+    this.buildLayer.classList.toggle('show-slots',!!ui.showGrid||!!ui.dragPreview);
     if(!this.buildLayer.hidden)for(const site of this.sites){
-      const p=this.screenPoint(site.x+.5,site.y+.5);site.button.hidden=game.towers.some(t=>t.x===site.x&&t.y===site.y)||!p.visible||p.x<20||p.y<20||p.x>this.canvas.clientWidth-20||p.y>this.canvas.clientHeight-20;
+      const p=this.screenPoint(site.cx,site.cy),occupant=slotOccupant(game,site.id);site.button.dataset.occupant=occupant?.heroId?(occupant.owner===game.heroes[ui.selHeroes?.[0]]?.owner?'own-hero':'hero'):'empty';site.button.dataset.drop=ui.dragPreview?(occupant?'blocked':'free'):'';site.button.hidden=!!occupant&&!occupant.heroId||!p.visible||p.x<20||p.y<20||p.x>this.canvas.clientWidth-20||p.y>this.canvas.clientHeight-20;
       site.button.style.left=`${p.x}px`;site.button.style.top=`${p.y}px`;
     }
     this.damage(game, dt);
@@ -121,6 +136,7 @@ export class Renderer3D {
   }
   pick(x,y) { const hit=this.world.aim(x,y); return hit.point ? {x:hit.point.x,y:hit.point.z,entity:hit.entity} : null; }
   screenPoint(x,y,height=.08) { return this.world.project(x,height,y); }
+  dragImage(hero){const art=this.world.art?.unitArt(hero,true,false);return art?.isolated?.[0]?.canvas??null;}
   resize() { this.world?.resize(); }
   destroy() {
     if(this.destroyed)return; this.destroyed=true;

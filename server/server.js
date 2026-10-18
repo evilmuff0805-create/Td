@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {battleVersion} from '../src/data/deployment.js';
 // Static game + two-player relay. No external runtime dependencies.
 import http from 'node:http';
 import crypto from 'node:crypto';
@@ -26,7 +27,7 @@ export function createRoomServer({root=ROOT,publicOnly=false,graceMs=30000,heart
     c.socket.write(Buffer.concat([head,payload]));return true;
   }
   const send=(c,obj)=>c?frame(c,1,Buffer.from(JSON.stringify(obj))):false;
-  const broker=new RoomBroker(send,{graceMs});
+  const broker=new RoomBroker(send,{graceMs,version:battleVersion()});
   function message(c,payload){let msg;try{msg=JSON.parse(payload.toString('utf8'));}catch{return;}broker.message(c,msg);}
   function data(c,chunk){
     c.buf=Buffer.concat([c.buf,chunk]);

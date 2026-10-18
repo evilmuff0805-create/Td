@@ -1,7 +1,8 @@
 // 전투 세션: 솔로 / 온라인 호스트는 시뮬레이션을 직접 돌리고, 게스트는 스냅샷을 받아 그린다
-import { createGame, step, queueCommand, DT } from '../sim/sim.js';
+import { createGame, step, queueCommand, applyCommand, DT } from '../sim/sim.js';
 import { SnapshotEncoder, emptyView, applySnapshot, lerpView } from '../sim/snapshot.js';
 import { validateBattleSetup } from './battle-setup.js';
+import {compatibleBattle} from '../data/deployment.js';
 
 const SNAP_MS = 66;
 
@@ -19,6 +20,7 @@ export class Session {
     this.pending = [];
     this.offs = [];
     this.endInfo = null;
+    this.dropSeq=0;this.deploymentPending=null;this.lastDeploymentResult=null;
     this.localBackground=false;this.hostBackground=false;this.abortInfo=null;
     this.networkSyncing=false;this.syncSerial=0;this.syncPacket=null;this.guestSyncId=null;this.terminalCached=false;this.lastEnd=-Infinity;
     if (this.kind === 'guest') {
@@ -27,11 +29,13 @@ export class Session {
       this.snapGap = SNAP_MS;
       this.offs.push(
         this.net.on('snap', (m) => {
+          if(!compatibleBattle(m.s)){this.abort('rules-version');return;}
           if(this.networkSyncing&&!m.s.res)return;
           const now = performance.now();
           this.snapGap = Math.min(200, Math.max(30, now - this.snapAt));
           this.snapAt = now;
           applySnapshot(this.view, m.s);
+          this.reconcileDeployment();
           if (m.s.ev) this.pending.push(...m.s.ev);
         }),
         this.net.on('end', (m) => {
@@ -42,15 +46,17 @@ export class Session {
         this.net.on('host-background',m=>{this.hostBackground=m.active===true;}),
         this.net.on('sync-state',m=>{
           if(!Number.isSafeInteger(m.id)||m.id<1||!m.s)return;
+          if(!compatibleBattle(m.s)){this.abort('rules-version');return;}
           this.networkSyncing=true;this.guestSyncId=m.id;this.pending.length=0;
           if(typeof m.background==='boolean')this.hostBackground=m.background;
           this.snapAt=performance.now();this.snapGap=SNAP_MS;applySnapshot(this.view,m.s);
+          this.reconcileDeployment(true);
         }),
       );
     } else {
       this.state = createGame({
         stageId: opts.stageId, difficulty: opts.difficulty, mode: this.kind === 'solo' ? 'solo' : 'online',
-        seed: opts.seed, players: opts.specs,
+        seed: opts.seed, players: opts.specs,battleKey:opts.battleKey??globalThis.crypto?.randomUUID?.()??`${opts.stageId}:${Date.now()}:${opts.seed}`,
       });
       this.view = this.state;
       if (this.kind === 'host') {
@@ -102,6 +108,9 @@ export class Session {
       this.abort('peer-left');
       this.networkSyncing=false;this.syncPacket=null;return;
     }
+    // Settle already-received orders in arrival order before publishing a full
+    // sync. A dropped request cannot be reported "unsent" and execute later.
+    for(const command of this.state.cmds.splice(0))applyCommand(this.state,command);
     this.encoder.towerSig=null;
     this.syncPacket={t:'sync-state',id:++this.syncSerial,background:this.localBackground,s:this.encoder.encode(this.state,[])};
     this.netEvents=[];this.lastSync=performance.now();this.net.send(this.syncPacket);
@@ -112,6 +121,25 @@ export class Session {
     if(this.networkWaiting)return false;
     if (this.kind === 'guest') return this.net.send({ t: 'cmd', c: cmd });
     queueCommand(this.state, cmd);return true;
+  }
+
+  relocateHero(h,slotId){
+    if(this.deploymentPending||this.networkWaiting||this.view.paused||this.view.result)return false;
+    this.dropSeq=Math.max(this.dropSeq||0,this.view.players[this.me]?.deploymentSeq||0)+1;
+    const command={t:'relocate',p:this.me,h,slotId,battleKey:this.view.battleKey,requestId:this.dropSeq};
+    this.deploymentPending=command;
+    if(this.send(command)===false){this.deploymentPending=null;return false;}
+    return true;
+  }
+  reconcileDeployment(full=false){
+    const pl=this.view.players[this.me];if(!pl)return;
+    this.dropSeq=Math.max(this.dropSeq||0,pl.deploymentSeq||0);
+    const request=this.deploymentPending;if(!request)return;
+    const result=pl.deploymentResult;
+    if(result?.requestId===request.requestId){this.lastDeploymentResult=result;this.deploymentPending=null;}
+    else if(full||pl.deploymentSeq>request.requestId){
+      this.lastDeploymentResult={...request,ok:false,reason:'unsent'};this.deploymentPending=null;
+    }
   }
 
   // 한 프레임 진행 후, 이번 프레임에 발생한 이벤트 목록을 돌려준다
@@ -134,6 +162,7 @@ export class Session {
       }
     } else if (!waiting && s.cmds.length) step(s); // 일시정지 중에도 명령(건설 등)은 처리
     const evs = s.events.splice(0);
+    this.reconcileDeployment();
     if (this.kind === 'host') {
       for (const e of evs) if (e.k !== 'sfx' || this.netEvents.length < 400) this.netEvents.push(e);
       const now = performance.now();

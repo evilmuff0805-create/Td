@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-10-18T09:41:11.771Z",
+  "scope": "Two real IAB clients on one PC through source HTTP/WS, native CUA portrait drags and bottom construction, not physical two-device evidence",
+  "host": {
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n나 · 수호자\n86\n동료 · 수호자\n86\n×1\n×2\n×3\n계속\n메뉴\n봄 · 부산진 전투\n배치 타일\n기본 시점\n영웅 드래그 · 빈 타일 건설\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n배치 4/20 · 영웅 2 · 유산 2 영웅 드래그 · 빈 타일 건설\n이순신 Lv1\n학익진\nQ\n거북선\nW\n7\n신기전\nD\n봉수\nF\n합격기 Space\n공명 0%\n출정!\n7초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\n자격루\n12\n신기전\n봉수",
+    "tiles": [
+      {
+        "drop": "",
+        "gridX": "6",
+        "gridY": "2",
+        "occupant": "own-hero",
+        "slotId": "s1:3"
+      },
+      {
+        "drop": "",
+        "gridX": "15",
+        "gridY": "3",
+        "occupant": "hero",
+        "slotId": "s1:5"
+      }
+    ],
+    "towers": [
+      {
+        "data": {
+          "branch": "",
+          "level": "1",
+          "towerId": "3"
+        },
+        "label": "숭례문, 1 / 4단계, 0회 강화"
+      },
+      {
+        "data": {
+          "branch": "",
+          "level": "1",
+          "towerId": "4"
+        },
+        "label": "숭례문, 1 / 4단계, 0회 강화"
+      }
+    ]
+  },
+  "guest": {
+    "text": "부산진 전투\n보통\n♥\n민심\n20/20\n파도\n1/12\n동료 · 수호자\n86\n나 · 수호자\n86\n×1\n×2\n×3\n메뉴\n봄 · 부산진 전투\n배치 타일\n기본 시점\n영웅 드래그 · 빈 타일 건설\n일시정지\n건설과 강화는 멈춘 상태에서도 할 수 있습니다\n배치 4/20 · 영웅 2 · 유산 2 영웅 드래그 · 빈 타일 건설\n이순신 Lv1\n학익진\n거북선\n7\n신기전\n봉수\n합격기 Space\n공명 0%\n출정!\n7초 뒤 자동 · N 키\n세종대왕 Lv1\n훈민 정음\nQ\n자격루\nW\n12\n신기전\nD\n봉수\nF",
+    "tiles": [
+      {
+        "drop": "",
+        "gridX": "6",
+        "gridY": "2",
+        "occupant": "hero",
+        "slotId": "s1:3"
+      },
+      {
+        "drop": "",
+        "gridX": "15",
+        "gridY": "3",
+        "occupant": "own-hero",
+        "slotId": "s1:5"
+      }
+    ]
+  }
+}

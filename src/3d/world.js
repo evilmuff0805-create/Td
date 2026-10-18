@@ -30,7 +30,7 @@ function glowTexture() {return texture(64,(c,s)=>{const g=c.createRadialGradient
 export class WinterWorld {
   constructor(canvas,stage=WINTER_STAGE,season='auto',options={}) {
     this.stage=stage;this.theme=seasonFor(stage,season);this.combatKinds=options.combatKinds;this.heroLooks=options.heroLooks;
-    this.fixedCamera=options.fixedCamera!==false;this.useIllustrations=options.illustrated!==false;
+    this.fixedCamera=options.fixedCamera!==false;this.useIllustrations=options.illustrated!==false;this.sharedTiles=!!options.sharedTiles;this.weaponWaveTextures=new Map();
     this.allowBatchCrowd=options.batchCrowd!==false;this.batchCrowd=this.allowBatchCrowd&&!this.useIllustrations;
     this.renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'});
     this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));this.renderer.outputColorSpace=T.SRGBColorSpace;
@@ -40,7 +40,7 @@ export class WinterWorld {
     this.crowd=new CrowdRenderer(this.scene);
     this.unitTemplates=new Map();this.enemyCues=new Map();this.heroCues=new Map();
     this.camera=new T.OrthographicCamera(-20,20,12,-12,.1,150);
-    this.controls=new OrbitControls(this.camera,canvas);this.controls.enableDamping=true;this.controls.dampingFactor=.09;
+    this.controls=new OrbitControls(this.camera,options.controlsElement??canvas);this.controls.enableDamping=true;this.controls.dampingFactor=.09;
     this.controls.minZoom=.72;this.controls.maxZoom=3.1;this.controls.minPolarAngle=.4;this.controls.maxPolarAngle=1.2;
     this.controls.enableRotate=!this.fixedCamera;
     this.controls.mouseButtons={LEFT:T.MOUSE.PAN,MIDDLE:T.MOUSE.DOLLY,RIGHT:this.fixedCamera?null:T.MOUSE.ROTATE};
@@ -78,11 +78,12 @@ export class WinterWorld {
   }
   home() {
     const c=this.renderer.domElement,portrait=c.clientWidth<c.clientHeight;
-    const hero=this.units&&[...this.units.values()].find(o=>o.userData.hero);
+    const hero=this.units?.get(`h${this.focusHeroId}`)??(this.units&&[...this.units.values()].find(o=>o.userData.entity?.kind==='hero'));
     const fallback=getMap(this.stage.id).paths[0].pts[Math.floor(getMap(this.stage.id).paths[0].pts.length*.62)];
-    const focus=portrait?(hero?.position||{x:fallback.x,z:fallback.y}):{x:12,z:7};
+    const start=this.sharedTiles?getMap(this.stage.id).deploymentSlots[0]:null;
+    const focus=portrait?(hero?.position||{x:start?.cx??fallback.x,z:start?.cy??fallback.y}):{x:12,z:7};
     this.controls.target.set(focus.x,.1,focus.z);this.camera.position.set(focus.x+17,26,focus.z+26);
-    this.camera.zoom=1.12;this.camera.lookAt(this.controls.target);this.camera.updateProjectionMatrix();this.controls.update();
+    this.camera.zoom=this.sharedTiles&&portrait?1.8:1.12;this.camera.lookAt(this.controls.target);this.camera.updateProjectionMatrix();this.controls.update();
   }
   rotate(direction) {if(this.fixedCamera)return;const offset=this.camera.position.clone().sub(this.controls.target);offset.applyAxisAngle(new T.Vector3(0,1,0),direction*Math.PI/8);this.camera.position.copy(this.controls.target).add(offset);this.controls.update();}
   resize() {const w=this.renderer.domElement.clientWidth,h=this.renderer.domElement.clientHeight,aspect=w/h;
@@ -322,6 +323,7 @@ export class WinterWorld {
     for(const [key,root] of this.scenery)if(!active.has(key)){this.scene.remove(root);this.disposeModel(root);this.scenery.delete(key);}
   }
   projectiles(game) {
+    this.weaponWaveTextures??=new Map();
     const active=new Set();
     for(const p of game.projectiles) {
       // Lightning materialises at impact. A floating black ball during its
@@ -332,7 +334,23 @@ export class WinterWorld {
         obj=new T.Group();
         const signature=p.kind==='meteor'?'gang-ult':p.kind==='garlic'?'dangun-skill':p.kind==='hangul'?'sejong-skill':null;
         const painted=(p.kind==='bomb'||p.kind==='bigshell'?this.fx?.tactics?.plane(p.kind==='bomb'?'skill-bigyeok':'skill-cheonja',p.kind==='bomb'?.5:.6,p.kind==='bomb'?.55:.55,.9):null)??(signature?this.fx?.signatures?.plane(signature,p.kind==='meteor'?.72:p.kind==='hangul'?.6:.38,p.kind==='meteor'?.95:p.kind==='hangul'?.65:.38,.9):null);
-        if(painted){obj.add(painted);obj.userData.paintedProjectile=painted;}
+        if(['blade','spearWave','bladeWave'].includes(p.kind)){
+          let wave=this.weaponWaveTextures.get(p.kind);
+          if(!wave){
+            wave=texture(256,(c,s)=>{
+              c.clearRect(0,0,s,s);const gold=p.kind==='spearWave';
+              const g=c.createLinearGradient(40,0,210,0);g.addColorStop(0,'transparent');g.addColorStop(.45,gold?'#d89a4255':'#609fe366');g.addColorStop(.8,gold?'#ffe1a8dd':'#b9dbffdd');g.addColorStop(1,'#fff9eb');
+              c.fillStyle=g;c.shadowColor=gold?'#e4b767':'#8ac2ee';c.shadowBlur=12;
+              c.beginPath();c.moveTo(84,34);c.quadraticCurveTo(244,128,84,222);c.quadraticCurveTo(180,128,84,34);c.fill();
+              c.shadowBlur=0;c.strokeStyle=gold?'#fff3c9':'#e7f4ff';c.lineWidth=3;c.beginPath();c.moveTo(84,34);c.quadraticCurveTo(244,128,84,222);c.stroke();
+              if(!gold){c.fillStyle='#eff7ff';for(const [x,y]of [[54,80],[62,167],[118,112]]){c.beginPath();c.moveTo(x-4,y);c.lineTo(x,y-8);c.lineTo(x+4,y);c.lineTo(x,y+8);c.fill();}}
+            });
+            wave.wrapS=wave.wrapT=T.ClampToEdgeWrapping;this.weaponWaveTextures.set(p.kind,wave);
+          }
+          const geo=new T.PlaneGeometry(p.kind==='bladeWave'?1.25:.8,p.kind==='bladeWave'?1.25:.8);geo.userData.owned3d=true;
+          const mat=new T.MeshBasicMaterial({map:wave,transparent:true,depthWrite:false,toneMapped:false,side:T.DoubleSide});mat.userData.owned3d=true;
+          const image=new T.Mesh(geo,mat);obj.add(image);obj.userData.paintedProjectile=image;obj.userData.weaponWave=true;
+        }else if(painted){obj.add(painted);obj.userData.paintedProjectile=painted;}
         else if(p.kind==='arrow'||p.kind==='bolt') {
           const shaft=cylinder(obj,MAT.wood,0,0,0,.012,.38);shaft.rotation.x=Math.PI/2;
           const tip=cone(obj,MAT.steel,0,0,.22,.028,.1);tip.rotation.x=Math.PI/2;
@@ -383,7 +401,10 @@ export class WinterWorld {
       const delta=new T.Vector3(px,y,pz).sub(obj.position);
       if(obj.userData.placed&&delta.lengthSq()>.000001)obj.quaternion.setFromUnitVectors(new T.Vector3(0,0,1),delta.normalize());
       obj.position.set(px,y,pz);obj.userData.placed=true;
-      if(obj.userData.paintedProjectile)obj.userData.paintedProjectile.quaternion.copy(this.camera.quaternion).premultiply(obj.quaternion.clone().invert());
+      if(obj.userData.paintedProjectile){
+        const painted=obj.userData.paintedProjectile;painted.quaternion.copy(this.camera.quaternion).premultiply(obj.quaternion.clone().invert());
+        if(obj.userData.weaponWave){const a=new T.Vector3(p.x,1,p.y).project(this.camera),b=new T.Vector3(p.x+Math.cos(p.a||0),1,p.y+Math.sin(p.a||0)).project(this.camera),aspect=this.camera.isOrthographicCamera?(this.camera.right-this.camera.left)/(this.camera.top-this.camera.bottom):1,angle=Math.atan2(b.y-a.y,(b.x-a.x)*aspect);painted.quaternion.multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,0,1),angle));}
+      }
     }
     for(const [id,obj] of this.bullets) if(!active.has(id)){this.scene.remove(obj);this.disposeModel(obj);this.bullets.delete(id);}
   }
@@ -460,7 +481,7 @@ export class WinterWorld {
       for(const root of [this.static,this.water,this.lampGroup]){this.scene.remove(root);this.disposeModel(root);}
       this.fires=[];this.environment();
     }
-    this.controls.update();
+    if(this.controls.enabled)this.controls.update();
     // Keep panning bounded to the fortress plateau.
     const t=this.controls.target;const dx=T.MathUtils.clamp(t.x,2,22)-t.x,dz=T.MathUtils.clamp(t.z,1,13)-t.z;
     if(dx||dz){t.x+=dx;t.z+=dz;this.camera.position.x+=dx;this.camera.position.z+=dz;}
@@ -491,6 +512,7 @@ export class WinterWorld {
     for(const root of [this.range,this.marker,this.placement])this.disposeModel(root,true);
     this.range.geometry.dispose();this.marker.geometry.dispose();this.placementTile.geometry.dispose();
     this.weatherTex.dispose();this.glowTex.dispose();this.moon.shadow.dispose();
+    for(const tex of this.weaponWaveTextures.values())tex.dispose();this.weaponWaveTextures.clear();
     const templateGeometry=new Set();for(const root of this.unitTemplates.values())root.traverse(o=>{if(o.geometry?.userData.owned3d||o===root.userData.cape)templateGeometry.add(o.geometry);});for(const geo of templateGeometry)geo.dispose();this.unitTemplates.clear();
     this.art?.dispose();this.environmentTarget.dispose();this.scene.clear();this.renderer.dispose();this.renderer.forceContextLoss();
   }

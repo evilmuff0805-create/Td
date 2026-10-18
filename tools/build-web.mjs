@@ -21,7 +21,7 @@ for (const [entry, name] of [['src/main.js','app']]) {
   const result = buildSync({absWorkingDir:root, entryPoints:[entry], outfile:`assets/3d/${name}.js`, bundle:true, format:'esm', target:'es2020', minify:true, charset:'utf8', legalComments:'external', write:false});
   for (const file of result.outputFiles) write(path.relative(root,file.path).replaceAll('\\','/'),file.contents);
 }
-for (const rel of ['index.html','styles/main.css','server/server.js','server/static.js','server/rooms.js']) write(rel,fs.readFileSync(path.join(root,rel)));
+for (const rel of ['index.html','styles/main.css','server/server.js','server/static.js','server/rooms.js','src/data/deployment.js']) write(rel,fs.readFileSync(path.join(root,rel)));
 write('package.json', JSON.stringify({name:'hoguk-web',private:true,type:'module',engines:{node:'>=18'},scripts:{start:'node server/server.js'}},null,2)+'\n');
 // Public play uses the single-hero game; art review stays local.
 write('assets/3d/THREE-LICENSE.txt', fs.readFileSync(path.join(root,'node_modules/three/LICENSE')));

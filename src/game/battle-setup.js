@@ -1,3 +1,4 @@
+import {battleVersion,compatibleBattle} from '../data/deployment.js';
 import { HEROES, HERO_META_MAX } from '../data/heroes.js';
 import { SKILLS, SKILL_META_MAX } from '../data/skills.js';
 import { TOWERS } from '../data/towers.js';
@@ -21,13 +22,13 @@ export function validateBattleSetup(options) {
 // Validate before rendering a received pick and again immediately before start.
 export function networkPick(message) {
   const m=message,s=m?.spec;
-  if(!m||!known(HEROES,m.hero)||!s||!Array.isArray(s.heroes)||s.heroes.length!==1||s.heroes[0]!==m.hero)return null;
+  if(!m||!compatibleBattle(m)||!known(HEROES,m.hero)||!s||!Array.isArray(s.heroes)||s.heroes.length!==1||s.heroes[0]!==m.hero)return null;
   if(!Array.isArray(m.skills)||m.skills.length!==2||new Set(m.skills).size!==2||!m.skills.every(id=>known(SKILLS,id)))return null;
   if(!Array.isArray(s.skills)||s.skills.length!==2||s.skills.some((id,i)=>id!==m.skills[i]))return null;
   if(!Array.isArray(s.towers)||!s.towers.length||s.towers.some(id=>!known(TOWERS,id))||new Set(s.towers).size!==s.towers.length)return null;
   const name=typeof m.name==='string'?m.name.trim().slice(0,10)||'동료':'동료';
   const skin=skinDef(m.hero,s.skins?.[m.hero])?.id??null;
-  return {name,hero:m.hero,skills:[...m.skills],ready:m.ready===true,rank:level(m.rank,17),spec:{name,heroes:[m.hero],skills:[...m.skills],
+  return {...battleVersion(),name,hero:m.hero,skills:[...m.skills],ready:m.ready===true,rank:level(m.rank,17),spec:{name,heroes:[m.hero],skills:[...m.skills],
     towers:[...s.towers],heroLv:{[m.hero]:level(s.heroLv?.[m.hero],HERO_META_MAX)},skillLv:Object.fromEntries(m.skills.map(id=>[id,level(s.skillLv?.[id],SKILL_META_MAX)])),
     towerLv:Object.fromEntries(s.towers.map(id=>[id,level(s.towerLv?.[id],TOWER_META_MAX)])),skins:{[m.hero]:skin},
     items:Object.fromEntries(Object.keys(ITEMS).map(id=>[id,level(s.items?.[id],ITEM_PER_BATTLE)]))}};

@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "archive": "dist/hoguk-web.zip",
+  "archiveBytes": 126253620,
+  "archiveSha256": "6f7557840c722501e66ff113de793d6ab0e06ee4d3379a434b60349a37220f9a",
+  "manifestSha256": "8172dd011b28c68f700c9013e6f6ce7a49fe4d77338e36130562520ccd4733b4",
+  "filesIncludingManifest": 214,
+  "manifestFiles": 213,
+  "manifestFileBytes": 127319891,
+  "allFileHashesAndZipBytesMatch": true,
+  "artFiles": 195,
+  "artIsByteIdentical": true,
+  "sourceAndDevFilesExcluded": true
+}

@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import os
 import zipfile
 
 root = Path(__file__).resolve().parents[1]
@@ -43,5 +44,7 @@ report = {
     'artIsByteIdentical': True,
     'sourceAndDevFilesExcluded': True,
 }
-(root / 'docs' / 'ZIP_PACKAGE_VALIDATION.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+report_dir = root / os.environ.get('HOGUK_REPORT_DIR', 'docs')
+report_dir.mkdir(parents=True, exist_ok=True)
+(report_dir / 'ZIP_PACKAGE_VALIDATION.json').write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
 print(json.dumps(report))
